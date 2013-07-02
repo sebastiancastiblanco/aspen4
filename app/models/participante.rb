@@ -1,4 +1,9 @@
 class Participante < ActiveRecord::Base
   attr_accessible :apellido, :celular, :correo, :direccion, :documento, :estadoCivil, :fechaNacimiento, :genero, :nombre, :telefono, :tipoDocumento
-  has_and_belongs_to_many :roles_participantes
+  
+  #Relacion muchos a muchos, para los roles de los participantes
+  belongs_to :rol_participante
+  #Relacion muchos a muchos, para procesos y particinates
+  has_many :proceso_participantes
+  has_many :procesos, through: :proceso_participantes
 end

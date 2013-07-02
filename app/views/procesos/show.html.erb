@@ -91,7 +91,7 @@
                 </a>
 
                 <a href="#" >
-                  <span class="">Participanetes</span>
+                  <span class=""> (<%= @proceso.participantes.size %>) Participantes</span>
                 </a>
 
                 <a href="#" >
@@ -185,10 +185,9 @@
             <header class="has_buttons">
               <h1><a href="#"> 2. Participantes</a></h1>
       
-              
                 <div>
                   <%= button_to "Crear Participante", new_participante_path, :class => "tiny button  radius ", :method => :get  %>
-                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                  <%= button_to "Ver Todos", participantes_path, :class => "tiny button secondary radius", :method => :get  %>
                 </div>
               
             </header>
@@ -197,11 +196,13 @@
               <article class="document" id="document_3073232" >
                 <table>
                   <tbody>
+                    
+                    <% @proceso.participantes.each do |participante| %>
                     <tr>
                       <td class="text">
                         <h3 class="title">
                           <a href="#">
-                            Particpante 1 - descripcion
+                            <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
                           </a>
                         </h3>
                         <p>
@@ -210,6 +211,8 @@
                         </p>
                       </td>
                     </tr>
+                  <% end %>
+
                   </tbody>
                 </table>
               </article>

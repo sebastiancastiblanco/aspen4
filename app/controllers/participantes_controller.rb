@@ -42,9 +42,17 @@ class ParticipantesController < ApplicationController
   # POST /participantes.json
   def create
     @participante = Participante.new(params[:participante])
+    @participante.rol_participante_id = 1
+
 
     respond_to do |format|
       if @participante.save
+         #Crear la rellacion entre particpante creado y el proceso
+         @procesoParticipante = ProcesoParticipante.new
+         @procesoParticipante.participante_id = 5
+         @procesoParticipante.participante_id = 1
+         @procesoParticipante.save
+
         format.html { redirect_to @participante, notice: 'Participante was successfully created.' }
         format.json { render json: @participante, status: :created, location: @participante }
       else

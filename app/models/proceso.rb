@@ -3,6 +3,9 @@ class Proceso < ActiveRecord::Base
   
   has_many :control_accesos
   has_many :usuarios, through: :control_accesos
+ 
+  has_many :proceso_participantes
+  has_many :participantes, through: :proceso_participantes
 
 
 #Validaciones de título
