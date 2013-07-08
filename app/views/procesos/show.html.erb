@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Referencia:</b>
+  <%= @proceso.referencia %>
+</p>
+
+<p>
+  <b>Procesohomologado:</b>
+  <%= @proceso.procesoHomologado %>
+</p>
+
+<p>
+  <b>Resumen:</b>
+  <%= @proceso.resumen %>
+</p>
+
+<p>
+  <b>Ciudad:</b>
+  <%= @proceso.ciudad %>
+</p>
+
+<p>
+  <b>Objetivo:</b>
+  <%= @proceso.objetivo %>
+</p>
+
+<p>
+  <b>Titulo:</b>
+  <%= @proceso.titulo %>
+</p>
+
+<p>
+  <b>Favorito:</b>
+  <%= @proceso.favorito %>
+</p>
+
+
+<%= link_to 'Edit', edit_proceso_path(@proceso) %> |
+<%= link_to 'Back', procesos_path %>

@@ -1,0 +1,70 @@
+
+
+<body>
+	
+	<header >
+		<nav class="">
+			<div class="logo">
+				<a  href="#">Aspen</a>
+			</div>
+
+			<div class="global_links">
+				<a class="topnav_root"  href="#">Aspen</a>
+
+				<a class="topnav_calendar"  href="#">Precios</a>
+				<a class="topnav_everything"  href="#">Review</a>
+				<a class="topnav_everyone"  href="#">Contactanos</a>
+				
+			</div>
+
+			
+			<div class="jumpto" >
+			   <%= button_to "Registrate", new_usuario_path, :class => "small button radius", :method => :get  %>
+			</div> 
+		</nav>
+	</header>
+
+	
+	<%= form_tag usuario_sessions_path, method: :post do %>	
+		<div class="row">
+			<div class="small-12 columns">
+				
+			  <div class="small-6 small-centered columns"> 
+			  	<%= label_tag :usuario %>
+				</div>
+			  <div class="small-6 small-offset-1 small-centered columns">
+			  	<%= text_field :username,value = nil, :placeholder => "Usuario",:class=> "input-xlarge"  %> 
+			  </div>
+			  
+			  <div class="small-6 small-centered columns"> 
+			  	<%= label_tag :Contraseña %>
+			  </div>
+			  <div class="small-6 small-offset-1 small-centered columns">
+			  	<%= password_field_tag :password,value = nil, :placeholder => "Contraseña",:class=> "input-xlarge" %>  
+			  </div>
+			  
+			  <div class="small-2 small-offset-8 columns">
+				<%= submit_tag :'Log In', :class => " button success radius" %>
+				
+			  </div>
+
+			  </div>
+		</div>
+	<% end %>
+
+</body>
+
+<!-- SCRIPT PARA HACAS USO DE -FOUNDATION  -->
+<script src="assets/vendor/custom.modernizr.js"></script>
+<script> 
+	document.write('<script src=assets/vendor/'
+			+ ('__proto__' in {} ? 'zepto' : 'jquery') + '.js><\/script>')
+</script>
+<script src="assets/foundation.min.js"></script>
+<script>
+	$(document).foundation();
+</script>
+
+
+	
+

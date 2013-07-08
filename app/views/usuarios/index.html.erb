@@ -1,0 +1,109 @@
+
+<body>
+
+  <header>
+    <nav class="">
+      <div class="logo">
+        <a href="#">lista contratos</a>
+      </div>
+
+      <div class="global_links">
+        <a class="topnav_root" href="#">Procesos</a>
+        <a class="topnav_calendar" href="#">Agenda</a>
+        <a class="topnav_everything" href="#">Informes</a>
+        <a class="topnav_everyone" href="#">Contactos</a>
+        <a class="topnav_me" href="#">Me</a>
+      </div>
+
+      <div class="current_user">
+        <ul>
+          <li><a href="#">Cuenta</a></li>
+          <li><a href="#">Sign out</a></li>
+        </ul>
+      </div>
+
+      <div class="jumpto">
+        <input type="text" placeholder="Ir a un proceso, persona, cliente, o buscar...">
+      </div>
+    </nav>
+  </header>
+
+  <div id="workspace" class="workspace">
+    <div class="container stack_container" style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris" >
+
+       <header>
+          <ul class="breadcrumbs">
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Despacho - Eas Ltda</a></li>
+              <li class="current"><a href="#">Usuarios</a></li>
+          </ul>
+        </header>
+        
+        <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
+
+          <header class="has_buttons">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+                  
+                    <div class="small-6 small-9 columns left">
+                      <h1>
+                        Usuarios
+                      </h1>
+                    </div>
+                    
+                    <div class="small-3 small-3 columns left">
+                      
+                         <%= button_to "Crear Usuario", new_usuario_path, :class => " button radius", :method => :get  %>
+                      
+                    </div>
+                    
+                     
+                      
+                   
+                </div>
+              </div>
+            </div>
+          </div><div class="blank_slate_arrow"></div>
+          </header>
+
+          
+          
+          <div class="sheet_body fondoGris">
+            <section class="topics" data-collection-name="topics">
+                
+              <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                <tbody>
+                    <% @usuarios.each do |usuario| %>
+                  <tr class="topic message_10997527 fondoGris" id="topic_22725579">
+                    <td class="who">
+                      <strong><a href="#"><%= usuario.username %> - </a></strong>
+                    
+                      <a href="#">
+                        <%= usuario.email %>
+                        <span class="excerpt"> - Descripcion</span>
+                      </a>
+                      <%= button_to "Ver", usuario, :class => "tiny button secondary radius inlineBlock", :method => :get  %>
+                      <%= button_to "Eliminar", usuario, :class => "tiny button secondary radius inlineBlock", :method => :get  %>
+                      
+                    
+                    <td class="when">
+                      <a href="#"><time data-compact="" datetime="2013-04-29T12:32:37Z" style="">Apr 29</time></a>
+                    </td>
+                  </tr>
+                  <% end %>
+
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+

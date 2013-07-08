@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  referencia: 1.5
+  procesoHomologado: 1.5
+  resumen: MyString
+  ciudad: MyString
+  objetivo: MyString
+  titulo: MyString
+  favorito: false
+
+two:
+  referencia: 1.5
+  procesoHomologado: 1.5
+  resumen: MyString
+  ciudad: MyString
+  objetivo: MyString
+  titulo: MyString
+  favorito: false

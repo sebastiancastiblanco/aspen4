@@ -1,0 +1,45 @@
+<%= form_for(@proceso) do |f| %>
+  <% if @proceso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proceso.errors.count, "error") %> prohibited this proceso from being saved:</h2>
+
+      <ul>
+      <% @proceso.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :referencia %><br />
+    <%= f.text_field :referencia %>
+  </div>
+  <div class="field">
+    <%= f.label :procesoHomologado %><br />
+    <%= f.text_field :procesoHomologado %>
+  </div>
+  <div class="field">
+    <%= f.label :resumen %><br />
+    <%= f.text_field :resumen %>
+  </div>
+  <div class="field">
+    <%= f.label :ciudad %><br />
+    <%= f.text_field :ciudad %>
+  </div>
+  <div class="field">
+    <%= f.label :objetivo %><br />
+    <%= f.text_field :objetivo %>
+  </div>
+  <div class="field">
+    <%= f.label :titulo %><br />
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :favorito %><br />
+    <%= f.check_box :favorito %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
