@@ -1,3 +1,8 @@
+== ASPEN v3.0 - Ruby On rails 
+
+1. Eas Ltda, empresa duela de los derechos del software
+
+2. Sebastian Castiblanco, Alexander Herrera
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
