@@ -1,5 +1,95 @@
-<h1>New proceso</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', procesos_path %>
+<body>
+
+	<header >
+		<nav class="">
+			<div class="logo">
+				<a  href="#">Aspen</a>
+			</div>
+
+			<div class="global_links">
+				<%= link_to 'Aspen', login_path %>
+				<a class="topnav_calendar"  href="#">Precios</a>
+				<a class="topnav_everything"  href="#">Review</a>
+				<a class="topnav_everyone"  href="#">Contactanos</a>
+				
+			</div>
+
+			
+			<div class="jumpto" >
+				<input type="text"  placeholder="Ir a un proceso, persona, cliente, o buscar...">
+			</div> 
+		</nav>
+	</header>
+
+
+ 
+
+<div id="workspace" class="workspace">
+		<div class="container stack_container" style="width: 960px;">
+			<div class="panel sheet project active blank_slate fondoGris">
+
+				<header>
+				<ul class="breadcrumbs">
+					<li><a href="#">Inicio</a></li>
+					<li><a href="#">Procesos</a></li>
+				</ul>
+				</header>
+
+				<div class="panel sheet topics fondoGris"
+					style="margin-left: 20px; margin-bottom: -20px;"
+					data-behavior=" prevent_reload_when_stacked">
+
+					<header class="has_buttons">
+					<div data-behavior="edit_project_header expandable">
+						<div class="collapsed_content ">
+							<div class="row">
+								<div class="small-12 columns">
+									<div class="small-6 columns left">
+										<h1 class="field">Nuevo Proceso</h1>
+									</div>
+
+									<div class="small-3 columns right">
+											<%= button_to "Regresar", procesos_path, :class => "small secondary button radius margenTop25", :method => :get  %>
+									</div>
+									
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					</header>
+
+
+
+					<div class="sheet_body ">
+						<article class="participants new expanded">
+						
+								
+									<%= render 'form' %>
+					
+						
+						</article>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+ <!-- SCRIPT PARA HACAS USO DE -FOUNDATION  -->
+  <script src="js/vendor/custom.modernizr.js"></script>
+	<script>
+	  document.write('<script src=js/vendor/' +
+	  ('__proto__' in {} ? 'zepto' : 'jquery') +
+	  '.js><\/script>')
+  </script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  
+</body>

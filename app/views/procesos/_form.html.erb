@@ -11,35 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :referencia %><br />
-    <%= f.text_field :referencia %>
-  </div>
-  <div class="field">
-    <%= f.label :procesoHomologado %><br />
-    <%= f.text_field :procesoHomologado %>
-  </div>
-  <div class="field">
-    <%= f.label :resumen %><br />
-    <%= f.text_field :resumen %>
-  </div>
-  <div class="field">
-    <%= f.label :ciudad %><br />
-    <%= f.text_field :ciudad %>
-  </div>
-  <div class="field">
-    <%= f.label :objetivo %><br />
-    <%= f.text_field :objetivo %>
-  </div>
-  <div class="field">
-    <%= f.label :titulo %><br />
-    <%= f.text_field :titulo %>
-  </div>
-  <div class="field">
-    <%= f.label :favorito %><br />
-    <%= f.check_box :favorito %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="row">
+
+
+  <div class="small-1 small-offset-3 columns field"><%= f.label :referencia, :class => "tituloCampo" %></div>
+  <div class="small-5 columns field"><%= f.text_field :referencia , :placeholder => "Número de Referencia"%></div>
+  <div class="small-3 columns"></div>
+
+  <div class="small-1 small-offset-3 columns field"><%= f.label :titulo, :class => "tituloCampo" %></div>
+  <div class="small-5 columns field"><%= f.text_field :titulo , :placeholder => "Titulo del proceso"%></div>
+  <div class="small-3 columns"></div>
+
+  <div class="small-1 small-offset-3 columns field"><%= f.label :objetivo, :class => "tituloCampo" %></div>
+  <div class="small-5 columns field"><%= f.text_area :objetivo, :rows => 10, :cols => 25, :placeholder => "Objetivo del proceso, máximo 250 caracteres"  %> </div>
+  <div class="small-3 columns"></div>
+  
+  <div class="small-1 small-offset-3 columns field"><%= f.label :ciudad, :class => "tituloCampo" %></div>
+  <div class="small-5 columns field"><%= f.text_field :ciudad , :placeholder => "Ciudad"%></div>
+  <div class="small-3 columns"></div>
+  
+  
+  <div class="small-3  small-offset-5 columns field right">
+    <%= f.submit :'Guardar Proceso' , :class => " button success radius" %></div>
+  <div class="small-3 columns"></div>
+
+
+</div>
 <% end %>

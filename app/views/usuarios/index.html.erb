@@ -86,8 +86,7 @@
                         <span class="excerpt"> - Descripcion</span>
                       </a>
                       <%= button_to "Ver", usuario, :class => "tiny button secondary radius inlineBlock", :method => :get  %>
-                      <%= button_to "Eliminar", usuario, :class => "tiny button secondary radius inlineBlock", :method => :get  %>
-                      
+                      <%= link_to 'Eliminar', usuario, method: :delete, data: { confirm: 'Are you sure?' } %>
                     
                     <td class="when">
                       <a href="#"><time data-compact="" datetime="2013-04-29T12:32:37Z" style="">Apr 29</time></a>

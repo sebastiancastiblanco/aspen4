@@ -815,3 +815,12 @@ background: transparent !important;
 div.panel.home_tab div.project_templates.nuevoProceso{
   top: 136px !important;
 }
+
+.margenTop25{
+  margin-top: 25px;
+  margin-left: 68px;
+}
+
+.tituloCampo{
+  color: #7d7a75 !important;
+}

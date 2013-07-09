@@ -4,7 +4,7 @@ class UsuarioSessionsController < ApplicationController
 	end
 	def create
 		if @usuario = login(params[:username],params[:password])
-			redirect_back_or_to(:usuarios,message: "login exitoso")
+			redirect_back_or_to(:procesos ,message: "login exitoso")
 		else
 			flash.now[:alert] = "error en el login"
 			render action: :new
