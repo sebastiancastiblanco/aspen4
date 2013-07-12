@@ -16,25 +16,36 @@
 
 <div class="row">
       <div class="small-12 columns">
-          <div class="small-6 small-centered columns field">
-            <%= f.label :nombre_usuario %><br />
-            <%= f.text_field :username, :placeholder => "Nombre de Usuario",:class=> "input-xlarge"   %>
+
+          <div class="small-1 small-offset-3 columns "><%= f.label :nombre_usuario, :class => "tituloCampo" %></div>
+          <div class="small-5 columns field">
+            <%= f.text_field :username,:placeholder => "Nombre de Usuario",:class=> "input-xlarge" %>
           </div>
-          <div class="small-6 small-offset-1 small-centered columns field">
-            <%= f.label :email %><br />
-            <%= email_field_tag :email,value = nil, :placeholder => "email",:class=> "input-xlarge"  %> 
+          <div class="small-3 columns"></div>
+
+          <div class="small-1 small-offset-3 columns "><%= f.label :email_, :class => "tituloCampo" %></div>
+          <div class="small-5 columns field">
+            <%= f.text_field :email,  :placeholder => "email" %> 
           </div>
-          <div class="small-6 small-centered columns field">
-            <%= f.label :password %><br />
-            <%= password_field_tag :password,value = nil, :placeholder => "password",:class=> "input-xlarge" %>  
+          <div class="small-3 columns"></div>
+
+          <div class="small-1 small-offset-3 columns "><%= f.label :password_, :class => "tituloCampo" %></div>
+          <div class="small-5 columns field">
+            <%= f.text_field :password, :placeholder => "password",:class=> "input-xlarge" %>  
           </div>
-          <div class="small-6 small-offset-1 small-centered columns field">
-            <%= f.label :confirmar_password %><br />
-            <%= password_field_tag :password_confirmation,value = nil, :placeholder => "Repetir contraseña",:class=> "input-xlarge" %>  
+          <div class="small-3 columns"></div>
+
+          <div class="small-1 small-offset-3 columns "><%= f.label :confirmar_password, :class => "tituloCampo" %></div>
+          <div class="small-5 columns field">
+          <%= f.text_field :password_confirmation, :placeholder => "Confirmar contraseña",:class=> "input-xlarge" %>  
           </div>
+          <div class="small-3 columns"></div>
+
           <div class="small-1 small-offset-7 columns ">
             <%= f.submit :'Crear Usuario' , :class => " button success radius" %>
           </div>
+          <div class="small-3 columns"></div>
       </div>
   </div>
 <% end %>
+

@@ -41,6 +41,12 @@ div {
   display: table;
 }
 
+.field_with_errors #label {
+  padding: 2px;
+  background-color: transparent !important;
+  display: table;
+}
+
 #error_explanation {
   width: 450px;
   border: 2px solid red;

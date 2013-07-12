@@ -1,0 +1,33 @@
+<header >
+<nav class="">
+    
+    <div class="logo">
+        <a  href="#">Aspen</a>
+    </div>
+
+    
+    <div class="global_links">
+        <%= link_to 'Procesos', procesos_path , :class => "topnav_root" %>
+        <%= link_to 'Agenda', agendas_path , :class => "topnav_calendar" %>
+        <a class="topnav_everything"  href="#">Informes</a>
+        <a class="topnav_everyone"  href="#">Contactos</a>
+        <%= link_to 'Mi perfil', edit_usuario_path(current_user) , :class => "topnav_everyone" %>
+        
+    </div>
+
+    <div class="current_user">
+        <ul>
+            <li><a  href="#">Cuenta</a></li>
+            <li>
+                <%= link_to 'Sign out', :logout %>
+            </li>
+        </ul>
+    </div>
+
+    <div class="jumpto" >
+        <input type="text"  placeholder="Ir a un proceso, persona, cliente, o buscar...">
+    </div>
+
+</nav>
+</header>
+

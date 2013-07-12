@@ -1,32 +1,4 @@
 <body>
-
-    <header >
-        <nav class="">
-            <div class="logo">
-                <a  href="#">Aspen</a>
-            </div>
-
-            <div class="global_links">
-                <a class="topnav_root"  href="#">Procesos</a>
-                <a class="topnav_calendar"  href="#">Agenda</a>
-                <a class="topnav_everything"  href="#">Informes</a>
-                <a class="topnav_everyone"  href="#">Contactos</a>
-                <a class="topnav_me"  href="#">Me</a>
-            </div>
-
-            <div class="current_user">
-                <ul>
-                    <li><a  href="#">Cuenta</a></li>
-                    <li><a  href="#" >Sign out</a></li>
-                </ul>
-            </div>
-
-            <div class="jumpto" >
-                <input type="text"  placeholder="Ir a un proceso, persona, cliente, o buscar...">
-            </div>
-        </nav>
-    </header>
-
     <div id="workspace" class="workspace">
         <div class="container flat_container"  style="opacity: 1;">
         <div class="panel panelTransparente home_tab project_index  " >
@@ -35,12 +7,10 @@
 
             <nav class="projects_nav ">
                 <%= link_to '', new_proceso_path %>
-
             </nav>
             <div class="project_templates nuevoProceso">
                 <%= link_to 'Nuevo Proceso', new_proceso_path %>
             </div>
-
 
             <div class="project_view">
                 <ul>
@@ -70,11 +40,10 @@
                           
                             <h5>Proceso <%= proceso.id %></h5>
                                 <p style="margin-bottom: 5px;"><%= proceso.titulo %></p>
-                                <p style="margin-bottom: 5px;">Cliente</p>
+                                <p style="margin-bottom: 5px;"><%= proceso.usuario.username   %></p>
 
                                 <p style="font-size: 12px;">
                                     Modificado <%= fechaFormato1 proceso.updated_at %>
-                                    
                                 </p>
 
                                 <div class="people">
@@ -83,8 +52,6 @@
                         <% end %>
                         </article>
                         <% end %>
-
-
                         <article class="card blank " data-behavior="bounce_nav">&nbsp;</article>
                     </div>
                 </section>
@@ -92,6 +59,4 @@
         </div>
     </div>
     </div>
-
 </body>
-

@@ -1,40 +1,395 @@
+<body>
+
+    <div id="workspace" class="workspace">
+    <div class="container stack_container"  style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris">
+
+        <header>
+          <div class="header_links">
+            <a href="#">
+              <i class="foundicon-star"></i>
+            </a>
+            
+            <a href="#">
+              <span class="link">Compartir</span><br>
+              <span class="detail">
+                1 abogado  en este proceso
+              </span>
+            </a>
+            
+            <a href="#">
+              <span class="link">Ultimos movimientos</span><br>
+              <span class="detail">cambios recientes</span>
+            </a>
+            
+            <a href="#">
+              <span class="link">Homologar</span><br>
+            </a>
+            
+             <%= link_to edit_proceso_path(@proceso) do %>
+              <span class="link">Editar</span>
+             <% end %>
+            
+            <%= link_to  procesos_path do %>
+              <span class="link">Regresar</span>
+             <% end %>
+            
+          </div>
+          <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="position_reference">
+                <h1 class="field" >
+                  Tipo proceso - <%= @proceso.titulo %>
+                </h1>
+
+                <div class="star"  title="Starring a project will highlight it on the projects index page">
+                    <%= @proceso.favorito %>
+                </div>
+
+              </div>
+
+              <div class="description field" style="width: auto; border-color: transparent;">
+                <%= @proceso.ciudad %>, <%= @proceso.objetivo %>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">
+                  
+                    <div class="small-9 large-9 columns left">
+                      <h6 class="label">#REF-<%= @proceso.referencia %></h6>
+                    </div>
+                    <div class="small-9 large-1 columns left">
+                      <h6 class="label">Estado: </h6>
+                    </div>
+                    <div class="small-9 large-2 columns left">
+                      <form class="custom">
+                          <select id="customDropdown" class="dropdown small">
+                          <option DISABLED>Estado Actual</option>
+                          <option>Abierto</option>
+                          <option>Proceso</option>
+                          <option>Cerrado</option>
+                          </select>
+                      </form>
+                    </div>
+                  
+                </div>
+              </div>
+              
+              
+              
+              
+            </div>
+          </div>
+
+          <div id="project_toolbar_2942270" class="project_toolbar" >
+            <div class="tools has_tools_not_in_project">
+
+              <div class="group not_in_project">
+                <span class="label">Agregar : </span>
+
+                <a href="#" >
+                  <span class="">Contratacion</span>
+                </a>
+
+                <a href="#" >
+                  <span class="">Participanetes</span>
+                </a>
+
+                <a href="#" >
+                  <span class="">Actividades</span>
+                </a>
+
+                <a href="#" >
+                  <span class="">Control</span>
+                </a>
+
+                <a href="#" >
+                  <span class="">Estado</span>
+                </a>
+
+                <a href="#" >
+                  <span class="">Documentos</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="sheet_body">
+          <section class="events">
+            <header>
+              <h1><a href="#">Ultimas actualizaciones del proceso</a></h1>
+            </header>
+
+            <section id="events_project_2942270" class="project_events grouped_by_date" >
+              <div class="event_container" style="">
+                <article class="event chiral"  datetime="2013-05-26T16:42:56Z" >
+
+                  <div class="time">
+                    <span class="time_only"><time data-local-time="" datetime="2013-05-26T16:42:56Z" style="">1:42pm</time></span>
+
+                  </div>
+
+                  <div class="action">
+                    <span class="creator" >
+                      Alexander H.
+                    </span>
+
+                    <span class="in_project">cambio el nombre del proceso  'Untitled Template' a 'Testing'</span>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <p class="more_events">
+              <a class="decorated" href="#">Ver todas las actualizaciones</a>
+            </p>
+          </section>
+          <hr/>
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#"> 1.  Contratos</a></h1>
+      
+              <form action="#" class="button_to" data-remote="true" method="post">
+                <div>
+                  <input class="tiny button radius" type="submit" value="Crear un contrato">
+                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                </div>
+              </form>
+              
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="text">
+                        <h3 class="title">
+                          <a href="#">
+                            Contrato 1 - descripcion
+                          </a>
+                        </h3>
+                        <p>
+                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
+                          by Alexander Herrera
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+          <hr/>
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#"> 2. Participantes</a></h1>
+      
+              <form action="#" class="button_to" data-remote="true" method="post">
+                <div>
+                  <input class="tiny button  radius" type="submit" value="Crear un participante">
+                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                </div>
+              </form>
+              
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="text">
+                        <h3 class="title">
+                          <a href="#">
+                            Particpante 1 - descripcion
+                          </a>
+                        </h3>
+                        <p>
+                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
+                          by Alexander Herrera
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+          <hr/>
+          
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#"> 3. Actividades</a></h1>
+      
+              <form action="#" class="button_to" data-remote="true" method="post">
+                <div>
+                  <input class="tiny button  radius" type="submit" value="Crear actividad">
+                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                </div>
+              </form>
+              
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="text">
+                        <h3 class="title">
+                          <a href="#">
+                            Actividad 1 - descripcion
+                          </a>
+                        </h3>
+                        <p>
+                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
+                          by Alexander Herrera
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+          <hr/>
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#"> 4.  Conrtol - Alertas</a></h1>
+      
+              <form action="#" class="button_to" data-remote="true" method="post">
+                <div>
+                  <input class="tiny button  radius" type="submit" value="Crear un control">
+                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                </div>
+              </form>
+              
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="text">
+                        <h3 class="title">
+                          <a href="#">
+                            Control 1 - descripcion
+                          </a>
+                        </h3>
+                        <p>
+                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
+                          by Alexander Herrera
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+          <hr/>
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#"> 5. Estado del Proceso</a></h1>
+      
+              <form action="#" class="button_to" data-remote="true" method="post">
+                <div>
+                  <input class="tiny button  radius" type="submit" value="Crear Estado">
+                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                </div>
+              </form>
+              
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="text">
+                        <h3 class="title">
+                          <a href="#">
+                            Estado 1 - descripcion
+                          </a>
+                        </h3>
+                        <p>
+                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
+                          by Alexander Herrera
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+          <hr/>
+          
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#">6. Documentos</a></h1>
+      
+              <form action="#" class="button_to" data-remote="true" method="post">
+                <div>
+                  <input class="tiny button  radius" type="submit" value="Crear un documento">
+                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                </div>
+              </form>
+              
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="icon">
+                        <a href="#">
+                          <img alt="Document icon jumbo" height="70" src="https://d3dma7a8zw52bz.cloudfront.net/assets/icons/document_icon_jumbo-a0a7cde8400d74f9975a1608bed73a1f.png" width="60">
+                        </a>
+                      </td>
+
+                      <td class="text">
+                        <h3 class="title">
+                          <a href="#">
+                            Untitled
+                          </a>
+                        </h3>
+                        <p>
+                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
+                          by Alexander Herrera
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+<!-- SCRIPT PARA HACAS USO DE -FOUNDATION  -->
+<script src="assets/vendor/custom.modernizr.js"></script>
+<script> 
+  document.write('<script src=assets/vendor/'
+      + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js><\/script>')
+</script>
+<script src="assets/foundation.min.js"></script>
+<script>
+  $(document).foundation();
+</script>
+
+  
+</body>
+
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Referencia:</b>
-  <%= @proceso.referencia %>
-</p>
-
-<p>
-  <b>Procesohomologado:</b>
-  <%= @proceso.procesoHomologado %>
-</p>
-
-<p>
-  <b>Resumen:</b>
-  <%= @proceso.resumen %>
-</p>
-
-<p>
-  <b>Ciudad:</b>
-  <%= @proceso.ciudad %>
-</p>
-
-<p>
-  <b>Objetivo:</b>
-  <%= @proceso.objetivo %>
-</p>
-
-<p>
-  <b>Titulo:</b>
-  <%= @proceso.titulo %>
-</p>
-
-<p>
-  <b>Favorito:</b>
-  <%= @proceso.favorito %>
-</p>
-
-
-<%= link_to 'Edit', edit_proceso_path(@proceso) %> |
-<%= link_to 'Back', procesos_path %>

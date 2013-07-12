@@ -1,15 +1,11 @@
 AspenVersion3::Application.routes.draw do
   resources :procesos
-
-
   resources :agendas
-
-
   resources :usuarios
   resources :usuario_sessions
   match 'login' => 'usuario_sessions#new', as: :login
-  match 'logout' => 'usuario_sessions#destroy', as: :logoout
-  match 'logout' => 'usuario_sessions#destroy', as: :logoout
+  match 'logout' => 'usuario_sessions#destroy', as: :logout
+  match 'logout' => 'usuario_sessions#destroy', as: :logout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

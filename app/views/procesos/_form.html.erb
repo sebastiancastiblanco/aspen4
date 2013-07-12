@@ -1,5 +1,41 @@
 <%= form_for(@proceso) do |f| %>
+
+<div class="row">
+
+  <div class="small-1 small-offset-3 columns "><%= f.label :referencia_, :class => "tituloCampo error" %></div>
+  <div class="small-4 columns field"><%= f.text_field :referencia , :placeholder => "Número de Referencia" %></div>
+  <div class="small-5 small-offset-1 columns "></div>
+
+  <div class="small-1 small-offset-3 columns "><%= f.label :titulo_, :class => "tituloCampo" %></div>
+  <div class="small-4 columns field"><%= f.text_field :titulo , :placeholder => "Titulo del proceso"%></div>
+  <div class="small-5 small-offset-1 columns "></div>
+
+  <div class="small-1 small-offset-3 columns field"><%= f.label :objetivo_, :class => "tituloCampo" %></div>
+  <div class="small-4 columns field"><%= f.text_area :objetivo, :rows => 10, :cols => 27, :placeholder => "Objetivo del proceso, máximo 250 caracteres"  %> </div>
+  <div class="small-5 small-offset-1 columns"></div>
+  
+  <div class="small-1 small-offset-3 columns field"><%= f.label :ciudad_, :class => "tituloCampo" %></div>
+  <div class="small-4 columns field"><%= f.text_field :ciudad , :placeholder => "Ciudad"%></div>
+  <div class="small-5 small-offset-1 columns field"></div>
+  
   <% if @proceso.errors.any? %>
+      <div class="small-4 columns field"></div>
+      <div class="small-4 small-offset-3 columns field">
+        <h2><%= pluralize(@proceso.errors.count, "errore") %> encontrados</h2>
+      </div>
+      <div class="small-5 columns field">
+        <%= f.submit :'Guardar Proceso' , :class => " button success radius" %></div>
+     </div>
+  <% else %>      
+      <div class="small-1 small-offset-7 columns field"></div>
+      <div class="small-4 columns field">
+        <%= f.submit :'Guardar Proceso' , :class => " button success radius" %></div>
+     </div>
+  <% end %>
+ 
+</div>
+
+<% if @proceso.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@proceso.errors.count, "error") %> prohibited this proceso from being saved:</h2>
 
@@ -11,30 +47,5 @@
     </div>
   <% end %>
 
-<div class="row">
 
-
-  <div class="small-1 small-offset-3 columns field"><%= f.label :referencia, :class => "tituloCampo" %></div>
-  <div class="small-5 columns field"><%= f.text_field :referencia , :placeholder => "Número de Referencia"%></div>
-  <div class="small-3 columns"></div>
-
-  <div class="small-1 small-offset-3 columns field"><%= f.label :titulo, :class => "tituloCampo" %></div>
-  <div class="small-5 columns field"><%= f.text_field :titulo , :placeholder => "Titulo del proceso"%></div>
-  <div class="small-3 columns"></div>
-
-  <div class="small-1 small-offset-3 columns field"><%= f.label :objetivo, :class => "tituloCampo" %></div>
-  <div class="small-5 columns field"><%= f.text_area :objetivo, :rows => 10, :cols => 25, :placeholder => "Objetivo del proceso, máximo 250 caracteres"  %> </div>
-  <div class="small-3 columns"></div>
-  
-  <div class="small-1 small-offset-3 columns field"><%= f.label :ciudad, :class => "tituloCampo" %></div>
-  <div class="small-5 columns field"><%= f.text_field :ciudad , :placeholder => "Ciudad"%></div>
-  <div class="small-3 columns"></div>
-  
-  
-  <div class="small-3  small-offset-5 columns field right">
-    <%= f.submit :'Guardar Proceso' , :class => " button success radius" %></div>
-  <div class="small-3 columns"></div>
-
-
-</div>
 <% end %>

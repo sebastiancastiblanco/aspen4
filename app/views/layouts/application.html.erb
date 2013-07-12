@@ -2,16 +2,30 @@
 <html>
 <head>
   <title>AspenVersion3</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
 
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>
 
+<script src="/assets/foundation.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/zepto.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/custom.modernizr.js?body=1" type="text/javascript"></script>
 
 </head>
 <body>
 
+<% if current_user %>
+	<%= render "layouts/header" %>
+<% else %>
+	<%= render "layouts/headerLogin" %>
+<% end %>
+
 <%= yield %>
 
+<%= render "layouts/footer" %>
+
 </body>
+
+<%= render "layouts/scriptFoundation" %>
+
 </html>

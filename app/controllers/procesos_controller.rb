@@ -41,6 +41,7 @@ class ProcesosController < ApplicationController
   # POST /procesos.json
   def create
     @proceso = Proceso.new(params[:proceso])
+    @proceso.usuario_id = current_user.id
 
     respond_to do |format|
       if @proceso.save
