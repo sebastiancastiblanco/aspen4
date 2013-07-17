@@ -2,7 +2,8 @@ class ProcesosController < ApplicationController
   # GET /procesos
   # GET /procesos.json
   def index
-    @procesos = Proceso.all
+   # @procesos = Proceso.all
+    @procesos = current_user.procesos
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,6 +43,7 @@ class ProcesosController < ApplicationController
   def create
     @proceso = Proceso.new(params[:proceso])
     @proceso.usuario_id = current_user.id
+    @proceso.favorito = false
 
     respond_to do |format|
       if @proceso.save

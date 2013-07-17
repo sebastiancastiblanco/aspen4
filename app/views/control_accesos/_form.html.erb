@@ -1,0 +1,21 @@
+<%= form_for(@control_acceso) do |f| %>
+  <% if @control_acceso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@control_acceso.errors.count, "error") %> prohibited this control_acceso from being saved:</h2>
+
+      <ul>
+      <% @control_acceso.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :controlAcceso_id %><br />
+    <%= f.number_field :controlAcceso_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

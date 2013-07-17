@@ -33,22 +33,27 @@
                         <% @procesos.each do |proceso| %>
                         <article class="card">
                             <span class="star"   title="proyecto favorito">
-                                <i class="foundicon-star"></i><%= proceso.favorito %>
+                                <i class="foundicon-star"></i> 
                             </span>
                             
                         <%= link_to(proceso) do  %>
                           
                             <h5>Proceso <%= proceso.id %></h5>
                                 <p style="margin-bottom: 5px;"><%= proceso.titulo %></p>
-                                <p style="margin-bottom: 5px;"><%= proceso.usuario.username   %></p>
+                                <p style="margin-bottom: 5px;">cliente</p>
 
                                 <p style="font-size: 12px;">
                                     Modificado <%= fechaFormato1 proceso.updated_at %>
                                 </p>
 
-                                <div class="people">
-                                    <img class="avatar" height="40" src="/img/user_blue.png" title="Alexander Herrera" width="40">
+                                <div class="panelAvatarUsuario">
+                                    <% proceso.usuarios.each do |usuarioConAcceso| %>
+                                        <div class="people">
+                                            <img class="avatar" height="40" src="/img/user_blue.png" title="<%= usuarioConAcceso.username %>" width="40">
+                                        </div>
+                                    <% end %>
                                 </div>
+
                         <% end %>
                         </article>
                         <% end %>

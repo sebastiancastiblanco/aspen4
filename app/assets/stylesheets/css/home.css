@@ -5,7 +5,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   outline: 0 !important;
  /* font-size: 100% !important;*/
   vertical-align: baseline !important;
-  background: transparent !important !important;
+  background: transparent !important;
 }
 
 html, body
@@ -141,7 +141,7 @@ div.global_links a.topnav_me {
 }
 div.current_user {
   position: absolute !important;
-  right: 3px !important;
+  right: 41px !important;
   top: 4px !important;
 }
 
@@ -340,7 +340,7 @@ div.panel.home_tab section.projects.cards article.card p {
   color: #aa9c84 !important;
 }
 div.panel.home_tab section.projects.cards article.card div.people {
-  position: absolute !important;
+  float: left;
   left: 16px !important;
   bottom: 15px !important;
   zoom: 1 !important;
@@ -438,7 +438,7 @@ div.sheet.project>header div.tools div.group {
 }
 div.sheet.project>header div.tools div.group span.label {
   float: left !important;
-  margin: 0 15px 0 0 !important;
+  margin: 5px 15px 0 0 !important;
   color: #333 !important;
 }
 div.sheet.project>header div.tools a {
@@ -823,4 +823,48 @@ div.panel.home_tab div.project_templates.nuevoProceso{
 
 .tituloCampo{
   color: #7d7a75 !important;
+}
+
+
+div#other_products {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+div#other_products ul, div#other_products li {
+display: inline;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+div#other_products li {
+white-space: nowrap;
+}
+
+div#other_products div {
+font-size: 12px;
+line-height: 15px;
+color: #ccc;
+}
+
+div#other_products div li a {
+padding: 2px 5px;
+}
+div#other_products div a {
+text-decoration: none;
+color: #444;
+}
+
+.panelAvatarUsuario{
+  height: 40px !important;
+  float: left;
+  margin-top: 80px;
+  max-width: 200px;
 }

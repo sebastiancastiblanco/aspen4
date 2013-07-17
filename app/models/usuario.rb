@@ -8,7 +8,8 @@ class Usuario < ActiveRecord::Base
   validates_confirmation_of :password, message: "Ambos campos deben coincidir"
 
   #Un Usuario (Abogado) tiene varios procesos
-  has_many :procesos
+  has_many :control_accesos
+  has_many :procesos, through: :control_accesos
 
   #Relacion Un Despacho tiene (has_many)  varios abogados
   has_many :abogados , class_name: "Usuario", foreign_key: "despacho_id"

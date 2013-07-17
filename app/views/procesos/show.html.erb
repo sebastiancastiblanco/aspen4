@@ -7,13 +7,13 @@
         <header>
           <div class="header_links">
             <a href="#">
-              <i class="foundicon-star"></i>
+              <i class="foundicon-star"></i>  
             </a>
             
             <a href="#">
               <span class="link">Compartir</span><br>
               <span class="detail">
-                1 abogado  en este proceso
+                <%= @proceso.usuarios.size %>  abogado  en este proceso
               </span>
             </a>
             
@@ -43,7 +43,7 @@
                 </h1>
 
                 <div class="star"  title="Starring a project will highlight it on the projects index page">
-                    <%= @proceso.favorito %>
+                    
                 </div>
 
               </div>
