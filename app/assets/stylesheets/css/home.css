@@ -823,6 +823,8 @@ div.panel.home_tab div.project_templates.nuevoProceso{
 
 .tituloCampo{
   color: #7d7a75 !important;
+  width: 100px !important;
+  margin:5px 5px 0 10px;
 }
 
 
@@ -867,4 +869,8 @@ color: #444;
   float: left;
   margin-top: 80px;
   max-width: 200px;
+}
+
+.alinearDerecha{
+  float: right;
 }

@@ -185,12 +185,11 @@
             <header class="has_buttons">
               <h1><a href="#"> 2. Participantes</a></h1>
       
-              <form action="#" class="button_to" data-remote="true" method="post">
+              
                 <div>
-                  <input class="tiny button  radius" type="submit" value="Crear un participante">
+                  <%= button_to "Crear Participante", new_participante_path, :class => "tiny button  radius ", :method => :get  %>
                   <input class="tiny button secondary radius" type="submit" value="Ver Todos">
                 </div>
-              </form>
               
             </header>
 

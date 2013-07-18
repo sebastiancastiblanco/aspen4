@@ -1,4 +1,10 @@
 AspenVersion3::Application.routes.draw do
+  resources :participantes
+
+
+  resources :rol_participantes
+
+
   resources :control_accesos
 
 

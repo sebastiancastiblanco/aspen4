@@ -1,0 +1,23 @@
+<h1>Listing rol_participantes</h1>
+
+<table>
+  <tr>
+    <th>Rol</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rol_participantes.each do |rol_participante| %>
+  <tr>
+    <td><%= rol_participante.rol %></td>
+    <td><%= link_to 'Show', rol_participante %></td>
+    <td><%= link_to 'Edit', edit_rol_participante_path(rol_participante) %></td>
+    <td><%= link_to 'Destroy', rol_participante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rol participante', new_rol_participante_path %>
