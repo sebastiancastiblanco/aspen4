@@ -5,7 +5,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   outline: 0 !important;
  /* font-size: 100% !important;*/
   vertical-align: baseline !important;
-  background: transparent !important;
+  background: transparent ;
 }
 
 html, body
@@ -160,7 +160,7 @@ div.current_user li>a {
 }
 div.jumpto {
   position: relative !important;
-  z-index: 999 !important;
+  z-index: 9 !important;
   width: 320px !important;
   float: right !important;
   margin: -1px 7px 0 0 !important;
@@ -453,7 +453,7 @@ div.sheet.project>header div.tools a {
 /*Contenido de detalles*/
 
 div.sheet div.sheet_body {
-  padding: 0 45px 80px 30px !important;
+  padding: 0 45px 25px 30px !important;
 }
 div.sheet.project>div.sheet_body>section, div.sheet.project>div.sheet_body>div>section {
   padding: 5px 0 20px 0 ;
@@ -794,8 +794,8 @@ form div.attachments ul.pending_attachments {
 }
 
 .fondoGris{
-	/*background-color: rgb(243, 243, 243) !important;*/
-	background-color: rgb(248, 248, 248) !important;
+	background-color: rgb(243, 243, 243) !important;
+	/*background-color: rgb(248, 248, 248) !important;*/
 	
 }
 
@@ -873,4 +873,13 @@ color: #444;
 
 .alinearDerecha{
   float: right;
+}
+
+.tituloAcordion{
+  margin:0 5px 0.625em 0;
+  color: #333333;
+  font-weight: bold;
+  border: 0 !important;
+  margin-bottom: 15px;
+  border-bottom: 0;
 }

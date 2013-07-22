@@ -8,7 +8,8 @@
 				<header>
 				<ul class="breadcrumbs">
 					<li><%= link_to 'Procesos', procesos_path %></li>
-					
+					<li><%= link_to @proceso.id , @proceso %></li>
+					<li><%= link_to @proceso.titulo , @proceso %></li>
 					
 					<li><a href="#">Nuevo Participante</a></li>
 				</ul>
@@ -27,8 +28,9 @@
 										<h1 class="field">Nuevo Participante</h1>
 									</div>
 
+									
 									<div class="small-3 columns right">
-											<%= button_to "Regresar", participantes_path, :class => "small secondary button radius margenTop25", :method => :get  %>
+											<%= button_to "Regresar", @proceso, :class => "small secondary button radius margenTop25", :method => :get  %>
 									</div>
 									
 
@@ -43,11 +45,12 @@
 
 					<div class="sheet_body ">
 						<article class="participants new expanded">
-						
-								
-									<%= render 'form' %>
+							
+
+ 						<%= render 'form' %>
 					
-						
+				
+							
 						</article>
 					</div>
 				</div>
@@ -57,4 +60,3 @@
 	</div>
 </body>
 
-<%= link_to 'Back', participantes_path %>

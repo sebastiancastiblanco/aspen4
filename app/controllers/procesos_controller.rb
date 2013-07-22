@@ -4,6 +4,7 @@ class ProcesosController < ApplicationController
   def index
    # @procesos = Proceso.all
     @procesos = current_user.procesos
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +16,14 @@ class ProcesosController < ApplicationController
   # GET /procesos/1.json
   def show
     @proceso = Proceso.find(params[:id])
+    #Recupera los 3 ultimos particpantes modificados pertenecientes a el proceso.
+    @participantes = @proceso.participantes.order("updated_at DESC").first(3)
+    #Recuperar los usuarios del sistema
+    @usuarios = Usuario.all
+    #Recuperar los usuarios ligados al proceso
+    @usuariosDelproceso =  @proceso.usuarios
+    #Variable para crear el control de acceso y lograr compartir los procesos a otros usuarios
+    @control_acceso = ControlAcceso.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +35,6 @@ class ProcesosController < ApplicationController
   # GET /procesos/new.json
   def new
     @proceso = Proceso.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @proceso }
@@ -47,6 +55,8 @@ class ProcesosController < ApplicationController
 
     respond_to do |format|
       if @proceso.save
+        #Salvar relacion entre el proecso y el usuario que lo creo
+        @proceso.control_accesos.create(:usuario_id => current_user.id,:proceso_id => @proceso.id)
         format.html { redirect_to @proceso, notice: 'Proceso was successfully created.' }
         format.json { render json: @proceso, status: :created, location: @proceso }
       else

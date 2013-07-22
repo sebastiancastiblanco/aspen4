@@ -1,3 +1,4 @@
+
 <body>
 
     <div id="workspace" class="workspace">
@@ -10,7 +11,7 @@
               <i class="foundicon-star"></i>  
             </a>
             
-            <a href="#">
+            <a href="#" data-reveal-id="myModal">
               <span class="link">Compartir</span><br>
               <span class="detail">
                 <%= @proceso.usuarios.size %>  abogado  en este proceso
@@ -80,6 +81,14 @@
             </div>
           </div>
 
+
+          <% if notice %>
+                    <div data-alert class="alert-box success radius">
+                      <%= notice %>
+                      <a href="#" class="close">&times;</a>
+                    </div>
+          <% end %>
+
           <div id="project_toolbar_2942270" class="project_toolbar" >
             <div class="tools has_tools_not_in_project">
 
@@ -93,7 +102,7 @@
                 <a href="#" >
                   <span class=""> (<%= @proceso.participantes.size %>) Participantes</span>
                 </a>
-
+                
                 <a href="#" >
                   <span class="">Actividades</span>
                 </a>
@@ -112,6 +121,9 @@
               </div>
             </div>
           </div>
+
+          
+
         </header>
 
         <div class="sheet_body">
@@ -186,8 +198,8 @@
               <h1><a href="#"> 2. Participantes</a></h1>
       
                 <div>
-                  <%= button_to "Crear Participante", new_participante_path, :class => "tiny button  radius ", :method => :get  %>
-                  <%= button_to "Ver Todos", participantes_path, :class => "tiny button secondary radius", :method => :get  %>
+                  <%= button_to "Crear Participante", {:controller => "participantes", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post  %>
+                  <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post  %>
                 </div>
               
             </header>
@@ -197,17 +209,17 @@
                 <table>
                   <tbody>
                     
-                    <% @proceso.participantes.each do |participante| %>
+                    <% @participantes.each do |participante| %>
                     <tr>
                       <td class="text">
                         <h3 class="title">
-                          <a href="#">
-                            <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
-                          </a>
+                          <%= link_to edit_participante_path(:participante_id => participante.id, :proceso_id => @proceso.id) do  %>
+
+                           <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
+                          <% end %>
                         </h3>
                         <p>
-                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
-                          by Alexander Herrera
+                          Actualizado <span class="time"><%= fechaFormatoActualizado participante.updated_at %></span>
                         </p>
                       </td>
                     </tr>
@@ -377,21 +389,35 @@
     </div>
   </div>
  
-<!-- SCRIPT PARA HACAS USO DE -FOUNDATION  -->
-<script src="assets/vendor/custom.modernizr.js"></script>
-<script> 
-  document.write('<script src=assets/vendor/'
-      + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js><\/script>')
-</script>
-<script src="assets/foundation.min.js"></script>
-<script>
-  $(document).foundation();
-</script>
-
-  
 </body>
 
+  <div id="myModal" class="reveal-modal small">
+      <div class="sheet_body ">
+          <article class="participants new expanded">
+
+            <div class="expanded_content bubble fondoGris">
+              <h1>Compartir Proceso</h1>
+              <hr/>
+               <p>Puedes darle acceso a otros usuarios, permitiendoles modificar y aportar en el proceso. </p>
+              <br/>
+              <h6>Usuarios vinculados en el proceso</h6>
+              <hr/>
+
+              <% @usuariosDelproceso.each do |usuario| %>
+                    <%= usuario.username %>,
+                <% end %>
+
+              <br/><br/>
+              <h6>Selecciona un usuario</h6>
+              <hr/>
+              <%= render 'formControlAcceso' %>
+                
+              <a class="close-reveal-modal">&#215;</a>
+                      
+             </div>
+         </article>
+      </div>
+    </div>
 
 
-<p id="notice"><%= notice %></p>
 

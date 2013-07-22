@@ -41,10 +41,12 @@ class ControlAccesosController < ApplicationController
   # POST /control_accesos.json
   def create
     @control_acceso = ControlAcceso.new(params[:control_acceso])
+    @proceso = Proceso.find(params[:proceso_id])
+    @control_acceso.proceso_id = @proceso.id
 
     respond_to do |format|
       if @control_acceso.save
-        format.html { redirect_to @control_acceso, notice: 'Control acceso was successfully created.' }
+        format.html { redirect_to @proceso, notice: 'Control acceso was successfully created.' }
         format.json { render json: @control_acceso, status: :created, location: @control_acceso }
       else
         format.html { render action: "new" }

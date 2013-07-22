@@ -2,8 +2,9 @@ class ParticipantesController < ApplicationController
   # GET /participantes
   # GET /participantes.json
   def index
-    @participantes = Participante.all
-
+    @proceso = Proceso.find(params[:id])
+    @participantes = @proceso.participantes
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @participantes }
@@ -26,6 +27,7 @@ class ParticipantesController < ApplicationController
   def new
     @participante = Participante.new
     @rol_participantes = RolParticipante.all
+    @proceso = Proceso.find(params[:id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,25 +37,24 @@ class ParticipantesController < ApplicationController
 
   # GET /participantes/1/edit
   def edit
-    @participante = Participante.find(params[:id])
+    @participante = Participante.find(params[:participante_id])
+    @proceso = Proceso.find(params[:proceso_id])
+    @rol_participantes = RolParticipante.all
+
   end
 
   # POST /participantes
   # POST /participantes.json
   def create
     @participante = Participante.new(params[:participante])
-    @participante.rol_participante_id = 1
-
+    @proceso = Proceso.find(params[:proceso_id])
 
     respond_to do |format|
       if @participante.save
-         #Crear la rellacion entre particpante creado y el proceso
-         @procesoParticipante = ProcesoParticipante.new
-         @procesoParticipante.participante_id = 5
-         @procesoParticipante.participante_id = 1
-         @procesoParticipante.save
+         #Crear la relacion entre particpante creado y el proceso
+         @participante.proceso_participantes.create(:participante_id => Participante.last.id,:proceso_id => @proceso.id)
 
-        format.html { redirect_to @participante, notice: 'Participante was successfully created.' }
+        format.html { redirect_to @proceso, notice: 'Participante was successfully created.' }
         format.json { render json: @participante, status: :created, location: @participante }
       else
         format.html { render action: "new" }
@@ -66,10 +67,11 @@ class ParticipantesController < ApplicationController
   # PUT /participantes/1.json
   def update
     @participante = Participante.find(params[:id])
-
+    @proceso = Proceso.find(params[:proceso_id])
+    
     respond_to do |format|
       if @participante.update_attributes(params[:participante])
-        format.html { redirect_to @participante, notice: 'Participante was successfully updated.' }
+        format.html { redirect_to @proceso, notice: 'Participante was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

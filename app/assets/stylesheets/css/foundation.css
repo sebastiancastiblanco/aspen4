@@ -2252,7 +2252,8 @@ form.custom {
   width: 100%;
   display: block;
   margin-bottom: 1.25em;
-  border: 1px solid #cccccc;
+ /* border: 1px solid #cccccc;*/
+  /*border-bottom: 1px solid #cccccc;*/
   border-top: none; }
   .section-container > section, .section-container > .section, .section-container.auto > section, .section-container.auto > .section {
     position: relative; }
@@ -3448,7 +3449,8 @@ form.custom {
   .alert-box.success {
     background-color: #5da423;
     border-color: #457a1a;
-    color: white; }
+    color: white;
+    text-align: center; }
   .alert-box.alert {
     background-color: #c60f13;
     border-color: #970b0e;
@@ -4166,6 +4168,11 @@ a.th {
 	}
 	
 	.section-auto-sample-accordion {
+  @include section-container($section-type:accordion);
+  & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
+}
+
+.section-auto-sample-accordion {
   @include section-container($section-type:accordion);
   & > section { @include section($section-type:accordion, $title-selector:".title-sample", $content-selector:".content-sample"); }
 }
