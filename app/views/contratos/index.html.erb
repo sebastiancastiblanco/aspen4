@@ -1,0 +1,41 @@
+<h1>Listing contratos</h1>
+
+<table>
+  <tr>
+    <th>Tipocontrato</th>
+    <th>Objeto</th>
+    <th>Particpante1</th>
+    <th>Participante2</th>
+    <th>Valor</th>
+    <th>Formapago</th>
+    <th>Obligaciones</th>
+    <th>Deberes</th>
+    <th>Fechainicio</th>
+    <th>Fechafin</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contratos.each do |contrato| %>
+  <tr>
+    <td><%= contrato.tipoContrato %></td>
+    <td><%= contrato.objeto %></td>
+    <td><%= contrato.particpante1 %></td>
+    <td><%= contrato.participante2 %></td>
+    <td><%= contrato.valor %></td>
+    <td><%= contrato.formaPago %></td>
+    <td><%= contrato.obligaciones %></td>
+    <td><%= contrato.deberes %></td>
+    <td><%= contrato.fechaInicio %></td>
+    <td><%= contrato.fechaFin %></td>
+    <td><%= link_to 'Show', contrato %></td>
+    <td><%= link_to 'Edit', edit_contrato_path(contrato) %></td>
+    <td><%= link_to 'Destroy', contrato, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contrato', new_contrato_path %>

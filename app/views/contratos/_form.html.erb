@@ -1,0 +1,110 @@
+
+<%= form_for(@contrato, :html => { :class => "custom"} ) do |f| %>
+
+<div class="row">
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :tipoContrato_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :tipoContrato, :placeholder => "tipo contrato" %>
+    </div>
+    
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :objeto_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_area :objeto, :placeholder => "Objeto del contrato" %>
+    </div>
+    
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label "Contratante", :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.select :particpante1, [["Contratante", 0]] + @proceso.participantes.map {|r| [r.nombre,r.id]}, { :disabled => ["Contratista", 0] } %>
+    </div>
+     <div class="small-2 small-offset-0 columns ">
+      <%= f.label "Contratista", :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.select :participante2, [["Contratista", 0]] + @proceso.participantes.map {|r| [r.nombre,r.id]}, { :disabled => ["Contratista", 0] } %>
+    </div>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :valor_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :valor, :placeholder => "Valor del Contrato" %>
+    </div>
+     <div class="small-2 small-offset-0 columns ">
+      <%= f.label :formaPago, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_area :formaPago, :placeholder => "Forma de Pago" %>
+    </div>
+
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="section-container accordion" data-section="accordion">
+      <section>
+        <p class="title tituloAcordion" data-section-title><a href="#">Detalles del participante (Opcionales)</a></p>
+        <div class="content" data-section-content>
+         
+          <hr>
+          <div class="small-2 small-offset-0 columns ">
+            <%= f.label "Obligaciones", :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field">
+            <%= f.text_field :obligaciones, :placeholder => "Tipo Documento" %>
+          </div>
+          
+            <div class="small-2 small-offset-0 columns">
+            <%= f.label :deberes_, :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field ">
+            <%= f.text_field :deberes, :placeholder => "Número de Documento" %>
+          </div>
+
+          <div class="small-2 small-offset-0 columns ">
+            <%= f.label "Fecha Inicio", :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field">
+            <%= f.date_select :fechaInicio %>
+          </div>
+          
+            <div class="small-2 small-offset-0 columns">
+            <%= f.label "Fecha Fin", :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field ">
+            <%= f.date_select :fechaFin %>
+          </div>
+
+        </div>
+      </section>
+    </div>  
+
+
+</div>
+<div class="row"> 
+
+  <% if @contrato.errors.any? %>
+      <div class="small-4 columns field"></div>
+      <div class="small-4 small-offset-3 columns field">
+        <h2><%= pluralize(@contrato.errors.count, "errore") %> encontrados</h2>
+      </div>
+      <div class="small-5 columns field">
+        <%= f.submit :'Guardar Contrato' , :class => " button success radius" %></div>
+     </div>
+  <% else %>      
+      <div class="small-1 small-offset-8 columns field"></div>
+      <div class="small-2 columns field">
+        <%= f.submit :'Guardar Contrato' , :class => " button success radius" %></div>
+     </div>
+  <% end %>
+ 
+  <%= hidden_field_tag :proceso_id, @proceso.id %>
+</div>
+<% end %>

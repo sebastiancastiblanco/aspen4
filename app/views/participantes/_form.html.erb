@@ -26,7 +26,7 @@
       <%= f.label :rol_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-           <%= f.select :rol_participante_id, @rol_participantes.map {|r| [r.rol,r.id] } %>
+           <%= f.select :rol_participante_id, [["Rol Participante", 0]] + @rol_participantes.map {|r| [r.rol,r.id]}, { :disabled => ["Rol Participante", 0] } %>
     </div>
 
 </div>

@@ -161,12 +161,10 @@
             <header class="has_buttons">
               <h1><a href="#"> 1.  Contratos</a></h1>
       
-              <form action="#" class="button_to" data-remote="true" method="post">
                 <div>
-                  <input class="tiny button radius" type="submit" value="Crear un contrato">
-                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                  <%= button_to "Crear Contrato", {:controller => "contratos", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post %>
+                  <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
                 </div>
-              </form>
               
             </header>
 

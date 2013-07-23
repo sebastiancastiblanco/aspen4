@@ -1,17 +1,13 @@
 AspenVersion3::Application.routes.draw do
+  resources :contratos
   resources :participantes
-
-
   resources :rol_participantes
-
-
   resources :control_accesos
-
-
   resources :procesos
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
+  
   match 'login' => 'usuario_sessions#new', as: :login
   match 'logout' => 'usuario_sessions#destroy', as: :logout
   match 'logout' => 'usuario_sessions#destroy', as: :logout
@@ -19,6 +15,8 @@ AspenVersion3::Application.routes.draw do
   match '/participantes/new/:id' => 'participantes#new', as: :nuevoParticipante
   match '/participantes/:id' => 'participantes#index', as: :listaParticipantes
 
+  match '/contratos/new' => 'contratos#new', as: :nuevoContrato
+  match '/contratos/:id' => 'contratos#index', as: :listaContratos
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

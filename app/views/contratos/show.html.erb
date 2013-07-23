@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tipocontrato:</b>
+  <%= @contrato.tipoContrato %>
+</p>
+
+<p>
+  <b>Objeto:</b>
+  <%= @contrato.objeto %>
+</p>
+
+<p>
+  <b>Particpante1:</b>
+  <%= @contrato.particpante1 %>
+</p>
+
+<p>
+  <b>Participante2:</b>
+  <%= @contrato.participante2 %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @contrato.valor %>
+</p>
+
+<p>
+  <b>Formapago:</b>
+  <%= @contrato.formaPago %>
+</p>
+
+<p>
+  <b>Obligaciones:</b>
+  <%= @contrato.obligaciones %>
+</p>
+
+<p>
+  <b>Deberes:</b>
+  <%= @contrato.deberes %>
+</p>
+
+<p>
+  <b>Fechainicio:</b>
+  <%= @contrato.fechaInicio %>
+</p>
+
+<p>
+  <b>Fechafin:</b>
+  <%= @contrato.fechaFin %>
+</p>
+
+
+<%= link_to 'Edit', edit_contrato_path(@contrato) %> |
+<%= link_to 'Back', contratos_path %>
