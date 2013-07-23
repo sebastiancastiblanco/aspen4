@@ -48,13 +48,23 @@
                    <% @participantes.each do |participante| %>
                   <tr class="topic message_10997527 fondoGris" id="topic_22725579">
                     <td class="who">
-                       <%= link_to(participante) do  %>
-                          <strong>
+
+                        <%= link_to edit_participante_path(:participante_id => participante.id, :proceso_id => @proceso.id) do  %>
+                         <strong>
                                 <%= participante.rol_participante.rol %> - 
                           </strong>
                           <%= participante.nombre %>  <%= participante.apellido %> 
-                        <% end %>
-                      <%= button_to "Ver", participante, :class => "tiny button secondary radius inlineBlock", :method => :get  %>
+                          <% end %>
+
+         
+                        <%= link_to edit_participante_path(:participante_id => participante.id, :proceso_id => @proceso.id) do  %>
+                          Ver --->
+                          <% end %>
+
+
+
+                        <%= button_to "Ver", participante, :class => "tiny button secondary radius inlineBlock", :method => :get  %>
+
                       <%= button_to "Eliminar", participante, :class => "tiny button alert radius inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este participante?' }  %>
                     <td class="when">
                       <a href="#"> <%= fechaFormato1 participante.created_at %> </a>

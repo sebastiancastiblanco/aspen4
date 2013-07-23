@@ -172,19 +172,22 @@
               <article class="document" id="document_3073232" >
                 <table>
                   <tbody>
+
+                    <% @contratos.each do |contrato| %>
                     <tr>
                       <td class="text">
                         <h3 class="title">
-                          <a href="#">
-                            Contrato 1 - descripcion
-                          </a>
+                          <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id) do  %>
+                            <%= contrato.tipoContrato %>
+                          <% end %>
                         </h3>
                         <p>
-                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
-                          by Alexander Herrera
+                          Actualizado <span class="time"><%= fechaFormatoActualizado contrato.updated_at %></span>
                         </p>
                       </td>
                     </tr>
+                  <% end %>
+
                   </tbody>
                 </table>
               </article>
@@ -212,8 +215,7 @@
                       <td class="text">
                         <h3 class="title">
                           <%= link_to edit_participante_path(:participante_id => participante.id, :proceso_id => @proceso.id) do  %>
-
-                           <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
+                          <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
                           <% end %>
                         </h3>
                         <p>

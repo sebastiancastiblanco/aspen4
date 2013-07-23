@@ -24,6 +24,8 @@ class ProcesosController < ApplicationController
     @usuariosDelproceso =  @proceso.usuarios
     #Variable para crear el control de acceso y lograr compartir los procesos a otros usuarios
     @control_acceso = ControlAcceso.new
+    #recuperar los contratos del proceso
+    @contratos = @proceso.contratos.order("updated_at DESC").first(3)
 
     respond_to do |format|
       format.html # show.html.erb
