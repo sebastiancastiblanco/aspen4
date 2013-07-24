@@ -6,6 +6,7 @@ AspenVersion3::Application.routes.draw do
   match 'login' => 'usuario_sessions#new', as: :login
   match 'logout' => 'usuario_sessions#destroy', as: :logout
   match 'logout' => 'usuario_sessions#destroy', as: :logout
+  root :to => 'usuario_sessions#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
