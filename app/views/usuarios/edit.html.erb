@@ -1,6 +1,42 @@
-<h1>Editing usuario</h1>
+<body>
+	<div id="workspace" class="workspace">
+		<div class="container stack_container"  style="width: 960px;">
+			<div class="panel sheet project active blank_slate fondoGris">
 
-<%= render 'form' %>
+				<header>
+					<div data-behavior="edit_project_header expandable">
+						<div class="collapsed_content">
+							<div class="position_reference">
+								<h1 class="field" >
+									Perfil de Usuario
+								</h1>
+							</div>
+							
+						</div>
+					</div>
+				</header>
 
-<%= link_to 'Show', @usuario %> |
-<%= link_to 'Back', usuarios_path %>
+				<div class="sheet_body">
+					<hr/>
+
+						<%= render 'form' %>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+ 
+ <!-- SCRIPT PARA HACAS USO DE -FOUNDATION  -->
+  <script src="js/vendor/custom.modernizr.js"></script>
+	<script>
+	  document.write('<script src=js/vendor/' +
+	  ('__proto__' in {} ? 'zepto' : 'jquery') +
+	  '.js><\/script>')
+  </script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  
+</body>
