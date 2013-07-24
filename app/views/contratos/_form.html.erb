@@ -7,7 +7,7 @@
       <%= f.label :tipoContrato_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :tipoContrato, :placeholder => "tipo contrato" %>
+      <%= f.select :tipoContrato, [["Tipo Contrato", 0]]+[["Indefinido", "Indefinido"]]+[["Prestación de Servicios", "Servicios"]] , { :disabled => ["Tipo Contrato", 0] } %>
     </div>
     
     <div class="small-2 small-offset-0 columns ">
@@ -50,7 +50,7 @@
 <div class="row">
     <div class="section-container accordion" data-section="accordion">
       <section>
-        <p class="title tituloAcordion" data-section-title><a href="#">Detalles del participante (Opcionales)</a></p>
+        <p class="title tituloAcordion" data-section-title><a href="#">Detalles del Contrato (Opcionales)</a></p>
         <div class="content" data-section-content>
          
           <hr>
@@ -58,14 +58,14 @@
             <%= f.label "Obligaciones", :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field">
-            <%= f.text_field :obligaciones, :placeholder => "Tipo Documento" %>
+            <%= f.text_area :obligaciones, :placeholder => "Obligaciones" %>
           </div>
           
             <div class="small-2 small-offset-0 columns">
             <%= f.label :deberes_, :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field ">
-            <%= f.text_field :deberes, :placeholder => "Número de Documento" %>
+            <%= f.text_area :deberes, :placeholder => "Deberes " %>
           </div>
 
           <div class="small-2 small-offset-0 columns ">
