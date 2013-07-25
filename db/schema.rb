@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723183547) do
+ActiveRecord::Schema.define(:version => 20130725170014) do
+
+  create_table "actividads", :force => true do |t|
+    t.string   "nombre"
+    t.string   "descripcion"
+    t.string   "observacion"
+    t.date     "fechaSeguimiento"
+    t.integer  "tiempoEjecucion"
+    t.string   "medidaTiempo"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "estadoActividad_id"
+    t.integer  "proceso_id"
+  end
 
   create_table "agendas", :force => true do |t|
     t.string   "titulo"
@@ -41,6 +54,12 @@ ActiveRecord::Schema.define(:version => 20130723183547) do
     t.datetime "updated_at",       :null => false
     t.integer  "proceso_id"
     t.integer  "usuario_id"
+  end
+
+  create_table "estado_actividads", :force => true do |t|
+    t.string   "estado"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "participantes", :force => true do |t|

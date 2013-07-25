@@ -8,6 +8,8 @@ class Proceso < ActiveRecord::Base
   has_many :participantes, through: :proceso_participantes
   #tiene varios contratos
   has_many :contratos
+  #tiene varias actviidades
+  has_many :actividads
 
 #Validaciones de título
 #validates_presence_of :titulo, :presence => {:message => "Usted debe ingresar un título"}, length: {minimum: 2, maximum: 50, :message => "El título debe tener entre 2 y 50 caracteres"}

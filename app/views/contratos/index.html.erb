@@ -52,7 +52,9 @@
                                 <%= contrato.objeto %> - 
                         <% end %>
                       
-                       <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id) do  %>
+                       <%= button_to "Ver 2", {:controller => "contratos", :action => "edit",:contrato_id => contrato.id, :proceso_id => @proceso.id},:class => "tiny button radius ", :method=>:post  %>
+
+                       <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id),:class => "button radius " do  %>
                                 Ver
                         <% end %>
 

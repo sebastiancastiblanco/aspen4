@@ -1,0 +1,23 @@
+<h1>Listing estado_actividads</h1>
+
+<table>
+  <tr>
+    <th>Estado</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @estado_actividads.each do |estado_actividad| %>
+  <tr>
+    <td><%= estado_actividad.estado %></td>
+    <td><%= link_to 'Show', estado_actividad %></td>
+    <td><%= link_to 'Edit', edit_estado_actividad_path(estado_actividad) %></td>
+    <td><%= link_to 'Destroy', estado_actividad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Estado actividad', new_estado_actividad_path %>

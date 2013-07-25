@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  descripcion: MyString
+  observacion: MyString
+  fechaSeguimiento: 2013-07-25
+  tiempoEjecucion: 1
+  medidaTiempo: MyString
+
+two:
+  nombre: MyString
+  descripcion: MyString
+  observacion: MyString
+  fechaSeguimiento: 2013-07-25
+  tiempoEjecucion: 1
+  medidaTiempo: MyString

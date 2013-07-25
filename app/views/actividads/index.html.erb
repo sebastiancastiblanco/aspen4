@@ -1,0 +1,71 @@
+<body>
+  <div id="workspace" class="workspace">
+    <div class="container stack_container" style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris" >
+
+       <header>
+          <ul class="breadcrumbs">
+            <li><%= link_to 'Procesos', procesos_path %></li>
+            <li><%= link_to @proceso.id , @proceso %></li>
+            <li><%= link_to @proceso.titulo , @proceso %></li>
+            <li><a href="#">Actividades</a></li>
+          </ul>
+        </header>
+        
+        <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
+          <header class="has_buttons">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+                    <div class="small-6 small-9 columns left">
+                      <h1>
+                        Actividades
+                      </h1>
+                    </div>
+                    <div class="small-3 small-3 columns left">
+                        <%= button_to "Nueva Actividad", {:controller => "actividads", :action => "new", :id => @proceso.id},:class => "button radius ", :method=>:post  %>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div><div class="blank_slate_arrow"></div>
+          </header>
+          <div class="sheet_body fondoGris">
+            <div id="date_display_Project:2733915" class="date_display" data-autoview="">
+                        <section class="calendar_events">
+                            
+                            <% @actividads.each do |actividad| %>
+
+                            <section class="group today upcoming_events">
+                                <header>
+                                    <h2>Nombre Actividad</h2>
+                                </header>
+                                <article class="calendar_event">
+                                    <header>
+                                        <time datetime="2013-05-30">
+                                            <span class="day_of_week">Jueves</span>
+                                            <span class="month">Junio</span>
+                                            <span class="day" style="background-color: #457a1a !important">30</span>
+                                        </time>
+                                    </header>
+                                    <ul>
+                                        <li id="CalendarEvent_5615518">
+                                            <span style="color: #457a1a"><%= actividad.estado_actividad.estado%></span>
+                                            <a href="#">Encargado Actividad,</a>
+                                            <a href="#"><%= actividad.descripcion%> - </a>
+                                            <a href="#"><%= actividad.tiempoEjecucion%> <%= actividad.medidaTiempo%></a>
+                                            <input class="tiny button secondary radius" type="submit" value="Ver">
+                                        </li>
+                                    </ul>
+                                </article>
+                            </section>
+                            <% end %>
+                        </section>
+                        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

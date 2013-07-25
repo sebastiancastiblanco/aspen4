@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @actividad.nombre %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @actividad.descripcion %>
+</p>
+
+<p>
+  <b>Observacion:</b>
+  <%= @actividad.observacion %>
+</p>
+
+<p>
+  <b>Fechaseguimiento:</b>
+  <%= @actividad.fechaSeguimiento %>
+</p>
+
+<p>
+  <b>Tiempoejecucion:</b>
+  <%= @actividad.tiempoEjecucion %>
+</p>
+
+<p>
+  <b>Medidatiempo:</b>
+  <%= @actividad.medidaTiempo %>
+</p>
+
+
+<%= link_to 'Edit', edit_actividad_path(@actividad) %> |
+<%= link_to 'Back', actividads_path %>

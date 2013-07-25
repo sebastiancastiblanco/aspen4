@@ -96,7 +96,7 @@
                 <span class="label">Agregar : </span>
 
                 <a href="#" >
-                  <span class="">Contratacion</span>
+                  <span class="">(<%= @proceso.contratos.size %>) Contratacion</span>
                 </a>
 
                 <a href="#" >
@@ -104,7 +104,7 @@
                 </a>
                 
                 <a href="#" >
-                  <span class="">Actividades</span>
+                  <span class="">(<%= @proceso.actividads.size %>) Actividades</span>
                 </a>
 
                 <a href="#" >
@@ -159,44 +159,7 @@
           <hr/>
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1><a href="#"> 1.  Contratos</a></h1>
-      
-                <div>
-                  <%= button_to "Crear Contrato", {:controller => "contratos", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post %>
-                  <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
-                </div>
-              
-            </header>
-
-            <section class="documents grouped_by_date">
-              <article class="document" id="document_3073232" >
-                <table>
-                  <tbody>
-
-                    <% @contratos.each do |contrato| %>
-                    <tr>
-                      <td class="text">
-                        <h3 class="title">
-                          <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id) do  %>
-                            <%= contrato.tipoContrato %>
-                          <% end %>
-                        </h3>
-                        <p>
-                          Actualizado <span class="time"><%= fechaFormatoActualizado contrato.updated_at %></span>
-                        </p>
-                      </td>
-                    </tr>
-                  <% end %>
-
-                  </tbody>
-                </table>
-              </article>
-            </section>
-          </section>
-          <hr/>
-          <section class="documents " style="">
-            <header class="has_buttons">
-              <h1><a href="#"> 2. Participantes</a></h1>
+              <h1><a href="#"> 1. Participantes</a></h1>
       
                 <div>
                   <%= button_to "Crear Participante", {:controller => "participantes", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post  %>
@@ -231,17 +194,51 @@
             </section>
           </section>
           <hr/>
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#"> 2.  Contratos</a></h1>
+      
+                <div>
+                  <%= button_to "Crear Contrato", {:controller => "contratos", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post %>
+                  <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
+                </div>
+              
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+
+                    <% @contratos.each do |contrato| %>
+                    <tr>
+                      <td class="text">
+                        <h3 class="title">
+                          <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id) do  %>
+                            <%= contrato.tipoContrato %>
+                          <% end %>
+                        </h3>
+                        <p>
+                          Actualizado <span class="time"><%= fechaFormatoActualizado contrato.updated_at %></span>
+                        </p>
+                      </td>
+                    </tr>
+                  <% end %>
+
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+          <hr/>
           
           <section class="documents " style="">
             <header class="has_buttons">
               <h1><a href="#"> 3. Actividades</a></h1>
-      
-              <form action="#" class="button_to" data-remote="true" method="post">
                 <div>
-                  <input class="tiny button  radius" type="submit" value="Crear actividad">
-                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                  <%= button_to "Crear Actividad", {:controller => "actividads", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post %>
+                  <%= button_to "ver Todos", {:controller => "actividads", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
                 </div>
-              </form>
               
             </header>
 
