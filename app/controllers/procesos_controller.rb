@@ -39,6 +39,9 @@ class ProcesosController < ApplicationController
   # GET /procesos/new.json
   def new
     @proceso = Proceso.new
+    #Para el combo de tipos de procesos
+    @tipos_procesos = TipoProceso.all
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @proceso }
@@ -56,7 +59,6 @@ class ProcesosController < ApplicationController
     @proceso = Proceso.new(params[:proceso])
     @proceso.usuario_id = current_user.id
     @proceso.favorito = false
-
     respond_to do |format|
       if @proceso.save
         #Salvar relacion entre el proecso y el usuario que lo creo

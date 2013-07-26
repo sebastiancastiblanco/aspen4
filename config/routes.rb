@@ -1,4 +1,7 @@
 AspenVersion3::Application.routes.draw do
+  resources :tipo_procesos
+
+
   resources :actividads
   resources :estado_actividads
   resources :contratos
@@ -19,11 +22,11 @@ AspenVersion3::Application.routes.draw do
 
   match '/contratos/new/:id' => 'contratos#new', as: :nuevoContrato
   match '/contratos/:id' => 'contratos#index', as: :listaContratos
-
   match '/contratos/:id/edit' => 'contratos#edit', as: :editarContrato
 
   match '/actividads/new/:id' => 'actividads#new', as: :nuevaActividad
   match '/actividads/:id' => 'actividads#index', as: :listaActividads
+  match '/actividads/:id/edit' => 'actividads#edit', as: :editarActividad
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -2,6 +2,12 @@
 
 <div class="row">
 
+  <div class="small-1 small-offset-3 columns "><%= f.label :tipoProceso_, :class => "tituloCampo error" %></div>
+  <div class="small-4 columns field">
+      <%= f.select :tipo_proceso_id, [["Tipo Proceso", 0]] + @tipos_procesos.map {|r| [r.tipo,r.id]}, { :disabled => ["Tipo Proceso", 0] } %>
+  </div>
+  <div class="small-5 small-offset-1 columns "></div>
+
   <div class="small-1 small-offset-3 columns "><%= f.label :referencia_, :class => "tituloCampo error" %></div>
   <div class="small-4 columns field"><%= f.text_field :referencia , :placeholder => "Número de Referencia" %></div>
   <div class="small-5 small-offset-1 columns "></div>
@@ -32,7 +38,6 @@
         <%= f.submit :'Guardar Proceso' , :class => " button success radius" %></div>
      </div>
   <% end %>
- 
 </div>
 
 <% if @proceso.errors.any? %>

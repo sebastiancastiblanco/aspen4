@@ -39,6 +39,7 @@ class ActividadsController < ApplicationController
   def edit
     @actividad = Actividad.find(params[:actividad_id])
     @proceso = Proceso.find(params[:proceso_id])
+    @estadoActividads = EstadoActividad.all    
     
   end
 
@@ -52,7 +53,7 @@ class ActividadsController < ApplicationController
 
     respond_to do |format|
       if @actividad.save
-        format.html { redirect_to @proceso, notice: 'Actividad was successfully created.' }
+        format.html { redirect_to @proceso, notice: 'Actividad fue creada correctamente' }
         format.json { render json: @actividad, status: :created, location: @actividad }
       else
         format.html { render action: "new" }
@@ -65,10 +66,10 @@ class ActividadsController < ApplicationController
   # PUT /actividads/1.json
   def update
     @actividad = Actividad.find(params[:id])
-
+    @proceso = Proceso.find(params[:proceso_id])
     respond_to do |format|
       if @actividad.update_attributes(params[:actividad])
-        format.html { redirect_to @actividad, notice: 'Actividad was successfully updated.' }
+        format.html { redirect_to @proceso, notice: 'Actividad fue modificada correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -95,17 +95,17 @@
               <div class="group not_in_project">
                 <span class="label">Agregar : </span>
 
-                <a href="#" >
+                <%= link_to new_contrato_path(:proceso_id => @proceso.id) do  %>
                   <span class="">(<%= @proceso.contratos.size %>) Contratacion</span>
-                </a>
+                <% end %>
 
-                <a href="#" >
-                  <span class=""> (<%= @proceso.participantes.size %>) Participantes</span>
-                </a>
+                <%= link_to new_participante_path(:proceso_id => @proceso.id) do  %>
+                   <span class=""> (<%= @proceso.participantes.size %>) Participantes</span>
+                <% end %>
                 
-                <a href="#" >
-                  <span class="">(<%= @proceso.actividads.size %>) Actividades</span>
-                </a>
+                <%= link_to new_actividad_path(:proceso_id => @proceso.id) do  %>
+                    <span class="">(<%= @proceso.actividads.size %>) Actividades</span>
+                <% end %>
 
                 <a href="#" >
                   <span class="">Control</span>
@@ -121,11 +121,7 @@
               </div>
             </div>
           </div>
-
-          
-
         </header>
-
         <div class="sheet_body">
           <section class="events">
             <header>
