@@ -26,6 +26,8 @@ class ProcesosController < ApplicationController
     @control_acceso = ControlAcceso.new
     #recuperar los contratos del proceso
     @contratos = @proceso.contratos.order("updated_at DESC").first(3)
+    #recuperar las 3 ultimas actividades modificadas
+    @actividads = @proceso.actividads.order("updated_at DESC").first(3)
 
     respond_to do |format|
       format.html # show.html.erb

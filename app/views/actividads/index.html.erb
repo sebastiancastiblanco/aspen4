@@ -18,12 +18,20 @@
             <div class="collapsed_content">
               <div class="row">
                 <div class="small-12 columns">
-                    <div class="small-6 small-9 columns left">
+                    <div class="small-5 columns left">
                       <h1>
                         Actividades
                       </h1>
                     </div>
-                    <div class="small-3 small-3 columns left">
+                    <div class="small-4 columns left">
+                      <dl class="sub-nav">
+                          <dd class="active"><a href="#">Todas</a></dd>
+                          <dd><a href="#">Abiertas</a></dd>
+                          <dd><a href="#">Atrasadas</a></dd>
+                          <dd><a href="#">Terminadas</a></dd>
+                      </dl>
+                    </div>
+                    <div class="small-2 columns left">
                         <%= button_to "Nueva Actividad", {:controller => "actividads", :action => "new", :id => @proceso.id},:class => "button radius ", :method=>:post  %>
                     </div>
                 </div>
@@ -39,21 +47,39 @@
 
                             <section class="group today upcoming_events">
                                 <header>
-                                    <h2>Nombre Actividad</h2>
+                                    <h2><%= actividad.nombre %></h2>
                                 </header>
                                 <article class="calendar_event">
                                     <header>
-                                        <time datetime="2013-05-30">
-                                            <span class="day_of_week">Jueves</span>
-                                            <span class="month">Junio</span>
-                                            <span class="day" style="background-color: #457a1a !important">30</span>
-                                        </time>
+                                            <span class="day_of_week"><%= fechaDiaSemana actividad.fechaSeguimiento %></span>
+                                            <span class="month"><%= fechaMes actividad.fechaSeguimiento %></span>
+                                            <% if actividad.estado_actividad.estado =="Abierta" %>
+                                                       <span class="day" style="background-color: #457a1a !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                                            <% end %>
+                                            <% if actividad.estado_actividad.estado =="Atrasada" %>
+                                                        <span class="day" style="background-color: #970b0e  !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                                            <% end %>
+                                            <% if actividad.estado_actividad.estado =="Terminada" %>
+                                                        <span class="day" style="background-color: #000 !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                                            <% end %>
+                                           
+
                                     </header>
                                     <ul>
                                         <li id="CalendarEvent_5615518">
+                                           <% if actividad.estado_actividad.estado =="Abierta" %>
                                             <span style="color: #457a1a"><%= actividad.estado_actividad.estado%></span>
-                                            <a href="#">Encargado Actividad,</a>
-                                            <a href="#"><%= actividad.descripcion%> - </a>
+                                            <% end %>
+                                            <% if actividad.estado_actividad.estado =="Atrasada" %>
+                                            <span style="color: #970b0e"><%= actividad.estado_actividad.estado%></span>
+                                            <% end %>
+                                            <% if actividad.estado_actividad.estado =="Terminada" %>
+                                            <span style="color: #000"><%= actividad.estado_actividad.estado%></span>
+                                            <% end %> 
+
+                                            
+                                            <a href="#"><%= actividad.participante.nombre %></a>
+                                            <a href="#"><%= actividad.descripcion%></a>
                                             <a href="#"><%= actividad.tiempoEjecucion%> <%= actividad.medidaTiempo%></a>
                                             <input class="tiny button secondary radius" type="submit" value="Ver">
                                         </li>

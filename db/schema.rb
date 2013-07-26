@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725170014) do
+ActiveRecord::Schema.define(:version => 20130726015444) do
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(:version => 20130725170014) do
     t.date     "fechaSeguimiento"
     t.integer  "tiempoEjecucion"
     t.string   "medidaTiempo"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.integer  "estadoActividad_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "estado_actividad_id"
     t.integer  "proceso_id"
+    t.integer  "participante_id"
   end
 
   create_table "agendas", :force => true do |t|

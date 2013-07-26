@@ -6,4 +6,6 @@ class Participante < ActiveRecord::Base
   #Relacion muchos a muchos, para procesos y particinates
   has_many :proceso_participantes
   has_many :procesos, through: :proceso_participantes
+  #relacion con las actividades
+  has_many :actividads
 end

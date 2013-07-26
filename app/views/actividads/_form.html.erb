@@ -10,11 +10,44 @@
     </div>
     
     <div class="small-2 small-offset-0 columns ">
+      <%= f.label "Encargado", :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.select :participante_id, [["Encargado", 0]] + @proceso.participantes.map {|r| [r.nombre,r.id]}, { :disabled => ["Encargado", 0] } %>
+    </div>
+
+    <div class="small-2 small-offset-0 columns ">
       <%= f.label "descripción", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
       <%= f.text_area :descripcion, :placeholder => "Máximo 250 caracteres" %>
     </div>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label "Estado de la Actividad", :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+           <%= f.select :estado_actividad_id, [["Estado de la Actividad", 0]] + @estadoActividads.map {|r| [r.estado,r.id]}, { :disabled => ["Estado de la Actividad", 0] } %>
+    </div>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label "Fecha Seguimiento", :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+          <%= f.date_select :fechaSeguimiento %>
+    </div>
+
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="section-container accordion" data-section="accordion">
+      <section>
+        <p class="title tituloAcordion" data-section-title><a href="#">Detalles de la Actividad (Opcionales)</a></p>
+        <div class="content" data-section-content>
+         
+          <hr>
     
     <div class="small-2 small-offset-0 columns ">
       <%= f.label "Observación", :class => "tituloCampo error alinearDerecha" %>
@@ -22,12 +55,7 @@
     <div class="small-4 columns field">
       <%= f.text_area :observacion, :placeholder => "Máximo 250 caracteres" %>
     </div>
-     <div class="small-2 small-offset-0 columns ">
-      <%= f.label "Fecha Seguimiento", :class => "tituloCampo error alinearDerecha" %>
-    </div>
-    <div class="small-4 columns field">
-          <%= f.date_select :fechaSeguimiento %>
-    </div>
+    
 
     <div class="small-2 small-offset-0 columns ">
       <%= f.label "Tiempo ejecución", :class => "tituloCampo error alinearDerecha" %>
@@ -40,8 +68,10 @@
       <%= f.label "Medida de Tiempo", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-           <%= f.select :medidaTiempo, [["Medida de Tiempo", 0]] + [["Horas", 1]]+ [["Dias", 2]]+ [["Semanas", 2]], { :disabled => ["Medida de Tiempo", 0] } %>
+           <%= f.select :medidaTiempo, [["Medida de Tiempo", 0]] + [["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], { :disabled => ["Medida de Tiempo", 0] } %>
     </div>
+
+
 </div>
 
 

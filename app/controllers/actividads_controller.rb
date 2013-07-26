@@ -27,6 +27,7 @@ class ActividadsController < ApplicationController
   def new
     @actividad = Actividad.new
     @proceso = Proceso.find(params[:id])
+    @estadoActividads = EstadoActividad.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,6 +47,8 @@ class ActividadsController < ApplicationController
   def create
     @actividad = Actividad.new(params[:actividad])
     @proceso = Proceso.find(params[:proceso_id])
+    #Relacionar el proceso con las actividades
+    @actividad.proceso_id = @proceso.id
 
     respond_to do |format|
       if @actividad.save

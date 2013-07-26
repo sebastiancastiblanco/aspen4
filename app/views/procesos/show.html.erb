@@ -237,7 +237,7 @@
               <h1><a href="#"> 3. Actividades</a></h1>
                 <div>
                   <%= button_to "Crear Actividad", {:controller => "actividads", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post %>
-                  <%= button_to "ver Todos", {:controller => "actividads", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
+                  <%= button_to "Ver Todos", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
                 </div>
               
             </header>
@@ -246,19 +246,20 @@
               <article class="document" id="document_3073232" >
                 <table>
                   <tbody>
+                     <% @actividads.each do |actividad| %>
                     <tr>
                       <td class="text">
                         <h3 class="title">
-                          <a href="#">
-                            Actividad 1 - descripcion
-                          </a>
+                          <%= link_to edit_actividad_path(:actividad_id => actividad.id, :proceso_id => @proceso.id) do  %>
+                            <%= actividad.nombre %> -  <%= actividad.estado_actividad.estado %>
+                          <% end %>
                         </h3>
                         <p>
-                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
-                          by Alexander Herrera
+                          Actualizado <span class="time"><%= fechaFormatoActualizado actividad.updated_at %></span>
                         </p>
                       </td>
                     </tr>
+                      <% end %>
                   </tbody>
                 </table>
               </article>
