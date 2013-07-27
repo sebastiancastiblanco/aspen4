@@ -17,6 +17,10 @@ class Usuario < ActiveRecord::Base
   #Relacion un usuario(abogado) pertenece a un despacho.
   belongs_to :despacho, class_name: "Usuario"
   
+  #relacion superUsuario tiene varios Tipos de proceso y proceso
+  has_many :tipo_procesos
+  has_many :procesos, through: :tipo_procesos
+
   #validates :username, :presence => true
   #validates :email, :presence => true
   #validates :password, :presence => true

@@ -1,0 +1,12 @@
+<%= form_for(@control_acceso, :html => { :class => "custom"} ) do |f| %>
+  <div class="row"> 
+          
+          <div class="small-7 columns field">
+            <%= f.select :usuario_id, [["Selecciona un Usuario", 0]] + @usuarios.map {|r| [r.username,r.id] }, { :disabled => ["Selecciona un Usuario", 0] } %>
+            <%= hidden_field_tag :proceso_id, @proceso.id %>
+          </div>
+          <div class="small-4 small-offset-1 columns field">
+             <%= f.submit :'Compartir Proceso' , :class => " button radius" %>
+          </div>
+  </div>
+<% end %> 

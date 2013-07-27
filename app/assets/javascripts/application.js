@@ -13,3 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$.ajax({
+	type: "GET",
+	url: "/procesos.json",
+	dataType: "json",
+	success: function(data){
+	//alert(data[0].titulo) // Will alert Max
+	//Adicionar participante a la tabla de particpantes
+	//$()
+	} 
+});

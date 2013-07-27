@@ -1,0 +1,127 @@
+<%= form_for(@participante, :html => { :class => "custom"} ) do |f| %>
+
+<div class="row">
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :nombre_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :nombre, :placeholder => "Nombre" %>
+    </div>
+    
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :apellido_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :apellido, :placeholder => "Apellido" %>
+    </div>
+    
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :correo_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :correo, :placeholder => "Correo electronico" %>
+    </div>
+     <div class="small-2 small-offset-0 columns ">
+      <%= f.label :rol_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+           <%= f.select :rol_participante_id, [["Rol Participante", 0]] + @rol_participantes.map {|r| [r.rol,r.id]}, { :disabled => ["Rol Participante", 0] } %>
+    </div>
+
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="section-container accordion" data-section="accordion">
+      <section>
+        <p class="title tituloAcordion" data-section-title><a href="#">Detalles del participante (Opcionales)</a></p>
+        <div class="content" data-section-content>
+         
+          <hr>
+          <div class="small-2 small-offset-0 columns ">
+            <%= f.label "Tipo Documento", :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field">
+            <%= f.text_field :tipoDocumento, :placeholder => "Tipo Documento" %>
+          </div>
+          
+            <div class="small-2 small-offset-0 columns">
+            <%= f.label :documento_, :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field ">
+            <%= f.text_field :documento, :placeholder => "Número de Documento" %>
+          </div>
+
+
+          <div class="small-2 small-offset-0 columns ">
+            <%= f.label :estadoCivil_, :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field">
+            <%= f.text_field :estadoCivil, :placeholder => "Estado Civil" %>
+          </div>
+          
+          <div class="small-2 small-offset-0 columns ">
+            <%= f.label :genero_, :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field">
+            <%= f.text_field :genero, :placeholder => "Genero" %>
+          </div>
+          
+          
+          <div class="small-2 small-offset-0 columns ">
+            <%= f.label :direccion_, :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field">
+            <%= f.text_field :direccion, :placeholder => "Dirección" %>
+          </div>
+          <div class="small-2 small-offset-0 columns ">
+            <%= f.label :telefono_, :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field">
+            <%= f.text_field :telefono, :placeholder => "Teléfono" %>
+          </div>    
+
+          <div class="small-2 small-offset-0 columns ">
+          <%= f.label :fechaNacimiento_, :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field">
+            <%= f.date_select :fechaNacimiento %>
+          </div>
+          <div class="small-2 small-offset-0 columns ">
+            <%= f.label :celular_, :class => "tituloCampo error alinearDerecha" %>
+          </div>
+          <div class="small-4 columns field">
+            <%= f.text_field :celular, :placeholder => "Número de Celular" %>
+          </div>  
+
+        </div>
+      </section>
+    </div>  
+
+
+</div>
+<div class="row"> 
+
+  <% if @participante.errors.any? %>
+      <div class="small-4 columns field"></div>
+      <div class="small-4 small-offset-3 columns field">
+        <h2><%= pluralize(@participante.errors.count, "errore") %> encontrados</h2>
+      </div>
+      <div class="small-5 columns field">
+        <%= f.submit :'Guardar Participante' , :class => " button success radius" %></div>
+     </div>
+  <% else %>      
+      <div class="small-1 small-offset-8 columns field"></div>
+      <div class="small-2 columns field">
+        <%= f.submit :'Guardar Participante' , :class => " button success radius" %></div>
+     </div>
+  <% end %>
+ 
+  <%= hidden_field_tag :proceso_id, @proceso.id %>
+
+
+</div>
+
+<% end %>

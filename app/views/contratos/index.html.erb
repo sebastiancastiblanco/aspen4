@@ -1,0 +1,78 @@
+
+<body>
+
+  <div id="workspace" class="workspace">
+    <div class="container stack_container" style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris" >
+
+       <header>
+          <ul class="breadcrumbs">
+            <li><%= link_to 'Procesos', procesos_path %></li>
+            <li><%= link_to @proceso.id , @proceso %></li>
+            <li><%= link_to @proceso.titulo , @proceso %></li>
+            <li><a href="#">Contratos</a></li>
+          </ul>
+        </header>
+        
+        <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
+
+          <header class="has_buttons">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+                  
+                    <div class="small-6 small-9 columns left">
+                      <h1>
+                        Contratos
+                      </h1>
+                    </div>
+                    
+                    <div class="small-3 small-3 columns left">
+                        <%= button_to "Nuevo Contrato", {:controller => "contratos", :action => "new", :id => @proceso.id},:class => "button radius ", :method=>:post  %>
+                    </div>
+                         
+                </div>
+              </div>
+            </div>
+          </div><div class="blank_slate_arrow"></div>
+          </header>
+
+          
+          
+          <div class="sheet_body fondoGris">
+            <section class="topics" data-collection-name="topics">
+                
+              <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                <tbody>
+                   <% @contratos.each do |contrato| %>
+                  <tr class="topic message_10997527 fondoGris" id="topic_22725579">
+                    <td class="who">
+                       <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id) do   %>
+                                <%= contrato.objeto %> - 
+                        <% end %>
+                      
+                       <%= button_to "Ver 2", {:controller => "contratos", :action => "edit",:contrato_id => contrato.id, :proceso_id => @proceso.id},:class => "tiny button radius ", :method=>:post  %>
+
+                       <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id),:class => "button radius " do  %>
+                                Ver
+                        <% end %>
+
+                      <%= button_to "Eliminar", contrato, :class => "tiny button alert radius inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este contrato?' }  %>
+                    <td class="when">
+                      <a href="#"> <%= fechaFormato1 contrato.created_at %> </a>
+                    </td>
+                  </tr>
+                  <% end %>
+
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>

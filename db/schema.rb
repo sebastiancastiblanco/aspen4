@@ -59,12 +59,42 @@ end
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712211056) do
+ActiveRecord::Schema.define(:version => 20130726151956) do
+
+  create_table "actividads", :force => true do |t|
+    t.string   "nombre"
+    t.string   "descripcion"
+    t.string   "observacion"
+    t.date     "fechaSeguimiento"
+    t.integer  "tiempoEjecucion"
+    t.string   "medidaTiempo"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "estado_actividad_id"
+    t.integer  "proceso_id"
+    t.integer  "participante_id"
+  end
 
   create_table "agendas", :force => true do |t|
     t.string   "titulo"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "contratos", :force => true do |t|
+    t.string   "tipoContrato"
+    t.string   "objeto"
+    t.integer  "particpante1"
+    t.integer  "participante2"
+    t.float    "valor"
+    t.string   "formaPago"
+    t.string   "obligaciones"
+    t.string   "deberes"
+    t.date     "fechaInicio"
+    t.date     "fechaFin"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "proceso_id"
   end
 
   create_table "control_accesos", :force => true do |t|
@@ -73,6 +103,36 @@ ActiveRecord::Schema.define(:version => 20130712211056) do
     t.datetime "updated_at",       :null => false
     t.integer  "proceso_id"
     t.integer  "usuario_id"
+  end
+
+  create_table "estado_actividads", :force => true do |t|
+    t.string   "estado"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "participantes", :force => true do |t|
+    t.string   "tipoDocumento"
+    t.integer  "documento"
+    t.string   "nombre"
+    t.string   "apellido"
+    t.string   "estadoCivil"
+    t.string   "genero"
+    t.string   "direccion"
+    t.integer  "telefono"
+    t.integer  "celular"
+    t.string   "correo"
+    t.date     "fechaNacimiento"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "rol_participante_id"
+  end
+
+  create_table "proceso_participantes", :force => true do |t|
+    t.integer  "participante_id"
+    t.integer  "proceso_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "procesos", :force => true do |t|
@@ -86,9 +146,30 @@ ActiveRecord::Schema.define(:version => 20130712211056) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "usuario_id"
+    t.integer  "tipo_proceso_id"
   end
 
   add_index "procesos", ["usuario_id"], :name => "index_procesos_on_usuario_id"
+
+  create_table "rol_participantes", :force => true do |t|
+    t.string   "rol"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles_participantes", :force => true do |t|
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "participante_id"
+    t.integer  "rolParticipante_id"
+  end
+
+  create_table "tipo_procesos", :force => true do |t|
+    t.string   "tipo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "usuario_id"
+  end
 
   create_table "usuarios", :force => true do |t|
     t.string   "username",         :null => false

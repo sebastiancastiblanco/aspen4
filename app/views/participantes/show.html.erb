@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tipodocumento:</b>
+  <%= @participante.tipoDocumento %>
+</p>
+
+<p>
+  <b>Documento:</b>
+  <%= @participante.documento %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @participante.nombre %>
+</p>
+
+<p>
+  <b>Apellido:</b>
+  <%= @participante.apellido %>
+</p>
+
+<p>
+  <b>Estadocivil:</b>
+  <%= @participante.estadoCivil %>
+</p>
+
+<p>
+  <b>Genero:</b>
+  <%= @participante.genero %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @participante.direccion %>
+</p>
+
+<p>
+  <b>Telefono:</b>
+  <%= @participante.telefono %>
+</p>
+
+<p>
+  <b>Celular:</b>
+  <%= @participante.celular %>
+</p>
+
+<p>
+  <b>Correo:</b>
+  <%= @participante.correo %>
+</p>
+
+<p>
+  <b>Fechanacimiento:</b>
+  <%= @participante.fechaNacimiento %>
+</p>
+
+
+<%= link_to 'Edit', edit_participante_path(@participante) %> |
+<%= link_to 'Back', participantes_path %>

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tipoContrato: MyString
+  objeto: MyString
+  particpante1: 1
+  participante2: 1
+  valor: 1.5
+  formaPago: MyString
+  obligaciones: MyString
+  deberes: MyString
+  fechaInicio: 2013-07-23
+  fechaFin: 2013-07-23
+
+two:
+  tipoContrato: MyString
+  objeto: MyString
+  particpante1: 1
+  participante2: 1
+  valor: 1.5
+  formaPago: MyString
+  obligaciones: MyString
+  deberes: MyString
+  fechaInicio: 2013-07-23
+  fechaFin: 2013-07-23

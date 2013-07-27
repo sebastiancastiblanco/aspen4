@@ -1,0 +1,21 @@
+<%= form_for(@rol_participante) do |f| %>
+  <% if @rol_participante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rol_participante.errors.count, "error") %> prohibited this rol_participante from being saved:</h2>
+
+      <ul>
+      <% @rol_participante.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rol %><br />
+    <%= f.text_field :rol %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

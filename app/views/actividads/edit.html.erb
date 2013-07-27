@@ -1,0 +1,59 @@
+<body>
+
+<div id="workspace" class="workspace">
+		<div class="container stack_container" style="width: 960px;">
+			<div class="panel sheet project active blank_slate fondoGris">
+
+				<header>
+				<ul class="breadcrumbs">
+					<li><%= link_to 'Procesos', procesos_path %></li>
+					<li><%= link_to @proceso.id , @proceso %></li>
+					<li><%= link_to @proceso.titulo , @proceso %></li>
+					<li><%= link_to actividads_path(:proceso_id => @proceso.id) do  %>
+                          Actividades
+                          <% end %>
+					</li>
+					<li><a href="#"><%= @actividad.nombre %></a></li>
+					<li><a href="#">Editar Actividad</a></li>
+				</ul>
+				</header>
+
+				<div class="panel sheet topics fondoGris"
+					style="margin-left: 20px; margin-bottom: -20px;"
+					data-behavior=" prevent_reload_when_stacked">
+
+					<header class="has_buttons">
+					<div data-behavior="edit_project_header expandable">
+						<div class="collapsed_content ">
+							<div class="row">
+								<div class="small-12 columns">
+									<div class="small-6 columns left">
+										<h1 class="field">Editar Actividad</h1>
+									</div>
+
+									
+									<div class="small-3 columns right">
+											<%= button_to "Regresar", @proceso, :class => "small secondary button radius margenTop25", :method => :get  %>
+									</div>
+									
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					</header>
+
+					<div class="sheet_body ">
+						<article class="participants new expanded">
+							<%= render 'form' %>
+						</article>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+
+
