@@ -3,7 +3,8 @@ class ProcesosController < ApplicationController
   # GET /procesos.json
   def index
    # @procesos = Proceso.all
-    @procesos = current_user.procesos
+   #if (current_user.procesos !=null)
+      @procesos = current_user.procesos
     
 
     respond_to do |format|
@@ -40,7 +41,9 @@ class ProcesosController < ApplicationController
   def new
     @proceso = Proceso.new
     #Para el combo de tipos de procesos
-    @tipos_procesos = TipoProceso.all
+    @tipos_procesos = current_user.tipo_procesos
+    #Para el item tipos de proceso
+    @tipo_proceso = TipoProceso.new
 
     respond_to do |format|
       format.html # new.html.erb
