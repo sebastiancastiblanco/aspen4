@@ -1,0 +1,33 @@
+<h1>Listing alerta</h1>
+
+<table>
+  <tr>
+    <th>Titulo</th>
+    <th>Hora</th>
+    <th>Nota</th>
+    <th>Comienza</th>
+    <th>Termina</th>
+    <th>Repeticion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @alerta.each do |alertum| %>
+  <tr>
+    <td><%= alertum.titulo %></td>
+    <td><%= alertum.hora %></td>
+    <td><%= alertum.nota %></td>
+    <td><%= alertum.comienza %></td>
+    <td><%= alertum.termina %></td>
+    <td><%= alertum.repeticion %></td>
+    <td><%= link_to 'Show', alertum %></td>
+    <td><%= link_to 'Edit', edit_alertum_path(alertum) %></td>
+    <td><%= link_to 'Destroy', alertum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Alertum', new_alertum_path %>

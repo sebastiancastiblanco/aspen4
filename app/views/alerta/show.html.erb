@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Titulo:</b>
+  <%= @alertum.titulo %>
+</p>
+
+<p>
+  <b>Hora:</b>
+  <%= @alertum.hora %>
+</p>
+
+<p>
+  <b>Nota:</b>
+  <%= @alertum.nota %>
+</p>
+
+<p>
+  <b>Comienza:</b>
+  <%= @alertum.comienza %>
+</p>
+
+<p>
+  <b>Termina:</b>
+  <%= @alertum.termina %>
+</p>
+
+<p>
+  <b>Repeticion:</b>
+  <%= @alertum.repeticion %>
+</p>
+
+
+<%= link_to 'Edit', edit_alertum_path(@alertum) %> |
+<%= link_to 'Back', alerta_path %>

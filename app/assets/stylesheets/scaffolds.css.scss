@@ -1,10 +1,14 @@
 body {
- 
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
- 
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
   line-height: 18px;
 }
 
@@ -38,12 +42,6 @@ div {
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table;
-}
-
-.field_with_errors #label {
-  padding: 2px;
-  background-color: transparent !important;
   display: table;
 }
 

@@ -1,0 +1,41 @@
+<%= form_for(@alertum) do |f| %>
+  <% if @alertum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@alertum.errors.count, "error") %> prohibited this alertum from being saved:</h2>
+
+      <ul>
+      <% @alertum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %><br />
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :hora %><br />
+    <%= f.text_field :hora %>
+  </div>
+  <div class="field">
+    <%= f.label :nota %><br />
+    <%= f.text_field :nota %>
+  </div>
+  <div class="field">
+    <%= f.label :comienza %><br />
+    <%= f.datetime_select :comienza %>
+  </div>
+  <div class="field">
+    <%= f.label :termina %><br />
+    <%= f.datetime_select :termina %>
+  </div>
+  <div class="field">
+    <%= f.label :repeticion %><br />
+    <%= f.number_field :repeticion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,7 @@
 AspenVersion3::Application.routes.draw do
+  resources :alerta
+
+
   resources :tipo_procesos
 
 
