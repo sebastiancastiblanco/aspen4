@@ -1,29 +1,45 @@
-<%= form_for(@proceso) do |f| %>
+<%= form_for(@proceso, :html => { :class => "custom"}) do |f| %>
 
 <div class="row">
 
-  <div class="small-1 small-offset-3 columns "><%= f.label :tipoProceso_, :class => "tituloCampo error" %></div>
-  <div class="small-4 columns field">
-      <%= f.select :tipo_proceso_id, [["Tipo Proceso", 0]] + @tipos_procesos.map {|r| [r.tipo,r.id]}, { :disabled => ["Tipo Proceso", 0] } %>
+  <div class="small-2 small-offset-0 columns ">
+    <%= f.label "Tipo de Proceso", :class => "tituloCampo error alinearDerecha" %>
   </div>
-  <div class="small-5 small-offset-1 columns "></div>
+  <div class="small-4 columns field">
+     <%= f.select :tipo_proceso_id, [["Tipo Proceso", 0]] + @tipos_procesos.map {|r| [r.tipo,r.id]}, { :disabled => ["Tipo Proceso", 0] } %>
+  </div>
 
-  <div class="small-1 small-offset-3 columns "><%= f.label :referencia_, :class => "tituloCampo error" %></div>
-  <div class="small-4 columns field"><%= f.text_field :referencia , :placeholder => "Número de Referencia" %></div>
-  <div class="small-5 small-offset-1 columns "></div>
+   <div class="small-2 small-offset-0 columns ">
+    <%= f.label :titulo_, :class => "tituloCampo error alinearDerecha" %>
+  </div>
+  <div class="small-4 columns field">
+    <%= f.text_field :titulo , :placeholder => "Titulo del proceso "%>
+  </div>
+</div> 
 
-  <div class="small-1 small-offset-3 columns "><%= f.label :titulo_, :class => "tituloCampo" %></div>
-  <div class="small-4 columns field"><%= f.text_field :titulo , :placeholder => "Titulo del proceso"%></div>
-  <div class="small-5 small-offset-1 columns "></div>
-
-  <div class="small-1 small-offset-3 columns field"><%= f.label :objetivo_, :class => "tituloCampo" %></div>
-  <div class="small-4 columns field"><%= f.text_area :objetivo, :rows => 10, :cols => 27, :placeholder => "Objetivo del proceso, máximo 250 caracteres"  %> </div>
-  <div class="small-5 small-offset-1 columns"></div>
+<div class="row"> 
+  <div class="small-2  columns">
+    <%= f.label :referencia_, :class => "tituloCampo error alinearDerecha" %>
+  </div>
+  <div class="small-4 columns ">
+     <%= f.text_field :referencia , :placeholder => "Número de Referencia" %>
+  </div>
+  <div class="small-2 small-offset-0 columns ">
+    <%= f.label :objetivo_, :class => "tituloCampo error alinearDerecha" %>
+  </div>
+  <div class="small-4 columns field">
+    <%= f.text_area :objetivo, :rows => 10, :cols => 27, :placeholder => "Objetivo del proceso, máximo 250 caracteres"  %>
+  </div>
   
-  <div class="small-1 small-offset-3 columns field"><%= f.label :ciudad_, :class => "tituloCampo" %></div>
-  <div class="small-4 columns field"><%= f.text_field :ciudad , :placeholder => "Ciudad"%></div>
-  <div class="small-5 small-offset-1 columns field"></div>
-  
+   <div class="small-2 small-offset-0 columns ">
+    <%= f.label :ciudad_, :class => "tituloCampo error alinearDerecha" %>
+  </div>
+  <div class="small-4 columns field">
+    <%= f.text_field :ciudad , :placeholder => "Ciudad del proceso"%>
+  </div>
+</div>
+<div class="row"> 
+
   <% if @proceso.errors.any? %>
       <div class="small-4 columns field"></div>
       <div class="small-4 small-offset-3 columns field">
@@ -33,24 +49,12 @@
         <%= f.submit :'Guardar Proceso' , :class => " button success radius" %></div>
      </div>
   <% else %>      
-      <div class="small-1 small-offset-7 columns field"></div>
-      <div class="small-4 columns field">
+      <div class="small-1 small-offset-8 columns field"></div>
+      <div class="small-2 columns field">
         <%= f.submit :'Guardar Proceso' , :class => " button success radius" %></div>
      </div>
   <% end %>
+ 
 </div>
-
-<% if @proceso.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@proceso.errors.count, "error") %> prohibited this proceso from being saved:</h2>
-
-      <ul>
-      <% @proceso.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
 
 <% end %>

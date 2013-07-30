@@ -1,0 +1,22 @@
+<%= form_for(@tipo_proceso, :html => { :class => "custom"} ) do |f| %>
+  <div class="row"> 
+		  <% if @tipo_proceso.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@tipo_proceso.errors.count, "error") %> prohibited this tipo_proceso from being saved:</h2>
+
+		      <ul>
+		      <% @tipo_proceso.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>         
+          <div class="small-6 columns field">
+            <%= f.text_field :tipo, :placeholder => "Nuevo Tipo de Proceso" %>
+            <%= hidden_field_tag :usuario_id, current_user.id %>
+          </div>
+          <div class="small-4 small-offset-1 columns field">
+             <%= f.submit :'Crear Tipo de Proceso' , :class => " button radius" %>
+          </div>
+  </div>
+<% end %> 

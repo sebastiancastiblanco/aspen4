@@ -1,5 +1,5 @@
 class TipoProceso < ActiveRecord::Base
-  attr_accessible :tipo
+  attr_accessible :tipo,:usuario_id
 
   #pertenece a un superUsuario
   belongs_to :usuario

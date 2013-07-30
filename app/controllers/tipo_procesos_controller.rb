@@ -41,10 +41,14 @@ class TipoProcesosController < ApplicationController
   # POST /tipo_procesos.json
   def create
     @tipo_proceso = TipoProceso.new(params[:tipo_proceso])
+    #Asociar el Tipo de proceso a el usuario logeado
+    @tipo_proceso.usuario_id = current_user.id
 
     respond_to do |format|
       if @tipo_proceso.save
-        format.html { redirect_to @tipo_proceso, notice: 'Tipo proceso was successfully created.' }
+
+
+        format.html { redirect_to new_proceso_path, notice: 'Tipo proceso was successfully created.' }
         format.json { render json: @tipo_proceso, status: :created, location: @tipo_proceso }
       else
         format.html { render action: "new" }
