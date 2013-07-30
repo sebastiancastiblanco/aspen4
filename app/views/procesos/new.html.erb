@@ -21,12 +21,15 @@
 						<div class="collapsed_content ">
 							<div class="row">
 								<div class="small-12 columns">
-									<div class="small-6 columns left">
+									<div class="small-7 columns left">
 										<h1 class="field">Nuevo Proceso</h1>
 									</div>
 
-									<div class="small-3 columns right">
-											<%= button_to "Regresar", procesos_path, :class => "small secondary button radius margenTop25", :method => :get  %>
+									<div class="small-2 columns alinearDerecha">
+										<%= button_to "Regresar", procesos_path, :class => "small secondary button radius margenTop25", :method => :get  %>
+									</div>
+									<div class="small-3 columns alinearDerecha">
+										<button class="small secondary button radius margenTop25" data-reveal-id="myModal"> Nuevo tipo proceso</button>
 									</div>
 									
 
@@ -49,3 +52,20 @@
 	</div>
 </body>
 
+  <div id="myModal" class="reveal-modal small">
+      <div class="sheet_body ">
+          <article class="participants new expanded">
+			<div class="expanded_content bubble fondoGris">
+              <h1>Nuevo Tipo de Proceso</h1>
+              <hr/>
+               <p>Puedes crear un nuevo tipo de proceso y asociarlo al proceso a iniciar. </p>
+              <br/>
+              
+              <%= render 'formTipoProceso' %>
+                
+              <a class="close-reveal-modal">&#215;</a>
+                      
+             </div>
+         </article>
+      </div>
+    </div>
