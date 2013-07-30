@@ -44,49 +44,7 @@
                         <section class="calendar_events">
                             
                             <% @actividads.each do |actividad| %>
-
-                            <section class="group today upcoming_events">
-                                <header>
-                                    <h2><%= actividad.nombre %></h2>
-                                </header>
-                                <article class="calendar_event">
-                                    <header>
-                                            <span class="day_of_week"><%= fechaDiaSemana actividad.fechaSeguimiento %></span>
-                                            <span class="month"><%= fechaMes actividad.fechaSeguimiento %></span>
-                                            <% if actividad.estado_actividad.estado =="Abierto" %>
-                                                       <span class="day" style="background-color: #457a1a !important"><%= fechaDia actividad.fechaSeguimiento %></span>
-                                            <% end %>
-                                            <% if actividad.estado_actividad.estado =="Atrasada" %>
-                                                        <span class="day" style="background-color: #970b0e  !important"><%= fechaDia actividad.fechaSeguimiento %></span>
-                                            <% end %>
-                                            <% if actividad.estado_actividad.estado =="Terminada" %>
-                                                        <span class="day" style="background-color: #000 !important"><%= fechaDia actividad.fechaSeguimiento %></span>
-                                            <% end %>
-                                           
-
-                                    </header>
-                                    <ul>
-                                        <li id="CalendarEvent_5615518">
-                                           <% if actividad.estado_actividad.estado =="Abierto" %>
-                                            <span style="color: #457a1a"><%= actividad.estado_actividad.estado%></span>
-                                            <% end %>
-                                            <% if actividad.estado_actividad.estado =="Atrasada" %>
-                                            <span style="color: #970b0e"><%= actividad.estado_actividad.estado%></span>
-                                            <% end %>
-                                            <% if actividad.estado_actividad.estado =="Terminada" %>
-                                            <span style="color: #000"><%= actividad.estado_actividad.estado%></span>
-                                            <% end %> 
-                                            <a href="#"><%= actividad.participante.nombre %></a>
-                                            <a href="#"><%= actividad.descripcion%></a>
-                                            <% if actividad.tiempoEjecucion %>
-                                              <a href="#"><%= actividad.tiempoEjecucion%> <%= actividad.medidaTiempo%></a>
-                                            <% end %> 
-
-                                            <%= button_to "Ver", {:controller => "actividads", :action => "edit",:actividad_id => actividad.id, :proceso_id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
-                                        </li>
-                                    </ul>
-                                </article>
-                            </section>
+                              <%= render 'actividad',:actividad => actividad%>
                             <% end %>
                         </section>
                         </div>

@@ -47,24 +47,12 @@
           <div class="sheet_body fondoGris">
             <section class="topics" data-collection-name="topics">
                 
-              <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+              <table id="usuarios"class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
                 <tbody>
                     <% @usuarios.each do |usuario| %>
-                  <tr class="topic message_10997527 fondoGris" id="topic_22725579">
-                    <td class="who">
-                      <strong><a href="#"><%= usuario.username %> - </a></strong>
-                    
-                      <a href="#">
-                        <%= usuario.email %>
-                        <span class="excerpt"> - Descripcion</span>
-                      </a>
-                      <%= button_to "Ver", usuario, :class => "tiny button secondary radius inlineBlock", :method => :get  %>
-                      <%= link_to 'Eliminar', usuario, method: :delete, data: { confirm: 'Are you sure?' } %>
-                    
-                    <td class="when">
-                      <a href="#"><time data-compact="" datetime="2013-04-29T12:32:37Z" style="">Apr 29</time></a>
-                    </td>
-                  </tr>
+
+                    <%= render "usuario", :usuario => usuario %>
+
                   <% end %>
 
                 </tbody>

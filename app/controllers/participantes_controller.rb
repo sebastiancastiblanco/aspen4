@@ -54,7 +54,7 @@ class ParticipantesController < ApplicationController
          #Crear la relacion entre particpante creado y el proceso
          @participante.proceso_participantes.create(:participante_id => Participante.last.id,:proceso_id => @proceso.id)
 
-        format.html { redirect_to @proceso, notice: 'Participante was successfully created.' }
+        format.html { redirect_to @proceso, notice: 'Participante fue creado correctamente.'}
         format.json { render json: @participante, status: :created, location: @participante }
       else
         format.html { render action: "new" }
@@ -89,6 +89,7 @@ class ParticipantesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to participantes_url }
       format.json { head :no_content }
+      format.js
     end
   end
 end

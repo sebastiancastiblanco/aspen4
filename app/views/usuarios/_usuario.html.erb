@@ -1,0 +1,19 @@
+
+<tr id="usuario_<%= usuario.id %>" class="topic message_10997527 fondoGris" >
+<td class="who">
+  <strong><a href="#"><%= usuario.username %> - </a></strong>
+
+  <a href="#">
+    <%= usuario.email %>
+    <span class="excerpt"> - Descripcion</span>
+  </a>
+
+  
+  <%= button_to "Ver", usuario, :class => "tiny button secondary radius inlineBlock", :method => :get  %>
+  <%= button_to "Eliminar", usuario, :class => "tiny button alert radius inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este usuario?' } , :remote => true %>
+
+
+<td class="when">
+  <a href="#"><time data-compact="" datetime="2013-04-29T12:32:37Z" style="">Apr 29</time></a>
+</td>
+</tr>

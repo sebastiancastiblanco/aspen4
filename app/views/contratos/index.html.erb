@@ -46,24 +46,8 @@
               <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
                 <tbody>
                    <% @contratos.each do |contrato| %>
-                  <tr class="topic message_10997527 fondoGris" id="topic_22725579">
-                    <td class="who">
-                       <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id) do   %>
-                                <%= contrato.objeto %> - 
-                        <% end %>
-                      
-                       <%= button_to "Ver 2", {:controller => "contratos", :action => "edit",:contrato_id => contrato.id, :proceso_id => @proceso.id},:class => "tiny button radius ", :method=>:post  %>
-
-                       <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id),:class => "button radius " do  %>
-                                Ver
-                        <% end %>
-
-                      <%= button_to "Eliminar", contrato, :class => "tiny button alert radius inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este contrato?' }  %>
-                    <td class="when">
-                      <a href="#"> <%= fechaFormato1 contrato.created_at %> </a>
-                    </td>
-                  </tr>
-                  <% end %>
+                    <%= render 'contrato', :contrato => contrato %>  
+                   <% end %>
 
                 </tbody>
               </table>
