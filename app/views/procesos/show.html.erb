@@ -7,8 +7,9 @@
 
         <header>
           <div class="header_links">
-            <a href="#">
-              <i class="foundicon-star"></i>  
+            <a id="procesofavorito" class="pointer" onClick="cambioEstadoFavoritoHome(<%= @proceso.id %>)" >
+              <i id="ProcesoNoFavorito" class="foundicon-star"></i>
+              <div id="ProcesoFavorito" class="favoritoSeleccionado"></div>
             </a>
             
             <a href="#" data-reveal-id="myModal">

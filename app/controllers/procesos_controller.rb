@@ -3,9 +3,8 @@ class ProcesosController < ApplicationController
   # GET /procesos.json
   def index
    # @procesos = Proceso.all
-   #if (current_user.procesos !=null)
-      @procesos = current_user.procesos
-    
+     @procesos = current_user.procesos
+     
 
     respond_to do |format|
       format.html # index.html.erb
@@ -29,6 +28,9 @@ class ProcesosController < ApplicationController
     @contratos = @proceso.contratos.order("updated_at DESC").first(3)
     #recuperar las 3 ultimas actividades modificadas
     @actividads = @proceso.actividads.order("updated_at DESC").first(3)
+    #Variables Gon, pasar variable proceso para uso en codigo JS
+    gon.proceso_id = @proceso.id
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -102,4 +104,21 @@ class ProcesosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #Metodo para convertir el proceso en favorito
+  def favorito
+    @procesofavorito =  Proceso.find( params[:procesoid])
+    @procesofavorito.favorito = true
+    @procesofavorito.save
+    render :json => @procesofavorito
+  end
+
+  #Metodo para convertir el proceso en No favorito
+  def nofavorito
+    @procesofavorito =  Proceso.find( params[:procesoid])
+    @procesofavorito.favorito = false
+    @procesofavorito.save
+    render :json => @procesofavorito
+  end
+  
 end

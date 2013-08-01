@@ -13,3 +13,60 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+function CambioEstadofavorito(){
+$("#favorito").click(function()
+  {
+  	var favoritoProceso =  $('#ProcesoNoFavorito').css('display');
+  	alert("proceso id "+gon.proceso_id);
+  	if(favoritoProceso == "inline" || favoritoProceso == "block" ){
+     	$('#ProcesoNoFavorito').css('display', 'none');
+     	$('#ProcesoFavorito').css('display', 'block');	
+     }
+     else{
+     	$('#ProcesoFavorito').css('display', 'none');
+     	$('#ProcesoNoFavorito').css('display', 'block');		
+     }
+   });
+};
+
+function cambioEstadoFavoritoHome(procesoid){
+    var favoritoProceso =  $('#ProcesoNoFavorito').css('display');
+  	if(favoritoProceso == "inline" || favoritoProceso == "block" ){
+     	$.ajax({
+		        url: "/procesos/favorito/" + procesoid,
+		        dataType: "JSON",
+		        timeout: 10000,
+		        success: function(res){
+              $('#ProcesoNoFavorito').css('display', 'none');
+     			    $('#ProcesoFavorito').css('display', 'block');
+		        }
+		     })	
+     }
+    else{
+     	$.ajax({
+            url: "/procesos/nofavorito/" + procesoid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res){
+              $('#ProcesoFavorito').css('display', 'none');
+              $('#ProcesoNoFavorito').css('display', 'block');    
+            }
+         }) 
+     }
+   
+};
+
+function formularioCompartirProceso(){
+$('formCompartirProceso').click(function() {  
+    alert("form compartir");
+    $('#myModal').foundation('reveal', 'close');
+});
+};
+
+
+$(document).ready(function(){
+   CambioEstadofavorito();
+   cambioEstadoFavoritoHome(vari);
+   formularioCompartirProceso();
+});

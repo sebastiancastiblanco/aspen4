@@ -1,7 +1,7 @@
-<%= form_for(@control_acceso, :html => { :class => "custom"} ) do |f| %>
+<%= form_for(@control_acceso, :remote => true, :html => { :class => "custom",:id => "formCompartirProceso"} ) do |f| %>
   <div class="row"> 
           
-          <div class="small-7 columns field">
+          <div class="small-6 columns field">
             <%= f.select :usuario_id, [["Selecciona un Usuario", 0]] + @usuarios.map {|r| [r.username,r.id] }, { :disabled => ["Selecciona un Usuario", 0] } %>
             <%= hidden_field_tag :proceso_id, @proceso.id %>
           </div>

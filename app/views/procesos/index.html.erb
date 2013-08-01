@@ -32,9 +32,11 @@
                        
                         <% @procesos.each do |proceso| %>
                         <article class="card fondoGris">
-                            <span class="star"   title="proyecto favorito">
-                                <i class="foundicon-star"></i> 
-                            </span>
+                            
+                            <a id="favoritoHome" class="star" onClick="cambioEstadoFavoritoHome(<%= proceso.id %>)">
+                              <i   id="ProcesoNoFavorito" class="foundicon-star"></i>
+                              <div id="ProcesoFavorito" class="favoritoSeleccionado"></div>
+                            </a>
                             
                         <%= link_to(proceso) do  %>
                           
