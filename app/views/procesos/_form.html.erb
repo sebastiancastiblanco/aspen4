@@ -6,7 +6,7 @@
     <%= f.label "Tipo de Proceso", :class => "tituloCampo error alinearDerecha" %>
   </div>
   <div class="small-4 columns field">
-     <%= f.select :tipo_proceso_id, [["Tipo Proceso", 0]] + @tipos_procesos.map {|r| [r.tipo,r.id]}, { :disabled => ["Tipo Proceso", 0] } %>
+     <%= f.select :tipo_proceso_id, [["Tipo Proceso", 0]] + @tipos_procesos.map {|r| [r.tipo,r.id]}, { :disabled => ["Tipo Proceso", 0] } , :id => "listaTiposProceso" %>
   </div>
 
    <div class="small-2 small-offset-0 columns ">

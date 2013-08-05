@@ -30,7 +30,8 @@ class ProcesosController < ApplicationController
     @actividads = @proceso.actividads.order("updated_at DESC").first(3)
     #Variables Gon, pasar variable proceso para uso en codigo JS
     gon.proceso_id = @proceso.id
-
+    #Variable cantidad de usuarios en el proces
+    gon.cantidadUsuarios = @proceso.usuarios.size
 
     respond_to do |format|
       format.html # show.html.erb
@@ -119,6 +120,12 @@ class ProcesosController < ApplicationController
     @procesofavorito.favorito = false
     @procesofavorito.save
     render :json => @procesofavorito
+  end
+
+  #Cantidad de usuarios
+  def cantidadUsuarios
+    @proceso =  Proceso.find( params[:procesoid])
+    render :json => @proceso.usuarios
   end
   
 end

@@ -905,3 +905,7 @@ color: #444;
 .pointer{
   cursor: pointer;
 }
+
+.posicionNombreUsuario{
+  margin-bottom: 5px;
+}

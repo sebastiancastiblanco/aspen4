@@ -34,8 +34,13 @@
                         <article class="card fondoGris">
                             
                             <a id="favoritoHome" class="star" onClick="cambioEstadoFavoritoHome(<%= proceso.id %>)">
-                              <i   id="ProcesoNoFavorito" class="foundicon-star"></i>
-                              <div id="ProcesoFavorito" class="favoritoSeleccionado"></div>
+                                <% if (proceso.favorito) %>
+                                  <div id="ProcesoNoFavorito<%= proceso.id %>" class="foundicon-star" style="display:none"></div>
+                                  <div id="ProcesoFavorito<%= proceso.id %>" class="favoritoSeleccionado" style="display:block"></div>
+                                <% else %>
+                                  <div id="ProcesoNoFavorito<%= proceso.id %>" class="foundicon-star" style="display:block"></div>
+                                  <div id="ProcesoFavorito<%= proceso.id %>" class="favoritoSeleccionado" style="display:none"></div>
+                                <% end %>
                             </a>
                             
                         <%= link_to(proceso) do  %>

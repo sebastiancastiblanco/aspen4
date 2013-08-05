@@ -1,6 +1,7 @@
 AspenVersion3::Application.routes.draw do
+  
   resources :tipo_procesos
-
+  get "tipo_procesos/create"
 
   resources :actividads
   resources :estado_actividads
@@ -24,6 +25,7 @@ AspenVersion3::Application.routes.draw do
 
   match '/participantes/new/:id' => 'participantes#new', as: :nuevoParticipante
   match '/participantes/:id' => 'participantes#index', as: :listaParticipantes
+  match '/participantes/:id/edit' => 'participantes#edit', as: :listaParticipantes
 
   match '/contratos/new/:id' => 'contratos#new', as: :nuevoContrato
   match '/contratos/:id' => 'contratos#index', as: :listaContratos
@@ -91,6 +93,8 @@ AspenVersion3::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   match 'procesos/favorito/:procesoid' => 'procesos#favorito'
+  match 'procesos/cantidadUsuarios/:procesoid' => 'procesos#cantidadUsuarios'
   match 'procesos/nofavorito/:procesoid' => 'procesos#nofavorito'
+  match 'tipo_procesos/create/' => 'tipo_procesos#create'
 
 end

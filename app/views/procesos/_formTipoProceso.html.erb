@@ -1,4 +1,4 @@
-<%= form_for(@tipo_proceso, :html => { :class => "custom"} ) do |f| %>
+<%= form_for(@tipo_proceso, :remote => true,  :html => { :class => "custom",:id => "formCrearTipoProceso"} ) do |f| %>
   <div class="row"> 
 		  <% if @tipo_proceso.errors.any? %>
 		    <div id="error_explanation">
@@ -16,7 +16,7 @@
             <%= hidden_field_tag :usuario_id, current_user.id %>
           </div>
           <div class="small-4 small-offset-1 columns field">
-             <%= f.submit :'Crear Tipo de Proceso' , :class => " button radius" %>
+             <%= f.submit :'Crear Tipo de Proceso' , :class => " button radius"  %>
           </div>
   </div>
 <% end %> 
