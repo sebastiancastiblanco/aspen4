@@ -52,6 +52,11 @@ module AspenVersion3
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+                                              errors = Array(instance.error_message).join(',')
+                                              %Q(<div class="error">#{html_tag}</div> <label class="error">#{errors}</label>).html_safe
+                                            end
+
 
     # Enable the asset pipeline
     config.assets.enabled = true

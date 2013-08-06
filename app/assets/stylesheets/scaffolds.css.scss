@@ -36,9 +36,7 @@ div {
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+  @extend .error
 }
 
 .field_with_errors #label {

@@ -104,20 +104,12 @@
 </div>
 <div class="row"> 
 
-  <% if @participante.errors.any? %>
-      <div class="small-4 columns field"></div>
-      <div class="small-4 small-offset-3 columns field">
-        <h2><%= pluralize(@participante.errors.count, "errore") %> encontrados</h2>
-      </div>
-      <div class="small-5 columns field">
-        <%= f.submit :'Guardar Participante' , :class => " button success radius" %></div>
-     </div>
-  <% else %>      
+   
       <div class="small-1 small-offset-8 columns field"></div>
       <div class="small-2 columns field">
         <%= f.submit :'Guardar Participante' , :class => " button success radius" %></div>
      </div>
-  <% end %>
+ 
  
   <%= hidden_field_tag :proceso_id, @proceso.id %>
 

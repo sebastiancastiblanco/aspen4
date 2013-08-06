@@ -48,14 +48,14 @@ class ParticipantesController < ApplicationController
   def create
     @participante = Participante.new(params[:participante])
     @proceso = Proceso.find(params[:proceso_id])
+    @rol_participantes = RolParticipante.all
 
     respond_to do |format|
       if @participante.save
          #Crear la relacion entre particpante creado y el proceso
          @participante.proceso_participantes.create(:participante_id => Participante.last.id,:proceso_id => @proceso.id)
-
-        format.html { redirect_to @proceso, notice: 'Participante fue creado correctamente.'}
-        format.json { render json: @participante, status: :created, location: @participante }
+          format.html { redirect_to @participante, notice: 'Participante fue creado correctamente.'}
+          format.json { render json: @participante, status: :created, location: @participante }
       else
         format.html { render action: "new" }
         format.json { render json: @participante.errors, status: :unprocessable_entity }
