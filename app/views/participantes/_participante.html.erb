@@ -1,17 +1,15 @@
-<tr class="topic message_10997527 fondoGris" id="participante_<%= participante.id %>">
+<tr id="participante_<%= participante.id %>" class="topic message_10997527 fondoGris" >
   <td class="who">
-      <%= link_to edit_participante_path(:participante_id => participante.id, :proceso_id => @proceso.id) do  %>
+      <%= link_to edit_participante_path(participante), :remote => true do  %>
        <strong>
               <%= participante.rol_participante.rol %> - 
         </strong>
         <%= participante.nombre %>  <%= participante.apellido %> 
-        <% end %>
+      <% end %>
 
-
-   <%= button_to "Ver", {:controller => "participantes", :action => "edit",:participante_id => participante.id, :proceso_id => @proceso.id},:class => "tiny button secondary radius ", :method=>:post  %>
+      <%= button_to 'Ver', edit_participante_path(participante, :proceso_id => @proceso.id), :remote => true, :id => "new_product_link",:class => "tiny button secondary radius " %>
 
     <%= button_to "Eliminar", participante, :class => "tiny button alert radius inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este participante?' } , :remote => true %>
-
 
   <td class="when">
     <a href="#"> <%= fechaFormato1 participante.created_at %> </a>

@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-
 function cambioEstadoFavoritoHome(procesoid){
 
     var divProcesoNoFavorito = "#ProcesoNoFavorito"+procesoid;
@@ -45,6 +44,13 @@ function cambioEstadoFavoritoHome(procesoid){
      }
    
 };
+
+function listarParticipantes(){
+  $('#formParticipante').remove();
+  $('#participantes').show();
+  $('#new_participante_link').show();
+  $('#listar_participante_link').hide();
+}
 
 
 

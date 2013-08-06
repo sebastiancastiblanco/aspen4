@@ -1,5 +1,4 @@
-<%= form_for(@participante, :html => { :class => "custom"} ) do |f| %>
-
+<%= form_for @participante, :remote => true, :html => { :class => "custom",:id => "formParticipante"}  do |f| %>
 <div class="row">
 
     <div class="small-2 small-offset-0 columns ">
@@ -104,14 +103,11 @@
 </div>
 <div class="row"> 
 
-   
-      <div class="small-1 small-offset-8 columns field"></div>
-      <div class="small-2 columns field">
+     <div class="small-1 small-offset-8 columns field"></div>
+     <div class="small-2 columns field">
         <%= f.submit :'Guardar Participante' , :class => " button success radius" %></div>
      </div>
- 
- 
-  <%= hidden_field_tag :proceso_id, @proceso.id %>
+     <%= hidden_field_tag :proceso_id, @proceso.id %>
 
 
 </div>

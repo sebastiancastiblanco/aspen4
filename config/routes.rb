@@ -7,6 +7,8 @@ AspenVersion3::Application.routes.draw do
   resources :estado_actividads
   resources :contratos
   resources :participantes
+ 
+
   resources :rol_participantes
   resources :control_accesos
   
@@ -25,7 +27,7 @@ AspenVersion3::Application.routes.draw do
 
   match '/participantes/new/:id' => 'participantes#new', as: :nuevoParticipante
   match '/participantes/:id' => 'participantes#index', as: :listaParticipantes
-  match '/participantes/:id/edit' => 'participantes#edit', as: :listaParticipantes
+  match '/participantes/:id/edit' => 'participantes#edit', as: :editarParticipantes
 
   match '/contratos/new/:id' => 'contratos#new', as: :nuevoContrato
   match '/contratos/:id' => 'contratos#index', as: :listaContratos
@@ -92,9 +94,12 @@ AspenVersion3::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
+  
+
   match 'procesos/favorito/:procesoid' => 'procesos#favorito'
   match 'procesos/cantidadUsuarios/:procesoid' => 'procesos#cantidadUsuarios'
   match 'procesos/nofavorito/:procesoid' => 'procesos#nofavorito'
   match 'tipo_procesos/create/' => 'tipo_procesos#create'
+
 
 end

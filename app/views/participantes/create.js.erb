@@ -1,13 +1,10 @@
-alert("create");
 <% if @participante.errors.count == 0 %>
+	$('#formParticipante').remove();
 	$('#participantes').show();
 	$('#new_participante_link').show();
-	$('#participantes').append('<%= j render "participante", :participante => participante) %>');
-
+	$('#listar_participante_link').hide();
+	$('#participantes').after('<%= j render("participante", :participante => @participante) %>');
 <% else %>
-
-	$('#participantes').hide();
-	$('#new_participante_link').hide();
+	$('#formParticipante').remove();
 	$('#formularioParticipantes').after('<%= j render("form") %>');
-
 <% end %>
