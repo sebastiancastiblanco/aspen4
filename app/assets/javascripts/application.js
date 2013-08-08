@@ -69,6 +69,14 @@ function listarActividades(){
   document.getElementById("tituloActividad").innerHTML = "Actividades";
 }
 
+function listarUsuarios(){
+  $('#formUsuario').remove();
+  $('#usuarios').show();
+  $('#new_usuario_link').show();
+  $('#listar_usuarios_link').hide();
+  document.getElementById("tituloUsuario").innerHTML = "Usuarios";
+}
+
 function eventoCamposOpcionalesParticipante (){
     var panelcamposopcionales = "#camposOpcionalesParticipante";
     var display =  $(panelcamposopcionales).css('display');
@@ -98,6 +106,19 @@ function eventoCamposOpcionalesContrato (){
 
 function eventoCamposOpcionalesActividad (){
     var panelcamposopcionales = "#camposOpcionalesActividad";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+         $(panelcamposopcionales).css('display', 'none');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+      }
+      else{
+         $(panelcamposopcionales).css('display', 'block');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+      }
+}
+
+function eventoCamposOpcionalesUsuario (){
+    var panelcamposopcionales = "#camposOpcionalesUsuario";
     var display =  $(panelcamposopcionales).css('display');
       if(display == "block" ){
          $(panelcamposopcionales).css('display', 'none');

@@ -1,0 +1,10 @@
+<% if @usuario.errors.count == 0 %>
+	$('#formUsuario').remove();
+	$('#usuarios').show();
+	$('#new_usuario_link').show();
+	$('#listar_usuarios_link').hide();
+	$('#usuarios').append('<%= j render("usuario", :usuario => @usuario) %>');
+<% else %>
+	$('#formUsuario').remove();
+	$('#formularioUsuarios').after('<%= j render("form") %>');
+<% end %>

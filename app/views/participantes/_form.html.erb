@@ -28,6 +28,7 @@
            <%= f.select :rol_participante_id, [["Rol Participante", 0]] + @rol_participantes.map {|r| [r.rol,r.id]}, { :disabled => ["Rol Participante", 0] } %>
     </div>
 </div>
+
 <hr>
  <%= link_to 'Mostrar Campos Opcionales', "javascript:eventoCamposOpcionalesParticpante()", :class=>"textolinks", :id => "mostrarCamposOpcionales" %>
 <hr>

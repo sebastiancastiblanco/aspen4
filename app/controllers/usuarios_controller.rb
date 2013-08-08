@@ -29,6 +29,7 @@ class UsuariosController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @usuario }
+      format.js
     end
   end
 
@@ -44,11 +45,13 @@ class UsuariosController < ApplicationController
 
     respond_to do |format|
       if @usuario.save
-        format.html { redirect_to :procesos, notice: 'Usuario was successfully created.' }
+        format.html { redirect_to :procesos, notice: 'El Usuario fue creado correctamente.' }
         format.json { render json: @usuario, status: :created, location: @usuario }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -60,11 +63,13 @@ class UsuariosController < ApplicationController
 
     respond_to do |format|
       if @usuario.update_attributes(params[:usuario])
-        format.html { redirect_to @usuario, notice: 'Usuario was successfully updated.' }
+        format.html { redirect_to @usuario, notice: 'El Usuario fue modificado correctamente.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
