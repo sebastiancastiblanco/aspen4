@@ -8,9 +8,11 @@
        <header>
           <ul class="breadcrumbs">
             <li><%= link_to 'Procesos', procesos_path %></li>
-            <li><%= link_to @proceso.id , @proceso %></li>
-            <li><%= link_to @proceso.titulo , @proceso %></li>
-            <li><a href="#">Participantes</a></li>
+            <li><%= link_to @proceso do  %> 
+                  proceso <%= @proceso.id %> : <%= @proceso.titulo %> 
+                <% end %>
+            </li>
+            <li><%= link_to 'Partcipantes', "javascript:listarParticipantes()" %></li>
           </ul>
         </header>
         
@@ -23,7 +25,7 @@
                 <div class="small-12 columns">
                   
                     <div class="small-6 small-9 columns left">
-                      <h1>
+                      <h1 id="tituloParticipante">
                         Participantes
                       </h1>
                     </div>
@@ -46,6 +48,7 @@
               </div>
             </div>
           </div><div class="blank_slate_arrow"></div>
+
           </header>
 
           
@@ -54,7 +57,6 @@
                 
                 <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
                   <tbody id="participantes" >
-              
                     <% @participantes.each do |participante| %>
                       <%= render "participante", :participante => participante %> 
                     <% end %>
@@ -62,7 +64,8 @@
                   </tbody>
                 </table>
               
-              <div id="formularioParticipantes"></div>
+              
+              
             </section>
           </div>
         </div>

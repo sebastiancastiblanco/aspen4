@@ -35,9 +35,9 @@
                   <a href="#"><%= actividad.tiempoEjecucion%> <%= actividad.medidaTiempo%></a>
                 <% end %> 
 
-                 <%= button_to "Ver", {:controller => "actividads", :action => "edit",:actividad_id => actividad.id, :proceso_id => @proceso.id},:class => "tiny button secondary radius ", :method=>:post  %>
-
-                <%= button_to "Eliminar", actividad, :class => "tiny button alert radius inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este actividad?' } , :remote => true %>
+                 <%= button_to 'Ver', edit_actividad_path(actividad, :proceso_id => @proceso.id), :remote => true, :id => "new_actividad_link",:class => "tiny button  radius " %>
+      
+                <%= link_to "Eliminar", actividad, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar esta actividad?' } , :remote => true %>
 
 
                 

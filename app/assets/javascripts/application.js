@@ -50,7 +50,63 @@ function listarParticipantes(){
   $('#participantes').show();
   $('#new_participante_link').show();
   $('#listar_participante_link').hide();
+  document.getElementById("tituloParticipante").innerHTML = "Participantes";
 }
 
+function listarContratos(){
+  $('#formContrato').remove();
+  $('#contratos').show();
+  $('#new_contrato_link').show();
+  $('#listar_contratos_link').hide();
+  document.getElementById("tituloContrato").innerHTML = "Contratos";
+}
+
+function listarActividades(){
+  $('#formActividad').remove();
+  $('#actividades').show();
+  $('#new_actividad_link').show();
+  $('#listar_actividades_link').hide();
+  document.getElementById("tituloActividad").innerHTML = "Actividades";
+}
+
+function eventoCamposOpcionalesParticipante (){
+    var panelcamposopcionales = "#camposOpcionalesParticipante";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+         $(panelcamposopcionales).css('display', 'none');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+      }
+      else{
+         $(panelcamposopcionales).css('display', 'block');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+      }
+}
+
+
+function eventoCamposOpcionalesContrato (){
+    var panelcamposopcionales = "#camposOpcionalesContrato";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+         $(panelcamposopcionales).css('display', 'none');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+      }
+      else{
+         $(panelcamposopcionales).css('display', 'block');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+      }
+}
+
+function eventoCamposOpcionalesActividad (){
+    var panelcamposopcionales = "#camposOpcionalesActividad";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+         $(panelcamposopcionales).css('display', 'none');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+      }
+      else{
+         $(panelcamposopcionales).css('display', 'block');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+      }
+}
 
 

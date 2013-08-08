@@ -32,14 +32,19 @@ class ActividadsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @actividad }
+      format.js
     end
   end
 
   # GET /actividads/1/edit
   def edit
-    @actividad = Actividad.find(params[:actividad_id])
+    @actividad = Actividad.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
-    @estadoActividads = EstadoActividad.all    
+    @estadoActividads = EstadoActividad.all   
+     respond_to do |format|
+        format.html
+        format.js
+    end 
     
   end
 
@@ -55,9 +60,11 @@ class ActividadsController < ApplicationController
       if @actividad.save
         format.html { redirect_to @proceso, notice: 'Actividad fue creada correctamente' }
         format.json { render json: @actividad, status: :created, location: @actividad }
+         format.js
       else
         format.html { render action: "new" }
         format.json { render json: @actividad.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -71,9 +78,11 @@ class ActividadsController < ApplicationController
       if @actividad.update_attributes(params[:actividad])
         format.html { redirect_to @proceso, notice: 'Actividad fue modificada correctamente.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @actividad.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

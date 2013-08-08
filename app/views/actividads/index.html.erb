@@ -6,9 +6,11 @@
        <header>
           <ul class="breadcrumbs">
             <li><%= link_to 'Procesos', procesos_path %></li>
-            <li><%= link_to @proceso.id , @proceso %></li>
-            <li><%= link_to @proceso.titulo , @proceso %></li>
-            <li><a href="#">Actividades</a></li>
+            <li><%= link_to @proceso do  %> 
+                  proceso <%= @proceso.id %> : <%= @proceso.titulo %> 
+                <% end %>
+            </li>
+            <li><%= link_to 'Actividades', "javascript:listarActividades()" %></li>
           </ul>
         </header>
         
@@ -19,7 +21,7 @@
               <div class="row">
                 <div class="small-12 columns">
                     <div class="small-5 columns left">
-                      <h1>
+                      <h1 id="tituloActividad">
                         Actividades
                       </h1>
                     </div>
@@ -32,8 +34,17 @@
                       </dl>
                     </div>
                     <div class="small-2 columns left">
-                        <%= button_to "Nueva Actividad", {:controller => "actividads", :action => "new", :id => @proceso.id},:class => "button radius ", :method=>:post  %>
+                        
+                        <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_actividad_link" %>
+
+                        <%= button_to 'Listar Actividades',"javascript:listarActividades()" , :class => "button radius ocultar", :id => "listar_actividades_link" %>
                     </div>
+                    <% if notice %>
+                              <div data-alert class="alert-box success radius">
+                                <%= notice %>
+                                <a href="#" class="close">&times;</a>
+                              </div>
+                    <% end %>
                 </div>
               </div>
             </div>
@@ -41,13 +52,13 @@
           </header>
           <div class="sheet_body fondoGris">
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
-                        <section class="calendar_events">
-                            
+                        <section id="actividades" class="calendar_events">
                             <% @actividads.each do |actividad| %>
                               <%= render 'actividad',:actividad => actividad%>
                             <% end %>
                         </section>
-                        </div>
+                        <div id="formularioActividades"></div>
+            </div>
           </div>
         </div>
       </div>

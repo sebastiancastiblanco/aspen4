@@ -841,7 +841,7 @@ div.panel.home_tab div.project_templates.nuevoProceso{
 
 div#other_products {
   position: absolute;
-  bottom: 0;
+ /* bottom: 0;*/
   left: 0;
   background: transparent;
   text-align: center;
@@ -912,4 +912,33 @@ color: #444;
 
 .ocultar{
   display: none;
+}
+
+.textolinks{
+  color: #2795b6 !important;
+  font-family: HelveticaRegular, arial !important;
+  font-size: 12px !important;
+  font-style: italic !important;
+}
+
+.textoGrislinks{
+  color: #7d7a75 !important;
+  font-family: HelveticaRegular, arial !important;
+  font-style: italic !important;
+  font-size: 12px !important;
+}
+
+.textRojolinks{
+  color: #7d7a75 !important;
+  font-family: HelveticaRegular, arial !important;
+  font-style: italic !important;
+  font-size: 12px !important;
+}
+.textRojolinks:hover, .textRojolinks:focus{
+  color: #970b0e !important;
+  text-decoration: underline !important;  
+}
+
+.textolinks:hover, .textolinks:focus{
+  text-decoration: underline !important;  
 }

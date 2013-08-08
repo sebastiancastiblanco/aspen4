@@ -1,0 +1,12 @@
+<% if @actividad.errors.count == 0 %>
+	$('#formActividad').remove();
+	$('#actividades').show();
+	$('#new_actividad_link').show();
+	$('#listar_actividades_link').hide();
+	$('#actividades').append('<%= j render("actividad", :actividad => @actividad) %>');
+<% else %>
+	$('#formActividad').remove();
+	$('#formularioActividades').after('<%= j render("form") %>');
+<% end %>
+
+

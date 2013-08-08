@@ -3,7 +3,7 @@
 	$('#participantes').show();
 	$('#new_participante_link').show();
 	$('#listar_participante_link').hide();
-	$('#participantes').after('<%= j render("participante", :participante => @participante) %>');
+	$('#participantes').append('<%= j render("participante", :participante => @participante) %>');
 <% else %>
 	$('#formParticipante').remove();
 	$('#formularioParticipantes').after('<%= j render("form") %>');

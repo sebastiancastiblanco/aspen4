@@ -1,0 +1,12 @@
+<% if @contrato.errors.count == 0 %>
+	$('#formContrato').remove();
+	$('#contratos').show();
+	$('#new_contrato_link').show();
+	$('#listar_contratos_link').hide();
+	$('#contratos').append('<%= j render("contrato", :contrato => @contrato) %>');
+<% else %>
+	$('#formContrato').remove();
+	$('#formularioContratos').after('<%= j render("form") %>');
+<% end %>
+
+

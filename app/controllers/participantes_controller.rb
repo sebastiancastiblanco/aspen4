@@ -4,6 +4,7 @@ class ParticipantesController < ApplicationController
   def index
     @proceso = Proceso.find(params[:id])
     @participantes = @proceso.participantes
+    gon.crearParticipante = (params[:crearParticipante])
     
     respond_to do |format|
       format.html # index.html.erb
@@ -28,6 +29,7 @@ class ParticipantesController < ApplicationController
     @participante = Participante.new
     @rol_participantes = RolParticipante.all
     @proceso = Proceso.find(params[:id])
+
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,0 +1,5 @@
+$('#listar_contratos_link').show();
+$('#contratos').hide();
+$('#new_contrato_link').hide();
+$('#formularioContratos').after('<%= j render("form") %>');
+document.getElementById("tituloContrato").innerHTML = "Nuevo Contrato";
