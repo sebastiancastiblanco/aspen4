@@ -133,13 +133,13 @@ function eventoCamposOpcionalesUsuario (){
 function listarActividadesfiltrado(procesoid,estadoid){
   $.ajax({
             url: "/actividads/filtrado/"+procesoid+"/"+ estadoid,
-            dataType: "html",
+            dataType: "JSON",
             timeout: 10000,
             success: function(res)
             {
-               
-               $('#actividades').html(res);
-             
+              alert(res);
+
+                $('#actividades').html(res);
             }
          }) 
 }

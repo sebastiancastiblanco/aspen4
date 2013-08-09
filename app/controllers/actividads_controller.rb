@@ -107,11 +107,10 @@ class ActividadsController < ApplicationController
       @actividades = @proceso.actividads
     else
       @actividades = @proceso.actividads.joins(:estado_actividad).where(estado_actividads: {id: params[:estado_id]})
-    end    
-    
-     respond_to do |format|
-      format.js
     end
+
+    render :json => @actividades
+    
  end
 
 end
