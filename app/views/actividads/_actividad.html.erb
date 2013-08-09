@@ -21,26 +21,25 @@
         <ul>
             <li id="CalendarEvent_5615518">
                <% if actividad.estado_actividad.estado =="Abierto" %>
-                <span style="color: #457a1a"><%= actividad.estado_actividad.estado%></span>
+                Estado: <span style="color: #457a1a"><%= actividad.estado_actividad.estado%></span>
                 <% end %>
                 <% if actividad.estado_actividad.estado =="Atrasada" %>
-                <span style="color: #970b0e"><%= actividad.estado_actividad.estado%></span>
+                Estado: <span style="color: #970b0e"><%= actividad.estado_actividad.estado%></span>
                 <% end %>
                 <% if actividad.estado_actividad.estado =="Terminada" %>
-                <span style="color: #000"><%= actividad.estado_actividad.estado%></span>
+                Estado: <span style="color: #000"><%= actividad.estado_actividad.estado%></span>
                 <% end %> 
-                <a href="#"><%= actividad.participante.nombre %></a>
-                <a href="#"><%= actividad.descripcion%></a>
+                
+                <p>Encargado: <%= actividad.participante.nombre %> </p>
+                <p>Descripcion: <%= actividad.descripcion %> </p>
+                
                 <% if actividad.tiempoEjecucion %>
-                  <a href="#"><%= actividad.tiempoEjecucion%> <%= actividad.medidaTiempo%></a>
+                   <p>Tiempo Estimado: <%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo%></p>
                 <% end %> 
 
                  <%= button_to 'Ver', edit_actividad_path(actividad, :proceso_id => @proceso.id), :remote => true, :id => "new_actividad_link",:class => "tiny button  radius " %>
       
                 <%= link_to "Eliminar", actividad, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar esta actividad?' } , :remote => true %>
-
-
-                
 
             </li>
         </ul>

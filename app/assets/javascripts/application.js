@@ -130,4 +130,16 @@ function eventoCamposOpcionalesUsuario (){
       }
 }
 
-
+function listarActividadesfiltrado(procesoid,estadoid){
+  $.ajax({
+            url: "/actividads/filtrado/"+procesoid+"/"+ estadoid,
+            dataType: "html",
+            timeout: 10000,
+            success: function(res)
+            {
+               
+               $('#actividades').html(res);
+             
+            }
+         }) 
+}

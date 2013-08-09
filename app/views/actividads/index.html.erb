@@ -27,10 +27,12 @@
                     </div>
                     <div class="small-4 columns left">
                       <dl class="sub-nav">
-                          <dd class="active"><a href="#">Todas</a></dd>
-                          <dd><a href="#">Abiertas</a></dd>
-                          <dd><a href="#">Atrasadas</a></dd>
-                          <dd><a href="#">Terminadas</a></dd>
+                          <dd class="active">
+                              <%= link_to 'Todas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',0)" %>
+                          </dd>
+                          <dd> <%= link_to 'Abiertas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',1)" %></dd>
+                          <dd><%= link_to 'Atrasadas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',2)" %></dd>
+                          <dd><%= link_to 'Terminadas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',3)" %></dd>
                       </dl>
                     </div>
                     <div class="small-2 columns left">
@@ -53,9 +55,7 @@
           <div class="sheet_body fondoGris">
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
                         <section id="actividades" class="calendar_events">
-                            <% @actividads.each do |actividad| %>
-                              <%= render 'actividad',:actividad => actividad%>
-                            <% end %>
+                            <%= render partial: "actividad", collection: @actividads %>
                         </section>
                         <div id="formularioActividades"></div>
             </div>

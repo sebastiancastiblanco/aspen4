@@ -4,6 +4,7 @@
 	$('#new_usuario_link').show();
 	$('#listar_usuarios_link').hide();
 	$('#usuarios').append('<%= j render("usuario", :usuario => @usuario) %>');
+	document.getElementById("tituloUsuario").innerHTML = "Usuarios";
 <% else %>
 	$('#formUsuario').remove();
 	$('#formularioUsuarios').after('<%= j render("form") %>');

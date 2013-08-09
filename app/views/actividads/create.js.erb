@@ -4,6 +4,7 @@
 	$('#new_actividad_link').show();
 	$('#listar_actividades_link').hide();
 	$('#actividades').append('<%= j render("actividad", :actividad => @actividad) %>');
+	document.getElementById("tituloUsuario").innerHTML = "Actividades";
 <% else %>
 	$('#formActividad').remove();
 	$('#formularioActividades').after('<%= j render("form") %>');

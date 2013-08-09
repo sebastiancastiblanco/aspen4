@@ -4,6 +4,8 @@ AspenVersion3::Application.routes.draw do
   get "tipo_procesos/create"
 
   resources :actividads
+  get "actividads/filtrado"
+
   resources :estado_actividads
   resources :contratos
   resources :participantes
@@ -104,6 +106,9 @@ AspenVersion3::Application.routes.draw do
   match 'procesos/cantidadUsuarios/:procesoid' => 'procesos#cantidadUsuarios'
   match 'procesos/nofavorito/:procesoid' => 'procesos#nofavorito'
   match 'tipo_procesos/create/' => 'tipo_procesos#create'
+
+  #filtrado de actividades
+  match 'actividads/filtrado/:proceso_id/:estado_id' => 'actividads#filtrado'
 
 
 end
