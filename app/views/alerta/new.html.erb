@@ -1,5 +1,42 @@
-<h1>New alertum</h1>
+<body>
 
-<%= render 'form' %>
+	<div id="workspace" class="workspace">
+		<div class="container stack_container" style="width: 960px;">
+			<div class="panel sheet project active blank_slate fondoGris">
 
-<%= link_to 'Back', alerta_path %>
+				<header>
+					<ul class="breadcrumbs">
+						<li><a href="#">Alertas</a></li>
+						<li><a href="#">Nueva Alerta</a></li>
+					</ul>
+				</header>
+
+				<div class="panel sheet topics fondoGris"
+						style="margin-left: 20px; margin-bottom: -20px;"
+						data-behavior=" prevent_reload_when_stacked">
+
+					<header class="has_buttons">
+						<div data-behavior="edit_project_header expandable">
+							<div class="collapsed_content ">
+								<div class="row">
+									<div class="small-12 columns">
+										<div class="small-7 columns left">
+											<h1 class="field">Nueva Alerta</h1>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</header>
+					<div class="sheet_body ">
+						<article class="calendar_event new expanded" >
+							<div class="expanded_content bubble">
+								<%= render 'form' %>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

@@ -1,4 +1,5 @@
-<%= form_for(@alertum) do |f| %>
+<%= form_for(@alertum, :html => { :class => "calendar_event_editor_form"}) do |f| %>
+
   <% if @alertum.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@alertum.errors.count, "error") %> prohibited this alertum from being saved:</h2>
@@ -11,31 +12,115 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :titulo %><br />
-    <%= f.text_field :titulo %>
+  <div data-behavior="expandable recurrence_prompt">
+      <div class="collapsed_content">
+            <header class="text_entry">
+                  <fieldset class="event_name">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                              <tbody>
+                                    <tr>
+                                          <td>
+                                                <strong>
+                                                      <div class="formatted_content hidden" style="position: absolute; left: -9999px; top: 0px; word-wrap: break-word; font-size: 20px; font-family: ProximaNova, 'Helvetica Neue', helvetica, arial, sans-serif; font-weight: bold; letter-spacing: normal; line-height: normal; text-decoration: none; padding: 0px; text-rendering: auto; width: 435px;">New event</div>
+                                                      <textarea name="summary"  rows="1" data-type="textarea" data-placeholder="Name the event"  style="resize: none; overflow: hidden; min-height: 25px;">New event</textarea>
+                                                </strong>
+                                          </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                  </fieldset>
+                  <fieldset class="event_time">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td class="time" data-behavior="time_entry">
+                                  <input type="hidden" name="starts_at_time" value="">
+                                  <input type="text" value="" data-type="text" placeholder="At what time? (9am, 1pm, etc.)" class="placeholding">
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </fieldset>
+
+                        <fieldset class="event_note">
+                          <table>
+                            <tbody><tr>
+                              <td class="description">
+                                <div class="formatted_content hidden" style="position: absolute; left: -9999px; top: 0px; word-wrap: break-word; font-size: 16px; font-family: ProximaNova, 'Helvetica Neue', helvetica, arial, sans-serif; font-weight: normal; letter-spacing: normal; line-height: normal; text-decoration: none; padding: 0px; text-rendering: auto; width: 435px;">Add an optional note</div>
+                                <textarea name="description" rows="1" data-type="textarea" placeholder="Add an optional note" class="placeholding" style="resize: none; overflow: hidden; min-height: 21px;"></textarea>
+                              </td>
+                            </tr>
+                          </tbody></table>
+                        </fieldset>
+
+
+                        <fieldset class="event_calendar" data-role="bucket_fields">
+
+                          <input type="hidden" name="bucket" value="Project:2733915">
+
+                        </fieldset>
+
+
+                        <fieldset class="event_date">
+                          <div class="start_date">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                              <tbody><tr>
+                                <td class="label">
+                                  <label>Starts:</label>
+                                </td>
+                                <td class="date" data-behavior="date_entry">
+                                  <input type="hidden" name="starts_at_date" value="">
+                                  <input type="text" class="date hasDatepicker" readonly="" tabindex="-1" id="dp1370113556722">
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="end_date">
+                          <table border="0" cellspacing="0" cellpadding="0">
+                            <tbody><tr>
+                              <td class="label">
+                                <label>Ends:</label>
+                              </td>
+                              <td class="date" data-behavior="date_entry">
+                                <input type="hidden" name="ends_at_date" value="">
+                                <input type="text" class="date hasDatepicker" readonly="" tabindex="-1" id="dp1370113556723">
+                              </td>
+                            </tr>
+                          </tbody></table>
+                        </div>
+                      </fieldset>
+
+
+                      <fieldset class="event_recurrence">
+                        <table>
+                          <tbody><tr>
+                            <td class="label">
+                              <label>Repeats?</label>
+                            </td>
+                            <td>
+
+                              <select name="freq">
+
+                                <option value="">No</option>
+
+                                <option value="daily">Every day</option>
+
+                                <option value="weekly">Every week</option>
+
+                                <option value="monthly">Every month</option>
+
+                                <option value="yearly">Every year</option>
+
+                              </select>
+
+                            </td>
+                          </tr>
+                        </tbody></table>
+                      </fieldset>
+             </header>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :hora %><br />
-    <%= f.text_field :hora %>
-  </div>
-  <div class="field">
-    <%= f.label :nota %><br />
-    <%= f.text_field :nota %>
-  </div>
-  <div class="field">
-    <%= f.label :comienza %><br />
-    <%= f.datetime_select :comienza %>
-  </div>
-  <div class="field">
-    <%= f.label :termina %><br />
-    <%= f.datetime_select :termina %>
-  </div>
-  <div class="field">
-    <%= f.label :repeticion %><br />
-    <%= f.number_field :repeticion %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
 <% end %>
