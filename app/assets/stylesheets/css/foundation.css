@@ -1089,11 +1089,13 @@ td {
 
 /* Default Link Styles */
 a {
- /* color: #2ba6cb;*/
+  /*color: #2ba6cb !important;*/
   text-decoration: none;
-  line-height: inherit; }
+  line-height: inherit; 
+}
   a:hover, a:focus {
-    color: #2795b6; !important}
+    color: #2795b6 !important;
+    }
   a img {
     border: none; }
 

@@ -7,14 +7,20 @@
 
         <header>
           <div class="header_links">
-            <a href="#">
-              <i class="foundicon-star"></i>  
+            <a id="procesofavorito" class="pointer" onClick="cambioEstadoFavoritoHome(<%= @proceso.id %>)" >
+               <% if (@proceso.favorito) %>
+                <i id="ProcesoNoFavorito<%= @proceso.id %>" class="foundicon-star" style="display:none"></i>
+                <div id="ProcesoFavorito<%= @proceso.id %>" class="favoritoSeleccionado" style="display:block"></div>
+               <% else %>
+                <i id="ProcesoNoFavorito<%= @proceso.id %>" class="foundicon-star" style="display:block"></i>
+                <div id="ProcesoFavorito<%= @proceso.id %>" class="favoritoSeleccionado" style="display:none"></div>
+                <% end %>
             </a>
             
             <a href="#" data-reveal-id="myModal">
               <span class="link">Compartir</span><br>
               <span class="detail">
-                <%= @proceso.usuarios.size %>  abogado  en este proceso
+                <span id="cantidadUsuarios"><%= @proceso.usuarios.size %></span> abogado  en este proceso
               </span>
             </a>
             
@@ -95,15 +101,15 @@
               <div class="group not_in_project">
                 <span class="label">Agregar : </span>
 
-                <%= link_to new_contrato_path(:proceso_id => @proceso.id) do  %>
-                  <span class="">(<%= @proceso.contratos.size %>) Contratacion</span>
-                <% end %>
-
-                <%= link_to new_participante_path(:proceso_id => @proceso.id) do  %>
+                <%= link_to new_participante_path(:id => @proceso.id) do  %>
                    <span class=""> (<%= @proceso.participantes.size %>) Participantes</span>
                 <% end %>
                 
-                <%= link_to new_actividad_path(:proceso_id => @proceso.id) do  %>
+                <%= link_to new_contrato_path(:id => @proceso.id) do  %>
+                  <span class="">(<%= @proceso.contratos.size %>) Contratos</span>
+                <% end %>
+
+                <%= link_to new_actividad_path(:id => @proceso.id) do  %>
                     <span class="">(<%= @proceso.actividads.size %>) Actividades</span>
                 <% end %>
 
@@ -153,13 +159,15 @@
             </p>
           </section>
           <hr/>
-          <section class="documents " style="">
+
+          <section id="panelParticipante" class="documents " style="">
             <header class="has_buttons">
               <h1><a href="#"> 1. Participantes</a></h1>
-      
                 <div>
-                  <%= button_to "Crear Participante", {:controller => "participantes", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post  %>
-                  <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post  %>
+                  <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :id => @proceso.id, :crearParticipante => true},:class => "tiny button  radius ", :method=>:post  %>
+                </div>
+                <div>
+                  <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :id => @proceso.id, :crearParticipante => false},:class => "tiny button secondary radius", :method=>:post  %>
                 </div>
               
             </header>
@@ -335,7 +343,7 @@
           </section>
           <hr/>
           
-          <section class="documents " style="">
+          <section id="panelDocumentos" class="documents " style="">
             <header class="has_buttons">
               <h1><a href="#">6. Documentos</a></h1>
       
@@ -394,17 +402,19 @@
               <hr/>
                <p>Puedes darle acceso a otros usuarios, permitiendoles modificar y aportar en el proceso. </p>
               <br/>
-              <h6>Usuarios vinculados en el proceso</h6>
-              <hr/>
-
-              <% @usuariosDelproceso.each do |usuario| %>
-                    <%= usuario.username %>,
-                <% end %>
-
-              <br/><br/>
               <h6>Selecciona un usuario</h6>
               <hr/>
               <%= render 'formControlAcceso' %>
+              <h6>Usuarios vinculados en el proceso</h6>
+              <hr/>
+              <div id="listaUsuarios">
+                <% @usuariosDelproceso.each do |usuario| %>
+                    <img class="avatar" height="40" src="/img/user_blue.png" width="40"> 
+                    <span class="posicionNombreUsuario"><%= usuario.username %></span>
+                    <br/>
+
+                <% end %>
+              </div>
                 
               <a class="close-reveal-modal">&#215;</a>
                       
@@ -412,6 +422,3 @@
          </article>
       </div>
     </div>
-
-
-

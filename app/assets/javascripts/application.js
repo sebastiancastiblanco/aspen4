@@ -14,13 +14,132 @@
 //= require jquery_ujs
 //= require_tree .
 
-$.ajax({
-	type: "GET",
-	url: "/procesos.json",
-	dataType: "json",
-	success: function(data){
-	//alert(data[0].titulo) // Will alert Max
-	//Adicionar participante a la tabla de particpantes
-	//$()
-	} 
-});
+function cambioEstadoFavoritoHome(procesoid){
+
+    var divProcesoNoFavorito = "#ProcesoNoFavorito"+procesoid;
+    var divProcesoFavorito = "#ProcesoFavorito"+procesoid;
+
+    var favoritoProceso =  $(divProcesoNoFavorito).css('display');
+      if(favoritoProceso == "inline" || favoritoProceso == "block" ){
+      $.ajax({
+            url: "/procesos/favorito/" + procesoid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res){
+                $(divProcesoNoFavorito).css('display', 'none');
+                $(divProcesoFavorito).css('display', 'block');
+            }
+         }) 
+     }
+    else{
+      $.ajax({
+            url: "/procesos/nofavorito/" + procesoid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res){
+               $(divProcesoNoFavorito).css('display', 'block');
+                $(divProcesoFavorito).css('display', 'none');
+            }
+         }) 
+     }
+   
+};
+
+function listarParticipantes(){
+  $('#formParticipante').remove();
+  $('#participantes').show();
+  $('#new_participante_link').show();
+  $('#listar_participante_link').hide();
+  document.getElementById("tituloParticipante").innerHTML = "Participantes";
+}
+
+function listarContratos(){
+  $('#formContrato').remove();
+  $('#contratos').show();
+  $('#new_contrato_link').show();
+  $('#listar_contratos_link').hide();
+  document.getElementById("tituloContrato").innerHTML = "Contratos";
+}
+
+function listarActividades(){
+  $('#formActividad').remove();
+  $('#actividades').show();
+  $('#new_actividad_link').show();
+  $('#listar_actividades_link').hide();
+  document.getElementById("tituloActividad").innerHTML = "Actividades";
+}
+
+function listarUsuarios(){
+  $('#formUsuario').remove();
+  $('#usuarios').show();
+  $('#new_usuario_link').show();
+  $('#listar_usuarios_link').hide();
+  document.getElementById("tituloUsuario").innerHTML = "Usuarios";
+}
+
+function eventoCamposOpcionalesParticipante (){
+    var panelcamposopcionales = "#camposOpcionalesParticipante";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+         $(panelcamposopcionales).css('display', 'none');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+      }
+      else{
+         $(panelcamposopcionales).css('display', 'block');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+      }
+}
+
+
+function eventoCamposOpcionalesContrato (){
+    var panelcamposopcionales = "#camposOpcionalesContrato";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+         $(panelcamposopcionales).css('display', 'none');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+      }
+      else{
+         $(panelcamposopcionales).css('display', 'block');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+      }
+}
+
+function eventoCamposOpcionalesActividad (){
+    var panelcamposopcionales = "#camposOpcionalesActividad";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+         $(panelcamposopcionales).css('display', 'none');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+      }
+      else{
+         $(panelcamposopcionales).css('display', 'block');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+      }
+}
+
+function eventoCamposOpcionalesUsuario (){
+    var panelcamposopcionales = "#camposOpcionalesUsuario";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+         $(panelcamposopcionales).css('display', 'none');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+      }
+      else{
+         $(panelcamposopcionales).css('display', 'block');
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+      }
+}
+
+function listarActividadesfiltrado(procesoid,estadoid){
+  $.ajax({
+            url: "/actividads/filtrado/"+procesoid+"/"+ estadoid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res)
+            {
+              alert(res);
+
+                $('#actividades').html(res);
+            }
+         }) 
+}

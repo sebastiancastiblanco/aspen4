@@ -1,0 +1,5 @@
+$('#listar_usuarios_link').show();
+$('#usuarios').hide();
+$('#new_usuario_link').hide();
+$('#formularioUsuarios').after('<%= j render("form") %>');
+document.getElementById("tituloUsuario").innerHTML = "Usuario";

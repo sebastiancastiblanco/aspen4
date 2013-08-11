@@ -46,13 +46,13 @@ class TipoProcesosController < ApplicationController
 
     respond_to do |format|
       if @tipo_proceso.save
-
-
         format.html { redirect_to new_proceso_path, notice: 'Tipo proceso was successfully created.' }
         format.json { render json: @tipo_proceso, status: :created, location: @tipo_proceso }
+       
       else
         format.html { render action: "new" }
         format.json { render json: @tipo_proceso.errors, status: :unprocessable_entity }
+        
       end
     end
   end

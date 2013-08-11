@@ -313,13 +313,24 @@ div.panel.home_tab section.projects.cards div.row {
   zoom: 1 !important;
 }
 
-div.panel.home_tab section.projects span.star {
+div.panel.home_tab section.projects span.star a.star {
   width: 20px !important;
   height: 17px !important;
   display: block !important;
   position: absolute !important;
   top: 5px !important;
   right: 10px !important;
+  cursor: pointer;
+}
+
+div.panel.home_tab section.projects a.star {
+  width: 20px !important;
+  height: 17px !important;
+  display: block !important;
+  position: absolute !important;
+  top: 5px !important;
+  right: 10px !important;
+  cursor: pointer;
 }
 
 div.panel.home_tab section.projects.cards article.card a.project_card {
@@ -830,7 +841,7 @@ div.panel.home_tab div.project_templates.nuevoProceso{
 
 div#other_products {
   position: absolute;
-  bottom: 0;
+ /* bottom: 0;*/
   left: 0;
   background: transparent;
   text-align: center;
@@ -882,4 +893,52 @@ color: #444;
   border: 0 !important;
   margin-bottom: 15px;
   border-bottom: 0;
+}
+
+.favoritoSeleccionado{
+  background: url(/img/iconos/favorito.png) no-repeat center top !important;
+  display: none;
+  height: 16px;
+  width: 16px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.posicionNombreUsuario{
+  margin-bottom: 5px;
+}
+
+.ocultar{
+  display: none;
+}
+
+.textolinks{
+  color: #2795b6 !important;
+  font-family: HelveticaRegular, arial !important;
+  font-size: 12px !important;
+  font-style: italic !important;
+}
+
+.textoGrislinks{
+  color: #7d7a75 !important;
+  font-family: HelveticaRegular, arial !important;
+  font-style: italic !important;
+  font-size: 12px !important;
+}
+
+.textRojolinks{
+  color: #7d7a75 !important;
+  font-family: HelveticaRegular, arial !important;
+  font-style: italic !important;
+  font-size: 12px !important;
+}
+.textRojolinks:hover, .textRojolinks:focus{
+  color: #970b0e !important;
+  text-decoration: underline !important;  
+}
+
+.textolinks:hover, .textolinks:focus{
+  text-decoration: underline !important;  
 }

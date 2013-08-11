@@ -1,0 +1,5 @@
+$('#listar_participante_link').show();
+$('#participantes').hide();
+$('#new_participante_link').hide();
+$('#formularioParticipantes').after('<%= j render("form") %>');
+document.getElementById("tituloParticipante").innerHTML = "Nuevo Participante";
