@@ -32,13 +32,18 @@ class ContratosController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @contrato }
+      format.js
     end
   end
 
   # GET /contratos/1/edit
   def edit
-    @contrato = Contrato.find(params[:contrato_id])
+    @contrato = Contrato.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
+     respond_to do |format|
+        format.html
+        format.js
+    end
   end
 
   # POST /contratos
@@ -50,11 +55,13 @@ class ContratosController < ApplicationController
 
     respond_to do |format|
       if @contrato.save
-        format.html { redirect_to @proceso, notice: 'Contrato was successfully created.' }
+        format.html { redirect_to @contrato, notice: 'Contrato was successfully created.' }
         format.json { render json: @contrato, status: :created, location: @contrato }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @contrato.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -69,9 +76,11 @@ class ContratosController < ApplicationController
       if @contrato.update_attributes(params[:contrato])
         format.html { redirect_to @proceso, notice: 'Contrato was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @contrato.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -85,6 +94,7 @@ class ContratosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to contratos_url }
       format.json { head :no_content }
+      format.js
     end
   end
 end

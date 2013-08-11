@@ -46,7 +46,10 @@ class ControlAccesosController < ApplicationController
 
     respond_to do |format|
       if @control_acceso.save
-        format.html { redirect_to @proceso, notice: 'Control acceso was successfully created.' }
+        #Variable cantidad de usuarios en el proceso
+        gon.cantidadUsuarios = @proceso.usuarios.size
+
+        format.html { redirect_to @control_acceso, notice: 'Se ha compartido el proceso a '+ @control_acceso.usuario.username }
         format.json { render json: @control_acceso, status: :created, location: @control_acceso }
       else
         format.html { render action: "new" }

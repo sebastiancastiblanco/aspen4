@@ -1,0 +1,11 @@
+<% if @participante.errors.count == 0 %>
+	$('#formParticipante').remove();
+	$('#participantes').show();
+	$('#new_participante_link').show();
+	$('#listar_participante_link').hide();
+	$('#participantes').append('<%= j render("participante", :participante => @participante) %>');
+	document.getElementById("tituloUsuario").innerHTML = "Participantes";
+<% else %>
+	$('#formParticipante').remove();
+	$('#formularioParticipantes').after('<%= j render("form") %>');
+<% end %>

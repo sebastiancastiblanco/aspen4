@@ -6,9 +6,11 @@
        <header>
           <ul class="breadcrumbs">
             <li><%= link_to 'Procesos', procesos_path %></li>
-            <li><%= link_to @proceso.id , @proceso %></li>
-            <li><%= link_to @proceso.titulo , @proceso %></li>
-            <li><a href="#">Actividades</a></li>
+            <li><%= link_to @proceso do  %> 
+                  proceso <%= @proceso.id %> : <%= @proceso.titulo %> 
+                <% end %>
+            </li>
+            <li><%= link_to 'Actividades', "javascript:listarActividades()" %></li>
           </ul>
         </header>
         
@@ -19,21 +21,32 @@
               <div class="row">
                 <div class="small-12 columns">
                     <div class="small-5 columns left">
-                      <h1>
+                      <h1 id="tituloActividad">
                         Actividades
                       </h1>
                     </div>
                     <div class="small-4 columns left">
                       <dl class="sub-nav">
-                          <dd class="active"><a href="#">Todas</a></dd>
-                          <dd><a href="#">Abiertas</a></dd>
-                          <dd><a href="#">Atrasadas</a></dd>
-                          <dd><a href="#">Terminadas</a></dd>
+                          <dd class="active">
+                              <%= link_to 'Todas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',0)" %>
+                          </dd>
+                          <dd> <%= link_to 'Abiertas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',1)" %></dd>
+                          <dd><%= link_to 'Atrasadas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',2)" %></dd>
+                          <dd><%= link_to 'Terminadas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',3)" %></dd>
                       </dl>
                     </div>
                     <div class="small-2 columns left">
-                        <%= button_to "Nueva Actividad", {:controller => "actividads", :action => "new", :id => @proceso.id},:class => "button radius ", :method=>:post  %>
+                        
+                        <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_actividad_link" %>
+
+                        <%= button_to 'Listar Actividades',"javascript:listarActividades()" , :class => "button radius ocultar", :id => "listar_actividades_link" %>
                     </div>
+                    <% if notice %>
+                              <div data-alert class="alert-box success radius">
+                                <%= notice %>
+                                <a href="#" class="close">&times;</a>
+                              </div>
+                    <% end %>
                 </div>
               </div>
             </div>
@@ -41,55 +54,11 @@
           </header>
           <div class="sheet_body fondoGris">
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
-                        <section class="calendar_events">
-                            
-                            <% @actividads.each do |actividad| %>
-
-                            <section class="group today upcoming_events">
-                                <header>
-                                    <h2><%= actividad.nombre %></h2>
-                                </header>
-                                <article class="calendar_event">
-                                    <header>
-                                            <span class="day_of_week"><%= fechaDiaSemana actividad.fechaSeguimiento %></span>
-                                            <span class="month"><%= fechaMes actividad.fechaSeguimiento %></span>
-                                            <% if actividad.estado_actividad.estado =="Abierto" %>
-                                                       <span class="day" style="background-color: #457a1a !important"><%= fechaDia actividad.fechaSeguimiento %></span>
-                                            <% end %>
-                                            <% if actividad.estado_actividad.estado =="Atrasada" %>
-                                                        <span class="day" style="background-color: #970b0e  !important"><%= fechaDia actividad.fechaSeguimiento %></span>
-                                            <% end %>
-                                            <% if actividad.estado_actividad.estado =="Terminada" %>
-                                                        <span class="day" style="background-color: #000 !important"><%= fechaDia actividad.fechaSeguimiento %></span>
-                                            <% end %>
-                                           
-
-                                    </header>
-                                    <ul>
-                                        <li id="CalendarEvent_5615518">
-                                           <% if actividad.estado_actividad.estado =="Abierto" %>
-                                            <span style="color: #457a1a"><%= actividad.estado_actividad.estado%></span>
-                                            <% end %>
-                                            <% if actividad.estado_actividad.estado =="Atrasada" %>
-                                            <span style="color: #970b0e"><%= actividad.estado_actividad.estado%></span>
-                                            <% end %>
-                                            <% if actividad.estado_actividad.estado =="Terminada" %>
-                                            <span style="color: #000"><%= actividad.estado_actividad.estado%></span>
-                                            <% end %> 
-                                            <a href="#"><%= actividad.participante.nombre %></a>
-                                            <a href="#"><%= actividad.descripcion%></a>
-                                            <% if actividad.tiempoEjecucion %>
-                                              <a href="#"><%= actividad.tiempoEjecucion%> <%= actividad.medidaTiempo%></a>
-                                            <% end %> 
-
-                                            <%= button_to "Ver", {:controller => "actividads", :action => "edit",:actividad_id => actividad.id, :proceso_id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
-                                        </li>
-                                    </ul>
-                                </article>
-                            </section>
-                            <% end %>
+                        <section id="actividades" class="calendar_events">
+                            <%= render partial: "actividad", collection: @actividads %>
                         </section>
-                        </div>
+                        <div id="formularioActividades"></div>
+            </div>
           </div>
         </div>
       </div>

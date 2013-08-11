@@ -4,6 +4,7 @@ class ParticipantesController < ApplicationController
   def index
     @proceso = Proceso.find(params[:id])
     @participantes = @proceso.participantes
+    gon.crearParticipante = (params[:crearParticipante])
     
     respond_to do |format|
       format.html # index.html.erb
@@ -29,18 +30,23 @@ class ParticipantesController < ApplicationController
     @rol_participantes = RolParticipante.all
     @proceso = Proceso.find(params[:id])
 
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @participante }
+      format.js
     end
   end
 
   # GET /participantes/1/edit
   def edit
-    @participante = Participante.find(params[:participante_id])
+    @participante = Participante.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
     @rol_participantes = RolParticipante.all
-
+     respond_to do |format|
+        format.html
+        format.js
+    end
   end
 
   # POST /participantes
@@ -48,17 +54,19 @@ class ParticipantesController < ApplicationController
   def create
     @participante = Participante.new(params[:participante])
     @proceso = Proceso.find(params[:proceso_id])
+    @rol_participantes = RolParticipante.all
 
     respond_to do |format|
       if @participante.save
-         #Crear la relacion entre particpante creado y el proceso
+         #Crear la relacion entre participante creado y el proceso
          @participante.proceso_participantes.create(:participante_id => Participante.last.id,:proceso_id => @proceso.id)
-
-        format.html { redirect_to @proceso, notice: 'Participante was successfully created.' }
-        format.json { render json: @participante, status: :created, location: @participante }
+          format.html { redirect_to @participante, notice: 'El participante fue creado correctamente.'}
+          format.json { render json: @participante, status: :created, location: @participante }
+          format.js
       else
-        format.html { render action: "new" }
-        format.json { render json: @participante.errors, status: :unprocessable_entity }
+          format.html { render action: "new" }
+          format.json { render json: @participante.errors, status: :unprocessable_entity }
+          format.js
       end
     end
   end
@@ -67,15 +75,16 @@ class ParticipantesController < ApplicationController
   # PUT /participantes/1.json
   def update
     @participante = Participante.find(params[:id])
-    @proceso = Proceso.find(params[:proceso_id])
     
     respond_to do |format|
       if @participante.update_attributes(params[:participante])
-        format.html { redirect_to @proceso, notice: 'Participante was successfully updated.' }
+        format.html { redirect_to @participante, notice: 'Participante was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @participante.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -89,6 +98,7 @@ class ParticipantesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to participantes_url }
       format.json { head :no_content }
+      format.js
     end
   end
 end

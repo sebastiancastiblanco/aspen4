@@ -1,5 +1,4 @@
-<%= form_for(@participante, :html => { :class => "custom"} ) do |f| %>
-
+<%= form_for @participante, :remote => true, :html => { :class => "custom",:id => "formParticipante"}  do |f| %>
 <div class="row">
 
     <div class="small-2 small-offset-0 columns ">
@@ -28,18 +27,15 @@
     <div class="small-4 columns field">
            <%= f.select :rol_participante_id, [["Rol Participante", 0]] + @rol_participantes.map {|r| [r.rol,r.id]}, { :disabled => ["Rol Participante", 0] } %>
     </div>
-
 </div>
 
 <hr>
+ <%= link_to 'Mostrar Campos Opcionales', "javascript:eventoCamposOpcionalesParticpante()", :class=>"textolinks", :id => "mostrarCamposOpcionales" %>
+<hr>
 
-<div class="row">
-    <div class="section-container accordion" data-section="accordion">
+<div id="camposOpcionalesParticipante" class="row ocultar">
       <section>
-        <p class="title tituloAcordion" data-section-title><a href="#">Detalles del participante (Opcionales)</a></p>
-        <div class="content" data-section-content>
-         
-          <hr>
+       
           <div class="small-2 small-offset-0 columns ">
             <%= f.label "Tipo Documento", :class => "tituloCampo error alinearDerecha" %>
           </div>
@@ -96,31 +92,20 @@
             <%= f.text_field :celular, :placeholder => "Número de Celular" %>
           </div>  
 
-        </div>
+        
       </section>
-    </div>  
-
-
 </div>
+
 <div class="row"> 
 
-  <% if @participante.errors.any? %>
-      <div class="small-4 columns field"></div>
-      <div class="small-4 small-offset-3 columns field">
-        <h2><%= pluralize(@participante.errors.count, "errore") %> encontrados</h2>
-      </div>
-      <div class="small-5 columns field">
-        <%= f.submit :'Guardar Participante' , :class => " button success radius" %></div>
+     <div class="small-1 small-offset-7 columns field"></div>
+     <div class="small-1 columns field">
+      <%= link_to 'Cancelar', "javascript:listarParticipantes()", :class=>"textoGrislinks" %>
      </div>
-  <% else %>      
-      <div class="small-1 small-offset-8 columns field"></div>
-      <div class="small-2 columns field">
-        <%= f.submit :'Guardar Participante' , :class => " button success radius" %></div>
+     <div class="small-2 columns field">
+      <%= f.submit :'Guardar Participante' , :class => " button success radius" %></div>
      </div>
-  <% end %>
- 
-  <%= hidden_field_tag :proceso_id, @proceso.id %>
-
+     <%= hidden_field_tag :proceso_id, @proceso.id %>
 
 </div>
 

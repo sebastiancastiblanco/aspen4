@@ -7,9 +7,9 @@
 
        <header>
           <ul class="breadcrumbs">
-              <li><a href="#">Inicio</a></li>
+              <li><%= link_to 'Inicio', procesos_path %></li>
               <li><a href="#">Despacho - Eas Ltda</a></li>
-              <li class="current"><a href="#">Usuarios</a></li>
+              <li><%= link_to 'Partcipantes', "javascript:listarUsuarios()" %></li>
           </ul>
         </header>
         
@@ -22,18 +22,24 @@
                 <div class="small-12 columns">
                   
                     <div class="small-6 small-9 columns left">
-                      <h1>
-                        Usuarios
+                      <h1 id="tituloUsuario">
+                        Usuarios del Despacho
                       </h1>
                     </div>
                     
                     <div class="small-3 small-3 columns left">
                       
-                         <%= button_to "Crear Usuario", new_usuario_path, :class => " button radius", :method => :get  %>
-                      
+                         <%= button_to 'Nuevo Usuario', {:controller => "usuarios", :action => "new"},  :remote => true, :class => "button radius ", :id => "new_usuario_link" %>
+
+                          <%= button_to 'Listar Usuarios',"javascript:listarUsuarios()" , :class => "button radius ocultar", :id => "listar_usuarios_link" %>
                     </div>
                     
-                     
+                     <% if notice %>
+                              <div data-alert class="alert-box success radius">
+                                <%= notice %>
+                                <a href="#" class="close">&times;</a>
+                              </div>
+                    <% end %>
                       
                    
                 </div>
@@ -41,41 +47,28 @@
             </div>
           </div><div class="blank_slate_arrow"></div>
           </header>
-
-          
           
           <div class="sheet_body fondoGris">
             <section class="topics" data-collection-name="topics">
                 
-              <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
-                <tbody>
-                    <% @usuarios.each do |usuario| %>
-                  <tr class="topic message_10997527 fondoGris" id="topic_22725579">
-                    <td class="who">
-                      <strong><a href="#"><%= usuario.username %> - </a></strong>
-                    
-                      <a href="#">
-                        <%= usuario.email %>
-                        <span class="excerpt"> - Descripcion</span>
-                      </a>
-                      <%= button_to "Ver", usuario, :class => "tiny button secondary radius inlineBlock", :method => :get  %>
-                      <%= link_to 'Eliminar', usuario, method: :delete, data: { confirm: 'Are you sure?' } %>
-                    
-                    <td class="when">
-                      <a href="#"><time data-compact="" datetime="2013-04-29T12:32:37Z" style="">Apr 29</time></a>
-                    </td>
-                  </tr>
+              <table id="usuarios"class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                <tbody id="usuarios">
+
+                  <% @usuarios.each do |usuario| %>
+                    <%= render "usuario", :usuario => usuario %>
                   <% end %>
 
                 </tbody>
               </table>
+
+               <div id="formularioUsuarios"></div>
+              
             </section>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 
 </body>
 

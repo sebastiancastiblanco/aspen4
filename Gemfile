@@ -25,6 +25,10 @@ gem 'jquery-rails'
 #Gemas para loggin
 gem 'sorcery'
 
+#Gem gon, para usar las variables del controlador en codigo javascript
+gem "gon", "~> 4.1.1"
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,14 +1,24 @@
 AspenVersion3::Application.routes.draw do
+  
   resources :tipo_procesos
-
+  get "tipo_procesos/create"
 
   resources :actividads
+  get "actividads/filtrado"
+
   resources :estado_actividads
   resources :contratos
   resources :participantes
+ 
+
   resources :rol_participantes
   resources :control_accesos
+  
   resources :procesos
+  get "procesos/favorito"
+  get "procesos/nofavorito"
+
+
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
@@ -18,8 +28,13 @@ AspenVersion3::Application.routes.draw do
   match 'logout' => 'usuario_sessions#destroy', as: :logout
   root :to => 'usuario_sessions#new'
 
+  match '/usuarios/new' => 'usuarios#new', as: :nuevoUsuario
+  match '/usuarios/:id' => 'usuarios#index', as: :listaUsuarios
+  match '/usuarios/:id/edit' => 'usuarios#edit', as: :editarUsuario
+
   match '/participantes/new/:id' => 'participantes#new', as: :nuevoParticipante
   match '/participantes/:id' => 'participantes#index', as: :listaParticipantes
+  match '/participantes/:id/edit' => 'participantes#edit', as: :editarParticipantes
 
   match '/contratos/new/:id' => 'contratos#new', as: :nuevoContrato
   match '/contratos/:id' => 'contratos#index', as: :listaContratos
@@ -85,4 +100,16 @@ AspenVersion3::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+  
+
+  match 'procesos/favorito/:procesoid' => 'procesos#favorito'
+  match 'procesos/cantidadUsuarios/:procesoid' => 'procesos#cantidadUsuarios'
+  match 'procesos/nofavorito/:procesoid' => 'procesos#nofavorito'
+  match 'tipo_procesos/create/' => 'tipo_procesos#create'
+
+  #filtrado de actividades
+  match 'actividads/filtrado/:proceso_id/:estado_id' => 'actividads#filtrado'
+
+
 end

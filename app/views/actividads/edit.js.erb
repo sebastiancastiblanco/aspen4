@@ -1,0 +1,5 @@
+$('#listar_actividades_link').show();
+$('#actividades').hide();
+$('#new_actividad_link').hide();
+$('#formularioActividades').after('<%= j render("form") %>');
+document.getElementById("tituloActividad").innerHTML = "Actividad";
