@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
+
 function cambioEstadoFavoritoHome(procesoid){
 
     var divProcesoNoFavorito = "#ProcesoNoFavorito"+procesoid;
@@ -76,6 +77,7 @@ function listarUsuarios(){
   $('#listar_usuarios_link').hide();
   document.getElementById("tituloUsuario").innerHTML = "Usuarios";
 }
+
 
 function eventoCamposOpcionalesParticipante (){
     var panelcamposopcionales = "#camposOpcionalesParticipante";
@@ -143,3 +145,5 @@ function listarActividadesfiltrado(procesoid,estadoid){
             }
          }) 
 }
+
+

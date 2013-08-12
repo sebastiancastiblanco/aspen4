@@ -16,10 +16,8 @@ class Proceso < ActiveRecord::Base
 
 #Validaciones de título
 #validates_presence_of :titulo, :presence => {:message => "Usted debe ingresar un título"}, length: {minimum: 2, maximum: 50, :message => "El título debe tener entre 2 y 50 caracteres"}
-validates :titulo, :presence => true
-validates :objetivo, :presence => true
-validates :ciudad, :presence => true
-validates :referencia, :presence => true
+validates :titulo, :objetivo, :ciudad, :referencia, :presence => { :message => "Campo obligatorio"}
+
 #validates_length_of 
 #validates_numericality_of
 #validates_size_of

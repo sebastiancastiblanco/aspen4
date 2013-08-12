@@ -30,7 +30,7 @@
 </div>
 
 <hr>
- <%= link_to 'Mostrar Campos Opcionales', "javascript:eventoCamposOpcionalesParticpante()", :class=>"textolinks", :id => "mostrarCamposOpcionales" %>
+ <%= link_to 'Mostrar Campos Opcionales', "javascript:eventoCamposOpcionalesParticipante()", :class=>"textolinks", :id => "mostrarCamposOpcionales" %>
 <hr>
 
 <div id="camposOpcionalesParticipante" class="row ocultar">
@@ -99,7 +99,7 @@
 <div class="row"> 
 
      <div class="small-1 small-offset-7 columns field"></div>
-     <div class="small-1 columns field">
+     <div class="small-1 columns field margenTop25">
       <%= link_to 'Cancelar', "javascript:listarParticipantes()", :class=>"textoGrislinks" %>
      </div>
      <div class="small-2 columns field">
@@ -110,3 +110,7 @@
 </div>
 
 <% end %>
+
+<script>
+  $(document).foundation();
+</script>

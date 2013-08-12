@@ -828,8 +828,8 @@ div.panel.home_tab div.project_templates.nuevoProceso{
 }
 
 .margenTop25{
-  margin-top: 25px;
-  margin-left: 68px;
+  margin-top: 20px;
+  margin-left: 25px;
 }
 
 .tituloCampo{
@@ -941,4 +941,8 @@ color: #444;
 
 .textolinks:hover, .textolinks:focus{
   text-decoration: underline !important;  
+}
+
+.marginTopLeft{
+  margin: 5px 0 0 15px;
 }

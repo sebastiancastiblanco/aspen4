@@ -57,6 +57,11 @@ class ProcesosController < ApplicationController
   # GET /procesos/1/edit
   def edit
     @proceso = Proceso.find(params[:id])
+    #Para el combo de tipos de procesos
+    @tipos_procesos = current_user.tipo_procesos
+    #Para el item tipos de proceso
+    @tipo_proceso = TipoProceso.new
+    
   end
 
   # POST /procesos
@@ -65,15 +70,22 @@ class ProcesosController < ApplicationController
     @proceso = Proceso.new(params[:proceso])
     @proceso.usuario_id = current_user.id
     @proceso.favorito = false
+    #Para el combo de tipos de procesos
+    @tipos_procesos = current_user.tipo_procesos
+    #Para el item tipos de proceso
+    @tipo_proceso = TipoProceso.new
+
     respond_to do |format|
       if @proceso.save
         #Salvar relacion entre el proecso y el usuario que lo creo
         @proceso.control_accesos.create(:usuario_id => current_user.id,:proceso_id => @proceso.id)
-        format.html { redirect_to @proceso, notice: 'Proceso was successfully created.' }
-        format.json { render json: @proceso, status: :created, location: @proceso }
+        
+       format.html { redirect_to @proceso, notice: 'El proceso fue creado correctamente.'  }
+
       else
         format.html { render action: "new" }
         format.json { render json: @proceso.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

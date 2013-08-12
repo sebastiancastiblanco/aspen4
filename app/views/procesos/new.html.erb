@@ -7,11 +7,11 @@
 
 				<header>
 				<ul class="breadcrumbs">
-					<li><a href="#">Procesos</a></li>
+					<li><%= link_to 'Procesos', procesos_path %></li>
 					<li><a href="#">Nuevo Proceso</a></li>
 				</ul>
 				</header>
-<div id="cambiodiv"></div>
+				<div id="cambiodiv"></div>
 				<div class="panel sheet topics fondoGris"
 					style="margin-left: 20px; margin-bottom: -20px;"
 					data-behavior=" prevent_reload_when_stacked">
@@ -21,17 +21,14 @@
 						<div class="collapsed_content ">
 							<div class="row">
 								<div class="small-12 columns">
-									<div class="small-7 columns left">
-										<h1 class="field">Nuevo Proceso</h1>
-									</div>
-
-									<div class="small-2 columns alinearDerecha">
-										<%= button_to "Regresar", procesos_path, :class => "small secondary button radius margenTop25", :method => :get  %>
-									</div>
-									<div class="small-3 columns alinearDerecha">
-										<button class="small secondary button radius margenTop25" data-reveal-id="myModal"> Nuevo tipo proceso</button>
+									<div class="small-9 columns">
+										<h1>Iniciar un nuevo proceso</h1>
 									</div>
 									
+								<div class="small-3 small-3 columns left">
+			                       
+			                        
+			                    </div>
 
 								</div>
 							</div>
@@ -43,9 +40,11 @@
 				<div class="sheet_body ">
 						<article class="participants new expanded">
 									<%= render 'form' %>
+									<div id="formularioProcesos"></div>
 						</article>
-					</div>
+
 				</div>
+			</div>
 				
 			</div>
 		</div>

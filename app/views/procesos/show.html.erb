@@ -162,12 +162,15 @@
 
           <section id="panelParticipante" class="documents " style="">
             <header class="has_buttons">
-              <h1><a href="#"> 1. Participantes</a></h1>
+              <h1> <%= link_to participantes_path(:id => @proceso.id) do  %>
+                      1. Participantes
+                    <% end %>
+              </h1>
                 <div>
-                  <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :id => @proceso.id, :crearParticipante => true},:class => "tiny button  radius ", :method=>:post  %>
+                  <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post  %>
                 </div>
                 <div>
-                  <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :id => @proceso.id, :crearParticipante => false},:class => "tiny button secondary radius", :method=>:post  %>
+                  <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post  %>
                 </div>
               
             </header>
@@ -200,7 +203,9 @@
           <hr/>
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1><a href="#"> 2.  Contratos</a></h1>
+              <h1><%= link_to contratos_path(:id => @proceso.id) do  %>
+                      2. Contratos
+                    <% end %></h1>
       
                 <div>
                   <%= button_to "Crear Contrato", {:controller => "contratos", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post %>
@@ -238,7 +243,9 @@
           
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1><a href="#"> 3. Actividades</a></h1>
+              <h1><a href="#"> <%= link_to actividads_path(:proceso_id => @proceso.id) do  %>
+                      3. Actividades
+                    <% end %></a></h1>
                 <div>
                   <%= button_to "Crear Actividad", {:controller => "actividads", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post %>
                   <%= button_to "Ver Todos", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
