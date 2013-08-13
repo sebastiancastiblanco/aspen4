@@ -147,3 +147,8 @@ function listarActividadesfiltrado(procesoid,estadoid){
 }
 
 
+
+$(document).ready(function(){
+  var j = jQuery.noConflict();
+j("#actividad_fechaSeguimiento").datepicker();
+});

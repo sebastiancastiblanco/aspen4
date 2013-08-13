@@ -282,7 +282,8 @@ div.panel.home_tab section.projects.cards article.card {
   margin: 0 20px 20px 0 !important;
   position: relative !important;
   text-align: left !important;
-  background: rgb(248, 248, 248) !important;
+  /*background: rgb(248, 248, 248) !important;*/
+  background: rgb(243, 243, 243) !important;
   padding: 15px !important;
   text-rendering: optimizeLegibility !important;
   -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.3) !important;

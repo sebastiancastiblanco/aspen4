@@ -6,12 +6,14 @@
 <%= include_gon  %>
 
 <%= stylesheet_link_tag    "application", :media => "all" %>
-
-<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
-<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
-    
- 
+<%= javascript_include_tag "application" %>
 <%= csrf_meta_tags %>
+ 
+
+
+ <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ <link rel="stylesheet" href="/assets/cupertino/jquery-ui-1.10.3.custom" />
 
 
 <script src="/assets/foundation.min.js?body=1" type="text/javascript"></script>
