@@ -2,7 +2,7 @@ class ParticipantesController < ApplicationController
   # GET /participantes
   # GET /participantes.json
   def index
-    @proceso = Proceso.find(params[:id])
+    @proceso = Proceso.find(params[:proceso_id])
     @participantes = @proceso.participantes
     gon.crearParticipante = (params[:crearParticipante])
     

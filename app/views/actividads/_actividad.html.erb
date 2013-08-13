@@ -6,7 +6,7 @@
         <header>
                 <span class="day_of_week"><%= fechaDiaSemana actividad.fechaSeguimiento %></span>
                 <span class="month"><%= fechaMes actividad.fechaSeguimiento %></span>
-                <% if actividad.estado_actividad.estado =="Abierto" %>
+                <% if actividad.estado_actividad.estado =="Abierta" %>
                            <span class="day" style="background-color: #457a1a !important"><%= fechaDia actividad.fechaSeguimiento %></span>
                 <% end %>
                 <% if actividad.estado_actividad.estado =="Atrasada" %>
@@ -15,12 +15,11 @@
                 <% if actividad.estado_actividad.estado =="Terminada" %>
                             <span class="day" style="background-color: #000 !important"><%= fechaDia actividad.fechaSeguimiento %></span>
                 <% end %>
-               
-
         </header>
+
         <ul>
             <li id="CalendarEvent_5615518">
-               <% if actividad.estado_actividad.estado =="Abierto" %>
+               <% if actividad.estado_actividad.estado =="Abierta" %>
                 Estado: <span style="color: #457a1a"><%= actividad.estado_actividad.estado%></span>
                 <% end %>
                 <% if actividad.estado_actividad.estado =="Atrasada" %>
@@ -37,7 +36,7 @@
                    <p>Tiempo Estimado: <%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo%></p>
                 <% end %> 
 
-                 <%= button_to 'Ver', edit_actividad_path(actividad, :proceso_id => @proceso.id), :remote => true, :id => "new_actividad_link",:class => "tiny button  radius " %>
+                <%= button_to 'Ver', edit_actividad_path(actividad, :proceso_id => @proceso.id), :remote => true, :id => "new_actividad_link",:class => "tiny button radius alinearbotones" %>
       
                 <%= link_to "Eliminar", actividad, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar esta actividad?' } , :remote => true %>
 

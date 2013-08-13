@@ -947,3 +947,8 @@ color: #444;
 .marginTopLeft{
   margin: 5px 0 0 15px;
 }
+
+.alinearbotones{
+  float: left !important;
+  margin-right: 10px !important;
+}

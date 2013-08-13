@@ -101,17 +101,13 @@
               <div class="group not_in_project">
                 <span class="label">Agregar : </span>
 
-                <%= link_to new_participante_path(:id => @proceso.id) do  %>
-                   <span class=""> (<%= @proceso.participantes.size %>) Participantes</span>
-                <% end %>
                 
-                <%= link_to new_contrato_path(:id => @proceso.id) do  %>
-                  <span class="">(<%= @proceso.contratos.size %>) Contratos</span>
-                <% end %>
+                 <%= link_to   "("+@proceso.participantes.size.to_s+") Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
 
-                <%= link_to new_actividad_path(:id => @proceso.id) do  %>
-                    <span class="">(<%= @proceso.actividads.size %>) Actividades</span>
-                <% end %>
+                 <%= link_to   "("+@proceso.contratos.size.to_s+") Contratos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
+
+
+                <%= link_to   "("+@proceso.actividads.size.to_s+") Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
 
                 <a href="#" >
                   <span class="">Control</span>
@@ -162,15 +158,15 @@
 
           <section id="panelParticipante" class="documents " style="">
             <header class="has_buttons">
-              <h1> <%= link_to participantes_path(:id => @proceso.id) do  %>
+              <h1> <%= link_to participantes_path(:id => @proceso.id) ,:class => "alinearbotones" do  %>
                       1. Participantes
                     <% end %>
               </h1>
                 <div>
-                  <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post  %>
+                  <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :id => @proceso.id},:class => "tiny button  radius alinearbotones", :method=>:post  %>
                 </div>
                 <div>
-                  <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post  %>
+                  <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius ", :method=>:post  %>
                 </div>
               
             </header>
@@ -203,12 +199,12 @@
           <hr/>
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1><%= link_to contratos_path(:id => @proceso.id) do  %>
+              <h1><%= link_to contratos_path(:id => @proceso.id) ,:class => "alinearbotones" do  %>
                       2. Contratos
                     <% end %></h1>
       
                 <div>
-                  <%= button_to "Crear Contrato", {:controller => "contratos", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post %>
+                  <%= button_to "Crear Contrato", {:controller => "contratos", :action => "new", :id => @proceso.id},:class => "tiny button  radius alinearbotones", :method=>:post %>
                   <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
                 </div>
               
@@ -243,11 +239,11 @@
           
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1><a href="#"> <%= link_to actividads_path(:proceso_id => @proceso.id) do  %>
+              <h1> <%= link_to actividads_path(:proceso_id => @proceso.id),:class => "alinearbotones" do  %>
                       3. Actividades
-                    <% end %></a></h1>
+                    <% end %></h1>
                 <div>
-                  <%= button_to "Crear Actividad", {:controller => "actividads", :action => "new", :id => @proceso.id},:class => "tiny button  radius ", :method=>:post %>
+                  <%= button_to "Crear Actividad", {:controller => "actividads", :action => "new", :id => @proceso.id},:class => "tiny button  radius alinearbotones", :method=>:post %>
                   <%= button_to "Ver Todos", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
                 </div>
               
