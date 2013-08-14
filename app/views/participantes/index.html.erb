@@ -37,12 +37,7 @@
                         
                     </div>
 
-                    <% if notice %>
-                              <div data-alert class="alert-box success radius">
-                                <%= notice %>
-                                <a href="#" class="close">&times;</a>
-                              </div>
-                    <% end %>
+                   
                          
                 </div>
               </div>
@@ -54,13 +49,17 @@
           
           <div class="sheet_body fondoGris">
             <section class="topics" data-collection-name="topics">
-                
-                <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+               
+                             <div id="noticeMsg" data-alert class="alert-box success radius ocultar">
+                            </div>
+                                  <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
                   <tbody id="participantes" >
-                    <% @participantes.each do |participante| %>
-                      <%= render "participante", :participante => participante %> 
-                    <% end %>
 
+                   
+                      <% @participantes.each do |participante| %>
+                        <%= render "participante", :participante => participante %> 
+                      <% end %>
+                   
                   </tbody>
                 </table>
                

@@ -1,10 +1,13 @@
 <% if @participante.errors.count == 0 %>
+	document.getElementById("noticeMsg").innerHTML = "Se creo correctamente el participante  <a href='#'' class='close'>&times;</a>";
+	$('#noticeMsg').show();
 	$('#formParticipante').remove();
 	$('#participantes').show();
 	$('#new_participante_link').show();
 	$('#listar_participante_link').hide();
 	$('#participantes').append('<%= j render("participante", :participante => @participante) %>');
 	document.getElementById("tituloUsuario").innerHTML = "Participantes";
+
 <% else %>
 	$('#formParticipante').remove();
 	$('#formularioParticipantes').after('<%= j render("form") %>');

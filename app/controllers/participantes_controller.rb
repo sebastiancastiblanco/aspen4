@@ -4,8 +4,10 @@ class ParticipantesController < ApplicationController
   def index
     @proceso = Proceso.find(params[:proceso_id])
     @participantes = @proceso.participantes
-    gon.crearParticipante = (params[:crearParticipante])
+    @particpantesRender = (params[:nuevoItem])
+    gon.crearParticipante = (params[:nuevoItem])
     
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @participantes }

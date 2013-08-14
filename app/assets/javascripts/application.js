@@ -146,9 +146,17 @@ function listarActividadesfiltrado(procesoid,estadoid){
          }) 
 }
 
-
+function nuevoParticipante(){
+    $('#participantes').hide();
+    $('#listar_participante_link').show();
+    $('#new_participante_link').hide();
+    $('#formularioParticipantes').after('<%= render("form") %>');
+    document.getElementById("tituloParticipante").innerHTML = "Nuevo Participante";
+}
 
 $(document).ready(function(){
-  var j = jQuery.noConflict();
-j("#actividad_fechaSeguimiento").datepicker();
+  if (gon.crearParticipante) {
+        nuevoParticipante();
+  };
+  $('#noticeMsg').hide();
 });
