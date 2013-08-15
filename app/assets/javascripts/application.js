@@ -48,8 +48,8 @@ function cambioEstadoFavoritoHome(procesoid){
 
 function listarParticipantes(){
   $('#formParticipante').remove();
-  $('#participantes').show();
-  $('#new_participante_link').show();
+  $("#participantes").toggle( "fade" );
+  $("#new_participante_link").show();
   $('#listar_participante_link').hide();
   document.getElementById("tituloParticipante").innerHTML = "Participantes";
 }
@@ -83,11 +83,13 @@ function eventoCamposOpcionalesParticipante (){
     var panelcamposopcionales = "#camposOpcionalesParticipante";
     var display =  $(panelcamposopcionales).css('display');
       if(display == "block" ){
-         $(panelcamposopcionales).css('display', 'none');
+         //$(panelcamposopcionales).css('display', 'none');
+         $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
       }
       else{
-         $(panelcamposopcionales).css('display', 'block');
+         //$(panelcamposopcionales).css('display', 'block');
+         $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
       }
 }
@@ -150,7 +152,7 @@ function nuevoParticipante(){
     $('#participantes').hide();
     $('#listar_participante_link').show();
     $('#new_participante_link').hide();
-    $('#formularioParticipantes').after('<%= render("form") %>');
+    $('#formularioParticipantes').html("<%= escape_javascript(render(:partial => 'form')) %>");
     document.getElementById("tituloParticipante").innerHTML = "Nuevo Participante";
 }
 
@@ -159,4 +161,7 @@ $(document).ready(function(){
         nuevoParticipante();
   };
   $('#noticeMsg').hide();
+
+    $(document).foundation('joyride', 'start');
+  
 });

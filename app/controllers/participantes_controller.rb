@@ -77,6 +77,7 @@ class ParticipantesController < ApplicationController
   # PUT /participantes/1.json
   def update
     @participante = Participante.find(params[:id])
+    @proceso = Proceso.find(params[:proceso_id])
     
     respond_to do |format|
       if @participante.update_attributes(params[:participante])
