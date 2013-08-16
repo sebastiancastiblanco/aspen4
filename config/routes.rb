@@ -5,6 +5,7 @@ AspenVersion3::Application.routes.draw do
 
   resources :actividads
   get "actividads/filtrado"
+  
 
   resources :estado_actividads
   resources :contratos
@@ -109,6 +110,7 @@ AspenVersion3::Application.routes.draw do
 
   #filtrado de actividades
   match 'actividads/filtrado/:proceso_id/:estado_id' => 'actividads#filtrado'
+
 
 
 end

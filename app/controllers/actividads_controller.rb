@@ -8,6 +8,7 @@ class ActividadsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @actividads }
+      format.js
     end
   end
 
@@ -108,9 +109,9 @@ class ActividadsController < ApplicationController
     else
       @actividades = @proceso.actividads.joins(:estado_actividad).where(estado_actividads: {id: params[:estado_id]})
     end
-
-    render :json => @actividades
-    
+     respond_to do |format|
+      format.js
+    end
  end
 
 end

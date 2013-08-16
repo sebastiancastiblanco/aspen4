@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+
 
 
 function cambioEstadoFavoritoHome(procesoid){
@@ -142,8 +142,7 @@ function listarActividadesfiltrado(procesoid,estadoid){
             success: function(res)
             {
               alert(res);
-
-                $('#actividades').html(res);
+               
             }
          }) 
 }
@@ -162,6 +161,6 @@ $(document).ready(function(){
   };
   $('#noticeMsg').hide();
 
-    $(document).foundation('joyride', 'start');
+  
   
 });

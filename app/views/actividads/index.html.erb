@@ -52,12 +52,19 @@
             </div>
           </div><div class="blank_slate_arrow"></div>
           </header>
+
+
+
           <div class="sheet_body fondoGris">
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
                         <section id="actividades" class="calendar_events">
-                            <%= render partial: "actividad", collection: @actividads %>
+                            <%= render @actividads %>
                         </section>
+                        
                         <div id="formularioActividades"></div>
+
+                        <div id="actividades2"></div>
+
             </div>
           </div>
         </div>

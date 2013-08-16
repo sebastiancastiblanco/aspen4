@@ -1,2 +1,3 @@
+alert('NO PROBLEM HERE');
 $('#listar_actividades_link').show();
-$('#actividades').append('<%= j render(partial: "actividad", collection: @actividades) %>');
+$('#actividades2').after('<%= escape_javascript(render(@actividades)) %>');
