@@ -12,115 +12,62 @@
     </div>
   <% end %>
 
-  <div data-behavior="expandable recurrence_prompt">
-      <div class="collapsed_content">
-            <header class="text_entry">
-                  <fieldset class="event_name">
-                        <table border="0" cellspacing="0" cellpadding="0">
-                              <tbody>
-                                    <tr>
-                                          <td>
-                                                <strong>
-                                                      <div class="formatted_content hidden" style="position: absolute; left: -9999px; top: 0px; word-wrap: break-word; font-size: 20px; font-family: ProximaNova, 'Helvetica Neue', helvetica, arial, sans-serif; font-weight: bold; letter-spacing: normal; line-height: normal; text-decoration: none; padding: 0px; text-rendering: auto; width: 435px;">New event</div>
-                                                      <textarea name="summary"  rows="1" data-type="textarea" data-placeholder="Name the event"  style="resize: none; overflow: hidden; min-height: 25px;">New event</textarea>
-                                                </strong>
-                                          </td>
-                                    </tr>
-                            </tbody>
-                        </table>
-                  </fieldset>
-                  <fieldset class="event_time">
-                          <table>
-                            <tbody>
-                              <tr>
-                                <td class="time" data-behavior="time_entry">
-                                  <input type="hidden" name="starts_at_time" value="">
-                                  <input type="text" value="" data-type="text" placeholder="At what time? (9am, 1pm, etc.)" class="placeholding">
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </fieldset>
+<div class="row">
 
-                        <fieldset class="event_note">
-                          <table>
-                            <tbody><tr>
-                              <td class="description">
-                                <div class="formatted_content hidden" style="position: absolute; left: -9999px; top: 0px; word-wrap: break-word; font-size: 16px; font-family: ProximaNova, 'Helvetica Neue', helvetica, arial, sans-serif; font-weight: normal; letter-spacing: normal; line-height: normal; text-decoration: none; padding: 0px; text-rendering: auto; width: 435px;">Add an optional note</div>
-                                <textarea name="description" rows="1" data-type="textarea" placeholder="Add an optional note" class="placeholding" style="resize: none; overflow: hidden; min-height: 21px;"></textarea>
-                              </td>
-                            </tr>
-                          </tbody></table>
-                        </fieldset>
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :titulo_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :titulo, :placeholder => "Name the event" %>
+    </div>
 
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :hora_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :hora, :placeholder => "At what time? (9am, 1pm, etc.)" %>
+    </div>
 
-                        <fieldset class="event_calendar" data-role="bucket_fields">
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :nota_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :nota, :placeholder => "Add an optional note" %>
+    </div>
 
-                          <input type="hidden" name="bucket" value="Project:2733915">
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :comienza_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :comienza, :placeholder => "Starts" %>
+    </div>
 
-                        </fieldset>
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :termina_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :termina, :placeholder => "Ends" %>
+    </div>
 
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :repeticion_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.select :repeticion,  options_for_select( [ ['No', ''], ['Every day', 'daily'], ['Every week', 'weekly'],['Every month', 'monthly'],['Every year', 'yearly'] ] ) %>
+    </div>
 
-                        <fieldset class="event_date">
-                          <div class="start_date">
-                            <table border="0" cellspacing="0" cellpadding="0">
-                              <tbody><tr>
-                                <td class="label">
-                                  <label>Starts:</label>
-                                </td>
-                                <td class="date" data-behavior="date_entry">
-                                  <input type="hidden" name="starts_at_date" value="">
-                                  <input type="text" class="date hasDatepicker" readonly="" tabindex="-1" id="dp1370113556722">
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="end_date">
-                          <table border="0" cellspacing="0" cellpadding="0">
-                            <tbody><tr>
-                              <td class="label">
-                                <label>Ends:</label>
-                              </td>
-                              <td class="date" data-behavior="date_entry">
-                                <input type="hidden" name="ends_at_date" value="">
-                                <input type="text" class="date hasDatepicker" readonly="" tabindex="-1" id="dp1370113556723">
-                              </td>
-                            </tr>
-                          </tbody></table>
-                        </div>
-                      </fieldset>
+</div>
 
+<div class="row">
 
-                      <fieldset class="event_recurrence">
-                        <table>
-                          <tbody><tr>
-                            <td class="label">
-                              <label>Repeats?</label>
-                            </td>
-                            <td>
+     <div class="small-1 small-offset-7 columns field"></div>
+     <div class="small-1 columns field">
+      <%= link_to 'Cancelar', "javascript:listarParticipantes()", :class=>"textoGrislinks" %>
+     </div>
+     <div class="small-2 columns field">
+      <%= f.submit :'Guardar Alerta' , :class => " button success radius" %></div>
+     </div>
 
-                              <select name="freq">
-
-                                <option value="">No</option>
-
-                                <option value="daily">Every day</option>
-
-                                <option value="weekly">Every week</option>
-
-                                <option value="monthly">Every month</option>
-
-                                <option value="yearly">Every year</option>
-
-                              </select>
-
-                            </td>
-                          </tr>
-                        </tbody></table>
-                      </fieldset>
-             </header>
-      </div>
-  </div>
-
+</div>
 
 <% end %>
