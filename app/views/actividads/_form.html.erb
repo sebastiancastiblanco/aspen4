@@ -16,25 +16,27 @@
       <%= f.select :participante_id, [["Encargado", 0]] + @proceso.participantes.map {|r| [r.nombre,r.id]}, { :disabled => ["Encargado", 0] } %>
     </div>
 
-    <div class="small-2 small-offset-0 columns ">
-      <%= f.label "descripción", :class => "tituloCampo error alinearDerecha" %>
-    </div>
-    <div class="small-4 columns field">
-      <%= f.text_area :descripcion, :placeholder => "Máximo 250 caracteres" %>
-    </div>
-
+    
     <div class="small-2 small-offset-0 columns ">
       <%= f.label "Estado de la Actividad", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
            <%= f.select :estado_actividad_id, [["Estado de la Actividad", 0]] + @estadoActividads.map {|r| [r.estado,r.id]}, { :disabled => ["Estado de la Actividad", 0] } %>
     </div>
-
     <div class="small-2 small-offset-0 columns ">
       <%= f.label "Fecha Seguimiento", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-          <%= f.date_select :fechaSeguimiento %>
+          <%= f.text_field :fechaSeguimiento , :placeholder => "Fecha Seguimiento" %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label "descripción", :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-10 columns field">
+      <%= f.text_area :descripcion, :placeholder => "Máximo 250 caracteres",:size => "30x30" %>
     </div>
 
 </div>
@@ -47,10 +49,10 @@
    
       <section>
         <div class="small-2 small-offset-0 columns ">
-          <%= f.label "Observación", :class => "tituloCampo error alinearDerecha" %>
+          <%= f.label "Observacies", :class => "tituloCampo error alinearDerecha" %>
         </div>
-        <div class="small-4 columns field">
-          <%= f.text_area :observacion, :placeholder => "Máximo 250 caracteres" %>
+        <div class="small-10 columns field">
+          <%= f.text_area :observacion, :placeholder => "Máximo 500 caracteres" %>
         </div>
         
 
@@ -83,6 +85,9 @@
      <%= hidden_field_tag :proceso_id, @proceso.id %>
 </div>
   
-    
-  
 <% end %>
+
+<script>
+  $(document).foundation();
+  jQuery('#actividad_fechaSeguimiento').datepicker({dateFormat: "dd MM yy"});
+</script>

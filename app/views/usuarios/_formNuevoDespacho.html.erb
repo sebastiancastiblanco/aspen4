@@ -1,0 +1,54 @@
+<%= form_for @usuario, :remote => true, :html => { :class => "custom",:id => "formUsuario"} do |f| %>
+
+
+<div class="row">
+
+    <div class="small-2 small-offset-5 columns ">
+      <%= f.label "empresa", :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-5 columns field">
+      <%= f.text_field :empresa ,:placeholder => "Empresa",:class=> "input-xlarge" %>
+    </div>
+
+    <div class="small-2 small-offset-5 columns ">
+      <%= f.label :nombre_usuario, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-5 columns field">
+      <%= f.text_field :username,:placeholder => "Nombre de Usuario",:class=> "input-xlarge" %>
+    </div>
+
+    <div class="small-2 small-offset-5 columns ">
+      <%= f.label :email_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-5 columns field">
+           <%= f.text_field :email,  :placeholder => "email" %> 
+    </div>
+    
+    <div class="small-2 small-offset-5 columns ">
+      <%= f.label :password_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-5 columns field">
+       <%= f.text_field :password, :placeholder => "password",:class=> "input-xlarge" %>  
+    </div>
+     <div class="small-2 small-offset-5 columns ">
+      <%= f.label "Confirmar Password", :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-5 columns field">
+        <%= f.text_field :password_confirmation, :placeholder => "Confirmar contraseña",:class=> "input-xlarge" %>  
+    </div>
+
+</div>
+
+
+<div class="row"> 
+
+   <div class="small-1 small-offset-8 columns field"></div>
+     
+     <div class="small-2 columns field">
+      <%= f.submit :'Crear Cuenta' , :class => " button success radius" %></div>
+     </div>
+     
+</div>
+
+<% end %>
+

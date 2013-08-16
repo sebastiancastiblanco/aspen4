@@ -282,7 +282,8 @@ div.panel.home_tab section.projects.cards article.card {
   margin: 0 20px 20px 0 !important;
   position: relative !important;
   text-align: left !important;
-  background: rgb(248, 248, 248) !important;
+  /*background: rgb(248, 248, 248) !important;*/
+  background: rgb(243, 243, 243) !important;
   padding: 15px !important;
   text-rendering: optimizeLegibility !important;
   -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.3) !important;
@@ -828,8 +829,8 @@ div.panel.home_tab div.project_templates.nuevoProceso{
 }
 
 .margenTop25{
-  margin-top: 25px;
-  margin-left: 68px;
+  margin-top: 20px;
+  margin-left: 25px;
 }
 
 .tituloCampo{
@@ -941,4 +942,13 @@ color: #444;
 
 .textolinks:hover, .textolinks:focus{
   text-decoration: underline !important;  
+}
+
+.marginTopLeft{
+  margin: 5px 0 0 15px;
+}
+
+.alinearbotones{
+  float: left !important;
+  margin-right: 10px !important;
 }

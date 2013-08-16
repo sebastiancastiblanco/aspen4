@@ -1,0 +1,32 @@
+<%= form_tag usuario_sessions_path, method: :post do %>	
+		<div class="row">
+			<div class="small-12 columns">
+				
+			  <div class="small-6 small-offset-3 columns"> 
+			  	<%= label_tag :usuario ,nil, :class => "tituloCampo error "  %>
+				</div>
+			  <div class="small-6 small-offset-3 columns">
+			  	<%= text_field :username,value = nil, :placeholder => "Usuario",:class=> "input-xlarge"  %> 
+			  </div>
+			  
+			  <div class="small-6 small-offset-3 columns"> 
+			  	<%= label_tag :Contraseña ,nil, :class => "tituloCampo error "  %>
+			  </div>
+			  <div class="small-6 small-offset-3 columns">
+			  	<%= password_field_tag :password,value = nil, :placeholder => "Contraseña",:class=> "input-xlarge" %>  
+			  </div>
+			  
+			  
+			   <div class="small-6 small-offset-3 columns">
+			   	<%= link_to 'Olvido su contraseña?', "javascript:eventoCamposOpcionalesActividad()", :class=>"textolinks" %>
+			   	</div>
+			 
+			 <hr/>
+			  <div class="small-4 small-offset-5 columns">
+			  	<%= submit_tag :'Cerrar', :class => " button radius secondary small" %>
+			  	<%= submit_tag :'Log In', :class => " button radius small" %>
+			  </div>
+
+			  </div>
+		</div
+	<% end %>

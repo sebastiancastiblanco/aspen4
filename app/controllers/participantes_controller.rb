@@ -2,10 +2,12 @@ class ParticipantesController < ApplicationController
   # GET /participantes
   # GET /participantes.json
   def index
-    @proceso = Proceso.find(params[:id])
+    @proceso = Proceso.find(params[:proceso_id])
     @participantes = @proceso.participantes
-    gon.crearParticipante = (params[:crearParticipante])
+    @particpantesRender = (params[:nuevoItem])
+    gon.crearParticipante = (params[:nuevoItem])
     
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @participantes }
@@ -75,6 +77,7 @@ class ParticipantesController < ApplicationController
   # PUT /participantes/1.json
   def update
     @participante = Participante.find(params[:id])
+    @proceso = Proceso.find(params[:proceso_id])
     
     respond_to do |format|
       if @participante.update_attributes(params[:participante])

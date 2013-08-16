@@ -1,0 +1,6 @@
+<% if @proceso.errors.count == 0 %>
+
+<% else %>
+	$('#formProceso').remove();
+	$('#formularioProcesos').after('<%= j render("form") %>');
+<% end %>

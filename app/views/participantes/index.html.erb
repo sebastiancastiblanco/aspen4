@@ -7,12 +7,11 @@
 
        <header>
           <ul class="breadcrumbs">
-            <li><%= link_to 'Procesos', procesos_path %></li>
             <li><%= link_to @proceso do  %> 
-                  proceso <%= @proceso.id %> : <%= @proceso.titulo %> 
+                  Explorar <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
-            <li><%= link_to 'Partcipantes', "javascript:listarParticipantes()" %></li>
+            <li>Partcipantes</li>
           </ul>
         </header>
         
@@ -37,12 +36,7 @@
                         
                     </div>
 
-                    <% if notice %>
-                              <div data-alert class="alert-box success radius">
-                                <%= notice %>
-                                <a href="#" class="close">&times;</a>
-                              </div>
-                    <% end %>
+                   
                          
                 </div>
               </div>
@@ -52,15 +46,27 @@
           </header>
 
           
-          <div class="sheet_body fondoGris">
-            <section class="topics" data-collection-name="topics">
-                
-                <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
-                  <tbody id="participantes" >
-                    <% @participantes.each do |participante| %>
-                      <%= render "participante", :participante => participante %> 
-                    <% end %>
 
+
+
+
+          <div class="sheet_body fondoGris">
+
+
+
+            <section class="topics" data-collection-name="topics">
+               
+                <div id="noticeMsg" data-alert class="alert-box success radius ocultar">
+                </div>
+          
+
+                <table class="inbox " data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                  <tbody id="participantes" class="" >
+
+                      <% @participantes.each do |participante| %>
+                        <%= render "participante", :participante => participante %> 
+                      <% end %>
+                   
                   </tbody>
                 </table>
                
@@ -73,6 +79,16 @@
     </div>
   </div>
 
+
+
+<!-- Mostrar este mensaje si la lista de participantes esta vacia -->
+<% if @participantes.size == 0 %>
+<ol id="joyrideParticipante" class="joyride-list" data-options="nextButton : true,tipAnimation : 'fade',tipAnimationFadeSpeed: 300" data-joyride>
+  <li data-id="new_participante_link" data-text="Cerrar">
+    <p>Inicia Creando un nuevo Participante</p>
+  </li>
+</ol>
+<% end %>
 
 </body>
 

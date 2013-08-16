@@ -2,7 +2,7 @@ class Usuario < ActiveRecord::Base
   authenticates_with_sorcery!
   
   #Atributos accesibles por la vista
-  attr_accessible :username, :email, :password, :password_confirmation, :created_at, :updated_at
+  attr_accessible :username, :email, :password, :password_confirmation, :despacho_id, :empresa , :created_at, :updated_at
   
   #Validaciones
   validates :username,:email,:password,:password_confirmation, :presence => { :message => "Campo obligatorio"}
