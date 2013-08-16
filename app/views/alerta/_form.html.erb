@@ -71,3 +71,13 @@
 </div>
 
 <% end %>
+
+<script>
+  $(document).foundation();
+  $(document).ready(function(){
+    var j = jQuery.noConflict();
+    j("#alertum_comienza").datepicker();
+  });
+  //jQuery('#alertum_comienza').datepicker({dateFormat: "dd MM yy"});
+  //jQuery('#alertum_termina').datepicker({dateFormat: "dd MM yy"});
+</script>

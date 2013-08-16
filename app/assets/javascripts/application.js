@@ -30,7 +30,7 @@ function cambioEstadoFavoritoHome(procesoid){
                 $(divProcesoNoFavorito).css('display', 'none');
                 $(divProcesoFavorito).css('display', 'block');
             }
-         }) 
+         })
      }
     else{
       $.ajax({
@@ -41,9 +41,9 @@ function cambioEstadoFavoritoHome(procesoid){
                $(divProcesoNoFavorito).css('display', 'block');
                 $(divProcesoFavorito).css('display', 'none');
             }
-         }) 
+         })
      }
-   
+
 };
 
 function listarParticipantes(){
@@ -145,7 +145,7 @@ function listarActividadesfiltrado(procesoid,estadoid){
 
                 $('#actividades').html(res);
             }
-         }) 
+         })
 }
 
 function nuevoParticipante(){
@@ -157,11 +157,11 @@ function nuevoParticipante(){
 }
 
 $(document).ready(function(){
-  if (gon.crearParticipante) {
+  /*if (gon.crearParticipante) {
         nuevoParticipante();
-  };
+  };*/
   $('#noticeMsg').hide();
 
     $(document).foundation('joyride', 'start');
-  
+
 });
