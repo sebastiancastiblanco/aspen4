@@ -11,7 +11,7 @@
                   Explorar <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
-            <li>Partcipantes</li>
+            <li class="current">Partcipantes</li>
           </ul>
         </header>
         
@@ -25,15 +25,32 @@
                   
                     <div class="small-6 small-9 columns left">
                       <h1 id="tituloParticipante">
-                        Participantes
+                        
+                         <% if  @participantesRender == "true" %>
+                          Participante
+                          <% else %>
+                          Participantes
+                          <% end %>
                       </h1>
                     </div>
                     
                     <div class="small-3 small-3 columns left">
+                        
+                        <% if  @participantesRender == "true" %>
+
+                        <%= button_to 'Nuevo Participante', {:controller => "participantes", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_participante_link" %>
+
+                        <%= button_to 'Listar Participantes',"javascript:listarParticipantes()" , :class => "button radius", :id => "listar_participante_link" %>
+
+                        <% else %>
+
                         <%= button_to 'Nuevo Participante', {:controller => "participantes", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_participante_link" %>
 
                         <%= button_to 'Listar Participantes',"javascript:listarParticipantes()" , :class => "button radius ocultar", :id => "listar_participante_link" %>
-                        
+
+                        <% end %>
+
+
                     </div>
 
                    
@@ -45,33 +62,32 @@
 
           </header>
 
-          
-
-
-
 
           <div class="sheet_body fondoGris">
 
-
-
             <section class="topics" data-collection-name="topics">
                
-                <div id="noticeMsg" data-alert class="alert-box success radius ocultar">
-                </div>
+                <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+                <div id="formularioParticipantes"></div>
+
+                  <% if  @participantesRender == "true" %>
+                    <table class="inbox " data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                      <tbody id="participantes" class="ocultar">
+                          <%= render @participantes %> 
+                      </tbody>
+                    </table>
+                    <%= render ('form') %>
+                    <script type="text/javascript"> $("#formParticipante").removeClass( "ocultar" ); </script>
+                  <% else %>
+                    <table class="inbox " data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                      <tbody id="participantes">
+                         <%= render @participantes %> 
+                      </tbody>
+                    </table>
+                  <% end %>
           
-
-                <table class="inbox " data-behavior="infinite_page file_drop_target" data-infinite-page="3">
-                  <tbody id="participantes" class="" >
-
-                      <% @participantes.each do |participante| %>
-                        <%= render "participante", :participante => participante %> 
-                      <% end %>
-                   
-                  </tbody>
-                </table>
-               
-               <div id="formularioParticipantes"></div>
-              
+                
+                  
             </section>
           </div>
         </div>
@@ -83,7 +99,7 @@
 
 <!-- Mostrar este mensaje si la lista de participantes esta vacia -->
 <% if @participantes.size == 0 %>
-<ol id="joyrideParticipante" class="joyride-list" data-options="nextButton : true,tipAnimation : 'fade',tipAnimationFadeSpeed: 300" data-joyride>
+<ol id="joyrideParticipante" class="joyride-list" data-options="nextButton : true,tipAnimation :    'fade',tipAnimationFadeSpeed: 300" data-joyride>
   <li data-id="new_participante_link" data-text="Cerrar">
     <p>Inicia Creando un nuevo Participante</p>
   </li>

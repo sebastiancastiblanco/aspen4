@@ -1,2 +1,29 @@
-$('#listar_actividades_link').show();
-$('#actividades').append('<%= j render(partial: "actividad", collection: @actividades) %>');
+$('#formActividad').remove();
+$('#actividades').show();
+$('#new_actividad_link').show();
+$('#listar_actividades_link').hide();
+document.getElementById("tituloActividad").innerHTML = "Actividades";
+
+<% if @filtro == "0" %>
+	$("#filtroTodos").addClass("active")
+	$("#filtroAbiertas").removeClass("active")
+	$("#filtroAtrasadas").removeClass("active")
+	$("#filtroTerminadas").removeClass("active")
+<% elsif @filtro == "1" %>
+	$("#filtroTodos").removeClass("active")
+	$("#filtroAbiertas").addClass("active")
+	$("#filtroAtrasadas").removeClass("active")
+	$("#filtroTerminadas").removeClass("active")
+<% elsif @filtro == "3" %>
+	$("#filtroTodos").removeClass("active")
+	$("#filtroAbiertas").removeClass("active")
+	$("#filtroAtrasadas").addClass("active")
+	$("#filtroTerminadas").removeClass("active")
+<% elsif @filtro == "2" %>
+	$("#filtroTodos").removeClass("active")
+	$("#filtroAbiertas").removeClass("active")
+	$("#filtroAtrasadas").removeClass("active")
+	$("#filtroTerminadas").addClass("active")
+<% end %>
+
+$('#actividades').html("<%= j render( @actividads) %>");

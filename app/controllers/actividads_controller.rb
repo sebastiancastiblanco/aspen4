@@ -103,14 +103,17 @@ class ActividadsController < ApplicationController
  #Filtrado de las actividades
  def filtrado
     @proceso = Proceso.find(params[:proceso_id])
-    if (params[:estado_id]== 0)
-      @actividades = @proceso.actividads
-    else
-      @actividades = @proceso.actividads.joins(:estado_actividad).where(estado_actividads: {id: params[:estado_id]})
-    end
+    @filtro = params[:estado_id]
 
-    render :json => @actividades
-    
+    if (params[:estado_id]== "0")
+      @actividads = @proceso.actividads
+    else
+      @actividads = @proceso.actividads.joins(:estado_actividad).where(estado_actividads: {id: params[:estado_id]})
+    end
+    #render :json => @actividades
+     respond_to do |format|
+      format.js
+    end
  end
 
 end

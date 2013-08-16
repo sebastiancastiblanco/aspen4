@@ -26,16 +26,23 @@
                       </h1>
                     </div>
                     <div class="small-4 columns left">
-                      <dl class="sub-nav">
-                          <dd class="active">
-                              <%= link_to 'Todas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',0)" %>
+                      <dl id="listaFiltros" class="sub-nav">
+                          <dd id="filtroTodos" class="active">
+                              <%= link_to 'Todas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 0 , :remote => true %>
                           </dd>
-                          <dd> <%= link_to 'Abiertas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',1)" %></dd>
-                          <dd><%= link_to 'Atrasadas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',2)" %></dd>
-                          <dd><%= link_to 'Terminadas', "javascript:listarActividadesfiltrado('"+(@proceso.id).to_s+"',3)" %></dd>
+                          <dd id="filtroAbiertas"> 
+                            <%= link_to 'Abiertas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 1 , :remote => true %>
+                          </dd>
+                          <dd id="filtroAtrasadas">
+                            <%= link_to 'Atrasadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 3 , :remote => true %>
+                          </dd>
+                          <dd id="filtroTerminadas">
+                            <%= link_to 'Terminadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 2 , :remote => true %>
+                          </dd>
                       </dl>
+
                     </div>
-                    <div class="small-2 columns left">
+                    <div id="botonesActividades" class="small-2 columns left">
                         
                         <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_actividad_link" %>
 
@@ -55,7 +62,7 @@
           <div class="sheet_body fondoGris">
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
                         <section id="actividades" class="calendar_events">
-                            <%= render partial: "actividad", collection: @actividads %>
+                            <%= render @actividads %>
                         </section>
                         <div id="formularioActividades"></div>
             </div>

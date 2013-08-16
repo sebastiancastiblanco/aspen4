@@ -3,6 +3,7 @@
 	$('#actividades').show();
 	$('#new_actividad_link').show();
 	$('#listar_actividades_link').hide();
+	$('#botonesActividades').removeClass("small-offset-4");
 	$('#actividades').append('<%= j render("actividad", :actividad => @actividad) %>');
 	document.getElementById("tituloUsuario").innerHTML = "Actividades";
 <% else %>
