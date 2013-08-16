@@ -3,6 +3,8 @@ class AlertaController < ApplicationController
   # GET /alerta.json
   def index
     @alerta = Alertum.all
+    @proceso = Proceso.find(params[:proceso_id])
+
 
     respond_to do |format|
       format.html # index.html.erb

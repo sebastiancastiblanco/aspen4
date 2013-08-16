@@ -1,17 +1,4 @@
-<h1>Listing alerta</h1>
 
-<table>
-  <tr>
-    <th>Titulo</th>
-    <th>Hora</th>
-    <th>Nota</th>
-    <th>Comienza</th>
-    <th>Termina</th>
-    <th>Repeticion</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @alerta.each do |alertum| %>
   <tr>
@@ -26,8 +13,81 @@
     <td><%= link_to 'Destroy', alertum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Alertum', new_alertum_path %>
+
+
+<body>
+
+  <div id="workspace" class="workspace">
+    <div class="container stack_container" style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris" >
+
+       <header>
+          <ul class="breadcrumbs">
+            <li><%= link_to 'Procesos', procesos_path %></li>
+            <li><%= link_to @proceso do  %>
+                  proceso <%= @proceso.id %> : <%= @proceso.titulo %>
+                <% end %>
+            </li>
+            <li><%= link_to 'Contratos', "javascript:listarAlertas()" %></li>
+          </ul>
+        </header>
+
+        <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
+
+          <header class="has_buttons">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+
+                    <div class="small-6 small-9 columns left">
+                      <h1 id="tituloContrato">
+                        Alertas
+                      </h1>
+                    </div>
+
+                    <div class="small-3 small-3 columns left">
+                        <%= button_to 'Nuevo Alerta', {:controller => "alerta", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_alerta_link" %>
+
+                        <%= button_to 'Listar Alertas',"javascript:listarAlertas()" , :class => "button radius ocultar", :id => "listar_alerta_link" %>
+
+                    </div>
+
+                    <% if notice %>
+                              <div data-alert class="alert-box success radius">
+                                <%= notice %>
+                                <a href="#" class="close">&times;</a>
+                              </div>
+                    <% end %>
+
+                </div>
+              </div>
+            </div>
+          </div><div class="blank_slate_arrow"></div>
+          </header>
+
+
+
+          <div class="sheet_body fondoGris">
+            <section class="topics" data-collection-name="topics">
+
+              <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                <tbody id="alertas" >
+                   <% @alerta.each do |alerta| %>
+                   <% end %>
+                </tbody>
+              </table>
+
+              <div id="formularioContratos"></div>
+
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>

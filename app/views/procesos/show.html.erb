@@ -16,31 +16,31 @@
                 <div id="ProcesoFavorito<%= @proceso.id %>" class="favoritoSeleccionado" style="display:none"></div>
                 <% end %>
             </a>
-            
+
             <a href="#" data-reveal-id="myModal">
               <span class="link">Compartir</span><br>
               <span class="detail">
                 <span id="cantidadUsuarios"><%= @proceso.usuarios.size %></span> abogado  en este proceso
               </span>
             </a>
-            
+
             <a href="#">
               <span class="link">Ultimos movimientos</span><br>
               <span class="detail">cambios recientes</span>
             </a>
-            
+
             <a href="#">
               <span class="link">Homologar</span><br>
             </a>
-            
+
              <%= link_to edit_proceso_path(@proceso) do %>
               <span class="link">Editar</span>
              <% end %>
-            
+
             <%= link_to  procesos_path do %>
               <span class="link">Regresar</span>
              <% end %>
-            
+
           </div>
           <div data-behavior="edit_project_header expandable">
             <div class="collapsed_content">
@@ -50,7 +50,7 @@
                 </h1>
 
                 <div class="star"  title="Starring a project will highlight it on the projects index page">
-                    
+
                 </div>
 
               </div>
@@ -60,7 +60,7 @@
               </div>
               <div class="row">
                 <div class="large-12 columns">
-                  
+
                     <div class="small-9 large-9 columns left">
                       <h6 class="label">#REF-<%= @proceso.referencia %></h6>
                     </div>
@@ -77,13 +77,13 @@
                           </select>
                       </form>
                     </div>
-                  
+
                 </div>
               </div>
-              
-              
-              
-              
+
+
+
+
             </div>
           </div>
 
@@ -101,7 +101,7 @@
               <div class="group not_in_project">
                 <span class="label">Agregar : </span>
 
-                
+
                  <%= link_to   "("+@proceso.participantes.size.to_s+") Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
 
                  <%= link_to   "("+@proceso.contratos.size.to_s+") Contratos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
@@ -109,9 +109,8 @@
 
                 <%= link_to   "("+@proceso.actividads.size.to_s+") Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
 
-                <a href="#" >
-                  <span class="">Control</span>
-                </a>
+                <%= link_to   "("+@proceso.alertums.size.to_s+") Alertas", {:controller => "alerta", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
+
 
                 <a href="#" >
                   <span class="">Estado</span>
@@ -168,14 +167,14 @@
                 <div>
                   <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius ", :method=>:post  %>
                 </div>
-              
+
             </header>
 
             <section class="documents grouped_by_date">
               <article class="document" id="document_3073232" >
                 <table>
                   <tbody>
-                    
+
                     <% @participantes.each do |participante| %>
                     <tr>
                       <td class="text">
@@ -202,12 +201,12 @@
               <h1><%= link_to contratos_path(:id => @proceso.id) ,:class => "alinearbotones" do  %>
                       2. Contratos
                     <% end %></h1>
-      
+
                 <div>
                   <%= button_to "Crear Contrato", {:controller => "contratos", :action => "new", :proceso_id => @proceso.id},:class => "tiny button  radius alinearbotones", :method=>:post %>
                   <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
                 </div>
-              
+
             </header>
 
             <section class="documents grouped_by_date">
@@ -236,7 +235,7 @@
             </section>
           </section>
           <hr/>
-          
+
           <section class="documents " style="">
             <header class="has_buttons">
               <h1> <%= link_to actividads_path(:proceso_id => @proceso.id),:class => "alinearbotones" do  %>
@@ -246,7 +245,7 @@
                   <%= button_to "Crear Actividad", {:controller => "actividads", :action => "new", :proceso_id => @proceso.id},:class => "tiny button  radius alinearbotones", :method=>:post %>
                   <%= button_to "Ver Todos", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
                 </div>
-              
+
             </header>
 
             <section class="documents grouped_by_date">
@@ -276,14 +275,14 @@
           <section class="documents " style="">
             <header class="has_buttons">
               <h1><a href="#"> 4.  Conrtol - Alertas</a></h1>
-      
+
               <form action="#" class="button_to" data-remote="true" method="post">
                 <div>
                   <input class="tiny button  radius" type="submit" value="Crear un control">
                   <input class="tiny button secondary radius" type="submit" value="Ver Todos">
                 </div>
               </form>
-              
+
             </header>
 
             <section class="documents grouped_by_date">
@@ -312,14 +311,14 @@
           <section class="documents " style="">
             <header class="has_buttons">
               <h1><a href="#"> 5. Estado del Proceso</a></h1>
-      
+
               <form action="#" class="button_to" data-remote="true" method="post">
                 <div>
                   <input class="tiny button  radius" type="submit" value="Crear Estado">
                   <input class="tiny button secondary radius" type="submit" value="Ver Todos">
                 </div>
               </form>
-              
+
             </header>
 
             <section class="documents grouped_by_date">
@@ -345,18 +344,18 @@
             </section>
           </section>
           <hr/>
-          
+
           <section id="panelDocumentos" class="documents " style="">
             <header class="has_buttons">
               <h1><a href="#">6. Documentos</a></h1>
-      
+
               <form action="#" class="button_to" data-remote="true" method="post">
                 <div>
                   <input class="tiny button  radius" type="submit" value="Crear un documento">
                   <input class="tiny button secondary radius" type="submit" value="Ver Todos">
                 </div>
               </form>
-              
+
             </header>
 
             <section class="documents grouped_by_date">
@@ -387,13 +386,13 @@
               </article>
             </section>
           </section>
-          
-          
+
+
         </div>
       </div>
     </div>
   </div>
- 
+
 </body>
 
   <div id="myModal" class="reveal-modal small">
@@ -412,15 +411,15 @@
               <hr/>
               <div id="listaUsuarios">
                 <% @usuariosDelproceso.each do |usuario| %>
-                    <img class="avatar" height="40" src="/img/user_blue.png" width="40"> 
+                    <img class="avatar" height="40" src="/img/user_blue.png" width="40">
                     <span class="posicionNombreUsuario"><%= usuario.username %></span>
                     <br/>
 
                 <% end %>
               </div>
-                
+
               <a class="close-reveal-modal">&#215;</a>
-                      
+
              </div>
          </article>
       </div>

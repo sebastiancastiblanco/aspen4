@@ -24,7 +24,7 @@ AspenVersion3::Application.routes.draw do
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
-  
+
   match 'login' => 'usuarios#new', as: :login
   match 'logout' => 'usuario_sessions#destroy', as: :logout
   match 'logout' => 'usuario_sessions#destroy', as: :logout
@@ -45,6 +45,8 @@ AspenVersion3::Application.routes.draw do
   match '/actividads/new/:id' => 'actividads#new', as: :nuevaActividad
   match '/actividads/:id' => 'actividads#index', as: :listaActividads
   match '/actividads/:id/edit' => 'actividads#edit', as: :editarActividad
+
+  match '/alerta/:id' => 'alerta#index', as: :listaAlertas
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
