@@ -24,8 +24,13 @@ AspenVersion3::Application.routes.draw do
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
+<<<<<<< HEAD
+
+  match 'login' => 'usuario_sessions#new', as: :login
+=======
   
   match 'login' => 'usuarios#new', as: :login
+>>>>>>> SebastianAspen
   match 'logout' => 'usuario_sessions#destroy', as: :logout
   match 'logout' => 'usuario_sessions#destroy', as: :logout
   root :to => 'usuario_sessions#new'

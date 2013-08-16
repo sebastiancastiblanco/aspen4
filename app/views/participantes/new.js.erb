@@ -1,5 +1,10 @@
+
 $('#listar_participante_link').show();
 $('#participantes').hide();
 $('#new_participante_link').hide();
 $('#formularioParticipantes').after('<%= j render("form") %>');
+$("#formParticipante").toggle( "fade" );
+$('#noticeMsg').hide();
 document.getElementById("tituloParticipante").innerHTML = "Nuevo Participante";
+
+$("#ayudaParticipante").hide();

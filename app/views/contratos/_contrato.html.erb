@@ -1,10 +1,11 @@
  <tr id="contrato_<%= contrato.id %>" class="topic message_10997527 fondoGris" >
   <td class="who">
-      <%= link_to edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true do  %>
-              <%= contrato.objeto %> 
+      <%= link_to edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true,:class => "alinearbotones" do  %>
+              <h6>Tipo de Contrato: <%= contrato.tipoContrato %>	
+              Objeto: <%= contrato.objeto %> </h6>
       <% end %>
     
-      <%= button_to 'Ver', edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true, :id => "new_contrato_link",:class => "tiny button radius " %>
+      <%= button_to 'Ver', edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true, :id => "new_contrato_link",:class => "tiny button radius alinearbotones " %>
       
         <%= link_to "Eliminar", contrato, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este contrato?' } , :remote => true %>
 

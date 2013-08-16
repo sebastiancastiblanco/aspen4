@@ -3,7 +3,7 @@ class ContratosController < ApplicationController
   # GET /contratos.json
   def index
     @contratos = Contrato.all
-    @proceso = Proceso.find(params[:id])
+    @proceso = Proceso.find(params[:proceso_id])
 
     respond_to do |format|
       format.html # index.html.erb
