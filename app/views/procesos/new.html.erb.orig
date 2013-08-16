@@ -24,15 +24,12 @@
 									<div class="small-9 columns">
 										<h1>Iniciar un nuevo proceso</h1>
 									</div>
-<<<<<<< HEAD
-
-=======
-									
+									<div id="actualizo"></div>
 								<div class="small-3 small-3 columns left">
 			                       
 			                        
 			                    </div>
->>>>>>> SebastianAspen
+
 
 								</div>
 							</div>
@@ -48,12 +45,8 @@
 						</article>
 
 				</div>
-<<<<<<< HEAD
-
-=======
 			</div>
 				
->>>>>>> SebastianAspen
 			</div>
 		</div>
 	</div>
@@ -69,9 +62,13 @@
               <br/>
 
               <%= render 'formTipoProceso' %>
+<<<<<<< HEAD
 
               <a class="close-reveal-modal">&#215;</a>
 
+=======
+              <a class="close-reveal-modal">&#215;</a>
+>>>>>>> SebastianAspen
              </div>
          </article>
       </div>

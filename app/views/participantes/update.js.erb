@@ -1,5 +1,4 @@
 <% if @participante.errors.count == 0 %>
-
 document.getElementById("noticeMsg").innerHTML = "Se actualizo correctamente el participante <%= @participante.nombre %> <%= @participante.apellido %> <a href='#'' class='close'>&times;</a>";
 	$("#noticeMsg").toggle( "fade" );
 	$('#formParticipante').remove();

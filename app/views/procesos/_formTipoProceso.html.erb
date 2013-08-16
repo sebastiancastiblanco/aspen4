@@ -1,9 +1,8 @@
-<%= form_for(@tipo_proceso, :remote => true,  :html => { :class => "custom",:id => "formCrearTipoProceso"} ) do |f| %>
+<%= form_for(@tipo_proceso, :url => { :action => "createTipoProceso" }, :remote => true,  :html => { :class => "custom",:id => "formCrearTipoProceso"} ) do |f| %>
   <div class="row"> 
 		  <% if @tipo_proceso.errors.any? %>
 		    <div id="error_explanation">
 		      <h2><%= pluralize(@tipo_proceso.errors.count, "error") %> prohibited this tipo_proceso from being saved:</h2>
-
 		      <ul>
 		      <% @tipo_proceso.errors.full_messages.each do |msg| %>
 		        <li><%= msg %></li>

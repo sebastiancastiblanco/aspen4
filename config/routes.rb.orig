@@ -15,22 +15,24 @@ AspenVersion3::Application.routes.draw do
 
   resources :rol_participantes
   resources :control_accesos
+<<<<<<< HEAD
+=======
+  get "procesos/createTipoProceso"
+>>>>>>> SebastianAspen
 
   resources :procesos
   get "procesos/favorito"
   get "procesos/nofavorito"
+  get "procesos/compartirProceso"
+  
+  
 
 
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
-<<<<<<< HEAD
 
-  match 'login' => 'usuario_sessions#new', as: :login
-=======
-  
   match 'login' => 'usuarios#new', as: :login
->>>>>>> SebastianAspen
   match 'logout' => 'usuario_sessions#destroy', as: :logout
   match 'logout' => 'usuario_sessions#destroy', as: :logout
   root :to => 'usuario_sessions#new'
@@ -50,6 +52,8 @@ AspenVersion3::Application.routes.draw do
   match '/actividads/new/:id' => 'actividads#new', as: :nuevaActividad
   match '/actividads/:id' => 'actividads#index', as: :listaActividads
   match '/actividads/:id/edit' => 'actividads#edit', as: :editarActividad
+
+  match '/alerta/:id' => 'alerta#index', as: :listaAlertas
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -108,8 +112,14 @@ AspenVersion3::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
+<<<<<<< HEAD
 
 
+=======
+  
+  match 'procesos/createTipoProceso' => 'tipo_procesos#createTipoProceso'
+  match 'procesos/compartirProceso' => 'control_accesos#compartirProceso'
+>>>>>>> SebastianAspen
   match 'procesos/favorito/:procesoid' => 'procesos#favorito'
   match 'procesos/cantidadUsuarios/:procesoid' => 'procesos#cantidadUsuarios'
   match 'procesos/nofavorito/:procesoid' => 'procesos#nofavorito'

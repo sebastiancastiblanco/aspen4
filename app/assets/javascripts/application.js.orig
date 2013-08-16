@@ -137,6 +137,22 @@ function eventoCamposOpcionalesUsuario (){
       }
 }
 
+<<<<<<< HEAD
+function listarActividadesfiltrado(procesoid,estadoid){
+  $.ajax({
+            url: "/actividads/filtrado/"+procesoid+"/"+ estadoid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res)
+            {
+              alert(res);
+
+                $('#actividades').html(res);
+            }
+         })
+}
+=======
+>>>>>>> SebastianAspen
 
 function nuevoParticipante(){
     $('#participantes').hide();
@@ -147,6 +163,16 @@ function nuevoParticipante(){
 }
 
 $(document).ready(function(){
+<<<<<<< HEAD
+  /*if (gon.crearParticipante) {
+        nuevoParticipante();
+  };*/
+  $('#noticeMsg').hide();
+
+    $(document).foundation('joyride', 'start');
+
+=======
   $('#noticeMsg').hide();
   $(document).foundation('joyride', 'start');
+>>>>>>> SebastianAspen
 });

@@ -3124,7 +3124,9 @@ form.custom {
   left: 2.5%;
   font-family: inherit;
   font-weight: normal;
-  width: 95%; }
+  width: 95%; 
+  border-color: rgb(199, 199, 204) !important;
+  border: solid;   }
 
 .lt-ie9 .joyride-tip-guide {
   max-width: 800px;
@@ -3133,7 +3135,10 @@ form.custom {
 
 .joyride-content-wrapper {
   width: 100% !important;
-  padding: 1.125em 1.25em 1.5em !important; }
+  padding: 1.125em 1.25em 1.5em !important;
+  border-color: red;
+  border: 2px;
+   }
   .joyride-content-wrapper .button {
     margin-bottom: 0 !important; }
 
@@ -3147,7 +3152,9 @@ form.custom {
   border: inset 14px !important; }
   .joyride-tip-guide .joyride-nub.top {
     border-top-style: solid !important;
-    border-color: rgb(252, 255, 210) !important;
+    /*border-color: rgb(252, 255, 210) !important;*/
+    border-color: rgb(199, 199, 204) !important;
+    
     border-top-color: transparent !important;
     border-left-color: transparent !important;
     border-right-color: transparent !important;

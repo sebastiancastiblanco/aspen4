@@ -15,10 +15,14 @@ AspenVersion3::Application.routes.draw do
 
   resources :rol_participantes
   resources :control_accesos
+  get "procesos/createTipoProceso"
 
   resources :procesos
   get "procesos/favorito"
   get "procesos/nofavorito"
+  get "procesos/compartirProceso"
+  
+  
 
 
   resources :agendas
@@ -105,8 +109,9 @@ AspenVersion3::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-
-
+  
+  match 'procesos/createTipoProceso' => 'tipo_procesos#createTipoProceso'
+  match 'procesos/compartirProceso' => 'control_accesos#compartirProceso'
   match 'procesos/favorito/:procesoid' => 'procesos#favorito'
   match 'procesos/cantidadUsuarios/:procesoid' => 'procesos#cantidadUsuarios'
   match 'procesos/nofavorito/:procesoid' => 'procesos#nofavorito'
