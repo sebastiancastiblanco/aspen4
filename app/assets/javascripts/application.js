@@ -49,6 +49,7 @@ function cambioEstadoFavoritoHome(procesoid){
 function listarParticipantes(){
   $('#formParticipante').remove();
   $("#participantes").toggle( "fade" );
+  
   $("#new_participante_link").show();
   $('#listar_participante_link').hide();
   document.getElementById("tituloParticipante").innerHTML = "Participantes";
@@ -67,6 +68,8 @@ function listarActividades(){
   $('#actividades').show();
   $('#new_actividad_link').show();
   $('#listar_actividades_link').hide();
+  $('#listaFiltros').show();
+  $('#botonesActividades').removeClass("small-offset-4");
   document.getElementById("tituloActividad").innerHTML = "Actividades";
 }
 
@@ -134,19 +137,6 @@ function eventoCamposOpcionalesUsuario (){
       }
 }
 
-function listarActividadesfiltrado(procesoid,estadoid){
-  $.ajax({
-            url: "/actividads/filtrado/"+procesoid+"/"+ estadoid,
-            dataType: "JSON",
-            timeout: 10000,
-            success: function(res)
-            {
-              alert(res);
-
-                $('#actividades').html(res);
-            }
-         }) 
-}
 
 function nuevoParticipante(){
     $('#participantes').hide();
@@ -157,11 +147,6 @@ function nuevoParticipante(){
 }
 
 $(document).ready(function(){
-  if (gon.crearParticipante) {
-        nuevoParticipante();
-  };
   $('#noticeMsg').hide();
-
-    $(document).foundation('joyride', 'start');
-  
+  $(document).foundation('joyride', 'start');
 });

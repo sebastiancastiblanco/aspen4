@@ -43,12 +43,8 @@ class ControlAccesosController < ApplicationController
     @control_acceso = ControlAcceso.new(params[:control_acceso])
     @proceso = Proceso.find(params[:proceso_id])
     @control_acceso.proceso_id = @proceso.id
-
     respond_to do |format|
       if @control_acceso.save
-        #Variable cantidad de usuarios en el proceso
-        gon.cantidadUsuarios = @proceso.usuarios.size
-
         format.html { redirect_to @control_acceso, notice: 'Se ha compartido el proceso a '+ @control_acceso.usuario.username }
         format.json { render json: @control_acceso, status: :created, location: @control_acceso }
       else
@@ -85,4 +81,26 @@ class ControlAccesosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # COMPARTIR PROCESO
+  # Funcion para copartir un proceso con otro usuario, esta funcino la usa el form en la pagina principal del proceso
+  def compartirProceso
+    @control_acceso = ControlAcceso.new(params[:control_acceso])
+    @proceso = Proceso.find(params[:proceso_id])
+    @control_acceso.proceso_id = @proceso.id
+    respond_to do |format|
+      if @control_acceso.save
+        format.html { redirect_to @proceso}
+        format.js
+      else
+        format.html { render action: "new" }
+        format.js
+      end
+    end
+  end
+
+
+  
 end
+
+  

@@ -4,13 +4,14 @@ class ParticipantesController < ApplicationController
   def index
     @proceso = Proceso.find(params[:proceso_id])
     @participantes = @proceso.participantes
-    @particpantesRender = (params[:nuevoItem])
-    gon.crearParticipante = (params[:nuevoItem])
+    @participantesRender = (params[:nuevoItem])
+    @participante = Participante.new
+    @rol_participantes = RolParticipante.all
     
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @participantes }
+      format.js
     end
   end
 
@@ -44,9 +45,12 @@ class ParticipantesController < ApplicationController
   def edit
     @participante = Participante.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
+    @participantes = @proceso.participantes
     @rol_participantes = RolParticipante.all
+    @participantesRender = (params[:nuevoItem])
+    
      respond_to do |format|
-        format.html
+        format.html { render action: "index"}
         format.js
     end
   end
@@ -85,7 +89,7 @@ class ParticipantesController < ApplicationController
         format.json { head :no_content }
         format.js
       else
-        format.html { render action: "edit" }
+        format.html { render action: "index" }
         format.json { render json: @participante.errors, status: :unprocessable_entity }
         format.js
       end
