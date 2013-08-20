@@ -1,22 +1,4 @@
 
-
-<% @alerta.each do |alertum| %>
-  <tr>
-    <td><%= alertum.titulo %></td>
-    <td><%= alertum.hora %></td>
-    <td><%= alertum.nota %></td>
-    <td><%= alertum.comienza %></td>
-    <td><%= alertum.termina %></td>
-    <td><%= alertum.repeticion %></td>
-    <td><%= link_to 'Show', alertum %></td>
-    <td><%= link_to 'Edit', edit_alertum_path(alertum) %></td>
-    <td><%= link_to 'Destroy', alertum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-
-<%= link_to 'New Alertum', new_alertum_path %>
-
-
 <body>
 
   <div id="workspace" class="workspace">
@@ -49,8 +31,8 @@
                     </div>
 
                     <div class="small-3 small-3 columns left">
-                        <%= button_to 'Nuevo Alerta', {:controller => "alerta", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_alerta_link" %>
 
+                        <%= button_to 'Nueva Alerta', new_alertum_path(:proceso_id => @proceso.id), :class => "button radius ", :id => "new_alerta_link"  %>
                         <%= button_to 'Listar Alertas',"javascript:listarAlertas()" , :class => "button radius ocultar", :id => "listar_alerta_link" %>
 
                     </div>
@@ -71,18 +53,19 @@
 
 
           <div class="sheet_body fondoGris">
-            <section class="topics" data-collection-name="topics">
+            <div id="date_display_Project:2733915" class="date_display" data-autoview="">
+            <section class="calendar_events">
 
-              <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
-                <tbody id="alertas" >
+                            <div class="upcoming_events">
+                                <h2>Upcoming events</h2>
+                            </div>
+                            <section class="group today upcoming_events">
                    <% @alerta.each do |alerta| %>
+                    <%= render 'alerta', :alerta => alerta %>
                    <% end %>
-                </tbody>
-              </table>
-
-              <div id="formularioContratos"></div>
-
-            </section>
+                    </section>
+               </section>
+            </div>
           </div>
         </div>
       </div>

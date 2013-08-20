@@ -37,16 +37,17 @@ class AlertaController < ApplicationController
   # GET /alerta/1/edit
   def edit
     @alertum = Alertum.find(params[:id])
+    logger.debug "Edit post: #{@alertum.attributes.inspect}"
   end
 
   # POST /alerta
   # POST /alerta.json
   def create
     @alertum = Alertum.new(params[:alertum])
-
+    @alertum.proceso_id = params[:proceso_id]
     respond_to do |format|
       if @alertum.save
-        format.html { redirect_to @alertum, notice: 'Alertum was successfully created.' }
+        format.html { redirect_to action: "index",  proceso_id: params[:proceso_id] }
         format.json { render json: @alertum, status: :created, location: @alertum }
       else
         format.html { render action: "new" }
@@ -62,7 +63,7 @@ class AlertaController < ApplicationController
 
     respond_to do |format|
       if @alertum.update_attributes(params[:alertum])
-        format.html { redirect_to @alertum, notice: 'Alertum was successfully updated.' }
+        format.html { redirect_to action: "index",  proceso_id: params[:proceso_id] }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -75,10 +76,11 @@ class AlertaController < ApplicationController
   # DELETE /alerta/1.json
   def destroy
     @alertum = Alertum.find(params[:id])
+    @proceso = @alertum.proceso_id
     @alertum.destroy
 
     respond_to do |format|
-      format.html { redirect_to alerta_url }
+      format.html {  redirect_to action: "index",  proceso_id: @proceso }
       format.json { head :no_content }
     end
   end

@@ -6,7 +6,7 @@
 
 				<header>
 					<ul class="breadcrumbs">
-						<li><a href="#">Alertas</a></li>
+						 <li> <%= link_to   "Alertas", {:controller => "alerta", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
 						<li><a href="#">Nueva Alerta</a></li>
 					</ul>
 				</header>

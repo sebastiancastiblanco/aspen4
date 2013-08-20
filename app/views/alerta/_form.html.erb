@@ -13,6 +13,7 @@
   <% end %>
 
 <div class="row">
+       <%= hidden_field_tag :proceso_id, params[:proceso_id] %>
 
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :titulo_, :class => "tituloCampo error alinearDerecha" %>
@@ -62,7 +63,7 @@
 
      <div class="small-1 small-offset-7 columns field"></div>
      <div class="small-1 columns field">
-      <%= link_to 'Cancelar', "javascript:listarParticipantes()", :class=>"textoGrislinks" %>
+      <%= link_to   "Cancelar", {:controller => "alerta", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks",:method=>:get %>
      </div>
      <div class="small-2 columns field">
       <%= f.submit :'Guardar Alerta' , :class => " button success radius" %></div>

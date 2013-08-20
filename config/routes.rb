@@ -21,8 +21,8 @@ AspenVersion3::Application.routes.draw do
   get "procesos/favorito"
   get "procesos/nofavorito"
   get "procesos/compartirProceso"
-  
-  
+
+
 
 
   resources :agendas
@@ -50,7 +50,7 @@ AspenVersion3::Application.routes.draw do
   match '/actividads/:id' => 'actividads#index', as: :listaActividads
   match '/actividads/:id/edit' => 'actividads#edit', as: :editarActividad
 
-  match '/alerta/:id' => 'alerta#index', as: :listaAlertas
+  match '/alerta/new' => 'alerta#new', as: :nuevaAlerta, :via => :post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -109,7 +109,7 @@ AspenVersion3::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  
+
   match 'procesos/createTipoProceso' => 'tipo_procesos#createTipoProceso'
   match 'procesos/compartirProceso' => 'control_accesos#compartirProceso'
   match 'procesos/favorito/:procesoid' => 'procesos#favorito'

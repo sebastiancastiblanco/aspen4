@@ -1,0 +1,27 @@
+
+    <article id="alerta_<%= alerta.id %>" class="calendar_event">
+          <header>
+                    <time >
+                      <span class="day_of_week"><%= if(alerta.comienza != nil) then alerta.comienza.strftime("%A") end %></span><span class="month">  <%= if(alerta.comienza != nil) then alerta.comienza.strftime("%B") end %> </span>
+                      <span class="day" style="background-color: #3185c5"><%= if(alerta.comienza != nil) then alerta.comienza.strftime("%d") end %></span>
+                    </time>
+        </header>
+        <ul>
+              <li >
+                      <div style="float: left; width: 80%;">
+                        <time  style="color: #3185c5"><%= alerta.hora %></time>
+                        <%= link_to edit_alertum_path(alerta, :proceso_id => @proceso.id), :remote => true,:class => "alinearbotones" do  %>
+                              <%= alerta.titulo %>
+                        <% end %>
+                        <%= alerta.nota %>
+                      </div>
+                        <%= button_to "Eliminar", alerta, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar esta alerta?' } , :remote => true %>
+
+              </li>
+        </ul>
+
+
+
+
+    </article>
+

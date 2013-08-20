@@ -109,7 +109,7 @@
 
                 <%= link_to   "("+@proceso.actividads.size.to_s+") Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
 
-                <%= link_to   "("+@proceso.alertums.size.to_s+") Alertas", {:controller => "alerta", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
+                <%= link_to   "("+@proceso.alertums.size.to_s+") Alertas", {:controller => "alerta", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
 
                 <a href="#" >
@@ -406,9 +406,9 @@
               <br/>
               <h6>Selecciona un usuario</h6>
               <hr/>
-              
+
               <%= render 'formControlAcceso' %>
-              
+
               <h6>Usuarios vinculados en el proceso</h6>
               <hr/>
               <div id="listaUsuarios">
