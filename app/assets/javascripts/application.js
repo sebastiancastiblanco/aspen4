@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+
+
+
 
 
 function cambioEstadoFavoritoHome(procesoid){
@@ -148,4 +150,17 @@ function nuevoParticipante(){
 $(document).ready(function(){
   $('#noticeMsg').hide();
   $(document).foundation('joyride', 'start');
+  
+    $('#calendar').fullCalendar({
+          header: {
+              left:   'today prev,next',
+              center: 'title',
+              right:  'month agendaWeek ,agendaDay'
+          },
+         dayClick: function() {
+              alert('a day has been clicked!');
+          }
+    })
+ 
 });
+

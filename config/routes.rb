@@ -1,5 +1,7 @@
 AspenVersion3::Application.routes.draw do
   
+  resources :events
+
   resources :tipo_procesos
   get "tipo_procesos/create"
 

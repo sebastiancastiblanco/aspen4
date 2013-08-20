@@ -1,0 +1,50 @@
+<body>
+
+    <div id="workspace" class="workspace">
+    <div class="container stack_container"  style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris">
+
+       
+          <header class="has_buttons" style="margin-bottom: 25px !important;">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+                  
+                    <div class="small-9 columns left">
+                      <h1 id="tituloAgenda">
+                        Agenda
+                      </h1>
+                    </div>
+                    
+                    <div class="small-3 columns left">
+                        <button class="button radius" data-reveal-id="myModalNuevoEvento">Nuevo Evento</button>
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div><div class="blank_slate_arrow" ></div>
+          </header>
+        
+        <div class="sheet_body">
+            
+            <div id="calendar">
+            </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</body>
+
+<div id="myModalNuevoEvento" class="reveal-modal small">
+    <%= render 'form' %>
+  </div>
+
+
+
+
+
