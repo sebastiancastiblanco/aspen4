@@ -2,12 +2,21 @@ class ContratosController < ApplicationController
   # GET /contratos
   # GET /contratos.json
   def index
-    @contratos = Contrato.all
+    
     @proceso = Proceso.find(params[:proceso_id])
+    @contratos = @proceso.contratos
+    @contratosRender = (params[:nuevoItem])
+    if params[:contrato_id]
+       @contrato = Contrato.find(params[:contrato_id])
+    else
+       @contrato = Contrato.new
+    end
+    
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @contratos }
+      format.js
     end
   end
 
@@ -40,6 +49,9 @@ class ContratosController < ApplicationController
   def edit
     @contrato = Contrato.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
+    @participantesRender = (params[:nuevoItem])
+    @contratos = @proceso.contratos
+
      respond_to do |format|
         format.html
         format.js
@@ -59,7 +71,7 @@ class ContratosController < ApplicationController
         format.json { render json: @contrato, status: :created, location: @contrato }
         format.js
       else
-        format.html { render action: "new" }
+        format.html { render action: "index" }
         format.json { render json: @contrato.errors, status: :unprocessable_entity }
         format.js
       end

@@ -1,4 +1,4 @@
-<%= form_for(@actividad, :remote => true, :html => { :class => "custom",:id => "formActividad"} ) do |f| %>
+<%= form_for(@actividad, :remote => true, :html => { :class => "custom ocultar",:id => "formActividad"} ) do |f| %>
 
 <div class="row">
 
@@ -88,6 +88,6 @@
 <% end %>
 
 <script>
-  $(document).foundation();
   jQuery('#actividad_fechaSeguimiento').datepicker({dateFormat: "dd MM yy"});
+   $(document).foundation();
 </script>

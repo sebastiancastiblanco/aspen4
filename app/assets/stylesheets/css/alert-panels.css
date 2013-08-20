@@ -1,0 +1,168 @@
+
+
+// Include this as a file, like "alert-panels.css", after your foundation.css file
+
+/*                                        */
+/* Alert Panel HTML Classes */
+/*                                        */
+
+/* Alert panel container */
+.alert-panel {
+  margin-bottom: 1.5em !important;
+  line-height: 1.3em !important;
+}
+.alert-panel p, .alert-panel a, .alert-panel h1, .alert-panel h2, .alert-panel h3, .alert-panel h4, .alert-panel h5, .alert-panel h6 {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+.alert-panel .button.secondary {
+  background: #fff !important;
+}
+
+/* Alert panel title */
+.alert-panel-title {
+  background-color: #2ba6cb !important;
+  border: solid 1px #2284a1 !important;
+  -moz-border-radius-topleft: 3px !important;
+  -webkit-border-top-left-radius: 3px !important;
+  border-top-left-radius: 3px !important;
+  -moz-border-radius-topright: 3px !important;
+  -webkit-border-top-right-radius: 3px !important;
+  border-top-right-radius: 3px !important;
+  font-size: 1.5em !important;
+  color: #0c2e38 !important;
+  font-weight: bold !important;
+  line-height: 1.3em !important;
+  position: relative !important;
+  padding: 10px 34px 10px 10px !important;
+  display: block !important;
+}
+.alert-panel.secondary .alert-panel-title {
+  background-color: #e9e9e9 !important;
+  border: solid 1px #c3c3c3 !important;
+  color: #767676 !important;
+}
+.alert-panel.success .alert-panel-title {
+  background-color: #5da423 !important;
+  border: solid 1px #457a1a !important;
+  color: #0a1104 !important;
+}
+.alert-panel.alert .alert-panel-title {
+  background-color: #c60f13 !important;
+  border: solid 1px #970b0e !important;
+  color: #200203 !important;
+}
+
+/* Alert panel close button */
+.alert-panel.close {
+  background-color: #64c2de !important;
+  border-bottom: solid 1px #2284a1 !important;
+  border-left: solid 1px #2284a1 !important;
+  -moz-border-radius-topright: 2px !important;
+  -webkit-border-top-right-radius: 2px !important;
+  border-top-right-radius: 2px !important;
+  -moz-border-radius-bottomleft: 2px !important;
+  -webkit-border-bottom-left-radius: 2px !important;
+  border-bottom-left-radius: 2px !important;
+  position: absolute !important;
+  top: 0px !important;
+  right: 0px !important;
+  padding: 0px 12px 0.25em !important;
+  line-height: -4px !important;
+  font-size: 0.8em !important;
+  font-weight: bold !important;
+  color: #2284a1 !important;
+  -webkit-transition: all, 300ms !important;
+  -moz-transition: all, 300ms !important;
+  -o-transition: all, 300ms !important;
+  transition: all, 300ms !important;
+}
+.alert-panel.close:hover, .alert-panel.close:active {
+  background-color: #2284a1 !important;
+  border-bottom: solid 1px #2284a1 !important;
+  border-left: solid 1px #2284a1 !important;
+  color: #cdebf5 !important;
+}
+.alert-panel.secondary .alert-panel.close {
+  background-color: #f6f6f6 !important;
+  border-bottom: solid 1px #d0d0d0 !important;
+  border-left: solid 1px #d0d0d0 !important;
+  color: #c3c3c3 !important;
+}
+.alert-panel.secondary .alert-panel.close:hover, .alert-panel.secondary .alert-panel.close:active {
+  background-color: #c3c3c3 !important;
+  border-bottom: solid 1px #c3c3c3 !important;
+  border-left: solid 1px #c3c3c3 !important;
+  color: white !important;
+}
+.alert-panel.success .alert-panel.close {
+  background-color: #82d63e !important;
+  border-bottom: solid 1px #457a1a !important;
+  border-left: solid 1px #457a1a !important;
+  color: #457a1a !important;
+}
+.alert-panel.success .alert-panel.close:hover, .alert-panel.success .alert-panel.close:active {
+  background-color: #457a1a !important;
+  border-bottom: solid 1px #457a1a !important;
+  border-left: solid 1px #457a1a !important;
+  color: #c6eca7 !important;
+}
+.alert-panel.alert .alert-panel.close {
+  background-color: #ef3236 !important;
+  border-bottom: solid 1px #970b0e !important;
+  border-left: solid 1px #970b0e !important;
+  color: #970b0e !important;
+}
+.alert-panel.alert .alert-panel.close:hover, .alert-panel.alert .alert-panel.close:active {
+  background-color: #970b0e !important;
+  border-bottom: solid 1px #970b0e !important;
+  border-left: solid 1px #970b0e !important;
+  color: #f8a9aa !important;
+}
+
+/* Alert panel message area */
+.alert-panel-message {
+  background: white !important;
+  border-left: solid 1px #2ba6cb !important;
+  border-right: solid 1px #2ba6cb !important;
+  padding: 20px !important;
+  line-height: 1.3 !important;
+}
+.alert-panel.secondary .alert-panel-message {
+  border-left: solid 1px #d0d0d0 !important;
+  border-right: solid 1px #d0d0d0 !important;
+}
+.alert-panel.success .alert-panel-message {
+  border-left: solid 1px #5da423 !important;
+  border-right: solid 1px #5da423 !important;
+}
+.alert-panel.alert .alert-panel-message {
+  border-left: solid 1px #c60f13 !important;
+  border-right: solid 1px #c60f13 !important;
+}
+
+/* Alert panel action area */
+.alert-panel-action {
+  background: #e3f4f9 !important;
+  border: solid 1px #64c2de !important;
+  -moz-border-radius-bottomleft: 3px !important;
+  -webkit-border-bottom-left-radius: 3px !important;
+  border-bottom-left-radius: 3px !important;
+  -moz-border-radius-bottomright: 3px !important;
+  -webkit-border-bottom-right-radius: 3px !important;
+  border-bottom-right-radius: 3px !important;
+  padding: 10px !important;
+  text-align: right !important;
+}
+.alert-panel.secondary .alert-panel-action {
+  background: #f6f6f6 !important;
+  border: solid 1px #d0d0d0 !important;
+}
+.alert-panel.success .alert-panel-action {
+  background: #d4f1bc !important;
+  border: solid 1px #82d63e !important;
+}
+.alert-panel.alert .alert-panel-action {
+  background: #fac0c2 !important;
+  border: solid 1px #ef3236 !important;
+}              

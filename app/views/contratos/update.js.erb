@@ -8,10 +8,11 @@
 	$('#contrato_<%= @contrato.id %>').remove()
 	$('#contratos').append('<%= j render("contrato", :contrato => @contrato) %>');
 	document.getElementById("tituloContrato").innerHTML = "Contratos";
+
 <% else %>
+
 	$('#formContrato').remove();
 	$('#formularioContratos').after('<%= j render("form") %>');
 	$('#formContrato').toggle( "fade" );
+
 <% end %>
-
-

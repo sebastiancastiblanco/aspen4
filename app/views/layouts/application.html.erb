@@ -30,7 +30,12 @@
 
 </body>
 
-<%= render "layouts/footer" %>
+<% if current_user %>
+	<%= render "layouts/footer" %>
+<% else %>
+	<%= render "layouts/footerLogin" %>
+<% end %>
+
 
 <%= render "layouts/scriptFoundation" %>
 
