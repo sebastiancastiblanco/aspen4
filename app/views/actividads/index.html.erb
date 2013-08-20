@@ -5,12 +5,11 @@
 
        <header>
           <ul class="breadcrumbs">
-            <li><%= link_to 'Procesos', procesos_path %></li>
-            <li><%= link_to @proceso do  %> 
-                  proceso <%= @proceso.id %> : <%= @proceso.titulo %> 
+            <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+                  <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
-            <li><%= link_to 'Actividades', "javascript:listarActividades()" %></li>
+            <li class="">Actividades</li>
           </ul>
         </header>
         <div id="date"></div>
@@ -22,7 +21,11 @@
                 <div class="small-12 columns">
                     <div class="small-5 columns left">
                       <h1 id="tituloActividad">
-                        Actividades
+                         <% if  @actividadesRender == "true" %>
+                          Actividad
+                          <% else %>
+                          Actividades
+                          <% end %>
                       </h1>
                     </div>
                     <div class="small-4 columns left">
@@ -44,16 +47,25 @@
                     </div>
                     <div id="botonesActividades" class="small-2 columns left">
                         
-                        <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_actividad_link" %>
+                       
+
+                        <% if  @actividadesRender == "true" %>
+
+                         <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_actividad_link" %>
+
+                        <%= button_to 'Listar Actividades',"javascript:listarActividades()" , :class => "button radius ", :id => "listar_actividades_link" %>
+
+                        <% else %>
+
+                           <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_actividad_link" %>
 
                         <%= button_to 'Listar Actividades',"javascript:listarActividades()" , :class => "button radius ocultar", :id => "listar_actividades_link" %>
+
+
+                        <% end %>
+
                     </div>
-                    <% if notice %>
-                              <div data-alert class="alert-box success radius">
-                                <%= notice %>
-                                <a href="#" class="close">&times;</a>
-                              </div>
-                    <% end %>
+                   
                 </div>
               </div>
             </div>
@@ -61,14 +73,43 @@
           </header>
           <div class="sheet_body fondoGris">
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
-                        <section id="actividades" class="calendar_events">
-                            <%= render @actividads %>
-                        </section>
+                        
+                        <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
                         <div id="formularioActividades"></div>
+
+
+                        <% if  @actividadesRender == "true" %>
+                          
+                          <section id="actividades" class="calendar_events ocultar" >
+                            <%= render @actividads %>
+                          </section>
+
+                            <%= render ('form') %>
+                            <script type="text/javascript"> $("#formActividad").removeClass( "ocultar" ); </script>
+
+                        <% else %>
+
+                           <section id="actividades" class="calendar_events">
+                            <%= render @actividads %>
+                           </section>
+                          
+                        <% end %>
+                        
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+<!-- Mostrar este mensaje si la lista de participantes esta vacia -->
+<% if @actividads.size == 0 %>
+<ol id="joyrideActividad" class="joyride-list" data-options="nextButton : true,tipAnimation : 'fade',tipAnimationFadeSpeed: 300" data-joyride>
+  <li data-id="new_actividad_link" data-text="Salir">
+    <p>Inicia creando y asignando una nueva actividad</p>
+  </li>
+</ol>
+<% end %>
+
+
 </body>

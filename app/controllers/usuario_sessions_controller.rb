@@ -12,6 +12,6 @@ class UsuarioSessionsController < ApplicationController
 	end
 	def destroy 
 		logout
-		redirect_to(:login, message: "finaliza sesion")
+		redirect_to(:home, message: "finaliza sesion")
 	end
 end

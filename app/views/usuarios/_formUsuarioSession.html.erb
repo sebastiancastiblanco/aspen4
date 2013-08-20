@@ -1,32 +1,39 @@
-<%= form_tag usuario_sessions_path, method: :post do %>	
-		<div class="row">
+<div class="alert-panel" data-alert>
+      <div class="alert-panel-title">
+        Ingrese a su cuenta
+        <a href="#" class="alert-panel close-reveal-modal" onclick="$('#modalLogin').foundation ('reveal', 'close')">&times;</a>
+      </div>
+
+      <%= form_tag usuario_sessions_path, method: :post do %>
+      <div class="alert-panel-message" >
+
+        <div class="row">
 			<div class="small-12 columns">
 				
-			  <div class="small-6 small-offset-3 columns"> 
+			  <div class="small-8 small-offset-2 columns"> 
 			  	<%= label_tag :usuario ,nil, :class => "tituloCampo error "  %>
 				</div>
-			  <div class="small-6 small-offset-3 columns">
+			  <div class="small-8 small-offset-2 columns">
 			  	<%= text_field :username,value = nil, :placeholder => "Usuario",:class=> "input-xlarge"  %> 
 			  </div>
 			  
-			  <div class="small-6 small-offset-3 columns"> 
+			  <div class="small-8 small-offset-2 columns"> 
 			  	<%= label_tag :Contraseña ,nil, :class => "tituloCampo error "  %>
 			  </div>
-			  <div class="small-6 small-offset-3 columns">
+			  <div class="small-8 small-offset-2 columns">
 			  	<%= password_field_tag :password,value = nil, :placeholder => "Contraseña",:class=> "input-xlarge" %>  
 			  </div>
 			  
-			  
-			   <div class="small-6 small-offset-3 columns">
-			   	<%= link_to 'Olvido su contraseña?', "javascript:eventoCamposOpcionalesActividad()", :class=>"textolinks" %>
-			   	</div>
-			 
-			 <hr/>
-			  <div class="small-4 small-offset-5 columns">
-			  	<%= submit_tag :'Cerrar', :class => " button radius secondary small" %>
-			  	<%= submit_tag :'Log In', :class => " button radius small" %>
 			  </div>
+		 </div>
+	  </div>
+      <div class="alert-panel-action">
+        	<%= link_to 'Olvido su contraseña?', "javascript:eventoCamposOpcionalesActividad()", :class=>"textolinks" %>
+        		 <a href="#" class="small button radius secondary" onclick="$('#modalLogin').foundation ('reveal', 'close')">Cerrar</a>
+		        <%= submit_tag :'Log In', :class => " button radius small" %>
+      </div>
+      <% end %>
+       
+</div>
 
-			  </div>
-		</div
-	<% end %>
+

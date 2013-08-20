@@ -25,12 +25,6 @@ class UsuariosController < ApplicationController
   # GET /usuarios/new.json
   def new
     @usuario = Usuario.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @usuario }
-      format.js
-    end
   end
 
   # GET /usuarios/1/edit
@@ -43,17 +37,17 @@ class UsuariosController < ApplicationController
   def create
     @usuario = Usuario.new(params[:usuario])
 
-    respond_to do |format|
+   
       if @usuario.save
-        format.html { redirect_to :procesos, notice: 'El Usuario fue creado correctamente.' }
-        format.json { render json: @usuario, status: :created, location: @usuario }
-        format.js
+          auto_login(@usuario)
+          redirect_to procesos_url
       else
-        format.html { render action: "new" }
-        format.json { render json: @usuario.errors, status: :unprocessable_entity }
-        format.js
+         respond_to do |format|
+          format.html { render action: "new" }
+          format.js
+        end
       end
-    end
+    
   end
 
   # PUT /usuarios/1

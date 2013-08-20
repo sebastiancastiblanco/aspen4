@@ -4,6 +4,13 @@ class ActividadsController < ApplicationController
   def index
     @proceso = Proceso.find(params[:proceso_id])
     @actividads = @proceso.actividads
+    @actividadesRender = (params[:nuevoItem])
+    if params[:actividad_id]
+       @actividad = Actividad.find(params[:actividad_id])
+    else
+       @actividad = Actividad.new
+    end
+    @estadoActividads = EstadoActividad.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +47,10 @@ class ActividadsController < ApplicationController
   def edit
     @actividad = Actividad.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
+    @actividads = @proceso.actividads
+    @actividadesRender = (params[:nuevoItem])
     @estadoActividads = EstadoActividad.all   
+
      respond_to do |format|
         format.html
         format.js
@@ -55,6 +65,7 @@ class ActividadsController < ApplicationController
     @proceso = Proceso.find(params[:proceso_id])
     #Relacionar el proceso con las actividades
     @actividad.proceso_id = @proceso.id
+    @estadoActividads = EstadoActividad.all
 
     respond_to do |format|
       if @actividad.save
@@ -74,6 +85,8 @@ class ActividadsController < ApplicationController
   def update
     @actividad = Actividad.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
+    @estadoActividads = EstadoActividad.all
+
     respond_to do |format|
       if @actividad.update_attributes(params[:actividad])
         format.html { redirect_to @proceso, notice: 'Actividad fue modificada correctamente.' }

@@ -12,7 +12,7 @@ body {
 body {
   background: white;
   color: #222222;
-  padding: 0;
+  padding: 0 ;
   margin: 0;
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -135,8 +135,8 @@ select {
   .column,
   .columns {
     position: relative;
-    padding-left: 0.9375em;
-    padding-right: 0.9375em;
+    padding-left: 0.9375em !important;
+    padding-right: 0.9375em !important; 
     float: left; }
 
   .small-1 {
@@ -1355,22 +1355,21 @@ blockquote p {
   .show-for-print {
     display: inherit !important; } }
 button, .button {
-  border-style: solid;
-  border-width: 1px;
-  cursor: pointer;
+  border-style: solid !important;
+  border-width: 1px !important;
+  cursor: pointer !important;
   font-family: inherit;
-  font-weight: bold;
+  font-weight: bold !important;
   line-height: 1;
-  margin: 0 0 1.25em;
-  position: relative;
+  position: relative !important;
   text-decoration: none;
-  text-align: center;
+  text-align: center !important;
   display: inline-block;
-  padding-top: 0.75em ;
-  padding-right: 1.5em;
-  padding-bottom: 0.8125em;
-  padding-left: 1.5em;
-  font-size: 1em;
+  padding-top: 0.75em !important;
+  padding-right: 1.5em !important;
+  padding-bottom: 0.8125em !important;
+  padding-left: 1.5em !important;
+  font-size: 1em !important;
   background-color: #2ba6cb !important;
   border-color: #2284a1 !important;
   color: white !important; }
@@ -1415,11 +1414,11 @@ button, .button {
     padding-left: 1.125em;
     font-size: 0.8125em; }
   button.tiny, .button.tiny {
-    padding-top: 0.4375em;
-    padding-right: 0.875em;
-    padding-bottom: 0.5em;
-    padding-left: 0.875em;
-    font-size: 0.6875em; }
+    padding-top: 0.4375em !important;
+    padding-right: 0.875em !important;
+    padding-bottom: 0.5em !important;
+    padding-left: 0.875em !important;
+    font-size: 0.6875em !important; }
   button.expand, .button.expand {
     padding-right: 0px;
     padding-left: 0px;
@@ -3069,7 +3068,8 @@ form.custom {
   border: solid 1px #666666;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  top: 50px; }
+  top: 50px; 
+  border-radius: 10px; }
   .reveal-modal .column,
   .reveal-modal .columns {
     min-width: 0; }
@@ -3093,19 +3093,24 @@ form.custom {
     top: 6.25em; }
     .reveal-modal.tiny {
       margin-left: -15%;
-      width: 30%; }
+      width: 30%;
+      padding: 0 !important; }
     .reveal-modal.small {
       margin-left: -20%;
-      width: 40%; }
+      width: 40%;
+      padding: 0 !important; }
     .reveal-modal.medium {
       margin-left: -30%;
-      width: 60%; }
+      width: 60%;
+      padding: 0 !important; }
     .reveal-modal.large {
       margin-left: -35%;
-      width: 70%; }
+      width: 70%
+      padding: 0 !important;; }
     .reveal-modal.xlarge {
       margin-left: -47.5%;
-      width: 95%; } }
+      width: 95%; 
+      padding: 0 !important;} }
 @media print {
   .reveal-modal {
     background: white !important; } }
@@ -3459,15 +3464,18 @@ form.custom {
     background-color: #5da423;
     border-color: #457a1a;
     color: white;
-    text-align: center; }
+    text-align: center; 
+    padding: 0px;}
   .alert-box.alert {
     background-color: #c60f13;
     border-color: #970b0e;
-    color: white; }
+    color: white; 
+    padding: 0px;}
   .alert-box.secondary {
     background-color: #e9e9e9;
     border-color: #d0d0d0;
-    color: #505050; }
+    color: #505050; 
+    padding: 0px;}
 
 /* Breadcrumbs */
 .breadcrumbs {
@@ -3626,7 +3634,9 @@ kbd {
   border-color: #d9d9d9;
   margin-bottom: 1.25em;
   padding: 1.25em;
-  background: #f2f2f2; }
+  /*padding: 0.7em !important;*/
+  background: #f2f2f2; 
+ }
   .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
     color: #333333; }
   .panel > :first-child {
@@ -3643,7 +3653,7 @@ kbd {
     border-width: 1px;
     border-color: #2284a1;
     margin-bottom: 1.25em;
-    padding: 1.25em;
+    padding: 1.25em !important;
     background: #2ba6cb;
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; }
@@ -3672,21 +3682,21 @@ kbd {
     line-height: 1; }
   .pricing-table .title {
     background-color: #dddddd;
-    padding: 0.9375em 1.25em;
+    padding: 0.9375em 1.25em !important;
     text-align: center;
     color: #333333;
     font-weight: bold;
     font-size: 1em; }
   .pricing-table .price {
     background-color: #eeeeee;
-    padding: 0.9375em 1.25em;
+    padding: 0.9375em 1.25em !important;
     text-align: center;
     color: #333333;
     font-weight: normal;
     font-size: 1.25em; }
   .pricing-table .description {
     background-color: white;
-    padding: 0.9375em;
+    padding: 0.9375em !important;
     text-align: center;
     color: #777777;
     font-size: 0.75em;
@@ -3695,7 +3705,7 @@ kbd {
     border-bottom: dotted 1px #dddddd; }
   .pricing-table .bullet-item {
     background-color: white;
-    padding: 0.9375em;
+    padding: 0.9375em !important;
     text-align: center;
     color: #333333;
     font-size: 0.875em;
@@ -3704,7 +3714,7 @@ kbd {
   .pricing-table .cta-button {
     background-color: whitesmoke;
     text-align: center;
-    padding: 1.25em 1.25em 0; }
+    padding: 1.25em 1.25em 0 !important; }
 
 /* Progress Bar */
 .progress {
@@ -3746,7 +3756,7 @@ kbd {
 .side-nav {
   display: block;
   margin: 0;
-  padding: 0.875em 0;
+  padding: 0.875em 0 ;
   list-style-type: none;
   list-style-position: inside; }
   .side-nav li {
@@ -3761,7 +3771,7 @@ kbd {
     .side-nav li.divider {
       border-top: 1px solid;
       height: 0;
-      padding: 0;
+      padding: 0 ;
       list-style: none;
       border-top-color: #e6e6e6; }
 
@@ -3771,7 +3781,7 @@ kbd {
   width: auto;
   overflow: hidden;
   margin: -0.25em 0 1.125em;
-  padding-top: 0.50em !important;
+  padding-top: 0.50em ;
   margin-right: 0;
   margin-left: -0.5625em; }
   .sub-nav dt,
@@ -4033,7 +4043,7 @@ a.th {
   font-weight: normal;
   font-size: 0.855em !important;
   line-height: 0.5;
-  padding: 0.5em !important;
+  padding: 0.5em ;
   max-width: 85% !important;
   left: 50%;
   width: 100%;

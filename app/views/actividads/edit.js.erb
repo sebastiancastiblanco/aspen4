@@ -1,7 +1,11 @@
+document.getElementById("noticeMsg").innerHTML = "Se actualizo la actividad, <%= @actividad.nombre %> <a href='#'' class='close'>&times;</a>";
+$("#noticeMsg").toggle( "fade" );
 $('#listar_actividades_link').show();
 $('#actividades').hide();
 $('#new_actividad_link').hide();
 $('#listaFiltros').hide();
 $('#botonesActividades').addClass("small-offset-4");
 $('#formularioActividades').after('<%= j render("form") %>');
+$("#formActividad").toggle( "fade" );
+$('#noticeMsg').hide();
 document.getElementById("tituloActividad").innerHTML = "Actividad";

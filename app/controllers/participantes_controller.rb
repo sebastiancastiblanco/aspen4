@@ -5,7 +5,12 @@ class ParticipantesController < ApplicationController
     @proceso = Proceso.find(params[:proceso_id])
     @participantes = @proceso.participantes
     @participantesRender = (params[:nuevoItem])
-    @participante = Participante.new
+    
+     if params[:participante_id]
+       @participante = Participante.find(params[:participante_id])
+    else
+       @participante = Participante.new
+    end
     @rol_participantes = RolParticipante.all
     
     respond_to do |format|

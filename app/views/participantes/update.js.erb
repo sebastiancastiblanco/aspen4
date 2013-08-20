@@ -10,10 +10,9 @@ document.getElementById("noticeMsg").innerHTML = "Se actualizo correctamente el 
 	document.getElementById("tituloParticipante").innerHTML = "Participantes";
 
 <% else %>
-
 	$('#formParticipante').remove();
 	$('#formularioParticipantes').after('<%= j render("form") %>');
-
+	$('#formParticipante').toggle( "fade" );
 <% end %>
 
 

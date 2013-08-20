@@ -10,14 +10,15 @@
         <%= link_to 'Procesos', procesos_path , :class => "topnav_root" %>
         <%= link_to 'Agenda', agendas_path , :class => "topnav_calendar" %>
         <a class="topnav_everything"  href="#">Informes</a>
-        <a class="topnav_everyone"  href="#">Contactos</a>
-        <%= link_to 'Mi perfil', edit_usuario_path(current_user) , :class => "topnav_everyone" %>
+        <a class="topnav_everyone"  href="#">Todo</a>
+        <a class="topnav_everyone"  href="#">Mi Progreso</a>
         
     </div>
 
     <div class="current_user">
         <ul>
-            <li><a  href="#">Cuenta</a></li>
+            <li><a  href="#">Planes y Precios</a></li>
+            <li><a  href="#">Perfil: <%= current_user.username %></a></li>
             <li>
                 <%= link_to 'Sign out', :logout %>
             </li>

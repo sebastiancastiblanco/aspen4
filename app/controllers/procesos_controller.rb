@@ -2,10 +2,9 @@ class ProcesosController < ApplicationController
   # GET /procesos
   # GET /procesos.json
   def index
-   # @procesos = Proceso.all
-     @procesos = current_user.procesos
+    
+    @procesos = current_user.procesos
      
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @procesos }
