@@ -5,7 +5,9 @@
 	$('#listar_usuarios_link').hide();
 	$('#usuarios').append('<%= j render("usuario", :usuario => @usuario) %>');
 	document.getElementById("tituloUsuario").innerHTML = "Usuarios";
+	document.getElementById("noticeMsg").innerHTML = "Se creo correctamente el usuario";
+	$("#noticeMsg").toggle( "fade" );
 <% else %>
 	$('#formUsuario').remove();
-	$('#formularioUsuarios').after('<%= j render("form") %>');
+	$('#formularioUsuarios').after('<%= j render("formNuevoDespacho") %>');
 <% end %>

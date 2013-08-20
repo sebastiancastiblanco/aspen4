@@ -1,27 +1,72 @@
 <body>
 
-
-	<h1 class="field" >
-		Registrate e inicia tu prueba gratis
-	</h1>
-	<%= render 'formNuevoDespacho' %>
   
-</body>
+  <%= render 'formNuevoDespacho' %>
+  <div id="formularioUsuarios"></div>
+  <!-- First Band (Image) -->
 
+  <div class="row">
+    <div class="large-12 columns ">
+      <img src="/img/fondos/homeizq.jpg" class="bannerHome">
+      <hr>
+    </div>
+  </div>
+ 
+  <div class="row" style="margin-top: 35px;">
+    <div class="large-12 columns">
+      <div class="row">
 
- <div id="modalLogin" class="reveal-modal tiny">
-      <div class="sheet_body ">
-          <article class="participants new expanded">
-			<div class="expanded_content bubble fondoGris">
-              <h1>Ingrese a su cuenta</h1>
-              <hr/>
-              
-              
-              <%= render 'formUsuarioSession' %>
-                
-              <a class="close-reveal-modal">&#215;</a>
-                      
-             </div>
-         </article>
+    <!-- Thumbnails -->
+        <div class="large-3 small-6 columns">
+          <i class="general foundicon-cloud logosHome"></i>
+          <h6 class="panel ">Su despacho en la nube con acceso desde cualquier dispositivo movil</h6>
+        </div>
+
+        <div class="large-3 small-6 columns">
+          <i class="general foundicon-calendar logosHome"></i>
+          <h6 class="panel">Organiza tu Agenda y asigna tareas a tu equipo de trabajo</h6>
+        </div>
+
+        <div class="large-3 small-6 columns">
+          <i class="general foundicon-globe logosHome"></i>
+          <h6 class="panel">Comparte procesos con otros colegas y obten un maximo de colaboración</h6>
+        </div>
+
+        <div class="large-3 small-6 columns">
+          <i class="general foundicon-graph logosHome"></i>
+          <h6 class="panel">Obten reportes de seguimiento diarios y mensuales de cada proceso</h6>
+        </div>
+        
+
+    <!-- End Thumbnails -->
+
       </div>
     </div>
+  </div>
+
+<!-- Call to Action Panel -->
+  <div class="row">
+    <div class="large-12 columns">
+    
+      <div class="panel">
+        <h4>Cuenta gratuita por 30 dias!</h4>
+            
+        <div class="row">
+          <div class="large-9 columns">
+            <p>Obten un demo gratuito por un periodo de 30 dias, ten acceso a todas las funcionalidades.</p>
+          </div>
+          <div class="large-3 columns">
+            <a href="#" class="radius button right">Registrate ahora</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+</body>
+
+ <div id="modalLogin" class="reveal-modal tiny">
+  <%= render 'formUsuarioSession' %>
+ </div>

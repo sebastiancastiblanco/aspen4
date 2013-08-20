@@ -1,11 +1,12 @@
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, form,abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, menu, time, mark, audio, video {
   margin: 0 ;
-  padding: 0 !important;
+  /*padding: 0 !important;*/
   border: 0 ;
   outline: 0 !important;
  /* font-size: 100% !important;*/
   vertical-align: baseline !important;
   background: transparent ;
+  
 }
 
 html, body
@@ -60,9 +61,11 @@ body {
   font-family: "ProximaNova","Helvetica Neue",helvetica,arial,sans-serif !important;
   font-size: 15px !important;
   line-height: 21px !important;
-  margin: 0 40px 40px !important;
+  margin: 0 40px 40px ;
   -webkit-text-size-adjust: 100% !important;
   -ms-text-size-adjust: 100% !important;
+  min-height: 100px;
+  min-width: 920px;
 }
 /*Header Css*/
 
@@ -77,7 +80,7 @@ body>header>nav {
   zoom: 1 !important;
   clear: both !important;
   position: relative !important;
-  padding: 29px 0 20px 0 !important;
+  padding: 29px 0 25px 0 !important;
   margin: 0 auto !important;
   max-width: 1040px !important;
   min-width: 985px !important;
@@ -120,7 +123,7 @@ div.global_links a {
   font-size: 14px !important;
   text-align: left !important;
   display: inline-block !important;
-  width: 67px !important;
+  width: 85px !important;
   padding: 0 !important;
   text-align: center !important;
   -webkit-transition: color 0.2s !important;
@@ -199,6 +202,7 @@ div.workspace>div.container {
 div.panel {
   position: relative !important;
   text-align: left !important;
+  
 }
 div.panel.home_tab {
   margin-bottom: 150px !important;
@@ -373,7 +377,7 @@ div.sheet {
 /*detalles proceso header*/
 div.sheet.project>header {
   margin: 0 !important;
-  padding: 20px 30px 0px 20px !important;
+  padding: 20px 30px 0px 20px ;
   position: relative !important;
   text-rendering: optimizeLegibility !important;
 }
@@ -542,6 +546,7 @@ div.sheet>header {
 div.workspace>div.flat_container div.sheet, div.workspace>div.stack_container div.sheet {
   width: 960px!important;
   display: inline-block!important;
+  padding: 0 !important;
 }
 div.sheet.topics header.has_buttons {
   padding-bottom: 10px ;
@@ -885,6 +890,7 @@ color: #444;
 
 .alinearDerecha{
   float: right;
+  text-align: right;
 }
 
 .tituloAcordion{
@@ -955,4 +961,92 @@ color: #444;
 
 .reveal-modal.small{
   border-radius: 10px !important;
+}
+
+.bannerHome{
+  border-top: 8px solid #2284a1;
+  border-bottom: 8px solid #2284a1;
+}
+
+.tituloBanner{
+  z-index: 98;
+  position: relative;
+  float: right;
+  top: -21px;
+  right: 348px;
+}
+
+.formDespacho{
+  position: relative;
+  float: right;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  position: absolute;
+  top: 148px;
+  left: 23%;
+  z-index: 1;
+}
+
+.logobanner{
+  text-indent: -9000px !important;
+  display: block !important;
+  padding: 0 !important;
+  height: 53px !important;
+  width: 138px !important;
+  background: url(/img/aspen_logo_small.png) no-repeat center top !important;
+   position: relative;
+  float: right;
+  top: 65px;
+  right: 61px;
+}
+
+.letraTitulosMenu{
+  color: #7d7a75 !important;
+  font-size: 14px !important;
+  border-left: 1px solid #ded7c8 !important;
+  padding-left: 15px !important;
+  border-left: 1px solid #ded7c8 !important;
+  text-shadow: 0 1px #fff !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+.menubotonesHome {
+  margin-top: 19px !important;
+}
+
+.footer-bottom{
+  background: #333;
+  padding: 24px 0 10px !important;
+}
+
+.letraTitulosMenuFooter {
+  margin: 6px 0 0 !important;;
+  font-size: 12px !important;;
+  color: #fff !important;;
+  font-size: 12px !important;
+  border-left: 1px solid #ded7c8 !important;
+  padding-left: 15px !important;
+  border-left: 1px solid #ded7c8 !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+.listaDeUsuarios{
+  max-width: 590px;
+  min-height: 40px;
+}
+
+.logosHome{
+  font-size: 80px !important;
+  text-align: center !important;
+  margin-left: 55px;
+  margin-top: 70px !important;
+}
+
+.tituloProceso{
+  font-size: 12px !important;
+  font-weight: bold !important;
+}
+
+.title{
+  margin: 0px !important;
 }

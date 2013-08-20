@@ -1,12 +1,40 @@
-<%= form_for @control_acceso, :url => { :action => "compartirProceso" }, :remote => true, :html => { :class => "custom",:id => "formCompartirProceso"}  do |f| %>
-  <div class="row"> 
-          
-          <div class="small-6 columns field">
-            <%= f.select :usuario_id, [["Selecciona un Usuario", 0]] + @usuarios.map {|r| [r.username,r.id] }, { :disabled => ["Selecciona un Usuario", 0] } %>
-            <%= hidden_field_tag :proceso_id, @proceso.id %>
-          </div>
-          <div class="small-4 small-offset-1 columns field">
-             <%= f.submit :'Compartir Proceso' , :class => " button radius" %>
-          </div>
-  </div>
-<% end %> 
+<div class="alert-panel secondary" data-alert>
+      <div class="alert-panel-title">
+        Compartir Proceso
+        <a href="#" class="alert-panel close-reveal-modal" onclick="$('#myModalTipoProceso').foundation ('reveal', 'close')">&times;</a>
+      </div>
+
+      <%= form_for @control_acceso, :url => { :action => "compartirProceso" }, :remote => true, :html => { :class => "custom",:id => "formCompartirProceso"}  do |f| %>
+	      <div class="alert-panel-message" >
+	      	  <p>Puedes darle acceso a otros usuarios, permitiendoles modificar y aportar en el proceso. </p>
+              <br/>
+              <h6>Selecciona un usuario</h6>
+              <hr/>
+		        <div class="row"> 
+				  <div class="small-10 columns field">
+		            <%= f.select :usuario_id, [["Selecciona un Usuario", 0]] + @usuarios.map {|r| [r.username,r.id] }, { :disabled => ["Selecciona un Usuario", 0] } %>
+            		<%= hidden_field_tag :proceso_id, @proceso.id %>
+			       </div>
+			    </div>
+			     <h6>Usuarios vinculados en el proceso</h6>
+	              <hr/>
+	              <div id="listaUsuarios">
+	                <% @proceso.usuarios.each do |usuario| %>
+	                
+					    <img class="avatar " height="40" src="/img/user_blue.png" width="40"> 
+					    
+	                    <span class="posicionNombreUsuario "><%= usuario.username %></span>
+	                    
+	                <% end %>
+	              </div>
+	  	   </div>
+      <div class="alert-panel-action">
+        	<a href="#" class="small button radius secondary" onclick="$('#myModalCompartirProceso').foundation ('reveal', 'close')">Cerrar</a>
+		    <%= f.submit :'Compartir Proceso' , :class => " button radius small" %>
+      </div>
+      <% end %>
+       
+</div>
+
+
+  

@@ -7,12 +7,11 @@
 
        <header>
           <ul class="breadcrumbs">
-            <li><%= link_to 'Procesos', procesos_path %></li>
-            <li><%= link_to @proceso do  %> 
-                  proceso <%= @proceso.id %> : <%= @proceso.titulo %> 
+             <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+                  <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
-            <li><%= link_to 'Contratos', "javascript:listarContratos()" %></li>
+            <li class="">Contratos</li>
           </ul>
         </header>
         
@@ -26,24 +25,34 @@
                   
                     <div class="small-6 small-9 columns left">
                       <h1 id="tituloContrato">
-                        Contratos
+                        <% if  @contratosRender == "true" %>
+                          Contrato
+                          <% else %>
+                          Contratos
+                          <% end %>
                       </h1>
                     </div>
                     
                     <div class="small-3 small-3 columns left">
+                        
+                        <% if  @contratosRender == "true" %>
+
+                        <%= button_to 'Nuevo Contrato', {:controller => "contratos", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_contrato_link" %>
+
+                        <%= button_to 'Listar Contratos',"javascript:listarContratos()" , :class => "button radius ", :id => "listar_contratos_link" %>
+                        <% else %>
+
                         <%= button_to 'Nuevo Contrato', {:controller => "contratos", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_contrato_link" %>
 
                         <%= button_to 'Listar Contratos',"javascript:listarContratos()" , :class => "button radius ocultar", :id => "listar_contratos_link" %>
 
-                    </div>
-                    
-                    <% if notice %>
-                              <div data-alert class="alert-box success radius">
-                                <%= notice %>
-                                <a href="#" class="close">&times;</a>
-                              </div>
-                    <% end %>
+                        <% end %>
 
+
+                        
+
+                    </div>
+                  
                 </div>
               </div>
             </div>
@@ -55,15 +64,31 @@
           <div class="sheet_body fondoGris">
             <section class="topics" data-collection-name="topics">
                 
-              <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
-                <tbody id="contratos" >
-                   <% @contratos.each do |contrato| %>
-                    <%= render 'contrato', :contrato => contrato %>  
-                   <% end %>
-                </tbody>
-              </table>
-
+              <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
               <div id="formularioContratos"></div>
+
+              <% if  @contratosRender == "true" %>
+                    
+                 <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                  <tbody id="contratos" class="ocultar">
+                      <%= render @contratos %>  
+                  </tbody>
+                </table>
+                  <%= render ('form') %>
+                  <script type="text/javascript"> $("#formContrato").removeClass( "ocultar" ); </script>
+
+              <% else %>
+
+                <table class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                  <tbody id="contratos" >
+                      <%= render @contratos %>  
+                  </tbody>
+                </table>
+                
+              <% end %>
+          
+
+              
 
             </section>
           </div>
@@ -72,5 +97,13 @@
     </div>
   </div>
 
+<!-- Mostrar este mensaje si la lista de participantes esta vacia -->
+<% if @contratos.size == 0 %>
+<ol id="joyrideContrato" class="joyride-list" data-options="nextButton : true,tipAnimation :    'fade',tipAnimationFadeSpeed: 300" data-joyride>
+  <li data-id="new_contrato_link" data-text="Salir">
+    <p>Inicia creando un nuevo contrato</p>
+  </li>
+</ol>
+<% end %>
 
 </body>

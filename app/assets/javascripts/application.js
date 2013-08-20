@@ -49,7 +49,6 @@ function cambioEstadoFavoritoHome(procesoid){
 function listarParticipantes(){
   $('#formParticipante').remove();
   $("#participantes").toggle( "fade" );
-  
   $("#new_participante_link").show();
   $('#listar_participante_link').hide();
   document.getElementById("tituloParticipante").innerHTML = "Participantes";
@@ -57,7 +56,7 @@ function listarParticipantes(){
 
 function listarContratos(){
   $('#formContrato').remove();
-  $('#contratos').show();
+  $('#contratos').toggle( "fade" );
   $('#new_contrato_link').show();
   $('#listar_contratos_link').hide();
   document.getElementById("tituloContrato").innerHTML = "Contratos";
@@ -65,7 +64,7 @@ function listarContratos(){
 
 function listarActividades(){
   $('#formActividad').remove();
-  $('#actividades').show();
+  $('#actividades').toggle( "fade" );
   $('#new_actividad_link').show();
   $('#listar_actividades_link').hide();
   $('#listaFiltros').show();
@@ -102,11 +101,11 @@ function eventoCamposOpcionalesContrato (){
     var panelcamposopcionales = "#camposOpcionalesContrato";
     var display =  $(panelcamposopcionales).css('display');
       if(display == "block" ){
-         $(panelcamposopcionales).css('display', 'none');
+        $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
       }
       else{
-         $(panelcamposopcionales).css('display', 'block');
+        $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
       }
 }
@@ -115,11 +114,11 @@ function eventoCamposOpcionalesActividad (){
     var panelcamposopcionales = "#camposOpcionalesActividad";
     var display =  $(panelcamposopcionales).css('display');
       if(display == "block" ){
-         $(panelcamposopcionales).css('display', 'none');
+        $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
       }
       else{
-         $(panelcamposopcionales).css('display', 'block');
+         $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
       }
 }

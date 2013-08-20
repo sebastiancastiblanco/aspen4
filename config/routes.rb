@@ -28,9 +28,9 @@ AspenVersion3::Application.routes.draw do
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
-
-  match 'login' => 'usuarios#new', as: :login
-  match 'logout' => 'usuario_sessions#destroy', as: :logout
+  
+  match 'home' => 'usuarios#new', as: :home
+  match 'login'  => 'usuarios#new', as: :login
   match 'logout' => 'usuario_sessions#destroy', as: :logout
   root :to => 'usuario_sessions#new'
 
@@ -101,7 +101,7 @@ AspenVersion3::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'usuario_sessions#new'
+   root :to => 'usuarios#new'
 
   # See how all your routes lay out with "rake routes"
 

@@ -53,11 +53,7 @@
                 
               <table id="usuarios"class="inbox" data-behavior="infinite_page file_drop_target" data-infinite-page="3">
                 <tbody id="usuarios">
-
-                  <% @usuarios.each do |usuario| %>
-                    <%= render "usuario", :usuario => usuario %>
-                  <% end %>
-
+                    <%= render @usuarios %>
                 </tbody>
               </table>
 

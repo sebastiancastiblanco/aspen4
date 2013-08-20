@@ -1,5 +1,5 @@
 
-<%= form_for(@contrato, :remote => true, :html => { :class => "custom",:id => "formContrato"} ) do |f| %>
+<%= form_for(@contrato, :remote => true, :html => { :class => "custom ocultar",:id => "formContrato"} ) do |f| %>
 
 <div class="row">
 
@@ -9,11 +9,17 @@
     <div class="small-4 columns field">
       <%= f.select :tipoContrato, [["Tipo Contrato", 0]]+[["Indefinido", "Indefinido"]]+[["Prestación de Servicios", "Servicios"]] , { :disabled => ["Tipo Contrato", 0] } %>
     </div>
-    
+
+    <hr/>
+
+</div>
+
+<div class="row">
+ 
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :objeto_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-4 columns field">
+    <div class="small-10 columns field">
       <%= f.text_area :objeto, :placeholder => "Objeto del contrato" %>
     </div>
     
@@ -98,7 +104,7 @@
 <% end %>
 
 <script>
-  $(document).foundation();
   jQuery('#contrato_fechaInicio').datepicker({dateFormat: "dd MM yy"});
   jQuery('#contrato_fechaFin').datepicker({dateFormat: "dd MM yy"});
+   $(document).foundation();
 </script>

@@ -1,3 +1,5 @@
+document.getElementById("noticeMsg").innerHTML = "Se actualizo el participante, <%= @actividad.nombre %> <a href='#'' class='close'>&times;</a>";
+$("#noticeMsg").toggle( "fade" );
 $('#listar_participante_link').show();
 $('#participantes').hide();
 $('#new_participante_link').hide();

@@ -16,8 +16,8 @@
                 <div id="ProcesoFavorito<%= @proceso.id %>" class="favoritoSeleccionado" style="display:none"></div>
                 <% end %>
             </a>
-
-            <a href="#" data-reveal-id="myModal">
+            
+            <a href="#" data-reveal-id="myModalCompartirProceso">
               <span class="link">Compartir</span><br>
               <span class="detail">
                 <span id="cantidadUsuarios"><%= @proceso.usuarios.size %></span> abogado  en este proceso
@@ -171,27 +171,34 @@
             </header>
 
             <section class="documents grouped_by_date">
-              <article class="document" id="document_3073232" >
-                <table>
-                  <tbody>
-
+              <article class="document"  >
+                <div>
+                  <div>
+                    
                     <% @participantes.each do |participante| %>
-                    <tr>
-                      <td class="text">
-                        <h3 class="title">
-                          <%= link_to edit_participante_path(:id => participante.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
-                          <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
-                          <% end %>
-                        </h3>
+                    <div class="row">
+
+                      <div class="small-6 small-offset-0 columns ">
+                         <h5>
+                           <%= link_to participantes_path(:participante_id => participante.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
+                            <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
+                            <% end %>
+                          </h5> 
+                      </div>
+                      <div class="small-4 columns field">
                         <p>
                           Actualizado <span class="time"><%= fechaFormatoActualizado participante.updated_at %></span>
                         </p>
-                      </td>
-                    </tr>
+                      </div>
+                    </div>
+
+
+                    
+                    
                   <% end %>
 
-                  </tbody>
-                </table>
+                  </div>
+                </div>
               </article>
             </section>
           </section>
@@ -203,8 +210,9 @@
                     <% end %></h1>
 
                 <div>
-                  <%= button_to "Crear Contrato", {:controller => "contratos", :action => "new", :proceso_id => @proceso.id},:class => "tiny button  radius alinearbotones", :method=>:post %>
-                  <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
+                  <%= button_to "Crear Contrato", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones", :method=>:post %>
+                  
+                  <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id, :nuevoItem => false},:class => "tiny button secondary radius", :method=>:post %>
                 </div>
 
             </header>
@@ -218,7 +226,7 @@
                     <tr>
                       <td class="text">
                         <h3 class="title">
-                          <%= link_to edit_contrato_path(:contrato_id => contrato.id, :proceso_id => @proceso.id) do  %>
+                          <%= link_to contratos_path(:contrato_id => contrato.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
                             <%= contrato.tipoContrato %>
                           <% end %>
                         </h3>
@@ -242,21 +250,22 @@
                       3. Actividades
                     <% end %></h1>
                 <div>
-                  <%= button_to "Crear Actividad", {:controller => "actividads", :action => "new", :proceso_id => @proceso.id},:class => "tiny button  radius alinearbotones", :method=>:post %>
-                  <%= button_to "Ver Todos", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius", :method=>:post %>
+                  <%= button_to "Crear Actividad", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones", :method=>:post %>
+                  <%= button_to "Ver Todos", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id, :nuevoItem => false},:class => "tiny button secondary radius", :method=>:post %>
+
                 </div>
 
             </header>
 
             <section class="documents grouped_by_date">
-              <article class="document" id="document_3073232" >
+              <article class="document" >
                 <table>
                   <tbody>
                      <% @actividads.each do |actividad| %>
                     <tr>
                       <td class="text">
                         <h3 class="title">
-                          <%= link_to edit_actividad_path(:actividad_id => actividad.id, :proceso_id => @proceso.id) do  %>
+                          <%= link_to actividads_path(:actividad_id => actividad.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
                             <%= actividad.nombre %> -  <%= actividad.estado_actividad.estado %>
                           <% end %>
                         </h3>
@@ -395,33 +404,6 @@
 
 </body>
 
-  <div id="myModal" class="reveal-modal small">
-      <div class="sheet_body ">
-          <article class="participants new expanded">
-
-            <div class="expanded_content bubble fondoGris">
-              <h1>Compartir Proceso</h1>
-              <hr/>
-               <p>Puedes darle acceso a otros usuarios, permitiendoles modificar y aportar en el proceso. </p>
-              <br/>
-              <h6>Selecciona un usuario</h6>
-              <hr/>
-
-              <%= render 'formControlAcceso' %>
-
-              <h6>Usuarios vinculados en el proceso</h6>
-              <hr/>
-              <div id="listaUsuarios">
-                <% @usuariosDelproceso.each do |usuario| %>
-                    <img class="avatar" height="40" src="/img/user_blue.png" width="40">
-                    <span class="posicionNombreUsuario"><%= usuario.username %></span>
-                    <br/>
-                <% end %>
-              </div>
-
-              <a class="close-reveal-modal">&#215;</a>
-
-             </div>
-         </article>
-      </div>
-    </div>
+  <div id="myModalCompartirProceso" class="reveal-modal small">
+    <%= render 'formControlAcceso' %>
+  </div>
