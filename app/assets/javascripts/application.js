@@ -14,9 +14,6 @@
 //= require jquery_ujs
 
 
-
-
-
 function cambioEstadoFavoritoHome(procesoid){
 
     var divProcesoNoFavorito = "#ProcesoNoFavorito"+procesoid;
@@ -147,18 +144,71 @@ function nuevoParticipante(){
     document.getElementById("tituloParticipante").innerHTML = "Nuevo Participante";
 }
 
+
+function moveEvent(the_event,dayDelta,minuteDelta,allDay) {
+  $.ajax({  
+    type: 'POST',                                    
+    url: '/events/move',  //the script to call to get data          
+    data: {id: the_event.id,minute_delta: minuteDelta, day_delta: dayDelta, all_day: allDay } ,                      //you can insert url argumnets here to pass to api.php
+    dataType: 'string',                //data format      
+    success: function()          //on receive of reply
+    {
+       alert("done!")
+    } 
+  });
+}
+
+function resizeEvent(the_event,dayDelta,minuteDelta,allDay) {
+  $.ajax({  
+    type: 'POST',                                    
+    url: '/events/resize',  //the events resize function.         
+    data: {id: the_event.id,minute_delta: minuteDelta, day_delta: dayDelta, all_day: allDay },                      //you can insert url argumnets here to pass to api.php
+    dataType: 'string',                //data format      
+    success: function()          //on receive of reply
+    {
+      alert("done!")
+    } 
+  });
+}
+
+
+
 $(document).ready(function(){
   $('#noticeMsg').hide();
   $(document).foundation('joyride', 'start');
-  
+
     $('#calendar').fullCalendar({
+          events: '/events',
+          editable:true,
+          
+          eventClick: function(calEvent, jsEvent, view) {
+             $("#myModalNuevoEvento").foundation ("reveal", "open");
+          },
+          eventDrop: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
+                  alert("done drop!")
+                  moveEvent(event,dayDelta,minuteDelta,allDay);
+          },
+          eventResize: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
+                  alert("done riseze!")
+                  resizeEvent(event,dayDelta,minuteDelta,allDay);
+          },
           header: {
               left:   'today prev,next',
               center: 'title',
-              right:  'month agendaWeek ,agendaDay'
+              right:  'agendaDay agendaWeek ,month'
           },
-         dayClick: function() {
-              alert('a day has been clicked!');
+          monthNamesShort : ['Enero' , 'Febrero' , 'Marzo' , 'Abril' , 'Mayo' , 'Junio' , 'Julio' ,
+                        'Agosto' , 'Septiembre' , 'Octubre' , 'Noviembre' , 'Diciembre' ],
+          dayNamesShort : ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+           buttonText: {prev: '&nbsp;&#9668;&nbsp;',
+                        next: '&nbsp;&#9658;&nbsp;',
+                        prevYear: '&nbsp;&lt;&lt;&nbsp;',
+                        nextYear: '&nbsp;&gt;&gt;&nbsp;',
+                        today : 'Hoy'},
+         dayClick: function(date) {
+              $("#event_starttime").val($.fullCalendar.formatDate( date, "dd/MM/yyyy"));
+              $("#event_endtime").val($.fullCalendar.formatDate( date, "dd/MM/yyyy"));
+              $("#myModalNuevoEvento").foundation ("reveal", "open");
           }
     })
  

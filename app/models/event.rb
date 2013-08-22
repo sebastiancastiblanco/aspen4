@@ -15,26 +15,26 @@
 #
 
 class Event < ActiveRecord::Base
-  attr_accessible :starttime,:endtime,:all_day,:description
+  attr_accessible :title,:starttime,:endtime,:all_day,:description
 
   scope :between, lambda {|start_time, end_time| 
   {
-    :conditions => ["? < starts_at < ?", Event.format_date(start_time), Event.format_date(end_time)] } 
+    :conditions => ["? < starttime < ?", Event.format_date(start_time), Event.format_date(end_time)] } 
   } 
   
   def self.format_date(date_time) 
     Time.at(date_time.to_i).to_formatted_s(:db) 
   end
 
+  #Transformacion del JSON a retornar para recuperar la informacion de la agenda 
   def as_json(options = {}) 
     { :id => self.id, 
       :title => self.title,
-     :description => self.description || "", 
-      :starttime => starts_at.rfc822, 
-      :endtime => ends_at.rfc822, 
+      :description => self.description || "", 
+      :start => starttime.rfc822, 
+      :end => endtime.rfc822, 
       :all_day => self.all_day, 
       :recurring => false, 
-       
     } 
   end 
 
