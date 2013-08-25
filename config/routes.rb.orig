@@ -1,8 +1,13 @@
 AspenVersion3::Application.routes.draw do
+<<<<<<< HEAD
+
+  resources :alerta
+=======
   
   resources :events
   post "events/move"
   post "events/resize"
+>>>>>>> SebastianAspen
 
   resources :tipo_procesos
   get "tipo_procesos/create"

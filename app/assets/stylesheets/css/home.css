@@ -199,6 +199,18 @@ div.workspace>div.container {
   margin: 0 auto !important;
   width: 960px !important;
 }
+
+div.workspace>div.container2 {
+  float: left !important;
+  width: 220px !important;
+  margin-top: 30px;
+}
+
+div.workspace>div.container3 {
+  width: 960px !important;
+  margin-left: 234px !important;
+}
+
 div.panel {
   position: relative !important;
   text-align: left !important;
@@ -1049,4 +1061,9 @@ color: #444;
 
 .title{
   margin: 0px !important;
+}
+
+div.panel{
+  position: relative !important;
+  text-align: left !important;
 }

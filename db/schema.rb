@@ -75,6 +75,29 @@ ActiveRecord::Schema.define(:version => 20130816220406) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "event_series", :force => true do |t|
+    t.integer  "frequency",  :default => 1
+    t.string   "period",     :default => "monthly"
+    t.datetime "starttime"
+    t.datetime "endtime"
+    t.boolean  "all_day",    :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.datetime "starttime"
+    t.datetime "endtime"
+    t.boolean  "all_day",         :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.text     "description"
+    t.integer  "event_series_id"
+  end
+
+  add_index "events", ["event_series_id"], :name => "index_events_on_event_series_id"
+
   create_table "participantes", :force => true do |t|
     t.string   "tipoDocumento"
     t.integer  "documento"
