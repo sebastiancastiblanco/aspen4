@@ -6,7 +6,7 @@ class ParticipantesController < ApplicationController
     @participantes = @proceso.participantes
     @participantesRender = (params[:nuevoItem])
     
-     if params[:participante_id]
+    if params[:participante_id]
        @participante = Participante.find(params[:participante_id])
     else
        @participante = Participante.new
