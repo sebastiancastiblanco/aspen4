@@ -1,8 +1,8 @@
-class AlertaController < ApplicationController
+class AlertasController < ApplicationController
   # GET /alerta
   # GET /alerta.json
   def index
-    @alerta = Alertum.all
+    @alerta = Alerta.all
     @proceso = Proceso.find(params[:proceso_id])
 
 
@@ -15,43 +15,45 @@ class AlertaController < ApplicationController
   # GET /alerta/1
   # GET /alerta/1.json
   def show
-    @alertum = Alertum.find(params[:id])
+    @alerta = Alerta.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @alertum }
+      format.json { render json: @alerta }
     end
   end
 
   # GET /alerta/new
   # GET /alerta/new.json
   def new
-    @alertum = Alertum.new
+    @alerta = Alerta.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @alertum }
+      format.json { render json: @alerta }
     end
   end
 
   # GET /alerta/1/edit
   def edit
-    @alertum = Alertum.find(params[:id])
-    logger.debug "Edit post: #{@alertum.attributes.inspect}"
+    logger.debug "Edit alerta"
+    @alerta = Alerta.find(params[:id])
+        logger.debug "Edit post: #{@alerta.attributes.inspect}"
+
   end
 
   # POST /alerta
   # POST /alerta.json
   def create
-    @alertum = Alertum.new(params[:alertum])
-    @alertum.proceso_id = params[:proceso_id]
+    @alerta = Alerta.new(params[:alerta])
+    @alerta.proceso_id = params[:proceso_id]
     respond_to do |format|
-      if @alertum.save
+      if @alerta.save
         format.html { redirect_to action: "index",  proceso_id: params[:proceso_id] }
-        format.json { render json: @alertum, status: :created, location: @alertum }
+        format.json { render json: @alerta, status: :created, location: @alerta }
       else
         format.html { render action: "new" }
-        format.json { render json: @alertum.errors, status: :unprocessable_entity }
+        format.json { render json: @alerta.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,15 +61,15 @@ class AlertaController < ApplicationController
   # PUT /alerta/1
   # PUT /alerta/1.json
   def update
-    @alertum = Alertum.find(params[:id])
+    @alerta = Alerta.find(params[:id])
 
     respond_to do |format|
-      if @alertum.update_attributes(params[:alertum])
+      if @alerta.update_attributes(params[:alerta])
         format.html { redirect_to action: "index",  proceso_id: params[:proceso_id] }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @alertum.errors, status: :unprocessable_entity }
+        format.json { render json: @alerta.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -75,9 +77,9 @@ class AlertaController < ApplicationController
   # DELETE /alerta/1
   # DELETE /alerta/1.json
   def destroy
-    @alertum = Alertum.find(params[:id])
-    @proceso = @alertum.proceso_id
-    @alertum.destroy
+    @alerta = Alerta.find(params[:id])
+    @proceso = @alerta.proceso_id
+    @alerta.destroy
 
     respond_to do |format|
       format.html {  redirect_to action: "index",  proceso_id: @proceso }

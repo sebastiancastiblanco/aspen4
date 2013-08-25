@@ -32,7 +32,8 @@
 
                     <div class="small-3 small-3 columns left">
 
-                        <%= button_to 'Nueva Alerta', new_alertum_path(:proceso_id => @proceso.id), :class => "button radius ", :id => "new_alerta_link"  %>
+
+                        <%= button_to 'Nueva Alerta', new_alerta_path(:proceso_id => @proceso.id), :class => "button radius ", :id => "new_alerta_link"  %>
                         <%= button_to 'Listar Alertas',"javascript:listarAlertas()" , :class => "button radius ocultar", :id => "listar_alerta_link" %>
 
                     </div>

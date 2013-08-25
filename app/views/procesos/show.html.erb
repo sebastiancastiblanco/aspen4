@@ -16,7 +16,7 @@
                 <div id="ProcesoFavorito<%= @proceso.id %>" class="favoritoSeleccionado" style="display:none"></div>
                 <% end %>
             </a>
-            
+
             <a href="#" data-reveal-id="myModalCompartirProceso">
               <span class="link">Compartir</span><br>
               <span class="detail">
@@ -109,7 +109,7 @@
 
                 <%= link_to   "("+@proceso.actividads.size.to_s+") Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
 
-                <%= link_to   "("+@proceso.alertums.size.to_s+") Alertas", {:controller => "alerta", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
+                <%= link_to   "("+@proceso.alertas.size.to_s+") Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
 
                 <a href="#" >
@@ -174,7 +174,7 @@
               <article class="document"  >
                 <div>
                   <div>
-                    
+
                     <% @participantes.each do |participante| %>
                     <div class="row">
 
@@ -183,7 +183,7 @@
                            <%= link_to participantes_path(:participante_id => participante.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
                             <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
                             <% end %>
-                          </h5> 
+                          </h5>
                       </div>
                       <div class="small-4 columns field">
                         <p>
@@ -193,8 +193,8 @@
                     </div>
 
 
-                    
-                    
+
+
                   <% end %>
 
                   </div>
@@ -211,7 +211,7 @@
 
                 <div>
                   <%= button_to "Crear Contrato", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones", :method=>:post %>
-                  
+
                   <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id, :nuevoItem => false},:class => "tiny button secondary radius", :method=>:post %>
                 </div>
 

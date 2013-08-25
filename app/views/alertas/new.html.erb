@@ -6,7 +6,9 @@
 
 				<header>
 					<ul class="breadcrumbs">
-						 <li> <%= link_to   "Alertas", {:controller => "alerta", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
+
+
+						 <li> <%= link_to   "Alertas", {:controller => "alertas", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
 						<li><a href="#">Nueva Alerta</a></li>
 					</ul>
 				</header>
@@ -31,7 +33,7 @@
 					<div class="sheet_body ">
 						<article class="calendar_event new expanded" >
 							<div class="expanded_content bubble">
-								<%= render 'form' %>
+								<%= render 'formNew' %>
 							</div>
 						</article>
 					</div>

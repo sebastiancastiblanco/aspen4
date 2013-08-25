@@ -11,7 +11,7 @@ class Proceso < ActiveRecord::Base
   #tiene varias actviidades
   has_many :actividads
 
-  has_many :alertums
+  has_many :alertas
 
   #tiene un tipo de proceso
   belongs_to :tipo_proceso
