@@ -39,8 +39,9 @@ class UsuariosController < ApplicationController
 
    
       if @usuario.save
+        #Realizar auto login y redireccionar a la pagina de procesos
           auto_login(@usuario)
-          redirect_to procesos_url
+          render :js => "window.location = 'procesos'"
       else
          respond_to do |format|
           format.html { render action: "new" }

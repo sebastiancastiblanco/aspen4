@@ -147,30 +147,47 @@ function nuevoParticipante(){
 
 function moveEvent(the_event,dayDelta,minuteDelta,allDay) {
   $.ajax({  
-    type: 'POST',                                    
-    url: '/events/move',  //the script to call to get data          
+    type: 'GET',                                    
+    url: '/events/move/'+the_event.id,  //the script to call to get data          
     data: {id: the_event.id,minute_delta: minuteDelta, day_delta: dayDelta, all_day: allDay } ,                      //you can insert url argumnets here to pass to api.php
-    dataType: 'string',                //data format      
     success: function()          //on receive of reply
     {
-       alert("done!")
+        
     } 
   });
 }
 
 function resizeEvent(the_event,dayDelta,minuteDelta,allDay) {
   $.ajax({  
-    type: 'POST',                                    
-    url: '/events/resize',  //the events resize function.         
+    type: 'GET',                                    
+    url: '/events/resize/'+the_event.id,  //the events resize function.         
     data: {id: the_event.id,minute_delta: minuteDelta, day_delta: dayDelta, all_day: allDay },                      //you can insert url argumnets here to pass to api.php
-    dataType: 'string',                //data format      
     success: function()          //on receive of reply
     {
-      alert("done!")
+     
     } 
   });
 }
 
+function editEvent(the_event, jsEvent, view) {
+  $.ajax({  
+    type: 'GET',                                    
+    url: '/events/'+the_event.id+'/edit',  //the script to call to get data          
+    success: function()          //on receive of reply
+    {
+    } 
+  });
+}
+function newEvent(date) {
+  $.ajax({  
+    type: 'GET',                                    
+    url: '/events/new',  //the script to call to get data          
+    data: {date: date} ,
+    success: function()          //on receive of reply
+    {
+    } 
+  });
+}
 
 
 $(document).ready(function(){
@@ -182,15 +199,14 @@ $(document).ready(function(){
           editable:true,
           
           eventClick: function(calEvent, jsEvent, view) {
-             $("#myModalNuevoEvento").foundation ("reveal", "open");
+              editEvent(calEvent, jsEvent, view);
+
           },
           eventDrop: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
-                  alert("done drop!")
-                  moveEvent(event,dayDelta,minuteDelta,allDay);
+              moveEvent(event,dayDelta,minuteDelta,allDay);
           },
           eventResize: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
-                  alert("done riseze!")
-                  resizeEvent(event,dayDelta,minuteDelta,allDay);
+              resizeEvent(event,dayDelta,minuteDelta,allDay);
           },
           header: {
               left:   'today prev,next',
@@ -206,9 +222,7 @@ $(document).ready(function(){
                         nextYear: '&nbsp;&gt;&gt;&nbsp;',
                         today : 'Hoy'},
          dayClick: function(date) {
-              $("#event_starttime").val($.fullCalendar.formatDate( date, "dd/MM/yyyy"));
-              $("#event_endtime").val($.fullCalendar.formatDate( date, "dd/MM/yyyy"));
-              $("#myModalNuevoEvento").foundation ("reveal", "open");
+              newEvent(date) 
           }
     })
  

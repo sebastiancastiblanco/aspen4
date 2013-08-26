@@ -1,9 +1,4 @@
-page.replace_html 'create_event', :partial => 'form'
-page<< "$('#create_event_dialog').dialog({
-        title: 'New Event',
-        modal: true,
-        width: 500,
-        close: function(event, ui) { $('#create_event_dialog').dialog('destroy') }
-
-    });
-"
+$('#formEditarNuevoEvento').remove();
+$('#formCrearNuevoEvento').remove();
+$('#formularioEvento').after('<%= j render("form") %>');
+$("#myModalNuevoEvento").foundation("reveal", "open");

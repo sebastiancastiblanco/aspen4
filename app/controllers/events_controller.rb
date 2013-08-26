@@ -3,7 +3,6 @@ class EventsController < ApplicationController
   def index
     @events = Event.scoped 
     @event = Event.new
-    #@events = Event.between(params[:start], params[:end]) 
     @events = Event.all 
     respond_to do |format| 
       format.html # index.html.erb 
@@ -12,22 +11,47 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
+    @event = Event.new
   end
   
+
+  def show
+
+  end
+
   def create
-    @event = Event.new(params[:event])
-    respond_to do |format|
-      if @event.save
-          format.json { render json: @event, status: :created, location: @event }
-          format.js
-      else
-          format.json { render json: @event.errors, status: :unprocessable_entity }
-          format.js
+      @event = Event.new(params[:event])
+      respond_to do |format|
+        if @event.save
+            format.json { render json: @event, status: :created, location: @event }
+            format.js
+        else
+            format.json { render json: @event.errors, status: :unprocessable_entity }
+            format.js
+        end
       end
-    end
+    
+ end
+  
+  def edit
+    @event = Event.find_by_id(params[:id])
+     
   end
   
+  def update
+      @event = Event.find_by_id(params[:idEvent])
+      respond_to do |format|
+       if @event.update_attributes(params[:event])
+           format.json { render json: @event, status: :created, location: @event }
+           format.js
+       else
+           format.json { render json: @event.errors, status: :unprocessable_entity }
+           format.js
+       end
+      end
+  end  
+
+
   def move
       @event = Event.find(params[:id])
     if @event
@@ -65,29 +89,7 @@ class EventsController < ApplicationController
   
   
   
-  def edit
-    @event = Event.find_by_id(params[:id])
-  end
-  
-  def update
-    @event = Event.find_by_id(params[:event][:id])
-    if params[:event][:commit_button] == "Update All Occurrence"
-      @events = @event.event_series.events #.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
-      @event.update_events(@events, params[:event])
-    elsif params[:event][:commit_button] == "Update All Following Occurrence"
-      @events = @event.event_series.events.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
-      @event.update_events(@events, params[:event])
-    else
-      @event.attributes = params[:event]
-      @event.save
-    end
 
-    render :update do |page|
-      page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
-      page<<"$('#desc_dialog').dialog('destroy')" 
-    end
-    
-  end  
   
   def destroy
     @event = Event.find_by_id(params[:id])

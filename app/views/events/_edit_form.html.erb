@@ -1,51 +1,60 @@
-<%orm_for @event, :url => {:action => :update}, :remote => true , :before => "$('#updating_events').show();", :complete => "$('#updating_events').hide();" do |f| %>
-<p>
-  <%=f.label :title %>
-  <br/>
-  <%=f.text_field :title %>
-</p>
-<p>
-  <%=f.label :description %>
-  <br/>
-  <%=f.text_area :description, :rows => 4, :cols => 30 %>
-</p>
-<p>
-  <%=f.label :starttime, 'Start Time' %>
-  <br/>
-  <%=f.datetime_select :starttime %>
-</p>
-<p>
-  <%=f.label :endtime, 'End Time' %>
-  <br/>
-  <%=f.datetime_select :endtime %>
-</p>
-<p>
-  <%=f.label :all_day %>
-  <%=f.check_box :all_day %>
-</p>
-<%if false%>
-<%period = (@event.event_series)?@event.event_series.period : nil -%>
-<p>
-  <%=f.label :period, "Repeats" %>
-  <%=f.select :period, Event::REPEATS,{:selected => period}, :onchange => "showPeriodAndFrequency(this.value);" %>
-</p>
-<%frequency = (@event.event_series)?@event.event_series.frequency : nil -%>
-<p id = "frequency" style = "display:<%(period)? '' : 'none'%>;">
-  <%=f.label :frequency, "Repeat every" %>
-  <%=f.select :frequency, (1..30).to_a, {:selected => frequency} %> <span id = "period"></span>
-</p>
-<%end%>
-<%=f.hidden_field :id, :value => @event.id%>
-<%=f.hidden_field :commit_button, :value => ""%>
-<p>
-  <%if @event.event_series -%>
-  <%=f.submit 'Update Only This Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
-  <%=f.submit 'Update All Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
-  <%=f.submit 'Update All Following Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
-  <%else-%>
-  <%=f.submit 'Update', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
-  <%end-%>
-  
-  <span id = "updating_events" style = "display:none;">Updating, Please wait...</span>
-</p>
-<%end %>
+<div id="formEditarNuevoEvento" class="alert-panel secondary" data-alert>
+      <div class="alert-panel-title">
+        Modificar Evento
+        <a href="#" class="alert-panel close-reveal-modal" onclick="$('#myModalNuevoEvento').foundation ('reveal', 'close')">&times;</a>
+      </div>
+     
+      <%= form_for(@event,:url => {:action => :update}, :remote => true,  :html => { :class => "custom"} ) do |f| %>
+        <div class="alert-panel-message" >
+          <div class="row"> 
+                <div class="small-2 small-offset-0 columns ">
+                  <%= f.label "Titulo", :class => "tituloCampo error alinearDerecha" %>
+                </div>
+                <div class="small-10 columns field">
+                  <%= f.text_field :title, :placeholder => "Titulo" %>
+                </div>
+                <div class="small-2 small-offset-0 columns ">
+                  <%= f.label "Inicia el", :class => "tituloCampo error alinearDerecha" %>
+                </div>
+                <div class="small-10 columns field">
+                  <%= f.text_field :starttime, :placeholder => "Fecha de Inicio" %>
+                </div>
+                 <div class="small-2 small-offset-0 columns ">
+                  <%= f.label "Finaliza el", :class => "tituloCampo error alinearDerecha" %>
+                </div>
+                <div class="small-10 columns field">
+                  <%= f.text_field :endtime, :placeholder => "Fecha de Finalizacion" %>
+                </div>
+                  <div class="small-2 small-offset-0 columns ">
+                  <%= f.label "Todo el dia", :class => "tituloCampo error alinearDerecha" %>
+                </div>
+                <div class="small-10 columns field">
+                  <%= f.check_box :all_day%>
+                </div>
+                 <div class="small-2 small-offset-0 columns ">
+                  <%= f.label "Descripcion", :class => "tituloCampo error alinearDerecha" %>
+                </div>
+                <div class="small-10 columns field">
+                  <%= f.text_area :description%>
+                  <%= hidden_field_tag :idEvent, @event.id %>
+                </div>
+               
+          </div>
+        </div>
+      <div class="alert-panel-action">
+          <a href="#" class="textRojolinks" onclick="$('#myModalNuevoEvento').foundation ('reveal', 'close')">Eliminar</a>
+          <a href="#" class="small button radius secondary" onclick="$('#myModalNuevoEvento').foundation ('reveal', 'close')">Cerrar</a>
+          <%= f.submit :'Guardar Evento' , :class => " button radius small"  %>
+      </div>
+      <% end %>
+       
+</div>
+
+<script>
+  jQuery('#event_starttime').datepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt'});
+  jQuery('#event_starttime').datepicker( "option", "showAnim", 'drop' );
+  jQuery('#event_endtime').datepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt'});
+  jQuery('#event_endtime').datepicker( "option", "showAnim", 'drop' );
+ //  $(document).foundation();
+</script>
+
