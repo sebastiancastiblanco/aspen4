@@ -55,7 +55,7 @@ class ParticipantesController < ApplicationController
     @participantesRender = (params[:nuevoItem])
     
      respond_to do |format|
-        format.html { render action: "index"}
+        format.html 
         format.js
     end
   end

@@ -1,8 +1,9 @@
 AspenVersion3::Application.routes.draw do
 
   resources :events
-  post "events/move"
-  post "events/resize"
+  get "events/move"
+  get "events/resize"
+  
 
   resources :tipo_procesos
   get "tipo_procesos/create"
@@ -125,8 +126,8 @@ AspenVersion3::Application.routes.draw do
   match 'tipo_procesos/create/' => 'tipo_procesos#create'
 
   #Agenda
-  match '/events/move' => 'events#move'
-  match '/events/resize' => 'events#resize'
+  match '/events/move/:id' => 'events#move'
+  match '/events/resize/:id' => 'events#resize'
 
   #filtrado de actividades
   match 'actividads/filtrado/:proceso_id/:estado_id' => 'actividads#filtrado'

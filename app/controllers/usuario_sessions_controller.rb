@@ -7,7 +7,7 @@ class UsuarioSessionsController < ApplicationController
 			redirect_back_or_to(:procesos ,message: "login exitoso")
 		else
 			flash.now[:alert] = "error en el login"
-			render action: :new
+			redirect_to(:home, message: "no existe el usuario")
 		end
 	end
 	def destroy 
