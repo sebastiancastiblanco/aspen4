@@ -27,7 +27,7 @@
                     </div>
                     
                     <div class="small-3 columns left">
-                        <button class="button radius" data-reveal-id="myModalNuevoEvento">Nuevo Evento</button>
+                        <button class="button radius" onclick="newEvent(null)">Nuevo Evento</button>
                     </div>
                   
                 </div>
@@ -37,7 +37,7 @@
           </header>
         
         <div class="sheet_body">
-            
+            <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
             <div id="calendar">
             </div>
           
@@ -50,7 +50,8 @@
 </body>
 
 <div id="myModalNuevoEvento" class="reveal-modal small">
-    <%= render 'form' %>
+     <%= render 'form' %>
+     <div id="formularioEvento"></div>
   </div>
 
 
