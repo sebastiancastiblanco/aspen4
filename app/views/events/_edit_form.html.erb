@@ -42,7 +42,8 @@
           </div>
         </div>
       <div class="alert-panel-action">
-          <a href="#" class="textRojolinks" onclick="$('#myModalNuevoEvento').foundation ('reveal', 'close')">Eliminar</a>
+          <%= link_to "Eliminar", @event, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este evento?' } , :remote => true %>
+
           <a href="#" class="small button radius secondary" onclick="$('#myModalNuevoEvento').foundation ('reveal', 'close')">Cerrar</a>
           <%= f.submit :'Guardar Evento' , :class => " button radius small"  %>
       </div>
@@ -55,6 +56,6 @@
   jQuery('#event_starttime').datepicker( "option", "showAnim", 'drop' );
   jQuery('#event_endtime').datepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt'});
   jQuery('#event_endtime').datepicker( "option", "showAnim", 'drop' );
- //  $(document).foundation();
+  //  $(document).foundation();
 </script>
 

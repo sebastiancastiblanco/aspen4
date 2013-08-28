@@ -17,6 +17,9 @@
 class Event < ActiveRecord::Base
   attr_accessible :title,:starttime,:endtime,:all_day,:description
 
+  has_many :usuario_eventos
+  has_many :usuarios, through: :usuario_eventos
+
   scope :between, lambda {|start_time, end_time| 
   {
     :conditions => ["? < starttime < ?", Event.format_date(start_time), Event.format_date(end_time)] } 

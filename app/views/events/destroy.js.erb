@@ -1,0 +1,4 @@
+document.getElementById("noticeMsg").innerHTML = "Se ha eliminado un evento <a href='#' class='close'>&times;</a>";
+$("#noticeMsg").toggle( "fade" );
+$('#calendar').fullCalendar( 'refetchEvents' );
+$("#myModalNuevoEvento").foundation ("reveal", "close");
