@@ -228,14 +228,16 @@ $(document).ready(function(){
           monthNamesShort: ['Enero' , 'Febrero' , 'Marzo' , 'Abril' , 'Mayo' , 'Junio' , 'Julio' ,
                         'Agosto' , 'Septiembre' , 'Octubre' , 'Noviembre' , 'Diciembre' ],
           dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
-           buttonText: {prev: '&nbsp;&#9668;&nbsp;',
+           buttonText: {
+                        prev: '&nbsp;&#9668;&nbsp;',
                         next: '&nbsp;&#9658;&nbsp;',
                         prevYear: '&nbsp;&lt;&lt;&nbsp;',
                         nextYear: '&nbsp;&gt;&gt;&nbsp;',
                         today : 'Hoy',
                         month:  'Mes',
                         week:   'Semana',
-                        day:    'Dia'},
+                        day:    'Dia'
+                      },
           firstDay : 1,
          dayClick: function(date) {
               newEvent(date); 
