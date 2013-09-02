@@ -14,6 +14,11 @@ class Usuario < ActiveRecord::Base
   has_many :control_accesos
   has_many :procesos, through: :control_accesos
 
+  #Un Usuario (Abogado) tiene varios eventos al cual puede estar asociado
+  has_many :usuario_eventos
+  has_many :events, through: :usuario_eventos
+
+
   #Relacion Un Despacho tiene (has_many)  varios abogados
   has_many :abogados , class_name: "Usuario", foreign_key: "despacho_id"
  
