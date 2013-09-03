@@ -13,6 +13,8 @@ class Proceso < ActiveRecord::Base
 
   has_many :alertas
 
+  has_many :documents
+
   #tiene un tipo de proceso
   belongs_to :tipo_proceso
 

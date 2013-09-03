@@ -25,7 +25,9 @@
       <%= f.label :rol_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
+         <span data-tooltip class="tip-bottom" title="Rol del participante dentro del proceso.">
            <%= f.select :rol_participante_id, [["Rol Participante", 0]] + @rol_participantes.map {|r| [r.rol,r.id]}, { :disabled => ["Rol Participante", 0] } %>
+          </span>
     </div>
 </div>
 
@@ -40,7 +42,7 @@
             <%= f.label "Tipo Documento", :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field">
-            <%= f.text_field :tipoDocumento, :placeholder => "Tipo Documento" %>
+             <%= f.select :tipoDocumento, [["Tipo de Documento", 0],["Cedula", "Cedula"],["Nit", "Nit"],["Tarjeta Extranjeria", "Tarjeta Extranjeria"],["Pasaporte", "Pasaporte"]] , { :disabled => ["Tipo de Documento", 0] } %>
           </div>
           
             <div class="small-2 small-offset-0 columns">
@@ -55,16 +57,17 @@
             <%= f.label :estadoCivil_, :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field">
-            <%= f.text_field :estadoCivil, :placeholder => "Estado Civil" %>
+
+            <%= f.select :estadoCivil, [["Estado Civil", 0],["Soltero", "Soltero"],["Casado", "Casado"],["Union Libre", "Union Libre"],["Separado", "Separado"],["No tiene", "No tiene"]] , { :disabled => ["Estado Civil", 0] } %>
+
           </div>
           
           <div class="small-2 small-offset-0 columns ">
             <%= f.label :genero_, :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field">
-            <%= f.text_field :genero, :placeholder => "Genero" %>
+            <%= f.select :genero, [["Genero", 0]]+[["Masculino", "Masculino"]]+[["Femenino", "Femenino"]], { :disabled => ["Genero", 0] } %>
           </div>
-          
           
           <div class="small-2 small-offset-0 columns ">
             <%= f.label :direccion_, :class => "tituloCampo error alinearDerecha" %>
@@ -80,7 +83,7 @@
           </div>    
 
           <div class="small-2 small-offset-0 columns ">
-          <%= f.label :fechaNacimiento_, :class => "tituloCampo error alinearDerecha" %>
+          <%= f.label "Fecha Nacimiento", :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field">
             <%= f.text_field :fechaNacimiento , :placeholder => "Fecha Nacimiento" %>

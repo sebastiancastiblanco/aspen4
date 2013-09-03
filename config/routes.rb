@@ -1,33 +1,24 @@
 AspenVersion3::Application.routes.draw do
 
+  resources :documents
   resources :events
   get "events/move"
   get "events/resize"
-  
-
   resources :tipo_procesos
   get "tipo_procesos/create"
-
   resources :actividads
   get "actividads/filtrado"
-
   resources :estado_actividads
   resources :contratos
   resources :participantes
   resources :alertas
-
-
   resources :rol_participantes
   resources :control_accesos
   get "procesos/createTipoProceso"
-
   resources :procesos
   get "procesos/favorito"
   get "procesos/nofavorito"
   get "procesos/compartirProceso"
-
-
-
 
   resources :agendas
   resources :usuarios
@@ -57,6 +48,10 @@ AspenVersion3::Application.routes.draw do
   match '/alertas' => 'alertas#index', as: :listaAlertas
   match '/alertas/new' => 'alertas#new', as: :nuevaAlerta, :via => :post
   match '/alertas/:id/edit' => 'alertas#edit', as: :editarActividad
+
+  match '/documents' => 'documents#index', as: :listaDocumentos
+  match '/documents/new' => 'documents#new', as: :nuevaDocumento, :via => :post
+  match '/documents/:id/edit' => 'documents#edit', as: :editarDocumento
 
 
 

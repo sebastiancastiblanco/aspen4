@@ -116,9 +116,8 @@
                   <span class="">Estado</span>
                 </a>
 
-                <a href="#" >
-                  <span class="">Documentos</span>
-                </a>
+                <%= link_to   "("+@proceso.documents.size.to_s+") Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
+
               </div>
             </div>
           </div>

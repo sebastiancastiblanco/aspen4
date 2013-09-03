@@ -1,28 +1,35 @@
 class EventsController < ApplicationController
   
+  #Recupara la lista de eventos del usuario.
   def index
-    @events = Event.scoped 
     @event = Event.new
-    @events = Event.all 
+    #Recuperar los eventos del usuario logeado
+    @events = current_user.events
+    #respond de la funcion
     respond_to do |format| 
       format.html # index.html.erb 
       format.json { render :json => @events } 
      end 
   end
 
+  # Crea la instancia del evento a crear en el la plantilla _form.html.erb
   def new
     @event = Event.new
+    if (params[:date])
+        @event.starttime = params[:date]
+        @event.endtime = params[:date]
+    end
   end
   
-
-  def show
-
-  end
-
+  #crea el evento en el calendario,  ejecuta el archivo create.js.erb
+  #Asociandolo al usuario que lo creo.
   def create
       @event = Event.new(params[:event])
       respond_to do |format|
         if @event.save
+          #Salvar relacion entre el evento y el usuario que lo creo
+          @event.usuario_eventos.create(:usuario_id => current_user.id,:propietario_id => current_user.id,:event_id => @event.id)
+        
             format.json { render json: @event, status: :created, location: @event }
             format.js
         else
@@ -33,11 +40,13 @@ class EventsController < ApplicationController
     
  end
   
+  #recupera la informacion del evento y ejcuta edit.js.erb en la plantilla _edit_form.html.erb
   def edit
     @event = Event.find_by_id(params[:id])
      
   end
   
+  #actualiza los eventos y ejecuta update.js.erb
   def update
       @event = Event.find_by_id(params[:idEvent])
       respond_to do |format|
@@ -51,7 +60,7 @@ class EventsController < ApplicationController
       end
   end  
 
-
+  #Modifica la ubicacion de los eventos y ejecuta es JS de move.js.erb
   def move
       @event = Event.find(params[:id])
     if @event
@@ -62,6 +71,7 @@ class EventsController < ApplicationController
     end
   end
   
+  #redimensaiona los eventos y ejecuta es JS de resize.js.erb
   def resize
     @event = Event.find(params[:id])
     respond_to do |format|
@@ -73,6 +83,18 @@ class EventsController < ApplicationController
     end
  end
   
+  #Elimina eventos y ejecuta es JS de destroy.js.erb
+  def destroy
+    @event = Event.find_by_id(params[:id])
+    @event.destroy
+    respond_to do |format|
+      format.html { redirect_to events_url }
+      format.json { head :no_content }
+      format.js
+    end
+
+  end
+ end
 
 
   def get_events
@@ -86,27 +108,3 @@ class EventsController < ApplicationController
   end
   
   
-  
-  
-  
-
-  
-  def destroy
-    @event = Event.find_by_id(params[:id])
-    if params[:delete_all] == 'true'
-      @event.event_series.destroy
-    elsif params[:delete_all] == 'future'
-      @events = @event.event_series.events.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
-      @event.event_series.events.delete(@events)
-    else
-      @event.destroy
-    end
-    
-    render :update do |page|
-      page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
-      page<<"$('#desc_dialog').dialog('destroy')" 
-    end
-    
-  end
-  
-end

@@ -175,6 +175,13 @@ function editEvent(the_event, jsEvent, view) {
     url: '/events/'+the_event.id+'/edit',  //the script to call to get data          
     success: function()          //on receive of reply
     {
+      $('#event_starttime').val($.fullCalendar.formatDate( the_event.start , 'dd MMMM yyyy'));
+      if (the_event.end != null){
+       $('#event_endtime').val($.fullCalendar.formatDate( the_event.end , 'dd MMMM yyyy'));
+      }
+      else{
+       $('#event_endtime').val($.fullCalendar.formatDate( the_event.start , 'dd MMMM yyyy')); 
+      } 
     } 
   });
 }
@@ -185,6 +192,8 @@ function newEvent(date) {
     data: {date: date} ,
     success: function()          //on receive of reply
     {
+      $('#event_starttime').val($.fullCalendar.formatDate( date , 'dd MMMM yyyy'));
+      $('#event_endtime').val($.fullCalendar.formatDate( date , 'dd MMMM yyyy'));
     } 
   });
 }
@@ -213,16 +222,25 @@ $(document).ready(function(){
               center: 'title',
               right:  'agendaDay agendaWeek ,month'
           },
-          monthNamesShort : ['Enero' , 'Febrero' , 'Marzo' , 'Abril' , 'Mayo' , 'Junio' , 'Julio' ,
+          monthNames:['Enero' , 'Febrero' , 'Marzo' , 'Abril' , 'Mayo' , 'Junio' , 'Julio' ,
                         'Agosto' , 'Septiembre' , 'Octubre' , 'Noviembre' , 'Diciembre' ],
-          dayNamesShort : ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
-           buttonText: {prev: '&nbsp;&#9668;&nbsp;',
+          dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+          monthNamesShort: ['Enero' , 'Febrero' , 'Marzo' , 'Abril' , 'Mayo' , 'Junio' , 'Julio' ,
+                        'Agosto' , 'Septiembre' , 'Octubre' , 'Noviembre' , 'Diciembre' ],
+          dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+           buttonText: {
+                        prev: '&nbsp;&#9668;&nbsp;',
                         next: '&nbsp;&#9658;&nbsp;',
                         prevYear: '&nbsp;&lt;&lt;&nbsp;',
                         nextYear: '&nbsp;&gt;&gt;&nbsp;',
-                        today : 'Hoy'},
+                        today : 'Hoy',
+                        month:  'Mes',
+                        week:   'Semana',
+                        day:    'Dia'
+                      },
+          firstDay : 1,
          dayClick: function(date) {
-              newEvent(date) 
+              newEvent(date); 
           }
     })
  

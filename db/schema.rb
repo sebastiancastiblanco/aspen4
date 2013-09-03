@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816220406) do
+ActiveRecord::Schema.define(:version => 20130903132159) do
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -67,6 +67,17 @@ ActiveRecord::Schema.define(:version => 20130816220406) do
     t.datetime "updated_at",       :null => false
     t.integer  "proceso_id"
     t.integer  "usuario_id"
+  end
+
+  create_table "documents", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "proceso_id"
   end
 
   create_table "estado_actividads", :force => true do |t|
@@ -156,6 +167,14 @@ ActiveRecord::Schema.define(:version => 20130816220406) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "usuario_id"
+  end
+
+  create_table "usuario_eventos", :force => true do |t|
+    t.integer  "usuario_id"
+    t.integer  "event_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "propietario_id"
   end
 
   create_table "usuarios", :force => true do |t|
