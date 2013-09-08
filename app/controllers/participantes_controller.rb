@@ -66,6 +66,7 @@ class ParticipantesController < ApplicationController
     @participante = Participante.new(params[:participante])
     @proceso = Proceso.find(params[:proceso_id])
     @rol_participantes = RolParticipante.all
+    @displaycamposOpcionalesParticipante = params[:displayOpcionales]
 
     respond_to do |format|
       if @participante.save
@@ -87,7 +88,10 @@ class ParticipantesController < ApplicationController
   def update
     @participante = Participante.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
-    
+    @rol_participantes = RolParticipante.all
+    @displaycamposOpcionalesParticipante = params[:displayOpcionales]
+
+
     respond_to do |format|
       if @participante.update_attributes(params[:participante])
         format.html { redirect_to @participante, notice: 'Participante was successfully updated.' }

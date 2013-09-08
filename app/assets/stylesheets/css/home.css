@@ -569,10 +569,16 @@ div.sheet>header.has_buttons {
 }
 
 table.inbox td.who {
-  width: 1%!important;
+  width: 1% !important;
+  max-width: 750px !important;
   white-space: nowrap!important;
   text-align: left!important;
 }
+
+table.inbox td.who a {
+  max-width: 750px !important;
+}
+
 table.inbox td {
   font-size: 14px!important;
   padding: 9px 0!important;
@@ -894,9 +900,9 @@ color: #444;
 }
 
 .panelAvatarUsuario{
-  height: 40px !important;
+  height: 32px !important;
   float: left;
-  margin-top: 80px;
+  margin-top: 97px;
   max-width: 200px;
 }
 
@@ -988,15 +994,13 @@ color: #444;
   right: 348px;
 }
 
-.formDespacho{
-  position: relative;
-  float: right;
-  background-repeat: no-repeat;
-  background-position: 0px 0px;
-  position: absolute;
-  top: 148px;
-  left: 23%;
-  z-index: 1;
+.panelHomeregistro{
+ position: absolute !important;
+float: right;
+background-position: 0px 0px;
+top: 26%;
+right: 18%;
+z-index: 1;
 }
 
 .logobanner{
@@ -1066,4 +1070,72 @@ color: #444;
 div.panel{
   position: relative !important;
   text-align: left !important;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.maxdescripcion {
+  max-width: 350px !important;
+
+}
+
+.logopersona{
+  font-size: 30px !important;
+}
+
+/*HOME PANEL*/
+.content { position: absolute;
+left: 523px;
+bottom: 179px;
+width: 42%;
+background: rgba(255,255,255,0.85);
+padding: 20px; }
+
+.content h1 {
+  position: relative;
+  left: 0px;
+  bottom: 0px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+
+
+
+
+.blue.button:hover {
+background-color: #0192dd !important;
+border: 1px solid #0192dd !important;
+}
+.blue {
+border: 1px solid #0593dc !important;
+background-color: #0192dd !important;
+}
+
+.tituloHome{
+  margin-right: 29px;
+  margin-top: 33px;
+  float: right;
+}
+
+.panelTransparente{
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+.margenesLinea{
+  margin: 50px 0 50px;
+}
+
+.tituloPagina{
+  margin-bottom: 20px !important;
+  text-align: center !important;
+  color: #2284a1 !important;
+}
+
+.subtitulo{
+  color: #2284a1 !important;
+  font-weight: bold !important;
 }

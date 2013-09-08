@@ -66,6 +66,7 @@ class ActividadsController < ApplicationController
     #Relacionar el proceso con las actividades
     @actividad.proceso_id = @proceso.id
     @estadoActividads = EstadoActividad.all
+    @displaycamposOpcionalesActividad = params[:displayOpcionales]
 
     respond_to do |format|
       if @actividad.save
@@ -86,7 +87,8 @@ class ActividadsController < ApplicationController
     @actividad = Actividad.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
     @estadoActividads = EstadoActividad.all
-
+    @displaycamposOpcionalesActividad = params[:displayOpcionales]
+    
     respond_to do |format|
       if @actividad.update_attributes(params[:actividad])
         format.html { redirect_to @proceso, notice: 'Actividad fue modificada correctamente.' }

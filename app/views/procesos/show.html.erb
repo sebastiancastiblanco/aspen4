@@ -46,7 +46,7 @@
             <div class="collapsed_content">
               <div class="position_reference">
                 <h1 class="field" >
-                  <%= @proceso.tipo_proceso.tipo %> - <%= @proceso.titulo %>
+                  <%= @proceso.titulo %>
                 </h1>
 
                 <div class="star"  title="Starring a project will highlight it on the projects index page">
@@ -56,13 +56,12 @@
               </div>
 
               <div class="description field" style="width: auto; border-color: transparent;">
-                <%= @proceso.ciudad %>, <%= @proceso.objetivo %>
+               <span class="bold"> <%= @proceso.tipo_proceso.tipo %>:</span> <%= @proceso.objetivo %>, <%= @proceso.ciudad %>
               </div>
               <div class="row">
                 <div class="large-12 columns">
-                  
                     <div class="small-9 large-9 columns left">
-                      <h6 class="label">#REF-<%= @proceso.referencia %></h6>
+                      <h6 class="label">#REF-<%= @proceso.id %></h6>
                     </div>
                     <div class="small-9 large-1 columns left">
                       <h6 class="label">Estado: </h6>

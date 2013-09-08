@@ -32,6 +32,7 @@ AspenVersion3::Application.routes.draw do
   resources :usuarios
   resources :usuario_sessions
   
+  match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
   match 'home' => 'usuarios#new', as: :home
   match 'login'  => 'usuarios#new', as: :login
   match 'logout' => 'usuario_sessions#destroy', as: :logout

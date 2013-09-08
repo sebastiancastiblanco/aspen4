@@ -21,10 +21,9 @@
 						<div class="collapsed_content ">
 							<div class="row">
 								<div class="small-12 columns">
-									<div class="small-6 columns left">
-										<h1 class="field">Proceso <%= @proceso.id %>, <%= @proceso.titulo %> </h1>
+									<div class="small-12 columns left">
+										<h1 class="field"><%= @proceso.titulo %> </h1>
 									</div>
-
 								</div>
 							</div>
 						</div>
@@ -38,7 +37,7 @@
 						<article class="participants new expanded">
 						
 								
-									<%= render 'form' %>
+									<%= render 'formEdit' %>
 					
 						
 						</article>
@@ -50,3 +49,7 @@
 	</div>
 </body>
 
+
+  <div id="myModalTipoProceso" class="reveal-modal tiny">
+   	<%= render 'formTipoProceso' %>
+  </div>

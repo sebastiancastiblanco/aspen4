@@ -19,7 +19,7 @@
             <div class="collapsed_content">
               <div class="row">
                 <div class="small-12 columns">
-                    <div class="small-5 columns left">
+                    <div id="paneltituloActividad" class="small-5 columns left">
                       <h1 id="tituloActividad">
                          <% if  @actividadesRender == "true" %>
                           Actividad
@@ -28,28 +28,10 @@
                           <% end %>
                       </h1>
                     </div>
-                    <div class="small-4 columns left">
-                      <dl id="listaFiltros" class="sub-nav">
-                          <dd id="filtroTodos" class="active">
-                              <%= link_to 'Todas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 0 , :remote => true %>
-                          </dd>
-                          <dd id="filtroAbiertas"> 
-                            <%= link_to 'Abiertas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 1 , :remote => true %>
-                          </dd>
-                          <dd id="filtroAtrasadas">
-                            <%= link_to 'Atrasadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 3 , :remote => true %>
-                          </dd>
-                          <dd id="filtroTerminadas">
-                            <%= link_to 'Terminadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 2 , :remote => true %>
-                          </dd>
-                      </dl>
-
-                    </div>
-                    <div id="botonesActividades" class="small-2 columns left">
+                   
+                    <div id="botonesActividades" class="small-2 small-offset-4 columns left">
                         
-                       
-
-                        <% if  @actividadesRender == "true" %>
+                       <% if  @actividadesRender == "true" %>
 
                          <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_actividad_link" %>
 
@@ -69,8 +51,35 @@
                 </div>
               </div>
             </div>
-          </div><div class="blank_slate_arrow"></div>
+          </div>
+          
+          <div class="blank_slate_arrow"></div>
+          
+
           </header>
+
+          <div class="row">
+             <div class="small-5 small-offset-7 columns left">
+              <dl id="listaFiltros" class="sub-nav">
+                  <dd id="filtroTodos" class="active">
+                      <%= link_to 'Todas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 0 , :remote => true %>
+                  </dd>
+                  <dd id="filtroProgramadas">
+                      <%= link_to 'Programadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 4 , :remote => true %>
+                  </dd>
+                  <dd id="filtroAbiertas"> 
+                    <%= link_to 'Abiertas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 1 , :remote => true %>
+                  </dd>
+                  <dd id="filtroAtrasadas">
+                    <%= link_to 'Atrasadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 3 , :remote => true %>
+                  </dd>
+                  <dd id="filtroTerminadas">
+                    <%= link_to 'Terminadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 2 , :remote => true %>
+                  </dd>
+              </dl>
+            </div>
+          </div>
+
           <div class="sheet_body fondoGris">
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
                         

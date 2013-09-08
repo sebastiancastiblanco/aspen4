@@ -35,9 +35,10 @@
  <%= link_to 'Mostrar Campos Opcionales', "javascript:eventoCamposOpcionalesParticipante()", :class=>"textolinks", :id => "mostrarCamposOpcionales" %>
 <hr>
 
-<div id="camposOpcionalesParticipante" class="row ocultar">
-      <section>
-       
+<div id="camposOpcionalesParticipante" class="ocultar">
+     
+       <div class="row"> 
+
           <div class="small-2 small-offset-0 columns ">
             <%= f.label "Tipo Documento", :class => "tituloCampo error alinearDerecha" %>
           </div>
@@ -51,8 +52,9 @@
           <div class="small-4 columns field ">
             <%= f.text_field :documento, :placeholder => "Número de Documento" %>
           </div>
-
-
+      
+      </div>
+      <div class="row"> 
           <div class="small-2 small-offset-0 columns ">
             <%= f.label :estadoCivil_, :class => "tituloCampo error alinearDerecha" %>
           </div>
@@ -95,8 +97,8 @@
             <%= f.text_field :celular, :placeholder => "Número de Celular" %>
           </div>  
 
-        
-      </section>
+        </div>
+      
 </div>
 
 <div class="row"> 
@@ -108,7 +110,9 @@
      <div class="small-2 columns field">
       <%= f.submit :'Guardar Participante' , :class => " button success radius" %></div>
      </div>
+    
      <%= hidden_field_tag :proceso_id, @proceso.id %>
+     <%= hidden_field_tag :displayOpcionales, false , :id => "displayOpcionales" %>
 
 </div>
 

@@ -1,8 +1,10 @@
  <tr id="contrato_<%= contrato.id %>" class="topic message_10997527 fondoGris" >
   <td class="who">
       <%= link_to edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true,:class => "alinearbotones" do  %>
-              <h6>Tipo de Contrato: <%= contrato.tipoContrato %>	
-              Objeto: <%= contrato.objeto %> </h6>
+              <div class="bold alinearbotones">Tipo de Contrato: </div> 
+             <div class="alinearbotones "> <%= contrato.tipoContrato %>	</div> 
+              <div class="bold alinearbotones"> Objeto: </div> 
+              <div class="maxdescripcion alinearbotones"><%= contrato.objeto %></div>  
       <% end %>
     
       <%= button_to 'Ver', edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true, :id => "new_contrato_link",:class => "tiny button radius alinearbotones " %>

@@ -81,4 +81,8 @@ class UsuariosController < ApplicationController
       format.js
     end
   end
+
+  def funcionalidades
+     @usuario = Usuario.new
+  end
 end
