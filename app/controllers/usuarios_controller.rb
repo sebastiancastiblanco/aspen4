@@ -85,4 +85,8 @@ class UsuariosController < ApplicationController
   def funcionalidades
      @usuario = Usuario.new
   end
+
+  def planprecios
+     @usuario = Usuario.new
+  end
 end
