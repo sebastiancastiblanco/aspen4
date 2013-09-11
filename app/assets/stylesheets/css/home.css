@@ -1102,6 +1102,23 @@ padding: 20px; }
 }
 
 
+/*HOME PANEL*/
+.contentLeft { position: absolute;
+left: 70px;
+bottom: 163px;
+width: 42%;
+background: rgba(255,255,255,0.85);
+padding: 20px; }
+
+.contentLeft h1 {
+  position: relative;
+  left: 0px;
+  bottom: 0px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+
 
 
 
@@ -1138,4 +1155,11 @@ background-color: #0192dd !important;
 .subtitulo{
   color: #2284a1 !important;
   font-weight: bold !important;
+}
+
+.detalles{
+  font-size: 12px !important;
+  color: #aa9c84 !important;
+  text-decoration: none !important;
+  margin-top: -8px;
 }
