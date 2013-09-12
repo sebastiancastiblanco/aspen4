@@ -26,12 +26,11 @@ AspenVersion3::Application.routes.draw do
   get "procesos/compartirProceso"
   
   
-
-
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
   
+  match 'log' => 'log#index', as: :log
   match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
   match 'precios' => 'usuarios#planprecios', as: :precios
 
