@@ -14,4 +14,13 @@ module ApplicationHelper
   def fechaDiaSemana(date)
     date.strftime("%A")
   end
+
+  def fechalog(date)
+    date.strftime("%d %B %Y")
+  end
+
+  def horalog(date)
+    date.strftime("%I:%M %p")
+  end
+
 end
