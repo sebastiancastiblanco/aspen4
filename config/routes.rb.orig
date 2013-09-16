@@ -1,12 +1,12 @@
 AspenVersion3::Application.routes.draw do
 <<<<<<< HEAD
-
-  resources :documents
 =======
   
   resources :logs
-
+  get "logs/iractividad"
 >>>>>>> SebastianAspen
+
+  resources :documents
   resources :events
   get "events/move"
   get "events/resize"
@@ -25,22 +25,10 @@ AspenVersion3::Application.routes.draw do
   get "procesos/favorito"
   get "procesos/nofavorito"
   get "procesos/compartirProceso"
-<<<<<<< HEAD
 
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
-=======
-  
-  
-  resources :agendas
-  resources :usuarios
-  resources :usuario_sessions
-  
-  match 'log' => 'logs#index', as: :log
-  match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
-  match 'precios' => 'usuarios#planprecios', as: :precios
->>>>>>> SebastianAspen
 
   match 'home' => 'usuarios#new', as: :home
   match 'login'  => 'usuarios#new', as: :login
@@ -51,6 +39,7 @@ AspenVersion3::Application.routes.draw do
   match '/usuarios/:id' => 'usuarios#index', as: :listaUsuarios
   match '/usuarios/:id/edit' => 'usuarios#edit', as: :editarUsuario
 
+<<<<<<< HEAD
   match '/participantes/new/:id' => 'participantes#new', as: :nuevoParticipante
   match '/participantes/:id' => 'participantes#index', as: :listaParticipantes
   match '/participantes/:id/edit' => 'participantes#edit', as: :editarParticipantes
@@ -71,8 +60,28 @@ AspenVersion3::Application.routes.draw do
   match '/documents/new' => 'documents#new', as: :nuevaDocumento, :via => :post
   match '/documents/:id/edit' => 'documents#edit', as: :editarDocumento
 
+  match '/estados' => 'estados#index', as: :listaEstados
+  match '/estados/new' => 'estados#new', as: :nuevoEstado, :via => :post
+  match '/estados/:id/edit' => 'estados#edit', as: :editarEstado
 
-
+=======
+  match '/procesos/:proceso_id/participantes/new/:id' => 'participantes#new', as: :nuevaActividad
+  match '/procesos/:proceso_id/participantes/:participante_id/:nuevoItem' => 'participantes#index', as: :editarParticipantesProceso
+  match '/procesos/:proceso_id/participantes/:nuevoItem' => 'participantes#index', as: :nuevoParticipantesProceso
+  match '/procesos/:proceso_id/participantes' => 'participantes#index', as: :verParticipantesProceso
+  
+  match '/procesos/:proceso_id/contratos/new/:id' => 'contratos#new', as: :nuevaActividad
+  match '/procesos/:proceso_id/contratos/:contrato_id/:nuevoItem' => 'contratos#index', as: :editarContratosProceso
+  match '/procesos/:proceso_id/contratos/:nuevoItem' => 'contratos#index', as: :nuevoContratosProceso
+  match '/procesos/:proceso_id/contratos' => 'contratos#index', as: :verContratosProceso
+  
+  match '/procesos/:proceso_id/actividades/new/:id' => 'actividads#new', as: :nuevaActividad
+  match '/procesos/:proceso_id/actividades/:actividad_id/:nuevoItem' => 'actividads#index', as: :editarActividadesProceso
+  match '/procesos/:proceso_id/actividades/:nuevoItem' => 'actividads#index', as: :nuevoActividadesProceso
+  match '/procesos/:proceso_id/actividades' => 'actividads#index', as: :verActividadesProceso
+  
+  
+>>>>>>> SebastianAspen
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -145,5 +154,7 @@ AspenVersion3::Application.routes.draw do
   #filtrado de actividades
   match 'actividads/filtrado/:proceso_id/:estado_id' => 'actividads#filtrado'
 
+  #ir actividad desde el log
+  match '/logs/iractividad/:log_id' => 'logs#iractividad'
 
 end
