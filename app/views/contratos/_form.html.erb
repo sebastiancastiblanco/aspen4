@@ -20,33 +20,42 @@
       <%= f.label :objeto_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-10 columns field">
-      <%= f.text_area :objeto, :placeholder => "Objeto del contrato" %>
+      <span data-tooltip class="tip-top" title="Especificación general de las pretenciones de las dos partes (Contratante y contratista)">
+      <%= f.text_area :objeto, :placeholder => "Objeto del contrato, máximo 250 carácteres ..."  %>
     </div>
     
     <div class="small-2 small-offset-0 columns ">
+       
       <%= f.label "Contratante", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.select :particpante1, [["Contratante", 0]] + @proceso.participantes.map {|r| [r.nombre,r.id]}, { :disabled => ["Contratista", 0] } %>
+      <span data-tooltip class="tip-top" title="Selecciona uno de los participantes que has creado anteriormente">
+      <%= f.select :particpante1, [["Contratante", 0]] + @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido,r.id]}, { :disabled => ["Contratista", 0] } %>
     </div>
      <div class="small-2 small-offset-0 columns ">
+      
       <%= f.label "Contratista", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.select :participante2, [["Contratista", 0]] + @proceso.participantes.map {|r| [r.nombre,r.id]}, { :disabled => ["Contratista", 0] } %>
+      <span data-tooltip class="tip-top" title="Selecciona uno de los participantes que has creado anteriormente">
+      <%= f.select :participante2, [["Contratista", 0]] + @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido , r.id]}, { :disabled => ["Contratista", 0] } %>
     </div>
 
     <div class="small-2 small-offset-0 columns ">
+      
       <%= f.label :valor_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
+      <span data-tooltip class="tip-top" title="Indica el valor total del contrato">
       <%= f.text_field :valor, :placeholder => "Valor del Contrato" %>
     </div>
      <div class="small-2 small-offset-0 columns ">
+       
       <%= f.label "Forma Pago", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_area :formaPago, :placeholder => "Forma de Pago" %>
+     <span data-tooltip class="tip-top" title="Indica el acuerdo de pago hecho con el cliente">
+      <%= f.text_area :formaPago, :placeholder => "Forma de Pago, máximo 120 carácteres" %>
     </div>
 
 </div>
@@ -63,28 +72,33 @@
             <%= f.label "Obligaciones", :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-10 columns field">
-            <%= f.text_area :obligaciones, :placeholder => "Obligaciones" %>
+            <span data-tooltip class="tip-top" title="Describir los objetivos y compromisos de cada una de las partes">
+            <%= f.text_area :obligaciones, :placeholder => "Obligaciones, máximo 250 carácteres" %>
           </div>
           
-            <div class="small-2 small-offset-0 columns">
+          <div class="small-2 small-offset-0 columns">
             <%= f.label :deberes_, :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-10 columns field ">
-            <%= f.text_area :deberes, :placeholder => "Deberes " %>
+            <span data-tooltip class="tip-top" title="Describir los deberes del contratista con la más alta calidad a nivel económico, social y legal">
+            <%= f.text_area :deberes, :placeholder => "Deberes, máximo 250 carácteres " %>
           </div>
 
           <div class="small-2 small-offset-0 columns ">
+             
             <%= f.label "Fecha Inicio", :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field">
-            <%= f.text_field :fechaInicio , :placeholder => "Fecha de Inicio" %>
+            <span data-tooltip class="tip-top" title="Fecha acordada para inicar el proceso">
+            <%= f.text_field :fechaInicio , :placeholder => "Fecha de Inicio del contrato" %>
           </div>
           
             <div class="small-2 small-offset-0 columns">
-            <%= f.label "Fecha Fin", :class => "tituloCampo error alinearDerecha" %>
+              <%= f.label "Fecha Fin", :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field ">
-            <%= f.text_field :fechaFin , :placeholder => "Fecha fin" %>
+             <span data-tooltip class="tip-top" title="Fecha para la culminación esperada del proceso">
+             <%= f.text_field :fechaFin , :placeholder => "Fecha fin del contrato" %>
           </div>
       </section>
    
@@ -99,6 +113,7 @@
       <%= f.submit :'Guardar Contrato' , :class => " button success radius", :id =>"botonSubmitContrato" %></div>
      </div>
      <%= hidden_field_tag :proceso_id, @proceso.id %>
+     <%= hidden_field_tag :displayOpcionales, false , :id => "displayOpcionales" %>
 
 </div>
 <% end %>

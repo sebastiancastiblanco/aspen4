@@ -6,24 +6,37 @@ document.getElementById("tituloActividad").innerHTML = "Actividades";
 
 <% if @filtro == "0" %>
 	$("#filtroTodos").addClass("active")
+	$("#filtroProgramadas").removeClass("active")
 	$("#filtroAbiertas").removeClass("active")
 	$("#filtroAtrasadas").removeClass("active")
 	$("#filtroTerminadas").removeClass("active")
 <% elsif @filtro == "1" %>
 	$("#filtroTodos").removeClass("active")
+	$("#filtroProgramadas").removeClass("active")
 	$("#filtroAbiertas").addClass("active")
 	$("#filtroAtrasadas").removeClass("active")
 	$("#filtroTerminadas").removeClass("active")
 <% elsif @filtro == "3" %>
 	$("#filtroTodos").removeClass("active")
+	$("#filtroProgramadas").removeClass("active")
 	$("#filtroAbiertas").removeClass("active")
 	$("#filtroAtrasadas").addClass("active")
 	$("#filtroTerminadas").removeClass("active")
 <% elsif @filtro == "2" %>
 	$("#filtroTodos").removeClass("active")
+	$("#filtroProgramadas").removeClass("active")
 	$("#filtroAbiertas").removeClass("active")
 	$("#filtroAtrasadas").removeClass("active")
 	$("#filtroTerminadas").addClass("active")
+<% elsif @filtro == "4" %>
+	$("#filtroTodos").removeClass("active")
+	$("#filtroProgramadas").addClass("active")
+	$("#filtroAbiertas").removeClass("active")
+	$("#filtroAtrasadas").removeClass("active")
+	$("#filtroTerminadas").removeClass("active")
 <% end %>
+
+
+
 
 $('#actividades').html("<%= j render( @actividads) %>");

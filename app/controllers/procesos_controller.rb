@@ -32,6 +32,9 @@ class ProcesosController < ApplicationController
     #Variable cantidad de usuarios en el proces
     gon.cantidadUsuarios = @proceso.usuarios.size
 
+    #Traza de log
+    Log.create(:usuario => current_user.username ,:usuario_id => current_user.id ,:proceso_id => @proceso.id,:mensaje_id => 1 ,:mensaje=> current_user.username.to_s+' ingreso al proceso #Ref-'+@proceso.id.to_s)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @proceso }

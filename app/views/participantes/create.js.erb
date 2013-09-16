@@ -13,4 +13,7 @@
 	$('#formParticipante').remove();
 	$('#formularioParticipantes').after('<%= j render("form") %>');
 	$('#formParticipante').toggle( "fade" );
+	<% if @displaycamposOpcionalesParticipante=="true" %>
+		eventoCamposOpcionalesParticipante();
+	<% end %>
 <% end %>

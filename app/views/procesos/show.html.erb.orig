@@ -1,0 +1,415 @@
+
+<body>
+
+    <div id="workspace" class="workspace">
+    <div class="container stack_container"  style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris">
+
+        <header>
+          <div class="header_links">
+            <a id="procesofavorito" class="pointer" onClick="cambioEstadoFavoritoHome(<%= @proceso.id %>)" >
+               <% if (@proceso.favorito) %>
+                <i id="ProcesoNoFavorito<%= @proceso.id %>" class="foundicon-star" style="display:none"></i>
+                <div id="ProcesoFavorito<%= @proceso.id %>" class="favoritoSeleccionado" style="display:block"></div>
+               <% else %>
+                <i id="ProcesoNoFavorito<%= @proceso.id %>" class="foundicon-star" style="display:block"></i>
+                <div id="ProcesoFavorito<%= @proceso.id %>" class="favoritoSeleccionado" style="display:none"></div>
+                <% end %>
+            </a>
+
+            <a href="#" data-reveal-id="myModalCompartirProceso">
+              <span class="link">Compartir</span><br>
+              <span class="detail">
+                <span id="cantidadUsuarios"><%= @proceso.usuarios.size %></span> abogado  en este proceso
+              </span>
+            </a>
+
+            <a href="#">
+              <span class="link">Ultimos movimientos</span><br>
+              <span class="detail">cambios recientes</span>
+            </a>
+
+            <a href="#">
+              <span class="link">Homologar</span><br>
+            </a>
+
+             <%= link_to edit_proceso_path(@proceso) do %>
+              <span class="link">Editar</span>
+             <% end %>
+
+            <%= link_to  procesos_path do %>
+              <span class="link">Regresar</span>
+             <% end %>
+
+          </div>
+          <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="position_reference">
+                <h1 class="field" >
+                  <%= @proceso.titulo %>
+                </h1>
+
+                <div class="star"  title="Starring a project will highlight it on the projects index page">
+
+                </div>
+
+              </div>
+
+              <div class="description field" style="width: auto; border-color: transparent;">
+               <span class="bold"> <%= @proceso.tipo_proceso.tipo %>:</span> <%= @proceso.objetivo %>, <%= @proceso.ciudad %>
+              </div>
+              <div class="row">
+<<<<<<< HEAD
+                <div class="large-12 columns">
+
+                    <div class="small-9 large-9 columns left">
+                      <h6 class="label">#REF-<%= @proceso.referencia %></h6>
+=======
+                <div class="small-9 large-9 columns left" style="margin-left: -20px;">
+                      <h6 class="label">#REF-<%= @proceso.id %></h6>
+>>>>>>> SebastianAspen
+                    </div>
+                    <div class="small-9 large-1 columns left" style="margin-top: 4px;">
+                      <h6 class="label">Estado: </h6>
+                    </div>
+                    <div class="small-9 large-2 columns left">
+                      <form class="custom">
+                          <select id="customDropdown" class="dropdown small">
+                          <option DISABLED>Estado Actual</option>
+                          <option>Abierto</option>
+                          <option>Proceso</option>
+                          <option>Cerrado</option>
+                          </select>
+                      </form>
+                    </div>
+<<<<<<< HEAD
+
+                </div>
+=======
+>>>>>>> SebastianAspen
+              </div>
+
+
+
+
+            </div>
+          </div>
+
+
+          <% if notice %>
+                    <div data-alert class="alert-box success radius">
+                      <%= notice %>
+                      <a href="#" class="close">&times;</a>
+                    </div>
+          <% end %>
+
+          <div id="project_toolbar_2942270" class="project_toolbar" >
+            <div class="tools has_tools_not_in_project">
+
+              <div class="group not_in_project">
+                <span class="label">Agregar : </span>
+
+
+                 <%= link_to   "("+@proceso.participantes.size.to_s+") Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
+
+                 <%= link_to   "("+@proceso.contratos.size.to_s+") Contratos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
+
+
+                <%= link_to   "("+@proceso.actividads.size.to_s+") Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
+
+                <%= link_to   "("+@proceso.alertas.size.to_s+") Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
+
+
+                <a href="#" >
+                  <span class="">Estado</span>
+                </a>
+
+                <%= link_to   "("+@proceso.documents.size.to_s+") Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
+
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="sheet_body">
+          <section class="events">
+            <header>
+              <h1><a href="#">Ultimas actualizaciones del proceso</a></h1>
+            </header>
+
+            <section id="events_project_2942270" class="project_events grouped_by_date" >
+              <div class="event_container" style="">
+                <article class="event chiral"  datetime="2013-05-26T16:42:56Z" >
+
+                  <div class="time">
+                    <span class="time_only"><time data-local-time="" datetime="2013-05-26T16:42:56Z" style="">1:42pm</time></span>
+
+                  </div>
+
+                  <div class="action">
+                    <span class="creator" >
+                      Alexander H.
+                    </span>
+
+                    <span class="in_project">cambio el nombre del proceso  'Untitled Template' a 'Testing'</span>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <p class="more_events">
+              <a class="decorated" href="#">Ver todas las actualizaciones</a>
+            </p>
+          </section>
+          <hr/>
+
+          <section id="panelParticipante" class="documents " style="">
+            <header class="has_buttons">
+              <h1> <%= link_to participantes_path(:proceso_id => @proceso.id) ,:class => "alinearbotones" do  %>
+                      1. Participantes
+                    <% end %>
+              </h1>
+                <div>
+                  <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones", :method=>:post  %>
+                </div>
+                <div>
+                  <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius ", :method=>:post  %>
+                </div>
+
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document"  >
+                <div>
+                  <div>
+
+                    <% @participantes.each do |participante| %>
+                    <div class="row">
+
+                      <div class="small-12 columns ">
+                         <h5>
+                           <%= link_to participantes_path(:participante_id => participante.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
+                            <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
+                            <% end %>
+                          </h5>
+                      </div>
+                      <div class="small-12 columns">
+                        <p class="detalles">
+                          Actualizado <span class="time"><%= fechaFormatoActualizado participante.updated_at %></span>
+                        </p>
+                      </div>
+                    </div>
+
+
+
+
+                  <% end %>
+
+                  </div>
+                </div>
+              </article>
+            </section>
+          </section>
+          <hr/>
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><%= link_to contratos_path(:id => @proceso.id) ,:class => "alinearbotones" do  %>
+                      2. Contratos
+                    <% end %></h1>
+
+                <div>
+                  <%= button_to "Crear Contrato", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones", :method=>:post %>
+
+                  <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id, :nuevoItem => false},:class => "tiny button secondary radius", :method=>:post %>
+                </div>
+
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" >
+                
+                    <% @contratos.each do |contrato| %>
+                    <div class="row">
+                      <div class="small-12 columns ">
+                         <h5>
+                            <%= link_to contratos_path(:contrato_id => contrato.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
+                            <%= contrato.tipoContrato %>
+                          <% end %>
+                          </h5> 
+                      </div>
+                      <div class="small-12 columns">
+                        <p class="detalles">
+                          Actualizado <span class="time"><%= fechaFormatoActualizado contrato.updated_at %></span>
+                        </p>
+                      </div>
+                    </div>
+                  <% end %>
+
+              </article>
+            </section>
+          </section>
+          <hr/>
+
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1> <%= link_to actividads_path(:proceso_id => @proceso.id),:class => "alinearbotones" do  %>
+                      3. Actividades
+                    <% end %></h1>
+                <div>
+                  <%= button_to "Crear Actividad", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones", :method=>:post %>
+                  <%= button_to "Ver Todos", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id, :nuevoItem => false},:class => "tiny button secondary radius", :method=>:post %>
+
+                </div>
+
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" >
+                
+                     <% @actividads.each do |actividad| %>
+                                          <div class="row">
+                        <div class="small-12 columns ">
+                           <h5>
+                             <%= link_to actividads_path(:actividad_id => actividad.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
+                              <%= actividad.nombre %> -  <%= actividad.estado_actividad.estado %>
+                            <% end %>
+
+                            </h5> 
+                        </div>
+                        <div class="small-12 columns">
+                          <p class="detalles">
+                          Actualizado <span class="time"><%= fechaFormatoActualizado actividad.updated_at %></span>
+                           </p>
+                        </div>
+                      </div>
+                   <% end %>
+                
+              </article>
+            </section>
+          </section>
+          <hr/>
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#"> 4.  Conrtol - Alertas</a></h1>
+
+              <form action="#" class="button_to" data-remote="true" method="post">
+                <div>
+                  <input class="tiny button  radius" type="submit" value="Crear un control">
+                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                </div>
+              </form>
+
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="text">
+                        <h3 class="title">
+                          <a href="#">
+                            Control 1 - descripcion
+                          </a>
+                        </h3>
+                        <p>
+                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
+                          by Alexander Herrera
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+          <hr/>
+          <section class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#"> 5. Estado del Proceso</a></h1>
+
+              <form action="#" class="button_to" data-remote="true" method="post">
+                <div>
+                  <input class="tiny button  radius" type="submit" value="Crear Estado">
+                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                </div>
+              </form>
+
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="text">
+                        <h3 class="title">
+                          <a href="#">
+                            Estado 1 - descripcion
+                          </a>
+                        </h3>
+                        <p>
+                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
+                          by Alexander Herrera
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+          <hr/>
+
+          <section id="panelDocumentos" class="documents " style="">
+            <header class="has_buttons">
+              <h1><a href="#">6. Documentos</a></h1>
+
+              <form action="#" class="button_to" data-remote="true" method="post">
+                <div>
+                  <input class="tiny button  radius" type="submit" value="Crear un documento">
+                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                </div>
+              </form>
+
+            </header>
+
+            <section class="documents grouped_by_date">
+              <article class="document" id="document_3073232" >
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="icon">
+                        <a href="#">
+                          <img alt="Document icon jumbo" height="70" src="https://d3dma7a8zw52bz.cloudfront.net/assets/icons/document_icon_jumbo-a0a7cde8400d74f9975a1608bed73a1f.png" width="60">
+                        </a>
+                      </td>
+
+                      <td class="text">
+                        <h3 class="title">
+                          <a href="#">
+                            Untitled
+                          </a>
+                        </h3>
+                        <p>
+                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
+                          by Alexander Herrera
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
+          </section>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+  <div id="myModalCompartirProceso" class="reveal-modal small">
+    <%= render 'formControlAcceso' %>
+  </div>

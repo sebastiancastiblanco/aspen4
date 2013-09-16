@@ -15,18 +15,24 @@
                 <% if actividad.estado_actividad.estado =="Terminada" %>
                             <span class="day" style="background-color: #000 !important"><%= fechaDia actividad.fechaSeguimiento %></span>
                 <% end %>
+                 <% if actividad.estado_actividad.estado =="Programada" %>
+                            <span class="day" style="background-color: rgb(16, 16, 156) !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                <% end %>
         </header>
 
         <ul>
             <li id="CalendarEvent_5615518">
                <% if actividad.estado_actividad.estado =="Abierta" %>
-                Estado: <span style="color: #457a1a"><%= actividad.estado_actividad.estado%></span>
+                Estado: <span class="bold" style="color: #457a1a"><%= actividad.estado_actividad.estado%></span>
                 <% end %>
                 <% if actividad.estado_actividad.estado =="Atrasada" %>
-                Estado: <span style="color: #970b0e"><%= actividad.estado_actividad.estado%></span>
+                Estado: <span class="bold" style="color: #970b0e"><%= actividad.estado_actividad.estado%></span>
                 <% end %>
                 <% if actividad.estado_actividad.estado =="Terminada" %>
-                Estado: <span style="color: #000"><%= actividad.estado_actividad.estado%></span>
+                Estado: <span class="bold" style="color: #000"><%= actividad.estado_actividad.estado%></span>
+                <% end %> 
+                <% if actividad.estado_actividad.estado =="Programada" %>
+                Estado: <span class="bold" style="color: rgb(16, 16, 156)"><%= actividad.estado_actividad.estado%></span>
                 <% end %> 
                 
                 <p>Encargado: <%= actividad.participante.nombre %> </p>

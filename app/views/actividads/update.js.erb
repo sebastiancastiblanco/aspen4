@@ -15,5 +15,8 @@
 	$('#formActividad').remove();
 	$('#formularioActividades').after('<%= j render("form") %>');
 	$('#formActividad').toggle( "fade" );
+	<% if @displaycamposOpcionalesActividad=="true" %>
+		eventoCamposOpcionalesActividad();
+	<% end %>
 <% end %>
 

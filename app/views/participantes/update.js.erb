@@ -13,6 +13,11 @@ document.getElementById("noticeMsg").innerHTML = "Se actualizo correctamente el 
 	$('#formParticipante').remove();
 	$('#formularioParticipantes').after('<%= j render("form") %>');
 	$('#formParticipante').toggle( "fade" );
+
+	<% if @displaycamposOpcionalesParticipante=="true" %>
+		eventoCamposOpcionalesParticipante();
+	<% end %>
+	
 <% end %>
 
 

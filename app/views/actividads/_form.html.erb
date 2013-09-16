@@ -6,17 +6,19 @@
       <%= f.label "Nombre Actividad", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :nombre, :placeholder => "Nombre" %>
+      <%= f.text_field :nombre, :placeholder => "Nombre de la actividad" %>
     </div>
     
     <div class="small-2 small-offset-0 columns ">
       <%= f.label "Encargado", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.select :participante_id, [["Encargado", 0]] + @proceso.participantes.map {|r| [r.nombre,r.id]}, { :disabled => ["Encargado", 0] } %>
+       <span data-tooltip class="tip-top" title="Participante principal y encargado de la actividad">
+      <%= f.select :participante_id, [["Encargado", 0]] + @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido,r.id]}, { :disabled => ["Encargado", 0] } %>
     </div>
-
-    
+</div>
+  
+<div class="row">  
     <div class="small-2 small-offset-0 columns ">
       <%= f.label "Estado de la Actividad", :class => "tituloCampo error alinearDerecha" %>
     </div>
@@ -27,6 +29,7 @@
       <%= f.label "Fecha Seguimiento", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
+          <span data-tooltip class="tip-top" title="Cúando la actividad se cambiará de estado?">
           <%= f.text_field :fechaSeguimiento , :placeholder => "Fecha Seguimiento" %>
     </div>
 </div>
@@ -36,7 +39,8 @@
       <%= f.label "descripción", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-10 columns field">
-      <%= f.text_area :descripcion, :placeholder => "Máximo 250 caracteres",:size => "30x30" %>
+      <span data-tooltip class="tip-top" title="descripción principal de la actividad y objetivo final de la misma">
+      <%= f.text_area :descripcion, :placeholder => "Descripcion de la actividad, máximo 250 caracteres",:size => "30x50" %>
     </div>
 
 </div>
@@ -49,10 +53,11 @@
    
       <section>
         <div class="small-2 small-offset-0 columns ">
-          <%= f.label "Observacies", :class => "tituloCampo error alinearDerecha" %>
+          <%= f.label "Observaciones", :class => "tituloCampo error alinearDerecha" %>
         </div>
         <div class="small-10 columns field">
-          <%= f.text_area :observacion, :placeholder => "Máximo 500 caracteres" %>
+          <span data-tooltip class="tip-top" title="Observaciones importantes que se deben tener en cuenta para realizár en la actividad">
+          <%= f.text_area :observacion, :placeholder => "Observaciones, máximo 250 caracteres" %>
         </div>
         
 
@@ -60,6 +65,7 @@
           <%= f.label "Tiempo ejecución", :class => "tituloCampo error alinearDerecha" %>
         </div>
         <div class="small-4 columns field">
+              <span data-tooltip class="tip-top" title="Cúanto tiempo dura la actividad?">
               <%= f.number_field :tiempoEjecucion, :placeholder => "Tiempo de ejecución" %>
         </div>
 
@@ -83,6 +89,8 @@
       <%= f.submit :'Guardar Actividad' , :class => " button success radius" %></div>
      </div>
      <%= hidden_field_tag :proceso_id, @proceso.id %>
+     <%= hidden_field_tag :displayOpcionales, false , :id => "displayOpcionales" %>
+
 </div>
   
 <% end %>

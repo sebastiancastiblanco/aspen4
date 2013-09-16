@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  usuario_id: 1
+  proceso_id: 1
+  participante_id: 1
+  contrato_id: 1
+  actividad_id: 1
+  alertas_id: 1
+  estado_id: 1
+  documento_id: 1
+  mensaje: MyString
+
+two:
+  usuario_id: 1
+  proceso_id: 1
+  participante_id: 1
+  contrato_id: 1
+  actividad_id: 1
+  alertas_id: 1
+  estado_id: 1
+  documento_id: 1
+  mensaje: MyString

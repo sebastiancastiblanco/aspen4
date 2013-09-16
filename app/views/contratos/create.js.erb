@@ -12,6 +12,9 @@
 	$('#formContrato').remove();
 	$('#formularioContratos').after('<%= j render("form") %>');
 	$('#formContrato').toggle( "fade" );
+	<% if @displaycamposOpcionalesContrato=="true" %>
+		eventoCamposOpcionalesContrato();
+	<% end %>
 <% end %>
 
 

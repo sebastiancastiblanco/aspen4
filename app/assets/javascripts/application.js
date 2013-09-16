@@ -67,7 +67,7 @@ function listarActividades(){
   $('#new_actividad_link').show();
   $('#listar_actividades_link').hide();
   $('#listaFiltros').show();
-  $('#botonesActividades').removeClass("small-offset-4");
+
   document.getElementById("tituloActividad").innerHTML = "Actividades";
 }
 
@@ -87,11 +87,13 @@ function eventoCamposOpcionalesParticipante (){
          //$(panelcamposopcionales).css('display', 'none');
          $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+         document.getElementById("displayOpcionales").value = false;
       }
       else{
          //$(panelcamposopcionales).css('display', 'block');
          $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+         document.getElementById("displayOpcionales").value = true;
       }
 }
 
@@ -102,10 +104,12 @@ function eventoCamposOpcionalesContrato (){
       if(display == "block" ){
         $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+         document.getElementById("displayOpcionales").value = false;
       }
       else{
         $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+         document.getElementById("displayOpcionales").value = true;
       }
 }
 
@@ -115,10 +119,12 @@ function eventoCamposOpcionalesActividad (){
       if(display == "block" ){
         $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Campos Opcionales";
+          document.getElementById("displayOpcionales").value = false;
       }
       else{
          $(panelcamposopcionales).toggle( "fade" );
          document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Campos Opcionales";
+          document.getElementById("displayOpcionales").value = true;
       }
 }
 
