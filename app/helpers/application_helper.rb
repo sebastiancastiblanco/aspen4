@@ -16,11 +16,12 @@ module ApplicationHelper
   end
 
   def fechalog(date)
-    date.strftime("%d %B %Y")
+    date.strftime("%d %b %Y")
   end
 
   def horalog(date)
     date.strftime("%I:%M %p")
   end
+
 
 end

@@ -16,6 +16,8 @@ class Proceso < ActiveRecord::Base
   has_many :contratos
   #tiene varias actviidades
   has_many :actividads
+   #tiene varias actviidades
+  has_many :logs
   #tiene un tipo de proceso
   belongs_to :tipo_proceso
 

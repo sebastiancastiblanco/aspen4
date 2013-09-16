@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130913043304) do
+ActiveRecord::Schema.define(:version => 20130914155656) do
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130913043304) do
     t.datetime "updated_at",      :null => false
     t.integer  "mensaje_id"
     t.string   "usuario"
+    t.string   "proceso"
   end
 
   create_table "participantes", :force => true do |t|
