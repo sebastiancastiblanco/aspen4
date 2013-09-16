@@ -1,7 +1,6 @@
 AspenVersion3::Application.routes.draw do
-  
-  resources :logs
 
+  resources :documents
   resources :events
   get "events/move"
   get "events/resize"
@@ -20,15 +19,10 @@ AspenVersion3::Application.routes.draw do
   get "procesos/favorito"
   get "procesos/nofavorito"
   get "procesos/compartirProceso"
-  
-  
+
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
-  
-  match 'log' => 'logs#index', as: :log
-  match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
-  match 'precios' => 'usuarios#planprecios', as: :precios
 
   match 'home' => 'usuarios#new', as: :home
   match 'login'  => 'usuarios#new', as: :login
@@ -59,7 +53,9 @@ AspenVersion3::Application.routes.draw do
   match '/documents/new' => 'documents#new', as: :nuevaDocumento, :via => :post
   match '/documents/:id/edit' => 'documents#edit', as: :editarDocumento
 
-
+  match '/estados' => 'estados#index', as: :listaEstados
+  match '/estados/new' => 'estados#new', as: :nuevoEstado, :via => :post
+  match '/estados/:id/edit' => 'estados#edit', as: :editarEstado
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

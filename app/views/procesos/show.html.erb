@@ -107,10 +107,7 @@
 
                 <%= link_to   "("+@proceso.alertas.size.to_s+") Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
-
-                <a href="#" >
-                  <span class="">Estado</span>
-                </a>
+                <%= link_to   "("+@proceso.estados.size.to_s+") Estado", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
                 <%= link_to   "("+@proceso.documents.size.to_s+") Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
@@ -214,7 +211,7 @@
 
             <section class="documents grouped_by_date">
               <article class="document" >
-                
+
                     <% @contratos.each do |contrato| %>
                     <div class="row">
                       <div class="small-12 columns ">
@@ -222,7 +219,7 @@
                             <%= link_to contratos_path(:contrato_id => contrato.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
                             <%= contrato.tipoContrato %>
                           <% end %>
-                          </h5> 
+                          </h5>
                       </div>
                       <div class="small-12 columns">
                         <p class="detalles">
@@ -252,7 +249,7 @@
 
             <section class="documents grouped_by_date">
               <article class="document" >
-                
+
                      <% @actividads.each do |actividad| %>
                                           <div class="row">
                         <div class="small-12 columns ">
@@ -261,7 +258,7 @@
                               <%= actividad.nombre %> -  <%= actividad.estado_actividad.estado %>
                             <% end %>
 
-                            </h5> 
+                            </h5>
                         </div>
                         <div class="small-12 columns">
                           <p class="detalles">
@@ -270,7 +267,7 @@
                         </div>
                       </div>
                    <% end %>
-                
+
               </article>
             </section>
           </section>
