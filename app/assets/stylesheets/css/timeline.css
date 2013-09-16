@@ -63,7 +63,8 @@
 /* Right content */
 .cbp_tmtimeline > li .cbp_tmlabel {
     margin: 0 0 15px 25%;
-    background: #E2E2E2;
+    /*background: #E2E2E2;*/
+    background: transparent;
     color: ;
     padding: 2px 0em 15px 15px;
     font-size: 1.2em;
@@ -75,14 +76,17 @@
 }
  
 .cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel {
-    background: #E2E2E2;
+    /*background: #E2E2E2;*/
+    background: transparent;
     box-shadow: 0 0 0 2px #46a4da;
 }
  
 .cbp_tmtimeline > li .cbp_tmlabel h2 { 
     margin-top: 0px;
     padding: 0 0 3px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.4);
+    /*border-bottom: 1px solid rgba(255,255,255,0.4);*/
+    border-bottom: 2px solid #46a4da;
+    
     color: #287CAC !important;
 }
 
@@ -126,6 +130,7 @@
     position: absolute;
     color: black;
     background: #E2E2E2;
+      
     border-radius: 50%;
     /*box-shadow: 0 0 0 8px #afdcf8;*/
     box-shadow: 0 0 0 5px #46a4da;
@@ -212,3 +217,14 @@
     margin-right: 15px !important;
     float: right !important;
 }
+
+.verlog{
+   cursor: pointer;
+    font-size: 12px !important;
+    margin-right: 15px !important;
+    float: right !important;
+    font-weight: bold;
+    color: #287CAC !important;
+}
+
+

@@ -7,13 +7,108 @@
         <div class="sheet_body">
             
             
-<div class="panellog">
+   <div class="panellog">
 
-<ul class="cbp_tmtimeline">
+          <h1 class="tituloLog" >Esto es lo que sucede en los procesos</h1>
+          <ul class='timeline'>
+                 
 
-     <%= render @logs %> 
+                 <% @dias.each do |dia| %>
+                    <% diavar = dia.created_at %>
 
-</ul>
+                    
+                    <li class="year"><%= fechalog dia.created_at %></li>
+                    
+                    <% nuevoproceso = true %>
+                     <% gprocesoid = -1 %>
+
+                      <% @logs.each do |log| %>
+                        
+                         <% if (gprocesoid == -1) %>
+                            <li class='event ' href="#">
+                              <%= link_to(log.proceso) do  %>
+                                      <h2 class="tituloProyecto">
+                                        
+                                        <%= log.proceso.titulo %> 
+                                      </h2>
+                              <% end %>
+                                    
+                            <% gprocesoid = log.proceso_id %> 
+                             <% nuevoproceso = false %>
+                         <% end %>
+
+                        
+                        <% if (diavar.to_date ===  log.created_at.to_date) %>
+                            
+                                <% if (gprocesoid ==  log.proceso_id)  %>
+                                   <% if (6 !=  log.mensaje_id)  %>
+                                    <div class="actividadesLog ">
+                                        <span class="alinearbotones hora"><%= horalog log.created_at %></span>
+                                        <div class="general foundicon-address-book imagenLogo alinearbotones" title="<%= log.usuario %>"></div> 
+                                        
+                                        <%=  link_to log.mensaje, {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog"   %>
+                                       
+                                    </div>
+                                    <% else %>
+                                    <div class="actividadesLog ">
+                                        <span class="alinearbotones hora"><%= horalog log.created_at %></span>
+                                        <div class="general foundicon-address-book imagenLogo alinearbotones" title="<%= log.usuario %>"></div> 
+                                         <%=  link_to log.mensaje, {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog alinearbotones"   %>
+                                        <img class=" imagenLogo imagendoc" width="35"  src="https://d3dma7a8zw52bz.cloudfront.net/assets/icons/document_icon_jumbo-a0a7cde8400d74f9975a1608bed73a1f.png" >
+                                        
+                                    </div>
+                                    <% end %>  
+                                    <% nuevoproceso = false %> 
+                                <% else %>
+                                    
+                                    </li> 
+
+                                    <li class='event '>
+                                    <%= link_to(log.proceso) do  %>
+                                           <h2 class="tituloProyecto">
+                                            
+                                            <%= log.proceso.titulo %> 
+                                          </h2>
+                                    <% end %>
+                              
+
+
+                                    <% if (6 !=  log.mensaje_id)  %>
+                                    <div class="">
+                                        <span class="alinearbotones hora"><%= horalog log.created_at %></span>
+                                        <div class="general foundicon-address-book imagenLogo alinearbotones" title="<%= log.usuario %>"></div> 
+                                         <%=  link_to log.mensaje, {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog"   %>
+                                        
+                                    </div>
+                                    <% else %>
+                                     <div class="">
+                                         <span class="alinearbotones hora"><%= horalog log.created_at %></span>
+                                        <div class="general foundicon-address-book imagenLogo alinearbotones" title="<%= log.usuario %>"></div> 
+                                         <%=  link_to log.mensaje, {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog alinearbotones"   %>
+                                        <img class=" imagenLogo imagendoc" width="60"  src="https://d3dma7a8zw52bz.cloudfront.net/assets/icons/document_icon_jumbo-a0a7cde8400d74f9975a1608bed73a1f.png" > 
+                                        
+                                    </div>
+                                    <% end %>  
+                                    <% gprocesoid = log.proceso_id %>
+                                    <% nuevoproceso = true  %> 
+                                
+                                <% end %>    
+                         <% end %>
+                    
+                    <% end %>
+                    
+
+                    
+
+
+                 <% end %>
+
+                 
+
+                
+                
+              
+          </ul>
    </div>       
           
         </div>

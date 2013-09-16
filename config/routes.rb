@@ -1,6 +1,7 @@
 AspenVersion3::Application.routes.draw do
   
   resources :logs
+  get "logs/iractividad"
 
   resources :events
   get "events/move"
@@ -45,17 +46,21 @@ AspenVersion3::Application.routes.draw do
   match '/usuarios/:id' => 'usuarios#index', as: :listaUsuarios
   match '/usuarios/:id/edit' => 'usuarios#edit', as: :editarUsuario
 
-  match '/participantes/new/:id' => 'participantes#new', as: :nuevoParticipante
-  match '/participantes/:id' => 'participantes#index', as: :listaParticipantes
-  match '/participantes/:id/edit' => 'participantes#edit', as: :editarParticipantes
-
-  match '/contratos/new/:id' => 'contratos#new', as: :nuevoContrato
-  match '/contratos/:id' => 'contratos#index', as: :listaContratos
-  match '/contratos/:id/edit' => 'contratos#edit', as: :editarContrato
-
-  match '/actividads/new/:id' => 'actividads#new', as: :nuevaActividad
-  match '/actividads/:id' => 'actividads#index', as: :listaActividads
-  match '/actividads/:id/edit' => 'actividads#edit', as: :editarActividad
+  match '/procesos/:proceso_id/participantes/new/:id' => 'participantes#new', as: :nuevaActividad
+  match '/procesos/:proceso_id/participantes/:participante_id/:nuevoItem' => 'participantes#index', as: :editarParticipantesProceso
+  match '/procesos/:proceso_id/participantes/:nuevoItem' => 'participantes#index', as: :nuevoParticipantesProceso
+  match '/procesos/:proceso_id/participantes' => 'participantes#index', as: :verParticipantesProceso
+  
+  match '/procesos/:proceso_id/contratos/new/:id' => 'contratos#new', as: :nuevaActividad
+  match '/procesos/:proceso_id/contratos/:contrato_id/:nuevoItem' => 'contratos#index', as: :editarContratosProceso
+  match '/procesos/:proceso_id/contratos/:nuevoItem' => 'contratos#index', as: :nuevoContratosProceso
+  match '/procesos/:proceso_id/contratos' => 'contratos#index', as: :verContratosProceso
+  
+  match '/procesos/:proceso_id/actividades/new/:id' => 'actividads#new', as: :nuevaActividad
+  match '/procesos/:proceso_id/actividades/:actividad_id/:nuevoItem' => 'actividads#index', as: :editarActividadesProceso
+  match '/procesos/:proceso_id/actividades/:nuevoItem' => 'actividads#index', as: :nuevoActividadesProceso
+  match '/procesos/:proceso_id/actividades' => 'actividads#index', as: :verActividadesProceso
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -129,5 +134,7 @@ AspenVersion3::Application.routes.draw do
   #filtrado de actividades
   match 'actividads/filtrado/:proceso_id/:estado_id' => 'actividads#filtrado'
 
+  #ir actividad desde el log
+  match '/logs/iractividad/:log_id' => 'logs#iractividad'
 
 end
