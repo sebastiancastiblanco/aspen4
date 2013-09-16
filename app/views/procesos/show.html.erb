@@ -46,7 +46,7 @@
             <div class="collapsed_content">
               <div class="position_reference">
                 <h1 class="field" >
-                  <%= @proceso.tipo_proceso.tipo %> - <%= @proceso.titulo %>
+                  <%= @proceso.titulo %>
                 </h1>
 
                 <div class="star"  title="Starring a project will highlight it on the projects index page">
@@ -56,15 +56,13 @@
               </div>
 
               <div class="description field" style="width: auto; border-color: transparent;">
-                <%= @proceso.ciudad %>, <%= @proceso.objetivo %>
+               <span class="bold"> <%= @proceso.tipo_proceso.tipo %>:</span> <%= @proceso.objetivo %>, <%= @proceso.ciudad %>
               </div>
               <div class="row">
-                <div class="large-12 columns">
-                  
-                    <div class="small-9 large-9 columns left">
-                      <h6 class="label">#REF-<%= @proceso.referencia %></h6>
+                <div class="small-9 large-9 columns left" style="margin-left: -20px;">
+                      <h6 class="label">#REF-<%= @proceso.id %></h6>
                     </div>
-                    <div class="small-9 large-1 columns left">
+                    <div class="small-9 large-1 columns left" style="margin-top: 4px;">
                       <h6 class="label">Estado: </h6>
                     </div>
                     <div class="small-9 large-2 columns left">
@@ -77,8 +75,6 @@
                           </select>
                       </form>
                     </div>
-                  
-                </div>
               </div>
               
               
@@ -179,15 +175,15 @@
                     <% @participantes.each do |participante| %>
                     <div class="row">
 
-                      <div class="small-6 small-offset-0 columns ">
+                      <div class="small-12 columns ">
                          <h5>
                            <%= link_to participantes_path(:participante_id => participante.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
                             <%= participante.rol_participante.rol %> - <%= participante.nombre %>  <%= participante.apellido %>
                             <% end %>
                           </h5> 
                       </div>
-                      <div class="small-4 columns field">
-                        <p>
+                      <div class="small-12 columns">
+                        <p class="detalles">
                           Actualizado <span class="time"><%= fechaFormatoActualizado participante.updated_at %></span>
                         </p>
                       </div>
@@ -219,27 +215,25 @@
             </header>
 
             <section class="documents grouped_by_date">
-              <article class="document" id="document_3073232" >
-                <table>
-                  <tbody>
-
+              <article class="document" >
+                
                     <% @contratos.each do |contrato| %>
-                    <tr>
-                      <td class="text">
-                        <h3 class="title">
-                          <%= link_to contratos_path(:contrato_id => contrato.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
+                    <div class="row">
+                      <div class="small-12 columns ">
+                         <h5>
+                            <%= link_to contratos_path(:contrato_id => contrato.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
                             <%= contrato.tipoContrato %>
                           <% end %>
-                        </h3>
-                        <p>
+                          </h5> 
+                      </div>
+                      <div class="small-12 columns">
+                        <p class="detalles">
                           Actualizado <span class="time"><%= fechaFormatoActualizado contrato.updated_at %></span>
                         </p>
-                      </td>
-                    </tr>
+                      </div>
+                    </div>
                   <% end %>
 
-                  </tbody>
-                </table>
               </article>
             </section>
           </section>
@@ -260,24 +254,25 @@
 
             <section class="documents grouped_by_date">
               <article class="document" >
-                <table>
-                  <tbody>
+                
                      <% @actividads.each do |actividad| %>
-                    <tr>
-                      <td class="text">
-                        <h3 class="title">
-                          <%= link_to actividads_path(:actividad_id => actividad.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
-                            <%= actividad.nombre %> -  <%= actividad.estado_actividad.estado %>
-                          <% end %>
-                        </h3>
-                        <p>
+                                          <div class="row">
+                        <div class="small-12 columns ">
+                           <h5>
+                             <%= link_to actividads_path(:actividad_id => actividad.id, :proceso_id => @proceso.id, :nuevoItem => true) do  %>
+                              <%= actividad.nombre %> -  <%= actividad.estado_actividad.estado %>
+                            <% end %>
+
+                            </h5> 
+                        </div>
+                        <div class="small-12 columns">
+                          <p class="detalles">
                           Actualizado <span class="time"><%= fechaFormatoActualizado actividad.updated_at %></span>
-                        </p>
-                      </td>
-                    </tr>
-                      <% end %>
-                  </tbody>
-                </table>
+                           </p>
+                        </div>
+                      </div>
+                   <% end %>
+                
               </article>
             </section>
           </section>

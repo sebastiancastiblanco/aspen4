@@ -64,6 +64,7 @@ class ContratosController < ApplicationController
     @contrato = Contrato.new(params[:contrato])
     @proceso = Proceso.find(params[:proceso_id])
     @contrato.proceso_id = @proceso.id
+    @displaycamposOpcionalesContrato = params[:displayOpcionales]
 
     respond_to do |format|
       if @contrato.save
@@ -83,6 +84,7 @@ class ContratosController < ApplicationController
   def update
     @contrato = Contrato.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
+    @displaycamposOpcionalesContrato = params[:displayOpcionales]
 
     respond_to do |format|
       if @contrato.update_attributes(params[:contrato])

@@ -59,7 +59,7 @@ end
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828155221) do
+ActiveRecord::Schema.define(:version => 20130913043304) do
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -133,6 +133,22 @@ ActiveRecord::Schema.define(:version => 20130828155221) do
   end
 
   add_index "events", ["event_series_id"], :name => "index_events_on_event_series_id"
+
+  create_table "logs", :force => true do |t|
+    t.integer  "usuario_id"
+    t.integer  "proceso_id"
+    t.integer  "participante_id"
+    t.integer  "contrato_id"
+    t.integer  "actividad_id"
+    t.integer  "alertas_id"
+    t.integer  "estado_id"
+    t.integer  "documento_id"
+    t.string   "mensaje"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "mensaje_id"
+    t.string   "usuario"
+  end
 
   create_table "participantes", :force => true do |t|
     t.string   "tipoDocumento"

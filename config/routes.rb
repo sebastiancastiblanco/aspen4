@@ -1,5 +1,7 @@
 AspenVersion3::Application.routes.draw do
   
+  resources :logs
+
   resources :events
   get "events/move"
   get "events/resize"
@@ -26,12 +28,14 @@ AspenVersion3::Application.routes.draw do
   get "procesos/compartirProceso"
   
   
-
-
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
   
+  match 'log' => 'logs#index', as: :log
+  match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
+  match 'precios' => 'usuarios#planprecios', as: :precios
+
   match 'home' => 'usuarios#new', as: :home
   match 'login'  => 'usuarios#new', as: :login
   match 'logout' => 'usuario_sessions#destroy', as: :logout
