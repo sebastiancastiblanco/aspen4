@@ -501,7 +501,7 @@ div.sheet.project>div.sheet_body>section>header h1, div.sheet.project>div.sheet_
 }
 section.events section.project_events div.time {
   padding: 0 !important;
-  width: 70px !important;
+  width: 185px !important;
   color: black !important;
   font-weight: bold !important;
   float: left !important;
@@ -519,6 +519,7 @@ section.events section.project_events div.action {
 a.decorated {
   color: #1c5c76 !important;
   text-decoration: underline !important;
+  margin-left: 10px !important;
 }
 
 div.sheet>header.has_buttons h1, div.sheet div.sheet_body>section>header.has_buttons h1, div.sheet div.sheet_body>div>section>header.has_buttons h1 {
@@ -1162,4 +1163,12 @@ background-color: #0192dd !important;
   color: #aa9c84 !important;
   text-decoration: none !important;
   margin-top: -8px;
+}
+
+.registros{
+  margin-bottom: 30px !important;
+}
+
+.alinearDerecha{
+  float: right;
 }

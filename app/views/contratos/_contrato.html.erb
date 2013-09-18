@@ -7,8 +7,10 @@
               <div class="maxdescripcion alinearbotones"><%= contrato.objeto %></div>  
       <% end %>
     
-      <%= button_to 'Ver', edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true, :id => "new_contrato_link",:class => "tiny button radius alinearbotones " %>
-      
+       <%= button_to 'Ver', edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true, :id => "new_contrato_link",:class => "tiny button radius alinearbotones" %>
+              
+       
+
         <%= link_to "Eliminar", contrato, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este contrato?' } , :remote => true %>
 
   <td class="when">

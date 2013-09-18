@@ -1,5 +1,5 @@
 class Participante < ActiveRecord::Base
-  attr_accessible :apellido, :celular, :correo, :direccion, :documento, :estadoCivil, :fechaNacimiento, :genero, :nombre, :telefono, :tipoDocumento,:updated_at,:rol_participante_id
+  attr_accessible :activo,:apellido, :celular, :correo, :direccion, :documento, :estadoCivil, :fechaNacimiento, :genero, :nombre, :telefono, :tipoDocumento,:updated_at,:rol_participante_id,:proceso_id
   
   #Validaciones campos obligatorios
   validates :apellido, :nombre, :correo, :presence => { :message => "Campo obligatorio"}
@@ -15,9 +15,8 @@ class Participante < ActiveRecord::Base
 
   #Relacion muchos a muchos, para los roles de los participantes
   belongs_to :rol_participante
-  #Relacion muchos a muchos, para procesos y particinates
-  has_many :proceso_participantes
-  has_many :procesos, through: :proceso_participantes
+  #Pertenece a un proceso
+  belongs_to :proceso
   #relacion con las actividades
   has_many :actividads
 end

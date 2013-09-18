@@ -27,6 +27,7 @@ AspenVersion3::Application.routes.draw do
   get "procesos/favorito"
   get "procesos/nofavorito"
   get "procesos/compartirProceso"
+  get "procesos/eventos"
   
   
   resources :agendas
@@ -45,16 +46,20 @@ AspenVersion3::Application.routes.draw do
   match '/usuarios/:id' => 'usuarios#index', as: :listaUsuarios
   match '/usuarios/:id/edit' => 'usuarios#edit', as: :editarUsuario
 
+  match '/participantes/:id/edit' => 'participantes#edit', as: :editParticipante
   match '/procesos/:proceso_id/participantes/new/:id' => 'participantes#new', as: :nuevaActividad
   match '/procesos/:proceso_id/participantes/:participante_id/:nuevoItem' => 'participantes#index', as: :editarParticipantesProceso
   match '/procesos/:proceso_id/participantes/:nuevoItem' => 'participantes#index', as: :nuevoParticipantesProceso
   match '/procesos/:proceso_id/participantes' => 'participantes#index', as: :verParticipantesProceso
   
+
+  match '/contratos/:id/edit' => 'contratos#edit', as: :editContrato
   match '/procesos/:proceso_id/contratos/new/:id' => 'contratos#new', as: :nuevaActividad
   match '/procesos/:proceso_id/contratos/:contrato_id/:nuevoItem' => 'contratos#index', as: :editarContratosProceso
   match '/procesos/:proceso_id/contratos/:nuevoItem' => 'contratos#index', as: :nuevoContratosProceso
   match '/procesos/:proceso_id/contratos' => 'contratos#index', as: :verContratosProceso
   
+  match '/actividads/:id/edit' => 'actividads#edit', as: :editActividad
   match '/procesos/:proceso_id/actividades/new/:id' => 'actividads#new', as: :nuevaActividad
   match '/procesos/:proceso_id/actividades/:actividad_id/:nuevoItem' => 'actividads#index', as: :editarActividadesProceso
   match '/procesos/:proceso_id/actividades/:nuevoItem' => 'actividads#index', as: :nuevoActividadesProceso
@@ -125,7 +130,8 @@ AspenVersion3::Application.routes.draw do
   match 'procesos/cantidadUsuarios/:procesoid' => 'procesos#cantidadUsuarios'
   match 'procesos/nofavorito/:procesoid' => 'procesos#nofavorito'
   match 'tipo_procesos/create/' => 'tipo_procesos#create'
-
+  match '/procesos/:proceso_id/eventos' => 'procesos#eventos', as: :verEventosProceso
+  
   #Agenda
   match '/events/move/:id' => 'events#move'
   match '/events/resize/:id' => 'events#resize'

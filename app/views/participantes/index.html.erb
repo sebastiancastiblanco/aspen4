@@ -69,6 +69,11 @@
             <section class="topics" data-collection-name="topics">
                
                 <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+                      
+                <% if @participante.activo == false %>
+                  <div id="noticeMsgEliminar" data-alert class="alert-box alert radius" style="text">Si desea restablecer el participante, use el boton guardar participante.</div> 
+                <% end %>
+                
                 
                 <div id="formularioParticipantes"></div>
 

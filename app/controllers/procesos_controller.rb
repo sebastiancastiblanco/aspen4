@@ -16,7 +16,7 @@ class ProcesosController < ApplicationController
   def show
     @proceso = Proceso.find(params[:id])
     #Recupera los 3 ultimos particpantes modificados pertenecientes a el proceso.
-    @participantes = @proceso.participantes.order("updated_at DESC").first(3)
+    @participantes = @proceso.participantes.where(activo: true).order("updated_at DESC").first(3)
     #Recuperar los usuarios del sistema
     @usuarios = Usuario.all
     #Recuperar los usuarios ligados al proceso
@@ -27,13 +27,16 @@ class ProcesosController < ApplicationController
     @contratos = @proceso.contratos.order("updated_at DESC").first(3)
     #recuperar las 3 ultimas actividades modificadas
     @actividads = @proceso.actividads.order("updated_at DESC").first(3)
+    #Recuperar los 3 ultimos movimientos hechos en el proceso
+    @logs = Log.where(usuario_id: current_user.id, proceso_id: @proceso.id ).order('created_at DESC').limit(3)
+
     #Variables Gon, pasar variable proceso para uso en codigo JS
     gon.proceso_id = @proceso.id
     #Variable cantidad de usuarios en el proces
     gon.cantidadUsuarios = @proceso.usuarios.size
 
     #Traza de log
-    Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso,:mensaje_id => 1 ,:mensaje=> current_user.username.to_s+' ingreso al proceso #Ref-'+@proceso.id.to_s)
+    #Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso,:mensaje_id => 1 ,:mensaje=> current_user.username.to_s+' ingreso al proceso #Ref-'+@proceso.id.to_s)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -140,6 +143,11 @@ class ProcesosController < ApplicationController
   def cantidadUsuarios
     @proceso =  Proceso.find( params[:procesoid])
     render :json => @proceso.usuarios
+  end
+
+  def eventos
+    @proceso =  Proceso.find( params[:proceso_id])
+    @logs = Log.where(usuario_id: current_user.id, proceso_id: @proceso.id ).order('created_at DESC')
   end
   
 end

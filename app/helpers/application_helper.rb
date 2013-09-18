@@ -3,7 +3,7 @@ module ApplicationHelper
     date.strftime("%B %d")
   end
   def fechaFormatoActualizado(date)
-    date.strftime("%d %B, %H:%M")
+    date.strftime("%d %B, %I:%M %p")
   end
   def fechaDia(date)
     date.strftime("%d")

@@ -65,6 +65,11 @@
             <section class="topics" data-collection-name="topics">
                 
               <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+                
+                <% if @contrato.activo == false %>
+                  <div id="noticeMsgEliminar" data-alert class="alert-box alert radius" style="text">Si desea restablecer el contrato, use el boton guardar contrato.</div> 
+                <% end %>
+
               <div id="formularioContratos"></div>
 
               <% if  @contratosRender == "true" %>

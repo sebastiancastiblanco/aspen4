@@ -84,6 +84,11 @@
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
                         
                         <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+                        <% if @actividad.activo == false %>
+                          <div id="noticeMsgEliminar" data-alert class="alert-box alert radius" style="text">Si desea restablecer la actividad, use el boton guardar actividad.</div> 
+                        <% end %>
+
+
                         <div id="formularioActividades"></div>
 
 

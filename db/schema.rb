@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914155656) do
+ActiveRecord::Schema.define(:version => 20130918012106) do
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130914155656) do
     t.integer  "estado_actividad_id"
     t.integer  "proceso_id"
     t.integer  "participante_id"
+    t.boolean  "activo"
   end
 
   create_table "agendas", :force => true do |t|
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130914155656) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "proceso_id"
+    t.boolean  "activo"
   end
 
   create_table "control_accesos", :force => true do |t|
@@ -118,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20130914155656) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "rol_participante_id"
+    t.integer  "proceso_id"
+    t.boolean  "activo"
   end
 
   create_table "proceso_participantes", :force => true do |t|

@@ -3456,7 +3456,8 @@ form.custom {
       opacity: 0.5; }
   .alert-box.radius {
     -webkit-border-radius: 3px;
-    border-radius: 3px; }
+    border-radius: 3px; 
+    text-align: center;}
   .alert-box.round {
     -webkit-border-radius: 1000px;
     border-radius: 1000px; }

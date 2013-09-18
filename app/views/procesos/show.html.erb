@@ -130,24 +130,27 @@
               <div class="event_container" style="">
                 <article class="event chiral"  datetime="2013-05-26T16:42:56Z" >
 
-                  <div class="time">
-                    <span class="time_only"><time data-local-time="" datetime="2013-05-26T16:42:56Z" style="">1:42pm</time></span>
+                  <% @logs.each do |log| %>
+                    <div class="time">
+                      <span class="time_only">
+                        <%= fechaFormatoActualizado log.created_at %>
+                      </span>
+                    </div>
 
-                  </div>
-
-                  <div class="action">
-                    <span class="creator" >
-                      Alexander H.
-                    </span>
-
-                    <span class="in_project">cambio el nombre del proceso  'Untitled Template' a 'Testing'</span>
-                  </div>
+                    <div class="action">
+                      <span class="in_project">
+                        <%= log.mensaje %>
+                      </span>
+                    </div>
+                  <% end %>
+                  
                 </article>
               </div>
             </section>
 
             <p class="more_events">
-              <a class="decorated" href="#">Ver todas las actualizaciones</a>
+              
+               <%=  link_to " Ver todas las actualizaciones ", {:controller => "procesos", :action => "eventos", :proceso_id => @proceso.id}, :class => "decorated"   %>
             </p>
           </section>
           <hr/>

@@ -65,9 +65,13 @@ class ContratosController < ApplicationController
     @proceso = Proceso.find(params[:proceso_id])
     @contrato.proceso_id = @proceso.id
     @displaycamposOpcionalesContrato = params[:displayOpcionales]
+    @contrato.activo = true
 
     respond_to do |format|
       if @contrato.save
+        #Traza de log
+        Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :contrato_id => @contrato.id, :mensaje_id => 3 ,:mensaje=> current_user.username.to_s+', Creo el contrato: '+@contrato.objeto)
+
         format.html { redirect_to @contrato, notice: 'Contrato was successfully created.' }
         format.json { render json: @contrato, status: :created, location: @contrato }
         format.js
@@ -85,9 +89,13 @@ class ContratosController < ApplicationController
     @contrato = Contrato.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
     @displaycamposOpcionalesContrato = params[:displayOpcionales]
+    @contrato.activo = true
 
     respond_to do |format|
       if @contrato.update_attributes(params[:contrato])
+        #Traza de log
+        Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :contrato_id => @contrato.id, :mensaje_id => 3 ,:mensaje=> current_user.username.to_s+', Modifico el contrato: '+@contrato.objeto)
+
         format.html { redirect_to @proceso, notice: 'Contrato was successfully updated.' }
         format.json { head :no_content }
         format.js
@@ -103,9 +111,15 @@ class ContratosController < ApplicationController
   # DELETE /contratos/1.json
   def destroy
     @contrato = Contrato.find(params[:id])
-    @contrato.destroy
+    @proceso = @contrato.proceso
+    #@contrato.destroy
+    @contrato.update_attribute(:activo, false)
+
 
     respond_to do |format|
+      #Traza de log
+      Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :contrato_id => @contrato.id, :mensaje_id => 3 ,:mensaje=> current_user.username.to_s+', Elimino el contrato: '+@contrato.objeto)
+
       format.html { redirect_to contratos_url }
       format.json { head :no_content }
       format.js

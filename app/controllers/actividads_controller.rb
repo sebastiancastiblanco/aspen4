@@ -67,9 +67,13 @@ class ActividadsController < ApplicationController
     @actividad.proceso_id = @proceso.id
     @estadoActividads = EstadoActividad.all
     @displaycamposOpcionalesActividad = params[:displayOpcionales]
+    @actividad.activo = true
 
     respond_to do |format|
       if @actividad.save
+        #Traza de log
+        Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.username.to_s+', Creo la actividad: '+@actividad.nombre)
+
         format.html { redirect_to @proceso, notice: 'Actividad fue creada correctamente' }
         format.json { render json: @actividad, status: :created, location: @actividad }
          format.js
@@ -88,9 +92,13 @@ class ActividadsController < ApplicationController
     @proceso = Proceso.find(params[:proceso_id])
     @estadoActividads = EstadoActividad.all
     @displaycamposOpcionalesActividad = params[:displayOpcionales]
-    
+    @actividad.activo = true
+
     respond_to do |format|
       if @actividad.update_attributes(params[:actividad])
+        #Traza de log
+        Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.username.to_s+', Modifico la actividad: '+@actividad.nombre)
+        
         format.html { redirect_to @proceso, notice: 'Actividad fue modificada correctamente.' }
         format.json { head :no_content }
         format.js
@@ -106,9 +114,14 @@ class ActividadsController < ApplicationController
   # DELETE /actividads/1.json
   def destroy
     @actividad = Actividad.find(params[:id])
-    @actividad.destroy
-
+    @proceso = @actividad.proceso
+    #@actividad.destroy
+    @actividad.update_attribute(:activo, false)
+    
     respond_to do |format|
+      #Traza de log
+      Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.username.to_s+', Elimino la actividad: '+@actividad.nombre)
+
       format.html { redirect_to actividads_url }
       format.json { head :no_content }
       format.js
@@ -119,6 +132,7 @@ class ActividadsController < ApplicationController
  def filtrado
     @proceso = Proceso.find(params[:proceso_id])
     @filtro = params[:estado_id]
+
 
     if (params[:estado_id]== "0")
       @actividads = @proceso.actividads

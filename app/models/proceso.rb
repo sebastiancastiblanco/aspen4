@@ -9,8 +9,7 @@ class Proceso < ActiveRecord::Base
   has_many :usuarios, through: :control_accesos
 
   #participantes del proceso
-  has_many :proceso_participantes
-  has_many :participantes, through: :proceso_participantes
+  has_many :participantes
 
   #tiene varios contratos
   has_many :contratos

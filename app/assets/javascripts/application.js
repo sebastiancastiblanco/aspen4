@@ -48,6 +48,7 @@ function cambioEstadoFavoritoHome(procesoid){
 function listarParticipantes(){
   $('#formParticipante').remove();
   $("#participantes").toggle( "fade" );
+  $("#noticeMsgEliminar").hide();
   $("#new_participante_link").show();
   $('#listar_participante_link').hide();
   document.getElementById("tituloParticipante").innerHTML = "Participantes";
@@ -56,6 +57,7 @@ function listarParticipantes(){
 function listarContratos(){
   $('#formContrato').remove();
   $('#contratos').toggle( "fade" );
+  $("#noticeMsgEliminar").hide();
   $('#new_contrato_link').show();
   $('#listar_contratos_link').hide();
   document.getElementById("tituloContrato").innerHTML = "Contratos";
@@ -64,6 +66,7 @@ function listarContratos(){
 function listarActividades(){
   $('#formActividad').remove();
   $('#actividades').toggle( "fade" );
+  $("#noticeMsgEliminar").hide();
   $('#new_actividad_link').show();
   $('#listar_actividades_link').hide();
   $('#listaFiltros').show();
@@ -146,6 +149,7 @@ function nuevoParticipante(){
     $('#participantes').hide();
     $('#listar_participante_link').show();
     $('#new_participante_link').hide();
+    $("#noticeMsgEliminar").hide();
     $('#formularioParticipantes').html("<%= escape_javascript(render(:partial => 'form')) %>");
     document.getElementById("tituloParticipante").innerHTML = "Nuevo Participante";
 }

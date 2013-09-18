@@ -1,6 +1,7 @@
 <% if @contrato.errors.count == 0 %>
 	document.getElementById("noticeMsg").innerHTML = "Se creo correctamente el contrato  <a href='#'' class='close'>&times;</a>";
 	$("#noticeMsg").toggle( "fade" );
+	$("#noticeMsgEliminar").hide();
 	$('#formContrato').remove();
 	$('#contratos').toggle( "fade" );
 	$('#new_contrato_link').show();
