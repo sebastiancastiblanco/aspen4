@@ -9,5 +9,7 @@
 	$("#noticeMsg").toggle( "fade" );
 <% else %>
 	$('#formUsuario').remove();
+	$('#headersingup').remove();
 	$('#formularioUsuarios').after('<%= j render("formNuevoDespacho") %>');
+	$("#modalsignup").foundation("reveal", "open")  
 <% end %>

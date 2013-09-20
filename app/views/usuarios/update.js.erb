@@ -1,0 +1,16 @@
+<% if @usuario.errors.count == 0 %>
+    document.getElementById("noticeMsg").innerHTML = "Se guardaron los cambios";
+    document.getElementById("nombreUsuario").innerHTML = "<%= @usuario.username %>";
+    document.getElementById("correoUsuario").innerHTML = "<%= @usuario.email %>";
+    $("#noticeMsg").toggle( "fade" );
+	$('#formUsuario').remove();
+    $('#formularioUsuarios').after('<%= j render("formEditarUsuario") %>');
+
+<% else %>
+	$('#formUsuario').remove();
+	$("#noticeMsg").hide();
+    $('#formularioUsuarios').after('<%= j render("formEditarUsuario") %>');
+
+<% end %>
+
+

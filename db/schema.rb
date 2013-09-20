@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130918012106) do
+ActiveRecord::Schema.define(:version => 20130918140240) do
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(:version => 20130918012106) do
   end
 
   create_table "estado_actividads", :force => true do |t|
+    t.string   "estado"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "estado_procesos", :force => true do |t|
     t.string   "estado"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -143,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20130918012106) do
     t.datetime "updated_at",        :null => false
     t.integer  "usuario_id"
     t.integer  "tipo_proceso_id"
+    t.integer  "estado_proceso_id"
   end
 
   add_index "procesos", ["usuario_id"], :name => "index_procesos_on_usuario_id"

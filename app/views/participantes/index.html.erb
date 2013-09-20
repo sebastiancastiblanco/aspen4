@@ -81,7 +81,11 @@
                     
                     <table class="inbox " data-behavior="infinite_page file_drop_target" data-infinite-page="3">
                       <tbody id="participantes" class="ocultar">
+                          
                           <%= render @participantes %> 
+
+                          <%= render  partial: "logParticipante", collection:  @logParticipantes %>
+                          
                       </tbody>
                     </table>
                       <%= render ('form') %>
@@ -91,7 +95,9 @@
 
                     <table class="inbox " data-behavior="infinite_page file_drop_target" data-infinite-page="3">
                       <tbody id="participantes">
+                          
                          <%= render @participantes %> 
+                        
                       </tbody>
                     </table>
                     

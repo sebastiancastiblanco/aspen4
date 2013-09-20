@@ -24,10 +24,11 @@
               </span>
             </a>
             
-            <a href="#">
+            <%=  link_to "",{:controller => "procesos", :action => "eventos", :proceso_id => @proceso.id} , :class => "link"  do %>
               <span class="link">Ultimos movimientos</span><br>
               <span class="detail">cambios recientes</span>
-            </a>
+            <% end %>
+            
             
             <a href="#">
               <span class="link">Homologar</span><br>
@@ -37,7 +38,7 @@
               <span class="link">Editar</span>
              <% end %>
             
-            <%= link_to  procesos_path do %>
+            <%= link_to procesos_path do %>
               <span class="link">Regresar</span>
              <% end %>
             
@@ -66,14 +67,12 @@
                       <h6 class="label">Estado: </h6>
                     </div>
                     <div class="small-9 large-2 columns left">
-                      <form class="custom">
-                          <select id="customDropdown" class="dropdown small">
-                          <option DISABLED>Estado Actual</option>
-                          <option>Abierto</option>
-                          <option>Proceso</option>
-                          <option>Cerrado</option>
-                          </select>
-                      </form>
+                      <%= form_for @proceso,  :html => { :class => "custom",:id => "formProcesoEstado"}  do |f| %>
+                        <%= f.select :estado_proceso_id, [["Estado Actual", 0]] + @estadosProcesos.map {|r| [r.estado,r.id]}, { :disabled => ["Estado Actual", 0] } , :id => "listaEstadoProceso", :onchange => "cambioEstadoProceso("+@proceso.id.to_s+")"  %>
+
+                      <% end %>
+
+
                     </div>
               </div>
               

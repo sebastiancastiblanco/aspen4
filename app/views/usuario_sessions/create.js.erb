@@ -1,0 +1,6 @@
+<% if @usuario.errors.count != 0 %>
+	$('#formlogin').remove();
+	$('#headerlogin').remove();
+	$('#formularioSession').after('<%= j render("formUsuarioSession") %>');
+	$("#modalLogin").foundation("reveal", "open")  
+<% end %>

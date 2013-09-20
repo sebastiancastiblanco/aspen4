@@ -13,11 +13,12 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
-    @usuario = Usuario.find(params[:id])
+     @usuario = current_user
+     @procesos = current_user.procesos.order("created_at DESC").limit(3)
+     @logs = Log.where(usuario_id: current_user.id ).order("proceso_id").order('updated_at DESC')
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @usuario }
     end
   end
 
@@ -89,4 +90,6 @@ class UsuariosController < ApplicationController
   def planprecios
      @usuario = Usuario.new
   end
+
+
 end

@@ -50,11 +50,14 @@
                                 <p style="font-size: 12px;">
                                     Modificado <%= fechaFormato1 proceso.updated_at %>
                                 </p>
+                                <p style="font-size: 12px;">
+                                    <%= proceso.estado_proceso.estado %>
+                                </p>
 
                                 <div class="panelAvatarUsuario">
                                     <% proceso.usuarios.each do |usuarioConAcceso| %>
                                         <div class="people">
-                                             <div class="general foundicon-address-book logopersona" title="<%= usuarioConAcceso.username %>"></div>
+                                             <img src="/img/user.png" title="<%= usuarioConAcceso.username %>">
                                         </div>
                                     <% end %>
                                 </div>

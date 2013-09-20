@@ -1,5 +1,5 @@
 class Proceso < ActiveRecord::Base
-  attr_accessible :ciudad, :favorito, :objetivo, :procesoHomologado, :referencia, :resumen, :titulo,:updated_at,:tipo_proceso_id
+  attr_accessible :ciudad, :favorito, :objetivo, :procesoHomologado, :referencia, :resumen, :titulo,:updated_at,:tipo_proceso_id,:estado_proceso_id
   
   #Validaciones de título
   validates :titulo, :objetivo, :ciudad, :presence => { :message => "Campo obligatorio"}
@@ -19,5 +19,7 @@ class Proceso < ActiveRecord::Base
   has_many :logs
   #tiene un tipo de proceso
   belongs_to :tipo_proceso
+  #tiene un estado de proceso
+  belongs_to :estado_proceso
 
 end

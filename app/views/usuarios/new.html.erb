@@ -1,10 +1,16 @@
 <body>
 
-  <div id="formularioUsuarios"></div>
   <!-- First Band (Image) -->
+
+     
 
   <div class="row">
     <div class="large-12 columns ">
+
+       <% if notice  %>
+        <div id="noticeMsgEliminar" data-alert class="alert-box alert radius" style="text"><%= notice%></div> 
+      <% end %>
+
       <img src="/img/fondos/homeizq.jpg" class="bannerHome">
       <div class="content">
             <h3 style="color: #2284a1;"><i class="general foundicon-checkmark" style="font-size:20px"></i>Procesos judicales</h3>
@@ -71,10 +77,18 @@
 
 </body>
 
- <div id="modalLogin" class="reveal-modal tiny">
-  <%= render 'formUsuarioSession' %>
- </div>
+  <div id="modalLogin" class="reveal-modal tiny">
+   <div id="formularioSession"></div>
+   <%= render 'formUsuarioSession' %>
+  </div>
 
   <div id="modalsignup" class="reveal-modal small">
-  <%= render 'formNuevoDespacho' %>
- </div>
+    <div id="formularioUsuarios"></div>
+    <%= render 'formNuevoDespacho' %>
+  </div>
+
+
+  <div id="modalreset" class="reveal-modal medium">
+    <div id="formularioreset"></div>
+    <%= render 'formRestablecerContrasena' %>
+  </div>

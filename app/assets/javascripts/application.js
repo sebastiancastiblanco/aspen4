@@ -14,6 +14,17 @@
 //= require jquery_ujs
 
 
+function cambioEstadoProceso (procesoid){
+
+    $.ajax({
+            url: "/procesos/estadoProceso/"+procesoid+"/"+$('#listaEstadoProceso').val(),
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res){
+            }
+         })
+};
+
 function cambioEstadoFavoritoHome(procesoid){
 
     var divProcesoNoFavorito = "#ProcesoNoFavorito"+procesoid;

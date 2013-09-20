@@ -34,7 +34,7 @@ AspenVersion3::Application.routes.draw do
   resources :usuarios
   resources :usuario_sessions
   
-  match 'log' => 'logs#index', as: :log
+  match 'progreso' => 'logs#index', as: :progreso
   match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
   match 'precios' => 'usuarios#planprecios', as: :precios
 
@@ -131,7 +131,9 @@ AspenVersion3::Application.routes.draw do
   match 'procesos/nofavorito/:procesoid' => 'procesos#nofavorito'
   match 'tipo_procesos/create/' => 'tipo_procesos#create'
   match '/procesos/:proceso_id/eventos' => 'procesos#eventos', as: :verEventosProceso
-  
+
+  match 'procesos/estadoProceso/:procesoid/:estadoProcesoid' => 'procesos#estadoProceso'
+
   #Agenda
   match '/events/move/:id' => 'events#move'
   match '/events/resize/:id' => 'events#resize'

@@ -1,15 +1,85 @@
-<p id="notice"><%= notice %></p>
+<body>
 
-<p>
-  <b>Username:</b>
-  <%= @usuario.username %>
-</p>
+    <div id="workspace" class="workspace">
+    <div class="container stack_container"  style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris">
+        
+        <div class="sheet_body">
+            
+            
+   <div class="panellog">
+		  <div> <img src="/img/user64.png" class="alinearbotones" style="margin-bottom: 34px;"> </div>
+   		  <div style="margin-left: 95px;"> 
+   		  		<h1 id="nombreUsuario" style="margin-bottom: 0px;"><%= @usuario.username %></h1> 
+    			<div id="correoUsuario" class="links"><%= @usuario.email %></div>
+              	<span class="detalle">creado el <%= fechalog @usuario.created_at %></span>
+   		  </div>
+          
+   		  <hr>
+         
+          <h4>Edita tu informacion</h4>
 
-<p>
-  <b>Email:</b>
-  <%= @usuario.email %>
-</p>
+
+          <div class="row">
+
+              <div class="large-8 small-8 columns">
+                <div class="panel" style="background:white;">
+   	               
+   	               <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+
+					<div id="formularioUsuarios"></div>
+   	               
+					<%= render 'formEditarUsuario' %>
+       
+                </div>
+	
+              </div>
+              
+              <div class="large-4 small-4 columns">
+               <div class="row">
+					
+					  <div class="small-12 small-offset-1 columns" style="margin-top: 18px;"> 
+					  	<h6>Ultimos movimientos</h6>
+					  	<hr>
+					  	 <% @logs.each do |log| %>
+		                    <div class="action">
+		                      <span class="in_project tituloCampo">
+		                        <%= log.mensaje %>, <%= fechalog log.created_at %>
+		                      </span>
+		                    </div>
+		                  <% end %>
+
+		                <hr style="margin:15px 0 15px 0"> 
+					  	<h6>Ultimos procesos creados</h6>
+					  	
+					  	 <% @procesos.each do |proceso| %>
+		    
+		                    <div class="action">
+		                      <span class="in_project tituloCampo">
+		                        <%= proceso.titulo %>, <%= fechalog proceso.created_at %>
+		                      </span>
+		                    </div>
+		                  <% end %>
+
+					  </div>
+				 
+              </div>
+         </div>
 
 
-<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
-<%= link_to 'Back', usuarios_path %>
+   </div>       
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</body>
+
+
+
+
+
+
+
+

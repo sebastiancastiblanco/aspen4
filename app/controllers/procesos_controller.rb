@@ -1,10 +1,15 @@
 class ProcesosController < ApplicationController
+  before_filter :require_login
+
   # GET /procesos
   # GET /procesos.json
   def index
     
     @procesos = current_user.procesos
-     
+    #estados de los procesos
+    @estadosProcesos = EstadoProceso.all
+
+ 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @procesos }
@@ -29,6 +34,8 @@ class ProcesosController < ApplicationController
     @actividads = @proceso.actividads.order("updated_at DESC").first(3)
     #Recuperar los 3 ultimos movimientos hechos en el proceso
     @logs = Log.where(usuario_id: current_user.id, proceso_id: @proceso.id ).order('created_at DESC').limit(3)
+    #estados de los procesos
+    @estadosProcesos = EstadoProceso.all
 
     #Variables Gon, pasar variable proceso para uso en codigo JS
     gon.proceso_id = @proceso.id
@@ -74,6 +81,7 @@ class ProcesosController < ApplicationController
   def create
     @proceso = Proceso.new(params[:proceso])
     @proceso.usuario_id = current_user.id
+    @proceso.estado_proceso_id = 1
     @proceso.favorito = false
     #Para el combo de tipos de procesos
     @tipos_procesos = current_user.tipo_procesos
@@ -102,7 +110,7 @@ class ProcesosController < ApplicationController
 
     respond_to do |format|
       if @proceso.update_attributes(params[:proceso])
-        format.html { redirect_to @proceso, notice: 'Proceso was successfully updated.' }
+        format.html { redirect_to @proceso, notice: 'El proceso fue actualizado.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -148,6 +156,12 @@ class ProcesosController < ApplicationController
   def eventos
     @proceso =  Proceso.find( params[:proceso_id])
     @logs = Log.where(usuario_id: current_user.id, proceso_id: @proceso.id ).order('created_at DESC')
+  end
+
+  def estadoProceso
+     @proceso =  Proceso.find( params[:procesoid])
+     @proceso.update_attribute(:estado_proceso_id,  params[:estadoProcesoid])
+     render :json => @proceso
   end
   
 end

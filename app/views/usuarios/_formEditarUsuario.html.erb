@@ -1,0 +1,66 @@
+<%= form_for @usuario, :remote => true, :html => { :class => "custom",:id => "formUsuario"} do |f| %>
+      
+       <div class="row">
+
+            <div class="small-4 small-offset-0 columns field"> 
+              <%= label_tag :"Imagen de perfil" ,nil, :class => "tituloCampo"  %>
+            </div>
+            <div class="small-8 columns field">
+               <div>subir imagen</div>
+            </div>
+      </div>
+
+      <div class="row">
+            <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag :empresa ,nil, :class => "tituloCampo"  %>
+            </div>
+            <div class="small-10  columns field">
+               <%= f.text_field :empresa ,:placeholder => "Empresa" %>
+            </div>
+
+            <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag "Usuario" ,nil, :class => "tituloCampo"  %>
+            </div>
+            <div class="small-10  columns field">
+                 <%= f.text_field :username,:placeholder => "Nombre de Usuario" %>
+            </div>
+
+            <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag "Correo" ,nil, :class => "tituloCampo"  %>
+            </div>
+            <div class="small-10  columns field">
+                 <%= f.text_field :email,:placeholder => "Correo electrónico" %>
+            </div>
+
+            <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag "Zona Horaria" ,nil, :class => "tituloCampo"  %>
+            </div>
+            <div class="small-10  columns field">
+                 <select></select>
+            </div>
+
+      </div>
+         <div class="row">
+           <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag "password" ,nil, :class => "tituloCampo"  %>
+            </div>
+            <div class="small-10  columns field">
+                 <%= f.text_field :password, :placeholder => "password"%>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag "confirmar password" ,nil, :class => "tituloCampo"  %>
+            </div>
+            <div class="small-10  columns field">
+                 <%= f.text_field :password_confirmation,:placeholder => "Confirmar password",:class=> "input-xlarge field" %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-10 small-offset-2 columns field">
+                 <%= f.submit :'salvar cambios' , :class => "button  radius" %></div>
+            
+         </div>
+
+      <% end %>

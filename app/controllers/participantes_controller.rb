@@ -6,6 +6,7 @@ class ParticipantesController < ApplicationController
     @participantes = @proceso.participantes.where(activo: true)
     @participantesRender = (params[:nuevoItem])
     
+    @logParticipantes = Log.where(usuario_id: current_user.id, proceso_id: @proceso.id, mensaje_id: 2 ).order('created_at DESC')
 
     if params[:participante_id]
        @participante = Participante.find(params[:participante_id])

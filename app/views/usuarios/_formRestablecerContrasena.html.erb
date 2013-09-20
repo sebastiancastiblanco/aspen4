@@ -1,0 +1,55 @@
+<div class="alert-panel" data-alert>
+      <div id="headerlogin" class="alert-panel-title">
+        Restablecer Contraseña
+        <a href="#" class="alert-panel close-reveal-modal" onclick="$('#modalLogin').foundation ('reveal', 'close')">&times;</a>
+      </div>
+
+      <%= form_tag usuario_sessions_path, :html => { :class => "custom",:id => "formlogin"} , method: :post do %>
+      <div class="alert-panel-message" >
+
+      	 <div class="row">
+
+              <div class="large-6 small-6 columns">
+                <div class="panel">
+
+        		<% if notice  %>
+			        <div id="noticeMsgEliminar" data-alert class="alert-box alert radius" style="text">Usuario y contraseña invalidos
+			        </div> 
+			    <% end %>
+
+
+                  <h5>No puedes acceder a tu cuenta</h5>
+                <h6 class="subheader">Has olvidado tu usuario y/o contraseña, escribe tu correo electronico y recupera el acceso.</h6>
+               
+                </div>
+              </div>
+ 
+              <div class="large-6 small-6 columns">
+               <div class="row">
+					
+					  <div class="small-10 small-offset-1 columns" style="margin-top: 18px;"> 
+					  	<h4><%= label_tag "Correo Electronico" ,nil, :class => ""  %>
+						</h4>
+						</div>
+					  <div class="small-10 small-offset-1 columns">
+					  	<%= text_field :username,value = nil, :placeholder => "Correo Electronico",:class=> "input-xlarge"  %> 
+					  </div>
+					  
+					  </div>
+				 
+              </div>
+         </div>
+
+
+        
+	  </div>
+      <div class="alert-panel-action">
+        	
+        		 <a href="#" class="small button radius secondary" onclick="$('#modalreset').foundation ('reveal', 'close')">Cerrar</a>
+		        <%= submit_tag :'Enviar Correo', :class => " button radius small" %>
+      </div>
+      <% end %>
+       
+</div>
+
+

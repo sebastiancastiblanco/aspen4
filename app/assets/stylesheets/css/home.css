@@ -58,7 +58,9 @@ ul, ol {
 }
 
 body {
-  font-family: "ProximaNova","Helvetica Neue",helvetica,arial,sans-serif !important;
+  /*font-family: "ProximaNova","Helvetica Neue",helvetica,arial,sans-serif !important;*/
+  font-family: "Segoe UI",helvetica,arial,sans-serif !important;
+  
   font-size: 15px !important;
   line-height: 21px !important;
   margin: 0 40px 40px ;
@@ -1171,4 +1173,15 @@ background-color: #0192dd !important;
 
 .alinearDerecha{
   float: right;
+}
+
+.links{
+  color: #1c5c76 !important;
+  text-decoration: underline !important; 
+}
+
+.detalle{
+  font-size: 12px !important;
+  color: #aa9c84 !important;
+  text-decoration: none !important;
 }

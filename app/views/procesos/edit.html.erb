@@ -6,9 +6,11 @@
 
 				<header>
 				<ul class="breadcrumbs">
-					<li><%= link_to 'Procesos', procesos_path %></li>
-					<li><%= link_to(@proceso) do  %> Proceso <%= @proceso.id %> <% end %> </li>
-					<li><a href="#">Editar</a></li>
+					<li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+                  		<%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
+		                <% end %>
+		            </li>
+		            <li class="">Editar Proceso</li>
 				</ul>
 				</header>
 

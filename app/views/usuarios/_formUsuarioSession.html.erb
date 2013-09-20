@@ -1,10 +1,10 @@
 <div class="alert-panel" data-alert>
-      <div class="alert-panel-title">
+      <div id="headerlogin" class="alert-panel-title">
         Ingrese a su cuenta
         <a href="#" class="alert-panel close-reveal-modal" onclick="$('#modalLogin').foundation ('reveal', 'close')">&times;</a>
       </div>
 
-      <%= form_tag usuario_sessions_path, method: :post do %>
+      <%= form_tag usuario_sessions_path, :html => { :class => "custom",:id => "formlogin"} , method: :post do %>
       <div class="alert-panel-message" >
 
         <div class="row">
@@ -28,8 +28,9 @@
 		 </div>
 	  </div>
       <div class="alert-panel-action">
-        	<%= link_to 'Olvido su contraseña?', "javascript:eventoCamposOpcionalesActividad()", :class=>"textolinks" %>
-        		 <a href="#" class="small button radius secondary" onclick="$('#modalLogin').foundation ('reveal', 'close')">Cerrar</a>
+        	
+        		 <a href="#" class="small  radius secondary textolinks" onclick="$('#modalreset').foundation ('reveal', 'open')">Olvido su contraseña?</a>
+		    	 <a href="#" class="small button radius secondary" onclick="$('#modalLogin').foundation ('reveal', 'close')">Cerrar</a>
 		        <%= submit_tag :'Log In', :class => " button radius small" %>
       </div>
       <% end %>

@@ -4,12 +4,12 @@ class UsuarioSessionsController < ApplicationController
 	end
 	def create
 		if @usuario = login(params[:username],params[:password])
-			redirect_back_or_to(:procesos ,message: "login exitoso")
+			redirect_back_or_to(:procesos ,notice: "login exitoso")
 		else
-			flash.now[:alert] = "error en el login"
-			redirect_to(:home, message: "no existe el usuario")
-		end
+			redirect_to(:home, notice: "El usuario y contrasena son invalidos")
+    	end
 	end
+	
 	def destroy 
 		logout
 		redirect_to(:home, message: "finaliza sesion")
