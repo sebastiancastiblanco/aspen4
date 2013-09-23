@@ -42,6 +42,8 @@ class UsuariosController < ApplicationController
       if @usuario.save
         #Realizar auto login y redireccionar a la pagina de procesos
           auto_login(@usuario)
+          #enviar mail de bienvenida
+          UsuarioMails.bienvenida(@usuario).deliver
           render :js => "window.location = 'procesos'"
       else
          respond_to do |format|
@@ -102,6 +104,8 @@ class UsuariosController < ApplicationController
       @usuario.errors[:username] << "no existe una vuenta bajo este correo"
     else
       @existeusuario = true
+      # Tell the UserMailer to send a welcome Email after save
+        UsuarioMails.recuperarContrasena(params[:username]).deliver
     end
     
     respond_to do |format|

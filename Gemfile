@@ -31,6 +31,8 @@ gem "gon", "~> 4.1.1"
 #GEmma para el calendario
 gem 'fullcalendar-rails' 
 
+#Gema para adicionar CSS sinamivamente al HTML que se envia en los emails.
+gem 'roadie'
 
 
 # To use ActiveModel has_secure_password
