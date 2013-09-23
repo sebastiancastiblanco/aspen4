@@ -37,6 +37,8 @@ AspenVersion3::Application.routes.draw do
   match 'progreso' => 'logs#index', as: :progreso
   match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
   match 'precios' => 'usuarios#planprecios', as: :precios
+  match 'recuperarContrasena' => 'usuarios#recuperarContresena', as: :recuperarContresena
+
 
   match 'home' => 'usuarios#new', as: :home
   match 'login'  => 'usuarios#new', as: :login

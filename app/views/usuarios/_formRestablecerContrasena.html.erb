@@ -4,7 +4,7 @@
         <a href="#" class="alert-panel close-reveal-modal" onclick="$('#modalLogin').foundation ('reveal', 'close')">&times;</a>
       </div>
 
-      <%= form_tag usuario_sessions_path, :html => { :class => "custom",:id => "formlogin"} , method: :post do %>
+      <%= form_for @usuario, :url => url_for(:controller => 'usuarios', :action => 'recuperarContresena'), :remote => true, :html => { :class => "custom",:id => "formUsuario"} do |f| %>
       <div class="alert-panel-message" >
 
       	 <div class="row">
@@ -13,9 +13,9 @@
                 <div class="panel">
 
         		<% if notice  %>
-			        <div id="noticeMsgEliminar" data-alert class="alert-box alert radius" style="text">Usuario y contraseña invalidos
-			        </div> 
-			    <% end %>
+  			        <div id="noticeMsgEliminar" data-alert class="alert-box alert radius" style="text">Usuario y contraseña invalidos
+  			        </div> 
+  			    <% end %>
 
 
                   <h5>No puedes acceder a tu cuenta</h5>
@@ -27,14 +27,17 @@
               <div class="large-6 small-6 columns">
                <div class="row">
 					
-					  <div class="small-10 small-offset-1 columns" style="margin-top: 18px;"> 
-					  	<h4><%= label_tag "Correo Electronico" ,nil, :class => ""  %>
-						</h4>
-						</div>
-					  <div class="small-10 small-offset-1 columns">
-					  	<%= text_field :username,value = nil, :placeholder => "Correo Electronico",:class=> "input-xlarge"  %> 
-					  </div>
-					  
+    					  <div class="small-10 small-offset-1 columns" > 
+    					  	<h4><%= label_tag "Correo Electronico" ,nil, :class => ""  %>
+    				  		</h4>
+    						</div>
+    				
+            	  <div class="small-10 small-offset-1 columns">
+    					  	<%= text_field :username,value = nil, :placeholder => "Correo Electronico",:class=> "input-xlarge"  %> 
+    					  </div>
+					     
+                  <div id="noticeMsgreset"   data-alert class="small-10 small-offset-1 columns ocultar alert-box success radius" style="margin-top: 24px; padding: 7px;"></div> 
+               
 					  </div>
 				 
               </div>

@@ -1,0 +1,13 @@
+<% if @cantidadUsuario == 0 %>
+    document.getElementById("noticeMsgreset").innerHTML = "No existe una cuenta bajo este correo";
+    $('#noticeMsgreset').addClass("alert");
+    $('#noticeMsgreset').removeClass("success");
+    $("#noticeMsgreset").show();
+
+<% else %>
+    document.getElementById("noticeMsgreset").innerHTML = "ingresa y revisa tu cuenta de correo";
+    $('#noticeMsgreset').removeClass("alert");
+    $("#noticeMsgreset").show();
+
+<% end %>
+

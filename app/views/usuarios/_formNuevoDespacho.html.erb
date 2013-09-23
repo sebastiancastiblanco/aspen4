@@ -9,38 +9,39 @@
 
        <div class="row">
 
-            <div class="small-8 small-offset-2 columns"> 
+
+            <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag "Correo" ,nil, :class => "tituloCampo error "  %>
+            </div>
+            <div class="small-10 columns field">
+                 <%= f.text_field :username,:placeholder => "Correo Electronico",:class=> "input-xlarge" %>
+            </div>
+
+            <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag "Nombre" ,nil, :class => "tituloCampo error "  %>
+            </div>
+            <div class="small-10 columns field">
+                 <%= f.text_field :nombre,:placeholder => "Nombre completo",:class=> "input-xlarge" %>
+            </div>
+
+            <div class="small-2 small-offset-0 columns field"> 
               <%= label_tag :empresa ,nil, :class => "tituloCampo error "  %>
             </div>
-            <div class="small-8 small-offset-2 columns">
+            <div class="small-10 columns field">
                <%= f.text_field :empresa ,:placeholder => "Empresa",:class=> "input-xlarge" %>
             </div>
 
-            <div class="small-8 small-offset-2 columns"> 
-              <%= label_tag "Usuario" ,nil, :class => "tituloCampo error "  %>
-            </div>
-            <div class="small-8 small-offset-2 columns">
-                 <%= f.text_field :username,:placeholder => "Nombre de Usuario",:class=> "input-xlarge" %>
-            </div>
-
-            <div class="small-8 small-offset-2 columns"> 
-              <%= label_tag "Correo" ,nil, :class => "tituloCampo error "  %>
-            </div>
-            <div class="small-8 small-offset-2 columns">
-                 <%= f.text_field :email,:placeholder => "Correo electrónico",:class=> "input-xlarge" %>
-            </div>
-
-            <div class="small-8 small-offset-2 columns"> 
+            <div class="small-2 small-offset-0 columns field"> 
               <%= label_tag "password" ,nil, :class => "tituloCampo error "  %>
             </div>
-            <div class="small-8 small-offset-2 columns">
+            <div class="small-10 columns field">
                  <%= f.text_field :password,:placeholder => "password",:class=> "input-xlarge" %>
             </div>
 
-            <div class="small-8 small-offset-2 columns"> 
+            <div class="small-2 small-offset-0 columns field"> 
               <%= label_tag "confirmar password" ,nil, :class => "tituloCampo error "  %>
             </div>
-            <div class="small-8 small-offset-2 columns">
+            <div class="small-10 columns field">
                  <%= f.text_field :password_confirmation,:placeholder => "Confirmar password",:class=> "input-xlarge" %>
             </div>
 

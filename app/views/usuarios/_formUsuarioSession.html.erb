@@ -8,25 +8,23 @@
       <div class="alert-panel-message" >
 
         <div class="row">
-			<div class="small-12 columns">
 				
-			  <div class="small-8 small-offset-2 columns"> 
-			  	<%= label_tag :usuario ,nil, :class => "tituloCampo error "  %>
+			  <div class="small-3 small-offset-0 columns field "> 
+			  	<%= label_tag :usuario ,nil, :class => "tituloCampo error right "  %>
 				</div>
-			  <div class="small-8 small-offset-2 columns">
+			  <div class="small-9  columns field">
 			  	<%= text_field :username,value = nil, :placeholder => "Usuario",:class=> "input-xlarge"  %> 
 			  </div>
 			  
-			  <div class="small-8 small-offset-2 columns"> 
+			  <div class="small-3 small-offset-0 columns field"> 
 			  	<%= label_tag :Contraseña ,nil, :class => "tituloCampo error "  %>
 			  </div>
-			  <div class="small-8 small-offset-2 columns">
+			  <div class="small-9  columns field">
 			  	<%= password_field_tag :password,value = nil, :placeholder => "Contraseña",:class=> "input-xlarge" %>  
 			  </div>
 			  
-			  </div>
-		 </div>
-	  </div>
+		  </div>
+	   </div>
       <div class="alert-panel-action">
         	
         		 <a href="#" class="small  radius secondary textolinks" onclick="$('#modalreset').foundation ('reveal', 'open')">Olvido su contraseña?</a>

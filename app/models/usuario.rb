@@ -2,10 +2,10 @@ class Usuario < ActiveRecord::Base
   authenticates_with_sorcery!
   
   #Atributos accesibles por la vista
-  attr_accessible :username, :email, :password, :password_confirmation, :despacho_id, :empresa , :created_at, :updated_at
+  attr_accessible :username,:nombre, :email, :password, :password_confirmation, :despacho_id, :empresa , :created_at, :updated_at
   
   #Validaciones
-  validates :empresa, :username,:email,:password,:password_confirmation, :presence => { :message => "Campo obligatorio"}
+  validates :empresa, :username,:nombre,:password,:password_confirmation, :presence => { :message => "Campo obligatorio"}
 
   #Validacion de password
   validates_confirmation_of :password, message: "Ambos campos deben coincidir"

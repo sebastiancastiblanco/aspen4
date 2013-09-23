@@ -91,5 +91,24 @@ class UsuariosController < ApplicationController
      @usuario = Usuario.new
   end
 
+  def recuperarContresena
+    #Buscar el correo del usuario, en minusculas
+    @cantidadUsuario = Usuario.where(username: params[:username]).count
+    @existeusuario = false
+    #Si existe enviar mail con acceso para recuperar la contraseña y actualizar mensaje del panel
+    if @cantidadUsuario == 0 
+      @usuario = Usuario.new(params[:usuario])
+      #En caso contrario, actualizar mensaje del panel
+      @usuario.errors[:username] << "no existe una vuenta bajo este correo"
+    else
+      @existeusuario = true
+    end
+    
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
 
 end

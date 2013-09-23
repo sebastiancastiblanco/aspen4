@@ -1,7 +1,7 @@
 <% if @usuario.errors.count == 0 %>
     document.getElementById("noticeMsg").innerHTML = "Se guardaron los cambios";
-    document.getElementById("nombreUsuario").innerHTML = "<%= @usuario.username %>";
-    document.getElementById("correoUsuario").innerHTML = "<%= @usuario.email %>";
+    document.getElementById("nombreUsuario").innerHTML = "<%= @usuario.nombre %>";
+    document.getElementById("correoUsuario").innerHTML = "<%= @usuario.username %>";
     $("#noticeMsg").toggle( "fade" );
 	$('#formUsuario').remove();
     $('#formularioUsuarios').after('<%= j render("formEditarUsuario") %>');
