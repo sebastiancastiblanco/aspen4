@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>reset pass</title>
+        <title>Bienvenido</title>
     
     <style type="text/css">
     #outlook a{
@@ -256,39 +256,41 @@
                                               <table border="0" cellpadding="20" cellspacing="0" width="560" class="couponBlock" style="background-color: #FFFFFF;border: 1px solid #E5E5E5;">
                                                   <tbody><tr>
                                                       <td width="100" style="border-collapse: collapse;text-align: center;">
-                                                          <img src="http://gallery.mailchimp.com/37f5fb6c35ddfd9cba76e587d/images/lock.png" alt="" border="0" style="margin: 0;padding: 0;max-width: 200px;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;">
+                                                          <img src="http://gallery.mailchimp.com/37f5fb6c35ddfd9cba76e587d/images/user64.png" alt="" border="0" style="margin: 0;padding: 0;max-width: 200px;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;">
                                                         </td>
                                                         <td align="left" valign="top" style="padding-left: 10px;border-collapse: collapse;">
                                                           <table border="0" cellpadding="0" cellspacing="0">
                                                               <tbody><tr>
                                                                   <td colspan="2" valign="top" class="couponContent" style="border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
-                                                                      <h1 style="color: #26ABE2;display: block;font-family: Helvetica;font-size: 30px;font-weight: normal;letter-spacing: -1px;line-height: 100%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;">Olvidaste tu contraseña?</h1>
-                                                                        <h4 style="color: #26ABE2;display: block;font-family: Helvetica;font-size: 14px;font-weight: normal;line-height: 100%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;">
-                                    
-                                    </h4>
+                                                                      <h1 style="color: #26ABE2;display: block;font-family: Helvetica;font-size: 60px;font-weight: normal;letter-spacing: -4px;line-height: 100%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;">Bienvenido ..</h1>
+                                                                        <h4 style="color: #26ABE2;display: block;font-family: Helvetica;font-size: 14px;font-weight: normal;line-height: 100%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: left;">Gracias por registrarte <%= @usuario.nombre %> en Aspen, una herramienta en donde podras controlar todos tus procesos judiciales</h4>
                                                                     </td>
                                                                 </tr>
-                                <tr>
-                                                                  <td colspan="2" valign="top" class="couponContent" style="padding-top: 10px;border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 14px;line-height: 150%;text-align: left;">
-                                    <strong> Tu usuario es:  </strong> <%= @email %> 
-                                                                  </td>
-                                                                </tr>
-                                <tr>
-                                                                  <td colspan="2" valign="top" class="couponContent" style="padding-top: 10px;border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
-                                    
-                                                                  </td>
-                                                                </tr>
                                                                 <tr>
-                                                                  <td colspan="2" valign="top" class="couponContent" style="padding-top: 10px;font-size: 14px !important;border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
-                                    <a href="<%= @url %>">Ingresa aqui para restablecer tu contraseña</a>
-                                  </td>
+                                                                  <td colspan="2" valign="top" class="couponContent" style="font-weight: bold;padding-top: 10px;border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 14px;line-height: 150%;text-align: left;">
+																    Ingresa a tu cuenta:
+                                                                  </td>
                                                                 </tr>
-                                
+																<tr>
+                                                                  <td colspan="2" valign="top" class="couponContent" style="padding-top: 10px;border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
+																    <a href="<%= @url %>">Iniciar sesion en aspen </a>
+                                                                  </td>
+                                                                </tr>
+																<tr>
+                                                                  <td colspan="2" valign="top" class="couponContent" style="font-weight: bold;padding-top: 10px;border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 14px;line-height: 150%;text-align: left;">
+																    Usuario:
+                                                                  </td>
+                                                                </tr>
+																<tr>
+                                                                  <td colspan="2" valign="top" class="couponContent" style="padding-top: 10px;border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
+																    <%= @usuario.username %>
+                                                                  </td>
+                                                                </tr>
                                                                 <tr>
                                                                     <td valign="top" style="padding-top: 20px;border-collapse: collapse; ">
                                                                       <div class="couponContent" style="color: #707070;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
-                                    Esperamos que disfrutes la oportunidad de conocer Aspen y todas sus funcionalidades actuales y futuras.
-                                    </div>
+																		Esperamos que disfrutes la oportunidad de conocer Aspen y todas sus funcionalidades actuales y futuras.
+																	  </div>
                                                                     </td>
                                                                 </tr>
                                                             </tbody></table>

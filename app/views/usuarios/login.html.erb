@@ -1,0 +1,63 @@
+<body>
+
+<div class="row">
+         <div class="large-6 small-6 large-offset-3 small-offset-3 columns">
+          
+      <% if notice  %>
+        <div id="noticeMsgEliminar" data-alert class="alert-box alert radius" style="text"><%= notice%></div> 
+      <% end %>
+
+        <div id="headerlogin" class="alert-panel-title">
+          Ingrese a su cuenta
+        </div>
+
+
+   <%= form_tag usuario_sessions_path, :html => { :class => "custom",:id => "formlogin"} , method: :post do %>
+      <div class="alert-panel-message" >
+
+        <div class="row">
+        
+        <div class="small-3 small-offset-0 columns field "> 
+          <%= label_tag :usuario ,nil, :class => "tituloCampo error right "  %>
+        </div>
+        <div class="small-9  columns field">
+          <%= text_field :username,value = nil, :placeholder => "Usuario",:class=> "input-xlarge"  %> 
+        </div>
+        
+        <div class="small-3 small-offset-0 columns field"> 
+          <%= label_tag :Contraseña ,nil, :class => "tituloCampo error "  %>
+        </div>
+        <div class="small-9  columns field">
+          <%= password_field_tag :password,value = nil, :placeholder => "Contraseña",:class=> "input-xlarge" %>  
+        </div>
+        
+      </div>
+     </div>
+      <div class="alert-panel-action">
+          
+             <a href="#" class="small  radius secondary textolinks" onclick="$('#modalreset').foundation ('reveal', 'open')">Olvido su contraseña?</a>
+           
+            <%= submit_tag :'Log In', :class => " button radius small" %>
+      </div>
+      <% end %>
+
+  </div>
+  </div>
+
+</body>
+
+  <div id="modalLogin" class="reveal-modal tiny">
+     <div id="formularioSession"></div>
+    <%= render 'formUsuarioSession' %>
+  </div>
+
+  <div id="modalsignup" class="reveal-modal small">
+    <div id="formularioUsuarios"></div>
+    <%= render 'formNuevoDespacho' %>
+  </div>
+
+
+  <div id="modalreset" class="reveal-modal medium">
+    <div id="formularioreset"></div>
+    <%= render 'formRestablecerContrasena' %>
+  </div>

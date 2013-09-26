@@ -93,6 +93,10 @@ class UsuariosController < ApplicationController
      @usuario = Usuario.new
   end
 
+  def login
+     @usuario = Usuario.new
+  end
+
   def recuperarContresena
     #Buscar el correo del usuario, en minusculas
     @cantidadUsuario = Usuario.where(username: params[:username]).count
