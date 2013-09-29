@@ -1,0 +1,34 @@
+<%= form_for @usuario, :url => contrasena_reset_path(params[:id]) do |f| %>
+
+ 	 <div class="row" style=" margin-top: 60px; margin-bottom: 90px;">
+          <div class="" >
+              <div class="large-6 small-6 columns">
+                <div class="panel">
+				 <h5>Restablece tu contraseña</h5>
+                <h6 class="subheader">Escribe tu nueva contraseña y realiza nuevamente el login
+                </h6>
+               	</div>
+              </div>
+ 
+              <div class="large-6 small-6 columns">
+               <div class="row">
+					
+      					  <div class="small-10 small-offset-1 columns field" > 
+      					  	<%= f.password_field  :password, :placeholder => "password",:class=> "input-xlarge" %> 
+      						</div>
+      				
+              	  <div class="small-10 small-offset-1 columns field">
+      					  	 <%= f.password_field  :password_confirmation, :placeholder => "Confirmar contraseña",:class=> "input-xlarge" %>  
+      					  </div>
+
+                  <div class="small-8 small-offset-3 columns">
+                   <%= f.submit :'Restablecer contraseña', :class => " button radius small" %>
+                  </div>
+                   
+					     
+				       </div>
+    				 </div>
+             </div>
+         </div>
+
+<% end %>

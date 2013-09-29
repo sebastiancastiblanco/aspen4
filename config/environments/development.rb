@@ -35,6 +35,9 @@ AspenVersion3::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+
+  config.action_mailer.default_url_options = { :host =>"localhost"}
+
   #Mailer to GMAIL
  config.action_mailer.delivery_method = :smtp
  config.action_mailer.smtp_settings = {
@@ -45,4 +48,7 @@ AspenVersion3::Application.configure do
   password:             'placebosebastian',
   authentication:       'plain',
   enable_starttls_auto: true  }
+
+  
+
 end

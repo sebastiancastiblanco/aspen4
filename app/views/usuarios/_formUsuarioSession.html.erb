@@ -22,12 +22,21 @@
 			  <div class="small-9  columns field">
 			  	<%= password_field_tag :password,value = nil, :placeholder => "Contraseña",:class=> "input-xlarge" %>  
 			  </div>
+
+			  <div class="small-3 small-offset-0 columns field"> 
+			  	
+			  </div>
+			  <div class="small-9 columns">
+			  	<%= check_box_tag :remember_me,1,params[:remenber_me], :class => "alinearbotones " %>  
+			  	<%= label_tag :recuerdame ,nil, :class => ""  %>
+			  </div>
 			  
 		  </div>
 	   </div>
       <div class="alert-panel-action">
         	
-        		 <a href="#" class="small  radius secondary textolinks" onclick="$('#modalreset').foundation ('reveal', 'open')">Olvido su contraseña?</a>
+        		 <%= link_to "Olvido su contraseña?", new_contrasena_reset_path , :class => "small  radius secondary textolinks "  %>
+
 		    	 <a href="#" class="small button radius secondary" onclick="$('#modalLogin').foundation ('reveal', 'close')">Cerrar</a>
 		        <%= submit_tag :'Log In', :class => " button radius small" %>
       </div>

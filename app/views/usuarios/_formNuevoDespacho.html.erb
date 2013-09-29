@@ -3,12 +3,11 @@
         Crear cuenta
         <a href="#" class="alert-panel close-reveal-modal" onclick="$('#modalsignup').foundation ('reveal', 'close')">&times;</a>
       </div>
-
-     <%= form_for @usuario, :remote => true, :html => { :class => "custom",:id => "formUsuario"} do |f| %>
+ 
+     <%= form_for  (@usuario), :remote => true, :html => { :class => "custom",:id => "formUsuario"} do |f| %>
       <div class="alert-panel-message" >
 
        <div class="row">
-
 
             <div class="small-2 small-offset-0 columns field"> 
               <%= label_tag "Correo" ,nil, :class => "tituloCampo error "  %>

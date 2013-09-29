@@ -1,0 +1,49 @@
+
+
+ <%= form_tag contrasena_resets_path, :method => :post, :html => { :class => "custom",:id => "formpassreset"}   do %>
+    
+   
+        <% if notice  %>
+         <div class="row" >
+            <div id="noticeMsgEliminar" data-alert class="small-10 small-offset-1 columns alert-box radius "  style="text"><%= notice%></div> 
+            </div>
+        <% end %>
+  
+      	 <div class="row" style=" margin-top: 60px; margin-bottom: 90px;" >
+
+        
+
+          <div class="" >
+              <div class="large-6 small-6 columns">
+                <div class="panel">
+				 <h5>No puedes acceder a tu cuenta</h5>
+                <h6 class="subheader">Has olvidado tu usuario y/o contraseña, escribe tu correo electronico y 		recupera el acceso.
+                </h6>
+               	</div>
+              </div>
+ 
+              <div class="large-6 small-6 columns">
+               <div class="row">
+					         
+                    
+      					  <div class="small-10 small-offset-1 columns" > 
+      					  	<h4><%= label_tag "Correo Electronico" ,nil, :class => ""  %>
+      				  		</h4>
+      						</div>
+      				
+              	  <div class="small-10 small-offset-1 columns" >
+      					  	<%= text_field_tag :mail,params[:mail],:class=> "input-xlarge"  %>
+      					  </div>
+
+
+                  <div class="small-8 small-offset-3 columns" style="margin-top: 10px;">
+                   <%= submit_tag :'Recuperar contraseña', :class => " button radius small" %>
+                  </div>
+                   
+					     
+				       </div>
+    				 </div>
+             </div>
+         </div>
+
+      <% end %>

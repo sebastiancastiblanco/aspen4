@@ -270,7 +270,7 @@
                                                                 </tr>
                                 <tr>
                                                                   <td colspan="2" valign="top" class="couponContent" style="padding-top: 10px;border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 14px;line-height: 150%;text-align: left;">
-                                    <strong> Tu usuario es:  </strong> <%= @email %> 
+                                    <strong> 
                                                                   </td>
                                                                 </tr>
                                 <tr>
@@ -280,7 +280,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                   <td colspan="2" valign="top" class="couponContent" style="padding-top: 10px;font-size: 14px !important;border-collapse: collapse;color: #707070;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
-                                    <a href="<%= @url %>">Ingresa aqui para restablecer tu contraseña</a>
+                                    <a href="<%= edit_contrasena_reset_url(@usuario.password_reset_token) %>">Ingresa aqui para restablecer tu contraseña</a>
                                   </td>
                                                                 </tr>
                                 

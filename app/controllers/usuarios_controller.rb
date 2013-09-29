@@ -36,21 +36,26 @@ class UsuariosController < ApplicationController
   # POST /usuarios
   # POST /usuarios.json
   def create
-    @usuario = Usuario.new(params[:usuario])
 
-   
-      if @usuario.save
-        #Realizar auto login y redireccionar a la pagina de procesos
+    @usuario = Usuario.new(params[:usuario])
+    @cantidadUsuario = Usuario.where(username: @usuario.username).count
+    if @cantidadUsuario == 0
+        if @usuario.save
+          #Realizar auto login y redireccionar a la pagina de procesos
           auto_login(@usuario)
           #enviar mail de bienvenida
           UsuarioMails.bienvenida(@usuario).deliver
           render :js => "window.location = 'procesos'"
-      else
-         respond_to do |format|
-          format.html { render action: "new" }
-          format.js
+        else
+          respond_to do |format|
+            format.html { render action: "create" }
+            format.js
+          end
         end
-      end
+     else
+      flash[:notice] = 'Ya existe una cuenta asociada a este correo'
+      render :js => "window.location = 'home'"
+      end 
     
   end
 
@@ -97,26 +102,7 @@ class UsuariosController < ApplicationController
      @usuario = Usuario.new
   end
 
-  def recuperarContresena
-    #Buscar el correo del usuario, en minusculas
-    @cantidadUsuario = Usuario.where(username: params[:username]).count
-    @existeusuario = false
-    #Si existe enviar mail con acceso para recuperar la contraseña y actualizar mensaje del panel
-    if @cantidadUsuario == 0 
-      @usuario = Usuario.new(params[:usuario])
-      #En caso contrario, actualizar mensaje del panel
-      @usuario.errors[:username] << "no existe una vuenta bajo este correo"
-    else
-      @existeusuario = true
-      # Tell the UserMailer to send a welcome Email after save
-        UsuarioMails.recuperarContrasena(params[:username]).deliver
-    end
-    
-    respond_to do |format|
-      format.js
-    end
-
-  end
+ 
 
 
 end

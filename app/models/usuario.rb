@@ -1,8 +1,9 @@
 class Usuario < ActiveRecord::Base
   authenticates_with_sorcery!
-  
+  before_create {generate_token(:authToken)}
+
   #Atributos accesibles por la vista
-  attr_accessible :username,:nombre, :email, :password, :password_confirmation, :despacho_id, :empresa , :created_at, :updated_at
+  attr_accessible :username,:nombre, :email, :password, :password_confirmation, :despacho_id, :empresa , :created_at, :updated_at, :updated_at, :password_reset_token, :password_reset_sent_at
   
   #Validaciones
   validates :empresa, :username,:nombre,:password,:password_confirmation, :presence => { :message => "Campo obligatorio"}
@@ -29,9 +30,22 @@ class Usuario < ActiveRecord::Base
   has_many :tipo_procesos
   has_many :procesos, through: :tipo_procesos
 
-  #validates :username, :presence => true
-  #validates :email, :presence => true
-  #validates :password, :presence => true
-  #validates :password_confirmation, :presence => true
+  #generacion de token para funcion remember me
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while Usuario.exists?(column => self[column])
+  end  
+
+  def send_reset_pass
+    generate_token(:password_reset_token)
+    self.password_confirmation = "a"
+    self.password = "a"
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UsuarioMails.recuperarContrasena(self).deliver
+  end
+
+  
 
 end

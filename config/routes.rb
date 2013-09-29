@@ -1,5 +1,7 @@
 AspenVersion3::Application.routes.draw do
   
+  resources :contrasena_resets  
+
   resources :logs
   get "logs/iractividad"
 
@@ -33,6 +35,7 @@ AspenVersion3::Application.routes.draw do
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
+  
   
   match 'progreso' => 'logs#index', as: :progreso
   match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
