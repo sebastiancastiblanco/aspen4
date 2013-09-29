@@ -57,14 +57,14 @@
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
             <section class="calendar_events">
 
-                            <div class="upcoming_events">
-                                <h2>Upcoming events</h2>
-                            </div>
-                            <section class="group today upcoming_events">
-                   <% @alerta.each do |alerta| %>
-                    <%= render 'alerta', :alerta => alerta %>
-                   <% end %>
-                    </section>
+                  <div class="upcoming_events">
+                        <h2>Upcoming events</h2>
+                  </div>
+                  <section class="group today upcoming_events">
+                        <% @alerta.each do |alerta| %>
+                              <%= render 'alerta', :alerta => alerta %>
+                        <% end %>
+                  </section>
                </section>
             </div>
           </div>

@@ -1,29 +1,80 @@
-<h1>Listing estados</h1>
 
-<table>
-  <tr>
-    <th>Tipo</th>
-    <th>Fecha</th>
-    <th>Resumen</th>
-    <th>Conclusion</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<body>
 
-<% @estados.each do |estado| %>
-  <tr>
-    <td><%= estado.tipo %></td>
-    <td><%= estado.fecha %></td>
-    <td><%= estado.resumen %></td>
-    <td><%= estado.conclusion %></td>
-    <td><%= link_to 'Show', estado %></td>
-    <td><%= link_to 'Edit', edit_estado_path(estado) %></td>
-    <td><%= link_to 'Destroy', estado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <div id="workspace" class="workspace">
+    <div class="container stack_container" style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris" >
 
-<br />
+       <header>
+          <ul class="breadcrumbs">
+            <li><%= link_to 'Procesos', procesos_path %></li>
+            <li><%= link_to @proceso do  %>
+                  proceso <%= @proceso.id %> : <%= @proceso.titulo %>
+                <% end %>
+            </li>
+            <li><%= link_to 'Contratos', "javascript:listarAlertas()" %></li>
+          </ul>
+        </header>
 
-<%= link_to 'New Estado', new_estado_path %>
+        <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
+
+          <header class="has_buttons">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+
+                    <div class="small-6 small-9 columns left">
+                      <h1 id="tituloContrato">
+                        Estados
+                      </h1>
+                    </div>
+
+                    <div class="small-3 small-3 columns left">
+
+
+                        <%= button_to 'Nuevo Estado', new_estado_path(:proceso_id => @proceso.id), :class => "button radius ", :id => "new_alerta_link"  %>
+                        <%= button_to 'Listar Estados',"javascript:listarAlertas()" , :class => "button radius ocultar", :id => "listar_alerta_link" %>
+
+                    </div>
+
+                    <% if notice %>
+                              <div data-alert class="alert-box success radius">
+                                <%= notice %>
+                                <a href="#" class="close">&times;</a>
+                              </div>
+                    <% end %>
+
+                </div>
+              </div>
+            </div>
+          </div><div class="blank_slate_arrow"></div>
+          </header>
+
+
+
+
+          <div class="sheet_body fondoGris">
+            <div id="date_display_Project:2733915" class="date_display" data-autoview="">
+            <section class="calendar_events">
+
+                  <div class="upcoming_events">
+                        <h2>Estados</h2>
+                  </div>
+                  <section class="group today upcoming_events">
+                        <% @estados.each do |estado| %>
+                              <%= render 'estado', :estado => estado %>
+                        <% end %>
+                  </section>
+               </section>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+

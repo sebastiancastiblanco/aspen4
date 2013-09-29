@@ -15,6 +15,7 @@ AspenVersion3::Application.routes.draw do
   resources :contratos
   resources :participantes
   resources :alertas
+  resources :estados
   resources :rol_participantes
   resources :control_accesos
   get "procesos/createTipoProceso"

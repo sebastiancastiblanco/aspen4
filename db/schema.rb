@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20130916004542) do
     t.datetime "updated_at",      :null => false
     t.integer  "mensaje_id"
     t.string   "usuario"
+    t.string   "proceso"
   end
 
   create_table "participantes", :force => true do |t|
