@@ -1,6 +1,6 @@
-== ASPEN v3.0 - Ruby On rails 
+== ASPEN v3.0 - funcional
 
-1. Eas Ltda, empresa duela de los derechos del software
+1. Eas Ltda, empresa que posee de los derechos del software
 
 2. Sebastian Castiblanco, Alexander Herrera
 == Welcome to Rails
