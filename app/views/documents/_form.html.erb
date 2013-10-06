@@ -1,0 +1,41 @@
+<%= form_for(@document,:html => { :multipart => true }) do |f| %>
+  <% if @document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% @document.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+       <%= hidden_field_tag :proceso_id, params[:proceso_id] %>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :name_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :name, :placeholder => "Name the document" %>
+    </div>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :attachment_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+     <div class="small-4 columns field">
+      <%= f.file_field :attachment, :placeholder => "Upload a file" %>
+    </div>
+
+ </div>
+
+ <div class="row">
+
+     <div class="small-1 small-offset-7 columns field"></div>
+      <div class="small-2 columns field">
+      <%= f.submit :'Guardar Document' , :class => " button success radius" %></div>
+     </div>
+
+</div>
+<% end %>

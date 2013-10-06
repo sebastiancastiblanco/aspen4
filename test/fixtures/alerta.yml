@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  titulo: MyString
+  hora: MyString
+  nota: MyString
+  comienza: 2013-07-27 22:26:43
+  termina: 2013-07-27 22:26:43
+  repeticion: 1
+
+two:
+  titulo: MyString
+  hora: MyString
+  nota: MyString
+  comienza: 2013-07-27 22:26:43
+  termina: 2013-07-27 22:26:43
+  repeticion: 1

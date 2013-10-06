@@ -40,7 +40,7 @@ function cambioEstadoFavoritoHome(procesoid){
                 $(divProcesoNoFavorito).css('display', 'none');
                 $(divProcesoFavorito).css('display', 'block');
             }
-         }) 
+         })
      }
     else{
       $.ajax({
@@ -51,9 +51,9 @@ function cambioEstadoFavoritoHome(procesoid){
                $(divProcesoNoFavorito).css('display', 'block');
                 $(divProcesoFavorito).css('display', 'none');
             }
-         }) 
+         })
      }
-   
+
 };
 
 function listarParticipantes(){

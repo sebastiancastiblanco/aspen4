@@ -1,0 +1,50 @@
+
+    <article id="document_<%= document.id %>" class="attachment">
+
+      <table>
+                    <tbody>
+                      <tr>
+                        <td class="icon">
+                          <figure class="full_width">
+                            <a data-stacker="false" href="#">
+
+                              <img alt="" class="thumbnail" src=" <%=document.attachment.url %>" data-scaled="true" style="width: 120px; height: 138px;">
+                            </a>
+                          </figure>
+                        </td>
+
+                        <td class="textFiles">
+                          <h3 class="filename">
+                           <%= document.name %>
+                            <span class="bucket_name">(Aspen)</span>
+                          </h3>
+
+                          <div class="authorship">
+                            <p class="meta">
+                              <span>Uploaded</span>
+                              <span class="creator">by Alexander Herrera</span>
+                              <time>on May 30</time>
+                            </p>
+                            <p class="actions">
+                              <a data-stacker="false" href="#">Download</a>
+                              <span>or</span>
+                              <a href="#">Open</a>
+                            </p>
+                          </div>
+                        </td>
+                            <td><%= link_to 'Edit', edit_document_path(document) %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+        <ul>
+              <li >
+
+                        <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+              </li>
+        </ul>
+
+</article>
+

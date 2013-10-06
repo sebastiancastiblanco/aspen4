@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tipo: MyString
+  fecha: 2013-09-15
+  resumen: MyString
+  conclusion: MyString
+
+two:
+  tipo: MyString
+  fecha: 2013-09-15
+  resumen: MyString
+  conclusion: MyString

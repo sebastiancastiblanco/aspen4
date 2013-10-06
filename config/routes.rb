@@ -1,30 +1,25 @@
 AspenVersion3::Application.routes.draw do
-  
   resources :contrasena_resets  
 
   resources :logs
   get "logs/iractividad"
 
+  resources :documents
   resources :events
   get "events/move"
   get "events/resize"
-  
-
   resources :tipo_procesos
   get "tipo_procesos/create"
-
   resources :actividads
   get "actividads/filtrado"
-
   resources :estado_actividads
   resources :contratos
   resources :participantes
- 
-
+  resources :alertas
+  resources :estados
   resources :rol_participantes
   resources :control_accesos
   get "procesos/createTipoProceso"
-
   resources :procesos
   get "procesos/favorito"
   get "procesos/nofavorito"
@@ -35,7 +30,7 @@ AspenVersion3::Application.routes.draw do
   resources :agendas
   resources :usuarios
   resources :usuario_sessions
-  
+
   
   match 'progreso' => 'logs#index', as: :progreso
   match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
@@ -47,6 +42,7 @@ AspenVersion3::Application.routes.draw do
   match 'home' => 'usuarios#new', as: :home
   match 'login'  => 'usuarios#new', as: :login
   match 'logout' => 'usuario_sessions#destroy', as: :logout
+  root :to => 'usuario_sessions#new'
 
   match '/usuarios/new' => 'usuarios#new', as: :nuevoUsuario
   match '/usuarios/:id' => 'usuarios#index', as: :listaUsuarios
@@ -57,7 +53,6 @@ AspenVersion3::Application.routes.draw do
   match '/procesos/:proceso_id/participantes/:participante_id/:nuevoItem' => 'participantes#index', as: :editarParticipantesProceso
   match '/procesos/:proceso_id/participantes/:nuevoItem' => 'participantes#index', as: :nuevoParticipantesProceso
   match '/procesos/:proceso_id/participantes' => 'participantes#index', as: :verParticipantesProceso
-  
 
   match '/contratos/:id/edit' => 'contratos#edit', as: :editContrato
   match '/procesos/:proceso_id/contratos/new/:id' => 'contratos#new', as: :nuevaActividad
@@ -65,13 +60,37 @@ AspenVersion3::Application.routes.draw do
   match '/procesos/:proceso_id/contratos/:nuevoItem' => 'contratos#index', as: :nuevoContratosProceso
   match '/procesos/:proceso_id/contratos' => 'contratos#index', as: :verContratosProceso
   
+  
   match '/actividads/:id/edit' => 'actividads#edit', as: :editActividad
   match '/procesos/:proceso_id/actividades/new/:id' => 'actividads#new', as: :nuevaActividad
   match '/procesos/:proceso_id/actividades/:actividad_id/:nuevoItem' => 'actividads#index', as: :editarActividadesProceso
   match '/procesos/:proceso_id/actividades/:nuevoItem' => 'actividads#index', as: :nuevoActividadesProceso
   match '/procesos/:proceso_id/actividades' => 'actividads#index', as: :verActividadesProceso
-  
-  
+
+  match '/participantes/new/:id' => 'participantes#new', as: :nuevoParticipante
+  match '/participantes/:id' => 'participantes#index', as: :listaParticipantes
+  match '/participantes/:id/edit' => 'participantes#edit', as: :editarParticipantes
+
+  match '/contratos/new/:id' => 'contratos#new', as: :nuevoContrato
+  match '/contratos/:id' => 'contratos#index', as: :listaContratos
+  match '/contratos/:id/edit' => 'contratos#edit', as: :editarContrato
+
+  match '/actividads/new/:id' => 'actividads#new', as: :nuevaActividad
+  match '/actividads/:id' => 'actividads#index', as: :listaActividads
+  match '/actividads/:id/edit' => 'actividads#edit', as: :editarActividad
+
+  match '/alertas' => 'alertas#index', as: :listaAlertas
+  match '/alertas/new' => 'alertas#new', as: :nuevaAlerta, :via => :post
+  match '/alertas/:id/edit' => 'alertas#edit', as: :editarActividad
+
+  match '/documents' => 'documents#index', as: :listaDocumentos
+  match '/documents/new' => 'documents#new', as: :nuevaDocumento, :via => :post
+  match '/documents/:id/edit' => 'documents#edit', as: :editarDocumento
+
+  match '/estados' => 'estados#index', as: :listaEstados
+  match '/estados/new' => 'estados#new', as: :nuevoEstado, :via => :post
+  match '/estados/:id/edit' => 'estados#edit', as: :editarEstado
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -129,7 +148,7 @@ AspenVersion3::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  
+
   match 'procesos/createTipoProceso' => 'tipo_procesos#createTipoProceso'
   match 'procesos/compartirProceso' => 'control_accesos#compartirProceso'
   match 'procesos/favorito/:procesoid' => 'procesos#favorito'

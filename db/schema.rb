@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(:version => 20130928142158) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "alerta", :force => true do |t|
+    t.string   "titulo"
+    t.string   "hora"
+    t.string   "nota"
+    t.datetime "comienza"
+    t.datetime "termina"
+    t.integer  "repeticion"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "proceso_id"
+  end
+
   create_table "contratos", :force => true do |t|
     t.string   "tipoContrato"
     t.string   "objeto"
@@ -59,6 +71,17 @@ ActiveRecord::Schema.define(:version => 20130928142158) do
     t.integer  "usuario_id"
   end
 
+  create_table "documents", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "proceso_id"
+  end
+
   create_table "estado_actividads", :force => true do |t|
     t.string   "estado"
     t.datetime "created_at", :null => false
@@ -69,6 +92,16 @@ ActiveRecord::Schema.define(:version => 20130928142158) do
     t.string   "estado"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "estados", :force => true do |t|
+    t.string   "tipo"
+    t.date     "fecha"
+    t.string   "resumen"
+    t.string   "conclusion"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "proceso_id"
   end
 
   create_table "event_series", :force => true do |t|

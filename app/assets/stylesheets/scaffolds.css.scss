@@ -1,10 +1,14 @@
 body {
- 
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
- 
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
   line-height: 18px;
 }
 
@@ -36,12 +40,8 @@ div {
 }
 
 .field_with_errors {
-  @extend .error
-}
-
-.field_with_errors #label {
   padding: 2px;
-  background-color: transparent !important;
+  background-color: red;
   display: table;
 }
 
@@ -66,8 +66,4 @@ div {
     font-size: 12px;
     list-style: square;
   }
-}
-
-div.field5, div.actions {
-margin-bottom: 5px !important;
 }

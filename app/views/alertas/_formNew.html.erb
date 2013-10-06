@@ -1,0 +1,80 @@
+<%= form_for @alerta, url: alertas_path,  :html => { :class => "calendar_event_editor_form"} do |f| %>
+
+  <% if @alerta.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@alerta.errors.count, "error") %> prohibited this alerta from being saved:</h2>
+
+      <ul>
+      <% @alerta.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+       <%= hidden_field_tag :proceso_id, params[:proceso_id] %>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :titulo_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :titulo, :placeholder => "Name the event" %>
+    </div>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :hora_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :hora, :placeholder => "At what time? (9am, 1pm, etc.)" %>
+    </div>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :nota_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :nota, :placeholder => "Add an optional note" %>
+    </div>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :comienza_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :comienza, :placeholder => "Starts" %>
+    </div>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :termina_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :termina, :placeholder => "Ends" %>
+    </div>
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :repeticion_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.select :repeticion,  options_for_select( [ ['No', ''], ['Every day', 'daily'], ['Every week', 'weekly'],['Every month', 'monthly'],['Every year', 'yearly'] ] ) %>
+    </div>
+
+</div>
+
+<div class="row">
+
+     <div class="small-1 small-offset-7 columns field"></div>
+     <div class="small-1 columns field">
+      <%= link_to   "Cancelar", {:controller => "alertas", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks",:method=>:get %>
+     </div>
+     <div class="small-2 columns field">
+      <%= f.submit :'Guardar Alerta' , :class => " button success radius" %></div>
+     </div>
+
+</div>
+
+<% end %>
+
+<script>
+  jQuery('#alerta_comienza').datepicker({dateFormat: "dd MM yy"});
+  jQuery('#alerta_termina').datepicker({dateFormat: "dd MM yy"});
+  $(document).foundation();
+</script>

@@ -1,0 +1,75 @@
+
+<body>
+
+  <div id="workspace" class="workspace">
+    <div class="container stack_container" style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris" >
+
+       <header>
+          <ul class="breadcrumbs">
+            <li><%= link_to 'Procesos', procesos_path %></li>
+            <li><%= link_to @proceso do  %>
+                  proceso <%= @proceso.id %> : <%= @proceso.titulo %>
+                <% end %>
+            </li>
+            <li><%= link_to 'Contratos', "javascript:listarAlertas()" %></li>
+          </ul>
+        </header>
+
+        <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
+
+          <header class="has_buttons">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+
+                    <div class="small-6 small-9 columns left">
+                      <h1 id="tituloContrato">
+                        Documentos
+                      </h1>
+                    </div>
+
+                    <div class="small-3 small-3 columns left">
+
+
+                        <%= button_to 'Nuevo Documento', new_document_path(:proceso_id => @proceso.id), :class => "button radius ", :id => "new_alerta_link"  %>
+                        <%= button_to 'Listar Documentos',"javascript:listarAlertas()" , :class => "button radius ocultar", :id => "listar_alerta_link" %>
+
+                    </div>
+
+                    <% if notice %>
+                              <div data-alert class="alert-box success radius">
+                                <%= notice %>
+                                <a href="#" class="close">&times;</a>
+                              </div>
+                    <% end %>
+
+                </div>
+              </div>
+            </div>
+          </div><div class="blank_slate_arrow"></div>
+          </header>
+
+
+
+          <div class="sheet_body fondoGris">
+           <div class="attachments_table ">
+              <section class="attachments grouped_by_date">
+
+                <div class="date_group" >
+                   <% @documents.each do |document| %>
+                    <%= render 'document', :document => document %>
+                   <% end %>
+                    </div>
+               </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+

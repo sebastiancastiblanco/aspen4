@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Titulo:</b>
+  <%= @alerta.titulo %>
+</p>
+
+<p>
+  <b>Hora:</b>
+  <%= @alerta.hora %>
+</p>
+
+<p>
+  <b>Nota:</b>
+  <%= @alerta.nota %>
+</p>
+
+<p>
+  <b>Comienza:</b>
+  <%= @alerta.comienza %>
+</p>
+
+<p>
+  <b>Termina:</b>
+  <%= @alerta.termina %>
+</p>
+
+<p>
+  <b>Repeticion:</b>
+  <%= @alerta.repeticion %>
+</p>
+
+
+<%= link_to 'Edit', edit_alerta_path(@alerta) %> |
+<%= link_to 'Back', alerta_path %>
