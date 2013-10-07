@@ -5,15 +5,15 @@
     <div class="container stack_container" style="width: 960px;">
       <div class="panel sheet project active blank_slate fondoGris" >
 
-       <header>
-          <ul class="breadcrumbs">
-            <li><%= link_to 'Procesos', procesos_path %></li>
-            <li><%= link_to @proceso do  %>
-                  proceso <%= @proceso.id %> : <%= @proceso.titulo %>
-                <% end %>
-            </li>
-            <li><%= link_to 'Contratos', "javascript:listarAlertas()" %></li>
-          </ul>
+        <header>
+              <ul class="breadcrumbs">
+                <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+                      <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
+                    <% end %>
+                </li>
+                 <li> <%= link_to   "Documentos", {:controller => "documents", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
+                
+              </ul>
         </header>
 
         <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
@@ -33,8 +33,7 @@
                     <div class="small-3 small-3 columns left">
 
 
-                        <%= button_to 'Nuevo Documento', new_document_path(:proceso_id => @proceso.id), :class => "button radius ", :id => "new_alerta_link"  %>
-                        <%= button_to 'Listar Documentos',"javascript:listarAlertas()" , :class => "button radius ocultar", :id => "listar_alerta_link" %>
+                         <%= button_to "Nuevo Documento", {:controller => "documents", :action => "new", :proceso_id => @proceso.id},:class => " button radius " %>
 
                     </div>
 

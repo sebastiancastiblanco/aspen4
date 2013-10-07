@@ -15,7 +15,8 @@ class DocumentsController < ApplicationController
   # GET /documents/1
   # GET /documents/1.json
   def show
-    @document = Document.find(params[:id])
+    @document = Document.find(params[:documento_id])
+    @proceso = Proceso.find(params[:proceso_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,6 +28,7 @@ class DocumentsController < ApplicationController
   # GET /documents/new.json
   def new
     @document = Document.new
+    @proceso = Proceso.find(params[:proceso_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +38,8 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1/edit
   def edit
-    @document = Document.find(params[:id])
+    @document = Document.find(params[:documento_id])
+    @proceso = Proceso.find(params[:proceso_id])
   end
 
   # POST /documents

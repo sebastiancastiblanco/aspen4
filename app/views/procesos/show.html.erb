@@ -151,9 +151,8 @@
 
           <section id="panelParticipante" class="documents " style="">
             <header class="has_buttons">
-              <h1> <%= link_to participantes_path(:proceso_id => @proceso.id) ,:class => "alinearbotones" do  %>
-                      1. Participantes
-                    <% end %>
+              <h1> <%= link_to "1. Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id},:class => "alinearbotones"  %>
+                      
               </h1>
                 <div>
                   <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones"  %>
@@ -176,7 +175,7 @@
                       <div class="small-12 columns ">
                          <h5>
                         
-                             <%=  link_to participante.rol_participante.rol+" - "+participante.nombre+" "+participante.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:participante_id => participante.id, :nuevoItem => true}, :class => "descripcionLog"   %>
+                             <%=  link_to participante.rol_participante.rol+" - "+participante.nombre+" "+participante.apellido, {:controller => "participantes", :action => "edit", :proceso_id => @proceso.id,:id => participante.id, :nuevoItem => true}, :class => "descripcionLog"   %>
                         
                           </h5> 
                       </div>
@@ -253,7 +252,7 @@
               <article class="document" >
 
                      <% @actividads.each do |actividad| %>
-                                          <div class="row">
+                      <div class="row">
                         <div class="small-12 columns ">
                            <h5>
                              
@@ -273,119 +272,128 @@
             </section>
           </section>
           <hr/>
-          <section class="documents " style="">
+          
+         <section class="documents " style="">
             <header class="has_buttons">
-              <h1><a href="#"> 4.  Conrtol - Alertas</a></h1>
-
-              <form action="#" class="button_to" data-remote="true" method="post">
+              <h1> 
+                 <%= link_to   "4. Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
+                </h1>
                 <div>
-                  <input class="tiny button  radius" type="submit" value="Crear un control">
-                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                  <%= button_to "Crear Alerta", {:controller => "alertas", :action => "new", :proceso_id => @proceso.id},:class => "tiny button radius alinearbotones" %>
+                  
+                  <%= button_to "Ver Todos", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius" %>
+
                 </div>
-              </form>
 
             </header>
 
-            <section class="documents grouped_by_date">
-              <article class="document" id="document_3073232" >
-                <table>
-                  <tbody>
-                    <tr>
-                      <td class="text">
-                        <h3 class="title">
-                          <a href="#">
-                            Control 1 - descripcion
-                          </a>
-                        </h3>
-                        <p>
-                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
-                          by Alexander Herrera
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+             <section class="documents grouped_by_date">
+              <article class="document" >
+
+                     <% @alertas.each do |alerta| %>
+                      <div class="row">
+                        <div class="small-12 columns ">
+                           <h5>
+                             
+                            <%= link_to edit_alerta_path(:proceso_id => @proceso.id,:alerta_id => alerta.id), :class => "descripcionLog"  do %>
+                                 <%= alerta.titulo %>  : <%= fechaFormatoActualizado alerta.updated_at %>
+                            <% end %>
+                            </h5>
+                        </div>
+                        <div class="small-12 columns">
+                          <p class="detalles">
+                          Actualizado <span class="time"><%= fechaFormatoActualizado alerta.updated_at %></span>
+                           </p>
+                        </div>
+                      </div>
+                   <% end %>
               </article>
             </section>
+
+
           </section>
           <hr/>
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1><a href="#"> 5. Estado del Proceso</a></h1>
+              <h1> 
+                 <%= link_to   "5. Estado del Proceso", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
-              <form action="#" class="button_to" data-remote="true" method="post">
+              </h1>
                 <div>
-                  <input class="tiny button  radius" type="submit" value="Crear Estado">
-                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                  <%= button_to "Crear Estado", {:controller => "estados", :action => "new", :proceso_id => @proceso.id},:class => "tiny button radius alinearbotones" %>
+                  
+                  <%= button_to "Ver Todos", {:controller => "estados", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius" %>
+
                 </div>
-              </form>
 
             </header>
 
-            <section class="documents grouped_by_date">
-              <article class="document" id="document_3073232" >
-                <table>
-                  <tbody>
-                    <tr>
-                      <td class="text">
-                        <h3 class="title">
-                          <a href="#">
-                            Estado 1 - descripcion
-                          </a>
-                        </h3>
-                        <p>
-                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
-                          by Alexander Herrera
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+           <section class="documents grouped_by_date">
+              <article class="document" >
+
+                     <% @estados.each do |estado| %>
+                      <div class="row">
+                        <div class="small-12 columns ">
+                           <h5>
+                             
+                            <%= link_to edit_estado_path(:proceso_id => @proceso.id,:estado_id => estado.id), :class => "descripcionLog"  do %>
+                                 <%= estado.resumen %>  
+                            <% end %>
+                            </h5>
+                        </div>
+                        <div class="small-12 columns">
+                          <p class="detalles">
+                          Actualizado <span class="time"><%= fechaFormatoActualizado estado.updated_at %></span>
+                           </p>
+                        </div>
+                      </div>
+                   <% end %>
               </article>
             </section>
+
           </section>
           <hr/>
 
           <section id="panelDocumentos" class="documents " style="">
             <header class="has_buttons">
-              <h1><a href="#">6. Documentos</a></h1>
+              <h1> 
+                    <%= link_to   "6. Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
-              <form action="#" class="button_to" data-remote="true" method="post">
+                  </h1>
                 <div>
-                  <input class="tiny button  radius" type="submit" value="Crear un documento">
-                  <input class="tiny button secondary radius" type="submit" value="Ver Todos">
+                  <%= button_to "Crear Documento", {:controller => "documents", :action => "new", :proceso_id => @proceso.id},:class => "tiny button radius alinearbotones" %>
+                  
+                  <%= button_to "Ver Todos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius" %>
+
                 </div>
-              </form>
 
             </header>
 
             <section class="documents grouped_by_date">
-              <article class="document" id="document_3073232" >
-                <table>
-                  <tbody>
-                    <tr>
-                      <td class="icon">
-                        <a href="#">
-                          <img alt="Document icon jumbo" height="70" src="https://d3dma7a8zw52bz.cloudfront.net/assets/icons/document_icon_jumbo-a0a7cde8400d74f9975a1608bed73a1f.png" width="60">
-                        </a>
-                      </td>
+              <article class="document" >
 
-                      <td class="text">
-                        <h3 class="title">
-                          <a href="#">
-                            Untitled
-                          </a>
-                        </h3>
-                        <p>
-                          Saved <span class="time"><time data-time-ago="" datetime="2013-05-26T17:30:13Z" style="">9 minutes ago</time></span>
-                          by Alexander Herrera
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                     <% @documentos.each do |documento| %>
+                      <div class="row">
+                        <div class="small-12 columns ">
+                           <h5>
+                             
+                            <%= link_to edit_document_path(:proceso_id => @proceso.id,:documento_id => documento.id), :class => "descripcionLog"  do %>
+                                 <%= documento.name %>  
+                            <% end %>
+                            </h5>
+                        </div>
+                        <div class="small-12 columns">
+                          <p class="detalles">
+                          Actualizado <span class="time"><%= fechaFormatoActualizado documento.updated_at %></span>
+                           </p>
+                        </div>
+                      </div>
+                   <% end %>
               </article>
             </section>
+
+
+           
           </section>
 
 

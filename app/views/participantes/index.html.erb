@@ -39,13 +39,13 @@
                         
                         <% if  @participantesRender == "true" %>
 
-                        <%= button_to 'Nuevo Participante', {:controller => "participantes", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_participante_link" %>
+                        <%= button_to 'Nuevo Participante', {:controller => "participantes", :action => "new", :proceso_id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_participante_link" %>
 
                         <%= button_to 'Listar Participantes',"javascript:listarParticipantes()" , :class => "button radius", :id => "listar_participante_link" %>
 
                         <% else %>
 
-                        <%= button_to 'Nuevo Participante', {:controller => "participantes", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_participante_link" %>
+                        <%= button_to 'Nuevo Participante', {:controller => "participantes", :action => "new", :proceso_id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_participante_link" %>
 
                         <%= button_to 'Listar Participantes',"javascript:listarParticipantes()" , :class => "button radius ocultar", :id => "listar_participante_link" %>
 

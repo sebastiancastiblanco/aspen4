@@ -36,7 +36,12 @@ class ProcesosController < ApplicationController
     @logs = Log.where(usuario_id: current_user.id, proceso_id: @proceso.id ).order('created_at DESC').limit(3)
     #estados de los procesos
     @estadosProcesos = EstadoProceso.all
-
+    #Alertas del proceso
+    @alertas = @proceso.alertas.order("updated_at DESC").first(3)
+    #estados de los procesos
+    @estados = @proceso.estados.order("updated_at DESC").first(3)
+    #Documentos del proceso
+    @documentos = @proceso.documents.order("updated_at DESC").first(3)
     #Variables Gon, pasar variable proceso para uso en codigo JS
     gon.proceso_id = @proceso.id
     #Variable cantidad de usuarios en el proces

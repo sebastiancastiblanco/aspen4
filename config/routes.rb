@@ -5,21 +5,27 @@ AspenVersion3::Application.routes.draw do
   get "logs/iractividad"
 
   resources :documents
+  
   resources :events
   get "events/move"
   get "events/resize"
+  
   resources :tipo_procesos
   get "tipo_procesos/create"
+  
   resources :actividads
   get "actividads/filtrado"
+  
   resources :estado_actividads
   resources :contratos
   resources :participantes
   resources :alertas
   resources :estados
   resources :rol_participantes
+  
   resources :control_accesos
   get "procesos/createTipoProceso"
+  
   resources :procesos
   get "procesos/favorito"
   get "procesos/nofavorito"
@@ -42,54 +48,46 @@ AspenVersion3::Application.routes.draw do
   match 'home' => 'usuarios#new', as: :home
   match 'login'  => 'usuarios#new', as: :login
   match 'logout' => 'usuario_sessions#destroy', as: :logout
-  root :to => 'usuario_sessions#new'
 
   match '/usuarios/new' => 'usuarios#new', as: :nuevoUsuario
   match '/usuarios/:id' => 'usuarios#index', as: :listaUsuarios
   match '/usuarios/:id/edit' => 'usuarios#edit', as: :editarUsuario
 
-  match '/participantes/:id/edit' => 'participantes#edit', as: :editParticipante
-  match '/procesos/:proceso_id/participantes/new/:id' => 'participantes#new', as: :nuevaActividad
-  match '/procesos/:proceso_id/participantes/:participante_id/:nuevoItem' => 'participantes#index', as: :editarParticipantesProceso
-  match '/procesos/:proceso_id/participantes/:nuevoItem' => 'participantes#index', as: :nuevoParticipantesProceso
-  match '/procesos/:proceso_id/participantes' => 'participantes#index', as: :verParticipantesProceso
+  match '/proceso/:proceso_id/participantes/edit/:id' => 'participantes#edit', as: :editParticipante
+  match '/proceso/:proceso_id/participantes/edit/:id/:nuevoItem' => 'participantes#edit', as: :editParticipante
+  
+  match '/proceso/:proceso_id/participantes/new' => 'participantes#new', as: :nuevaActividad
+  match '/proceso/:proceso_id/participantes/:participante_id/:nuevoItem' => 'participantes#index', as: :editarParticipantesProceso
+  match '/proceso/:proceso_id/participantes/:nuevoItem' => 'participantes#index', as: :nuevoParticipantesProceso
+  match '/proceso/:proceso_id/participantes' => 'participantes#index', as: :listaParticipantes
+  match '/proceso/:proceso_id/participantes/:id' => 'participantes#index', as: :ParticipanteProceso
 
   match '/contratos/:id/edit' => 'contratos#edit', as: :editContrato
-  match '/procesos/:proceso_id/contratos/new/:id' => 'contratos#new', as: :nuevaActividad
-  match '/procesos/:proceso_id/contratos/:contrato_id/:nuevoItem' => 'contratos#index', as: :editarContratosProceso
-  match '/procesos/:proceso_id/contratos/:nuevoItem' => 'contratos#index', as: :nuevoContratosProceso
-  match '/procesos/:proceso_id/contratos' => 'contratos#index', as: :verContratosProceso
+  match '/proceso/:proceso_id/contratos/new/:id' => 'contratos#new', as: :nuevaActividad
+  match '/proceso/:proceso_id/contratos/:contrato_id/:nuevoItem' => 'contratos#index', as: :editarContratosProceso
+  match '/proceso/:proceso_id/contratos/:nuevoItem' => 'contratos#index', as: :nuevoContratosProceso
+  match '/proceso/:proceso_id/contratos' => 'contratos#index', as: :verContratosProceso
   
   
   match '/actividads/:id/edit' => 'actividads#edit', as: :editActividad
-  match '/procesos/:proceso_id/actividades/new/:id' => 'actividads#new', as: :nuevaActividad
-  match '/procesos/:proceso_id/actividades/:actividad_id/:nuevoItem' => 'actividads#index', as: :editarActividadesProceso
-  match '/procesos/:proceso_id/actividades/:nuevoItem' => 'actividads#index', as: :nuevoActividadesProceso
-  match '/procesos/:proceso_id/actividades' => 'actividads#index', as: :verActividadesProceso
+  match '/proceso/:proceso_id/actividades/new/:id' => 'actividads#new', as: :nuevaActividad
+  match '/proceso/:proceso_id/actividades/:actividad_id/:nuevoItem' => 'actividads#index', as: :editarActividadesProceso
+  match '/proceso/:proceso_id/actividades/:nuevoItem' => 'actividads#index', as: :nuevoActividadesProceso
+  match '/proceso/:proceso_id/actividades' => 'actividads#index', as: :verActividadesProceso
 
-  match '/participantes/new/:id' => 'participantes#new', as: :nuevoParticipante
-  match '/participantes/:id' => 'participantes#index', as: :listaParticipantes
-  match '/participantes/:id/edit' => 'participantes#edit', as: :editarParticipantes
 
-  match '/contratos/new/:id' => 'contratos#new', as: :nuevoContrato
-  match '/contratos/:id' => 'contratos#index', as: :listaContratos
-  match '/contratos/:id/edit' => 'contratos#edit', as: :editarContrato
 
-  match '/actividads/new/:id' => 'actividads#new', as: :nuevaActividad
-  match '/actividads/:id' => 'actividads#index', as: :listaActividads
-  match '/actividads/:id/edit' => 'actividads#edit', as: :editarActividad
+  match '/proceso/:proceso_id/alertas' => 'alertas#index', as: :listaAlertas
+  match '/proceso/:proceso_id/alertas/new' => 'alertas#new', as: :nuevaAlerta
+  match '/proceso/:proceso_id/alertas/:alerta_id/edit' => 'alertas#edit', as: :editarActividad
 
-  match '/alertas' => 'alertas#index', as: :listaAlertas
-  match '/alertas/new' => 'alertas#new', as: :nuevaAlerta, :via => :post
-  match '/alertas/:id/edit' => 'alertas#edit', as: :editarActividad
+  match '/proceso/:proceso_id/documents' => 'documents#index', as: :listaDocumentos
+  match '/proceso/:proceso_id/documents/new' => 'documents#new', as: :nuevaDocumento, :via => :post
+  match '/proceso/:proceso_id/documents/:documento_id/edit' => 'documents#edit', as: :editarDocumento
 
-  match '/documents' => 'documents#index', as: :listaDocumentos
-  match '/documents/new' => 'documents#new', as: :nuevaDocumento, :via => :post
-  match '/documents/:id/edit' => 'documents#edit', as: :editarDocumento
-
-  match '/estados' => 'estados#index', as: :listaEstados
-  match '/estados/new' => 'estados#new', as: :nuevoEstado, :via => :post
-  match '/estados/:id/edit' => 'estados#edit', as: :editarEstado
+  match '/proceso/:proceso_id/estados' => 'estados#index', as: :listaEstados
+  match '/proceso/:proceso_id/estados/new' => 'estados#new', as: :nuevoEstado, :via => :post
+  match '/proceso/:proceso_id/estados/:estado_id/edit' => 'estados#edit', as: :editarEstado
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

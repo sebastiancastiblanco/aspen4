@@ -15,6 +15,7 @@ class EstadosController < ApplicationController
   # GET /estados/1.json
   def show
     @estado = Estado.find(params[:id])
+@proceso = Proceso.find(params[:proceso_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +27,7 @@ class EstadosController < ApplicationController
   # GET /estados/new.json
   def new
     @estado = Estado.new
+    @proceso = Proceso.find(params[:proceso_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,7 +37,9 @@ class EstadosController < ApplicationController
 
   # GET /estados/1/edit
   def edit
-    @estado = Estado.find(params[:id])
+    @estado = Estado.find(params[:estado_id])
+    @proceso = Proceso.find(params[:proceso_id])
+
   end
 
   # POST /estados

@@ -7,15 +7,14 @@
 
        <header>
           <ul class="breadcrumbs">
-            <li><%= link_to 'Procesos', procesos_path %></li>
-            <li><%= link_to @proceso do  %>
-                  proceso <%= @proceso.id %> : <%= @proceso.titulo %>
+            <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+                  <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
-            <li><%= link_to 'Contratos', "javascript:listarAlertas()" %></li>
+            <li class="">Actividades</li>
           </ul>
         </header>
-
+        
         <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
 
           <header class="has_buttons">
@@ -32,9 +31,8 @@
 
                     <div class="small-3 small-3 columns left">
 
+                         <%= button_to "Nueva Alerta", {:controller => "alertas", :action => "new", :proceso_id => @proceso.id},:class => " button radius " %>
 
-                        <%= button_to 'Nueva Alerta', new_alerta_path(:proceso_id => @proceso.id), :class => "button radius ", :id => "new_alerta_link"  %>
-                        <%= button_to 'Listar Alertas',"javascript:listarAlertas()" , :class => "button radius ocultar", :id => "listar_alerta_link" %>
 
                     </div>
 

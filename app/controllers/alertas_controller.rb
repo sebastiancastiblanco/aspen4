@@ -27,7 +27,8 @@ class AlertasController < ApplicationController
   # GET /alerta/new.json
   def new
     @alerta = Alerta.new
-
+    @proceso = Proceso.find(params[:proceso_id])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @alerta }
@@ -37,7 +38,8 @@ class AlertasController < ApplicationController
   # GET /alerta/1/edit
   def edit
     logger.debug "Edit alerta"
-    @alerta = Alerta.find(params[:id])
+    @alerta = Alerta.find(params[:alerta_id])
+    @proceso = Proceso.find(params[:proceso_id])
         logger.debug "Edit post: #{@alerta.attributes.inspect}"
 
   end

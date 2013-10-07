@@ -4,12 +4,17 @@
     <div class="container stack_container" style="width: 960px;">
       <div class="panel sheet project active blank_slate fondoGris">
 
+        
         <header>
-          <ul class="breadcrumbs">
-             <li> <%= link_to   "Estados", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
-            <li><a href="#">Nuevo Estado</a></li>
-          </ul>
-        </header>
+              <ul class="breadcrumbs">
+                <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+                      <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
+                    <% end %>
+                </li>
+                 <li> <%= link_to   "Estados", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
+            <li><a href="#">Nuevo estado</a></li>
+              </ul>
+            </header>
 
         <div class="panel sheet topics fondoGris"
             style="margin-left: 20px; margin-bottom: -20px;"

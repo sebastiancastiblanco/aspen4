@@ -5,13 +5,15 @@
 			<div class="panel sheet project active blank_slate fondoGris">
 
 				<header>
-					<ul class="breadcrumbs">
-
-
-						 <li> <%= link_to   "Alertas", {:controller => "alertas", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
+		          <ul class="breadcrumbs">
+		            <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+		                  <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
+		                <% end %>
+		            </li>
+		             <li> <%= link_to   "Alertas", {:controller => "alertas", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
 						<li><a href="#">Nueva Alerta</a></li>
-					</ul>
-				</header>
+		          </ul>
+		        </header>
 
 				<div class="panel sheet topics fondoGris"
 						style="margin-left: 20px; margin-bottom: -20px;"
@@ -32,9 +34,9 @@
 					</header>
 					<div class="sheet_body ">
 						<article class="calendar_event new expanded" >
-							<div class="expanded_content bubble">
+							
 								<%= render 'formNew' %>
-							</div>
+							
 						</article>
 					</div>
 				</div>

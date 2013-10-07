@@ -38,12 +38,10 @@ class ParticipantesController < ApplicationController
   def new
     @participante = Participante.new
     @rol_participantes = RolParticipante.all
-    @proceso = Proceso.find(params[:id])
-
+    @proceso = Proceso.find(params[:proceso_id])
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @participante }
+      format.html # show.html.erb
       format.js
     end
   end
@@ -57,7 +55,7 @@ class ParticipantesController < ApplicationController
     @participantesRender = (params[:nuevoItem])
     
      respond_to do |format|
-        format.html 
+        format.html # show.html.erb
         format.js
     end
   end
@@ -129,8 +127,6 @@ class ParticipantesController < ApplicationController
     
     respond_to do |format|
       #Traza de log
-      
-
       format.html { redirect_to participantes_url }
       format.json { head :no_content }
       format.js

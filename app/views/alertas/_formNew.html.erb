@@ -1,4 +1,4 @@
-<%= form_for @alerta, url: alertas_path,  :html => { :class => "calendar_event_editor_form"} do |f| %>
+<%= form_for @alerta, url: alertas_path,  :html => { :class => "custom"} do |f| %>
 
   <% if @alerta.errors.any? %>
     <div id="error_explanation">
@@ -19,42 +19,42 @@
       <%= f.label :titulo_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :titulo, :placeholder => "Name the event" %>
+      <%= f.text_field :titulo, :placeholder => "Titulo del evento" %>
     </div>
 
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :hora_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :hora, :placeholder => "At what time? (9am, 1pm, etc.)" %>
+      <%= f.text_field :hora, :placeholder => "Hora de inicio? (9am, 1pm, etc.)" %>
     </div>
 
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :nota_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :nota, :placeholder => "Add an optional note" %>
+      <%= f.text_field :nota, :placeholder => "Adiciona una nota" %>
     </div>
 
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :comienza_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :comienza, :placeholder => "Starts" %>
+      <%= f.text_field :comienza, :placeholder => "Fecha de inicio" %>
     </div>
 
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :termina_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :termina, :placeholder => "Ends" %>
+      <%= f.text_field :termina, :placeholder => "Fecha de finalizacion" %>
     </div>
 
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :repeticion_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.select :repeticion,  options_for_select( [ ['No', ''], ['Every day', 'daily'], ['Every week', 'weekly'],['Every month', 'monthly'],['Every year', 'yearly'] ] ) %>
+      <%= f.select :repeticion,  options_for_select( [ ['No', ''], ['Todos los dias', 'daily'], ['Todas las semanas', 'weekly'],['Todos los meses', 'monthly'],['Todos los anios', 'yearly'] ] ) %>
     </div>
 
 </div>
