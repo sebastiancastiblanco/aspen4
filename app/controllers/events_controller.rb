@@ -25,6 +25,16 @@ class EventsController < ApplicationController
   #Asociandolo al usuario que lo creo.
   def create
       @event = Event.new(params[:event])
+      #setear la fecha en un solo campo
+      if @event.starttime != nil && @event.horainicio != nil && @event.endtime != nil && @event.horafin != nil
+        @event.starttime = DateTime.new(@event.starttime.year, @event.starttime.month, @event.starttime.day, @event.horainicio.hour, @event.horainicio.min, 0, 0)
+        @event.endtime = DateTime.new(@event.endtime.year, @event.endtime.month, @event.endtime.day, @event.horafin.hour, @event.horafin.min, 0, 0)
+        
+
+        zone = ActiveSupport::TimeZone.new("Bogota")
+        @event.starttime.in_time_zone(zone)
+      end
+
       respond_to do |format|
         if @event.save
           #Salvar relacion entre el evento y el usuario que lo creo

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131013153538) do
+ActiveRecord::Schema.define(:version => 20131014183558) do
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(:version => 20131013153538) do
     t.datetime "updated_at", :null => false
     t.integer  "proceso_id"
     t.boolean  "activo"
+    t.datetime "horainicio"
+  end
+
+  create_table "brands", :force => true do |t|
+    t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "contratos", :force => true do |t|
@@ -127,6 +134,8 @@ ActiveRecord::Schema.define(:version => 20131013153538) do
     t.datetime "updated_at",                         :null => false
     t.text     "description"
     t.integer  "event_series_id"
+    t.datetime "horainicio"
+    t.datetime "horafin"
   end
 
   add_index "events", ["event_series_id"], :name => "index_events_on_event_series_id"

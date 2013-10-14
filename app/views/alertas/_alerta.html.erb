@@ -4,8 +4,8 @@
     </header>
     <article class="calendar_event">
         <header>
-                <span class="month"><%= fechaMes alerta.comienza %></span>
-                <span class="day" style="background-color: #777 !important"><%= fechaDia alerta.comienza %></span>
+                <span class="month"><%= fechaMes alerta.termina %></span>
+                <span class="day" style="background-color: #777 !important"><%= fechaDia alerta.termina %></span>
         </header>
 
         <ul>
@@ -13,7 +13,7 @@
                
                 Titulo: <span class="bold" style=""><%= alerta.titulo %></span>
                 
-                <p>Programada: <%= fechaFormatoActualizado alerta.comienza %> </p>
+                <p>Programada: <%= fechaFormatoActualizado alerta.termina %> </p>
                 <p>Nota: <%= alerta.nota %> </p>
                 
 

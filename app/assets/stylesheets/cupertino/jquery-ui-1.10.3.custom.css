@@ -298,103 +298,104 @@ button.ui-button::-moz-focus-inner {
 	padding: 0;
 }
 .ui-datepicker {
-	width: 17em;
-	padding: .2em .2em 0;
-	display: none;
+	width: 17em !important;
+	padding: .2em .2em 0 !important;
+	display: none !important;
 }
 .ui-datepicker .ui-datepicker-header {
-	position: relative;
-	padding: .2em 0;
+	position: relative !important;
+	padding: .2em 0 !important;
 }
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
-	position: absolute;
-	top: 2px;
-	width: 1.8em;
-	height: 1.8em;
+	position: absolute !important;
+	top: 2px !important;
+	width: 1.8em !important;
+	height: 1.8em !important;
 }
 .ui-datepicker .ui-datepicker-prev-hover,
 .ui-datepicker .ui-datepicker-next-hover {
-	top: 1px;
+	top: 1px !important;
 }
 .ui-datepicker .ui-datepicker-prev {
-	left: 2px;
+	left: 2px !important;
 }
 .ui-datepicker .ui-datepicker-next {
-	right: 2px;
+	right: 2px !important;
 }
 .ui-datepicker .ui-datepicker-prev-hover {
-	left: 1px;
+	left: 1px !important;
 }
 .ui-datepicker .ui-datepicker-next-hover {
-	right: 1px;
+	right: 1px !important;
 }
 .ui-datepicker .ui-datepicker-prev span,
 .ui-datepicker .ui-datepicker-next span {
-	display: block;
-	position: absolute;
-	left: 50%;
-	margin-left: -8px;
-	top: 50%;
-	margin-top: -8px;
+	display: block !important;
+	position: absolute !important;
+	left: 50% !important;
+	margin-left: -8px !important;
+	top: 50% !important;
+	margin-top: -8px !important;
 }
 .ui-datepicker .ui-datepicker-title {
-	margin: 0 2.3em;
-	line-height: 1.8em;
-	text-align: center;
+	margin: 0 2.3em !important;
+	line-height: 1.8em !important;
+	text-align: center !important;
 }
 .ui-datepicker .ui-datepicker-title select {
-	font-size: 1em;
-	margin: 1px 0;
+	font-size: 1em !important;
+	margin: 1px 0 !important;
 }
 .ui-datepicker select.ui-datepicker-month-year {
-	width: 100%;
+	width: 100% !important;
 }
 .ui-datepicker select.ui-datepicker-month,
 .ui-datepicker select.ui-datepicker-year {
-	width: 49%;
+	width: 49% !important;
 }
 .ui-datepicker table {
-	width: 100%;
-	font-size: .9em;
-	border-collapse: collapse;
-	margin: 0 0 .4em;
+	width: 100% !important;
+	font-size: .9em !important;
+	border-collapse: collapse !important;
+	margin: 0 0 .4em !important;
 }
 .ui-datepicker th {
-	padding: .7em .3em;
-	text-align: center;
-	font-weight: bold;
-	border: 0;
+	padding: .7em .3em !important; 
+	text-align: center !important;
+	font-weight: bold !important;
+	border: 0 !important;
 }
 .ui-datepicker td {
-	border: 0;
-	padding: 1px;
+	border: 0 !important;
+	padding: 1px !important;
 }
 .ui-datepicker td span,
 .ui-datepicker td a {
-	display: block;
-	padding: .2em;
-	text-align: right;
-	text-decoration: none;
+	display: block !important; 
+	padding: .2em !important;
+	text-align: right !important;
+	text-decoration: none !important;
 }
 .ui-datepicker .ui-datepicker-buttonpane {
-	background-image: none;
-	margin: .7em 0 0 0;
-	padding: 0 .2em;
-	border-left: 0;
-	border-right: 0;
-	border-bottom: 0;
+	background-image: none !important;
+	margin: .7em 0 0 0 !important;
+	padding: 0 .2em !important;
+	border-left: 0 !important;
+	border-right: 0 !important;
+	border-bottom: 0 !important;
 }
 .ui-datepicker .ui-datepicker-buttonpane button {
-	float: right;
-	margin: .5em .2em .4em;
-	cursor: pointer;
-	padding: .2em .6em .3em .6em;
-	width: auto;
-	overflow: visible;
+	float: right !important;
+	margin: .5em .2em .4em !important;
+	cursor: pointer !important;
+	padding: .2em .6em .3em .6em !important;
+	width: auto !important;
+	overflow: visible !important;
+	font-size: 10px !important;
 }
 .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
-	float: left;
+	float: left !important;
 }
 
 /* with multiple calendars */
@@ -612,23 +613,23 @@ button.ui-button::-moz-focus-inner {
 	background-image: none;
 }
 .ui-slider {
-	position: relative;
-	text-align: left;
+	position: relative !important;
+	text-align: left !important;
 }
 .ui-slider .ui-slider-handle {
-	position: absolute;
-	z-index: 2;
-	width: 1.2em;
-	height: 1.2em;
-	cursor: default;
+	position: absolute !important;
+	z-index: 2 !important;
+	width: 1.2em !important;
+	height: 1.2em !important;
+	cursor: default !important;
 }
 .ui-slider .ui-slider-range {
-	position: absolute;
-	z-index: 1;
-	font-size: .7em;
-	display: block;
-	border: 0;
-	background-position: 0 0;
+	position: absolute !important;
+	z-index: 1 !important;
+	font-size: .7em !important;
+	display: block !important;
+	border: 0 !important;
+	background-position: 0 0 !important;
 }
 
 /* For IE8 - See #6727 */

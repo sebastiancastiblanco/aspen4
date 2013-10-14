@@ -50,10 +50,10 @@
 </div>
 
 <script>
-  jQuery('#event_starttime').datepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt'});
-  jQuery('#event_starttime').datepicker( "option", "showAnim", 'drop' );
-  jQuery('#event_endtime').datepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt'});
-  jQuery('#event_endtime').datepicker( "option", "showAnim", 'drop' );
+  $('#event_starttime').datetimepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt',stepHour: 1,stepMinute: 10});
+  
+  jQuery('#event_endtime').datetimepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt',stepHour: 1,stepMinute: 30});
+
  //  $(document).foundation();
 </script>
 

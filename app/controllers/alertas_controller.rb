@@ -48,6 +48,14 @@ class AlertasController < ApplicationController
     @proceso = Proceso.find(params[:proceso_id])
     @alerta.proceso_id = params[:proceso_id]
     @alerta.activo = true
+    #setear la fecha en un solo campo
+    if @alerta.termina != nil && @alerta.horainicio != nil
+      @alerta.termina = DateTime.new(@alerta.termina.year, @alerta.termina.month, @alerta.termina.day, @alerta.horainicio.hour, @alerta.horainicio.min, 0, 0)
+      zone = ActiveSupport::TimeZone.new("Bogota")
+      @alerta.termina.in_time_zone(zone)
+    end
+    
+    
 
     respond_to do |format|
       if @alerta.save

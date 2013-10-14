@@ -11,7 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui 
 //= require jquery_ujs
+//= require autocomplete-rails
+
 
 
 function cambioEstadoProceso (procesoid){

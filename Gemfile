@@ -21,7 +21,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.3.0'
 
 #Gemas para loggin
 gem 'sorcery'
@@ -34,6 +34,11 @@ gem 'fullcalendar-rails'
 
 #Gema para adicionar CSS sinamivamente al HTML que se envia en los emails.
 gem 'roadie'
+
+#Gemma de autocompletado
+gem "rails3-jquery-autocomplete", "~> 1.0.11"
+#Gema para el datepicker
+gem 'jquery-timepicker-rails'
 
 
 # To use ActiveModel has_secure_password

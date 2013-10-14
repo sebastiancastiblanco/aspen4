@@ -1,4 +1,6 @@
 class UsuariosController < ApplicationController
+  autocomplete :usuario,:username => 'name', :full => true
+
   # GET /usuarios
   # GET /usuarios.json
   def index

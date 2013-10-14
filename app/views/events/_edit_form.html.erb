@@ -6,7 +6,7 @@
      
       <%= form_for(@event,:url => {:action => :update}, :remote => true,  :html => { :class => "custom"} ) do |f| %>
         <div class="alert-panel-message" >
-          <div class="row"> 
+           <div class="row"> 
                 <div class="small-2 small-offset-0 columns ">
                   <%= f.label "Titulo", :class => "tituloCampo error alinearDerecha" %>
                 </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="small-10 columns field">
                   <%= f.text_area :description%>
-                  <%= hidden_field_tag :idEvent, @event.id %>
+                  <%= hidden_field_tag :idEvent %>
                 </div>
                
           </div>
@@ -52,10 +52,9 @@
 </div>
 
 <script>
-  jQuery('#event_starttime').datepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt'});
-  jQuery('#event_starttime').datepicker( "option", "showAnim", 'drop' );
-  jQuery('#event_endtime').datepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt'});
-  jQuery('#event_endtime').datepicker( "option", "showAnim", 'drop' );
+  $('#event_starttime').datetimepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt'});
+  
+  jQuery('#event_endtime').datetimepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt'});
   //  $(document).foundation();
 </script>
 

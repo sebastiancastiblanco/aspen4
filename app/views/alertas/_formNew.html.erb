@@ -26,23 +26,24 @@
 
 </div>
 
-<div class="row">
+<div class="row datepair" data-language="javascript">
 
    
-
-     <div class="small-2 small-offset-0 columns ">
+    <div class="small-2 small-offset-0 columns ">
       <%= f.label :comienza_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :comienza, :placeholder => "Fecha de inicio" %>
+      <%= f.text_field :termina, :placeholder => "Fecha inicio",:class => "date start"   %>
     </div>
-
+    
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :repeticion_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
       <%= f.select :repeticion,  options_for_select( [ ['No', ''], ['Todos los dias', 'daily'], ['Todas las semanas', 'weekly'],['Todos los meses', 'monthly'],['Todos los anios', 'yearly'] ] ) %>
     </div>
+
+    
 
 </div>
 
@@ -63,7 +64,6 @@
 <% end %>
 
 <script>
-  jQuery('#alerta_comienza').datepicker({dateFormat: "dd MM yy"});
-  jQuery('#alerta_termina').datepicker({dateFormat: "dd MM yy"});
+$('#alerta_termina').datetimepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt',stepHour: 1,stepMinute: 10});
   $(document).foundation();
 </script>

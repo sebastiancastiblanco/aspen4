@@ -15,7 +15,7 @@
 #
 
 class Event < ActiveRecord::Base
-  attr_accessible :title,:starttime,:endtime,:all_day,:description
+  attr_accessible :title,:starttime,:endtime,:all_day,:description, :horainicio, :horafin
 
   has_many :usuario_eventos
   has_many :usuarios, through: :usuario_eventos

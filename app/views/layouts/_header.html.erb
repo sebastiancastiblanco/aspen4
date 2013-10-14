@@ -29,7 +29,11 @@
     </div>
 
     <div class="jumpto" >
-        <input type="text"  placeholder="Ir a un proceso, persona, cliente, o buscar...">
+        
+        <%= form_tag do %>
+          <%= autocomplete_field_tag 'nombre', '',usuarios_autocomplete_usuario_nombre_path %>
+        <% end %>
+
     </div>
 
 </nav>

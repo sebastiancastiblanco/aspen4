@@ -1185,3 +1185,18 @@ background-color: #0192dd !important;
   color: #aa9c84 !important;
   text-decoration: none !important;
 }
+
+.tituloCampoCalendar
+{
+  color: #7d7a75 !important;
+  width: 100px !important;
+  font-size: 13px !important;
+}
+
+.tituloCampoCalendarValor
+{
+   color: #7d7a75 !important;
+    font-size: 13px !important;
+    margin-bottom: 0 !important;
+}
+
