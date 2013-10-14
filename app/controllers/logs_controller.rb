@@ -21,6 +21,12 @@ class LogsController < ApplicationController
 	 redirect_to :controller => 'contratos', :action => 'index', :proceso_id => @log.proceso.id, :contrato_id => @log.contrato_id, :nuevoItem => true
 	when 4    # Creacion o modificacion de una actividad
 	 redirect_to :controller => 'actividads', :action => 'index', :proceso_id => @log.proceso.id, :actividad_id => @log.actividad_id, :nuevoItem => true
+	when 5    # Creacion o modificacion de una alerta
+	 redirect_to :controller => 'alertas', :action => 'edit', :proceso_id => @log.proceso.id, :alerta_id => @log.alertas_id
+	when 6    # Creacion o modificacion de un documento
+	 redirect_to :controller => 'documents', :action => 'edit', :proceso_id => @log.proceso.id, :documento_id => @log.documento_id
+	when 7    # Creacion o modificacion de una conclusion
+	 redirect_to :controller => 'estados', :action => 'edit', :proceso_id => @log.proceso.id, :estado_id => @log.estado_id
 	else
 	   redirect_back_or_to(procesos_path)
 	end

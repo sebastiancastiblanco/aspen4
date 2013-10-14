@@ -4,7 +4,7 @@ class ContratosController < ApplicationController
   def index
     
     @proceso = Proceso.find(params[:proceso_id])
-    @contratos = @proceso.contratos
+    @contratos = @proceso.contratos.where(activo: true)
     @contratosRender = (params[:nuevoItem])
     if params[:contrato_id]
        @contrato = Contrato.find(params[:contrato_id])
@@ -70,7 +70,7 @@ class ContratosController < ApplicationController
     respond_to do |format|
       if @contrato.save
         #Traza de log
-        Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :contrato_id => @contrato.id, :mensaje_id => 3 ,:mensaje=> current_user.username.to_s+', Creo el contrato: '+@contrato.objeto)
+        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :contrato_id => @contrato.id, :mensaje_id => 3 ,:mensaje=> current_user.nombre.to_s+', Creo el contrato: '+@contrato.objeto)
 
         format.html { redirect_to @contrato, notice: 'Contrato was successfully created.' }
         format.json { render json: @contrato, status: :created, location: @contrato }
@@ -94,7 +94,7 @@ class ContratosController < ApplicationController
     respond_to do |format|
       if @contrato.update_attributes(params[:contrato])
         #Traza de log
-        Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :contrato_id => @contrato.id, :mensaje_id => 3 ,:mensaje=> current_user.username.to_s+', Modifico el contrato: '+@contrato.objeto)
+        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :contrato_id => @contrato.id, :mensaje_id => 3 ,:mensaje=> current_user.nombre.to_s+', Modifico el contrato: '+@contrato.objeto)
 
         format.html { redirect_to @proceso, notice: 'Contrato was successfully updated.' }
         format.json { head :no_content }
@@ -118,7 +118,7 @@ class ContratosController < ApplicationController
 
     respond_to do |format|
       #Traza de log
-      Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :contrato_id => @contrato.id, :mensaje_id => 3 ,:mensaje=> current_user.username.to_s+', Elimino el contrato: '+@contrato.objeto)
+      Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :contrato_id => @contrato.id, :mensaje_id => 3 ,:mensaje=> current_user.nombre.to_s+', Elimino el contrato: '+@contrato.objeto)
 
       format.html { redirect_to contratos_url }
       format.json { head :no_content }

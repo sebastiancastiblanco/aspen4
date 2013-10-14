@@ -72,7 +72,7 @@ class ActividadsController < ApplicationController
     respond_to do |format|
       if @actividad.save
         #Traza de log
-        Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.username.to_s+', Creo la actividad: '+@actividad.nombre)
+        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Creo la actividad: '+@actividad.nombre)
 
         format.html { redirect_to @proceso, notice: 'Actividad fue creada correctamente' }
         format.json { render json: @actividad, status: :created, location: @actividad }
@@ -97,7 +97,7 @@ class ActividadsController < ApplicationController
     respond_to do |format|
       if @actividad.update_attributes(params[:actividad])
         #Traza de log
-        Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.username.to_s+', Modifico la actividad: '+@actividad.nombre)
+        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Modifico la actividad: '+@actividad.nombre)
         
         format.html { redirect_to @proceso, notice: 'Actividad fue modificada correctamente.' }
         format.json { head :no_content }
@@ -120,7 +120,7 @@ class ActividadsController < ApplicationController
     
     respond_to do |format|
       #Traza de log
-      Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.username.to_s+', Elimino la actividad: '+@actividad.nombre)
+      Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Elimino la actividad: '+@actividad.nombre)
 
       format.html { redirect_to actividads_url }
       format.json { head :no_content }

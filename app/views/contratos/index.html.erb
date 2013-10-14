@@ -104,11 +104,14 @@
 
 <!-- Mostrar este mensaje si la lista de participantes esta vacia -->
 <% if @contratos.size == 0 %>
-<ol id="joyrideContrato" class="joyride-list" data-options="nextButton : true,tipAnimation :    'fade',tipAnimationFadeSpeed: 300" data-joyride>
-  <li data-id="new_contrato_link" data-text="Salir">
-    <p>Inicia creando un nuevo contrato</p>
-  </li>
-</ol>
+  <ol id="joyrideContrato" class="joyride-list" data-options="nextButton : true,tipAnimation :    'fade',tipAnimationFadeSpeed: 300" data-joyride>
+    <li data-id="new_contrato_link" data-text="Salir">
+      <p>Inicia creando un nuevo contrato</p>
+    </li>
+  </ol>
+  <script>
+     $(document).foundation('joyrideContrato', 'start');
+  </script>
 <% end %>
 
 </body>

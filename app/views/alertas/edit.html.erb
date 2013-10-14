@@ -24,9 +24,15 @@
               <div class="collapsed_content ">
                 <div class="row">
                   <div class="small-12 columns">
-                    <div class="small-7 columns left">
-                      <h1 class="field">Editar Alerta</h1>
-                    </div>
+                    <div class="small-6 small-9 columns left">
+                                  <h1 id="tituloContrato">
+                                   Nueva Alerta
+                                   </h1>
+                              </div>
+                    
+                            <div class="small-3 small-3 columns left">
+                                <%= link_to   "Listar Alertas", {:controller => "alertas", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get, :class => "button radius " %>
+                  </div>
                   </div>
                 </div>
               </div>

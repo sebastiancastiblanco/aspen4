@@ -29,19 +29,19 @@ class ProcesosController < ApplicationController
     #Variable para crear el control de acceso y lograr compartir los procesos a otros usuarios
     @control_acceso = ControlAcceso.new
     #recuperar los contratos del proceso
-    @contratos = @proceso.contratos.order("updated_at DESC").first(3)
+    @contratos = @proceso.contratos.where(activo: true).order("updated_at DESC").first(3)
     #recuperar las 3 ultimas actividades modificadas
-    @actividads = @proceso.actividads.order("updated_at DESC").first(3)
+    @actividads = @proceso.actividads.where(activo: true).order("updated_at DESC").first(3)
     #Recuperar los 3 ultimos movimientos hechos en el proceso
     @logs = Log.where(usuario_id: current_user.id, proceso_id: @proceso.id ).order('created_at DESC').limit(3)
     #estados de los procesos
     @estadosProcesos = EstadoProceso.all
     #Alertas del proceso
-    @alertas = @proceso.alertas.order("updated_at DESC").first(3)
+    @alertas = @proceso.alertas.where(activo: true).order("updated_at DESC").first(3)
     #estados de los procesos
-    @estados = @proceso.estados.order("updated_at DESC").first(3)
+    @estados = @proceso.estados.where(activo: true).order("updated_at DESC").first(3)
     #Documentos del proceso
-    @documentos = @proceso.documents.order("updated_at DESC").first(3)
+    @documentos = @proceso.documents.where(activo: true).order("updated_at DESC").first(3)
     #Variables Gon, pasar variable proceso para uso en codigo JS
     gon.proceso_id = @proceso.id
     #Variable cantidad de usuarios en el proces

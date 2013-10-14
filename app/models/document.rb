@@ -5,4 +5,5 @@ class Document < ActiveRecord::Base
 
   #Pertenece a un proceso
   belongs_to :proceso
+  belongs_to :usuario
 end

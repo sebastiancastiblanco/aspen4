@@ -11,7 +11,7 @@
                   <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
-            <li class="">Actividades</li>
+            <li class="">Alertas</li>
           </ul>
         </header>
         
@@ -31,7 +31,7 @@
 
                     <div class="small-3 small-3 columns left">
 
-                         <%= button_to "Nueva Alerta", {:controller => "alertas", :action => "new", :proceso_id => @proceso.id},:class => " button radius " %>
+                         <%= button_to "Nueva Alerta", {:controller => "alertas", :action => "new", :proceso_id => @proceso.id},:class => " button radius ", :id => "new_alerta_link"  %>
 
 
                     </div>
@@ -56,13 +56,14 @@
             <section class="calendar_events">
 
                   <div class="upcoming_events">
-                        <h2>Upcoming events</h2>
+                        <h2>Proximas alertas</h2>
                   </div>
-                  <section class="group today upcoming_events">
+                  
+                  
                         <% @alerta.each do |alerta| %>
                               <%= render 'alerta', :alerta => alerta %>
                         <% end %>
-                  </section>
+                  
                </section>
             </div>
           </div>
@@ -70,6 +71,18 @@
       </div>
     </div>
   </div>
+
+<!-- Mostrar este mensaje si la lista de participantes esta vacia -->
+<% if @alerta.size == 0 %>
+<ol id="joyrideAlerta" class="joyride-list" data-options="nextButton : true,tipAnimation : 'fade',tipAnimationFadeSpeed: 300" data-joyride>
+  <li data-id="new_alerta_link" data-text="Salir">
+    <p>Inicia programando una nueva alerta</p>
+  </li>
+</ol>
+<script>
+     $(document).foundation('joyrideAlerta', 'start');
+  </script>
+<% end %>
 
 
 </body>

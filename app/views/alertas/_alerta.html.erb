@@ -1,25 +1,27 @@
-
-    <article id="alerta_<%= alerta.id %>" class="calendar_event">
-          <header>
-                    <time >
-                      <span class="day_of_week"><%= if(alerta.comienza != nil) then alerta.comienza.strftime("%A") end %></span><span class="month">  <%= if(alerta.comienza != nil) then alerta.comienza.strftime("%B") end %> </span>
-                      <span class="day" style="background-color: #3185c5"><%= if(alerta.comienza != nil) then alerta.comienza.strftime("%d") end %></span>
-                    </time>
+ <section id="alerta_<%= alerta.id %>" class="group today upcoming_events">
+    <header>
+        
+    </header>
+    <article class="calendar_event">
+        <header>
+                <span class="month"><%= fechaMes alerta.comienza %></span>
+                <span class="day" style="background-color: #777 !important"><%= fechaDia alerta.comienza %></span>
         </header>
+
         <ul>
-              <li >
-                      <div style="float: left; width: 80%;">
-                        <time  style="color: #3185c5"><%= alerta.hora %></time>
-                        <%= link_to edit_alerta_path(alerta, :proceso_id => @proceso.id), :remote => true,:class => "alinearbotones" do  %>
-                              <%= alerta.titulo %>
-                        <% end %>
-                        <%= alerta.nota %>
-                      </div>
+            <li id="CalendarEvent_5615518">
+               
+                Titulo: <span class="bold" style=""><%= alerta.titulo %></span>
+                
+                <p>Programada: <%= fechaFormatoActualizado alerta.comienza %> </p>
+                <p>Nota: <%= alerta.nota %> </p>
+                
 
-                       <%= button_to "Eliminar", alerta_path(alerta), :class => "textRojolinks inlineBlock",  :method => :delete, :confirm => "Estas Seguro de eliminar esta alerta?"   %>
+                <%= button_to 'Ver', edit_alerta_path(alerta, :proceso_id => @proceso.id), :id => "new_alert_link",:class => "tiny button radius alinearbotones" %>
 
-              </li>
+                  <%= link_to "Eliminar", alerta_path(alerta, :proceso_id => @proceso.id), :class => "textRojolinks inlineBlock",  :method => :delete, :confirm => "Estas Seguro de eliminar esta alerta?"   %>
+
+            </li>
         </ul>
-
-</article>
-
+    </article>
+</section>

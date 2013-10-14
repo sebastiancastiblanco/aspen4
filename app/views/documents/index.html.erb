@@ -33,7 +33,7 @@
                     <div class="small-3 small-3 columns left">
 
 
-                         <%= button_to "Nuevo Documento", {:controller => "documents", :action => "new", :proceso_id => @proceso.id},:class => " button radius " %>
+                         <%= button_to "Nuevo Documento", {:controller => "documents", :action => "new", :proceso_id => @proceso.id},:class => " button radius ", :id => "new_document_link" %>
 
                     </div>
 
@@ -69,6 +69,18 @@
     </div>
   </div>
 
+
+<!-- Mostrar este mensaje si la lista de documentos esta vacia -->
+<% if @documents.size == 0 %>
+<ol id="joyrideDocumentos" class="joyride-list" data-options="nextButton : true,tipAnimation : 'fade',tipAnimationFadeSpeed: 300" data-joyride>
+  <li data-id="new_document_link" data-text="Salir">
+    <p>Inicia adjuntado un documento</p>
+  </li>
+</ol>
+<script>
+     $(document).foundation('joyrideDocumentos', 'start');
+  </script>
+<% end %>
 
 </body>
 

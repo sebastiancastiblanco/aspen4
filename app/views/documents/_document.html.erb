@@ -8,7 +8,7 @@
                           <figure class="full_width">
                             <a data-stacker="false" href="#">
 
-                              <img alt="" class="thumbnail" src=" <%=document.attachment.url %>" data-scaled="true" style="width: 120px; height: 138px;">
+                              <img alt="" class="thumbnail" src="/img/doc.png" data-scaled="true" style="width: 84px; height: 92px;margin: 0 25px 10px 30px;">
                             </a>
                           </figure>
                         </td>
@@ -16,35 +16,32 @@
                         <td class="textFiles">
                           <h3 class="filename">
                            <%= document.name %>
-                            <span class="bucket_name">(Aspen)</span>
+                            
                           </h3>
 
                           <div class="authorship">
+                            
                             <p class="meta">
-                              <span>Uploaded</span>
-                              <span class="creator">by Alexander Herrera</span>
-                              <time>on May 30</time>
+                              <span>Adjuntado</span>
+                              <span class="creator">por <%= document.usuario.nombre %></span>
+                              <time>, <%= fechaFormatoActualizado document.updated_at %></time>
                             </p>
+
                             <p class="actions">
-                              <a data-stacker="false" href="#">Download</a>
-                              <span>or</span>
-                              <a href="#">Open</a>
+                              <a data-stacker="false" href="<%= document.attachment.url %>">Descargar</a>,
+                              <%= link_to 'Editar', edit_document_path(document, :proceso_id => @proceso.id,:documento_id => document.id) %>
+                              <span>o</span>
+                              <%= link_to 'Eliminar', document_path(document, :proceso_id => @proceso.id), method: :delete, data: { confirm: 'Estas seguro de eliminar este documento?' }, :class => "textRojolinks inlineBlock" %>
                             </p>
                           </div>
                         </td>
-                            <td><%= link_to 'Edit', edit_document_path(document) %></td>
+                        
                       </tr>
                     </tbody>
                   </table>
 
 
-        <ul>
-              <li >
-
-                        <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-              </li>
-        </ul>
+      
 
 </article>
 

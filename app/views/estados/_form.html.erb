@@ -1,31 +1,34 @@
-<%= form_for(@estado,:html => { :multipart => true }) do |f| %>
-  <% if @estado.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@estado.errors.count, "error") %> prohibited this estado from being saved:</h2>
+<%= form_for(@estado,:html => { :multipart => true ,:class => "custom" }) do |f| %>
 
-      <ul>
-      <% @estado.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="row">
        <%= hidden_field_tag :proceso_id, params[:proceso_id] %>
 
-    <div class="small-4 columns field">
+     <div class="small-2 small-offset-0 columns ">
+      <%= f.label :tipo_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+     <div class="small-4 columns field">
       <%= f.select :tipo,  options_for_select( [ ['Abierto', 'abierto'], ['Cerrado', 'cerrado'] ] ) %>
     </div>
-    <div class="small-4 columns field">
-      <%= f.text_field :fecha, :placeholder => "Fecha" %>
+</div>
+
+<div class="row">
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :conclusion_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-     <div class="large-12 columns field">
-      <%= f.text_field :resumen, :placeholder => "Resumen" %>
-    </div>
-     <div class="large-12 columns field">
+    <div class="small-10 columns field">
       <%= f.text_field :conclusion, :placeholder => "Conclusion" %>
     </div>
+
+     <div class="small-2 small-offset-0 columns ">
+      <%= f.label :Observaciones_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-10 columns field">
+      <%= f.text_field :resumen, :placeholder => "Observaciones y anotaciones adicionales" %>
+    </div>
+
+
  </div>
 
 
@@ -36,14 +39,9 @@
       <%= link_to   "Cancelar", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks",:method=>:get %>
      </div>
      <div class="small-2 columns field">
-      <%= f.submit :'Guardar Estado' , :class => " button success radius" %></div>
+      <%= f.submit :'Guardar Conclusion' , :class => " button success radius" %></div>
      </div>
 
 </div>
 
 <% end %>
-
-<script>
-  jQuery('#estado_fecha').datepicker({dateFormat: "dd MM yy"});
-  $(document).foundation();
-</script>

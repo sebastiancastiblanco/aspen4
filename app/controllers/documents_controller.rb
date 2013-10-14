@@ -2,9 +2,9 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
     @proceso = Proceso.find(params[:proceso_id])
-
+    @documents = @proceso.documents.where(activo: true)
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,12 +46,17 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @document = Document.new(params[:document])
+    @proceso = Proceso.find(params[:proceso_id])
     @document.proceso_id = params[:proceso_id]
-
+    @document.usuario_id = current_user.id
+    @document.activo = true
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to action: "index",  proceso_id: params[:proceso_id] }
+         #Traza de log
+         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_user.nombre.to_s+', adjunto un nuevo documento: '+@document.name)
+
+        format.html { redirect_to action: "index",proceso_id: params[:proceso_id], notice: 'Se adjunto un nuevo documento.'}
         format.json { render json: @document, status: :created, location: @document }
       else
         format.html { render action: "new" }
@@ -65,10 +70,15 @@ class DocumentsController < ApplicationController
   # PUT /documents/1.json
   def update
     @document = Document.find(params[:id])
+    @proceso = Proceso.find(params[:proceso_id])
+    @document.activo = true
 
     respond_to do |format|
       if @document.update_attributes(params[:document])
-        format.html { redirect_to action: "index",  proceso_id: params[:proceso_id] }
+         #Traza de log
+         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_user.nombre.to_s+', modifico el documento adjunto : '+@document.name)
+
+        format.html { redirect_to action: "index",  proceso_id: params[:proceso_id], notice: 'Se modifco el documento correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -82,13 +92,14 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
     @document = Document.find(params[:id])
-    @proceso = @document.proceso_id
-    @document.destroy
+    @proceso = Proceso.find(params[:proceso_id])
+    #Traza de log
+    Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_user.nombre.to_s+', modifico el documento adjunto : '+@document.name)
+    @document.update_attribute(:activo, false)
 
     respond_to do |format|
-      format.html {  redirect_to action: "index",  proceso_id: @proceso }
+      format.html {  redirect_to action: "index",  proceso_id: @proceso, notice: 'Se elimino el documento correctamente.'}
       format.json { head :no_content }
     end
   end
 end
-

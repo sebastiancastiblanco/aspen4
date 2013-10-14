@@ -1,22 +1,17 @@
-<article id="estado_<%= estado.id %>" class="calendar_event">
-          <header>
-                    <time >
-                      <span class="day_of_week"><%= if(estado.fecha != nil) then estado.fecha.strftime("%A") end %></span><span class="month">  <%= if(estado.fecha != nil) then estado.fecha.strftime("%B") end %> </span>
-                      <span class="day" style="background-color: #3185c5"><%= if(estado.fecha != nil) then estado.fecha.strftime("%d") end %></span>
-                    </time>
-        </header>
-        <ul>
-              <li >
-                      <div style="float: left; width: 80%;">
-                        <time  style="color: #3185c5"><%= estado.tipo %></time>
-                        <%= link_to edit_estado_path(estado, :proceso_id => @proceso.id), :remote => true,:class => "alinearbotones" do  %>
-                              <%= estado.resumen %>
-                        <% end %>
-                      </div>
+<tr id="estado_<%= estado.id %>" class="topic message_10997527 fondoGris" >
+  <td class="who">
+     
+       <%= link_to edit_estado_path(estado, :proceso_id => @proceso.id, :estado_id => estado.id), :class => "alinearbotones" do  %>
+                              <%= estado.conclusion %>
+         <% end %>
 
-                       <%= button_to "Eliminar", estado_path(estado), :class => "textRojolinks inlineBlock",  :method => :delete, :confirm => "Estas Seguro de eliminar este estado?"   %>
+     
+        <%= button_to 'Ver', edit_estado_path(estado, :proceso_id => @proceso.id), :id => "new_alert_link",:class => "tiny button radius alinearbotones" %>
 
-              </li>
-        </ul>
-
-</article>
+      
+           <%= link_to "Eliminar", estado_path(estado, :proceso_id => @proceso.id), :class => "textRojolinks inlineBlock",  :method => :delete, :confirm => "Estas Seguro de eliminar esta conclusion?"   %>
+   
+  <td class="when">
+    <a href="#"> <%= fechaFormato1 estado.updated_at %> </a>
+  </td>
+</tr>

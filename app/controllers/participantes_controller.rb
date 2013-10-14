@@ -74,7 +74,7 @@ class ParticipantesController < ApplicationController
     respond_to do |format|
       if @participante.save
           #Traza de log
-          Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.username.to_s+', Creo el participante: '+@participante.nombre+' '+@participante.apellido)
+          Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.username.to_s+', Creo el participante: '+@participante.nombre+' '+@participante.apellido)
 
           format.html { redirect_to @participante, notice: 'El participante fue creado correctamente.'}
           format.json { render json: @participante, status: :created, location: @participante }
@@ -99,7 +99,7 @@ class ParticipantesController < ApplicationController
     respond_to do |format|
       if @participante.update_attributes(params[:participante])
         #Traza de log
-        Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.username.to_s+', Modifico el participante: '+@participante.nombre+' '+@participante.apellido)
+        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.nombre.to_s+', Modifico el participante: '+@participante.nombre+' '+@participante.apellido)
 
         format.html { redirect_to @participante, notice: 'Participante was successfully updated.' }
         format.json { head :no_content }
@@ -118,7 +118,7 @@ class ParticipantesController < ApplicationController
     @participante = Participante.find(params[:id])
     @proceso = @participante.proceso
 
-    Log.create(:usuario => current_user.username,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.username.to_s+', Elimino el participante: '+@participante.nombre+' '+@participante.apellido)
+    Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.nombre.to_s+', Elimino el participante: '+@participante.nombre+' '+@participante.apellido)
     
     #No se elimina por completo el participante, se deshabilita unicamente
     #En caso que se desee restablecer el participante

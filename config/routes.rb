@@ -76,18 +76,20 @@ AspenVersion3::Application.routes.draw do
   match '/proceso/:proceso_id/actividades' => 'actividads#index', as: :verActividadesProceso
 
 
-
+  match '/alertas/:alerta_id/edit' => 'alertas#edit', as: :editarActividad
   match '/proceso/:proceso_id/alertas' => 'alertas#index', as: :listaAlertas
-  match '/proceso/:proceso_id/alertas/new' => 'alertas#new', as: :nuevaAlerta
+  match '/proceso/:proceso_id/alertas/nuevo' => 'alertas#new', as: :nuevaAlerta
   match '/proceso/:proceso_id/alertas/:alerta_id/edit' => 'alertas#edit', as: :editarActividad
 
+  match '/documents/:documento_id/edit' => 'documents#edit', as: :editarDocumento
   match '/proceso/:proceso_id/documents' => 'documents#index', as: :listaDocumentos
   match '/proceso/:proceso_id/documents/new' => 'documents#new', as: :nuevaDocumento, :via => :post
   match '/proceso/:proceso_id/documents/:documento_id/edit' => 'documents#edit', as: :editarDocumento
 
-  match '/proceso/:proceso_id/estados' => 'estados#index', as: :listaEstados
-  match '/proceso/:proceso_id/estados/new' => 'estados#new', as: :nuevoEstado, :via => :post
-  match '/proceso/:proceso_id/estados/:estado_id/edit' => 'estados#edit', as: :editarEstado
+  match '/estados/:estado_id/edit' => 'estados#edit', as: :editarEstado
+  match '/proceso/:proceso_id/conclusiones' => 'estados#index', as: :listaEstados
+  match '/proceso/:proceso_id/conclusiones/new' => 'estados#new', as: :nuevoEstado, :via => :post
+  match '/proceso/:proceso_id/conclusiones/:estado_id/edit' => 'estados#edit', as: :editarEstado
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

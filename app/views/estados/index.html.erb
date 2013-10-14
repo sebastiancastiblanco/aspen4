@@ -12,7 +12,7 @@
                       <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                     <% end %>
                 </li>
-                 <li> <%= link_to   "Estados", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
+                 <li> <%= link_to   "Conclusiones", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
             
               </ul>
             </header>
@@ -27,18 +27,12 @@
 
                     <div class="small-6 small-9 columns left">
                       <h1 id="tituloContrato">
-                        Estados
+                        Conclusiones
                       </h1>
                     </div>
 
                     <div class="small-3 small-3 columns left">
-
-
-                         <%= button_to "Nuevo Estado", {:controller => "estados", :action => "new", :proceso_id => @proceso.id},:class => " button radius " %>
-
-
-                        <%= button_to 'Listar Estados',"javascript:listarAlertas()" , :class => "button radius ocultar", :id => "listar_alerta_link" %>
-
+                         <%= button_to "Nueva Conclusion", {:controller => "estados", :action => "new", :proceso_id => @proceso.id},:class => " button radius ",:id => "new_estado_link"  %>
                     </div>
 
                     <% if notice %>
@@ -61,14 +55,16 @@
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
             <section class="calendar_events">
 
-                  <div class="upcoming_events">
-                        <h2>Estados</h2>
-                  </div>
-                  <section class="group today upcoming_events">
+                    <table class="inbox " data-behavior="infinite_page file_drop_target" data-infinite-page="3">
+                      <tbody id="conclusiones">
+                          
                         <% @estados.each do |estado| %>
                               <%= render 'estado', :estado => estado %>
                         <% end %>
-                  </section>
+                  
+                      </tbody>
+                    </table>
+
                </section>
             </div>
           </div>
@@ -78,6 +74,17 @@
     </div>
   </div>
 
+<!-- Mostrar este mensaje si la lista de documentos esta vacia -->
+<% if @estados.size == 0 %>
+<ol id="joyrideEstados" class="joyride-list" data-options="nextButton : true,tipAnimation : 'fade',tipAnimationFadeSpeed: 300" data-joyride>
+  <li data-id="new_estado_link" data-text="Salir">
+    <p>Inicia creando una conclusion</p>
+  </li>
+</ol>
+<script>
+     $(document).foundation('joyrideEstados', 'start');
+  </script>
+<% end %>
 
 </body>
 

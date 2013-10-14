@@ -11,8 +11,8 @@
                       <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                     <% end %>
                 </li>
-                 <li> <%= link_to   "Estados", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
-            <li><a href="#">Editar Estado</a></li>
+                 <li> <%= link_to   "Conclusiones", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
+            <li><a href="#">Editar Conclusion</a></li>
               </ul>
             </header>
 
@@ -25,9 +25,14 @@
               <div class="collapsed_content ">
                 <div class="row">
                   <div class="small-12 columns">
-                    <div class="small-7 columns left">
-                      <h1 class="field">Editar estado</h1>
-                    </div>
+                    <div class="small-6 small-9 columns left">
+                         <h1 id="tituloContrato">
+                           Editar Conclusion
+                         </h1>
+                         </div>
+                        <div class="small-3 small-3 columns left">
+                        <%= link_to   "Listar Conclusiones", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get, :class => "button radius "%>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -35,7 +40,7 @@
           </header>
           <div class="sheet_body ">
             <article class="calendar_event new expanded" >
-              <div class="expanded_content bubble">
+              <div class="expanded_content ">
                 <%= render 'form' %>
               </div>
             </article>

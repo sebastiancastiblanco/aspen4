@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130928142158) do
+ActiveRecord::Schema.define(:version => 20131013153538) do
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20130928142158) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "proceso_id"
+    t.boolean  "activo"
   end
 
   create_table "contratos", :force => true do |t|
@@ -80,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20130928142158) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "proceso_id"
+    t.integer  "usuario_id"
+    t.boolean  "activo"
   end
 
   create_table "estado_actividads", :force => true do |t|
@@ -102,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20130928142158) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "proceso_id"
+    t.boolean  "activo"
   end
 
   create_table "event_series", :force => true do |t|

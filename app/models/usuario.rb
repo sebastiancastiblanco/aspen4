@@ -8,13 +8,15 @@ class Usuario < ActiveRecord::Base
   #Validaciones
   validates :empresa, :username,:nombre,:password,:password_confirmation, :presence => { :message => "Campo obligatorio"}
 
-  #Validacion de password
+  #Validacion de password 
   validates_confirmation_of :password, message: "Ambos campos deben coincidir"
 
   #Un Usuario (Abogado) tiene varios procesos
   has_many :control_accesos
   has_many :procesos, through: :control_accesos
 
+  #A adjuntado varios documentos
+  has_many :documents
   #Un Usuario (Abogado) tiene varios eventos al cual puede estar asociado
   has_many :usuario_eventos
   has_many :events, through: :usuario_eventos

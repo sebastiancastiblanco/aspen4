@@ -1893,7 +1893,7 @@ form.custom {
     form.custom .custom.dropdown .current {
       cursor: default !important;
       white-space: nowrap !important;
-      line-height: 2.25em !important;
+      line-height: 24px !important;
       color: rgba(0, 0, 0, 0.75);
       text-decoration: none !important;
       overflow: hidden !important;

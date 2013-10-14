@@ -2,8 +2,9 @@ class EstadosController < ApplicationController
   # GET /estados
   # GET /estados.json
   def index
-    @estados = Estado.all
     @proceso = Proceso.find(params[:proceso_id])
+    @estados = @proceso.estados.where(activo: true)
+   
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class EstadosController < ApplicationController
   # GET /estados/1.json
   def show
     @estado = Estado.find(params[:id])
-@proceso = Proceso.find(params[:proceso_id])
+    @proceso = Proceso.find(params[:proceso_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,11 +48,15 @@ class EstadosController < ApplicationController
   def create
     @estado = Estado.new(params[:estado])
     @estado.proceso_id = params[:proceso_id]
-
+    @proceso = Proceso.find(params[:proceso_id])
+    @estado.activo = true
 
     respond_to do |format|
       if @estado.save
-        format.html { redirect_to action: "index",  proceso_id: params[:proceso_id] }
+        #Traza de log
+        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :estado_id => @estado.id, :mensaje_id => 7 ,:mensaje=> current_user.nombre.to_s+', Creo la conclusion: '+@estado.conclusion)
+
+        format.html { redirect_to action: "index",  proceso_id: params[:proceso_id], notice: 'Se creo la conclusion correctamente.' }
         format.json { render json: @estado, status: :created, location: @estado }
       else
         format.html { render action: "new" }
@@ -64,9 +69,15 @@ class EstadosController < ApplicationController
   # PUT /estados/1.json
   def update
     @estado = Estado.find(params[:id])
+    @proceso = Proceso.find(params[:proceso_id])
+    @estado.activo = true
+
 
     respond_to do |format|
       if @estado.update_attributes(params[:estado])
+         #Traza de log
+         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :estado_id => @estado.id, :mensaje_id => 7 ,:mensaje=> current_user.nombre.to_s+', Modifico la conclusion: '+@estado.conclusion)
+
         format.html { redirect_to action: "index",  proceso_id: params[:proceso_id] }
         format.html { redirect_to @estado, notice: 'Estado was successfully updated.' }
         format.json { head :no_content }
@@ -81,11 +92,15 @@ class EstadosController < ApplicationController
   # DELETE /estados/1.json
   def destroy
     @estado = Estado.find(params[:id])
-    @proceso = @document.proceso_id
-    @estado.destroy
+    @proceso = Proceso.find(params[:proceso_id])
+    
+     #Traza de log
+     Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :estado_id => @estado.id, :mensaje_id => 7 ,:mensaje=> current_user.nombre.to_s+', Elimino la conclusion: '+@estado.conclusion)
+
+    @estado.update_attribute(:activo, false)
 
     respond_to do |format|
-      format.html {  redirect_to action: "index",  proceso_id: @proceso }
+      format.html {  redirect_to action: "index",  proceso_id: @proceso, notice: 'Se elimino la conclusion correctamente.' }
       format.json { head :no_content }
     end
   end
