@@ -1,4 +1,7 @@
 AspenVersion3::Application.routes.draw do
+  resources :software_abogados
+
+
   resources :contrasena_resets  
 
   resources :logs

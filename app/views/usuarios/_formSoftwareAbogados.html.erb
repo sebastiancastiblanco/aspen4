@@ -1,0 +1,15 @@
+<%= form_for(@software_abogado) do |f| %>
+   <div class="row collapse">
+    <div class="small-5 large-6 columns paddginCero">
+      <span class="prefix"><%= f.label :'Registra tu correo electronico y recibe notificaciones sobre Aspen y sus actualizaciones', :class => "" %></span>
+    </div>
+    <div class="small-5 large-4 columns paddginCero">
+      <%= f.text_field :correo, :placeholder => "correo@ejemplo.com"  %>
+    </div>
+    <div class="small-2 columns paddginCero">
+       <%= f.submit :'Registrarme', :class => "button prefix buttonprefix" %>
+    </div>
+  </div>
+<% end %>
+
+

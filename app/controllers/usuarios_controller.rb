@@ -28,6 +28,7 @@ class UsuariosController < ApplicationController
   # GET /usuarios/new.json
   def new
     @usuario = Usuario.new
+    @software_abogado = SoftwareAbogado.new
   end
 
   # GET /usuarios/1/edit
@@ -94,14 +95,17 @@ class UsuariosController < ApplicationController
 
   def funcionalidades
      @usuario = Usuario.new
+      @software_abogado = SoftwareAbogado.new
   end
 
   def planprecios
      @usuario = Usuario.new
+      @software_abogado = SoftwareAbogado.new
   end
 
   def login
      @usuario = Usuario.new
+      @software_abogado = SoftwareAbogado.new
   end
 
  

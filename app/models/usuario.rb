@@ -7,7 +7,7 @@ class Usuario < ActiveRecord::Base
   attr_accessible :username,:nombre, :email, :password, :password_confirmation, :despacho_id, :empresa , :created_at, :updated_at, :updated_at, :password_reset_token, :password_reset_sent_at
   
   #Validaciones
-  validates :empresa, :username,:nombre,:password,:password_confirmation, :presence => { :message => "Campo obligatorio"}
+  validates :username,:nombre,:password,:password_confirmation, :presence => { :message => "Campo obligatorio"}
 
   #Validacion de password 
   validates_confirmation_of :password, message: "Ambos campos deben coincidir"

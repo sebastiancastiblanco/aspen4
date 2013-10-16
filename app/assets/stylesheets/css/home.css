@@ -23,7 +23,7 @@ background: -webkit-linear-gradient(right, #fff 0, #1C729B 500%) !important;
 a {
   color: inherit !important;
   text-decoration: none !important;
-  padding: 2px 0 !important;
+  padding: 2px 0 ;
   -webkit-tap-highlight-color: rgba(0,0,0,0.25) !important;
   margin: 0 !important;
   font-size: 100% !important;
@@ -1038,6 +1038,17 @@ z-index: 1;
   padding: 24px 0 10px !important;
 }
 
+.boton-fotter{
+  background: #1b566d !important;  
+}
+
+
+.footer-azul{
+  background: #2284a1;
+  padding: 24px 0 10px !important;
+}
+
+
 .letraTitulosMenuFooter {
   margin: 6px 0 0 !important;;
   font-size: 12px !important;;
@@ -1200,3 +1211,21 @@ background-color: #0192dd !important;
     margin-bottom: 0 !important;
 }
 
+.paddginCero{
+  padding-left: 0  !important;
+  padding-right: 0 !important;
+}
+
+.buttonprefix{
+  line-height: 0.125em !important; 
+  height: 30px !important;
+}
+
+.contentLanding {
+position: absolute;
+left: 600px;
+bottom: 46px;
+width: 34%;
+background: rgba(255,255,255,-0.15);
+padding: 20px;
+}

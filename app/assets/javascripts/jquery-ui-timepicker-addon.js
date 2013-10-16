@@ -42,7 +42,7 @@ function Timepicker() {
 		timezoneText: 'Time Zone'
 	};
 	this._defaults = { // Global defaults for all the datetime picker instances
-		showButtonPanel: true,
+		showButtonPanel: false,
 		timeOnly: false,
 		showHour: true,
 		showMinute: true,

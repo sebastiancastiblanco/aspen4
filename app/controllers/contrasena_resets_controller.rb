@@ -1,6 +1,6 @@
 class ContrasenaResetsController < ApplicationController
   def new
-  	
+  	 @software_abogado = SoftwareAbogado.new
   end
 
   def create
