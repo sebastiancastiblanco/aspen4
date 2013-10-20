@@ -22,4 +22,13 @@ class UsuarioMails < ActionMailer::Base
 
     mail to: usuario.username, subject: "[Aspen] Bienvenido a Aspen"
   end
+  # Subject can be set in your I18n file at config/locales/en.yml
+  # with the following lookup:
+  #
+  #   en.usuario_mails.bienvenida.subject
+  #
+  def registroNoticias (correo)
+     @correo = correo
+     mail to: correo, subject: "[Aspen] Gracias por tu registro"
+  end
 end

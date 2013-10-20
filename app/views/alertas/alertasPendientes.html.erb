@@ -1,0 +1,55 @@
+
+<body>
+
+  <div id="workspace" class="workspace">
+    <div class="container stack_container" style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris" >
+
+       
+          <header class="has_buttons">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+
+                    <div class="small-6 small-9 columns left">
+                      <h1 id="tituloContrato">
+                        Alertas Pendientes
+                      </h1>
+                    </div>
+
+                    <div class="small-3 small-3 columns left">
+
+                    </div>
+
+                    <% if notice %>
+                              <div data-alert class="alert-box success radius">
+                                <%= notice %>
+                                <a href="#" class="close">&times;</a>
+                              </div>
+                    <% end %>
+
+                </div>
+              </div>
+            </div>
+          </div><div class="blank_slate_arrow"></div>
+          </header>
+
+
+
+          <div class="sheet_body fondoGris">
+            <div id="date_display_Project:2733915" class="date_display" data-autoview="">
+            <section class="calendar_events">
+
+                        <% @alertasPendientes.each do |alerta| %>
+                              <%= render 'alertaPendiente', :alerta => alerta %>
+                        <% end %>
+                  
+               </section>
+            </div>
+          </div>
+      
+      </div>
+    </div>
+  </div>
+</body>

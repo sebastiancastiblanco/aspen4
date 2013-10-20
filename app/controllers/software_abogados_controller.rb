@@ -44,6 +44,9 @@ class SoftwareAbogadosController < ApplicationController
 
     respond_to do |format|
       if @software_abogado.save
+        #Enviar correo con mensaje de agradecimiento
+        UsuarioMails.registroNoticias(@software_abogado.correo).deliver
+
         format.html { redirect_to :home}
         format.json { render json: @software_abogado, status: :created, location: @software_abogado }
       else

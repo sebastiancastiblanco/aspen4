@@ -53,6 +53,7 @@ AspenVersion3::Application.routes.draw do
   match 'ingresoCuenta' => 'usuarios#login', as: :ingresoCuenta
   match 'recuperarContrasena' => 'usuarios#recuperarContresena', as: :recuperarContresena
 
+  match 'alertasPendientes' => 'alertas#alertasPendientes', as: :alertasPendientes
 
   match 'home' => 'usuarios#new', as: :home
   match 'login'  => 'usuarios#new', as: :login

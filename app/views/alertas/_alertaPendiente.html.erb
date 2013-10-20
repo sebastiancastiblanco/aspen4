@@ -1,0 +1,30 @@
+ <section id="alerta_<%= alerta.id %>" class="group today upcoming_events">
+    <header>
+        
+    </header>
+    <article class="calendar_event">
+        <header>
+                <span class="month"><%= fechaMes alerta.termina %></span>
+                <span class="day" style="background-color: #777 !important"><%= fechaDia alerta.termina %></span>
+        </header>
+
+        <ul>
+            <li id="CalendarEvent_5615518">
+                <span class="bold" style="">
+                    Proceso:
+                </span>
+                <%= alerta.proceso.titulo %> <br />
+                <span class="bold" style="">
+                    Titulo alarma: 
+                </span>
+                <%= alerta.titulo %> <br />
+                
+                <p><span class="bold" style="">Programada:</span> <%= fechaFormatoActualizado alerta.termina %> </p>
+                <p><span class="bold" style="">Nota:</span> <%= alerta.nota %> </p>
+                
+
+                <%= button_to 'Ver', edit_alerta_path(alerta, :proceso_id => alerta.proceso.id), :id => "new_alert_link",:class => "tiny button radius alinearbotones" %>
+            </li>
+        </ul>
+    </article>
+</section>
