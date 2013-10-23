@@ -420,7 +420,7 @@ div.sheet.project>header h1 {
   font-size: 24px !important;
   line-height: 28px !important;
   min-height: 29px !important;
-  color: #000 !important;
+  color: #333333 !important;
   font-weight: bold !important;
   margin-bottom: 3px !important;
   display: inline-block !important;
@@ -658,7 +658,7 @@ section.calendar_events>section.group>header h2 {
   margin: 0 10px 0 0!important;
   float: left!important;
   text-align: right!important;
-  color: #000!important;
+  color: #333333 !important;
 }
 section.calendar_events article.calendar_event>header {
   font-size: 13px!important;
@@ -1228,4 +1228,9 @@ bottom: 46px;
 width: 34%;
 background: rgba(255,255,255,-0.15);
 padding: 20px;
+}
+
+.alinearDerecha{
+  float: right;
+  position: relative;
 }

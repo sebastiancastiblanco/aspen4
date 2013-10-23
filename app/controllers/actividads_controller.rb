@@ -145,4 +145,11 @@ class ActividadsController < ApplicationController
     end
  end
 
+ #Recuperar las activiaddes pendites del usuario, en todos los procesos
+  def actividadesPendientes
+     @actividadesPendientes = current_user.actividads.where("fechaSeguimiento < ?", Time.now).order("updated_at DESC");
+     @actividadesProximas = current_user.actividads.where("fechaSeguimiento >= ?", Time.now ).order("updated_at DESC").limit(3);
+
+  end
+
 end

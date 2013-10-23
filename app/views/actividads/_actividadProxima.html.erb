@@ -1,0 +1,54 @@
+ <section id="actividad_<%= actividad.id %>" class="group today upcoming_events">
+    <header>
+        <h2><%= actividad.nombre %></h2>
+    </header>
+    <article class="calendar_event">
+        <header>
+                <span class="day_of_week"><%= fechaDiaSemana actividad.fechaSeguimiento %></span>
+                <span class="month"><%= fechaMes actividad.fechaSeguimiento %></span>
+                <% if actividad.estado_actividad.estado =="Abierta" %>
+                           <span class="day" style="background-color: #457a1a !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                <% end %>
+                <% if actividad.estado_actividad.estado =="Atrasada" %>
+                            <span class="day" style="background-color: #970b0e  !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                <% end %>
+                <% if actividad.estado_actividad.estado =="Terminada" %>
+                            <span class="day" style="background-color: #000 !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                <% end %>
+                 <% if actividad.estado_actividad.estado =="Programada" %>
+                            <span class="day" style="background-color: rgb(16, 16, 156) !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                <% end %>
+        </header>
+
+        <ul>
+            <li>
+                <span class="bold">Proceso:</span> <%= actividad.proceso.titulo %> <br>
+
+                <% if actividad.estado_actividad.estado =="Abierta" %>
+                <span class="bold"> Estado:</span> 
+                <span class="bold" style="color: #457a1a"><%= actividad.estado_actividad.estado%></span> <br>
+                <% end %>
+                <% if actividad.estado_actividad.estado =="Atrasada" %>
+                <span class="bold"> Estado:</span> 
+                <span class="bold" style="color: #970b0e"><%= actividad.estado_actividad.estado%></span> <br>
+                <% end %>
+                <% if actividad.estado_actividad.estado =="Terminada" %>
+                <span class="bold"> Estado:</span> 
+                <span class="bold" style="color: #000"><%= actividad.estado_actividad.estado%></span> <br>
+                <% end %> 
+                <% if actividad.estado_actividad.estado =="Programada" %>
+                <span class="bold"> Estado:</span> 
+                <span class="bold" style="color: rgb(16, 16, 156)"><%= actividad.estado_actividad.estado%></span> <br>
+                <% end %> 
+                <span class="bold">Encargado:</span> <%= actividad.participante.nombre %>  <br>                
+                <span class="bold">Encargado:</span> <%= actividad.descripcion %>  <br>                
+                
+                <% if actividad.tiempoEjecucion %>
+                   <span class="bold">Tiempo Estimado:</span><%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo%>  <br> 
+                <% end %> 
+
+                <%= link_to   "Ver", {:controller => "actividads", :action => "index", :proceso_id => actividad.proceso.id, :actividad_id => actividad.id, :nuevoItem => true},:class => "tiny button radius alinearbotones" %>
+            </li>
+        </ul>
+    </article>
+</section>

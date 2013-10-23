@@ -1,9 +1,7 @@
 AspenVersion3::Application.routes.draw do
+  
   resources :software_abogados
-
-
   resources :contrasena_resets  
-
   resources :logs
   get "logs/iractividad"
 
@@ -54,6 +52,7 @@ AspenVersion3::Application.routes.draw do
   match 'recuperarContrasena' => 'usuarios#recuperarContresena', as: :recuperarContresena
 
   match 'alertasPendientes' => 'alertas#alertasPendientes', as: :alertasPendientes
+  match 'actividadesPendientes' => 'actividads#actividadesPendientes', as: :actividadesPendientes
 
   match 'home' => 'usuarios#new', as: :home
   match 'login'  => 'usuarios#new', as: :login

@@ -33,6 +33,14 @@ class Usuario < ActiveRecord::Base
   has_many :tipo_procesos
   has_many :procesos, through: :tipo_procesos
 
+  #relacion de alertas por usuario, traer todas las alertas de un unico usuario
+  has_many :alertas
+  has_many :alertas, through: :control_accesos, through: :procesos
+
+  #realcion de actividades por usuario, traer todas las actividades de un unico usuario
+  has_many :actividads
+  has_many :actividads, through: :control_accesos, through: :procesos
+
   #generacion de token para funcion remember me
   def generate_token(column)
     begin

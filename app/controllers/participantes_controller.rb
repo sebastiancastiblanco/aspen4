@@ -3,7 +3,8 @@ class ParticipantesController < ApplicationController
   # GET /participantes.json
   def index
     @proceso = Proceso.find(params[:proceso_id])
-    @participantes = @proceso.participantes.where(activo: true)
+    @participantes = @proceso.participantes.activos  #scope recuperar participantes activos
+
     @participantesRender = (params[:nuevoItem])
     
     @logParticipantes = Log.where(usuario_id: current_user.id, proceso_id: @proceso.id, mensaje_id: 2 ).order('created_at DESC')

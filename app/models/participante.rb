@@ -19,4 +19,8 @@ class Participante < ActiveRecord::Base
   belongs_to :proceso
   #relacion con las actividades
   has_many :actividads
+
+  #Scope para la tabla
+  scope :activos, where(:activo => true)
+
 end
