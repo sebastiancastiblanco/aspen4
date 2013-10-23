@@ -5,16 +5,17 @@
     <article class="calendar_event">
         <header>
                 <span class="month"><%= fechaMes alerta.termina %></span>
-                <span class="day" style="background-color: #970b0e !important"><%= fechaDia alerta.termina %></span>
+                <span class="day" style="background-color: #777 !important"><%= fechaDia alerta.termina %></span>
         </header>
 
         <ul>
             <li>
-                <span class="bold">  Proceso:</span> <%= alerta.proceso.titulo %> <br />
-                <span class="bold">  Titulo alarma:</span><%= alerta.titulo %> <br />
-                <span class="bold" style="">Programada:</span> <%= fechaFormatoActualizado alerta.termina %> <br />
+                <span class="bold">   Proceso:</span><%= alerta.proceso.titulo %> <br />
+                <span class="bold">   Titulo alarma: </span><%= alerta.titulo %> <br />
+                <span class="bold" style="">Programada:</span> <%= fechaFormatoActualizado alerta.termina %><br />
                 <span class="bold" style="">Nota:</span> <%= alerta.nota %> <br />
                 
+
                 <%= button_to 'Ver', edit_alerta_path(alerta, :proceso_id => alerta.proceso.id), :id => "new_alert_link",:class => "tiny button radius alinearbotones" %>
             </li>
         </ul>

@@ -105,12 +105,8 @@ class AlertasController < ApplicationController
 
   #Recuperar las alertas pendites del usuario, en todo los procesos
   def alertasPendientes
-     
-    #@alertasPendientes = Alerta.joins(:proceso).joins(:usuario).where(:usuario => {id: current_user.id})
     @alertasPendientes = current_user.alertas.where("termina < ?", Time.now).order("updated_at DESC");
     @alertasProximas = current_user.alertas.where("termina >= ?", Time.now).order("updated_at DESC").limit(3);
-    #@procesos = joins(:alerta, { :alerta => :procesos })
-    #c = Alerta.all(:joins => :proceso, :conditions => { :users => { :admin => true } })
   end
 
 end

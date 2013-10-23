@@ -160,6 +160,21 @@ function eventoCamposOpcionalesActividadProximos (){
       }
 }
 
+function eventoCamposOpcionalesAlertasProximos (){
+    var panelcamposopcionales = "#camposOpcionalesAlertasProximos";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+        $(panelcamposopcionales).toggle( "fade" );
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Mostrar Proximas Alertas";
+          
+      }
+      else{
+         $(panelcamposopcionales).toggle( "fade" );
+         document.getElementById("mostrarCamposOpcionales").innerHTML = "Ocultar Proximas Alertas";
+          
+      }
+}
+
 function eventoCamposOpcionalesUsuario (){
     var panelcamposopcionales = "#camposOpcionalesUsuario";
     var display =  $(panelcamposopcionales).css('display');

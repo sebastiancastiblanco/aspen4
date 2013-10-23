@@ -1,11 +1,12 @@
 class UsuariosController < ApplicationController
-  autocomplete :usuario,:username => 'name', :full => true
+  autocomplete :usuario, :username => 'name', :full => true
 
   # GET /usuarios
   # GET /usuarios.json
   def index
     @usuarios = Usuario.all
-
+    
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @usuarios }
@@ -107,8 +108,4 @@ class UsuariosController < ApplicationController
      @usuario = Usuario.new
       @software_abogado = SoftwareAbogado.new
   end
-
- 
-
-
 end

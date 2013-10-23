@@ -4,7 +4,7 @@
   <div id="workspace" class="workspace">
     <div class="container stack_container" style="width: 960px;">
       <div class="panel sheet project active blank_slate fondoGris" >
-
+         <div class="sheet_body">
        
           <header class="has_buttons">
             <div data-behavior="edit_project_header expandable">
@@ -12,29 +12,22 @@
               <div class="row">
                 <div class="small-12 columns">
 
-                    <div class="small-6 small-9 columns left">
-                      <h1 id="tituloContrato">
+                    <div class="small-12columns left">
+                      <h4 id="tituloContrato"  style="margin-top: 25px;">
                         Alertas Pendientes
-                      </h1>
+                      </h4>
+                      
                     </div>
 
                     <div class="small-3 small-3 columns left">
 
                     </div>
 
-                    <% if notice %>
-                              <div data-alert class="alert-box success radius">
-                                <%= notice %>
-                                <a href="#" class="close">&times;</a>
-                              </div>
-                    <% end %>
-
                 </div>
               </div>
             </div>
           </div><div class="blank_slate_arrow"></div>
           </header>
-
 
 
           <div class="sheet_body fondoGris">
@@ -48,7 +41,45 @@
                </section>
             </div>
           </div>
-      
+
+<hr>
+ <%= link_to 'Proximas Alertas', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %>
+
+          <div id="camposOpcionalesAlertasProximos"  class="row ocultar">
+            <header class="has_buttons">
+                      <div data-behavior="edit_project_header expandable">
+                      <div class="collapsed_content">
+                        <div class="row">
+                          <div class="small-12 columns">
+
+                              <div class="small-12 columns left">
+                                <h4 id="tituloContrato" >
+                                  Proximas Alertas
+                                </h4>
+                                
+                              </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div><div class="blank_slate_arrow"></div>
+                    </header>
+
+                    <div class="sheet_body fondoGris">
+                      <div id="date_display_Project:2733915" class="date_display" data-autoview="">
+                      <section class="calendar_events">
+
+                                  <% @alertasProximas.each do |alerta| %>
+                                        <%= render 'alertaProxima', :alerta => alerta %>
+                                  <% end %>
+
+                         </section>
+                      </div>
+                    </div>
+
+          </div>
+
+       </div>
       </div>
     </div>
   </div>

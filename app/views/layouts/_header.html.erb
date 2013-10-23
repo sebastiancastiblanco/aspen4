@@ -31,11 +31,43 @@
     <div class="jumpto" >
         
         <%= form_tag do %>
-          <%= autocomplete_field_tag 'nombre', '',usuarios_autocomplete_usuario_nombre_path %>
+          <%= autocomplete_field_tag 'name', '',autocomplete_usuario_name_usuarios_path %>
         <% end %>
 
     </div>
-
+ <script>
+  $(function() {
+        $( "#tags" ).autocomplete({
+          source: function( request, response ) {
+            $.ajax({
+              url: "procesos.json",
+              dataType: "json",
+              data: {
+                featureClass: "P",
+                style: "full",
+                maxRows: 12,
+                name_startsWith: request.term
+              },
+              success: function( data ) {
+                response( $.map( data, function( item ) {
+                  return {
+                    label: item.titulo,
+                    value: item.titulo
+                  }
+                }));
+              }
+            });
+          }
+        });
+      
+   
+    
+  });
+  </script>
+  <div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags" />
+</div>
 </nav>
 </header>
 

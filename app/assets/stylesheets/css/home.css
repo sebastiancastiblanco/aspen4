@@ -701,7 +701,7 @@ section.calendar_events article.calendar_event>ul {
   border-left: 1px solid #ccc!important;
 }
 section.calendar_events article.calendar_event>ul>li {
-  padding: 8px 0 7px 10px!important;
+  padding: 8px 0 24px 10px!important;
   margin: 0!important;
   clear: none!important;
 }

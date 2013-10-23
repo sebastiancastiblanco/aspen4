@@ -39,8 +39,11 @@ AspenVersion3::Application.routes.draw do
   
   resources :agendas
   resources :usuarios
-  get 'usuarios/autocomplete_usuario_nombre'
-  get 'procesos/autocomplete_proceso_titulo'
+  
+  resources :usuarios do
+    get :autocomplete_usuario_name, :on => :collection
+  end
+ 
   
   resources :usuario_sessions
 

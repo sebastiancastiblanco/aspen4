@@ -57,6 +57,7 @@ class Usuario < ActiveRecord::Base
     UsuarioMails.recuperarContrasena(self).deliver
   end
 
-  
+  #Scope para la tabla
+  scope :nombres, where(:activo => true)
 
 end
