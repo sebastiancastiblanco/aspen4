@@ -1,0 +1,316 @@
+
+<body>
+
+  <div id="workspace" class="workspace">
+    <div class="container stack_container" style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris" >
+         <div class="sheet_body">
+       	
+
+       	<div class="row">
+    <div class="large-12 columns">
+ 
+      <!-- Navigation -->
+ 		<div class="row">
+        <div class="small-4 columns left">
+           <h4 id="tituloContrato"  style="margin-top: 25px;">
+            Reporte General
+          </h4>
+        </div>
+        <div class="small-8 columns right">
+                      <h6>Procesos</h6>
+                      <form class="custom">
+                          <select id="customDropdown" class="dropdown medium">
+                          <option DISABLED>Estado Actual</option>
+                          <option>Todos los procesos</option>
+                          <option>Proceso 1</option>
+                          <option>Proceso 2</option>
+                          <option>Proceso 3</option>
+                          <option>Proceso 4</option>
+                          </select>
+                      </form>
+
+        </div>
+        </div>
+        
+ 
+      <!-- End Navigation -->
+ 
+ 
+      <!-- Header Content -->
+ 
+        <div class="row">
+ 
+          <div class="large-6 columns">
+ 
+               <h3 class="show-for-small">Resumen<hr/></h3>
+ 
+            <div class="panel">
+              <h4 class="hide-for-small">Resumen<hr/></h4>
+
+              <table>
+				  <thead>
+				    <tr>
+				      <th width="200"></th>
+				      <th>Cantidad</th>
+				      <th width="150">Ult. Modificacion</th>
+				      <th ></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>Participantes</td>
+				      <td>#</td>
+				      <td>15 oct 2013</td>
+				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				    </tr>
+				     <tr>
+				      <td>Contratos</td>
+				      <td>#</td>
+				      <td>15 oct 2013</td>
+				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				    </tr>
+				     <tr>
+				      <td>Actividades</td>
+				      <td>#</td>
+				      <td>15 oct 2013</td>
+				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				    </tr>
+				     <tr>
+				      <td>Alertas</td>
+				      <td>#</td>
+				      <td>15 oct 2013</td>
+				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				    </tr>
+				     <tr>
+				      <td>Documentos</td>
+				      <td>#</td>
+				      <td>15 oct 2013</td>
+				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				    </tr>
+				     <tr>
+				      <td>Conclusiones</td>
+				      <td>#</td>
+				      <td>15 oct 2013</td>
+				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				    </tr>
+				  </tbody>
+				</table>
+
+				<br />
+				<br />
+           		<span class="bold">  Usuario creador del proceso:</span> username <br />
+           		<span class="bold">  Particpante Principal:</span> particpante <br />
+           		
+
+            </div>
+ 
+          
+ 
+          </div>
+ 
+ 
+          <div class="large-6 columns">
+ 
+            <h3 class="show-for-small">Ultimos movimientos<hr/></h3>
+ 
+            <div class="panel">
+              	<h4 class="hide-for-small">Ultimos movimientos<hr/></h4>
+
+              	<table>
+				  <thead>
+				    <tr>
+				      <th width="250"></th>
+				      <th width="100">Fecha</th>
+				      <th width="100">Usuario</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>Mov 1 </td>
+				      <td>#</td>
+				      <td>15 oct 2013</td>
+				    </tr>
+				     <tr>
+				      <td>Mov 2 </td>
+				      <td>#</td>
+				      <td>15 oct 2013</td>
+				    </tr>
+				     <tr>
+				      <td>Mov 3 </td>
+				      <td>#</td>
+				      <td>15 oct 2013</td>
+				    </tr>
+				   
+				  </tbody>
+				</table>
+
+            	<%= link_to 'Ver Progreso', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %> <br />
+
+	            <h4 class="hide-for-small">Alertas Pendientes<hr/></h4>
+	            
+				<table>
+				  <thead>
+				    <tr>
+				      <th width="250">Alerta</th>
+				      <th width="100">Fecha</th>
+				      <th width="100"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>Mov 1 </td>
+				      <td>15 oct 2013</td>
+				       <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				    </tr>
+				     <tr>
+				      <td>Mov 2 </td>
+				      <td>15 oct 2013</td>
+				       <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				    </tr>
+				     <tr>
+				      <td>Mov 3 </td>
+				      <td>15 oct 2013</td>
+				       <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				    </tr>
+				   
+				  </tbody>
+				</table>
+
+            	<%= link_to 'Alertas Pendientes', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha ", :id => "mostrarCamposOpcionales" %> <br />
+
+            </div>
+
+            
+         
+          </div>
+ 
+        </div>
+ 
+      <!-- End Header Content -->
+ 	
+
+ 	<hr>
+ 
+      <!-- Search Bar -->
+ 
+        <div class="row">
+ 			<div class="large-12 columns">
+	            <div class="radius panel">
+	 				<h4 class="hide-for-small">Actividades<hr/></h4>
+
+
+	 				<table>
+					  <thead>
+					    <tr>
+					      <th width="200">Actividad</th>
+					      <th width="150">Inicio</th>
+					      <th width="150">Ultima Modificacion</th>
+					      <th width="150">Tiempo Transcurrido</th>
+					      <th width="150">Duracion Estimada</th>
+					      <th width="150">Estado Actual</th>
+					      
+					      <th></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>actividad desarrollada</td>
+					      <td>15 oct 2013</td>
+					       <td>16 oct 2013</td>
+					      <td>horas</td>
+					      <td>duracion</td>
+					      <td>estado actual</td>
+					      	
+					      <td><%= button_to "ir", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+					    </tr>
+					      <tr>
+					      <td>actividad desarrollada</td>
+					      <td>15 oct 2013</td>
+					       <td>16 oct 2013</td>
+					      <td>horas</td>
+					      <td>duracion</td>
+					      <td>estado actual</td>
+					     
+					      <td><%= button_to "ir", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+					    </tr>
+					  </tbody>
+					</table>
+
+	 				 <%= link_to 'Ver todas las Actividades', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %>
+	          	</div>
+          	</div>
+ 		</div>
+
+        <div class="row">
+ 			<div class="large-12 columns">
+	            <div class="radius panel">
+	 				<h4 class="hide-for-small">Documentos<hr/></h4>
+
+	 				<table>
+					  <thead>
+					    <tr>
+					      <th width="350">Titulo</th>
+					      <th width="150">Fecha Registro</th>
+					      <th width="150">Ultima Modificacion</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>actividad desarrollada</td>
+					      <td>15 oct 2013</td>
+					       <td>16 oct 2013</td>
+					      
+					    </tr>
+					      <tr>
+					      <td>actividad desarrollada</td>
+					      <td>15 oct 2013</td>
+					       <td>16 oct 2013</td>
+					      
+					    </tr>
+					  </tbody>
+					</table>
+
+	 				<%= link_to 'Ver todos los documentos', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %>
+	          	</div>
+	         </div>
+ 		</div>
+
+        <div class="row">
+ 			<div class="large-12 columns">
+            	<div class="radius panel">
+ 					<h4 class="hide-for-small">Colaboradores<hr/></h4>
+
+ 					<table>
+					  <thead>
+					    <tr>
+					      <th width="350">Usuario</th>
+					      <th width="150">Fecha de Ingreso</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>actividad desarrollada</td>
+					      <td>15 oct 2013</td>
+					    </tr>
+					    <tr>
+					      <td>actividad desarrollada</td>
+					      <td>15 oct 2013</td>
+					    </tr>
+					  </tbody>
+					</table>
+ 				</div>
+          	</div>
+ 		</div>
+ 
+      <!-- End Search Bar -->
+ 
+    </div>
+  </div>
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
