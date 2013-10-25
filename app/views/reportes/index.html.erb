@@ -11,42 +11,48 @@
     <div class="large-12 columns">
  
       <!-- Navigation -->
- 		<div class="row">
-        <div class="small-4 columns left">
-           <h4 id="tituloContrato"  style="margin-top: 25px;">
-            Reporte General
-          </h4>
-        </div>
-        <div class="small-8 columns right">
-                      <h6>Procesos</h6>
-                      <form class="custom">
-                          <select id="customDropdown" class="dropdown medium">
-                          <option DISABLED>Estado Actual</option>
-                          <option>Todos los procesos</option>
-                          <option>Proceso 1</option>
-                          <option>Proceso 2</option>
-                          <option>Proceso 3</option>
-                          <option>Proceso 4</option>
-                          </select>
-                      </form>
+      <div class="row collapse">
+	    <div class="small-3 columns paddginCero" style="margin-top: 25px;">
+	      <span class="prefix"><h4 id="tituloContrato" style="padding-top: 5px;" >
+	            Reporte General  </h4> </span>
+	    </div>
+	     <div class="small-8 columns paddginCero" style="margin-top: 25px;">
+	              <form class="custom">
+	                  <select id="customDropdown" class="dropdown large">
+	                  <option DISABLED>Estado Actual</option>
+	                  <option>Seleccionar Proceso</option>
+	                  <option>Proceso 1</option>
+	                  <option>Proceso 2</option>
+	                  <option>Proceso 3</option>
+	                  <option>Proceso 4</option>
+	                  </select>
+	              </form>
+	      </div>
 
-        </div>
-        </div>
+	  </div>
+
+ 		
         
  
       <!-- End Navigation -->
  
- 
-      <!-- Header Content -->
- 
+ 	<div class="row">
+ 		<hr class="lineaHorizontalAzul">
+ 		<div class="large-12 columns">
+	      <img src="http://placehold.it/1000x400&text=[img]">
+	    </div>
+    </div>
+ 	  <!-- Header Content -->
+ 	<div id="panelReporteProceso" class="ocultar" >
+
         <div class="row">
  
           <div class="large-6 columns">
  
-               <h3 class="show-for-small">Resumen<hr/></h3>
+               <h3 class="show-for-small">Resumen<hr class="lineaHorizontalAzul"/></h3>
  
-            <div class="panel">
-              <h4 class="hide-for-small">Resumen<hr/></h4>
+            <div class="panel sinBorde">
+              <h4 class="hide-for-small">Resumen<hr class="lineaHorizontalAzul"/></h4>
 
               <table>
 				  <thead>
@@ -59,44 +65,44 @@
 				  </thead>
 				  <tbody>
 				    <tr>
-				      <td>Participantes</td>
+				      <td><%= link_to   "Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
 				      <td>#</td>
 				      <td>15 oct 2013</td>
-				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				      
 				    </tr>
 				     <tr>
-				      <td>Contratos</td>
+				      <td> <%= link_to  "Contratos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
 				      <td>#</td>
 				      <td>15 oct 2013</td>
-				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				     
 				    </tr>
 				     <tr>
-				      <td>Actividades</td>
+				      <td><%= link_to   "Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
 				      <td>#</td>
 				      <td>15 oct 2013</td>
-				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				      
 				    </tr>
 				     <tr>
-				      <td>Alertas</td>
+				      <td> <%= link_to  "Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
 				      <td>#</td>
 				      <td>15 oct 2013</td>
-				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				      
 				    </tr>
 				     <tr>
-				      <td>Documentos</td>
+				      <td>    <%= link_to  "Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
 				      <td>#</td>
 				      <td>15 oct 2013</td>
-				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				      
 				    </tr>
 				     <tr>
-				      <td>Conclusiones</td>
+				      <td><%= link_to  "Conclusiones", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
 				      <td>#</td>
 				      <td>15 oct 2013</td>
-				      <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
+				      
 				    </tr>
 				  </tbody>
 				</table>
-
+                
 				<br />
 				<br />
            		<span class="bold">  Usuario creador del proceso:</span> username <br />
@@ -112,10 +118,10 @@
  
           <div class="large-6 columns">
  
-            <h3 class="show-for-small">Ultimos movimientos<hr/></h3>
+            <h3 class="show-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h3>
  
-            <div class="panel">
-              	<h4 class="hide-for-small">Ultimos movimientos<hr/></h4>
+            <div class="panel sinBorde">
+              	<h4 class="hide-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h4>
 
               	<table>
 				  <thead>
@@ -147,7 +153,7 @@
 
             	<%= link_to 'Ver Progreso', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %> <br />
 
-	            <h4 class="hide-for-small">Alertas Pendientes<hr/></h4>
+	            <h4 class="hide-for-small">Alertas Pendientes<hr class="lineaHorizontalAzul"/></h4>
 	            
 				<table>
 				  <thead>
@@ -196,8 +202,8 @@
  
         <div class="row">
  			<div class="large-12 columns">
-	            <div class="radius panel">
-	 				<h4 class="hide-for-small">Actividades<hr/></h4>
+	            <div class="radius panel sinBorde">
+	 				<h4 class="hide-for-small">Actividades<hr class="lineaHorizontalAzul"/></h4>
 
 
 	 				<table>
@@ -244,8 +250,8 @@
 
         <div class="row">
  			<div class="large-12 columns">
-	            <div class="radius panel">
-	 				<h4 class="hide-for-small">Documentos<hr/></h4>
+	            <div class="radius panel sinBorde">
+	 				<h4 class="hide-for-small">Documentos<hr class="lineaHorizontalAzul"/></h4>
 
 	 				<table>
 					  <thead>
@@ -278,8 +284,8 @@
 
         <div class="row">
  			<div class="large-12 columns">
-            	<div class="radius panel">
- 					<h4 class="hide-for-small">Colaboradores<hr/></h4>
+            	<div class="radius panel sinBorde">
+ 					<h4 class="hide-for-small">Colaboradores<hr class="lineaHorizontalAzul"/></h4>
 
  					<table>
 					  <thead>
@@ -305,6 +311,9 @@
  
       <!-- End Search Bar -->
  
+      </div>
+
+
     </div>
   </div>
           

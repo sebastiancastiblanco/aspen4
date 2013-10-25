@@ -1,7 +1,6 @@
 AspenVersion3::Application.routes.draw do
-  
+  resources :reportes
   get "reportes/index"
-
   get "reportes/reporteProceso"
 
   resources :software_abogados

@@ -1234,3 +1234,13 @@ padding: 20px;
   float: right;
   position: relative;
 }
+
+.lineaHorizontalAzul{
+ color: #2795b6;
+background-color: #2795b6;
+height: 2px; 
+}
+
+.sinBorde{
+  border: none !important;
+}

@@ -9,7 +9,7 @@
     <div class="global_links">
         <%= link_to 'Procesos', procesos_path , :class => "topnav_root" %>
         <%= link_to 'Agenda', events_path , :class => "topnav_calendar" %>
-        <a class="topnav_everything"  href="#">Reportes</a>
+        <%= link_to 'Reportes', reportes_path , :class => "topnav_calendar" %>
         <a class="topnav_everyone"  href="#">Todo</a>
         <%=  link_to "Progreso", :progreso ,:class => "topnav_calendar"   %>
         <%=  link_to "Mi Perfil",current_user,:class => "Me"   %>
@@ -30,11 +30,19 @@
 
     <div class="jumpto" >
         
-        <%= form_tag do %>
-          <%= autocomplete_field_tag 'name', '',autocomplete_usuario_name_usuarios_path %>
-        <% end %>
+        <div class="row collapse">
+          <div class="small-12 columns paddginCero">
+            <input id="tags" type="text"  />
+          </div>
+          
+          </div>
+
+
 
     </div>
+
+
+
  <script>
   $(function() {
         $( "#tags" ).autocomplete({
@@ -64,10 +72,7 @@
     
   });
   </script>
-  <div class="ui-widget">
-  <label for="tags">Tags: </label>
-  <input id="tags" />
-</div>
+  
 </nav>
 </header>
 
