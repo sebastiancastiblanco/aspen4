@@ -1244,3 +1244,21 @@ height: 2px;
 .sinBorde{
   border: none !important;
 }
+
+.panelReportes{
+  margin-top: 50px;
+}
+.textoGris{
+  color: rgb(187, 187, 187) !important;
+}
+.marginbottom50{
+  margin-bottom: 50px;
+}
+
+.tabs{
+  left: initial !important;
+bottom: initial !important;
+width: auto !important;
+background: transparent !important;
+border: none !important;
+}
