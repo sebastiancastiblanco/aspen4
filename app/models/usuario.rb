@@ -58,6 +58,12 @@ class Usuario < ActiveRecord::Base
   end
 
   #Scope para la tabla
-  scope :nombres, where(:activo => true)
+  scope :activos, where(:activo => true)
+  
+  #ultimo proceso creado
+  def self.ultimoProcesoCreado
+    
+      where("procesos.activo = ? LIMIT 1", true)
+  end
 
 end

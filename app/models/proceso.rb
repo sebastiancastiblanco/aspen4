@@ -30,4 +30,19 @@ class Proceso < ActiveRecord::Base
   #tiene un estado de proceso
   belongs_to :estado_proceso
 
+  scope :activos, where(activo: true)
+
+  #Metodo propio del proceso, filtro de procesos por usuario y estado del proceso
+  def self.procesoEstado(usuarioid,estado_proceso_id)
+    where("usuario_id = ? AND estado_proceso_id = ?", usuarioid,estado_proceso_id)
+  end
+  scope :sinIniciar, ->(usuarioid) {self.procesoEstado(usuarioid,1)}
+  scope :abiertos, ->(usuarioid) {self.procesoEstado(usuarioid,2)}
+  scope :terminados, ->(usuarioid) {self.procesoEstado(usuarioid,4)}
+  scope :aplazados, ->(usuarioid) {self.procesoEstado(usuarioid,3)}
+  
+  
+
+
+
 end

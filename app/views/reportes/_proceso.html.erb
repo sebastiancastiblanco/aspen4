@@ -1,0 +1,20 @@
+ <tr>
+  <td>
+	<%= link_to(proceso) do %> <%= proceso.titulo %>    <% end %>
+ </td>
+  <td><%= proceso.tipo_proceso.tipo %></td>
+  <td><%= proceso.estado_proceso.estado %></td>
+  <td>
+  	 <a id="favoritoHome" class="star" onClick="cambioEstadoFavoritoHome(<%= proceso.id %>)">
+  		<% if (proceso.favorito) %>
+                <i id="ProcesoNoFavorito<%= proceso.id %>" class="foundicon-star" style="display:none"></i>
+                <div id="ProcesoFavorito<%= proceso.id %>" class="favoritoSeleccionado" style="display:block"></div>
+               <% else %>
+                <i id="ProcesoNoFavorito<%= proceso.id %>" class="foundicon-star" style="display:block"></i>
+                <div id="ProcesoFavorito<%= proceso.id %>" class="favoritoSeleccionado" style="display:none"></div>
+         <% end %>
+      </a>
+  </td>
+   <td><%= fechaFormatoActualizado proceso.created_at %></td>
+   <td><%= fechaFormatoActualizado proceso.updated_at %></td>
+</tr>

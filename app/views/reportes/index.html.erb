@@ -18,47 +18,171 @@
       <!-- End Navigation -->
  	
 <div class="section-container auto panelReportes" data-section>
+  
   <section class="active">
     <p class="title" data-section-title><a href="#panel1">Mis Procesos</a></p>
     <div class="content tabs" data-section-content>
-     <div class="row">
- 		
- 		<div class="large-8 small-offset-4 large-offset-4 columns">
-	      	<img src="img/Analytics.png" width="250px">
-	    </div>
-	    <div class="large-8 small-offset-4 large-offset-4 columns">
-	      <h3 class="textoGris">Reportes Generales</h3>
-	    </div>
+    
+    <div id="panelReporteProceso"  >
+
+        <div class="row">
+ 
+          <div class="large-7 columns">
+ 			
+ 			 <div class="panel sinBorde">
+           
+          	<h4 class="hide-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h4>
+	            
+				<table>
+				  <thead>
+				    <tr>
+				      <th width="300"></th>
+				      <th width="150">Fecha</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<% @logs.each do |log| %>
+                	  <tr>
+					      <td><%= log.mensaje %> </td>
+					      <td><%= fechaFormatoActualizado log.created_at %></td>
+				      </tr>
+				  <% end %>
+              	</tbody>
+				</table>
+
+            	<%= link_to 'Mi progreso', "/progreso", :class=>"textolinks alinearDerecha ", :id => "mostrarCamposOpcionales" %> <br />
+
+          </div>
+          </div>
+ 
+ 
+          <div class="large-5 columns">
+ 
+            <div class="panel sinBorde">
+              	
+              	 <h3 class="show-for-small">Mis Procesos<hr class="lineaHorizontalAzul"/></h3>
+ 
+              <h4 class="hide-for-small">Mis Procesos<hr class="lineaHorizontalAzul"/></h4>
+
+              <table>
+				  <thead>
+				    <tr>
+				      <th width="200">Estado del proceso</th>
+				      <th>No de procesos</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<tr>
+				      <td>Sin iniciar</td>
+				      <td><%= Proceso.sinIniciar(current_user.id).size %></td>
+				    </tr>
+				    <tr>
+				      <td>Abiertos</td>
+				      <td><%= Proceso.abiertos(current_user.id).size %></td>
+				    </tr>
+				    <tr>
+				      <td>Aplazados</td>
+				      <td><%= Proceso.aplazados(current_user.id).size %></td>
+				    </tr>
+				    <tr>
+				      <td>Terminados</td>
+				      <td><%= Proceso.terminados(current_user.id).size %></td>
+				    </tr>
+				    
+				  </tbody>
+				</table>
+                
+
+            	 <br />
+
+				<h3 class="show-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h3>
+ 				<h4 class="hide-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h4>
+
+              	<table>
+				  <thead>
+				    <tr>
+				      <th width="250"></th>
+				      <th width="100">Estado actual</th>
+				      <th width="150">Fecha</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td><%= link_to(@proceso) do  %> <%= @proceso.titulo %> <% end %></td>
+				      <td><%= @proceso.estado_proceso.estado %></td> 
+				      <td><%= fechaFormatoActualizado @proceso.created_at %></td>
+				    </tr>
+				   </tbody>
+				</table>
+
+				<%= link_to(@proceso) do %>  <span class="textolinks alinearDerecha">Ir al proceso</span>   <% end %>
+
+            	
+            </div>
+
+            
+         
+          </div>
+ 
+        </div>
+ 
+      <!-- End Header Content -->
+ 	
+
+ 	<hr>
+ 
+      <!-- Search Bar -->
+ 
+        <div class="row">
+ 			<div class="large-12 columns">
+	            <div class="radius panel sinBorde">
+	 				<h4>Lista de Procesos<hr class="lineaHorizontalAzul"/></h4>
+
+	 				<table>
+					  <thead>
+					    <tr>
+					      <th width="200">Titulo</th>
+					      <th width="150">Tipo</th>
+					      <th width="150">Estado</th>
+					      <th width="150">favorito</th>
+					      <th width="150">Creaado el</th>
+					      <th width="150">Ultima Modificacion</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	 <% @procesos.each do |proceso| %>
+                              <%= render 'proceso', :proceso => proceso %>
+                        <% end %>
+					  	
+                	   </tbody>
+					</table>
+	          	</div>
+          	</div>
+ 		</div>
+	<!-- End Search Bar -->
+ 
+      </div>
     </div>
-    </div>
+  
   </section>
+
   <section>
     <p class="title" data-section-title><a href="#panel2">Reporte General</a></p>
     <div class="content tabs" data-section-content>
       
     	<!-- Navigation -->
       <div class="row collapse">
-	    <div class="small-3 columns paddginCero" style="margin-top: 25px;">
-	      <span class="prefix"><h4 id="tituloContrato" style="padding-top: 5px;" >
-	            Reporte General  </h4> </span>
-	    </div>
+
 	     <div class="small-8 columns paddginCero" style="margin-top: 25px;">
-	              <form class="custom">
-	                  <select id="customDropdown" class="dropdown large">
-	                  <option DISABLED>Estado Actual</option>
-	                  <option>Seleccionar Proceso</option>
-	                  <option>Proceso 1</option>
-	                  <option>Proceso 2</option>
-	                  <option>Proceso 3</option>
-	                  <option>Proceso 4</option>
-	                  </select>
-	              </form>
+	             <%= form_tag(controller: "procesos", action: "index", method: "get", class: "custom") do %>
+				
+	                 <%= select_tag (:tipo_proceso_id, [["Seleccionar Tipo Proceso", 0]] + @procesos.map {|r| [r.tipo_proceso.tipo+"-"+r.titulo,r.id]}, { :disabled => ["Seleccionar Proceso", 0] }) %>
+	            <% end %>
 	      </div>
 
 	  </div>
 
-	  <div class="row">
- 		
+	 <div class="row">
  		<div class="large-8 small-offset-4 large-offset-4 columns">
 	      	<img src="img/Analytics.png" width="250px">
 	    </div>
