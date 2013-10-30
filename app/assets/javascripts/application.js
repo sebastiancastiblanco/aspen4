@@ -24,9 +24,41 @@ function cambioEstadoProceso (procesoid){
             dataType: "JSON",
             timeout: 10000,
             success: function(res){
+
             }
          })
 };
+
+
+function reporteProceso (procesoid){
+   
+    var divPanelProceso = "#panelReporteProceso";
+    var divpanelReporteProcesoImagen = "#panelReporteProcesoImagen";
+    
+    var divprocesosSelectVal = $('#procesosSelect').val();
+    alert(divprocesosSelectVal);
+    
+    if (divprocesosSelectVal) {
+
+       $.ajax({
+            url: "/reportes/reporteProceso/"+divprocesosSelectVal,
+            type: 'GET',       
+            success: function(res){
+              
+            }
+         })
+
+      $(panelReporteProcesoGeneral).css('display', 'block');
+      $(panelReporteProcesoImagen).css('display', 'none');
+      
+    }else{
+      $(panelReporteProcesoGeneral).css('display', 'none');
+      $(panelReporteProcesoImagen).css('display', 'block');
+    }
+
+    
+};
+
 
 function cambioEstadoFavoritoHome(procesoid){
 

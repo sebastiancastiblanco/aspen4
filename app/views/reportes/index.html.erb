@@ -10,11 +10,6 @@
        	<div class="row">
     <div class="large-12 columns">
  
-      
-
- 		
-        
- 
       <!-- End Navigation -->
  	
 <div class="section-container auto panelReportes" data-section>
@@ -172,17 +167,20 @@
       
     	<!-- Navigation -->
       <div class="row collapse">
+      	<div class="small-4 columns paddginCero" style="margin-top: 21px;">
+	      <span class="prefix">Proceso</span>
+	    </div>
+	     <div class="small-8 columns paddginCero">
+	    
+	            <%= form_tag('/reportes', class: "custom") do -%>
+					<%= select_tag "procesosSelect", options_from_collection_for_select(@procesos, "id", "titulo"), class: 'custom', onchange: "reporteProceso()", include_blank: true %>
+				<% end %>
 
-	     <div class="small-8 columns paddginCero" style="margin-top: 25px;">
-	             <%= form_tag(controller: "procesos", action: "index", method: "get", class: "custom") do %>
-				
-	                 <%= select_tag (:tipo_proceso_id, [["Seleccionar Tipo Proceso", 0]] + @procesos.map {|r| [r.tipo_proceso.tipo+"-"+r.titulo,r.id]}, { :disabled => ["Seleccionar Proceso", 0] }) %>
-	            <% end %>
 	      </div>
 
 	  </div>
 
-	 <div class="row">
+	 <div id="panelReporteProcesoImagen"  class="row">
  		<div class="large-8 small-offset-4 large-offset-4 columns">
 	      	<img src="img/Analytics.png" width="250px">
 	    </div>
@@ -191,17 +189,13 @@
 	    </div>
     </div>
  	  <!-- Header Content -->
- 	<div id="panelReporteProceso" class="ocultar" >
-
+ 	<div id="panelReporteProcesoGeneral" >
+       
         <div class="row">
- 
           <div class="large-6 columns">
- 
                <h3 class="show-for-small">Resumen<hr class="lineaHorizontalAzul"/></h3>
- 
             <div class="panel sinBorde">
               <h4 class="hide-for-small">Resumen<hr class="lineaHorizontalAzul"/></h4>
-
               <table>
 				  <thead>
 				    <tr>
@@ -214,38 +208,62 @@
 				  <tbody>
 				    <tr>
 				      <td><%= link_to   "Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
-				      <td>#</td>
-				      <td>15 oct 2013</td>
+				      <td><%= @proceso.participantes.size %></td>
+				      <td>
+				       <% if @proceso.participantes.present? %>
+				      	<%= fechaFormatoActualizado @proceso.participantes.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
 				      
 				    </tr>
 				     <tr>
 				      <td> <%= link_to  "Contratos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
-				      <td>#</td>
-				      <td>15 oct 2013</td>
+				      <td><%= @proceso.contratos.size %></td>
+				      <td>
+				       <% if @proceso.contratos.present? %>
+				      	<%= fechaFormatoActualizado @proceso.contratos.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
 				     
 				    </tr>
 				     <tr>
 				      <td><%= link_to   "Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
-				      <td>#</td>
-				      <td>15 oct 2013</td>
+				      <td><%= @proceso.actividads.size %></td>
+				      <td>
+				       <% if @proceso.actividads.present? %>
+				      	<%= fechaFormatoActualizado @proceso.actividads.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
 				      
 				    </tr>
 				     <tr>
 				      <td> <%= link_to  "Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
-				      <td>#</td>
-				      <td>15 oct 2013</td>
+				       <td><%= @proceso.alertas.size %></td>
+				      <td>
+				       <% if @proceso.alertas.present? %>
+				      	<%= fechaFormatoActualizado @proceso.actividads.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
 				      
 				    </tr>
 				     <tr>
 				      <td>    <%= link_to  "Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
-				      <td>#</td>
-				      <td>15 oct 2013</td>
+				        <td><%= @proceso.documents.size %></td>
+				      <td>
+				       <% if @proceso.documents.present? %>
+				      	<%= fechaFormatoActualizado @proceso.documents.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
 				      
 				    </tr>
 				     <tr>
 				      <td><%= link_to  "Conclusiones", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
-				      <td>#</td>
-				      <td>15 oct 2013</td>
+				         <td><%= @proceso.estados.size %></td>
+				      <td>
+				       <% if @proceso.estados.present? %>
+				      	<%= fechaFormatoActualizado @proceso.estados.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
 				      
 				    </tr>
 				  </tbody>
@@ -253,8 +271,17 @@
                 
 				<br />
 				<br />
-           		<span class="bold">  Usuario creador del proceso:</span> username <br />
-           		<span class="bold">  Particpante Principal:</span> particpante <br />
+           		<span class="bold">  Usuarios del proceso:</span> 
+           		  	<% @proceso.usuarios.each do |usuario| %>
+                              <%= usuario.username %>,
+                    <% end %>
+           		<br />
+           		<span class="bold">Particpante Principal:</span> 
+           		 <% if @proceso.participantes.empty?  %>
+           		 	 <%=  @proceso.participantes.order('updated_at').last.nombre  @proceso.participantes.order('updated_at').last.apellido %> 
+				<% end %>
+
+           		 <br />
            		
 
             </div>
@@ -280,26 +307,22 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>
-				      <td>Mov 1 </td>
-				      <td>#</td>
-				      <td>15 oct 2013</td>
-				    </tr>
-				     <tr>
-				      <td>Mov 2 </td>
-				      <td>#</td>
-				      <td>15 oct 2013</td>
-				    </tr>
-				     <tr>
-				      <td>Mov 3 </td>
-				      <td>#</td>
-				      <td>15 oct 2013</td>
-				    </tr>
-				   
+				    
+				    <% @procesoLog.each do |logProceso| %>
+                        <tr>
+					      <td><%= logProceso.mensaje %></td>
+					      <td><%= fechaFormatoActualizado logProceso.created_at %></td>
+					      <td><%= Usuario.find(logProceso.usuario_id).username %></td>
+					    </tr>
+                    <% end %>
+
+				    
+
 				  </tbody>
 				</table>
 
-            	<%= link_to 'Ver Progreso', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %> <br />
+            	  <%= link_to 'Ver Progreso', :progreso, :class=>"textolinks alinearDerecha" %>
+            	  <br />
 
 	            <h4 class="hide-for-small">Alertas Pendientes<hr class="lineaHorizontalAzul"/></h4>
 	            
@@ -308,41 +331,25 @@
 				    <tr>
 				      <th width="250">Alerta</th>
 				      <th width="100">Fecha</th>
-				      <th width="100"></th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>
-				      <td>Mov 1 </td>
-				      <td>15 oct 2013</td>
-				       <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
-				    </tr>
-				     <tr>
-				      <td>Mov 2 </td>
-				      <td>15 oct 2013</td>
-				       <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
-				    </tr>
-				     <tr>
-				      <td>Mov 3 </td>
-				      <td>15 oct 2013</td>
-				       <td><%= button_to "Listar", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
-				    </tr>
-				   
+
+				  	<% @alertasPendientes.each do |alertaPendiente| %>
+                        <tr>
+				      		<td><%= alerta.titulo %></td>
+				      		<td><%= fechaFormatoActualizado alerta.termina %></td>
+				       	</tr>
+					<% end %>
+
 				  </tbody>
 				</table>
-
-            	<%= link_to 'Alertas Pendientes', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha ", :id => "mostrarCamposOpcionales" %> <br />
-
+            	<%= link_to   "Alertas Pendientes", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :class=>"textolinks alinearDerecha ", :method=>:get %> <br />
             </div>
-
-            
-         
           </div>
- 
         </div>
  
       <!-- End Header Content -->
- 	
 
  	<hr>
  

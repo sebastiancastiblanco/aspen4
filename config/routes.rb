@@ -174,6 +174,9 @@ AspenVersion3::Application.routes.draw do
 
   match 'procesos/estadoProceso/:procesoid/:estadoProcesoid' => 'procesos#estadoProceso'
 
+  match '/reportes/reporteProceso/:proceso_id' => 'reportes#reporteProceso'
+  
+
   #Agenda
   match '/events/move/:id' => 'events#move'
   match '/events/resize/:id' => 'events#resize'
