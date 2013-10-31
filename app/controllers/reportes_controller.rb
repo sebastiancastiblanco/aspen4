@@ -8,7 +8,9 @@ class ReportesController < ApplicationController
 
     #ultimos movimientos de un proceso en especifico
     @procesoLog = Log.where(proceso_id: @proceso.id ).order('updated_at DESC').limit(3)
-    @alertasPendientes = @proceso.alertas.where("termina < ?", Time.now).order("updated_at DESC");
+    @alertasPendientes = @proceso.alertas.where("termina < ?", Time.now).order("updated_at DESC").limit(3);
+    @actividades = @proceso.actividads.activos.order('updated_at DESC').limit(3)
+    @documentos = @proceso.documents.activos.order('updated_at DESC').limit(3)
 
   	respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +19,13 @@ class ReportesController < ApplicationController
 
   def reporteProceso
    @proceso = Proceso.find(params[:proceso_id])
+   #ultimos movimientos de un proceso en especifico
+    @procesoLog = Log.where(proceso_id: @proceso.id ).order('updated_at DESC').limit(3)
+    @alertasPendientes = @proceso.alertas.where("termina < ?", Time.now).order("updated_at DESC").limit(3);
+    @actividades = @proceso.actividads.activos.order('updated_at DESC').limit(3)
+    @documentos = @proceso.documents.activos.order('updated_at DESC').limit(3)
+
+   
     respond_to do |format|
       format.js 
     end

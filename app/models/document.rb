@@ -6,4 +6,8 @@ class Document < ActiveRecord::Base
   #Pertenece a un proceso
   belongs_to :proceso
   belongs_to :usuario
+
+  #Scope para la tabla
+  scope :activos, where(:activo => true)
+
 end

@@ -1,0 +1,260 @@
+ <div class="row">
+          <div class="large-6 columns">
+               <h3 class="show-for-small">Resumen<hr class="lineaHorizontalAzul"/></h3>
+            <div class="panel sinBorde">
+              <h4 class="hide-for-small">Resumen<hr class="lineaHorizontalAzul"/></h4>
+              <table>
+				  <thead>
+				    <tr>
+				      <th width="200"></th>
+				      <th>Cantidad</th>
+				      <th width="150">Ult. Modificacion</th>
+				      <th ></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td><%= link_to   "Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
+				      <td><%= @proceso.participantes.size %></td>
+				      <td>
+				       <% if @proceso.participantes.present? %>
+				      	<%= fechalog @proceso.participantes.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
+				      
+				    </tr>
+				     <tr>
+				      <td> <%= link_to  "Contratos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
+				      <td><%= @proceso.contratos.size %></td>
+				      <td>
+				       <% if @proceso.contratos.present? %>
+				      	<%= fechalog @proceso.contratos.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
+				     
+				    </tr>
+				     <tr>
+				      <td><%= link_to   "Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
+				      <td><%= @proceso.actividads.size %></td>
+				      <td>
+				       <% if @proceso.actividads.present? %>
+				      	<%= fechalog @proceso.actividads.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
+				      
+				    </tr>
+				     <tr>
+				      <td> <%= link_to  "Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
+				       <td><%= @proceso.alertas.size %></td>
+				      <td>
+				       <% if @proceso.alertas.present? %>
+				      	<%= fechalog @proceso.actividads.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
+				      
+				    </tr>
+				     <tr>
+				      <td>    <%= link_to  "Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
+				        <td><%= @proceso.documents.size %></td>
+				      <td>
+				       <% if @proceso.documents.present? %>
+				      	<%= fechalog @proceso.documents.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
+				      
+				    </tr>
+				     <tr>
+				      <td><%= link_to  "Conclusiones", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
+				         <td><%= @proceso.estados.size %></td>
+				      <td>
+				       <% if @proceso.estados.present? %>
+				      	<%= fechalog @proceso.estados.order('updated_at').last.updated_at %> 
+					   <% end %>
+				      </td>
+				      
+				    </tr>
+				  </tbody>
+				</table>
+                
+				<br />
+				<br />
+           		
+           		<span class="bold">Particpante Principal:</span> 
+           		 <% if @proceso.participantes.empty?  %>
+           		 	 <%=  @proceso.participantes.order('updated_at').last.nombre  @proceso.participantes.order('updated_at').last.apellido %> 
+				<% end %>
+
+           		 <br />
+           		
+
+            </div>
+ 
+          
+ 
+          </div>
+ 
+ 
+          <div class="large-6 columns">
+ 
+            <h3 class="show-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h3>
+ 
+            <div class="panel sinBorde">
+              	<h4 class="hide-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h4>
+
+              	<table>
+				  <thead>
+				    <tr>
+				      <th width="250"></th>
+				      <th width="100">Fecha</th>
+				      <th width="100">Usuario</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    
+				    <% @procesoLog.each do |logProceso| %>
+                        <tr>
+					      <td><%= logProceso.mensaje %></td>
+					      <td><%= fechalog logProceso.created_at %></td>
+					      <td><%= Usuario.find(logProceso.usuario_id).username %></td>
+					    </tr>
+                    <% end %>
+
+				    
+
+				  </tbody>
+				</table>
+
+            	  <%= link_to 'Ver Progreso', :progreso, :class=>"textolinks alinearDerecha" %>
+            	  <br />
+
+	            <h4 class="hide-for-small">Alertas Pendientes<hr class="lineaHorizontalAzul"/></h4>
+	            
+				<table>
+				  <thead>
+				    <tr>
+				      <th width="250">Alerta</th>
+				      <th width="100">Fecha</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+
+				  	<% @alertasPendientes.each do |alertaPendiente| %>
+                        <tr>
+				      		<td><%= alertaPendiente.titulo %></td>
+				      		<td><%= fechalog alertaPendiente.termina %></td>
+				       	</tr>
+					<% end %>
+
+				  </tbody>
+				</table>
+            	<%= link_to   "Alertas Pendientes", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :class=>"textolinks alinearDerecha ", :method=>:get %> <br />
+            </div>
+          </div>
+        </div>
+ 
+      <!-- End Header Content -->
+
+ 	<hr>
+ 
+      <!-- Search Bar -->
+ 
+        <div class="row">
+ 			<div class="large-12 columns">
+	            <div class="radius panel sinBorde">
+	 				<h4 class="hide-for-small">Actividades<hr class="lineaHorizontalAzul"/></h4>
+
+
+	 				<table>
+					  <thead>
+					    <tr>
+					      <th width="200">Actividad</th>
+					      <th width="150">Inicio</th>
+					      <th width="150">Ultima Modificacion</th>
+					      <th width="150">Tiempo Transcurrido</th>
+					      <th width="150">Duracion Estimada</th>
+					      <th width="150">Estado Actual</th>
+					      
+					    </tr>
+					  </thead>
+					  <tbody>
+					    
+					<% @actividades.each do |actividad| %>
+                        
+				       	<tr>
+					      <td><%= link_to actividad.nombre, {:controller => "actividads", :action => "index", :proceso_id => @proceso.id,:actividad_id => actividad.id, :nuevoItem => true} %></td>
+					      <td><%= fechalog actividad.fechaSeguimiento %></td>
+					       <td><%= fechalog actividad.updated_at %></td>
+					      <td>tiempo trascurrido</td>
+					      <td><%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo %></td>
+					      <td><%= actividad.estado_actividad.estado %></td>
+					     
+					    </tr>
+					<% end %>
+
+					   
+					  </tbody>
+					</table>
+					<%= link_to actividads_path(:proceso_id => @proceso.id), :class=>"textolinks alinearDerecha " do  %>
+                      Ver todas las Actividades
+                    <% end %>
+	 				
+	          	</div>
+          	</div>
+ 		</div>
+
+        <div class="row">
+ 			<div class="large-12 columns">
+	            <div class="radius panel sinBorde">
+	 				<h4 class="hide-for-small">Documentos<hr class="lineaHorizontalAzul"/></h4>
+
+	 				<table>
+					  <thead>
+					    <tr>
+					      <th width="350">Titulo</th>
+					      <th width="150">Fecha Registro</th>
+					      <th width="150">Ultima Modificacion</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  <% @documentos.each do |documento| %>
+                        
+				       	<tr>
+					      <td><%= documento.name %></td>
+					       <td><%= fechalog documento.created_at %></td>
+					       <td><%= fechalog documento.updated_at %></td>
+					    </tr>
+					<% end %>
+
+					     
+					  </tbody>
+					</table>
+	 				<%= link_to   "Ver todos los documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :class=>"textolinks alinearDerecha", :method=>:get %>
+	          	</div>
+	         </div>
+ 		</div>
+
+        <div class="row">
+ 			<div class="large-12 columns">
+            	<div class="radius panel sinBorde">
+ 					<h4 class="hide-for-small">Colaboradores<hr class="lineaHorizontalAzul"/></h4>
+
+ 					<table>
+					  <thead>
+					    <tr>
+					      <th width="350">Usuario</th>
+					      <th width="150">Fecha de Ingreso</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+
+           		  	<% @proceso.usuarios.each do |usuario| %>
+                         <tr>
+					      <td> <%= usuario.username %>,</td>
+					      <td> <%= fechalog usuario.created_at %></td>
+					    </tr>
+                    <% end %>
+           			</tbody>
+					</table>
+ 				</div>
+          	</div>
+ 		</div>

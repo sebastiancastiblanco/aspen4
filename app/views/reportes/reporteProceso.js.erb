@@ -1,3 +1,6 @@
+$('#panelReporteProcesoGeneral').remove();
+$('#panelreport').append('<%= j render("reporteProceso", :proceso => @proceso) %>');
 
+	
 alert("desplegar reporte para "+ <%= @proceso.id %>);
 

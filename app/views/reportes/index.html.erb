@@ -39,7 +39,7 @@
 				  	<% @logs.each do |log| %>
                 	  <tr>
 					      <td><%= log.mensaje %> </td>
-					      <td><%= fechaFormatoActualizado log.created_at %></td>
+					      <td><%= fechalog log.created_at %></td>
 				      </tr>
 				  <% end %>
               	</tbody>
@@ -105,7 +105,7 @@
 				    <tr>
 				      <td><%= link_to(@proceso) do  %> <%= @proceso.titulo %> <% end %></td>
 				      <td><%= @proceso.estado_proceso.estado %></td> 
-				      <td><%= fechaFormatoActualizado @proceso.created_at %></td>
+				      <td><%= fechalog @proceso.created_at %></td>
 				    </tr>
 				   </tbody>
 				</table>
@@ -189,285 +189,20 @@
 	    </div>
     </div>
  	  <!-- Header Content -->
+ 	
+ 	<div id="panelreport" >
+       
  	<div id="panelReporteProcesoGeneral" >
        
-        <div class="row">
-          <div class="large-6 columns">
-               <h3 class="show-for-small">Resumen<hr class="lineaHorizontalAzul"/></h3>
-            <div class="panel sinBorde">
-              <h4 class="hide-for-small">Resumen<hr class="lineaHorizontalAzul"/></h4>
-              <table>
-				  <thead>
-				    <tr>
-				      <th width="200"></th>
-				      <th>Cantidad</th>
-				      <th width="150">Ult. Modificacion</th>
-				      <th ></th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <td><%= link_to   "Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
-				      <td><%= @proceso.participantes.size %></td>
-				      <td>
-				       <% if @proceso.participantes.present? %>
-				      	<%= fechaFormatoActualizado @proceso.participantes.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
-				      
-				    </tr>
-				     <tr>
-				      <td> <%= link_to  "Contratos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
-				      <td><%= @proceso.contratos.size %></td>
-				      <td>
-				       <% if @proceso.contratos.present? %>
-				      	<%= fechaFormatoActualizado @proceso.contratos.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
-				     
-				    </tr>
-				     <tr>
-				      <td><%= link_to   "Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
-				      <td><%= @proceso.actividads.size %></td>
-				      <td>
-				       <% if @proceso.actividads.present? %>
-				      	<%= fechaFormatoActualizado @proceso.actividads.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
-				      
-				    </tr>
-				     <tr>
-				      <td> <%= link_to  "Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
-				       <td><%= @proceso.alertas.size %></td>
-				      <td>
-				       <% if @proceso.alertas.present? %>
-				      	<%= fechaFormatoActualizado @proceso.actividads.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
-				      
-				    </tr>
-				     <tr>
-				      <td>    <%= link_to  "Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
-				        <td><%= @proceso.documents.size %></td>
-				      <td>
-				       <% if @proceso.documents.present? %>
-				      	<%= fechaFormatoActualizado @proceso.documents.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
-				      
-				    </tr>
-				     <tr>
-				      <td><%= link_to  "Conclusiones", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
-				         <td><%= @proceso.estados.size %></td>
-				      <td>
-				       <% if @proceso.estados.present? %>
-				      	<%= fechaFormatoActualizado @proceso.estados.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
-				      
-				    </tr>
-				  </tbody>
-				</table>
-                
-				<br />
-				<br />
-           		<span class="bold">  Usuarios del proceso:</span> 
-           		  	<% @proceso.usuarios.each do |usuario| %>
-                              <%= usuario.username %>,
-                    <% end %>
-           		<br />
-           		<span class="bold">Particpante Principal:</span> 
-           		 <% if @proceso.participantes.empty?  %>
-           		 	 <%=  @proceso.participantes.order('updated_at').last.nombre  @proceso.participantes.order('updated_at').last.apellido %> 
-				<% end %>
-
-           		 <br />
-           		
-
-            </div>
- 
-          
- 
-          </div>
- 
- 
-          <div class="large-6 columns">
- 
-            <h3 class="show-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h3>
- 
-            <div class="panel sinBorde">
-              	<h4 class="hide-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h4>
-
-              	<table>
-				  <thead>
-				    <tr>
-				      <th width="250"></th>
-				      <th width="100">Fecha</th>
-				      <th width="100">Usuario</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    
-				    <% @procesoLog.each do |logProceso| %>
-                        <tr>
-					      <td><%= logProceso.mensaje %></td>
-					      <td><%= fechaFormatoActualizado logProceso.created_at %></td>
-					      <td><%= Usuario.find(logProceso.usuario_id).username %></td>
-					    </tr>
-                    <% end %>
-
-				    
-
-				  </tbody>
-				</table>
-
-            	  <%= link_to 'Ver Progreso', :progreso, :class=>"textolinks alinearDerecha" %>
-            	  <br />
-
-	            <h4 class="hide-for-small">Alertas Pendientes<hr class="lineaHorizontalAzul"/></h4>
-	            
-				<table>
-				  <thead>
-				    <tr>
-				      <th width="250">Alerta</th>
-				      <th width="100">Fecha</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-
-				  	<% @alertasPendientes.each do |alertaPendiente| %>
-                        <tr>
-				      		<td><%= alerta.titulo %></td>
-				      		<td><%= fechaFormatoActualizado alerta.termina %></td>
-				       	</tr>
-					<% end %>
-
-				  </tbody>
-				</table>
-            	<%= link_to   "Alertas Pendientes", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :class=>"textolinks alinearDerecha ", :method=>:get %> <br />
-            </div>
-          </div>
-        </div>
- 
-      <!-- End Header Content -->
-
- 	<hr>
- 
-      <!-- Search Bar -->
- 
-        <div class="row">
- 			<div class="large-12 columns">
-	            <div class="radius panel sinBorde">
-	 				<h4 class="hide-for-small">Actividades<hr class="lineaHorizontalAzul"/></h4>
-
-
-	 				<table>
-					  <thead>
-					    <tr>
-					      <th width="200">Actividad</th>
-					      <th width="150">Inicio</th>
-					      <th width="150">Ultima Modificacion</th>
-					      <th width="150">Tiempo Transcurrido</th>
-					      <th width="150">Duracion Estimada</th>
-					      <th width="150">Estado Actual</th>
-					      
-					      <th></th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr>
-					      <td>actividad desarrollada</td>
-					      <td>15 oct 2013</td>
-					       <td>16 oct 2013</td>
-					      <td>horas</td>
-					      <td>duracion</td>
-					      <td>estado actual</td>
-					      	
-					      <td><%= button_to "ir", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
-					    </tr>
-					      <tr>
-					      <td>actividad desarrollada</td>
-					      <td>15 oct 2013</td>
-					       <td>16 oct 2013</td>
-					      <td>horas</td>
-					      <td>duracion</td>
-					      <td>estado actual</td>
-					     
-					      <td><%= button_to "ir", {:controller => "participantes", :action => "index", :proceso_id => 1},:class => "tiny button secondary radius " %></td>
-					    </tr>
-					  </tbody>
-					</table>
-
-	 				 <%= link_to 'Ver todas las Actividades', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %>
-	          	</div>
-          	</div>
- 		</div>
-
-        <div class="row">
- 			<div class="large-12 columns">
-	            <div class="radius panel sinBorde">
-	 				<h4 class="hide-for-small">Documentos<hr class="lineaHorizontalAzul"/></h4>
-
-	 				<table>
-					  <thead>
-					    <tr>
-					      <th width="350">Titulo</th>
-					      <th width="150">Fecha Registro</th>
-					      <th width="150">Ultima Modificacion</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr>
-					      <td>actividad desarrollada</td>
-					      <td>15 oct 2013</td>
-					       <td>16 oct 2013</td>
-					      
-					    </tr>
-					      <tr>
-					      <td>actividad desarrollada</td>
-					      <td>15 oct 2013</td>
-					       <td>16 oct 2013</td>
-					      
-					    </tr>
-					  </tbody>
-					</table>
-
-	 				<%= link_to 'Ver todos los documentos', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %>
-	          	</div>
-	         </div>
- 		</div>
-
-        <div class="row">
- 			<div class="large-12 columns">
-            	<div class="radius panel sinBorde">
- 					<h4 class="hide-for-small">Colaboradores<hr class="lineaHorizontalAzul"/></h4>
-
- 					<table>
-					  <thead>
-					    <tr>
-					      <th width="350">Usuario</th>
-					      <th width="150">Fecha de Ingreso</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr>
-					      <td>actividad desarrollada</td>
-					      <td>15 oct 2013</td>
-					    </tr>
-					    <tr>
-					      <td>actividad desarrollada</td>
-					      <td>15 oct 2013</td>
-					    </tr>
-					  </tbody>
-					</table>
- 				</div>
-          	</div>
- 		</div>
+       <%= render("reporteProceso", :proceso => @proceso) %>
  
       <!-- End Search Bar -->
  
       </div>
+      </div>
 
+</div>
+ 	
 
     </div>
   </section>

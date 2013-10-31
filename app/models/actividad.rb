@@ -1,5 +1,5 @@
 class Actividad < ActiveRecord::Base
-  attr_accessible :descripcion, :fechaSeguimiento, :medidaTiempo, :nombre, :observacion, :tiempoEjecucion, :created_at, :estado_actividad_id, :updated_at, :participante_id
+  attr_accessible :activo, :descripcion, :fechaSeguimiento, :medidaTiempo, :nombre, :observacion, :tiempoEjecucion, :created_at, :estado_actividad_id, :updated_at, :participante_id
   #Validaciones
   validates :nombre, :participante_id, :fechaSeguimiento,:estado_actividad_id, :descripcion, :presence => { :message => "Campo obligatorio"}
   
@@ -16,5 +16,8 @@ class Actividad < ActiveRecord::Base
   belongs_to :estado_actividad
   #Tiene un participante
   belongs_to :participante
+
+  #Scope para la tabla
+  scope :activos, where(:activo => true)
 
 end
