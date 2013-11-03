@@ -55,9 +55,10 @@
                                         <span class="alinearbotones hora"><%= horalog log.created_at %></span>
                                                                                 
                                          <img class=" alinearbotones" src="/img/user.png"  title="<%= log.usuario %>">
-
+                        
                                          <%=  link_to log.mensaje, {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog alinearbotones"   %>
-                                        <img class=" imagenLogo imagendoc" width="35"  src="https://d3dma7a8zw52bz.cloudfront.net/assets/icons/document_icon_jumbo-a0a7cde8400d74f9975a1608bed73a1f.png" >
+                                       
+                                       <img class=" imagenLogo imagendoc" width="35"  src="/img/doc.png" >
                                         
                                     </div>
                                     <% end %>  

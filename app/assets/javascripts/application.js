@@ -36,7 +36,7 @@ function reporteProceso (procesoid){
     var divpanelReporteProcesoImagen = "#panelReporteProcesoImagen";
     
     var divprocesosSelectVal = $('#procesosSelect').val();
-    alert(divprocesosSelectVal);
+   
     
     if (divprocesosSelectVal) {
 

@@ -28,18 +28,18 @@
            
           	<h4 class="hide-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h4>
 	            
-				<table>
+				<table class="tablaReportes">
 				  <thead>
 				    <tr>
 				      <th width="300"></th>
-				      <th width="150">Fecha</th>
+				      <th width="150" class="centrado">Fecha</th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				  	<% @logs.each do |log| %>
                 	  <tr>
 					      <td><%= log.mensaje %> </td>
-					      <td><%= fechalog log.created_at %></td>
+					      <td class="centrado"><%= fechalog log.created_at %></td>
 				      </tr>
 				  <% end %>
               	</tbody>
@@ -59,58 +59,34 @@
  
               <h4 class="hide-for-small">Mis Procesos<hr class="lineaHorizontalAzul"/></h4>
 
-              <table>
+              <table class="tablaReportes">
 				  <thead>
 				    <tr>
 				      <th width="200">Estado del proceso</th>
-				      <th>No de procesos</th>
+				      <th class="centrado">No de procesos</th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				  	<tr>
 				      <td>Sin iniciar</td>
-				      <td><%= Proceso.sinIniciar(current_user.id).size %></td>
+				      <td class="centrado"><%= Proceso.sinIniciar(current_user.id).size %></td>
 				    </tr>
 				    <tr>
 				      <td>Abiertos</td>
-				      <td><%= Proceso.abiertos(current_user.id).size %></td>
+				      <td class="centrado"><%= Proceso.abiertos(current_user.id).size %></td>
 				    </tr>
 				    <tr>
 				      <td>Aplazados</td>
-				      <td><%= Proceso.aplazados(current_user.id).size %></td>
+				      <td class="centrado"><%= Proceso.aplazados(current_user.id).size %></td>
 				    </tr>
 				    <tr>
 				      <td>Terminados</td>
-				      <td><%= Proceso.terminados(current_user.id).size %></td>
+				      <td class="centrado"><%= Proceso.terminados(current_user.id).size %></td>
 				    </tr>
 				    
 				  </tbody>
 				</table>
                 
-
-            	 <br />
-
-				<h3 class="show-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h3>
- 				<h4 class="hide-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h4>
-
-              	<table>
-				  <thead>
-				    <tr>
-				      <th width="250"></th>
-				      <th width="100">Estado actual</th>
-				      <th width="150">Fecha</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <td><%= link_to(@proceso) do  %> <%= @proceso.titulo %> <% end %></td>
-				      <td><%= @proceso.estado_proceso.estado %></td> 
-				      <td><%= fechalog @proceso.created_at %></td>
-				    </tr>
-				   </tbody>
-				</table>
-
-				<%= link_to(@proceso) do %>  <span class="textolinks alinearDerecha">Ir al proceso</span>   <% end %>
 
             	
             </div>
@@ -129,19 +105,45 @@
       <!-- Search Bar -->
  
         <div class="row">
+
+<div class="large-12 columns">
+	            <div class="radius panel sinBorde">
+        	<h3 class="show-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h3>
+ 				<h4 class="hide-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h4>
+
+              	<table class="tablaReportes">
+				  <thead>
+				    <tr>
+				      <th width="250"></th>
+				      <th width="100" class="centrado">Estado actual</th>
+				      <th width="200" class="centrado">Fecha de Inicio</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td><%= link_to(@proceso) do  %> <%= @proceso.titulo %> <% end %></td>
+				      <td class="centrado"> <%= @proceso.estado_proceso.estado %></td> 
+				      <td class="centrado"><%= fechalog @proceso.created_at %></td>
+				    </tr>
+				   </tbody>
+				</table>
+
+				<%= link_to(@proceso) do %>  <span class="textolinks alinearDerecha">Ir al proceso</span>   <% end %>
+</div>
+          	</div>
+
  			<div class="large-12 columns">
 	            <div class="radius panel sinBorde">
 	 				<h4>Lista de Procesos<hr class="lineaHorizontalAzul"/></h4>
 
-	 				<table>
+	 				<table class="tablaReportes">
 					  <thead>
 					    <tr>
 					      <th width="200">Titulo</th>
-					      <th width="150">Tipo</th>
-					      <th width="150">Estado</th>
-					      <th width="150">favorito</th>
-					      <th width="150">Creaado el</th>
-					      <th width="150">Ultima Modificacion</th>
+					      <th width="150" class="centrado">Tipo</th>
+					      <th width="150" class="centrado">Estado</th>
+					      <th width="150" class="centrado">Creado el</th>
+					      <th width="150" class="centrado">Ultima Modificacion</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -168,7 +170,7 @@
     	<!-- Navigation -->
       <div class="row collapse">
       	<div class="small-4 columns paddginCero" style="margin-top: 21px;">
-	      <span class="prefix">Proceso</span>
+	      <span class="prefix">Selecciona un Proceso</span>
 	    </div>
 	     <div class="small-8 columns paddginCero">
 	    
@@ -188,18 +190,15 @@
 	      <h3 class="textoGris">Reportes Generales</h3>
 	    </div>
     </div>
- 	  <!-- Header Content -->
+ 	 
  	
  	<div id="panelreport" >
-       
- 	<div id="panelReporteProcesoGeneral" >
-       
-       <%= render("reporteProceso", :proceso => @proceso) %>
- 
-      <!-- End Search Bar -->
- 
-      </div>
-      </div>
+    </div>
+ 	
+ 	 <!-- Reporte proceso -->
+    <%= render("reporteProceso", :proceso => @proceso) %>
+    
+      
 
 </div>
  	
