@@ -18,12 +18,12 @@
 
     <div class="current_user">
         <ul>
-            <li><a  href="#">Planes y Precios</a></li>
+            <li><%=  link_to "Planes y precios", :precios %></li> 
             <li>
              <%= link_to "Perfil: "+current_user.username,current_user,:class => "Me"   %>
             </li>
             <li>
-                <%= link_to 'Sign out', :logout %>
+                <%= link_to 'Salir', :logout %>
             </li>
         </ul>
     </div>
@@ -53,14 +53,17 @@
               data: {
                 featureClass: "P",
                 style: "full",
-                maxRows: 12,
-                name_startsWith: request.term
+                maxRows: 4,
+                iniciaCon: request.term
+              },
+              select: function (event, ui) {
+                  
               },
               success: function( data ) {
                 response( $.map( data, function( item ) {
                   return {
                     label: item.titulo,
-                    value: item.titulo
+                    value: item.id
                   }
                 }));
               }
@@ -71,6 +74,16 @@
    
     
   });
+
+
+  $( "#tags" )
+    .on( "autocompleteselect", 
+      function( event, ui ) { 
+        window.location.href="/procesos/"+ui.item.value;
+      } 
+    );
+
+
   </script>
   
 </nav>

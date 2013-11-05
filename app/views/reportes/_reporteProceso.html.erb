@@ -1,6 +1,6 @@
 <div id="panelReporteProcesoGeneral" class="row ocultar" >
  <div class="row ">
-          <div class="large-6 columns">
+          <div class="large-4 columns">
                <h3 class="show-for-small">Resumen<hr class="lineaHorizontalAzul"/></h3>
             <div class="panel sinBorde">
               <h4 class="hide-for-small">Resumen<hr class="lineaHorizontalAzul"/></h4>
@@ -9,83 +9,48 @@
 				    <tr>
 				      <th width="200"></th>
 				      <th>Cantidad</th>
-				      <th width="150">Ult. Modificacion</th>
-				      <th ></th>
+				     
 				    </tr>
 				  </thead>
 				  <tbody>
 				    <tr>
 				      <td><%= link_to   "Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
 				      <td class="centrado"><%= @proceso.participantes.size %></td>
-				      <td class="centrado">
-				       <% unless !@proceso.participantes.nil? %>
-				      	<%= fechalog @proceso.participantes.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
-				      
+				     
 				    </tr>
 				     <tr>
 				      <td> <%= link_to  "Contratos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
 				      <td class="centrado" ><%= @proceso.contratos.size %></td>
-				      <td class="centrado">
-				       <% unless !@proceso.contratos.nil? %>
-				      	<%= fechalog @proceso.contratos.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
+				      
 				     
 				    </tr>
 				     <tr>
 				      <td><%= link_to   "Actividades", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
 				      <td class="centrado"><%= @proceso.actividads.size %></td>
-				      <td class="centrado">
-				       <% unless !@proceso.actividads.nil? %>
-				      	<%= fechalog @proceso.actividads.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
+				      
 				      
 				    </tr>
 				     <tr>
 				      <td> <%= link_to  "Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
 				       <td class="centrado"><%= @proceso.alertas.size %></td>
-				      <td class="centrado">
-				       <% unless !@proceso.alertas.nil? %>
-				      	<%= fechalog @proceso.actividads.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
+				      
 				      
 				    </tr>
 				     <tr>
 				      <td>    <%= link_to  "Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
 				        <td class="centrado"><%= @proceso.documents.size %></td>
-				      <td class="centrado">
-				       <% unless !@proceso.documents.nil? %>
-				      	<%= fechalog @proceso.documents.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
-				      
+				     
 				    </tr>
 				     <tr>
 				      <td><%= link_to  "Conclusiones", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %></td>
 				         <td class="centrado"><%= @proceso.estados.size %></td>
-				      <td class="centrado">
-				       <% unless !@proceso.estados.nil? %>
-				      	<%= fechalog @proceso.estados.order('updated_at').last.updated_at %> 
-					   <% end %>
-				      </td>
+				      
 				      
 				    </tr>
 				  </tbody>
 				</table>
                 
-				<br />
-				<br />
-           		
-           		<span class="bold">Particpante Principal:</span> 
-           		 <% unless !@proceso.participantes.nil?  %>
-           		 	 <%=  @proceso.participantes.order('updated_at').last.nombre  @proceso.participantes.order('updated_at').last.apellido %> 
-				<% end %>
-
-           		 <br />
+				 <br />
            		
 
             </div>
@@ -95,7 +60,7 @@
           </div>
  
  
-          <div class="large-6 columns">
+          <div class="large-8 columns">
  
             <h3 class="show-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h3>
  
@@ -105,8 +70,8 @@
               	<table class="tablaReportes">
 				  <thead>
 				    <tr>
-				      <th width="250"></th>
-				      <th width="150" class="centrado">Fecha</th>
+				      <th width="350"></th>
+				      <th width="200" class="centrado">Fecha</th>
 				     
 				    </tr>
 				  </thead>
@@ -115,7 +80,7 @@
 				    <% @procesoLog.each do |logProceso| %>
                         <tr>
 					      <td><%= logProceso.mensaje %></td>
-					      <td class="centrado"><%= fechalog logProceso.created_at %></td>
+					      <td class="centrado"><%= fechaFormatoActualizado logProceso.created_at %></td>
 					    </tr>
                     <% end %>
 
@@ -170,7 +135,7 @@
 					      <th width="200">Actividad</th>
 					      <th width="150">Inicio</th>
 					      <th width="150">Ultima Modificacion</th>
-					      <th width="150">Tiempo Transcurrido</th>
+					      
 					      <th width="150">Duracion Estimada</th>
 					      <th width="150">Estado Actual</th>
 					      
@@ -178,14 +143,16 @@
 					  </thead>
 					  <tbody>
 					    
-					<% @actividades.each do |actividad| %>
+					<% @actividades.order('updated_at DESC').each do |actividad| %>
                         
 				       	<tr>
 					      <td><%= link_to actividad.nombre, {:controller => "actividads", :action => "index", :proceso_id => @proceso.id,:actividad_id => actividad.id, :nuevoItem => true} %></td>
 					      <td><%= fechalog actividad.fechaSeguimiento %></td>
 					       <td><%= fechalog actividad.updated_at %></td>
-					      <td>tiempo trascurrido</td>
-					      <td><%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo %></td>
+					      <td><% if !actividad.tiempoEjecucion.nil? %>  <%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo %>
+					      		<% else %> - 
+					      		<% end %> 
+					      </td>
 					      <td><%= actividad.estado_actividad.estado %></td>
 					     
 					    </tr>
@@ -216,7 +183,7 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					  <% @documentos.each do |documento| %>
+					  <% @documentos.order('updated_at DESC').each do |documento| %>
                         
 				       	<tr>
 					      <td>  <img alt="" class="thumbnail alinearbotones" src="/img/doc.png" data-scaled="true" style="width: 16px; height: 16px">  <%= documento.name %></td>
@@ -242,13 +209,13 @@
 					  <thead>
 					    <tr>
 					      <th width="350">Nombre</th>
-					      <th width="150">Usuario</th>
-					      <th width="150">Fecha de Ingreso</th>
+					      <th class="centrado" width="150">Usuario</th>
+					      <th class="centrado" width="150">Fecha de Ingreso</th>
 					    </tr>
 					  </thead>
 					  <tbody>
 
-           		  	<% @proceso.usuarios.each do |usuario| %>
+           		  	<% @proceso.usuarios.order('created_at DESC').each do |usuario| %>
                          <tr>
 					      <td> <%= usuario.nombre %></td>
 					      <td class="centrado"> <%= usuario.username %></td>

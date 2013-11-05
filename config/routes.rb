@@ -187,4 +187,7 @@ AspenVersion3::Application.routes.draw do
   #ir actividad desde el log
   match '/logs/iractividad/:log_id' => 'logs#iractividad'
 
+  match '/procesos/searchProceso/' => 'procesos#searchProceso'
+  
+
 end

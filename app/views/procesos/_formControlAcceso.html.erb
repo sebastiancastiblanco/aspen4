@@ -21,9 +21,9 @@
 	              <div id="listaUsuarios">
 	                <% @proceso.usuarios.each do |usuario| %>
 	                
-					    <img class="avatar " height="40" src="/img/user_blue.png" width="40"> 
+					    <img class="avatar " src="/img/user.png"> 
 					    
-	                    <span class="posicionNombreUsuario "><%= usuario.username %></span>
+	                    <span class="posicionNombreUsuario "><%= usuario.nombre %></span>
 	                    
 	                <% end %>
 	              </div>

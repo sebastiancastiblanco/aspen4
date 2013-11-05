@@ -169,5 +169,11 @@ class ProcesosController < ApplicationController
      @proceso.update_attribute(:estado_proceso_id,  params[:estadoProcesoid])
      render :json => @proceso
   end
-  
+
+  def searchProceso
+    @procesosencontrados = current_user.procesos.search(params[:inicia])
+    respond_to do |format|
+     format.json { render json: @procesosencontrados }
+    end
+  end
 end

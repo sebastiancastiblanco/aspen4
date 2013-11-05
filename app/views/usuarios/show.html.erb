@@ -22,37 +22,38 @@
 
           <div class="row">
 
-              <div class="large-8 small-8 columns">
+              <div class="large-12 small-12 columns">
                 <div class="panel" style="background:white;">
    	               
    	               <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
 
-					<div id="formularioUsuarios"></div>
-   	               
-					<%= render 'formEditarUsuario' %>
-       
-                </div>
+        					<div id="formularioUsuarios"></div>
+           	               
+        					<%= render 'formEditarUsuario' %>
+               
+                 </div>
 	
               </div>
               
-              <div class="large-4 small-4 columns">
+              <div class="large-12 small-12 columns">
                <div class="row">
 					
-					  <div class="small-12 small-offset-1 columns" style="margin-top: 18px;"> 
-					  	<h6>Ultimos movimientos</h6>
-					  	<hr>
-					  	 <% @logs.each do |log| %>
+					  <div class="small-12  columns" > 
+					  	<h3>Ultimos movimientos</h3>
+					  	<hr class="lineaHorizontalAzul">
+					  	 <% @logs.limit(5).each do |log| %>
 		                    <div class="action">
 		                      <span class="in_project tituloCampo">
 		                        <%= log.mensaje %>, <%= fechalog log.created_at %>
 		                      </span>
 		                    </div>
-		                  <% end %>
+		            <% end %>
+                <%= link_to 'Ver Progreso', :progreso, :class=>"textolinks alinearDerecha" %>
 
-		                <hr style="margin:15px 0 15px 0"> 
-					  	<h6>Ultimos procesos creados</h6>
-					  	
-					  	 <% @procesos.each do |proceso| %>
+		          <br />
+					  	<h3>Ultimos procesos creados</h3>
+					  	<hr  class="lineaHorizontalAzul"> 
+					  	 <% @procesos.limit(5).each do |proceso| %>
 		    
 		                    <div class="action">
 		                      <span class="in_project tituloCampo">
@@ -60,7 +61,7 @@
 		                      </span>
 		                    </div>
 		                  <% end %>
-
+                 <%= link_to 'Procesos', :procesos, :class=>"textolinks alinearDerecha" %>
 					  </div>
 				 
               </div>

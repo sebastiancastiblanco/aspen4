@@ -6,7 +6,7 @@
 	$('#new_actividad_link').show();
 	$('#listar_actividades_link').hide();
 	$('#listaFiltros').show();
-	$('#botonesActividades').removeClass("small-offset-4");
+	
 	$('#actividad_<%= @actividad.id %>').remove()
 	$('#actividades').append('<%= j render("actividad", :actividad => @actividad) %>');
 	document.getElementById("tituloActividad").innerHTML = "Actividades";

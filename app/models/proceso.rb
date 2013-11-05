@@ -41,7 +41,13 @@ class Proceso < ActiveRecord::Base
   scope :terminados, ->(usuarioid) {self.procesoEstado(usuarioid,4)}
   scope :aplazados, ->(usuarioid) {self.procesoEstado(usuarioid,3)}
   
-  
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['titulo LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
 
 
 
