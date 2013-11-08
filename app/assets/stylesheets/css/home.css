@@ -230,7 +230,7 @@ div.panel.home_tab>nav {
 }
 div.panel.home_tab nav.projects_nav a {
   width: 80px !important;
-height: 105px !important;
+height: 54px !important;
 margin-top: 51px !important;
 margin-left: 17px !important;
  /*background: url(https://d3dma7a8zw52bz.cloudfront.net/assets/icons/new_project-5788db55f69415598bb407c0b1f187db.png) no-repeat !important;*/
@@ -285,7 +285,7 @@ div.panel.home_tab div.project_templates {
   text-align: center !important;
   width: 148px !important;
   left: -16px !important;
-  top: 193px !important;
+  top: 230px !important;
   font-size: 14px !important;
 }
 div.panel.home_tab div.project_templates a {
@@ -373,9 +373,10 @@ div.panel.home_tab section.projects.cards article.card p {
 }
 div.panel.home_tab section.projects.cards article.card div.people {
   float: left;
-  left: 16px !important;
+  left: 0px !important;
   bottom: 15px !important;
   zoom: 1 !important;
+  position: relative !important;
 }
 
 /*detalles de proceso*/

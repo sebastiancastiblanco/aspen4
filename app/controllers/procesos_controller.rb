@@ -176,4 +176,18 @@ class ProcesosController < ApplicationController
      format.json { render json: @procesosencontrados }
     end
   end
+
+   #Filtrado de las actividades
+ def favoritos
+    if (params[:estado]=='1')
+       @procesos = current_user.procesos.favoritos
+    else
+       @procesos = current_user.procesos
+    end
+    
+    respond_to do |format|
+      format.js
+    end
+ end
+
 end

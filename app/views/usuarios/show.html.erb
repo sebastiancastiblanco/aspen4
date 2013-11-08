@@ -8,20 +8,22 @@
             
             
    <div class="panellog">
-		  <div> <img src="/img/user64.png" class="alinearbotones" style="margin-bottom: 34px;"> </div>
+		      <div class="row">
+
+        <div> <img src="/img/user64.png" class="alinearbotones" style="margin-bottom: 34px;"> </div>
    		  <div style="margin-left: 95px;"> 
    		  		<h1 id="nombreUsuario" style="margin-bottom: 0px;"><%= @usuario.nombre %></h1> 
     			<div id="correoUsuario" class="links"><%= @usuario.username %></div>
               	<span class="detalle">creado el <%= fechalog @usuario.created_at %></span>
    		  </div>
           
-   		  <hr>
-         
+   		  <hr class="lineaHorizontalAzul">
+         <br />
+
           <h4>Edita tu informacion</h4>
 
 
-          <div class="row">
-
+        
               <div class="large-12 small-12 columns">
                 <div class="panel" style="background:white;">
    	               

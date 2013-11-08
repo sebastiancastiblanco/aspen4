@@ -38,6 +38,7 @@ AspenVersion3::Application.routes.draw do
   get "procesos/nofavorito"
   get "procesos/compartirProceso"
   get "procesos/eventos"
+  get "procesos/favoritos"
   
   
   resources :agendas
@@ -187,7 +188,10 @@ AspenVersion3::Application.routes.draw do
   #ir actividad desde el log
   match '/logs/iractividad/:log_id' => 'logs#iractividad'
 
+  #Buscar procesos
   match '/procesos/searchProceso/' => 'procesos#searchProceso'
   
+  #filtrado de procesos favoritos
+  match 'procesos/favoritos/:estado' => 'procesos#favoritos'
 
 end

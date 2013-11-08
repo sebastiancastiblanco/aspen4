@@ -133,7 +133,6 @@ class ActividadsController < ApplicationController
     @proceso = Proceso.find(params[:proceso_id])
     @filtro = params[:estado_id]
 
-
     if (params[:estado_id]== "0")
       @actividads = @proceso.actividads
     else

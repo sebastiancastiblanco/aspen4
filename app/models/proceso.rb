@@ -31,6 +31,8 @@ class Proceso < ActiveRecord::Base
   belongs_to :estado_proceso
 
   scope :activos, where(activo: true)
+  scope :favoritos, where(favorito: true)
+  scope :nofavoritos, where(favorito: false)
 
   #Metodo propio del proceso, filtro de procesos por usuario y estado del proceso
   def self.procesoEstado(usuarioid,estado_proceso_id)

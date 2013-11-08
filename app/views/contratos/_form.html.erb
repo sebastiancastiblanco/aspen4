@@ -47,7 +47,7 @@
     </div>
     <div class="small-4 columns field">
       <span data-tooltip class="tip-top" title="Indica el valor total del contrato">
-      <%= f.text_field :valor, :placeholder => "Valor del Contrato" %>
+      <%= f.text_field :valor, :placeholder => "Valor del Contrato", :value => number_with_precision(@contrato.valor)  %>
     </div>
      <div class="small-2 small-offset-0 columns ">
        

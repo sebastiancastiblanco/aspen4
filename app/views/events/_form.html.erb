@@ -46,14 +46,9 @@
           <%= f.submit :'Guardar Evento' , :class => " button radius small"  %>
       </div>
       <% end %>
-       
 </div>
 
 <script>
   $('#event_starttime').datetimepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt',stepHour: 1,stepMinute: 10});
-  
-  jQuery('#event_endtime').datetimepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt',stepHour: 1,stepMinute: 30});
-
- //  $(document).foundation();
+  jQuery('#event_endtime').datetimepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt',stepHour: 1,stepMinute: 10});
 </script>
-

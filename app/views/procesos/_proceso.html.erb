@@ -1,0 +1,31 @@
+<article class="card fondoGris">
+        <a id="favoritoHome" class="star" onClick="cambioEstadoFavoritoHome(<%= proceso.id %>)">
+            <% if (proceso.favorito) %>
+              <div id="ProcesoNoFavorito<%= proceso.id %>" class="foundicon-star" style="display:none"></div>
+              <div id="ProcesoFavorito<%= proceso.id %>" class="favoritoSeleccionado" style="display:block"></div>
+            <% else %>
+              <div id="ProcesoNoFavorito<%= proceso.id %>" class="foundicon-star" style="display:block"></div>
+              <div id="ProcesoFavorito<%= proceso.id %>" class="favoritoSeleccionado" style="display:none"></div>
+            <% end %>
+        </a>
+    <%= link_to(proceso) do  %>
+      
+        <h5><%= proceso.titulo %> </h5>
+            <p style="margin-bottom: 5px;">Ref <%= proceso.id %></p>
+            <p style="font-size: 12px !important;;">
+                Modificado <%= fechaFormato1 proceso.updated_at %>
+            </p>
+            <p style="font-size: 12px !important;;">
+                <%= proceso.estado_proceso.estado %>
+            </p>
+
+            <div class="panelAvatarUsuario">
+                <% proceso.usuarios.each do |usuarioConAcceso| %>
+                    <div class="people">
+                         <img src="/img/user.png" title="<%= usuarioConAcceso.username %>">
+                    </div>
+                <% end %>
+            </div>
+
+    <% end %>
+</article>
