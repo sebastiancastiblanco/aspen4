@@ -9,7 +9,7 @@
 	$('#participante_<%= @participante.id %>').remove()
 	$('#participantes').append('<%= j render("participante", :participante => @participante) %>');
 	document.getElementById("tituloParticipante").innerHTML = "Participantes";
-
+	$('#panelParticpantesImagen').hide();
 <% else %>
 	$('#formParticipante').remove();
 	$('#formularioParticipantes').after('<%= j render("form") %>');

@@ -17,8 +17,8 @@
 
             <div class="project_templates">
                 <hr>
-                <%= link_to 'Alertas Pendientes', :alertasPendientes %>
-                <%= link_to 'Actividades Pendientes', :actividadesPendientes %>
+                <%= link_to "Alertas Pendientes ("+@NumeroAlertasPendientes.to_s+")", :alertasPendientes %>
+                <%= link_to "Actividad Pendientes ("+@NumeroActividadesPendientes.to_s+")", :actividadesPendientes %>
             </div>
 
             <div id="all_projects">

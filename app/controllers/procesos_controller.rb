@@ -10,7 +10,9 @@ class ProcesosController < ApplicationController
     #estados de los procesos
     @estadosProcesos = EstadoProceso.all
 
- 
+    #Alertas pendietse del usuario
+    @NumeroAlertasPendientes = current_user.alertas.where("termina < ?", Time.now).order("updated_at DESC").count;
+    @NumeroActividadesPendientes = current_user.actividads.where("fechaSeguimiento < ?", Time.now).order("updated_at DESC").count;
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @procesos }

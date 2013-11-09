@@ -108,7 +108,18 @@
                            </section>
                           
                         <% end %>
-                        
+                   
+              <% if  @actividads.empty? && @actividadesRender == "false"%>
+                   <div id="panelActividadesImagen"  class="row">
+                    <div class="large-8 small-offset-4 large-offset-4 columns">
+                          <img src="/img/detalles2.png" width="250px" style="opacity: 0.4;">
+                      </div>
+                      <div class="large-8 small-offset-3 large-offset-3 columns">
+                        <h3 class="textoGris">Inicia Creando una nueva actividad</h3>
+                      </div>
+                   </div>
+                <% end %>
+
             </div>
           </div>
         </div>
