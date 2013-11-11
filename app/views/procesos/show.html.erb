@@ -56,30 +56,36 @@
 
               <div class="description field" style="width: auto; border-color: transparent;">
                <span class="bold"> <%= @proceso.tipo_proceso.tipo %>:</span> <%= @proceso.objetivo %>, <%= @proceso.ciudad %>
+                <br />
+                <span class="bold"> Cliente:</span> 
+                       
+                        <% if !@participantePrincipal.empty? %> 
+                          
+                          <% @participantePrincipal.each do |participantePrincipal| %>
+                           <%=  link_to participantePrincipal.nombre+" "+participantePrincipal.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:id => participantePrincipal.id, :nuevoItem => true}, :class => ""   %>,
+                          <% end %>
+
+                        <% else %>
+                             <%= link_to "Crear Participante / Cliente", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => ""  %>
+                        <% end %>
+
+                <br />
+                 <span class="bold"> Ciudad: </span><%= @proceso.ciudad %>
+                <br />
+                  <span class="bold"></span>#REF-<%= @proceso.id %>
               </div>
-              <div class="row">
-                <div class="small-9 large-9 columns left" style="margin-left: -20px;">
-                      <h6 class="label">#REF-<%= @proceso.id %></h6>
-                    </div>
-                    <div class="small-9 large-1 columns left" style="margin-top: 4px;">
-                      <h6 class="label">Estado: </h6>
-                    </div>
-                    <div class="small-9 large-2 columns left">
-                      <%= form_for @proceso,  :html => { :class => "custom",:id => "formProcesoEstado"}  do |f| %>
-                        <%= f.select :estado_proceso_id, [["Estado Actual", 0]] + @estadosProcesos.map {|r| [r.estado,r.id]}, { :disabled => ["Estado Actual", 0] } , :id => "listaEstadoProceso", :onchange => "cambioEstadoProceso("+@proceso.id.to_s+")"  %>
-
-                      <% end %>
-
-
-                    </div>
-              </div>
-
-
 
 
             </div>
           </div>
 
+          <div class="row ubicacionEstado">
+                <div class="small-2 large-3  small-offset-10  large-offset-9  columns left" >
+                       <%= form_for @proceso,  :html => { :class => "custom",:id => "formProcesoEstado"}  do |f| %>
+                        <%= f.select :estado_proceso_id, [["Estado Actual del Proceso", 0]] + @estadosProcesos.map {|r| [r.estado,r.id]}, { :disabled => ["Estado Actual", 0] } , :id => "listaEstadoProceso", :onchange => "cambioEstadoProceso("+@proceso.id.to_s+")"  %>
+                        <% end %>  
+                </div>
+          </div>
 
           <% if notice %>
                     <div data-alert class="alert-box success radius">
@@ -92,7 +98,7 @@
             <div class="tools has_tools_not_in_project">
 
               <div class="group not_in_project">
-                <span class="label">Agregar : </span>
+                <span class="label">Listar : </span>
 
 
                  <%= link_to   "("+@participantes.size.to_s+") Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
@@ -109,10 +115,14 @@
 
                 <%= link_to   "("+@estados.size.to_s+") Conclusiones", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
+
+
               </div>
             </div>
           </div>
         </header>
+
+
         <div class="sheet_body">
           <section class="events">
             <header>
@@ -174,8 +184,7 @@
                       <div class="small-12 columns ">
                          <h5>
                         
-                             <%=  link_to participante.rol_participante.rol+" - "+participante.nombre+" "+participante.apellido, {:controller => "participantes", :action => "edit", :proceso_id => @proceso.id,:id => participante.id, :nuevoItem => true}, :class => "descripcionLog"   %>
-                        
+                             <%=  link_to participante.rol_participante.rol+" - "+participante.nombre+" "+participante.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:participante_id => participante.id, :nuevoItem => true}, :class => "descripcionLog"   %>
                           </h5> 
                       </div>
                       <div class="small-12 columns">
@@ -217,7 +226,7 @@
                     <div class="row">
                       <div class="small-12 columns ">
                          <h5>
-                             <%=  link_to contrato.tipoContrato, {:controller => "contratos", :action => "index", :proceso_id => @proceso.id,:contrato_id => contrato.id, :nuevoItem => true}, :class => "descripcionLog"   %>
+                             <%=  link_to contrato.tipoContrato+" - "+contrato.objeto, {:controller => "contratos", :action => "index", :proceso_id => @proceso.id,:contrato_id => contrato.id, :nuevoItem => true}, :class => "descripcionLog"   %>
                           </h5> 
                       </div>
                       <div class="small-12 columns">

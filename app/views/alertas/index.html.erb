@@ -55,11 +55,6 @@
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
             <section class="calendar_events">
 
-                  <div class="upcoming_events">
-                        <h2>Proximas alertas</h2>
-                  </div>
-                  
-                  
                         <% @alerta.each do |alerta| %>
                               <%= render 'alerta', :alerta => alerta %>
                         <% end %>
@@ -67,6 +62,20 @@
                </section>
             </div>
           </div>
+
+          <% if  @alerta.empty? %>
+                   <div id="panelcontratoImagen"  class="row">
+                    <div class="large-8 small-offset-4 large-offset-4 columns">
+                          <img src="/img/reloj.png" width="250px" style="opacity: 0.4;">
+                      </div>
+                      <div class="large-8 small-offset-3 large-offset-3 columns">
+                        <h3 class="textoGris">Inicia Creando una nueva alerta</h3>
+                      </div>
+                   </div>
+              <% end %>
+
+
+
         </div>
       </div>
     </div>

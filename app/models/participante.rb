@@ -1,5 +1,5 @@
 class Participante < ActiveRecord::Base
-  attr_accessible :activo,:apellido, :celular, :correo, :direccion, :documento, :estadoCivil, :fechaNacimiento, :genero, :nombre, :telefono, :tipoDocumento,:updated_at,:rol_participante_id,:proceso_id
+  attr_accessible :rolPrincipal,:activo,:apellido, :celular, :correo, :direccion, :documento, :estadoCivil, :fechaNacimiento, :genero, :nombre, :telefono, :tipoDocumento,:updated_at,:rol_participante_id,:proceso_id
   
   #Validaciones campos obligatorios
   validates :apellido, :nombre, :correo, :presence => { :message => "Campo obligatorio"}
@@ -22,5 +22,6 @@ class Participante < ActiveRecord::Base
 
   #Scope para la tabla
   scope :activos, where(:activo => true)
+  scope :participante_principal, ->(idproceso) { where(:proceso_id => idproceso,:activo => true,:rolPrincipal => true) }
 
 end

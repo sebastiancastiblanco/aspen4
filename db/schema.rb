@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016124439) do
+ActiveRecord::Schema.define(:version => 20131016124440) do
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20131016124439) do
     t.integer  "rol_participante_id"
     t.integer  "proceso_id"
     t.boolean  "activo"
+    t.boolean  "rolPrincipal"
   end
 
   create_table "proceso_participantes", :force => true do |t|

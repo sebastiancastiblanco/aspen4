@@ -21,7 +21,15 @@
     <div class="small-4 columns field">
       <%= f.text_field :correo, :placeholder => "Correo electronico" %>
     </div>
-     <div class="small-2 small-offset-0 columns ">
+
+    <div class="small-2 small-offset-0 columns ">
+      <%= f.label :celular_, :class => "tituloCampo error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+      <%= f.text_field :celular, :placeholder => "Número de Celular" %>
+    </div>  
+
+    <div class="small-2 small-offset-0 columns ">
       <%= f.label :rol_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
@@ -29,6 +37,18 @@
            <%= f.select :rol_participante_id, [["Rol Participante", 0]] + @rol_participantes.map {|r| [r.rol,r.id]}, { :disabled => ["Rol Participante", 0] } %>
           </span>
     </div>
+
+    <div class="small-2 small-offset-0 columns ">
+       <%= f.check_box :rolPrincipal, :class => "tituloCampo alinearbotones error alinearDerecha" %>
+    </div>
+    <div class="small-4 columns field">
+             <%= label_tag 'Es el cliente principal?' ,nil, :class => "tituloCampo error"  %>
+    </div>
+     
+        
+
+
+
 </div>
 
 <hr>
@@ -68,7 +88,7 @@
             <%= f.label :genero_, :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field">
-            <%= f.select :genero, [["Genero", 0]]+[["Masculino", "Masculino"]]+[["Femenino", "Femenino"]], { :disabled => ["Genero", 0] } %>
+            <%= f.select :genero, [["Genero", 0]]+[["Masculino", "Masculino"]]+[["Femenino", "Femenino"]]+[["Empresa", "Empresa"]], { :disabled => ["Genero", 0] } %>
           </div>
           
           <div class="small-2 small-offset-0 columns ">

@@ -3,7 +3,7 @@ class ActividadsController < ApplicationController
   # GET /actividads.json
   def index
     @proceso = Proceso.find(params[:proceso_id])
-    @actividads = @proceso.actividads
+    @actividads = @proceso.actividads.activos
     @actividadesRender = (params[:nuevoItem])
     if params[:actividad_id]
        @actividad = Actividad.find(params[:actividad_id])
@@ -146,8 +146,8 @@ class ActividadsController < ApplicationController
 
  #Recuperar las activiaddes pendites del usuario, en todos los procesos
   def actividadesPendientes
-     @actividadesPendientes = current_user.actividads.where("fechaSeguimiento < ?", Time.now).order("updated_at DESC");
-     @actividadesProximas = current_user.actividads.where("fechaSeguimiento >= ?", Time.now ).order("updated_at DESC").limit(3);
+     @actividadesPendientes = current_user.actividads.activos.where("fechaSeguimiento < ?", Time.now).order("updated_at DESC");
+     @actividadesProximas = current_user.actividads.activos.where("fechaSeguimiento >= ?", Time.now ).order("updated_at DESC").limit(3);
 
   end
 

@@ -18,7 +18,7 @@
                       </h4>
                       
                     </div>
-
+                     <hr  class="lineaHorizontalAzul"> 
                     <div class="small-3 small-3 columns left">
 
                     </div>
@@ -41,6 +41,17 @@
                </section>
             </div>
           </div>
+
+           <% if  @alertasPendientes.empty? %>
+                   <div id="panelcontratoImagen"  class="row">
+                    <div class="large-8 small-offset-4 large-offset-4 columns">
+                          <img src="/img/reloj.png" width="250px" style="opacity: 0.4;">
+                      </div>
+                      <div class="large-8 small-offset-4 large-offset-4 columns"  style="padding-left: 0px !important;">
+                        <h3 class="textoGris">No hay alertas pendientes</h3>
+                      </div>
+                   </div>
+              <% end %>
 
 <hr>
  <%= link_to 'Proximas Alertas', "javascript:eventoCamposOpcionalesAlertasProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %>

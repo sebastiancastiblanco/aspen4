@@ -11,8 +11,8 @@ class ProcesosController < ApplicationController
     @estadosProcesos = EstadoProceso.all
 
     #Alertas pendietse del usuario
-    @NumeroAlertasPendientes = current_user.alertas.where("termina < ?", Time.now).order("updated_at DESC").count;
-    @NumeroActividadesPendientes = current_user.actividads.where("fechaSeguimiento < ?", Time.now).order("updated_at DESC").count;
+    @NumeroAlertasPendientes = current_user.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC").count;
+    @NumeroActividadesPendientes = current_user.actividads.activos.where("fechaSeguimiento < ?", Time.now).order("updated_at DESC").count;
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @procesos }
@@ -40,11 +40,15 @@ class ProcesosController < ApplicationController
     #estados de los procesos
     @estadosProcesos = EstadoProceso.all
     #Alertas del proceso
-    @alertas = @proceso.alertas.where(activo: true).order("updated_at DESC").first(3)
+    @alertas = @proceso.alertas.activos.where(activo: true).order("updated_at DESC").first(3)
     #estados de los procesos
     @estados = @proceso.estados.where(activo: true).order("updated_at DESC").first(3)
     #Documentos del proceso
     @documentos = @proceso.documents.where(activo: true).order("updated_at DESC").first(3)
+    #participante principal del proceso
+    @participantePrincipal = Participante.participante_principal(@proceso.id)
+
+
     #Variables Gon, pasar variable proceso para uso en codigo JS
     gon.proceso_id = @proceso.id
     #Variable cantidad de usuarios en el proces
@@ -100,6 +104,7 @@ class ProcesosController < ApplicationController
       if @proceso.save
         #Salvar relacion entre el proecso y el usuario que lo creo
         @proceso.control_accesos.create(:usuario_id => current_user.id,:proceso_id => @proceso.id)
+
         
        format.html { redirect_to @proceso, notice: 'El proceso fue creado correctamente.'  }
 

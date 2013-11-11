@@ -105,8 +105,8 @@ class AlertasController < ApplicationController
 
   #Recuperar las alertas pendites del usuario, en todo los procesos
   def alertasPendientes
-    @alertasPendientes = current_user.alertas.where("termina < ?", Time.now).order("updated_at DESC");
-    @alertasProximas = current_user.alertas.where("termina >= ?", Time.now).order("updated_at DESC").limit(3);
+    @alertasPendientes = current_user.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC");
+    @alertasProximas = current_user.alertas.activos.where("termina >= ?", Time.now).order("updated_at DESC").limit(3);
   end
 
 end

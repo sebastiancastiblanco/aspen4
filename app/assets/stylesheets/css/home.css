@@ -1274,3 +1274,8 @@ border: none !important;
 .tablaReportes .centrado {
   text-align: center !important;
 }
+
+.ubicacionEstado{
+  float: right !important;
+  margin-top: -40px !important;
+}

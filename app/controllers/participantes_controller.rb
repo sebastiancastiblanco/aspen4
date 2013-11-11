@@ -76,7 +76,7 @@ class ParticipantesController < ApplicationController
       if @participante.save
           #Traza de log
           Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.username.to_s+', Creo el participante: '+@participante.nombre+' '+@participante.apellido)
-
+          
           format.html { redirect_to @participante, notice: 'El participante fue creado correctamente.'}
           format.json { render json: @participante, status: :created, location: @participante }
           format.js

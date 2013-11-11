@@ -12,8 +12,8 @@ document.getElementById("tituloActividad").innerHTML = "Actividades";
 	$("#filtroTerminadas").removeClass("active")
 <% elsif @filtro == "1" %>
 	$("#filtroTodos").removeClass("active")
-	$("#filtroProgramadas").removeClass("active")
-	$("#filtroAbiertas").addClass("active")
+	$("#filtroAbiertas").removeClass("active")
+	$("#filtroProgramadas").addClass("active")
 	$("#filtroAtrasadas").removeClass("active")
 	$("#filtroTerminadas").removeClass("active")
 <% elsif @filtro == "3" %>
@@ -25,15 +25,15 @@ document.getElementById("tituloActividad").innerHTML = "Actividades";
 <% elsif @filtro == "2" %>
 	$("#filtroTodos").removeClass("active")
 	$("#filtroProgramadas").removeClass("active")
-	$("#filtroAbiertas").removeClass("active")
+	$("#filtroTerminadas").removeClass("active")
 	$("#filtroAtrasadas").removeClass("active")
-	$("#filtroTerminadas").addClass("active")
+	$("#filtroAbiertas").addClass("active")
 <% elsif @filtro == "4" %>
 	$("#filtroTodos").removeClass("active")
-	$("#filtroProgramadas").addClass("active")
+	$("#filtroTerminadas").addClass("active")
 	$("#filtroAbiertas").removeClass("active")
 	$("#filtroAtrasadas").removeClass("active")
-	$("#filtroTerminadas").removeClass("active")
+	$("#filtroProgramadas").removeClass("active")
 <% end %>
 
 

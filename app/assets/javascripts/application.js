@@ -17,6 +17,7 @@
 
 
 
+
 function cambioEstadoProceso (procesoid){
 
     $.ajax({
@@ -252,7 +253,7 @@ function resizeEvent(the_event,dayDelta,minuteDelta,allDay) {
     {
      
     } 
-  });
+  }); 
 }
 
 function editEvent(the_event, jsEvent, view) {

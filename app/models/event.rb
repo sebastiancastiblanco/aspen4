@@ -34,10 +34,9 @@ class Event < ActiveRecord::Base
     { :id => self.id, 
       :title => self.title,
       :description => self.description || "", 
-      :start => starttime.rfc822, 
-      :end => endtime.rfc822, 
-      :all_day => self.all_day, 
-      :recurring => false, 
+      :start => self.starttime, 
+      :end =>  self.endtime, 
+      :all_day => false, 
     } 
   end 
 

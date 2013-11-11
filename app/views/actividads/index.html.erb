@@ -65,16 +65,16 @@
                       <%= link_to 'Todas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 0 , :remote => true %>
                   </dd>
                   <dd id="filtroProgramadas">
-                      <%= link_to 'Programadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 4 , :remote => true %>
+                      <%= link_to 'Programadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 1 , :remote => true %>
                   </dd>
                   <dd id="filtroAbiertas"> 
-                    <%= link_to 'Abiertas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 1 , :remote => true %>
+                    <%= link_to 'Abiertas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 2 , :remote => true %>
                   </dd>
                   <dd id="filtroAtrasadas">
                     <%= link_to 'Atrasadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 3 , :remote => true %>
                   </dd>
                   <dd id="filtroTerminadas">
-                    <%= link_to 'Terminadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 2 , :remote => true %>
+                    <%= link_to 'Terminadas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 4 , :remote => true %>
                   </dd>
               </dl>
             </div>
@@ -109,10 +109,10 @@
                           
                         <% end %>
                    
-              <% if  @actividads.empty? && @actividadesRender == "false"%>
+              <% if  @actividads.empty? && @actividadesRender != "true"%>
                    <div id="panelActividadesImagen"  class="row">
                     <div class="large-8 small-offset-4 large-offset-4 columns">
-                          <img src="/img/detalles2.png" width="250px" style="opacity: 0.4;">
+                          <img src="/img/calendario.png" width="250px" style="opacity: 0.4;">
                       </div>
                       <div class="large-8 small-offset-3 large-offset-3 columns">
                         <h3 class="textoGris">Inicia Creando una nueva actividad</h3>
