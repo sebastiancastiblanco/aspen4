@@ -1,11 +1,10 @@
 class EventosController < ApplicationController
-  
-  #Recupara la lista de eventos del usuario.
+	  #Recupara la lista de eventos del usuario.
   def index
     @event = Evento.new
     #Recuperar los eventos del usuario logeado
     #@eventos = current_user.eventos
-    @eventos = Evento.all
+    @eventos = current_user.eventos
     #respond de la funcion
     respond_to do |format| 
       format.html # index.html.erb 
@@ -25,8 +24,10 @@ class EventosController < ApplicationController
   #crea el evento en el calendario,  ejecuta el archivo create.js.erb
   #Asociandolo al usuario que lo creo.
   def create
-      @event = Evento.new(params[:event])
-      #setear la fecha en un solo campo
+      @event = Evento.new(params[:evento])
+     zone = ActiveSupport::TimeZone.new("America/Bogota")
+      @event.start.in_time_zone(zone)
+      @event.end.in_time_zone(zone)
       
 
       respond_to do |format|
@@ -52,9 +53,9 @@ class EventosController < ApplicationController
   
   #actualiza los eventos y ejecuta update.js.erb
   def update
-      @event = Evento.find_by_id(params[:idEvent])
+      @event = Evento.find_by_id(params[:id])
       respond_to do |format|
-       if @event.update_attributes(params[:event])
+       if @event.update_attributes(params[:evento])
            format.json { render json: @event, status: :created, location: @event }
            format.js
        else
@@ -78,9 +79,10 @@ class EventosController < ApplicationController
   #redimensaiona los eventos y ejecuta es JS de resize.js.erb
   def resize
     @event = Evento.find(params[:id])
+
     respond_to do |format|
       if @event
-          @event.endtime = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@event.endtime))
+          @event.end = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@event.end))
           @event.save
       end    
       format.js
@@ -98,7 +100,7 @@ class EventosController < ApplicationController
     end
 
   end
- end
+
 
 
   def get_events
@@ -110,5 +112,4 @@ class EventosController < ApplicationController
     end
     render :text => events.to_json
   end
-  
-  
+end

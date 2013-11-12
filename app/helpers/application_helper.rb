@@ -19,6 +19,10 @@ module ApplicationHelper
     date.strftime("%d %b %Y")
   end
 
+    def campoFecha(date)
+    date.strftime("%d %b %Y")
+  end
+
   def horalog(date)
     date.strftime("%I:%M %p")
   end

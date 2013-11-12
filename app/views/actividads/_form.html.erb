@@ -1,46 +1,46 @@
-<%= form_for(@actividad, :remote => true, :html => { :class => "custom ocultar",:id => "formActividad"} ) do |f| %>
+<%= form_for(@actividad, :remote => true, :html => { :class => "custom ocultar",:id => "formActividad"} ) do |actividad| %>
 
 <div class="row">
 
     <div class="small-2 small-offset-0 columns ">
-      <%= f.label "Nombre Actividad", :class => "tituloCampo error alinearDerecha" %>
+      <%= actividad.label "Nombre Actividad", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :nombre, :placeholder => "Nombre de la actividad" %>
+      <%= actividad.text_field :nombre, :placeholder => "Nombre de la actividad" %>
     </div>
     
     <div class="small-2 small-offset-0 columns ">
-      <%= f.label "Encargado", :class => "tituloCampo error alinearDerecha" %>
+      <%= actividad.label "Encargado", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
        <span data-tooltip class="tip-top" title="Participante principal y encargado de la actividad">
-      <%= f.select :participante_id, [["Encargado", 0]] + @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido,r.id]}, { :disabled => ["Encargado", 0] } %>
+      <%= actividad.select :participante_id, [["Encargado", 0]] + @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido,r.id]}, { :disabled => ["Encargado", 0] } %>
     </div>
 </div>
   
 <div class="row">  
     <div class="small-2 small-offset-0 columns ">
-      <%= f.label "Estado de la Actividad", :class => "tituloCampo error alinearDerecha" %>
+      <%= actividad.label "Estado de la Actividad", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-           <%= f.select :estado_actividad_id, [["Estado de la Actividad", 0]] + @estadoActividads.map {|r| [r.estado,r.id]}, { :disabled => ["Estado de la Actividad", 0] } %>
+           <%= actividad.select :estado_actividad_id, [["Estado de la Actividad", 0]] + @estadoActividads.map {|r| [r.estado,r.id]}, { :disabled => ["Estado de la Actividad", 0] } %>
     </div>
     <div class="small-2 small-offset-0 columns ">
-      <%= f.label "Fecha Seguimiento", :class => "tituloCampo error alinearDerecha" %>
+      <%= actividad.label "Fecha Seguimiento", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
           <span data-tooltip class="tip-top" title="Cúando la actividad se cambiará de estado?">
-          <%= f.text_field :fechaSeguimiento , :placeholder => "Fecha Seguimiento" %>
+          <%= actividad.text_field :fechaSeguimiento , :placeholder => "Fecha Seguimiento" %>
     </div>
 </div>
 
 <div class="row">
     <div class="small-2 small-offset-0 columns ">
-      <%= f.label "descripción", :class => "tituloCampo error alinearDerecha" %>
+      <%= actividad.label "descripción", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-10 columns field">
       <span data-tooltip class="tip-top" title="descripción principal de la actividad y objetivo final de la misma">
-      <%= f.text_area :descripcion, :placeholder => "Descripcion de la actividad, máximo 250 caracteres",:size => "30x50" %>
+      <%= actividad.text_area :descripcion, :placeholder => "Descripcion de la actividad, máximo 250 caracteres",:size => "30x50" %>
     </div>
 
 </div>
@@ -53,30 +53,91 @@
    
       <section>
         <div class="small-2 small-offset-0 columns ">
-          <%= f.label "Observaciones", :class => "tituloCampo error alinearDerecha" %>
+          <%= actividad.label "Observaciones", :class => "tituloCampo error alinearDerecha" %>
         </div>
         <div class="small-10 columns field">
           <span data-tooltip class="tip-top" title="Observaciones importantes que se deben tener en cuenta para realizár en la actividad">
-          <%= f.text_area :observacion, :placeholder => "Observaciones, máximo 250 caracteres" %>
+          <%= actividad.text_area :observacion, :placeholder => "Observaciones, máximo 250 caracteres" %>
         </div>
         
 
         <div class="small-2 small-offset-0 columns ">
-          <%= f.label "Tiempo ejecución", :class => "tituloCampo error alinearDerecha" %>
+          <%= actividad.label "Tiempo estimado", :class => "tituloCampo error alinearDerecha" %>
         </div>
         <div class="small-4 columns field">
               <span data-tooltip class="tip-top" title="Cúanto tiempo dura la actividad?">
-              <%= f.number_field :tiempoEjecucion, :placeholder => "Tiempo de ejecución" %>
+              <%= actividad.number_field :tiempoEjecucion, :placeholder => "Tiempo de ejecución" %>
         </div>
 
         <div class="small-2 small-offset-0 columns ">
-          <%= f.label "Medida de Tiempo", :class => "tituloCampo error alinearDerecha" %>
+          <%= actividad.label "Medida de Tiempo", :class => "tituloCampo error alinearDerecha" %>
         </div>
         <div class="small-4 columns field">
-               <%= f.select :medidaTiempo, [["Medida de Tiempo", 0]] + [["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], { :disabled => ["Medida de Tiempo", 0] } %>
+               <%= actividad.select :medidaTiempo, [["Medida de Tiempo", 0]] + [["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], { :disabled => ["Medida de Tiempo", 0] } %>
         </div>
 
     </section>
+</div>
+
+
+ <%= link_to 'Historial de la Actividad', "javascript:eventoTareasEjecutadas()", :class=>"textolinks", :id => "mostrarTareasEjecutadas" %>
+<hr>
+
+<div id="camposTareasEjecutadas"  class="row ocultar">
+    
+    <div class="large-3 small-3 small-offset-9 columns right ">
+      <a id="add" class="pointer" onclick="adicionarRegistroActividad()" >
+          <img src="/img/addgreen.png" width="20px" class="alinearbotones"> 
+          <span class="textolinksVerde">Agregar Registro</span>
+      </a>  
+      <%= link_to 'add registro ok', :controller => :actividads, :action => :nuevoRegistro , :actividad_id  => @proceso.id  , :remote => true %>
+
+    </div>
+    <br />
+    <br />
+      <table class="tablaReportes">
+          <thead>
+            <tr>
+              <th width="350">Descripcion</th>
+              <th width="200" class="centrado">Fecha</th>
+              <th width="200" class="centrado">Tiempo</th>
+              <th width="200" class="centrado">Medida de Tiempo</th>
+              <th width="50" class="centrado"></th>
+             
+            </tr>
+          </thead>
+          <tbody id="tablaTareasEjecutadas">
+            
+           
+<%= actividad.fields_for :actividad_eventos do |p| %>
+<tr id="regsitroActividad<%= @cantidadRegistros %>
+">
+    <td>
+      <%= p.text_field :descripcion, :placeholder => "Nombre de la actividad" %>
+    </td>
+    <td class="centrado">
+      <%= p.text_field :fecha , :placeholder => "Fecha Seguimiento" %>
+    </td>
+    
+    <td class="centrado">
+      <%= p.number_field :tiempo, :placeholder => "Tiempo de ejecución" %>
+    </td>
+    <td class="centrado">
+        <%= p.select :medidaTiempo, [["Medida de Tiempo", 0]] + [["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], { :disabled => ["Medida de Tiempo", 0] } %>
+    </td>
+    <td class="centrado">
+        <a id="remove" class="pointer" onclick="eliminarRegistroActividad()" >
+          <img src="/img/remove.png" width="20px">
+        </a>
+    </td>
+     
+</tr>
+
+<% end %>
+          </tbody>
+        </table>
+
+
 </div>
 
 
@@ -86,7 +147,7 @@
       <%= link_to 'Cancelar', "javascript:listarActividades()", :class=>"textoGrislinks" %>
      </div>
      <div class="small-2 columns field">
-      <%= f.submit :'Guardar Actividad' , :class => " button success radius" %></div>
+      <%= actividad.submit :'Guardar Actividad' , :class => " button success radius" %></div>
      </div>
      <%= hidden_field_tag :proceso_id, @proceso.id %>
      <%= hidden_field_tag :displayOpcionales, false , :id => "displayOpcionales" %>
@@ -97,5 +158,6 @@
 
 <script>
   jQuery('#actividad_fechaSeguimiento').datepicker({dateFormat: "dd MM yy"});
+  jQuery('#actividad_actividad_eventos_fecha').datepicker({dateFormat: "dd MM yy"});
    $(document).foundation();
 </script>

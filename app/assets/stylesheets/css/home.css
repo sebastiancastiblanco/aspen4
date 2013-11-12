@@ -952,6 +952,13 @@ color: #444;
   font-style: italic !important;
 }
 
+.textolinksVerde{
+  color: #7d7a75 !important;
+  font-family: HelveticaRegular, arial !important;
+  font-size: 12px !important;
+  
+}
+
 .textoGrislinks{
   color: #7d7a75 !important;
   font-family: HelveticaRegular, arial !important;
@@ -1266,12 +1273,34 @@ background: transparent !important;
 border: none !important;
 }
 
+.tablaReportes{
+  background: white !important;
+  margin-bottom: 1.25em !important;
+  border: solid 1px #dddddd !important;
+}
+
+.tablaReportes2 th{
+  border: solid 1px #dddddd !important;
+}
+
+.tablaReportes th {
+   border: solid 1px #dddddd !important;
+}
+
 .tablaReportes td {
+  padding: 10px !important;
+}
+
+.tablaReportes2 td {
   padding: 10px !important;
 }
 
 
 .tablaReportes .centrado {
+  text-align: center !important;
+}
+
+.tablaReportes2 .centrado {
   text-align: center !important;
 }
 

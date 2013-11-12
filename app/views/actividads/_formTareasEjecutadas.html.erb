@@ -1,0 +1,27 @@
+
+
+<%= fields_for :actividad_eventos do |p| %>
+<tr id="regsitroActividad<%= @cantidadRegistros %>
+">
+    <td>
+      <%= p.text_field :descripcion, :placeholder => "Nombre de la actividad" %>
+    </td>
+    <td class="centrado">
+      <%= p.text_field :fecha , :placeholder => "Fecha Seguimiento" %>
+    </td>
+    
+    <td class="centrado">
+      <%= p.number_field :tiempo, :placeholder => "Tiempo de ejecución" %>
+    </td>
+    <td class="centrado">
+        <%= p.select :medidaTiempo, [["Medida de Tiempo", 0]] + [["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], { :disabled => ["Medida de Tiempo", 0] } %>
+    </td>
+    <td class="centrado">
+        <a id="remove" class="pointer" onclick="eliminarRegistroActividad()" >
+          <img src="/img/remove.png" width="20px">
+        </a>
+    </td>
+     
+</tr>
+
+<% end %>

@@ -33,7 +33,7 @@
       <%= f.label :comienza_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.text_field :termina, :placeholder => "Fecha inicio",:class => "date start"   %>
+      <%= f.text_field :termina, :value => ( f.termina.strftime("%m/%d/%Y") if f.termina), :placeholder => "Fecha inicio",:class => "date start"   %>
     </div>
    
 </div>
@@ -55,6 +55,7 @@
 <% end %>
 
 <script>
-$('#alerta_termina').datetimepicker({dateFormat: "dd MM yy", timeFormat: 'hh:mm tt',stepHour: 1,stepMinute: 10});
+$('#alerta_termina').datetimepicker({dateFormat: "dd MM yy", timeFormat: ', hh:mm tt',stepHour: 1,stepMinute: 10});
+
   $(document).foundation();
 </script>

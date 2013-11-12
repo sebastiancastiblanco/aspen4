@@ -20,7 +20,7 @@ class Usuario < ActiveRecord::Base
   has_many :documents
   #Un Usuario (Abogado) tiene varios eventos al cual puede estar asociado
   has_many :usuario_eventos
-  has_many :events, through: :usuario_eventos
+  has_many :eventos, through: :usuario_eventos
 
 
   #Relacion Un Despacho tiene (has_many)  varios abogados

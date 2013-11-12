@@ -50,5 +50,5 @@ AspenVersion3::Application.configure do
   enable_starttls_auto: true  }
 
   
-
+  config.time_zone = 'UTC' 
 end

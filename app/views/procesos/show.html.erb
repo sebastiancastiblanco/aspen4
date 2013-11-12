@@ -7,7 +7,7 @@
 
         <header>
           <div class="header_links">
-            <a id="procesofavorito" class="pointer" onClick="cambioEstadoFavoritoHome(<%= @proceso.id %>)" >
+            <a id="procesofavorito" class="pointer" onclick="cambioEstadoFavoritoHome(<%= @proceso.id %>)" >
                <% if (@proceso.favorito) %>
                 <i id="ProcesoNoFavorito<%= @proceso.id %>" class="foundicon-star" style="display:none"></i>
                 <div id="ProcesoFavorito<%= @proceso.id %>" class="favoritoSeleccionado" style="display:block"></div>

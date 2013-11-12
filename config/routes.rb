@@ -1,4 +1,7 @@
 AspenVersion3::Application.routes.draw do
+  resources :actividad_eventos
+
+
   resources :reportes
   get "reportes/index"
   get "reportes/reporteProceso"
@@ -10,15 +13,17 @@ AspenVersion3::Application.routes.draw do
 
   resources :documents
   
-  resources :events
-  get "events/move"
-  get "events/resize"
+  resources :eventos
+  get "eventos/move"
+  get "eventos/resize"
   
   resources :tipo_procesos
   get "tipo_procesos/create"
   
   resources :actividads
   get "actividads/filtrado"
+  get "actividads/nuevoRegistro"
+
   
   resources :estado_actividads
   resources :contratos
@@ -179,8 +184,8 @@ AspenVersion3::Application.routes.draw do
   
 
   #Agenda
-  match '/events/move/:id' => 'events#move'
-  match '/events/resize/:id' => 'events#resize'
+  match '/eventos/move/:id' => 'eventos#move'
+  match '/eventos/resize/:id' => 'eventos#resize'
 
   #filtrado de actividades
   match 'actividads/filtrado/:proceso_id/:estado_id' => 'actividads#filtrado'
@@ -193,5 +198,8 @@ AspenVersion3::Application.routes.draw do
   
   #filtrado de procesos favoritos
   match 'procesos/favoritos/:estado' => 'procesos#favoritos'
+
+
+  match 'actividads/nuevoregistro/:actividad_id' => 'actividads#nuevoRegistro'
 
 end

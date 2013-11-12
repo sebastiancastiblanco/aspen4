@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  usuario_id: 
+  actividad_id: 
+  fecha: 
+  horas: 
+  descripcion: MyString
+
+two:
+  usuario_id: 
+  actividad_id: 
+  fecha: 
+  horas: 
+  descripcion: MyString

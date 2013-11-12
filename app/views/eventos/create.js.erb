@@ -1,0 +1,12 @@
+<% if @event.errors.count == 0 %>
+  document.getElementById("noticeMsg").innerHTML = "Se creo correctamente el evento <a href='#' class='close'>&times;</a>";
+  $("#noticeMsg").toggle( "fade" );
+  $('#calendar').fullCalendar( 'refetchEvents' );
+  $("#myModalNuevoEvento").foundation ("reveal", "close");
+
+<% else %>
+  $('#formActividad').remove();
+  $('#formularioActividades').after('<%= j render("form") %>');
+  $('#formActividad').toggle( "fade" );
+  $("#myModalNuevoEvento").foundation ("reveal", "open");
+<% end %>

@@ -17,6 +17,9 @@ class Actividad < ActiveRecord::Base
   #Tiene un participante
   belongs_to :participante
 
+  #tiene varias actividades Eventos
+  has_many :actividad_eventos
+
   #Scope para la tabla
   scope :activos, where(:activo => true)
 

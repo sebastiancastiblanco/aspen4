@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016124440) do
+ActiveRecord::Schema.define(:version => 20131111222801) do
+
+  create_table "actividad_eventos", :force => true do |t|
+    t.integer  "usuario_id"
+    t.integer  "actividad_id"
+    t.datetime "fecha"
+    t.integer  "tiempo"
+    t.string   "descripcion"
+    t.string   "medidaTiempo"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "actividads", :force => true do |t|
     t.string   "nombre"
@@ -125,6 +136,20 @@ ActiveRecord::Schema.define(:version => 20131016124440) do
     t.datetime "updated_at",                        :null => false
   end
 
+  create_table "eventos", :force => true do |t|
+    t.string   "title"
+    t.string   "dsecription"
+    t.boolean  "allDay"
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "url"
+    t.string   "className"
+    t.string   "color"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "alerta_id"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "title"
     t.datetime "starttime"
@@ -234,6 +259,7 @@ ActiveRecord::Schema.define(:version => 20131016124440) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "propietario_id"
+    t.integer  "evento_id"
   end
 
   create_table "usuarios", :force => true do |t|

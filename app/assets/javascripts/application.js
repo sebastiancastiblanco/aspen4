@@ -19,7 +19,6 @@
 
 
 function cambioEstadoProceso (procesoid){
-
     $.ajax({
             url: "/procesos/estadoProceso/"+procesoid+"/"+$('#listaEstadoProceso').val(),
             dataType: "JSON",
@@ -235,7 +234,7 @@ function nuevoParticipante(){
 function moveEvent(the_event,dayDelta,minuteDelta,allDay) {
   $.ajax({  
     type: 'GET',                                    
-    url: '/events/move/'+the_event.id,  //the script to call to get data          
+    url: '/eventos/move/'+the_event.id,  //the script to call to get data          
     data: {id: the_event.id,minute_delta: minuteDelta, day_delta: dayDelta, all_day: allDay } ,                      //you can insert url argumnets here to pass to api.php
     success: function()          //on receive of reply
     {
@@ -247,7 +246,7 @@ function moveEvent(the_event,dayDelta,minuteDelta,allDay) {
 function resizeEvent(the_event,dayDelta,minuteDelta,allDay) {
   $.ajax({  
     type: 'GET',                                    
-    url: '/events/resize/'+the_event.id,  //the events resize function.         
+    url: '/eventos/resize/'+the_event.id,  //the events resize function.         
     data: {id: the_event.id,minute_delta: minuteDelta, day_delta: dayDelta, all_day: allDay },                      //you can insert url argumnets here to pass to api.php
     success: function()          //on receive of reply
     {
@@ -259,15 +258,15 @@ function resizeEvent(the_event,dayDelta,minuteDelta,allDay) {
 function editEvent(the_event, jsEvent, view) {
   $.ajax({  
     type: 'GET',                                    
-    url: '/events/'+the_event.id+'/edit',  //the script to call to get data          
+    url: '/eventos/'+the_event.id+'/edit',  //the script to call to get data          
     success: function()          //on receive of reply
     {
-      $('#event_starttime').val($.fullCalendar.formatDate( the_event.start , 'dd MMMM yyyy'));
+      $('#evento_start').val($.fullCalendar.formatDate( the_event.start , 'dd MMMM yyyy, hh:mm tt'));
       if (the_event.end != null){
-       $('#event_endtime').val($.fullCalendar.formatDate( the_event.end , 'dd MMMM yyyy'));
+       $('#evento_end').val($.fullCalendar.formatDate( the_event.end , 'dd MMMM yyyy, hh:mm tt'));
       }
       else{
-       $('#event_endtime').val($.fullCalendar.formatDate( the_event.start , 'dd MMMM yyyy')); 
+       $('#evento_end').val($.fullCalendar.formatDate( the_event.start , 'dd MMMM yyyy, hh:mm tt')); 
       } 
     } 
   });
@@ -275,15 +274,33 @@ function editEvent(the_event, jsEvent, view) {
 function newEvent(date) {
   $.ajax({  
     type: 'GET',                                    
-    url: '/events/new',  //the script to call to get data          
+    url: '/eventos/new',  //the script to call to get data          
     data: {date: date} ,
     success: function()          //on receive of reply
     {
-      $('#event_starttime').val($.fullCalendar.formatDate( date , 'dd MMMM yyyy'));
-      $('#event_endtime').val($.fullCalendar.formatDate( date , 'dd MMMM yyyy'));
+      $('#evento_start').val($.fullCalendar.formatDate( date , 'dd MMMM yyyy, hh:mm tt'));
+      $('#evento_end').val($.fullCalendar.formatDate( date , 'dd MMMM yyyy, hh:mm tt'));
     } 
   });
 }
+
+function eventoTareasEjecutadas (){
+    var panelcamposopcionales = "#camposTareasEjecutadas";
+    var display =  $(panelcamposopcionales).css('display');
+      if(display == "block" ){
+        $(panelcamposopcionales).toggle( "fade" );
+         document.getElementById("mostrarTareasEjecutadas").innerHTML = "Historial de la Actividad";
+          document.getElementById("displayOpcionales").value = false;
+      }
+      else{
+         $(panelcamposopcionales).toggle( "fade" );
+         document.getElementById("mostrarTareasEjecutadas").innerHTML = "Ocultar Historial de la Actividad";
+          document.getElementById("displayOpcionales").value = true;
+      }
+}
+
+
+ 
 
 
 $(document).ready(function(){
@@ -291,9 +308,9 @@ $(document).ready(function(){
   $(document).foundation('joyride', 'start');
 
     $('#calendar').fullCalendar({
-          events: '/events',
+          events: '/eventos',
           editable:true,
-          
+          ignoreTimezone: true,
           eventClick: function(calEvent, jsEvent, view) {
               editEvent(calEvent, jsEvent, view);
 
@@ -304,6 +321,7 @@ $(document).ready(function(){
           eventResize: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
               resizeEvent(event,dayDelta,minuteDelta,allDay);
           },
+
           header: {
               left:   'today prev,next',
               center: 'title',
@@ -333,3 +351,8 @@ $(document).ready(function(){
  
 });
 
+
+
+function eliminarRegistroActividad() {
+ alert("delete");
+}

@@ -5,6 +5,7 @@ class ActividadsController < ApplicationController
     @proceso = Proceso.find(params[:proceso_id])
     @actividads = @proceso.actividads.activos
     @actividadesRender = (params[:nuevoItem])
+    @actividadEvento = ActividadEvento.new
     if params[:actividad_id]
        @actividad = Actividad.find(params[:actividad_id])
     else
@@ -33,9 +34,11 @@ class ActividadsController < ApplicationController
   # GET /actividads/new.json
   def new
     @actividad = Actividad.new
+    @actividad.actividad_eventos.build
+
     @proceso = Proceso.find(params[:id])
     @estadoActividads = EstadoActividad.all
-
+    @actividadEvento = ActividadEvento.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @actividad }
@@ -73,6 +76,7 @@ class ActividadsController < ApplicationController
       if @actividad.save
         #Traza de log
         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Creo la actividad: '+@actividad.nombre)
+        @actividad.actividad_eventos.save
 
         format.html { redirect_to @proceso, notice: 'Actividad fue creada correctamente' }
         format.json { render json: @actividad, status: :created, location: @actividad }
@@ -98,6 +102,7 @@ class ActividadsController < ApplicationController
       if @actividad.update_attributes(params[:actividad])
         #Traza de log
         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Modifico la actividad: '+@actividad.nombre)
+        @actividad.actividad_eventos.save
         
         format.html { redirect_to @proceso, notice: 'Actividad fue modificada correctamente.' }
         format.json { head :no_content }
@@ -149,6 +154,16 @@ class ActividadsController < ApplicationController
      @actividadesPendientes = current_user.actividads.activos.where("fechaSeguimiento < ?", Time.now).order("updated_at DESC");
      @actividadesProximas = current_user.actividads.activos.where("fechaSeguimiento >= ?", Time.now ).order("updated_at DESC").limit(3);
 
+  end
+
+  def nuevoRegistro
+     
+     @actividad = Actividad.new
+     @actividad.actividad_eventos.build
+     @cantidadRegistros = @actividad.actividad_eventos.count
+     respond_to do |format|
+      format.js
+    end
   end
 
 end

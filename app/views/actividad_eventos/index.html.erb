@@ -1,0 +1,31 @@
+<h1>Listing actividad_eventos</h1>
+
+<table>
+  <tr>
+    <th>Usuario</th>
+    <th>Actividad</th>
+    <th>Fecha</th>
+    <th>Horas</th>
+    <th>Descripcion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @actividad_eventos.each do |actividad_evento| %>
+  <tr>
+    <td><%= actividad_evento.usuario_id %></td>
+    <td><%= actividad_evento.actividad_id %></td>
+    <td><%= actividad_evento.fecha %></td>
+    <td><%= actividad_evento.horas %></td>
+    <td><%= actividad_evento.descripcion %></td>
+    <td><%= link_to 'Show', actividad_evento %></td>
+    <td><%= link_to 'Edit', edit_actividad_evento_path(actividad_evento) %></td>
+    <td><%= link_to 'Destroy', actividad_evento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Actividad evento', new_actividad_evento_path %>

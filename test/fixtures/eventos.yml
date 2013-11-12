@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  allDay: false
+  start: 2013-11-10 22:26:33
+  end: 2013-11-10 22:26:33
+  url: MyString
+  className: MyString
+  color: MyString
+
+two:
+  title: MyString
+  allDay: false
+  start: 2013-11-10 22:26:33
+  end: 2013-11-10 22:26:33
+  url: MyString
+  className: MyString
+  color: MyString

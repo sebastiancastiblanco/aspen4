@@ -5,6 +5,8 @@ class Alerta < ActiveRecord::Base
   
   #Pertenece a un proceso
   belongs_to :proceso
+  #tiene un evento
+  has_one :evento
 
   #Scope para la tabla
   scope :activos, where(:activo => true)

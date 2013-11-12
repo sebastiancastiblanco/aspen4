@@ -1,0 +1,49 @@
+<body>
+
+    <div id="workspace" class="workspace">
+    <div class="container stack_container"  style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris">
+
+       
+          <header style="margin-bottom: 25px !important;">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+                  
+                    <div class="small-3   columns left">
+                        <button class="button radius" onclick="newEvent(null)">Nuevo Evento</button>
+                    </div>
+                    <br /><br />
+                    <hr  class="lineaHorizontalAzul"> 
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </header>
+        
+        <div class="sheet_body">
+            <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+            
+            <div id="calendar">
+            </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</body>
+
+<div id="myModalNuevoEvento" class="reveal-modal small">
+     <%= render 'form' %>
+     <div id="formularioEvento"></div>
+  </div>
+
+
+
+
+
