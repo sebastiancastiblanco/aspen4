@@ -73,6 +73,12 @@ class EventosController < ApplicationController
       @event.end = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@event.end))
       @event.allDay = params[:allDay]
       @event.save
+      #En caso de que el vento sea una alerta, se debe actulizar la fecha de incio de la alerta. 
+      if !@event.alerta_id.nil?
+          @alerta = Alerta.find(@event.alerta_id)
+          @alerta.termina = @event.start
+          @alerta.save!
+      end
     end
   end
   
@@ -92,6 +98,9 @@ class EventosController < ApplicationController
   #Elimina eventos y ejecuta es JS de destroy.js.erb
   def destroy
     @event = Evento.find_by_id(params[:id])
+    #desactivar la alerta desde el calendario.
+    @alerta = Alerta.find(@event.alerta_id)
+    @alerta.update_attribute(:activo, false)
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url }

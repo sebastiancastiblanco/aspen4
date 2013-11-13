@@ -1,5 +1,5 @@
 class Alerta < ActiveRecord::Base
-  attr_accessible :comienza, :hora, :nota, :repeticion, :termina, :titulo, :horainicio
+  attr_accessible :comienza, :hora, :nota, :repeticion, :termina, :titulo, :horainicio,:notificarMail
   #validaciones campos obligatorios
    validates :titulo, :termina,:nota, :presence => { :message => "Campo obligatorio"}
   
@@ -8,6 +8,9 @@ class Alerta < ActiveRecord::Base
   #tiene un evento
   has_one :evento
 
-  #Scope para la tabla
+  #Scope para la tabla para recuperar las alertas activas.
   scope :activos, where(:activo => true)
+
+  #Scope para la tabla y recuperar las alertas disponibles para enviar recordatorios.
+  scope :activosRecordatorios, where(:activo => true,:notificarMail => true )
 end
