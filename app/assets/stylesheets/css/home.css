@@ -908,7 +908,7 @@ color: #444;
 .panelAvatarUsuario{
   height: 32px !important;
   float: left;
-  margin-top: 97px;
+  margin-top: 27px;
   max-width: 200px;
 }
 
@@ -1307,4 +1307,10 @@ border: none !important;
 .ubicacionEstado{
   float: right !important;
   margin-top: -40px !important;
+}
+
+.ubicacionCerrarPanel{
+  position: relative;
+  float: left;
+  right: 10px;
 }

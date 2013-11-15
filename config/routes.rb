@@ -1,4 +1,8 @@
 AspenVersion3::Application.routes.draw do
+  get "buscar_procesos/buscarProceso"
+
+  get "buscar_procesos/busquedaInicial"
+
   resources :actividad_eventos
 
 
@@ -44,7 +48,7 @@ AspenVersion3::Application.routes.draw do
   get "procesos/compartirProceso"
   get "procesos/eventos"
   get "procesos/favoritos"
-  
+  get "procesos/buscarProceso"
   
   resources :agendas
   resources :usuarios
@@ -198,6 +202,8 @@ AspenVersion3::Application.routes.draw do
   
   #filtrado de procesos favoritos
   match 'procesos/favoritos/:estado' => 'procesos#favoritos'
+  #buscar procesos con filtros
+   match 'procesos/buscarProceso' => 'procesos#buscarProceso'
 
 
   match 'actividads/nuevoregistro/:actividad_id' => 'actividads#nuevoRegistro'

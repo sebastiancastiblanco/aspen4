@@ -40,6 +40,8 @@ gem "rails3-jquery-autocomplete", "~> 1.0.11"
 #Gema para el datepicker
 gem 'jquery-timepicker-rails'
 
+#Gema para tareas programadas
+gem 'whenever', :require => false
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,7 +1,7 @@
 class Actividad < ActiveRecord::Base
-  attr_accessible :activo, :descripcion, :fechaSeguimiento, :medidaTiempo, :nombre, :observacion, :tiempoEjecucion, :created_at, :estado_actividad_id, :updated_at, :participante_id
+  attr_accessible :activo, :descripcion, :fechaSeguimiento, :medidaTiempo, :nombre, :observacion, :tiempoEjecucion, :created_at, :estado_actividad_id, :updated_at, :participante_id,:actividad_eventos
   #Validaciones
-  validates :nombre, :participante_id, :fechaSeguimiento,:estado_actividad_id, :descripcion, :presence => { :message => "Campo obligatorio"}
+  validates :nombre, :participante_id, :fechaSeguimiento,:estado_actividad_id, :tiempoEjecucion,:medidaTiempo, :presence => { :message => "Campo obligatorio"}
   
   #Validaciones de longitud
   validates :nombre, length: { minimum: 3,  :message => "Longitud minima de 3 caracteres"  }
@@ -12,8 +12,10 @@ class Actividad < ActiveRecord::Base
   
   #pertenece a un proceso
   belongs_to :proceso
+  
   #pertenece a un estado de la actividad
   belongs_to :estado_actividad
+ 
   #Tiene un participante
   belongs_to :participante
 

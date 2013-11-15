@@ -13,6 +13,7 @@
                 <hr>
                 <%= link_to 'Procesos Favoritos', :controller => :procesos, :action => :favoritos , :estado  => 1, :remote => true %>
                 <%= link_to 'Todos los procesos', :controller => :procesos, :action => :favoritos , :estado  => 0 , :remote => true %>
+                <%= link_to 'Buscar Procesos', "javascript:mostrarPanelBuscarProceso()", :id => "mostrarCamposOpcionales" %>
             </div>
 
             <div class="project_templates">
@@ -23,6 +24,29 @@
 
             <div id="all_projects">
                 <section id="sectionProcesos" class="projects cards">
+                    <div id="panelBuscarProceso" class="row panel ocultar">
+                        
+                        <%= form_for @proceso, :remote => true , :url => url_for(:controller => 'procesos', :action => 'buscarProceso'),  :html => { :class => "custom", :id => "formBuscarProceso"}  do |f| %>
+                            
+                            <div class="small-3 large-3 columns " style="margin-top: 8px;">
+                              <%= f.text_field :titulo , :placeholder => "Titulo Proceso" %>
+                            </div> 
+                          
+                            <div class="small-4 large-4 columns " style="margin-top: 8px;">
+                              <%= f.text_field :titulo , :placeholder => "Nombre proceso" %>
+                            </div>
+                            
+                            <div class="small-3 large-3 columns " style="margin-top: 8px;">
+                               <%= f.select :tipo_proceso_id, [["Tipo Proceso", 0]] + @tipos_procesos.map {|r| [r.tipo,r.id]}, { :disabled => ["Seleccionar Tipo Proceso", 0] } , :id => "listaTiposProceso" %>
+                            </div>
+                           
+                            <div class="small-2 large-2 columns ">
+                              <%= f.submit :'Buscar' , :class => " button success radius " %>
+                            </div>
+                        <% end %> 
+                         <%= link_to 'Cerrar', "javascript:cerrarPanelBuscarProceso()", :class => "ubicacionCerrarPanel" %>
+                    </div>
+
                     <div id="listaProcesos" class="row">
                         <%= render @procesos %> 
                         <article class="card blank " data-behavior="bounce_nav">&nbsp;</article>

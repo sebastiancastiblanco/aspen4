@@ -47,8 +47,16 @@ class UsuariosController < ApplicationController
         if @usuario.save
           #Realizar auto login y redireccionar a la pagina de procesos
           auto_login(@usuario)
+          
           #enviar mail de bienvenida
-          UsuarioMails.bienvenida(@usuario).deliver
+          threads = []
+          threads << Thread.new do
+               UsuarioMails.bienvenida(@usuario).deliver
+          end
+          threads.each(&:join)
+          
+          
+          #redirecionamiento a la pagina de  procesos
           render :js => "window.location = 'procesos'"
         else
           respond_to do |format|

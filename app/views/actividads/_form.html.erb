@@ -29,40 +29,14 @@
       <%= actividad.label "Fecha Seguimiento", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-          <span data-tooltip class="tip-top" title="Cúando la actividad se cambiará de estado?">
+          <span data-tooltip class="tip-top" title="Fecha de inicio de la actividad?">
           <%= actividad.text_field :fechaSeguimiento , :placeholder => "Fecha Seguimiento" %>
     </div>
 </div>
 
-<div class="row">
-    <div class="small-2 small-offset-0 columns ">
-      <%= actividad.label "descripción", :class => "tituloCampo error alinearDerecha" %>
-    </div>
-    <div class="small-10 columns field">
-      <span data-tooltip class="tip-top" title="descripción principal de la actividad y objetivo final de la misma">
-      <%= actividad.text_area :descripcion, :placeholder => "Descripcion de la actividad, máximo 250 caracteres",:size => "30x50" %>
-    </div>
-
-</div>
-
-<hr>
- <%= link_to 'Mostrar Campos Opcionales', "javascript:eventoCamposOpcionalesActividad()", :class=>"textolinks", :id => "mostrarCamposOpcionales" %>
-<hr>
-
-<div id="camposOpcionalesActividad"  class="row ocultar">
-   
-      <section>
-        <div class="small-2 small-offset-0 columns ">
-          <%= actividad.label "Observaciones", :class => "tituloCampo error alinearDerecha" %>
-        </div>
-        <div class="small-10 columns field">
-          <span data-tooltip class="tip-top" title="Observaciones importantes que se deben tener en cuenta para realizár en la actividad">
-          <%= actividad.text_area :observacion, :placeholder => "Observaciones, máximo 250 caracteres" %>
-        </div>
-        
-
-        <div class="small-2 small-offset-0 columns ">
-          <%= actividad.label "Tiempo estimado", :class => "tituloCampo error alinearDerecha" %>
+<div class="row">  
+      <div class="small-2 small-offset-0 columns ">
+          <%= actividad.label "Tiempo ejecucion", :class => "tituloCampo error alinearDerecha" %>
         </div>
         <div class="small-4 columns field">
               <span data-tooltip class="tip-top" title="Cúanto tiempo dura la actividad?">
@@ -75,6 +49,34 @@
         <div class="small-4 columns field">
                <%= actividad.select :medidaTiempo, [["Medida de Tiempo", 0]] + [["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], { :disabled => ["Medida de Tiempo", 0] } %>
         </div>
+</div>
+
+<hr>
+ <%= link_to 'Mostrar Campos Opcionales', "javascript:eventoCamposOpcionalesActividad()", :class=>"textolinks", :id => "mostrarCamposOpcionales" %>
+<hr>
+
+
+<div id="camposOpcionalesActividad"  class="row ocultar">
+   
+      <section>
+        <div class="small-2 small-offset-0 columns ">
+          <%= actividad.label "descripción", :class => "tituloCampo error alinearDerecha" %>
+        </div>
+        <div class="small-10 columns field">
+          <span data-tooltip class="tip-top" title="descripción principal de la actividad y objetivo final de la misma">
+          <%= actividad.text_area :descripcion, :placeholder => "Descripcion de la actividad, máximo 250 caracteres",:size => "30x50" %>
+        </div>
+
+        <div class="small-2 small-offset-0 columns ">
+          <%= actividad.label "Observaciones", :class => "tituloCampo error alinearDerecha" %>
+        </div>
+        <div class="small-10 columns field">
+          <span data-tooltip class="tip-top" title="Observaciones importantes que se deben tener en cuenta para realizár en la actividad">
+          <%= actividad.text_area :observacion, :placeholder => "Observaciones, máximo 250 caracteres" %>
+        </div>
+        
+
+       
 
     </section>
 </div>

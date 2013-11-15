@@ -356,3 +356,14 @@ $(document).ready(function(){
 function eliminarRegistroActividad() {
  alert("delete");
 }
+
+function cerrarPanelBuscarProceso(){
+    var divPanelProceso = "#panelBuscarProceso";
+    $(divPanelProceso).toggle( "fade" );
+}
+
+function mostrarPanelBuscarProceso(){
+    var divPanelProceso = "#panelBuscarProceso";
+    $(divPanelProceso).toggle( "fade" );
+    
+}

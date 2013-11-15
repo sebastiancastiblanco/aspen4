@@ -9,6 +9,8 @@ class ProcesosController < ApplicationController
     @procesos = current_user.procesos
     #estados de los procesos
     @estadosProcesos = EstadoProceso.all
+    @tipos_procesos = current_user.tipo_procesos
+    @proceso = Proceso.new 
 
     #Alertas pendietse del usuario
     @NumeroAlertasPendientes = current_user.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC").count;
@@ -192,6 +194,13 @@ class ProcesosController < ApplicationController
        @procesos = current_user.procesos
     end
     
+    respond_to do |format|
+      format.js
+    end
+ end
+
+ def buscarProceso
+    @procesos = current_user.procesos.favoritos
     respond_to do |format|
       format.js
     end
