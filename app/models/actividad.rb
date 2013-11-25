@@ -6,8 +6,8 @@ class Actividad < ActiveRecord::Base
   #Validaciones de longitud
   validates :nombre, length: { minimum: 3,  :message => "Longitud minima de 3 caracteres"  }
   
-  validates :descripcion, length: { minimum: 10,  :message => "Longitud minima de 10 caracteres"  }
-  validates :descripcion, length: { maximum: 250,  :message => "Longitud maxima de 250 caracteres"  }
+  #validates :descripcion, length: { minimum: 10,  :message => "Longitud minima de 10 caracteres"  }, :unless => "descripcion.nil?" 
+  validates :descripcion, length: { maximum: 250,  :message => "Longitud maxima de 250 caracteres"  }, :unless => "descripcion.nil?" 
   validates :observacion, length: { maximum: 250,  :message => "Longitud maxima de 250 caracteres"  }, :unless => "observacion.nil?" 
   
   #pertenece a un proceso
@@ -20,9 +20,11 @@ class Actividad < ActiveRecord::Base
   belongs_to :participante
 
   #tiene varias actividades Eventos
-  has_many :actividad_eventos
+  #has_many :actividad_eventos
 
   #Scope para la tabla
   scope :activos, where(:activo => true)
+  #Scope para la tabla
+  scope :ascendentes, order(:fechaSeguimiento)
 
 end

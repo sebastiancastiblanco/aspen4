@@ -1,6 +1,7 @@
 <header >
 <nav class="">
     
+
     <div id="panelLogo" class="logo">
         <%= link_to 'Procesos', procesos_path  %>
     </div>
@@ -12,33 +13,21 @@
         <%= link_to 'Reportes', reportes_path , :class => "topnav_calendar" %>
         
         <%=  link_to "Progreso", :progreso ,:class => "topnav_everyone"   %>
-        <%=  link_to "Mi Perfil",current_user,:class => "topnav_calendar"   %>
+       
         
-    </div>
-
-    <div class="current_user">
-        <ul>
-            <li><%=  link_to "Planes y precios", :precios %></li> 
-            <li>
-             <%= link_to "Perfil: "+current_user.username,current_user,:class => "Me"   %>
-            </li>
-            <li>
-                <%= link_to 'Salir', :logout %>
-            </li>
-        </ul>
     </div>
 
     <div class="jumpto" >
         
-        <div class="row collapse">
-          <div class="small-12 columns paddginCero">
-            <input id="tags" type="text" placeholder="Nombre del proceso" />
-          </div>
-          
-          </div>
+             <a href="#" class="button meddium secondary" data-dropdown="drop1" style=" font-size: 11px !important; letter-spacing: 0.4px;font-family: 'ProximaNova','Helvetica Neue',helvetica,arial,sans-serif !important;"><%= current_user.username %> &raquo;</a>
+              <ul id="drop1" class="f-dropdown" data-dropdown-content >
+                <li><%= link_to "Mi Perfil",current_user,:class => "Me"   %></li>
+                <li><%=  link_to "Planes y precios", :precios %></li>
+                <li> <%= link_to 'Salir', :logout %></li>
+              </ul>
 
-
-
+              
+             
     </div>
 
 

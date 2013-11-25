@@ -33,7 +33,15 @@
     <%= f.text_field :ciudad , :placeholder => "Ciudad del proceso"%>
   </div>
 </div>
-
+<div class="row"> 
+ <div class="small-2 small-offset-0 columns ">
+    <%= f.label :referencia_, :class => "tituloCampo error alinearDerecha" %>
+  </div>
+  <div class="small-4 columns field">
+    <span data-tooltip class="tip-top" title="Si se maneja una referencia interna - Ej: PD001">
+    <%= f.text_field :referencia , :placeholder => "Referencia "%>
+  </div>
+</div>
 <div class="row"> 
   <div class="small-2 small-offset-0 columns ">
     <%= f.label :objetivo_, :class => "tituloCampo error alinearDerecha" %>

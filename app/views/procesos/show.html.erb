@@ -72,7 +72,7 @@
                 <br />
                  <span class="bold"> Ciudad: </span><%= @proceso.ciudad %>
                 <br />
-                  <span class="bold"></span>#REF-<%= @proceso.id %>
+                  <span class="bold"></span>REF-<%= @proceso.id %> <% if ! @proceso.referencia.nil? %>/ <%=  @proceso.referencia %><%end%>
               </div>
 
 

@@ -113,7 +113,7 @@ body>header div.logo>a {
 div.global_links {
   text-align: left !important;
   position: absolute !important;
-  left: 148px !important;
+  left: 211px !important;
   top: 34px !important;
   padding-left: 5px !important;
   border-left: 1px solid #ded7c8 !important;
@@ -121,7 +121,7 @@ div.global_links {
   text-rendering: optimizeLegibility !important;
 }
 div.global_links a {
-  color: #7d7a75 !important;
+  color: #7d7a75 ;
   font-size: 14px !important;
   text-align: left !important;
   display: inline-block !important;
@@ -166,9 +166,9 @@ div.current_user li>a {
 div.jumpto {
   position: relative !important;
   z-index: 9 !important;
-  width: 320px !important;
+ /* width: 320px !important;*/
   float: right !important;
-  margin: -1px 7px 0 0 !important;
+  margin: -1px 160px 0 0 !important;
 }
 div.jumpto input[type=text] {
   position: relative !important;
@@ -285,7 +285,7 @@ div.panel.home_tab div.project_templates {
   text-align: center !important;
   width: 148px !important;
   left: -16px !important;
-  top: 230px !important;
+  top: 263px !important;
   font-size: 14px !important;
 }
 div.panel.home_tab div.project_templates a {
@@ -1310,7 +1310,10 @@ border: none !important;
 }
 
 .ubicacionCerrarPanel{
-  position: relative;
-  float: left;
-  right: 10px;
+  position: relative !important;
+float: left !important;
+right: -119px !important;
+top: -57px;
+width: 17px;
+opacity: 0.6;
 }

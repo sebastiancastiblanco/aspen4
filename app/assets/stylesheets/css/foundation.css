@@ -1374,7 +1374,7 @@ button, .button {
   border-color: #2284a1 !important;
   color: white !important; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #2284a1; }
+    background-color: #2284a1 !important; }
   button:hover, button:focus, .button:hover, .button:focus {
     color: white !important; }
   button.secondary, .button.secondary {

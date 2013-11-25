@@ -200,7 +200,24 @@ class ProcesosController < ApplicationController
  end
 
  def buscarProceso
-    @procesos = current_user.procesos.favoritos
+     @procesobuscar = Proceso.new(params[:proceso])
+    
+     if (!@procesobuscar.referencia.nil? && !@procesobuscar.titulo.nil? && @procesobuscar.tipo_proceso_id != 0)
+      @procesos = current_user.procesos.where("referencia LIKE ? AND titulo LIKE ? AND tipo_proceso_id = ? ", "#{@procesobuscar.referencia}%","%#{@procesobuscar.titulo}%","#{@procesobuscar.tipo_proceso_id}") 
+     elsif (!@procesobuscar.referencia.nil? && !@procesobuscar.titulo.nil? )
+      @procesos = current_user.procesos.where("referencia LIKE ? AND titulo LIKE ? ", "#{@procesobuscar.referencia}%","%#{@procesobuscar.titulo}%") 
+     elsif (!@procesobuscar.referencia.nil? && @procesobuscar.tipo_proceso_id != 0 )
+      @procesos = current_user.procesos.where("referencia LIKE ? AND tipo_proceso_id = ? ", "#{@procesobuscar.referencia}%","#{@procesobuscar.tipo_proceso_id}") 
+     elsif ( !@procesobuscar.titulo.nil? && @procesobuscar.tipo_proceso_id != 0)
+      @procesos = current_user.procesos.where("titulo LIKE ? AND tipo_proceso_id = ? ", "%#{@procesobuscar.titulo}%","#{@procesobuscar.tipo_proceso_id}") 
+     elsif (!@procesobuscar.referencia.nil? )
+      @procesos = current_user.procesos.where("referencia LIKE ? ", "#{@procesobuscar.referencia}%") 
+     elsif (!@procesobuscar.titulo.nil?)
+      @procesos = current_user.procesos.where("titulo LIKE ? ", "%#{@procesobuscar.titulo}%") 
+     else (@procesobuscar.tipo_proceso_id != 0)
+      @procesos = current_user.procesos.where("tipo_proceso_id = ? ", "#{@procesobuscar.tipo_proceso_id}") 
+     end
+     
     respond_to do |format|
       format.js
     end

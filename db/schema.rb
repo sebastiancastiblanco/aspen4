@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131113131750) do
+ActiveRecord::Schema.define(:version => 20131124220200) do
 
   create_table "actividad_eventos", :force => true do |t|
     t.integer  "usuario_id"
@@ -212,7 +212,7 @@ ActiveRecord::Schema.define(:version => 20131113131750) do
   end
 
   create_table "procesos", :force => true do |t|
-    t.float    "referencia"
+    t.string   "referencia"
     t.float    "procesoHomologado"
     t.string   "resumen"
     t.string   "ciudad"

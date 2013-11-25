@@ -82,67 +82,6 @@
 </div>
 
 
- <%= link_to 'Historial de la Actividad', "javascript:eventoTareasEjecutadas()", :class=>"textolinks ocultar", :id => "mostrarTareasEjecutadas" %>
-<hr>
-
-<div id="camposTareasEjecutadas"  class="row ocultar">
-    
-    <div class="large-3 small-3 small-offset-9 columns right ">
-      <a id="add" class="pointer" onclick="adicionarRegistroActividad()" >
-          <img src="/img/addgreen.png" width="20px" class="alinearbotones"> 
-          <span class="textolinksVerde">Agregar Registro</span>
-      </a>  
-      <%= link_to 'add registro ok', :controller => :actividads, :action => :nuevoRegistro , :actividad_id  => @proceso.id  , :remote => true %>
-
-    </div>
-    <br />
-    <br />
-      <table class="tablaReportes">
-          <thead>
-            <tr>
-              <th width="350">Descripcion</th>
-              <th width="200" class="centrado">Fecha</th>
-              <th width="200" class="centrado">Tiempo</th>
-              <th width="200" class="centrado">Medida de Tiempo</th>
-              <th width="50" class="centrado"></th>
-             
-            </tr>
-          </thead>
-          <tbody id="tablaTareasEjecutadas">
-            
-           
-<%= actividad.fields_for :actividad_eventos do |p| %>
-<tr id="regsitroActividad<%= @cantidadRegistros %>
-">
-    <td>
-      <%= p.text_field :descripcion, :placeholder => "Nombre de la actividad" %>
-    </td>
-    <td class="centrado">
-      <%= p.text_field :fecha , :placeholder => "Fecha Seguimiento" %>
-    </td>
-    
-    <td class="centrado">
-      <%= p.number_field :tiempo, :placeholder => "Tiempo de ejecución" %>
-    </td>
-    <td class="centrado">
-        <%= p.select :medidaTiempo, [["Medida de Tiempo", 0]] + [["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], { :disabled => ["Medida de Tiempo", 0] } %>
-    </td>
-    <td class="centrado">
-        <a id="remove" class="pointer" onclick="eliminarRegistroActividad()" >
-          <img src="/img/remove.png" width="20px">
-        </a>
-    </td>
-     
-</tr>
-
-<% end %>
-          </tbody>
-        </table>
-
-
-</div>
-
-
 <div class="row"> 
     <div class="small-1 small-offset-7 columns field"></div>
      <div class="small-1 columns field">

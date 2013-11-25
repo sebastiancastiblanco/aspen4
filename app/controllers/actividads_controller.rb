@@ -3,9 +3,10 @@ class ActividadsController < ApplicationController
   # GET /actividads.json
   def index
     @proceso = Proceso.find(params[:proceso_id])
-    @actividads = @proceso.actividads.activos
+    @actividads = @proceso.actividads.activos.ascendentes
     @actividadesRender = (params[:nuevoItem])
     @actividadEvento = ActividadEvento.new
+
     if params[:actividad_id]
        @actividad = Actividad.find(params[:actividad_id])
     else
@@ -34,7 +35,7 @@ class ActividadsController < ApplicationController
   # GET /actividads/new.json
   def new
     @actividad = Actividad.new
-    @actividad.actividad_eventos.build
+   # @actividad.actividad_eventos.build
 
     @proceso = Proceso.find(params[:id])
     @estadoActividads = EstadoActividad.all
@@ -76,14 +77,9 @@ class ActividadsController < ApplicationController
       if @actividad.save
         #Traza de log
         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Creo la actividad: '+@actividad.nombre)
-        @actividad.actividad_eventos.save
-
-        format.html { redirect_to @proceso, notice: 'Actividad fue creada correctamente' }
-        format.json { render json: @actividad, status: :created, location: @actividad }
+       # @actividad.actividad_eventos.save
          format.js
       else
-        format.html { render action: "new" }
-        format.json { render json: @actividad.errors, status: :unprocessable_entity }
         format.js
       end
     end
@@ -102,7 +98,7 @@ class ActividadsController < ApplicationController
       if @actividad.update_attributes(params[:actividad])
         #Traza de log
         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Modifico la actividad: '+@actividad.nombre)
-        @actividad.actividad_eventos.save
+        #@actividad.actividad_eventos.save
         
         format.html { redirect_to @proceso, notice: 'Actividad fue modificada correctamente.' }
         format.json { head :no_content }
@@ -139,9 +135,9 @@ class ActividadsController < ApplicationController
     @filtro = params[:estado_id]
 
     if (params[:estado_id]== "0")
-      @actividads = @proceso.actividads
+      @actividads = @proceso.actividads.activos.ascendentes
     else
-      @actividads = @proceso.actividads.joins(:estado_actividad).where(estado_actividads: {id: params[:estado_id]})
+      @actividads = @proceso.actividads.joins(:estado_actividad).where(estado_actividads: {id: params[:estado_id]}).activos.ascendentes
     end
     #render :json => @actividades
      respond_to do |format|
