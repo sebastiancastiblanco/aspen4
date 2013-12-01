@@ -27,6 +27,8 @@ class LogsController < ApplicationController
 	 redirect_to :controller => 'documents', :action => 'edit', :proceso_id => @log.proceso.id, :documento_id => @log.documento_id
 	when 7    # Creacion o modificacion de una conclusion
 	 redirect_to :controller => 'estados', :action => 'edit', :proceso_id => @log.proceso.id, :estado_id => @log.estado_id
+	when 8    # Creacion o modificacion de una conclusion
+	 redirect_to :controller => 'procesos', :action => 'edit', :id => @proceso.id
 	else
 	   redirect_back_or_to(procesos_path)
 	end

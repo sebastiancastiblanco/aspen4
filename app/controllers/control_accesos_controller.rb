@@ -3,6 +3,11 @@ class ControlAccesosController < ApplicationController
   # GET /control_accesos.json
   def index
     @control_accesos = ControlAcceso.all
+    @control_acceso = ControlAcceso.new
+    @usuarios =  Usuario.all
+
+    @procesos = current_user.procesos
+    @privilegios = Privilegio.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,17 +46,33 @@ class ControlAccesosController < ApplicationController
   # POST /control_accesos.json
   def create
     @control_acceso = ControlAcceso.new(params[:control_acceso])
-    @proceso = Proceso.find(params[:proceso_id])
-    @control_acceso.proceso_id = @proceso.id
-    respond_to do |format|
+  
+    #buscar el proceso y usuario, si ya existe solo se actualiza el atributo de privilegio
+    @accesoCreado = ControlAcceso.buscarProcesoAcceso(@control_acceso.proceso_id, @control_acceso.usuario_id);
+
+    if !@accesoCreado.any?
+      respond_to do |format|
       if @control_acceso.save
-        format.html { redirect_to @control_acceso, notice: 'Se ha compartido el proceso a '+ @control_acceso.usuario.username }
+        format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.usuario.username }
         format.json { render json: @control_acceso, status: :created, location: @control_acceso }
       else
         format.html { render action: "new" }
         format.json { render json: @control_acceso.errors, status: :unprocessable_entity }
       end
     end
+    else
+      respond_to do |format|
+        if  @accesoCreado.last.update_attribute(:privilegio_id, @control_acceso.privilegio_id)
+          format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.usuario.username }
+          format.json { render json: @control_acceso, status: :created, location: @control_acceso }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @control_acceso.errors, status: :unprocessable_entity }
+        end
+    end
+    end
+
+    
   end
 
   # PUT /control_accesos/1

@@ -1,23 +1,111 @@
-<h1>Listing control_accesos</h1>
 
-<table>
-  <tr>
-    <th>Controlacceso</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<body >
 
-<% @control_accesos.each do |control_acceso| %>
-  <tr>
-    <td><%= control_acceso.controlAcceso_id %></td>
-    <td><%= link_to 'Show', control_acceso %></td>
-    <td><%= link_to 'Edit', edit_control_acceso_path(control_acceso) %></td>
-    <td><%= link_to 'Destroy', control_acceso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
+  <div id="workspace" class="workspace">
+    <div class="container stack_container " style="width: 960px; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;">
+      
+      <div class="panel sheet project active blank_slate fondoGris" >
+        <div class="sheet_body">
+       
+          <header class="has_buttons">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
 
-<%= link_to 'New Control acceso', new_control_acceso_path %>
+                    <div class="small-12 columns left">
+                      <h4 id="tituloContrato"  style="margin-top: 25px;">
+                        Compartir Procesos
+                      </h4>
+                     
+                    </div>
+                    <hr  class="lineaHorizontalAzul" style="margin-bottom: 38px;"> 
+                    <div class="small-3 small-3 columns left">
+
+                    </div>
+                 </div>
+              </div>
+            </div>
+          </div><div class="blank_slate_arrow"></div>
+          </header>
+
+      <%= form_for @control_acceso, :url => { :action => "create" }, :html => { :class => "custom",:id => "formCompartirProceso"}  do |f| %>
+          <!-- USUARIOS-->
+      <div class="row">
+        <div class="large-2 columns small-3"><img src="/img/participantes.png" class="imagencompartir" /></div>
+        <div class="large-10 columns">
+          <p><strong>Seleccionar el usuario:</strong> busca el usuario con el cual deseas trabajar cooperativamente en uno o varios procesos.</p>
+          <br />
+                
+                <div class="large-8 small-offset-2 large-offset-2 columns">
+                  <%= f.select :usuario_id, [["Selecciona un Usuario", 0]] + @usuarios.map {|r| [r.username,r.id] }, { } %>  
+                </div>
+
+        </div>
+      </div>
+      
+      <!-- End USUARIOS-->
+     
+         <hr style="margin-bottom: 38px; margin-top: 29px;"/>
+
+          <!-- PROCESOS -->
+          <div class="row">
+            <div class="large-2 columns small-3"><img src="/img/detalles2.png" class="imagencompartir"/></div>
+            <div class="large-10 columns">
+              <p><strong>Selccionar el proceso:</strong> Comparte un proceso con su nivel personal de acceso.</p>
+                <br />
+                <br />
+                <div class="large-2  columns">
+                  <%= f.label "Proceso: ", :class => "tituloCampo error alinearDerecha" %>
+                </div>  
+                <div class="large-6  columns">
+                  <%= f.select :proceso_id, [["Proceso 1", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, { } %>  
+                </div>
+                <div class="large-3  columns">
+                  <%= f.select :privilegio_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, {  } %>  
+                </div>
+                <!--
+                <div class="large-2  columns">
+                  <%= f.label "Proceso 2:", :class => "tituloCampo error alinearDerecha" %>
+                </div>  
+                <div class="large-6  columns">
+                  <%= f.select :usuario_id, [["Proceso 2", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, {  } %>  
+                </div>
+                <div class="large-3  columns">
+                  <%= f.select :usuario_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, { } %>  
+                </div>
+                 <div class="large-2  columns">
+                  <%= f.label "Proceso 3:", :class => "tituloCampo error alinearDerecha" %>
+                </div>  
+                <div class="large-6  columns">
+                  <%= f.select :usuario_id, [["Proceso 3", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, {  } %>  
+                </div>
+                <div class="large-3  columns">
+                  <%= f.select :usuario_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, { } %>  
+                </div>
+                -->
+            </div>
+          </div>
+          <!-- End PROCESOS -->
+
+          <hr style="margin-bottom: 38px; margin-top: 29px;"/>
+
+           <!-- Feed Entry -->
+          <div class="row">
+            <div class="large-2 columns small-3"><img src="/img/mail.png" class="imagencompartir"/></div>
+            <div class="large-10 columns">
+              <p><strong>Notificar:</strong> Envia un correo al colaborador con el acceso a los procesos compartidos.</p>
+              <br />
+                <div class="large-8 small-offset-3 large-offset-3 columns">
+                  <%= f.submit :'Compartir y enviar notificación' , :class => " button radius success" %>
+                </div>
+            </div>
+          </div>
+          <!-- End Feed Entry -->
+       <% end %> 
+      </div>
+    </div>
+    </div>
+  </div>
+</body>

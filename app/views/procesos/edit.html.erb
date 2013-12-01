@@ -25,6 +25,10 @@
 								<div class="small-12 columns">
 									<div class="small-12 columns left">
 										<h1 class="field"><%= @proceso.titulo %> </h1>
+										 <% if @proceso.activo == false %>
+								                   <div id="noticeMsgEliminar" data-alert class="alert-box alert radius" style="text">
+								                    Si desea activar el proceso nuevamente haga click en guardar proceso.</div>
+								          <% end %>
 									</div>
 								</div>
 							</div>

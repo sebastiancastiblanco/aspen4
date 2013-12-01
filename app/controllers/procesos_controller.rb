@@ -101,6 +101,7 @@ class ProcesosController < ApplicationController
     @tipos_procesos = current_user.tipo_procesos
     #Para el item tipos de proceso
     @tipo_proceso = TipoProceso.new
+    @proceso.activo = true
 
     respond_to do |format|
       if @proceso.save
@@ -122,6 +123,7 @@ class ProcesosController < ApplicationController
   # PUT /procesos/1.json
   def update
     @proceso = Proceso.find(params[:id])
+    @proceso.activo = true
 
     respond_to do |format|
       if @proceso.update_attributes(params[:proceso])
@@ -138,12 +140,15 @@ class ProcesosController < ApplicationController
   # DELETE /procesos/1.json
   def destroy
     @proceso = Proceso.find(params[:id])
-    @proceso.destroy
+    #@proceso.destroy
+    @proceso.update_attribute(:activo, false)
+    #Traza de log
 
+    Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :proceso_id => @proceso.id, :mensaje_id => 8 ,:mensaje=> current_user.nombre.to_s+', Elimino el proceso: '+@proceso.referencia+', '+@proceso.titulo)
+    #redirecionamiento a la pagina de  procesos
     respond_to do |format|
-      format.html { redirect_to procesos_url }
-      format.json { head :no_content }
-    end
+     format.html { redirect_to procesos_path, notice: 'El proceso fue actualizado.' }
+     end
   end
 
   #Metodo para convertir el proceso en favorito
@@ -222,5 +227,21 @@ class ProcesosController < ApplicationController
       format.js
     end
  end
+
+ def enviarContacto
+    @usuario = Usuario.find(params[:usuario_id])
+    @mensaje = params[:mensaje+@usuario.id.to_s]
+    @proceso =  Proceso.find( params[:proceso_id])
+
+     #enviar mail de bienvenida
+      threads = []
+      threads << Thread.new do
+           ContactoMailer.contactoUsuario(current_user,@proceso,@usuario.username,@mensaje).deliver
+      end
+      threads.each(&:join)
+    respond_to do |format|
+      format.js
+    end
+  end
 
 end

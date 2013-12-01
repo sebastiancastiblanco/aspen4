@@ -1,38 +1,44 @@
-<div class="alert-panel secondary" data-alert>
+<div class="alert-panel medium" data-alert>
       <div class="alert-panel-title">
-        Compartir Proceso
-        <a href="#" class="alert-panel close-reveal-modal" onclick="$('#myModalTipoProceso').foundation ('reveal', 'close')">&times;</a>
+        Colaboradores
+        <a href="#" class="alert-panel close-reveal-modal" onclick="$('#myModalCompartirProceso').foundation ('reveal', 'close')">&times;</a>
       </div>
 
-      <%= form_for @control_acceso, :url => { :action => "compartirProceso" }, :remote => true, :html => { :class => "custom",:id => "formCompartirProceso"}  do |f| %>
+      
 	      <div class="alert-panel-message" >
-	      	  <p>Puedes darle acceso a otros usuarios, permitiendoles modificar y aportar en el proceso. </p>
-              <br/>
-              <h6>Selecciona un usuario</h6>
-              <hr/>
-		        <div class="row"> 
-				  <div class="small-10 columns field">
-		            <%= f.select :usuario_id, [["Selecciona un Usuario", 0]] + @usuarios.map {|r| [r.username,r.id] }, { :disabled => ["Selecciona un Usuario", 0] } %>
-            		<%= hidden_field_tag :proceso_id, @proceso.id %>
-			       </div>
-			    </div>
+	      	 
+	      	 
 			     <h6>Usuarios vinculados en el proceso</h6>
 	              <hr/>
 	              <div id="listaUsuarios">
 	                <% @proceso.usuarios.each do |usuario| %>
-	                
-					    <img class="avatar " src="/img/user.png"> 
-					    
-	                    <span class="posicionNombreUsuario "><%= usuario.nombre %></span>
-	                    
+	                <div class="colaborador">
+	                	<div class="imagencolaborador">
+					    <img class="avatar alinearbotones" src="/img/user.png"> 
+						<div class="datoscolaborador">
+		                    <strong><span class="posicionNombreUsuario "><%= usuario.nombre %></span></strong>
+		                    <span class="posicionNombreUsuario ">(<%= usuario.username %>)</span>
+		                   <a id="contactar_<%= usuario.id %>" class="textolinks pointer" onclick="mostarcontacto(<%= usuario.id %>)" >Contactar
+		                    	</a>
+	                       <a id="contactarCancelar_<%= usuario.id %>" class="textolinks pointer ocultar" onclick="ocultarcontacto(<%= usuario.id %>)" >Cancelar
+	                       </a>
+		                   
+		                </div>
+						</div>
+					    <div id="panelcontacto_<%= usuario.id %>" class="contactoColaborador ocultar">
+					    	 <%= render 'formContactar', :usuario => usuario %>
+					    </div>
+
+
+	                </div>
 	                <% end %>
 	              </div>
 	  	   </div>
       <div class="alert-panel-action">
         	<a href="#" class="small button radius secondary" onclick="$('#myModalCompartirProceso').foundation ('reveal', 'close')">Cerrar</a>
-		    <%= f.submit :'Compartir Proceso' , :class => " button radius small" %>
+		   
       </div>
-      <% end %>
+      
        
 </div>
 

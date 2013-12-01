@@ -115,4 +115,7 @@ class UsuariosController < ApplicationController
      @usuario = Usuario.new
       @software_abogado = SoftwareAbogado.new
   end
+
+  
+
 end

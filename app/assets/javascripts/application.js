@@ -366,4 +366,24 @@ function mostrarPanelBuscarProceso(){
     var divPanelProceso = "#panelBuscarProceso";
     $(divPanelProceso).toggle( "fade" );
     
-}
+};
+
+function mostarcontacto(contactoid){
+   var panel = "#panelcontacto_"+contactoid;
+   var link1 = "#contactar_"+contactoid;
+   var link2 = "#contactarCancelar_"+contactoid;
+    $(panel).toggle( "fade" );
+    $(link1).addClass("ocultar");
+    $(link2).removeClass("ocultar");
+    
+};
+
+function ocultarcontacto(contactoid){
+   var panel = "#panelcontacto_"+contactoid;
+   var link1 = "#contactar_"+contactoid;
+   var link2 = "#contactarCancelar_"+contactoid;
+    $(panel).toggle( "fade" );
+    $(link1).removeClass("ocultar");
+    $(link2).addClass("ocultar");
+    
+};

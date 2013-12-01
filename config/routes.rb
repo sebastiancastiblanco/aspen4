@@ -1,6 +1,6 @@
 AspenVersion3::Application.routes.draw do
+  
   get "buscar_procesos/buscarProceso"
-
   get "buscar_procesos/busquedaInicial"
 
   resources :actividad_eventos
@@ -38,6 +38,7 @@ AspenVersion3::Application.routes.draw do
   
   resources :control_accesos
   get "procesos/createTipoProceso"
+
   
 
   
@@ -49,10 +50,13 @@ AspenVersion3::Application.routes.draw do
   get "procesos/eventos"
   get "procesos/favoritos"
   get "procesos/buscarProceso"
+  get "procesos/enviarContacto"
   
   resources :agendas
   resources :usuarios
-  
+   
+
+
   resources :usuarios do
     get :autocomplete_usuario_name, :on => :collection
   end
@@ -176,7 +180,9 @@ AspenVersion3::Application.routes.draw do
 
 
   match 'procesos/createTipoProceso' => 'tipo_procesos#createTipoProceso'
-  match 'procesos/compartirProceso' => 'control_accesos#compartirProceso'
+  match 'procesos/enviarContacto' => 'procesos#enviarContacto'
+
+  #match 'procesos/compartirProceso' => 'control_accesos#compartirProceso'
   match 'procesos/favorito/:procesoid' => 'procesos#favorito'
   match 'procesos/cantidadUsuarios/:procesoid' => 'procesos#cantidadUsuarios'
   match 'procesos/nofavorito/:procesoid' => 'procesos#nofavorito'

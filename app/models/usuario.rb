@@ -66,4 +66,8 @@ class Usuario < ActiveRecord::Base
       where("procesos.activo = ? LIMIT 1", true)
   end
 
+  def enviarContacto
+    
+  end
+
 end

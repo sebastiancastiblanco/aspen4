@@ -28,6 +28,12 @@
                 <%= link_to "Actividad Pendientes ("+@NumeroActividadesPendientes.to_s+")", :actividadesPendientes %>
             </div>
 
+
+            <% if (notice) %>
+                <div data-alert class="alert-box success radius" style="text-shadow: initial;"><%= notice %></div>
+            <% end%>
+
+
             <div id="all_projects">
                 <section id="sectionProcesos" class="projects cards">
                     <div id="panelBuscarProceso" class="row panel ocultar" style="height: 83px !important;">
@@ -54,9 +60,10 @@
                             </div>
                         <% end %> 
                          <%= link_to  "javascript:cerrarPanelBuscarProceso()", :class => "ubicacionCerrarPanel" do%>
-                                <img src="/img/xmen.png" title="cerrar">
+                               <p style="font-size: 12px !important;">
+                          selecciona y llena una o varios campos par realizar la busqueda avanzada</p> <img src="/img/xmen.png" title="cerrar">
                           <% end %> 
-
+                        
                     </div>
 
                     <div id="listaProcesos" class="row">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131130173118) do
+ActiveRecord::Schema.define(:version => 20131201172409) do
 
   create_table "actividad_eventos", :force => true do |t|
     t.integer  "usuario_id"
@@ -231,6 +231,7 @@ ActiveRecord::Schema.define(:version => 20131130173118) do
     t.integer  "usuario_id"
     t.integer  "tipo_proceso_id"
     t.integer  "estado_proceso_id"
+    t.boolean  "activo"
   end
 
   add_index "procesos", ["usuario_id"], :name => "index_procesos_on_usuario_id"
