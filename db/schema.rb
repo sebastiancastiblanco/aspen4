@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131124220200) do
+ActiveRecord::Schema.define(:version => 20131130173118) do
 
   create_table "actividad_eventos", :force => true do |t|
     t.integer  "usuario_id"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20131124220200) do
     t.datetime "updated_at",       :null => false
     t.integer  "proceso_id"
     t.integer  "usuario_id"
+    t.integer  "privilegio_id"
   end
 
   create_table "documents", :force => true do |t|
@@ -202,6 +203,12 @@ ActiveRecord::Schema.define(:version => 20131124220200) do
     t.integer  "proceso_id"
     t.boolean  "activo"
     t.boolean  "rolPrincipal"
+  end
+
+  create_table "privilegios", :force => true do |t|
+    t.string   "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "proceso_participantes", :force => true do |t|

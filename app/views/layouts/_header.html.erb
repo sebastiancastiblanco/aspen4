@@ -13,13 +13,13 @@
         <%= link_to 'Reportes', reportes_path , :class => "topnav_calendar" %>
         
         <%=  link_to "Progreso", :progreso ,:class => "topnav_everyone"   %>
-       
+        <%=  link_to "Compartir", :control_acceso ,:class => "topnav_everyone"   %>
         
     </div>
 
     <div class="jumpto" >
         
-             <a href="#" class="button meddium secondary" data-dropdown="drop1" style=" font-size: 11px !important; letter-spacing: 0.4px;font-family: 'ProximaNova','Helvetica Neue',helvetica,arial,sans-serif !important;"><%= current_user.username %> &raquo;</a>
+             <a href="#" class="button meddium secondary" data-dropdown="drop1" style=" min-width: 180px; font-size: 11px !important; letter-spacing: 0.4px;font-family: 'ProximaNova','Helvetica Neue',helvetica,arial,sans-serif !important;"><%= current_user.username %> &raquo;</a>
               <ul id="drop1" class="f-dropdown" data-dropdown-content >
                 <li><%= link_to "Mi Perfil",current_user,:class => "Me"   %></li>
                 <li><%=  link_to "Planes y precios", :precios %></li>

@@ -62,6 +62,7 @@ AspenVersion3::Application.routes.draw do
 
   
   match 'progreso' => 'logs#index', as: :progreso
+  match 'compartirProcesos' => 'control_accesos#index', as: :compartirProcesos
   match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
   match 'precios' => 'usuarios#planprecios', as: :precios
   match 'ingresoCuenta' => 'usuarios#login', as: :ingresoCuenta

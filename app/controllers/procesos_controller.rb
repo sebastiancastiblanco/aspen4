@@ -105,7 +105,7 @@ class ProcesosController < ApplicationController
     respond_to do |format|
       if @proceso.save
         #Salvar relacion entre el proecso y el usuario que lo creo
-        @proceso.control_accesos.create(:usuario_id => current_user.id,:proceso_id => @proceso.id)
+        @proceso.control_accesos.create(:usuario_id => current_user.id,:proceso_id => @proceso.id,:privilegio_id => 1)
 
         
        format.html { redirect_to @proceso, notice: 'El proceso fue creado correctamente.'  }
