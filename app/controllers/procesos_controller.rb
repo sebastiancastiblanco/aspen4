@@ -230,7 +230,7 @@ class ProcesosController < ApplicationController
 
  def enviarContacto
     @usuario = Usuario.find(params[:usuario_id])
-    @mensaje = params[:mensaje+@usuario.id.to_s]
+    @mensaje = params['mensaje'+@usuario.id.to_s]
     @proceso =  Proceso.find( params[:proceso_id])
 
      #enviar mail de bienvenida

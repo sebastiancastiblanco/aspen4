@@ -3,43 +3,32 @@
         Colaboradores
         <a href="#" class="alert-panel close-reveal-modal" onclick="$('#myModalCompartirProceso').foundation ('reveal', 'close')">&times;</a>
       </div>
-
-      
-	      <div class="alert-panel-message" >
-	      	 
-	      	 
-			     <h6>Usuarios vinculados en el proceso</h6>
+		 <div class="alert-panel-message" >
+	         <h6>Puedes enviar un mensajes a los colaboradores via correo electronico</h6>
 	              <hr/>
 	              <div id="listaUsuarios">
 	                <% @proceso.usuarios.each do |usuario| %>
-	                <div class="colaborador">
-	                	<div class="imagencolaborador">
-					    <img class="avatar alinearbotones" src="/img/user.png"> 
-						<div class="datoscolaborador">
-		                    <strong><span class="posicionNombreUsuario "><%= usuario.nombre %></span></strong>
-		                    <span class="posicionNombreUsuario ">(<%= usuario.username %>)</span>
-		                   <a id="contactar_<%= usuario.id %>" class="textolinks pointer" onclick="mostarcontacto(<%= usuario.id %>)" >Contactar
-		                    	</a>
-	                       <a id="contactarCancelar_<%= usuario.id %>" class="textolinks pointer ocultar" onclick="ocultarcontacto(<%= usuario.id %>)" >Cancelar
-	                       </a>
-		                   
-		                </div>
+		                <div class="colaborador">
+		                	<div class="imagencolaborador">
+						    <img class="avatar alinearbotones" src="/img/user.png"> 
+								<div class="datoscolaborador">
+				                    <strong><span class="posicionNombreUsuario "><%= usuario.nombre %></span></strong>
+				                    <span class="posicionNombreUsuario ">(<%= usuario.username %>)</span>
+				                   <a id="contactar_<%= usuario.id %>" class="textolinks pointer" onclick="mostarcontacto(<%= usuario.id %>)" >Contactar
+				                    	</a>
+			                       <a id="contactarCancelar_<%= usuario.id %>" class="textolinks pointer ocultar" onclick="ocultarcontacto(<%= usuario.id %>)" >Cancelar
+			                       </a>
+				                   
+				                </div>
+							</div>
+						    <div id="panelcontacto_<%= usuario.id %>" class="contactoColaborador ocultar">
+						    	 <%= render 'formContactar', :usuario => usuario %>
+						    </div>
 						</div>
-					    <div id="panelcontacto_<%= usuario.id %>" class="contactoColaborador ocultar">
-					    	 <%= render 'formContactar', :usuario => usuario %>
-					    </div>
-
-
-	                </div>
 	                <% end %>
 	              </div>
 	  	   </div>
-      <div class="alert-panel-action">
-        	<a href="#" class="small button radius secondary" onclick="$('#myModalCompartirProceso').foundation ('reveal', 'close')">Cerrar</a>
-		   
-      </div>
       
-       
 </div>
 
 

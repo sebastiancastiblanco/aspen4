@@ -46,9 +46,15 @@ class ControlAccesosController < ApplicationController
   # POST /control_accesos.json
   def create
     @control_acceso = ControlAcceso.new(params[:control_acceso])
-  
+    
     #buscar el proceso y usuario, si ya existe solo se actualiza el atributo de privilegio
     @accesoCreado = ControlAcceso.buscarProcesoAcceso(@control_acceso.proceso_id, @control_acceso.usuario_id);
+    #Enviar Correo el cual notifica que se comparte el proceso
+    threads = []
+      threads << Thread.new do
+           ContactoMailer.compartirProcesoUsuario(current_user,@control_acceso.proceso,@control_acceso.usuario.username).deliver
+      end
+    threads.each(&:join)
 
     if !@accesoCreado.any?
       respond_to do |format|

@@ -15,11 +15,12 @@
                 <%= link_to  "javascript:mostrarPanelBuscarProceso()", :id => "mostrarCamposOpcionales" do %>
                      <div class="foundicon-search"></div> Buscar Proceso
                 <% end %> 
+                <%= link_to 'Todos los Procesos', :controller => :procesos, :action => :favoritos , :estado  => 0 , :remote => true %>
                 <hr>
                 <%= link_to  :controller => :procesos, :action => :favoritos , :estado  => 1, :remote => true do%>
                  <div class="foundicon-star alinearbotones" style="display:block; margin-right: -11px !important;"></div> Procesos Favoritos
                 <% end %> 
-                <%= link_to 'Todos los Procesos', :controller => :procesos, :action => :favoritos , :estado  => 0 , :remote => true %>
+                
             </div>
 
             <div class="project_templates">
@@ -60,8 +61,7 @@
                             </div>
                         <% end %> 
                          <%= link_to  "javascript:cerrarPanelBuscarProceso()", :class => "ubicacionCerrarPanel" do%>
-                               <p style="font-size: 12px !important;">
-                          selecciona y llena una o varios campos par realizar la busqueda avanzada</p> <img src="/img/xmen.png" title="cerrar">
+                                <img src="/img/xmen.png" title="cerrar">
                           <% end %> 
                         
                     </div>

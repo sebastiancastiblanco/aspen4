@@ -1,14 +1,16 @@
+<div class="row">
 <%= form_tag url_for(:controller => 'procesos', :action => 'enviarContacto'), :method => 'enviarContacto', :remote => true, :html => { :class => "custom",:id => "formContactar"}  do  %>
-  <div class="row">
+  
 	<div class="small-10 columns field">
 	    <span data-tooltip class="tip-top" title="Mensaje para el colaborador">
-	    <%= text_field_tag "mensaje"+usuario.id.to_s, nil, placeholder: 'Máximo 250 caracteres', maxlength: 250 %>
+	    <%= text_field_tag 'mensaje'+usuario.id.to_s, nil, placeholder: 'Máximo 250 caracteres', maxlength: 250 %>
 	    <%= hidden_field_tag :usuario_id, usuario.id %>
 	    <%= hidden_field_tag :proceso_id, @proceso.id %>
 	    
 	  </div>
 	  <div class="small-2 columns field">
-	  <%= submit_tag :'Enviar' , :class => " button secondary radius" %></div>
+	  	<%= submit_tag :'Enviar' , :class => " button secondary radius" %>
 	 </div>
- </div>
+ 
 <% end %>
+</div>

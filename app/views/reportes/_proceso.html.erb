@@ -1,6 +1,6 @@
  <tr>
   <td>
-	<a id="favoritoHome" class="star alinearbotones" onClick="cambioEstadoFavoritoHome(<%= proceso.id %>)">
+	<a id="favoritoHome" class="star alinearbotones pointer" onClick="cambioEstadoFavoritoHome(<%= proceso.id %>)">
       <% if (proceso.favorito) %>
                 <i id="ProcesoNoFavorito<%= proceso.id %>" class="foundicon-star centrado" style="display:none"></i>
                 <div id="ProcesoFavorito<%= proceso.id %>" class="favoritoSeleccionado centrado" style="display:block"></div>
