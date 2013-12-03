@@ -408,7 +408,7 @@ div.sheet>header div.header_links a {
   float: left !important;
   line-height: 1.0em !important;
   margin-left: 20px !important;
-  text-decoration: none !important;
+  text-decoration: none ;
 }
 div.sheet>header div.header_links a span.link {
   color: #1c5c76 !important;
@@ -1338,4 +1338,17 @@ opacity: 0.6;
 
 .contactoColaborador{
   
+}
+
+.letraAzul{
+  color: #2795b6 !important
+}
+
+a.linksTitulos{
+  color: #1c5c76 !important;
+  text-decoration: underline !important;
+}
+a.linksTitulos:hover{
+  color: #1c5c76 !important;
+  text-decoration: underline !important;
 }

@@ -7,7 +7,7 @@
       <%= f.label "Tipo Contrato", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-      <%= f.select :tipoContrato, [["Tipo Contrato", 0]]+[["Indefinido", "Indefinido"]]+[["Prestación de Servicios", "Servicios"]] , { :disabled => ["Tipo Contrato", 0] } %>
+      <%= f.select :tipoContrato, [["Indefinido", "Indefinido"]]+[["Prestación de Servicios", "Servicios"]], :prompt => "- Tipo Contrato -" %>
     </div>
 
     <hr/>
@@ -30,7 +30,7 @@
     </div>
     <div class="small-4 columns field">
       <span data-tooltip class="tip-top" title="Selecciona uno de los participantes que has creado anteriormente">
-      <%= f.select :particpante1, [["Contratante", 0]] + @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido,r.id]}, { :disabled => ["Contratista", 0] } %>
+      <%= f.select :particpante1,  @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido,r.id]}, :prompt => "- Contratante -" %>
     </div>
      <div class="small-2 small-offset-0 columns ">
       
@@ -38,7 +38,7 @@
     </div>
     <div class="small-4 columns field">
       <span data-tooltip class="tip-top" title="Selecciona uno de los participantes que has creado anteriormente">
-      <%= f.select :participante2, [["Contratista", 0]] + @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido , r.id]}, { :disabled => ["Contratista", 0] } %>
+      <%= f.select :participante2, @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido , r.id]}, :prompt => "- Contratista -" %>
     </div>
 
     <div class="small-2 small-offset-0 columns ">

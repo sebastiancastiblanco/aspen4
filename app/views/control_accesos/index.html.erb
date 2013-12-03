@@ -39,7 +39,7 @@
           <br />
                 
                 <div class="large-8 small-offset-2 large-offset-2 columns">
-                  <%= f.select :usuario_id, [["Selecciona un Usuario", 0]] + @usuarios.map {|r| [r.username,r.id] }, { } %>  
+                  <%= f.select :usuario_id, @usuarios.map {|r| [r.username,r.id] }, :prompt => "- Selecciona un Usuario -" %>  
                 </div>
 
         </div>
@@ -60,10 +60,10 @@
                   <%= f.label "Proceso: ", :class => "tituloCampo error alinearDerecha" %>
                 </div>  
                 <div class="large-6  columns">
-                  <%= f.select :proceso_id, [["Proceso 1", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, { } %>  
+                  <%= f.select :proceso_id, @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, :prompt => "- Proceso 1 -"%>  
                 </div>
                 <div class="large-3  columns">
-                  <%= f.select :privilegio_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, {  } %>  
+                  <%= f.select :privilegio_id, @privilegios.map {|r| [r.descripcion,r.id] }, :prompt => "- Nivel de Acceso -" %>  
                 </div>
                 <!--
                 <div class="large-2  columns">

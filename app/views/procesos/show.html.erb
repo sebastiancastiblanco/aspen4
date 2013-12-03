@@ -24,14 +24,9 @@
               </span>
             </a>
 
-            <%=  link_to "",{:controller => "procesos", :action => "eventos", :proceso_id => @proceso.id} , :class => "link"  do %>
-              <span class="link">Ultimos movimientos</span><br>
-              <span class="detail">cambios recientes</span>
-            <% end %>
             
-
+              <%= link_to "Últimos movimientos",{:controller => "procesos", :action => "eventos", :proceso_id => @proceso.id}, :class => "linksTitulos"  %>
             
-
              <%= link_to edit_proceso_path(@proceso) do %>
               <span class="link">Editar</span>
              <% end %>
@@ -62,13 +57,12 @@
                 <span class="bold"> Cliente:</span> 
                        
                         <% if !@participantePrincipal.empty? %> 
-                          
                           <% @participantePrincipal.each do |participantePrincipal| %>
                            <%=  link_to participantePrincipal.nombre+" "+participantePrincipal.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:id => participantePrincipal.id, :nuevoItem => true}, :class => ""   %>,
-                          <% end %>
+                        <% end %>
 
                         <% else %>
-                             <%= link_to "Crear Participante / Cliente", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => ""  %>
+                             <%= link_to "Crear Participante / Cliente", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "letraAzul"  %>
                         <% end %>
 
                 <br />

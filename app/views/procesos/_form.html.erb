@@ -9,7 +9,7 @@
      <%= f.select :tipo_proceso_id, [["Seleccionar Tipo Proceso", 0]] + @tipos_procesos.map {|r| [r.tipo,r.id]}, { :disabled => ["Seleccionar Tipo Proceso", 0] } , :id => "listaTiposProceso" %>
   </div>
   <div class="small-5 columns marginTopLeft">
-    <%= link_to 'Crear tipo proceso', "javascript:eventoCamposOpcionalesActividad()", :class=>"textolinks","data-reveal-id" => "myModalTipoProceso" %>
+    <!-- <%= link_to 'Crear tipo proceso', "javascript:eventoCamposOpcionalesActividad()", :class=>"textolinks","data-reveal-id" => "myModalTipoProceso" %> -->
   </div>
 
   <hr/>

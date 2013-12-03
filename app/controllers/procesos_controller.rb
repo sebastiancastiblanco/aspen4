@@ -9,7 +9,7 @@ class ProcesosController < ApplicationController
     @procesos = current_user.procesos
     #estados de los procesos
     @estadosProcesos = EstadoProceso.all
-    @tipos_procesos = current_user.tipo_procesos
+    @tipos_procesos = TipoProceso.all
     @proceso = Proceso.new 
 
     #Alertas pendietse del usuario
@@ -70,7 +70,7 @@ class ProcesosController < ApplicationController
   def new
     @proceso = Proceso.new
     #Para el combo de tipos de procesos
-    @tipos_procesos = current_user.tipo_procesos
+    @tipos_procesos = TipoProceso.all
     #Para el item tipos de proceso
     @tipo_proceso = TipoProceso.new
 
@@ -84,7 +84,7 @@ class ProcesosController < ApplicationController
   def edit
     @proceso = Proceso.find(params[:id])
     #Para el combo de tipos de procesos
-    @tipos_procesos = current_user.tipo_procesos
+    @tipos_procesos = TipoProceso.all
     #Para el item tipos de proceso
     @tipo_proceso = TipoProceso.new
     
@@ -98,7 +98,7 @@ class ProcesosController < ApplicationController
     @proceso.estado_proceso_id = 1
     @proceso.favorito = false
     #Para el combo de tipos de procesos
-    @tipos_procesos = current_user.tipo_procesos
+    @tipos_procesos = TipoProceso.all
     #Para el item tipos de proceso
     @tipo_proceso = TipoProceso.new
     @proceso.activo = true

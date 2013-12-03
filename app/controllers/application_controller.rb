@@ -10,4 +10,5 @@ class ApplicationController < ActionController::Base
     redirect_to :login, :notce => "Debes iniciar sesion."
   end
 
+  
 end

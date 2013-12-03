@@ -30,8 +30,8 @@ class Usuario < ActiveRecord::Base
   belongs_to :despacho, class_name: "Usuario"
   
   #relacion superUsuario tiene varios Tipos de proceso y proceso
-  has_many :tipo_procesos
-  has_many :procesos, through: :tipo_procesos
+  #has_many :tipo_procesos
+  #has_many :procesos, through: :tipo_procesos
 
   #relacion de alertas por usuario, traer todas las alertas de un unico usuario
   has_many :alertas
