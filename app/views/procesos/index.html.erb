@@ -9,16 +9,23 @@
                 <%= link_to '', new_proceso_path %>
             </nav>
             <div class="project_templates nuevoProceso">
-                <%= link_to 'Nuevo Proceso', new_proceso_path %>
+                <%= link_to 'Nuevo Proceso', new_proceso_path, :id => "nuevoProcesoBoton"%>
                 <hr>
                
                 <%= link_to  "javascript:mostrarPanelBuscarProceso()", :id => "mostrarCamposOpcionales" do %>
                      <div class="foundicon-search"></div> Buscar Proceso
-                <% end %> 
-                <%= link_to 'Todos los Procesos', :controller => :procesos, :action => :favoritos , :estado  => 0 , :remote => true %>
-                <hr>
+                <% end %>
+                <br /> 
                 <%= link_to  :controller => :procesos, :action => :favoritos , :estado  => 1, :remote => true do%>
                  <div class="foundicon-star alinearbotones" style="display:block; margin-right: -11px !important;"></div> Procesos Favoritos
+                <% end %> 
+                <br /> 
+                <%= link_to 'Todos los Procesos', :controller => :procesos, :action => :favoritos , :estado  => 0 , :remote => true %>
+               
+               <hr>
+               
+                <%= link_to  "javascript:mostrarPanelBuscarCliente()", :id => "mostrarCamposOpcionalesClientes", :class =>"ocultar" do %>
+                     <div class="foundicon-search"></div> Buscar Cliente
                 <% end %> 
                 
             </div>
@@ -37,22 +44,23 @@
 
             <div id="all_projects">
                 <section id="sectionProcesos" class="projects cards">
-                    <div id="panelBuscarProceso" class="row panel ocultar" style="height: 83px !important;">
+                   
+                    <div id="panelBuscarProceso" class="row panel panelBusqueda ocultar " style="height: 83px !important;">
                         
                         <%= form_for @proceso, :remote => true , :url => url_for(:controller => 'procesos', :action => 'buscarProceso'),  :html => { :class => "custom", :id => "formBuscarProceso"}  do |f| %>
                             
                             <div class="small-3 large-3 columns " style="margin-top: 8px;">
-                                <span data-tooltip class="tip-top" title="Buscar por la referencia del proceso">
+                                <span data-tooltip class="tip-top" title="Buscar procesos por la referencia del proceso">
                                 <%= f.text_field :referencia , :placeholder => "Referencia" %>
                             </div> 
                           
                             <div class="small-4 large-4 columns " style="margin-top: 8px;">
-                                <span data-tooltip class="tip-top" title="Buscar por título ">
+                                <span data-tooltip class="tip-top" title="Buscar procesos por título ">
                                 <%= f.text_field :titulo , :placeholder => "Titulo del proceso" %>
                             </div>
                             
                             <div class="small-3 large-3 columns " style="margin-top: 8px;">
-                                <span data-tooltip class="tip-top" title="Filtrar por tipo de proceso">
+                                <span data-tooltip class="tip-top" title="Filtrar busqueda por tipo de proceso">
                                <%= f.select :tipo_proceso_id, [["Todos los Procesos", 0]] + @tipos_procesos.map {|r| [r.tipo,r.id]}, { :disabled => [] } , :id => "listaTiposProceso" %>
                             </div>
                            
@@ -61,6 +69,31 @@
                             </div>
                         <% end %> 
                          <%= link_to  "javascript:cerrarPanelBuscarProceso()", :class => "ubicacionCerrarPanel" do%>
+                                <img src="/img/xmen.png" title="cerrar">
+                          <% end %> 
+                        
+                    </div>
+
+                     <div id="panelBuscarCliente" class="row panel panelBusqueda ocultar" style="height: 83px !important;">
+                       
+                        <%= form_for @participante, :remote => true , :url => url_for(:controller => 'procesos', :action => 'buscarCliente'),  :html => { :class => "custom", :id => "formBuscarCliente"}  do |f| %>
+                            
+                            <div class="small-5 large-5 columns " style="margin-top: 8px;">
+                                <span data-tooltip class="tip-top" title="Buscar procesos por el correo del cliente">
+                                <%= f.text_field :correo , :placeholder => "Correo electronico" %>
+                            </div> 
+                          
+                            <div class="small-5 large-5 columns " style="margin-top: 8px;">
+                                <span data-tooltip class="tip-top" title="Buscar procesos por el número de documento ">
+                                <%= f.text_field :documento , :placeholder => "No Documento" %>
+                            </div>
+                            
+                                                      
+                            <div class="small-2 large-2 columns ">
+                              <%= f.submit :'Buscar' , :class => " button success radius " %>
+                            </div>
+                        <% end %> 
+                         <%= link_to  "javascript:cerrarPanelBuscarCliente()", :class => "ubicacionCerrarPanel2" do%>
                                 <img src="/img/xmen.png" title="cerrar">
                           <% end %> 
                         
@@ -76,3 +109,16 @@
     </div>
     </div>
 </body>
+
+<!-- Mostrar este mensaje si la lista de participantes esta vacia -->
+<% if @procesos.size == 0 %>
+<ol id="joyrideProceso" class="joyride-list" data-options="nextButton : true,tipAnimation :    'fade',tipAnimationFadeSpeed: 300" data-joyride>
+  <li data-id="new_participante_link" data-text="Salir">
+    <p>Inicia Creando un neuvo Proceso</p>
+  </li>
+</ol>
+
+<script>
+   $(document).foundation('nuevoProcesoBoton', 'start');
+</script>
+<% end %>

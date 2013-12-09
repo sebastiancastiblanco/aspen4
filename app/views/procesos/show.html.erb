@@ -57,8 +57,9 @@
                 <span class="bold"> Cliente:</span> 
                        
                         <% if !@participantePrincipal.empty? %> 
-                          <% @participantePrincipal.each do |participantePrincipal| %>
-                           <%=  link_to participantePrincipal.nombre+" "+participantePrincipal.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:id => participantePrincipal.id, :nuevoItem => true}, :class => ""   %>,
+                          <% @participantePrincipal.each do |participanteP| %>
+                           <%=  link_to participanteP.nombre+" "+participanteP.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:participante_id => participanteP.id, :nuevoItem => true}, :class => ""   %>,
+
                         <% end %>
 
                         <% else %>

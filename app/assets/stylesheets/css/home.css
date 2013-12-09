@@ -285,7 +285,7 @@ div.panel.home_tab div.project_templates {
   text-align: center !important;
   width: 148px !important;
   left: -16px !important;
-  top: 263px !important;
+  top: 284px !important;
   font-size: 14px !important;
 }
 div.panel.home_tab div.project_templates a {
@@ -1312,10 +1312,25 @@ border: none !important;
 .ubicacionCerrarPanel{
   position: relative !important;
 float: left !important;
-right: -119px !important;
-top: -57px;
+right: -105px !important;
+top: -59px;
 width: 17px;
 opacity: 0.6;
+}
+
+.ubicacionCerrarPanel2{
+position: relative !important;
+float: right!important;
+right: -17px !important;
+top: -59px;
+width: 17px;
+opacity: 0.6;
+}
+
+.panelBusqueda{
+height: 83px !important;
+max-width: 668px;
+float: left;
 }
 
 .imagencompartir{

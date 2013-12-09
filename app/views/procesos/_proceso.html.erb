@@ -12,14 +12,30 @@
       
         <h5><%= proceso.titulo %> </h5>
             <p style="margin-bottom: 5px;">Ref <%= proceso.id %>  <% if !proceso.referencia.nil? %>/ <%= proceso.referencia %> <%end%> </p>
-            <p style="font-size: 12px !important;;">
+            <p style="font-size: 12px !important;">
                 Modificado <%= fechaFormato1 proceso.updated_at %>
+            </p>
+             <p style="font-size: 12px !important;">
+                <% if !proceso.tipo_proceso.tipo.nil? %> Tipo: <%= proceso.tipo_proceso.tipo %><%end%> 
+            </p>
+             <p style="font-size: 12px !important;">
+                <% if !proceso.estado_proceso.nil? %> Estado: <%= proceso.estado_proceso.estado %><%end%>
             </p>
             <p style="font-size: 12px !important;">
                
-                 <% if !proceso.tipo_proceso.tipo.nil? %> Tipo: <%= proceso.tipo_proceso.tipo %><%end%> 
-                 <br />
-                 <% if !proceso.estado_proceso.nil? %> Estado: <%= proceso.estado_proceso.estado %><%end%>
+                 <% @listaparticipantes = Participante.participante_principal(proceso.id) %>   
+                <% if !@listaparticipantes.nil? && !@listaparticipantes.empty? %> 
+                Cliente:
+                    <% @listaparticipantes.each do |participantePrincipal| %>
+                       <%=  link_to participantePrincipal.nombre+" "+participantePrincipal.apellido, {:controller => "participantes", :action => "index", :proceso_id => proceso.id,:participante_id => participantePrincipal.id, :nuevoItem => true}, :class => ""   %>,
+                    <% end %>
+
+                    <% else %>
+                         <%= link_to "Crear Participante / Cliente", {:controller => "participantes", :action => "index", :proceso_id => proceso.id, :nuevoItem => true},:class => "letraAzul"  %>
+                    <% end %>
+ 
+
+
             </p>
 
             <div class="panelAvatarUsuario">

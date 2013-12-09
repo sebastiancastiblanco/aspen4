@@ -211,6 +211,8 @@ AspenVersion3::Application.routes.draw do
   match 'procesos/favoritos/:estado' => 'procesos#favoritos'
   #buscar procesos con filtros
    match 'procesos/buscarProceso' => 'procesos#buscarProceso'
+  #buscar procesos con filtros
+  match 'procesos/buscarCliente' => 'procesos#buscarCliente'
 
 
   match 'actividads/nuevoregistro/:actividad_id' => 'actividads#nuevoRegistro'

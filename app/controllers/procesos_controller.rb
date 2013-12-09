@@ -11,6 +11,7 @@ class ProcesosController < ApplicationController
     @estadosProcesos = EstadoProceso.all
     @tipos_procesos = TipoProceso.all
     @proceso = Proceso.new 
+    @participante = Participante.new
 
     #Alertas pendietse del usuario
     @NumeroAlertasPendientes = current_user.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC").count;
@@ -227,6 +228,23 @@ class ProcesosController < ApplicationController
       format.js
     end
  end
+
+ def buscarCliente
+     @participante = Participante.new(params[:participante])
+    
+     if (!@participante.correo.nil? && !@participante.documento.nil? )
+      @procesos = current_user.participantes.activos.where("correo LIKE ? AND documento LIKE ? ", "#{@participante.correo}%","%#{@participante.documento}%").proceso
+     elsif (!@participante.correo.nil? )
+      @procesos = current_user.participantes.activos.where("correo LIKE ?  ", "#{@participante.correo}%").proceso
+     else (!@participante.documento.nil? )
+      @procesos = current_user.participantes.activos.where("documento LIKE ?  ", "#{@participante.documento}%").proceso
+     end
+
+    respond_to do |format|
+      format.js
+    end
+ end
+
 
  def enviarContacto
     @usuario = Usuario.find(params[:usuario_id])
