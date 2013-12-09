@@ -368,6 +368,18 @@ function mostrarPanelBuscarProceso(){
     
 };
 
+
+function cerrarPanelBuscarCliente(){
+    var divPanelProceso = "#panelBuscarCliente";
+    $(divPanelProceso).toggle( "fade" );
+}
+
+function mostrarPanelBuscarCliente(){
+    var divPanelProceso = "#panelBuscarCliente";
+    $(divPanelProceso).toggle( "fade" );
+    
+};
+
 function mostarcontacto(contactoid){
    var panel = "#panelcontacto_"+contactoid;
    var link1 = "#contactar_"+contactoid;

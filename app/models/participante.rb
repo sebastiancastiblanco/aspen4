@@ -2,7 +2,7 @@ class Participante < ActiveRecord::Base
   attr_accessible :rolPrincipal,:activo,:apellido, :celular, :correo, :direccion, :documento, :estadoCivil, :fechaNacimiento, :genero, :nombre, :telefono, :tipoDocumento,:updated_at,:rol_participante_id,:proceso_id
   
   #Validaciones campos obligatorios
-  validates :apellido, :nombre, :correo, :presence => { :message => "Campo obligatorio"}
+  validates :apellido, :nombre, :correo,:celular, :presence => { :message => "Campo obligatorio"}
   #Validaciones numericas
   validates :documento, numericality: { :only_integer => true,  :message => "Debe ser un valor Numerico" }, :unless => "documento.nil?"
   validates :telefono, numericality: { :only_integer => true,  :message => "Debe ser un valor Numerico" }, :unless => "telefono.nil?" 
@@ -22,6 +22,7 @@ class Participante < ActiveRecord::Base
 
   #Scope para la tabla
   scope :activos, where(:activo => true)
+  scope :principales, where(:rolPrincipal => true)
   scope :participante_principal, ->(idproceso) { where(:proceso_id => idproceso,:activo => true,:rolPrincipal => true) }
 
 end

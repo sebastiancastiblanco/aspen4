@@ -41,6 +41,10 @@ class Usuario < ActiveRecord::Base
   has_many :actividads
   has_many :actividads, through: :control_accesos, through: :procesos
 
+   #realcion de participantes, traer todos los particpantes de un unico usuario
+  has_many :participantes
+  has_many :participantes, through: :control_accesos, through: :procesos
+
   #generacion de token para funcion remember me
   def generate_token(column)
     begin
