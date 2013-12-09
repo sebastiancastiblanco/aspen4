@@ -32,8 +32,20 @@
 
             <div class="project_templates">
                 <hr>
+                
+                <% if (@NumeroAlertasPendientes > 0) %>
+                <strong><%= link_to "Alertas Pendientes ("+@NumeroAlertasPendientes.to_s+")", :alertasPendientes %></strong>
+                <% elsif %>
                 <%= link_to "Alertas Pendientes ("+@NumeroAlertasPendientes.to_s+")", :alertasPendientes %>
+                <% end %>
+
+                 <% if (@NumeroActividadesPendientes > 0) %>
+                <strong><%= link_to "Actividad Pendientes ("+@NumeroActividadesPendientes.to_s+")", :actividadesPendientes %></strong>
+                <% elsif %>
                 <%= link_to "Actividad Pendientes ("+@NumeroActividadesPendientes.to_s+")", :actividadesPendientes %>
+                <% end %>
+                
+                
             </div>
 
 

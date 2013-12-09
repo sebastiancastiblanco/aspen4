@@ -14,7 +14,7 @@
     </div>
     <div class="small-4 columns field">
        <span data-tooltip class="tip-top" title="Participante principal y encargado de la actividad">
-      <%= actividad.select :participante_id, @proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido,r.id]}, :prompt => "- Encargado -" %>
+      <%= actividad.select :participante_id, ["- Encargado -"]+@proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido,r.id]}, :disabled => "- Encargado -" %>
     </div>
 </div>
   
@@ -23,7 +23,7 @@
       <%= actividad.label "Estado de la Actividad", :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns field">
-           <%= actividad.select :estado_actividad_id, @estadoActividads.map {|r| [r.estado,r.id]}, :prompt => "- Estado de la Actividad -" %>
+           <%= actividad.select :estado_actividad_id, ["- Estado de la Actividad -"]+@estadoActividads.map {|r| [r.estado,r.id]}, :disabled => "- Estado de la Actividad -" %>
     </div>
     <div class="small-2 small-offset-0 columns ">
       <%= actividad.label "Fecha Seguimiento", :class => "tituloCampo error alinearDerecha" %>
@@ -47,7 +47,7 @@
           <%= actividad.label "Medida de Tiempo", :class => "tituloCampo error alinearDerecha" %>
         </div>
         <div class="small-4 columns field">
-               <%= actividad.select :medidaTiempo, [["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], :prompt => "- Medida de Tiempo -" %>
+               <%= actividad.select :medidaTiempo, ["- Medida de Tiempo -"]+[["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], :disabled => "- Medida de Tiempo -" %>
         </div>
 </div>
 

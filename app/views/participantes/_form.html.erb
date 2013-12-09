@@ -35,7 +35,7 @@
     </div>
     <div class="small-4 columns field">
          <span data-tooltip class="tip-top" title="Rol del participante dentro del proceso.">
-           <%= f.select :rol_participante_id, @rol_participantes.map {|r| [r.rol,r.id]}, :prompt => "- Rol Participante -"  %>
+           <%= f.select :rol_participante_id, ["- Rol Participante -"]+@rol_participantes.map {|r| [r.rol,r.id]}, disabled: "- Rol Participante -"  %>
           </span>
     </div>
 
@@ -60,7 +60,7 @@
             <%= f.label "Tipo Documento", :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field">
-             <%= f.select :tipoDocumento, [["Cedula", "Cedula"],["Nit", "Nit"],["Tarjeta Extranjeria", "Tarjeta Extranjeria"],["Pasaporte", "Pasaporte"]], :prompt => "- Tipo Documento -"  %>
+             <%= f.select :tipoDocumento, ["- Tipo Documento -"]+[["Cedula", "Cedula"],["Nit", "Nit"],["Tarjeta Extranjeria", "Tarjeta Extranjeria"],["Pasaporte", "Pasaporte"]], :disabled => "- Tipo Documento -"  %>
           </div>
           
             <div class="small-2 small-offset-0 columns">
@@ -77,7 +77,7 @@
           </div>
           <div class="small-4 columns field">
 
-            <%= f.select :estadoCivil, [["Soltero", "Soltero"],["Casado", "Casado"],["Union Libre", "Union Libre"],["Separado", "Separado"],["No tiene", "No tiene"]], :prompt => "- Estado Civil -" %>
+            <%= f.select :estadoCivil, ["- Estado Civil -"]+[["Soltero", "Soltero"],["Casado", "Casado"],["Union Libre", "Union Libre"],["Separado", "Separado"],["No tiene", "No tiene"]], :disabled => "- Estado Civil -" %>
 
           </div>
           
@@ -85,7 +85,7 @@
             <%= f.label :genero_, :class => "tituloCampo error alinearDerecha" %>
           </div>
           <div class="small-4 columns field">
-            <%= f.select :genero, [["Masculino", "Masculino"]]+[["Femenino", "Femenino"]]+[["Empresa", "Empresa"]], :prompt => "- Genero -" %>
+            <%= f.select :genero, ["- Genero -"]+[["Masculino", "Masculino"]]+[["Femenino", "Femenino"]]+[["Empresa", "Empresa"]], :disabled => "- Genero -" %>
           </div>
           
           <div class="small-2 small-offset-0 columns ">

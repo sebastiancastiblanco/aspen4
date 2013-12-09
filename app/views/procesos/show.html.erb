@@ -78,6 +78,7 @@
 
           <div class="row ubicacionEstado">
                 <div class="small-2 large-3  small-offset-10  large-offset-9  columns left" >
+                  <span data-tooltip class="tip-top" title="Estado Actual del proceso." />
                        <%= form_for @proceso,  :html => { :class => "custom",:id => "formProcesoEstado"}  do |f| %>
                         <%= f.select :estado_proceso_id, [["Estado Actual del Proceso", 0]] + @estadosProcesos.map {|r| [r.estado,r.id]}, { :disabled => ["Estado Actual", 0] } , :id => "listaEstadoProceso", :onchange => "cambioEstadoProceso("+@proceso.id.to_s+")"  %>
                         <% end %>  
@@ -159,8 +160,9 @@
 
           <section id="panelParticipante" class="documents " style="">
             <header class="has_buttons">
-              <h1> <%= link_to "1. Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id},:class => "alinearbotones"  %>
-                      
+              <h1> 
+                 <span data-tooltip class="tip-top" title="Personas involucradas dentro del proceso, cada una tendra un rol especifico." />
+                <%= link_to "1. Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id},:class => "alinearbotones"  %>
               </h1>
                 <div>
                   <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones"  %>
@@ -206,7 +208,9 @@
           <hr/>
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1><%= link_to contratos_path(:proceso_id => @proceso.id) ,:class => "alinearbotones" do  %>
+              <h1>
+                <span data-tooltip class="tip-top" title="Datos principales del contrato(s) del proceso." />
+                <%= link_to contratos_path(:proceso_id => @proceso.id) ,:class => "alinearbotones" do  %>
                       2. Contratos
                     <% end %></h1>
 
@@ -243,7 +247,9 @@
 
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1> <%= link_to actividads_path(:proceso_id => @proceso.id),:class => "alinearbotones" do  %>
+              <h1> 
+                <span data-tooltip class="tip-top" title="Registro de las actividades y tiempo que se ejecutan para el proceso." />
+                <%= link_to actividads_path(:proceso_id => @proceso.id),:class => "alinearbotones" do  %>
                       3. Actividades
                     <% end %></h1>
                 <div>
@@ -283,6 +289,7 @@
          <section class="documents " style="">
             <header class="has_buttons">
               <h1> 
+                <span data-tooltip class="tip-top" title="Programa y agenda alertas tempranas para el proceso." />
                  <%= link_to   "4. Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
                 </h1>
                 <div>
@@ -324,6 +331,7 @@
  <section id="panelDocumentos" class="documents " style="">
             <header class="has_buttons">
               <h1> 
+                <span data-tooltip class="tip-top" title="Adjunta y relaciona los documentos del caso." />
                     <%= link_to   "5. Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
                   </h1>
@@ -367,6 +375,7 @@
           <section class="documents " style="">
             <header class="has_buttons">
               <h1> 
+                <span data-tooltip class="tip-top" title="Lista las conclusiones y estado final del proceso." />
                  <%= link_to   "6. Conclusiones del Proceso", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
 
               </h1>
