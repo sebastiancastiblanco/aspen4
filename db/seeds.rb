@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#Tablas parametricas - Estado Actividad
+["sinIniciar", "abiertos", "cerrados", "aplazados", "vencieron Terminos"].each do |estado|
+  EstadoProceso.create(:estado => estado)
+end
+
+#Tablas parametricas - Estado proceso
+["Programadas", "Abiertas", "Atrasadas", "Terminadas"].each do |estado|
+  EstadoActividad.create(:estado => estado)
+end
+#Tablas parametricas - privilegio
+["Administrador","Colaborador"].each do |privilegio|
+  Privilegio.create(:descripcion => privilegio)
+end
+
+#Tablas parametricas - Rol Participante
+["Ingeniero Sistemas"].each do |rol|
+  RolParticipante.create(:rol => rol)
+end
+
+#Tablas parametricas - Tipo proceso
+
