@@ -1,0 +1,31 @@
+1|Adopción
+2|Alimentos
+3|Controversias propiedad horizontal
+4|Curador Ad-hoc para levantar patrimonio de familia
+5|Guarda de menores
+6|Hipotecario
+7|Impugnación actas/decisiones
+8|Interdicción Judicial
+9|Liquidacion de sociedad conyugal
+10|Liquidacion de sociedad patrimonial
+11|Liquidacion de union marital de hecho
+12|Otros contractuales
+13|Otros contractuales (Resoluciones, nulidades, simulaciones, etc.)
+14|Otros declarativos
+15|Pertenencia abreviada
+16|Pertenencia ordinaria
+17|Prendario
+18|Reducción o pérdida de intereses o fijación de intereses corrientes
+19|Reivindicatorio y posesorio
+20|Rendición de cuentas
+21|Reposición, cancelación o reivindicación de títulos valores
+22|Responsabilidad civil contractual
+23|Responsabilidad civil contractual
+24|Responsabilidad civil contractual
+25|Responsabilidad civil extracontractual
+26|Responsabilidad civil extracontractual
+27|Restitución de inmueble arrendado
+28|Restitución de tenencia
+29|Singular
+30|Sucesiones
+31|Venta de bienes del menor

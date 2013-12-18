@@ -1,3 +1,4 @@
+require 'open-uri'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -25,5 +26,12 @@ end
   RolParticipante.create(:rol => rol)
 end
 
+TipoProceso.delete_all
 #Tablas parametricas - Tipo proceso
+open("#{Rails.root}/test/initdata/tipoProcesos.txt") do |tipoproceso|
+  tipoproceso.read.each_line do |data|
+    code, tipo = data.chomp.split("|")
+    TipoProceso.create!(:tipo => tipo)
+  end
+end
 
