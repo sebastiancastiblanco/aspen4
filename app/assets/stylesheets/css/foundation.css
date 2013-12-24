@@ -21,7 +21,7 @@ body {
   position: relative; }
 
 a:focus {
-  outline: none; !important}
+  outline: none !important ;}
 
 img,
 object,
