@@ -24,8 +24,8 @@ test:
 
 production:
   adapter: postgresql
-  database: aspen
+  database: d7lf0t7ru0e2q4
   pool: 5
   timeout: 5000
-  username: postgres
-  password: postgres
+  username: udkzcghpjxloll
+  password: t7QFJuHdPpTJjIu_GINjJ2tCfI
