@@ -620,16 +620,16 @@ section.attachments.grouped_by_date article.attachment>table>tbody>tr>td.textFil
 section.attachments.grouped_by_date article.attachment>table>tbody>tr>td.textFiles div.authorship p.meta {
   max-width: 480px!important;
   font-size: 12px!important;
-  color: #999!important;
+  color: #999 !important;
   margin: 0!important;
 }
 section.attachments.grouped_by_date article.attachment>table>tbody>tr>td.textFiles div.authorship p.actions {
-  color: #777!important;
+  color: #777 !important;
   font-size: 13px!important;
   margin: 0!important;
 }
 section.attachments.grouped_by_date article.attachment>table>tbody>tr>td.textFiles div.authorship p.actions a {
-  color: #1c5c76!important;
+  color: #1c5c76 !important;
   text-decoration: underline!important;
 }
 
@@ -642,7 +642,7 @@ h2 {
   font-size: 16px!important;
   line-height: 16px!important;
   margin: 13px 0 10px!important;
-  color: #980300!important;
+  color: #980300 !important;
 }
 section.calendar_events>section.group {
   padding-left: 190px!important;
@@ -672,13 +672,13 @@ section.calendar_events article.calendar_event>header {
   margin: 10px 0 0 -190px!important;
 }
 section.calendar_events article.calendar_event>header span.day_of_week, section.calendar_events article.calendar_event>header span.month, section.calendar_events article.calendar_event>header span.year {
-  color: #777!important;
+  color: #777 !important;
   font-weight: normal!important;
   text-align: right!important;
   white-space: nowrap!important;
 }
 section.calendar_events article.calendar_event>header span.day_of_week, section.calendar_events article.calendar_event>header span.month, section.calendar_events article.calendar_event>header span.year {
-  color: #777!important;
+  color: #777 !important;
   font-weight: normal!important;
   text-align: right!important;
   white-space: nowrap!important;
@@ -690,7 +690,7 @@ section.calendar_events article.calendar_event>header span.day {
   font-size: 18px!important;
   font-weight: bold!important;
   line-height: 24px!important;
-  color: #fff!important;
+  color: #fff !important;
   background: #000!important;
   text-align: center!important;
   white-space: nowrap!important;
@@ -732,7 +732,7 @@ ul {
   border-radius: 10px!important;
 }
 .text_entry {
-  color: #a9a9a9!important;
+  color: #a9a9a9 !important;
   background: #fff!important;
   padding: 19px!important;
   border: 1px solid #ccc!important;
@@ -773,8 +773,8 @@ form.calendar_event_editor_form fieldset {
   font-size: 13px!important;
 }
 form.calendar_event_editor_form fieldset table td.label {
-  color: black!important;
-  width: 60px!important;
+  color: black !important;
+  width: 60px !important;
   padding-right: 10px!important;
   text-align: right!important;
 }
@@ -806,8 +806,8 @@ form div.attachments {
   border-radius: 5px!important;
 }
 form div.attachments div.file_input_button {
-  float: none!important;
-  color: #888!important;
+  float: none !important;
+  color: #888 !important;
   margin-left: 15px!important;
 }
 div.file_input_button span.file_input_container {
