@@ -23,6 +23,7 @@ test:
   password: postgres
 
 production:
+  host:  ec2-54-197-237-231.compute-1.amazonaws.com
   adapter: postgresql
   database: d7qv2l2f8spink
   pool: 5
