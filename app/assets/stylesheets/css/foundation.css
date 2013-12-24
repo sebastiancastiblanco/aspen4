@@ -3157,7 +3157,7 @@ form.custom {
   border: inset 14px !important; }
   .joyride-tip-guide .joyride-nub.top {
     border-top-style: solid !important;
-    /*border-color: rgb(252, 255, 210) !important;*/
+  
     border-color: rgb(199, 199, 204) !important;
     
     border-top-color: transparent !important;
