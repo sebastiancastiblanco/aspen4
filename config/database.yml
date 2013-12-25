@@ -23,10 +23,11 @@ test:
   password: postgres
 
 production:
-  host:  ec2-54-197-237-231.compute-1.amazonaws.com
   adapter: postgresql
-  database: d87f7p1si5m5mt
+  encoding: unicode
   pool: 5
-  timeout: 5000
+  database: d87f7p1si5m5mt
   username: mcstsbcopkemvr
   password: 1lBV11ac0SViN-Fmr5KODBxrha
+  host: ec2-54-197-237-231.compute-1.amazonaws.com
+  port: 5432
