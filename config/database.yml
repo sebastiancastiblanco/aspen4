@@ -24,10 +24,10 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: d8l4rtts03q95c
-  username: ekpdaisoziczkn
-  password: lUC5QzoLPEUVAqn3lBx4C-42LN
-  host: ec2-54-197-237-231.compute-1.amazonaws.com
-  port: 5432
+encoding: unicode
+pool: 5
+database: d8l4rtts03q95c
+username: ekpdaisoziczkn
+password: lUC5QzoLPEUVAqn3lBx4C-42LN
+host: ec2-54-197-237-231.compute-1.amazonaws.com
+port: 5432
