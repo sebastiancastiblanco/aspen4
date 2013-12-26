@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery-ui 
 //= require jquery_ujs
+//= require foundation
 //= require autocomplete-rails
 
 
-
+$(function(){$(document).foundation();});
 
 function cambioEstadoProceso (procesoid){
     $.ajax({
@@ -399,3 +400,5 @@ function ocultarcontacto(contactoid){
     $(link2).addClass("ocultar");
     
 };
+
+$(document).foundation();

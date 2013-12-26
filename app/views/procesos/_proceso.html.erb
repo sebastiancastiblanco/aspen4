@@ -15,9 +15,7 @@
             <p style="font-size: 12px !important;">
                 Modificado <%= fechaFormato1 proceso.updated_at %>
             </p>
-             <p style="font-size: 12px !important;">
-                <% if !proceso.tipo_proceso.tipo.nil? %> Tipo: <%= proceso.tipo_proceso.tipo %><%end%> 
-            </p>
+             
              <p style="font-size: 12px !important;">
                 <% if !proceso.estado_proceso.nil? %> Estado: <%= proceso.estado_proceso.estado %><%end%>
             </p>

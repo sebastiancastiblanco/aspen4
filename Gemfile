@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem 'sqlite3'
+gem 'sqlite3'
 gem 'pg'
 gem 'paperclip'
 
@@ -20,6 +20,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'zurb-foundation'
 end
 
 gem 'jquery-rails', '~> 2.3.0'
@@ -43,6 +44,8 @@ gem 'jquery-timepicker-rails'
 
 #Gema para tareas programadas
 gem 'whenever', :require => false
+
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
