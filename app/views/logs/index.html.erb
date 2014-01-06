@@ -29,7 +29,7 @@
                             <li class='event ' href="#">
                               <%= link_to(log.proceso) do  %>
                                       <h2 class="tituloProyecto">
-                                        <%= log.proceso.referencia %> <%= log.proceso.titulo %> 
+                                        <%= log.proceso.titulo %> - (<%= log.proceso.referencia %>)
                                       </h2>
                               <% end %>
                                     
@@ -42,27 +42,33 @@
                             
                                 <% if (gprocesoid ==  log.proceso_id)  %>
                                    <% if (6 !=  log.mensaje_id)  %>
-                                    <div class="actividadesLog ">
-                                        <span class="alinearbotones hora"><%= horalog log.created_at %></span>
-                                        
-                                         <img class=" alinearbotones" src="/img/user.png"  title="<%= log.usuario %>">
-
-                                        <%=  link_to log.mensaje, {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog"   %>
-                                       
+                                    <div class="actividadesLog row">
+                                      <div class="small-5">  <span class="alinearbotones hora">
+                                        <%= horalog log.created_at %></span>
+                                        <img class=" alinearbotones" src="/img/user.png"  title="<%= log.usuario %>">
+                                      </div>
+                                      <div class="small-12 textoIzq">
+                                        <%=log.mensaje%>
+                                         <%=  link_to "Ver", {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog"   %>
+                                      </div>
                                     </div>
                                     <% else %>
-                                    <div class="actividadesLog ">
-                                        <span class="alinearbotones hora"><%= horalog log.created_at %></span>
-                                                                                
-                                         <img class=" alinearbotones" src="/img/user.png"  title="<%= log.usuario %>">
-                        
-                                         <%=  link_to log.mensaje, {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog alinearbotones"   %>
-                                       
-                                       <img class=" imagenLogo imagendoc" width="35"  src="/img/doc.png" >
-                                        
+                                    <div class="actividadesLog row">
+                                       <div class="small-5">  <span class="alinearbotones hora">
+                                        <%= horalog log.created_at %></span>
+                                        <img class=" alinearbotones" src="/img/user.png"  title="<%= log.usuario %>">
+                                      </div>
+                                      <div class="small-12 textoIzq">
+                                        <img class=" imagenLogo imagendoc" width="15"  src="/img/doc.png" />
+                                        <%=log.mensaje%>
+                                         <%=  link_to "Ver", {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog"   %>
+                                         
+                                      </div>
+                                     
                                     </div>
                                     <% end %>  
                                     <% nuevoproceso = false %> 
+
                                 <% else %>
                                     
                                     </li> 
@@ -70,30 +76,34 @@
                                     <li class='event '>
                                     <%= link_to(log.proceso) do  %>
                                            <h2 class="tituloProyecto">
-                                            <%= log.proceso.referencia %> <%= log.proceso.titulo %> 
+                                             <%= log.proceso.titulo %> - (<%= log.proceso.referencia %>)
                                           </h2>
                                     <% end %>
                               
 
 
                                     <% if (6 !=  log.mensaje_id)  %>
-                                    <div class="">
-                                        <span class="alinearbotones hora"><%= horalog log.created_at %></span>
-                                                                                
-                                         <img class=" alinearbotones" src="/img/user.png"  title="<%= log.usuario %>">
-
-                                         <%=  link_to log.mensaje, {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog"   %>
-                                        
+                                    <div class=" actividadesLog row">
+                                         <div class="small-5">  <span class="alinearbotones hora">
+                                          <%= horalog log.created_at %></span>
+                                          <img class=" alinearbotones" src="/img/user.png"  title="<%= log.usuario %>">
+                                        </div>
+                                        <div class="small-12 textoIzq">
+                                          <%=log.mensaje%>
+                                         <%=  link_to "Ver", {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog"   %>
+                                         </div>
                                     </div>
                                     <% else %>
-                                     <div class="">
-                                         <span class="alinearbotones hora"><%= horalog log.created_at %></span>
-                                                                                
-                                         <img class=" alinearbotones" src="/img/user.png"  title="<%= log.usuario %>">
-
-                                         <%=  link_to log.mensaje, {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog alinearbotones"   %>
-                                        <img class=" imagenLogo imagendoc" width="60"  src="https://d3dma7a8zw52bz.cloudfront.net/assets/icons/document_icon_jumbo-a0a7cde8400d74f9975a1608bed73a1f.png" > 
-                                        
+                                    <div class="actividadesLog row">
+                                       <div class="small-5">  <span class="alinearbotones hora">
+                                        <%= horalog log.created_at %></span>
+                                        <img class=" alinearbotones" src="/img/user.png"  title="<%= log.usuario %>">
+                                      </div>
+                                      <div class="small-12 textoIzq">
+                                        <img class=" imagenLogo imagendoc" width="15"  src="/img/doc.png" />
+                                        <%=log.mensaje%>
+                                         <%=  link_to "Ver", {:controller => "logs", :action => "iractividad", :log_id => log.id}, :class => "descripcionLog"   %>
+                                      </div>
                                     </div>
                                     <% end %>  
                                     <% gprocesoid = log.proceso_id %>

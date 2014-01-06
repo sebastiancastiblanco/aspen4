@@ -9,6 +9,10 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   
 }
 
+.ocultar2{
+  display: none;
+}
+
 html, body
 {
 /*background: rgb(223, 239, 248) !important;*/
@@ -26,7 +30,7 @@ a {
   padding: 2px 0 ;
   -webkit-tap-highlight-color: rgba(0,0,0,0.25) !important;
   margin: 0 !important;*/
-  font-size: 100% !important;
+ /* font-size: 100% !important;*/
  /*  vertical-align: baseline !important;
  background: transparent !important;*/
 }
@@ -193,7 +197,7 @@ div.jumpto input[type=text] {
 
 /* Workspace  css*/
 div.workspace {
-  text-align: center !important;
+ /* text-align: center !important;*/
   -webkit-transition: opacity 150ms 350ms ease-in !important;
   -moz-transition: opacity 150ms 350ms ease-in !important;
 }
@@ -215,7 +219,7 @@ div.workspace>div.container3 {
 
 div.panel {
   position: relative !important;
-  text-align: left !important;
+  /*text-align: left !important;*/  
   
 }
 div.panel.home_tab {
@@ -489,10 +493,10 @@ div.sheet div.sheet_body {
   padding: 0 45px 25px 30px !important;
 }
 div.sheet.project>div.sheet_body>section, div.sheet.project>div.sheet_body>div>section {
-  padding: 5px 0 20px 0 ;
+  padding: 0px 0 0px 0 ;
 }
 div.sheet.project>div.sheet_body>section>header, div.sheet.project>div.sheet_body>div>section>header {
-  padding: 10px 0 !important;
+  padding: 0px 0 !important;
 }
 div.sheet>header, div.sheet div.sheet_body>section>header, div.sheet div.sheet_body>div>section>header {
   position: relative !important;
@@ -864,7 +868,7 @@ div.panel.home_tab div.project_templates.nuevoProceso{
 
 .tituloCampo{
   color: #7d7a75 !important;
-  width: 100px !important;
+  width: 140px !important;
   margin:5px 5px 0 10px;
 }
 
@@ -950,6 +954,8 @@ color: #444;
   font-family: HelveticaRegular, arial !important;
   font-size: 12px !important;
   font-style: italic !important;
+  float: left;
+  margin-top: 15px !important;
 }
 
 .textolinksVerde{
@@ -964,6 +970,14 @@ color: #444;
   font-family: HelveticaRegular, arial !important;
   font-style: italic !important;
   font-size: 12px !important;
+  float: left;
+  margin-top: 11px;
+}
+
+.textolinks:hover, .textolinks:focus{
+  text-decoration: underline !important; 
+  color: #2795b6 !important;
+  margin-top: 15px !important;
 }
 
 .textRojolinks{
@@ -988,6 +1002,7 @@ color: #444;
 .alinearbotones{
   float: left !important;
   margin-right: 10px !important;
+  /*margin-top: 12px !important;*/
 }
 
 .reveal-modal.small{
@@ -1091,10 +1106,6 @@ z-index: 1;
   margin: 0px !important;
 }
 
-div.panel{
-  position: relative !important;
-  text-align: left !important;
-}
 
 .bold{
   font-weight: bold;
@@ -1112,7 +1123,7 @@ div.panel{
 /*HOME PANEL*/
 .content { position: absolute;
 left: 523px;
-bottom: 179px;
+bottom: 159px;
 width: 42%;
 background: rgba(255,255,255,0.85);
 padding: 20px; }
@@ -1259,7 +1270,10 @@ height: 2px;
   margin-top: 50px;
 }
 .textoGris{
-  color: rgb(187, 187, 187) !important;
+  color: #7d7a75 !important;
+}
+a.alinearbotones.textoGris:hover a.alinearbotones .textoGris:focus{
+  color: #2ba6cb !important;
 }
 .marginbottom50{
   margin-bottom: 50px;
@@ -1311,11 +1325,11 @@ border: none !important;
 
 .ubicacionCerrarPanel{
   position: relative !important;
-float: left !important;
-right: -105px !important;
-top: -59px;
-width: 17px;
-opacity: 0.6;
+  float: right !important;
+  right: -135px !important;
+  top: -70px;
+  width: 17px;
+  opacity: 0.6;
 }
 
 .ubicacionCerrarPanel2{
@@ -1366,4 +1380,88 @@ a.linksTitulos{
 a.linksTitulos:hover{
   color: #1c5c76 !important;
   text-decoration: underline !important;
+}
+
+.hidden-field
+{
+  display: none !important;
+}
+
+.alinearbotonesderecha{
+  float: right !important;
+  margin-top: -22px;
+  margin-right: 100px;
+}
+
+.tituloitem{
+  color: #BB2E2E !important;
+}
+
+
+.subtituloitem{
+  color: black !important;
+}
+
+.fc-header{
+  background: transparent !important;
+}
+
+.textoIzq{
+  text-align: left !important;
+}
+
+.modalAspen{
+  padding: 0px !important;
+  border-radius: 5px !important;
+}
+
+.formAspen{
+  margin: 0px !important;
+}
+
+div.ajax-progress {
+  position: fixed;
+  display: none;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  left: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border: 1px solid green;
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+
+.alert-box{
+  text-align: center !important;
+}
+
+.ui-datepicker-calendar .ui-state-default{
+  text-align: center !important;
+}
+
+.ui-datepicker-calendar .ui-state-highlight{
+  color: white !important;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button{
+  background-color: #2284a1;
+  background-color: #2ba6cb;
+  border-color: #2284a1;
+  color: white;
+}
+
+.fc-even:hover,.fc-event-hori:hover, .fc-event-inner:hover{
+  color: white !important;
+}
+
+div.global_links a:hover {
+  color: #2795b6 !important;
+}
+
+.botoncalendario{
+  margin-top: 14px !important;
 }

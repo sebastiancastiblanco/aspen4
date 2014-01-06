@@ -37,7 +37,7 @@
  <div class="small-2 small-offset-0 columns ">
     <%= f.label :referencia_, :class => "tituloCampo error alinearDerecha" %>
   </div>
-  <div class="small-4 columns field">
+  <div class="small-4 columns field left">
     <span data-tooltip class="tip-top" title="Si se maneja una referencia interna - Ej: PD001">
     <%= f.text_field :referencia , :placeholder => "Referencia "%>
   </div>
@@ -55,11 +55,11 @@
 </div>
 <div class="row"> 
 
-     <div class="small-1 small-offset-7 columns field"></div>
-     <div class="small-1 columns field margenTop25">
+     <div class="small-1 small-offset-6 columns field"></div>
+     <div class="small-2 columns field ">
       <%= link_to 'Cancelar', procesos_path, :class=>"textoGrislinks" %>
      </div>
-     <div class="small-2 columns field">
+     <div class="small-3 columns field">
       <%= f.submit :'Crear Proceso' , :class => " button success radius" %></div>
      </div>
 

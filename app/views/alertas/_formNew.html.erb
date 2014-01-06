@@ -8,8 +8,8 @@
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :titulo_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-4 columns field">
-      <%= f.text_field :titulo, :placeholder => "Titulo de la aleta" %>
+    <div class="small-10 columns field">
+      <%= f.text_field :titulo, :placeholder => "Titulo de la alerta" %>
     </div>
 
  </div>
@@ -32,7 +32,7 @@
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :comienza_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-4 columns field">
+    <div class="small-4 columns left">
       <%= f.text_field :termina, :placeholder => "Fecha inicio",:class => "date start"   %>
     </div>
 
@@ -46,7 +46,7 @@
      <div class="small-1 columns field">
       <%= link_to   "Cancelar", {:controller => "alertas", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks",:method=>:get %>
      </div>
-     <div class="small-2 columns field">
+     <div class="small-3 columns field">
       <%= f.submit :'Guardar Alerta' , :class => " button success radius" %>
       <%= hidden_field_tag :proceso_id, @proceso.id %>
       </div>

@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require autocomplete-rails
-
+//= require_tree .
 
 $(function(){$(document).foundation();});
 
@@ -402,3 +402,16 @@ function ocultarcontacto(contactoid){
 };
 
 $(document).foundation();
+
+
+
+$(function() {
+  $('#loading')
+    .hide()  // hide it initially.
+    .ajaxStart(function() {
+      $(this).show(); // show on any Ajax event.
+    })
+    .ajaxStop(function() {
+      $(this).hide(); // hide it when it is done.
+  });
+});

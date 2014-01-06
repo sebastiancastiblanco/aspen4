@@ -35,14 +35,14 @@
                 Estado: <span class="bold" style="color: rgb(16, 16, 156)"><%= actividad.estado_actividad.estado%></span>
                 <% end %> 
                 
-                <p>Encargado: <%= actividad.participante.nombre %> </p>
-                <p>Descripcion: <%= actividad.descripcion %> </p>
+                <p style="margin-bottom: 0px;">Encargado: <%= actividad.participante.nombre %> </p>
+                <p style="margin-bottom: 0px;">Descripcion: <%= actividad.descripcion %> </p>
                 
                 <% if actividad.tiempoEjecucion %>
-                   <p>Tiempo Estimado: <%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo%></p>
+                   <p style="margin-bottom: 0px;">Tiempo Estimado: <%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo%></p>
                 <% end %> 
 
-                <%= button_to 'Ver', edit_actividad_path(actividad, :proceso_id => @proceso.id), :remote => true, :id => "new_actividad_link",:class => "tiny button radius alinearbotones" %>
+                <%= button_to 'Ver', edit_actividad_path(actividad, :proceso_id => @proceso.id), :remote => true, :id => "new_actividad_link",:class => "tiny button radius alinearbotones botoncalendario" %>
               
                 <%= link_to "Eliminar", actividad, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar esta actividad?' } , :remote => true %>
 

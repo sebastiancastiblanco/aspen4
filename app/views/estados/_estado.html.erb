@@ -1,17 +1,16 @@
-<tr id="estado_<%= estado.id %>" class="topic message_10997527 fondoGris" >
-  <td class="who">
+<tr id="estado_<%= estado.id %>" class="fondoGris" >
+  <td>
      
-       <%= link_to edit_estado_path(estado, :proceso_id => @proceso.id, :estado_id => estado.id), :class => "alinearbotones" do  %>
+       <%= link_to edit_estado_path(estado, :proceso_id => @proceso.id, :estado_id => estado.id),:class => "alinearbotones textoGris" do  %>
                               <%= estado.conclusion %>
          <% end %>
-
-     
+</td>
+     <td>
         <%= button_to 'Ver', edit_estado_path(estado, :proceso_id => @proceso.id), :id => "new_alert_link",:class => "tiny button radius alinearbotones" %>
 
-      
-           <%= link_to "Eliminar", estado_path(estado, :proceso_id => @proceso.id), :class => "textRojolinks inlineBlock",  :method => :delete, :confirm => "Estas Seguro de eliminar esta conclusion?"   %>
+     </td> 
+     <td>
+           <%= link_to "Eliminar", estado_path(estado, :proceso_id => @proceso.id), :class => "textRojolinks inlineBlock alinearbotones",  :method => :delete, :confirm => "Estas Seguro de eliminar esta conclusion?"   %>
    
-  <td class="when">
-    <a href="#"> <%= fechaFormato1 estado.updated_at %> </a>
   </td>
 </tr>

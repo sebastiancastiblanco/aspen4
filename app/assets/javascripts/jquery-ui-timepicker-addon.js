@@ -19,7 +19,14 @@
 
 (function($) {
 
-$.extend($.ui, { timepicker: { version: "0.9.6" } });
+// Prevent "Uncaught RangeError: Maximum call stack size exceeded"
+ $.ui.timepicker = $.ui.timepicker || {};
+ if ($.ui.timepicker.version) {
+   return;
+ }
+ 
+
+$.extend($.ui, { timepicker: { version: "0.9.9" } });
 
 /* Time picker manager.
    Use the singleton instance of this class, $.timepicker, to interact with the time picker.
@@ -31,7 +38,7 @@ function Timepicker() {
 	this.regional[''] = { // Default regional settings
 		currentText: 'Hoy',
 		closeText: 'Seleccionar',
-		ampm: false,
+		ampm: true,
 		timeFormat: 'hh:mm tt',
 		timeSuffix: '',
 		timeOnlyTitle: 'Selec. Fecha',
@@ -42,7 +49,7 @@ function Timepicker() {
 		timezoneText: 'Time Zone'
 	};
 	this._defaults = { // Global defaults for all the datetime picker instances
-		showButtonPanel: false,
+		showButtonPanel: true,
 		timeOnly: false,
 		showHour: true,
 		showMinute: true,

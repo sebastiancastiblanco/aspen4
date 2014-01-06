@@ -30,6 +30,11 @@
           </div><div class="blank_slate_arrow"></div>
           </header>
 
+
+           <% if (notice) %>
+                <div data-alert class="alert-box alert radius" style="text-shadow: initial;"><%= notice %></div>
+            <% end %>
+
       <%= form_for @control_acceso, :url => { :action => "create" }, :html => { :class => "custom",:id => "formCompartirProceso"}  do |f| %>
           <!-- USUARIOS-->
       <div class="row">

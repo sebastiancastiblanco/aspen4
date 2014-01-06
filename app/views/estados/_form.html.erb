@@ -7,7 +7,7 @@
      <div class="small-2 small-offset-0 columns ">
       <%= f.label :tipo_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-     <div class="small-4 columns field">
+     <div class="small-4 columns field left">
       <%= f.select :tipo,  options_for_select( [ ['Abierto', 'abierto'], ['Cerrado', 'cerrado'] ] ) %>
     </div>
 </div>
@@ -38,7 +38,7 @@
      <div class="small-1 columns field">
       <%= link_to   "Cancelar", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks",:method=>:get %>
      </div>
-     <div class="small-2 columns field">
+     <div class="small-3 columns field">
       <%= f.submit :'Guardar Conclusion' , :class => " button success radius" %></div>
      </div>
 

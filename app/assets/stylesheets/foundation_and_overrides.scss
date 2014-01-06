@@ -1,6 +1,5 @@
 // Required global settings and mixins for Foundation
-@import "foundation/variables";
-
+@import "foundation/foundation-global";
 
 // Settings file to override Foundation variables
 
@@ -138,7 +137,7 @@
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
 // $hr-border-color: #ddd;
-// $hr-margin: emCalc(20px);
+ $hr-margin: emCalc(13px);
 
 // We use these to style lists
 // $list-style-position: outside;
@@ -345,10 +344,10 @@
 //
 
 // We use this to control alert padding.
-// $alert-padding-top: emCalc(11px);
-// $alert-padding-left: $alert-padding-top;
+$alert-padding-top: emCalc(4px);
+$alert-padding-left: $alert-padding-top;
 // $alert-padding-right: $alert-padding-top + emCalc(10px);
-// $alert-padding-bottom: $alert-padding-top + emCalc(1px);
+// $alert-padding-bottom: $alert-padding-top + emCalc(0px);
 
 // We use these to control text style.
 // $alert-font-weight: bold;
@@ -366,11 +365,11 @@
 // $alert-bottom-margin: emCalc(20px);
 
 // We use these to style the close buttons
-// $alert-close-color: #333;
+ $alert-close-color: #fff;
 // $alert-close-position: emCalc(5px);
 // $alert-close-font-size: emCalc(22px);
-// $alert-close-opacity: 0.3;
-// $alert-close-opacity-hover: 0.5;
+ $alert-close-opacity: 0.9;
+ $alert-close-opacity-hover: 0.5;
 // $alert-close-padding: 5px 4px 4px;
 
 // We use this to control border radius
@@ -397,8 +396,8 @@
 // We use these to set various text styles for breadcrumbs.
 // $crumb-font-size: emCalc(11px);
 // $crumb-font-color: $primary-color;
-// $crumb-font-color-current: #333;
-// $crumb-font-color-unavailable: #999;
+// $crumb-font-color-current: #7d7a75 ;
+ $crumb-font-color-unavailable: #7d7a75 ;
 // $crumb-font-transform: uppercase;
 // $crumb-link-decor: underline;
 
@@ -545,7 +544,7 @@
 $joyride-tip-bg: rgba(255, 251, 207, 0.96);
 // $joyride-tip-default-width: 300px;
 // $joyride-tip-padding: emCalc(18px) emCalc(20px) emCalc(24px);
-// $joyride-tip-border: solid 1px #555;
+$joyride-tip-border: solid 1px #555;
 // $joyride-tip-radius: 4px;
 // $joyride-tip-position-offset: 22px;
 
@@ -563,7 +562,7 @@ $joyride-tip-bg: rgba(255, 251, 207, 0.96);
 // $joyride-tip-timer-color: #666;
 
 // This changes up the styles for the close button
-// $joyride-tip-close-color: #777;
+ $joyride-tip-close-color: black;
 // $joyride-tip-close-size: 30px;
 // $joyride-tip-close-weight: normal;
 
@@ -774,14 +773,14 @@ $joyride-tip-bg: rgba(255, 251, 207, 0.96);
 // $reveal-modal-bg: #fff;
 // $reveal-position-top: 50px;
 // $reveal-default-width: 80%;
-// $reveal-modal-padding: emCalc(20px);
+ $reveal-modal-padding: emCalc(0px);
 // $reveal-box-shadow: 0 0 10px rgba(#000,.4);
 
 // We use these to style the reveal close button
 // $reveal-close-font-size: emCalc(22px);
-// $reveal-close-top: emCalc(8px);
+$reveal-close-top: emCalc(6px);
 // $reveal-close-side: emCalc(11px);
-// $reveal-close-color: #aaa;
+ $reveal-close-color: #fff;
 // $reveal-close-weight: bold;
 
 // We use these to control the modal border
@@ -905,7 +904,7 @@ $joyride-tip-bg: rgba(255, 251, 207, 0.96);
 // $table-even-row-bg: #f9f9f9;
 
 // These control the table cell border style
-// $table-border-style: solid;
+ $table-border-style: none;
 // $table-border-size: 1px;
 // $table-border-color: #ddd;
 

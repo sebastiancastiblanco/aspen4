@@ -47,38 +47,61 @@ class ControlAccesosController < ApplicationController
   def create
     @control_acceso = ControlAcceso.new(params[:control_acceso])
     
-    #buscar el proceso y usuario, si ya existe solo se actualiza el atributo de privilegio
-    @accesoCreado = ControlAcceso.buscarProcesoAcceso(@control_acceso.proceso_id, @control_acceso.usuario_id);
-    #Enviar Correo el cual notifica que se comparte el proceso
-    threads = []
-      threads << Thread.new do
-           ContactoMailer.compartirProcesoUsuario(current_user,@control_acceso.proceso,@control_acceso.usuario.username).deliver
-      end
-    threads.each(&:join)
+    if !@control_acceso.proceso_id.nil?
+     if !@control_acceso.usuario_id.nil?
+      if !@control_acceso.privilegio_id.nil? 
 
-    if !@accesoCreado.any?
+          #buscar el proceso y usuario, si ya existe solo se actualiza el atributo de privilegio
+          @accesoCreado = ControlAcceso.buscarProcesoAcceso(@control_acceso.proceso_id, @control_acceso.usuario_id);
+          #Enviar Correo el cual notifica que se comparte el proceso
+          threads = []
+            threads << Thread.new do
+                 ContactoMailer.compartirProcesoUsuario(current_user,@control_acceso.proceso,@control_acceso.usuario.username).deliver
+            end
+          threads.each(&:join)
+
+          if !@accesoCreado.any?
+            respond_to do |format|
+            if @control_acceso.save
+              format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.usuario.username and return}
+              format.json { render json: @control_acceso, status: :created, location: @control_acceso }
+            else
+              format.html { render action: "new" }
+              format.json { render json: @control_acceso.errors, status: :unprocessable_entity }
+            end
+          end
+          else
+            respond_to do |format|
+              if  @accesoCreado.last.update_attribute(:privilegio_id, @control_acceso.privilegio_id)
+                format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.usuario.username and return }
+                format.json { render json: @control_acceso, status: :created, location: @control_acceso }
+              else
+                format.html { render action: "new" }
+                format.json { render json: @control_acceso.errors, status: :unprocessable_entity }
+              end
+          end
+          end
+
+      end
+      
       respond_to do |format|
-      if @control_acceso.save
-        format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.usuario.username }
-        format.json { render json: @control_acceso, status: :created, location: @control_acceso }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @control_acceso.errors, status: :unprocessable_entity }
+        format.html { redirect_to :compartirProcesos , notice:'Seleccione un privilegio para el proceso' and return}
+        format.js
+      end
+     end
+     
+      respond_to do |format|
+        format.html { redirect_to :compartirProcesos , notice:'Seleccione un usuario para el proceso' and return }
+        format.js
       end
     end
-    else
-      respond_to do |format|
-        if  @accesoCreado.last.update_attribute(:privilegio_id, @control_acceso.privilegio_id)
-          format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.usuario.username }
-          format.json { render json: @control_acceso, status: :created, location: @control_acceso }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @control_acceso.errors, status: :unprocessable_entity }
-        end
-    end
-    end
-
     
+    respond_to do |format|
+      format.html { redirect_to :compartirProcesos , notice:'Seleccione un proceso para compartir' and return }
+      format.js
+    end
+
+
   end
 
   # PUT /control_accesos/1

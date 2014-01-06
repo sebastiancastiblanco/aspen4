@@ -11,7 +11,7 @@
                   <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
-            <li class="">Contratos</li>
+            <li><a href="#">Contratos</a></li>
           </ul>
         </header>
         
@@ -37,18 +37,19 @@
                         
                         <% if  @contratosRender == "true" %>
 
-                        <%= button_to 'Nuevo Contrato', {:controller => "contratos", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_contrato_link" %>
+                        <div id="new_contrato_link" class="ocultar">
+                        <%= button_to 'Nuevo Contrato', {:controller => "contratos", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_contrato_link" %>
+                        </div>
 
                         <%= button_to 'Listar Contratos',"javascript:listarContratos()" , :class => "button radius ", :id => "listar_contratos_link" %>
                         <% else %>
 
                         <%= button_to 'Nuevo Contrato', {:controller => "contratos", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_contrato_link" %>
-
-                        <%= button_to 'Listar Contratos',"javascript:listarContratos()" , :class => "button radius ocultar", :id => "listar_contratos_link" %>
-
+                
+                          <div id="listar_contratos_link" class="ocultar">
+                            <%= button_to 'Listar Contratos',"javascript:listarContratos()" , :class => " ocultar button radius", :id => "listar_contratos_link" %>
+                           </div>
                         <% end %>
-
-
                         
 
                     </div>
@@ -98,7 +99,7 @@
                     <div class="large-8 small-offset-4 large-offset-4 columns">
                           <img src="/img/detalles2.png" width="250px" style="opacity: 0.4;">
                       </div>
-                      <div class="large-8 small-offset-3 large-offset-3 columns">
+                      <div class="large-9 small-offset-3 large-offset-3 columns">
                         <h3 class="textoGris">Inicia Creando un nuevo contrato</h3>
                       </div>
                    </div>

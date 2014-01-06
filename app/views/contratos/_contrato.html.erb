@@ -1,19 +1,18 @@
  <tr id="contrato_<%= contrato.id %>" class="topic message_10997527 fondoGris" >
-  <td class="who">
-      <%= link_to edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true,:class => "alinearbotones" do  %>
+<td >
+      <%= link_to edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true,:class => " textoGris" do  %>
               <div class="bold alinearbotones">Tipo de Contrato: </div> 
              <div class="alinearbotones "> <%= contrato.tipoContrato %>	</div> 
               <div class="bold alinearbotones"> Objeto: </div> 
               <div class="maxdescripcion alinearbotones"><%= contrato.objeto %></div>  
       <% end %>
-    
+         </td> 
+ <td >   
        <%= button_to 'Ver', edit_contrato_path(contrato, :proceso_id => @proceso.id), :remote => true, :id => "new_contrato_link",:class => "tiny button radius alinearbotones" %>
-              
+           </td>       
        
+<td >
+        <%= link_to "Eliminar", contrato, :class => "textRojolinks inlineBlock alinearbotones",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este contrato?' } , :remote => true %>
 
-        <%= link_to "Eliminar", contrato, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este contrato?' } , :remote => true %>
-
-  <td class="when">
-    <a href="#"> <%= fechaFormato1 contrato.created_at %> </a>
-  </td>
+     </td> 
 </tr>

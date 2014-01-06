@@ -1,14 +1,16 @@
-<tr id="participante_<%= participante.id %>" class="topic message_10997527 fondoGris" >
-  <td class="who">
+
+<tr id="participante_<%= participante.id %>" class="fondoGris" >
+  
+  <td >
      
-      <%= link_to participante.rol_participante.rol+" - "+participante.nombre+" "+participante.apellido, {:controller => "participantes", :action => "edit", :proceso_id => @proceso.id,:id => participante.id}, :remote => true,:class => "alinearbotones"  %>
+      <%= link_to participante.rol_participante.rol+" - "+participante.nombre+" "+participante.apellido, {:controller => "participantes", :action => "edit", :proceso_id => @proceso.id,:id => participante.id}, :remote => true,:class => "alinearbotones textoGris"  %>
       
-     
+   </td> 
+   <td > 
        <%= button_to 'Ver', {:controller => "participantes", :action => "edit", :proceso_id => @proceso.id, :id => participante.id}, :remote => true, :id => "new_participante_link",:class => "tiny button radius alinearbotones" %>
-      
+   </td> 
+   <td >  
         <%= link_to "Eliminar", participante, :class => "textRojolinks inlineBlock alinearbotones",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este participante?' } , :remote => true %>
-   
-  <td class="when">
-    <a href="#"> <%= fechaFormato1 participante.created_at %> </a>
-  </td>
+   </td>
+  
 </tr>

@@ -11,7 +11,7 @@
                   <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
-            <li class="">Partcipantes</li>
+            <li><a href="#">Partcipantes</a></li>
           </ul>
         </header>
         
@@ -38,17 +38,18 @@
                     <div class="small-3 small-3 columns left">
                         
                         <% if  @participantesRender == "true" %>
-
-                        <%= button_to 'Nuevo Participante', {:controller => "participantes", :action => "new", :proceso_id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_participante_link" %>
-
+                        <div id="new_participante_link" class="ocultar">
+                        <%= button_to 'Nuevo Participante', {:controller => "participantes", :action => "new", :proceso_id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_participante_link" %>
+                        </div>
                         <%= button_to 'Listar Participantes',"javascript:listarParticipantes()" , :class => "button radius", :id => "listar_participante_link" %>
 
                         <% else %>
 
                         <%= button_to 'Nuevo Participante', {:controller => "participantes", :action => "new", :proceso_id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_participante_link" %>
 
-                        <%= button_to 'Listar Participantes',"javascript:listarParticipantes()" , :class => "button radius ocultar", :id => "listar_participante_link" %>
-
+                        <div id="listar_participante_link" class="ocultar">
+                          <%= button_to 'Listar Participantes',"javascript:listarParticipantes()" , :class => "button radius ", :id => "listar_participante_link1" %>
+                        </div>
                         <% end %>
 
 
@@ -106,7 +107,7 @@
                     <div class="large-8 small-offset-4 large-offset-4 columns">
                           <img src="/img/participantes.png" width="250px" style="opacity: 0.4;">
                       </div>
-                      <div class="large-8 small-offset-3 large-offset-3 columns">
+                      <div class="large-9 small-offset-3 large-offset-3 columns">
                         <h3 class="textoGris">Inicia Creando un nuevo participante</h3>
                       </div>
                    </div>

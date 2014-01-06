@@ -22,10 +22,10 @@
                 <span class="bold">Descripcion:</span> <%= actividad.descripcion %>  <br>                
                 
                 <% if actividad.tiempoEjecucion %>
-                   <span class="bold">Tiempo Estimado:</span><%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo%>  <br> 
+                   <span class="bold">Tiempo Estimado: </span><%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo%>  <br> 
                 <% end %> 
 
-                <%= link_to   "Ver", {:controller => "actividads", :action => "index", :proceso_id => actividad.proceso.id, :actividad_id => actividad.id, :nuevoItem => true},:class => "tiny button radius alinearbotones" %>
+                <%= link_to  "Ver", {:controller => "actividads", :action => "index", :proceso_id => actividad.proceso.id, :actividad_id => actividad.id, :nuevoItem => true},:class => "tiny button radius alinearbotones" %>
             </li>
         </ul>
     </article>

@@ -13,11 +13,11 @@
                
                 Titulo: <span class="bold" style=""><%= alerta.titulo %></span>
                 
-                <p>Programada: <%= fechaFormatoActualizado alerta.termina %> </p>
-                <p>Nota: <%= alerta.nota %> </p>
+                <p style="margin-bottom: 0px;">Programada: <%= fechaFormatoActualizado alerta.termina %> </p>
+                <p style="margin-bottom: 0px;">Nota: <%= alerta.nota %> </p>
                 
 
-                <%= button_to 'Ver', edit_alerta_path(alerta, :proceso_id => @proceso.id), :id => "new_alert_link",:class => "tiny button radius alinearbotones" %>
+                <%= button_to 'Ver', edit_alerta_path(alerta, :proceso_id => @proceso.id), :id => "new_alert_link",:class => "tiny button radius alinearbotones botoncalendario" %>
 
                   <%= link_to "Eliminar", alerta_path(alerta, :proceso_id => @proceso.id), :class => "textRojolinks inlineBlock",  :method => :delete, :confirm => "Estas Seguro de eliminar esta alerta?"   %>
 

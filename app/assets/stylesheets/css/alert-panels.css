@@ -6,12 +6,12 @@
 
 /* Alert panel container */
 .alert-panel {
-  margin-bottom: 1.5em !important;
-  line-height: 1.3em !important;
+ /* margin-bottom: 0 !important;*/
+  /*line-height: 1.3em !important;*/
 }
 .alert-panel p, .alert-panel a, .alert-panel h1, .alert-panel h2, .alert-panel h3, .alert-panel h4, .alert-panel h5, .alert-panel h6 {
   margin-bottom: 0 !important;
-  margin-top: 0 !important;
+  margin-top: 0 ;
 }
 .alert-panel .button.secondary {
   background: #fff !important;

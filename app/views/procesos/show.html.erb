@@ -76,9 +76,9 @@
             </div>
           </div>
 
-          <div class="row ubicacionEstado">
-                <div class="small-2 large-3  small-offset-10  large-offset-9  columns left" >
-                  <span data-tooltip class="tip-top" title="Estado Actual del proceso." />
+          <div  class="row ubicacionEstado">
+                <div id="divformProcesoEstado" class="small-2 large-3  small-offset-10  large-offset-9  columns left" >
+                  <span  data-tooltip class="tip-top" title="Estado Actual del proceso." />
                        <%= form_for @proceso,  :html => { :class => "custom",:id => "formProcesoEstado"}  do |f| %>
                         <%= f.select :estado_proceso_id, [["Estado Actual del Proceso", 0]] + @estadosProcesos.map {|r| [r.estado,r.id]}, { :disabled => ["Estado Actual", 0] } , :id => "listaEstadoProceso", :onchange => "cambioEstadoProceso("+@proceso.id.to_s+")"  %>
                         <% end %>  
@@ -99,7 +99,6 @@
 
               <div class="group not_in_project">
                 
-
 
                  <%= link_to   "("+@participantes.size.to_s+") Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %>
 
@@ -126,7 +125,7 @@
         <div class="sheet_body">
           <section class="events">
             <header>
-              <h1><a href="#">Ultimas actualizaciones del proceso</a></h1>
+              <h1 style="color:#aa9c84 !important">Ultimas actualizaciones del proceso</h1>
             </header>
 
             <section id="events_project_2942270" class="project_events grouped_by_date" >
@@ -160,17 +159,21 @@
 
           <section id="panelParticipante" class="documents " style="">
             <header class="has_buttons">
-              <h1> 
-                 <span data-tooltip class="tip-top" title="Personas involucradas dentro del proceso, cada una tendra un rol especifico." />
-                <%= link_to "1. Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id},:class => "alinearbotones"  %>
-              </h1>
-                <div>
-                  <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones"  %>
+              <div style="row">
                   
-                </div>
-                <div>
-                  <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius " %>
-                </div>
+                  <div style="class="small-4 small-offset-0 columns "">
+                       <h1> 
+                         <span data-tooltip class="tip-top" title="Personas involucradas dentro del proceso, cada una tendra un rol especifico." />
+                        <%= link_to "1. Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id},:class => "alinearbotones tituloitem"  %>
+                      </h1>
+                  </div>
+                  <div class="small-1 small-offset-0 columns ">
+                      <%= button_to "Crear Participante", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones",:id => "participanteInicio"  %>
+                       <%= button_to "ver Todos", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary alinearbotones radius " %>
+                  </div>
+              </div>  
+             
+                
 
             </header>
 
@@ -185,7 +188,7 @@
                       <div class="small-12 columns ">
                          <h5>
                         
-                             <%=  link_to participante.rol_participante.rol+" - "+participante.nombre+" "+participante.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:participante_id => participante.id, :nuevoItem => true}, :class => "descripcionLog"   %>
+                             <%=  link_to participante.rol_participante.rol+" - "+participante.nombre+" "+participante.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:participante_id => participante.id, :nuevoItem => true}, :class => "subtituloitem"   %>
                           </h5> 
                       </div>
                       <div class="small-12 columns">
@@ -208,17 +211,24 @@
           <hr/>
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1>
-                <span data-tooltip class="tip-top" title="Datos principales del contrato(s) del proceso." />
-                <%= link_to contratos_path(:proceso_id => @proceso.id) ,:class => "alinearbotones" do  %>
-                      2. Contratos
-                    <% end %></h1>
-
-                <div>
-                  <%= button_to "Crear Contrato", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones" %>
+              <div style="row">
                   
-                  <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius" %>
+                <div style="class="small-4 small-offset-0 columns "">
+                   <h1>
+                    <span data-tooltip class="tip-top" title="Datos principales del contrato(s) del proceso." />
+                    <%= link_to contratos_path(:proceso_id => @proceso.id) ,:class => "alinearbotones tituloitem" do  %>
+                          2. Contratos
+                        <% end %>
+                   </h1>
                 </div>
+                <div class="small-1 small-offset-0 columns ">
+                   <%= button_to "Crear Contrato", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones" %>
+                  
+                  <%= button_to "ver Todos", {:controller => "contratos", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius alinearbotones" %>
+                </div>
+            </div> 
+             
+
 
             </header>
 
@@ -229,7 +239,7 @@
                     <div class="row">
                       <div class="small-12 columns ">
                          <h5>
-                             <%=  link_to contrato.tipoContrato+" - "+contrato.objeto, {:controller => "contratos", :action => "index", :proceso_id => @proceso.id,:contrato_id => contrato.id, :nuevoItem => true}, :class => "descripcionLog"   %>
+                             <%=  link_to contrato.tipoContrato+" - "+contrato.objeto, {:controller => "contratos", :action => "index", :proceso_id => @proceso.id,:contrato_id => contrato.id, :nuevoItem => true}, :class => "subtituloitem"   %>
                           </h5> 
                       </div>
                       <div class="small-12 columns">
@@ -247,16 +257,25 @@
 
           <section class="documents " style="">
             <header class="has_buttons">
-              <h1> 
+              <div style="row">
+                  
+                <div style="class="small-4 small-offset-0 columns "">
+                  <h1> 
                 <span data-tooltip class="tip-top" title="Registro de las actividades y tiempo que se ejecutan para el proceso." />
-                <%= link_to actividads_path(:proceso_id => @proceso.id),:class => "alinearbotones" do  %>
+                <%= link_to actividads_path(:proceso_id => @proceso.id),:class => "alinearbotones tituloitem" do  %>
                       3. Actividades
                     <% end %></h1>
-                <div>
+                </div>
+                <div class="small-1 small-offset-0 columns ">
                   <%= button_to "Crear Actividad", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id, :nuevoItem => true},:class => "tiny button  radius alinearbotones" %>
                   
-                  <%= button_to "Ver Todos", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius" %>
+                  <%= button_to "Ver Todos", {:controller => "actividads", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius alinearbotones" %>
 
+                </div>
+              </div> 
+              
+                <div>
+                 
                 </div>
 
             </header>
@@ -269,7 +288,7 @@
                         <div class="small-12 columns ">
                            <h5>
                              
-                            <%=  link_to actividad.nombre+' - '+actividad.estado_actividad.estado, {:controller => "actividads", :action => "index", :proceso_id => @proceso.id,:actividad_id => actividad.id, :nuevoItem => true}, :class => "descripcionLog"   %>
+                            <%=  link_to actividad.nombre+' - '+actividad.estado_actividad.estado, {:controller => "actividads", :action => "index", :proceso_id => @proceso.id,:actividad_id => actividad.id, :nuevoItem => true}, :class => "subtituloitem"   %>
 
                             </h5>
                         </div>
@@ -288,16 +307,22 @@
           
          <section class="documents " style="">
             <header class="has_buttons">
-              <h1> 
-                <span data-tooltip class="tip-top" title="Programa y agenda alertas tempranas para el proceso." />
-                 <%= link_to   "4. Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
-                </h1>
-                <div>
-                  <%= button_to "Crear Alerta", {:controller => "alertas", :action => "new", :proceso_id => @proceso.id},:class => "tiny button radius alinearbotones" %>
+              <div style="row">
                   
-                  <%= button_to "Ver Todos", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius" %>
-
+                <div style="class="small-4 small-offset-0 columns "">
+                  <h1> 
+                <span data-tooltip class="tip-top" title="Programa y agenda alertas tempranas para el proceso." />
+                 <%= link_to   "4. Alertas", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :method=>:get, :class =>"tituloitem alinearbotones" %>
+                </h1>
                 </div>
+                <div class="small-1 small-offset-0 columns ">
+                   <%= button_to "Crear Alerta", {:controller => "alertas", :action => "new", :proceso_id => @proceso.id},:class => "tiny button radius alinearbotones" %>
+                  
+                  <%= button_to "Ver Todos", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id},:class => "tiny button alinearbotones secondary radius" %>
+                </div>
+              </div> 
+              
+                
 
             </header>
 
@@ -309,7 +334,7 @@
                         <div class="small-12 columns ">
                            <h5>
                              
-                            <%= link_to edit_alerta_path(:proceso_id => @proceso.id,:alerta_id => alerta.id), :class => "descripcionLog"  do %>
+                            <%= link_to edit_alerta_path(:proceso_id => @proceso.id,:alerta_id => alerta.id), :class => "subtituloitem"  do %>
                                  <%= alerta.titulo %>  
                             <% end %>
                             </h5>
@@ -330,17 +355,23 @@
           
  <section id="panelDocumentos" class="documents " style="">
             <header class="has_buttons">
-              <h1> 
-                <span data-tooltip class="tip-top" title="Adjunta y relaciona los documentos del caso." />
-                    <%= link_to   "5. Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
-
-                  </h1>
-                <div>
-                  <%= button_to "Crear Documento", {:controller => "documents", :action => "new", :proceso_id => @proceso.id},:class => "tiny button radius alinearbotones" %>
+              <div style="row">
                   
-                  <%= button_to "Ver Todos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius" %>
+                    <div style="class="small-4 small-offset-0 columns "">
+                      <h1> 
+                                  <span data-tooltip class="tip-top" title="Adjunta y relaciona los documentos del caso." />
+                                      <%= link_to   "5. Documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :method=>:get, :class =>"tituloitem alinearbotones"  %>
 
-                </div>
+                                    </h1>
+                    </div>
+                    <div class="small-1 small-offset-0 columns ">
+                      <%= button_to "Crear Documento", {:controller => "documents", :action => "new", :proceso_id => @proceso.id},:class => "tiny button radius alinearbotones" %>
+                                    
+                                    <%= button_to "Ver Todos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius alinearbotones" %>
+                    </div>
+                  </div> 
+              
+              
 
             </header>
 
@@ -352,7 +383,7 @@
                         <div class="small-12 columns ">
                            <h5>
                              
-                            <%= link_to edit_document_path(:proceso_id => @proceso.id,:documento_id => documento.id), :class => "descripcionLog"  do %>
+                            <%= link_to edit_document_path(:proceso_id => @proceso.id,:documento_id => documento.id), :class => "subtituloitem"  do %>
                                  <%= documento.name %>  
                             <% end %>
                             </h5>
@@ -372,19 +403,25 @@
           </section>
           <hr/>
           
-          <section class="documents " style="">
+          <section class="documents" style="">
             <header class="has_buttons">
-              <h1> 
-                <span data-tooltip class="tip-top" title="Lista las conclusiones y estado final del proceso." />
-                 <%= link_to   "6. Conclusiones del Proceso", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get %>
-
-              </h1>
-                <div>
-                  <%= button_to "Crear Conclusion", {:controller => "estados", :action => "new", :proceso_id => @proceso.id},:class => "tiny button radius alinearbotones" %>
+              <div style="row">
                   
-                  <%= button_to "Ver Todos", {:controller => "estados", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius" %>
-
-                </div>
+              <div style="class="small-4 small-offset-0 columns "">
+                 <h1> 
+                  <span data-tooltip class="tip-top" title="Lista las conclusiones y estado final del proceso." />
+                   <%= link_to   "6. Conclusiones del Proceso", {:controller => "estados", :action => "index", :proceso_id => @proceso.id}, :method=>:get, :class =>"alinearbotones tituloitem"  %>
+                </h1>
+               
+              </div>
+              <div class="small-1 small-offset-0 columns ">
+                 <%= button_to "Crear Conclusion", {:controller => "estados", :action => "new", :proceso_id => @proceso.id},:class => "tiny button radius alinearbotones" %>
+                  
+                  <%= button_to "Ver Todos", {:controller => "estados", :action => "index", :proceso_id => @proceso.id},:class => "tiny button secondary radius alinearbotones" %>
+              </div>
+            </div> 
+             
+           
 
             </header>
 
@@ -396,7 +433,7 @@
                         <div class="small-12 columns ">
                            <h5>
                              
-                            <%= link_to edit_estado_path(:proceso_id => @proceso.id,:estado_id => estado.id), :class => "descripcionLog"  do %>
+                            <%= link_to edit_estado_path(:proceso_id => @proceso.id,:estado_id => estado.id), :class => "subtituloitem"  do %>
                                  <%= estado.conclusion %>  
                             <% end %>
                             </h5>
@@ -426,12 +463,12 @@
 <!-- Mostrar ayuda para cuando inica el proceso por primera vez -->
 
 <ol id="joyrideProceso" class="joyride-list" data-options="nextButton : true,tipAnimation :    'fade',tipAnimationFadeSpeed: 300" data-joyride>
-  <li data-id="listaEstadoProceso" data-text="Salir">
-    <p>Inicia Creando un nuevo Participante</p>
+  <li data-id="divformProcesoEstado" data-text="Salir">
+    <p>Actualiza el estado de tu proceso.</p>
   </li>
 </ol>
 
-  <div id="myModalCompartirProceso" class="reveal-modal small">
+  <div id="myModalCompartirProceso" class="reveal-modal medium modalAspen">
     <%= render 'formControlAcceso' %>
   </div>
 

@@ -1,16 +1,16 @@
   
-<%= form_for(@contrato, :remote => true, :html => { :class => "custom ocultar",:id => "formContrato"} ) do |f| %>
+<%= form_for(@contrato, :remote => true, :html => { :class => "ocultar custom",:id => "formContrato"} ) do |f| %>
 
 <div class="row">
 
     <div class="small-2 small-offset-0 columns ">
       <%= f.label "Tipo Contrato", :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-4 columns field">
+    <div class="small-4 columns field left">
       <%= f.select :tipoContrato, [["Indefinido", "Indefinido"]]+[["Prestación de Servicios", "Servicios"]], :prompt => "- Tipo Contrato -" %>
     </div>
 
-    <hr/>
+   
 
 </div>
 
@@ -105,11 +105,11 @@
 </div>
 <div class="row"> 
 
-   <div class="small-1 small-offset-7 columns field"></div>
-     <div class="small-1 columns field">
+   <div class="small-1 small-offset-6 columns field"></div>
+     <div class="small-1 columns field margenTop25">
       <%= link_to 'Cancelar', "javascript:listarContratos()", :class=>"textoGrislinks" %>
      </div>
-     <div class="small-2 columns field">
+     <div class="small-3 columns field margenTop25">
       <%= f.submit :'Guardar Contrato' , :class => " button success radius", :id =>"botonSubmitContrato" %></div>
      </div>
      <%= hidden_field_tag :proceso_id, @proceso.id %>

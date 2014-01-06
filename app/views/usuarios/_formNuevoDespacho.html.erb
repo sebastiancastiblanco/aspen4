@@ -4,7 +4,7 @@
         <a href="#" class="alert-panel close-reveal-modal" onclick="$('#modalsignup').foundation ('reveal', 'close')">&times;</a>
       </div>
  
-     <%= form_for  (@usuario), :remote => true, :html => { :class => "custom",:id => "formUsuario"} do |f| %>
+     <%= form_for  (@usuario), :remote => true, :html => { :class => "customb formAspen",:id => "formUsuario"} do |f| %>
       <div class="alert-panel-message" >
 
        <div class="row">
@@ -42,7 +42,7 @@
     </div>
       <div class="alert-panel-action">
              <a href="#" class="textolinks" onclick="$('#modalLogin').foundation ('reveal', 'close')">Cerrar</a>
-              <%= f.submit :'Inicia tu prueba gratuita de 30 dias' , :class => "button  radius" %></div>
+              <%= f.submit :'Crear Cuenta' , :class => "button  radius" %></div>
       </div>
       <% end %>
        

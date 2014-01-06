@@ -1,4 +1,4 @@
-<div id="formCrearNuevoEvento" class="alert-panel secondary" data-alert>
+<div id="formCrearNuevoEvento" class="alert-panel " data-alert>
       <div class="alert-panel-title">
         Evento
         <a href="#" class="alert-panel close-reveal-modal" onclick="$('#myModalNuevoEvento').foundation ('reveal', 'close')">&times;</a>
@@ -6,7 +6,7 @@
       <div id="formularioEvento"></div>
     
 
-      <%= form_for(@event, :remote => true,  :html => { :class => "custom"} ) do |f| %>
+      <%= form_for(@event, :remote => true,  :html => { :class => "custom formAspen"} ) do |f| %>
         <div class="alert-panel-message" >
           <div class="row"> 
                 <div class="small-2 small-offset-0 columns ">

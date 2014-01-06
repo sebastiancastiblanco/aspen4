@@ -13,6 +13,7 @@
 				    </tr>
 				  </thead>
 				  <tbody>
+				  <% if (!@proceso.nil?)%>
 				    <tr>
 				      <td><%= link_to   "Participantes", {:controller => "participantes", :action => "index", :proceso_id => @proceso.id}, :method=>:post %></td>
 				      <td class="centrado"><%= @proceso.participantes.size %></td>
@@ -47,6 +48,7 @@
 				      
 				      
 				    </tr>
+				  <% end %>
 				  </tbody>
 				</table>
                 
@@ -75,14 +77,14 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    
+				    <% if (!@proceso.nil?)%>
 				    <% @procesoLog.each do |logProceso| %>
                         <tr>
 					      <td><%= logProceso.mensaje %></td>
 					      <td class="centrado"><%= fechaFormatoActualizado logProceso.created_at %></td>
 					    </tr>
                     <% end %>
-
+<% end %>
 				    
 
 				  </tbody>
@@ -101,17 +103,19 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-
+<% if (!@proceso.nil?)%>
 				  	<% @alertasPendientes.each do |alertaPendiente| %>
                         <tr>
 				      		<td><%= alertaPendiente.titulo %></td>
 				      		<td class="centrado"><%= fechalog alertaPendiente.termina %></td>
 				       	</tr>
 					<% end %>
-
+<% end %>
 				  </tbody>
 				</table>
+				<% if (!@proceso.nil?)%>
             	<%= link_to   "Alertas Pendientes", {:controller => "alertas", :action => "index", :proceso_id => @proceso.id}, :class=>"textolinks alinearDerecha ", :method=>:get %> <br />
+            	<% end %>
             </div>
           </div>
         </div>
@@ -141,7 +145,7 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					    
+					    <% if (!@proceso.nil?)%>
 					<% @actividades.order('updated_at DESC').each do |actividad| %>
                         
 				       	<tr>
@@ -156,14 +160,16 @@
 					     
 					    </tr>
 					<% end %>
+					<% end %>
 
 					   
 					  </tbody>
 					</table>
+					<% if (!@proceso.nil?)%>
 					<%= link_to actividads_path(:proceso_id => @proceso.id), :class=>"textolinks alinearDerecha " do  %>
                       Ver todas las Actividades
                     <% end %>
-	 				
+	 				  <% end %>
 	          	</div>
           	</div>
  		</div>
@@ -182,6 +188,7 @@
 					    </tr>
 					  </thead>
 					  <tbody>
+					  	<% if (!@proceso.nil?)%>
 					  <% @documentos.order('updated_at DESC').each do |documento| %>
                         
 				       	<tr>
@@ -190,11 +197,14 @@
 					       <td class="centrado"><%= fechalog documento.updated_at %></td>
 					    </tr>
 					<% end %>
+					<% end %>
 
 					     
 					  </tbody>
 					</table>
+					<% if (!@proceso.nil?)%>
 	 				<%= link_to   "Ver todos los documentos", {:controller => "documents", :action => "index", :proceso_id => @proceso.id}, :class=>"textolinks alinearDerecha", :method=>:get %>
+	 				<% end %>
 	          	</div>
 	         </div>
  		</div>
@@ -213,13 +223,14 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-
+<% if (!@proceso.nil?)%>
            		  	<% @proceso.usuarios.order('created_at DESC').each do |usuario| %>
                          <tr>
 					      <td> <%= usuario.nombre %></td>
 					      <td class="centrado"> <%= usuario.username %></td>
 					      <td class="centrado"> <%= fechalog usuario.created_at %></td>
 					    </tr>
+                    <% end %>
                     <% end %>
            			</tbody>
 					</table>

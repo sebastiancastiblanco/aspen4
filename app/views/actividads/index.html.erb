@@ -9,7 +9,7 @@
                   <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
-            <li class="">Actividades</li>
+            <li> <a href="#"> Actividades</a></li>
           </ul>
         </header>
         <div id="date"></div>
@@ -32,17 +32,17 @@
                     <div id="botonesActividades" class="small-2 small-offset-4 columns left">
                         
                        <% if  @actividadesRender == "true" %>
-
+                        <div id="new_actividad_link" class="ocultar">
                          <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_actividad_link" %>
-
+                        </div>
                         <%= button_to 'Listar Actividades',"javascript:listarActividades()" , :class => "button radius ", :id => "listar_actividades_link" %>
 
                         <% else %>
 
                            <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ", :id => "new_actividad_link" %>
-
-                        <%= button_to 'Listar Actividades',"javascript:listarActividades()" , :class => "button radius ocultar", :id => "listar_actividades_link" %>
-
+                        <div id="listar_actividades_link" class="ocultar">
+                          <%= button_to 'Listar Actividades',"javascript:listarActividades()" , :class => "button radius", :id => "listar_actividades_link" %>
+                        </div>
 
                         <% end %>
 
@@ -114,7 +114,7 @@
                     <div class="large-8 small-offset-4 large-offset-4 columns">
                           <img src="/img/calendario.png" width="250px" style="opacity: 0.4;">
                       </div>
-                      <div class="large-8 small-offset-3 large-offset-3 columns">
+                      <div class="large-9 small-offset-3 large-offset-3 columns">
                         <h3 class="textoGris">Inicia Creando una nueva actividad</h3>
                       </div>
                    </div>

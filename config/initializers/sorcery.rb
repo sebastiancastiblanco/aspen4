@@ -2,10 +2,15 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = []
+Rails.application.config.sorcery.submodules = [:session_timeout]
+
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
+  
+  config.session_timeout = 36000 # This is in seconds. You could also write 1.hour
+  config.session_timeout_from_last_action = true # session timeout is calculated from the last valid activity. By default this is false.
+
   # -- core --
   # What controller action to call for non-authenticated users. You can also
   # override the 'not_authenticated' method of course.
@@ -36,13 +41,13 @@ Rails.application.config.sorcery.configure do |config|
   # How long in seconds the session length will be
   # Default: `604800`
   #
-  # user.remember_me_for =
+   #user.remember_me_for = 2
 
   # -- session timeout --
   # How long in seconds to keep the session alive.
   # Default: `3600`
   #
-  # config.session_timeout =
+   config.session_timeout = 36000
 
 
   # Use the last action as the beginning of session timeout.
