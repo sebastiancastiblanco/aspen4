@@ -43,7 +43,7 @@
   text-align: center !important;
   margin-top: 50px !important;
   height: 33px;
-  padding-top: 8px;
+  padding-top: 2px;
 }
 /* line 41, ../scss/timeline.scss */
 .timeline .year:first-of-type {

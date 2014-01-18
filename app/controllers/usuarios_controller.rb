@@ -111,11 +111,19 @@ class UsuariosController < ApplicationController
       @software_abogado = SoftwareAbogado.new
   end
 
+  def terminosYcondiciones
+     @usuario = Usuario.new
+     @software_abogado = SoftwareAbogado.new
+  end
+
+   def politicasdeprivacidad
+     @usuario = Usuario.new
+     @software_abogado = SoftwareAbogado.new
+  end
+
   def login
      @usuario = Usuario.new
       @software_abogado = SoftwareAbogado.new
   end
-
-  
 
 end

@@ -1,6 +1,6 @@
 <div class="alert-panel" data-alert>
       <div id="headerlogin" class="alert-panel-title">
-        Ingresa a tu cuenta
+        Ingrese a su cuenta
         <a href="#" class="alert-panel close-reveal-modal" onclick="$('#modalLogin').foundation ('reveal', 'close')">&times;</a>
       </div>
 
@@ -23,14 +23,6 @@
 			  	<%= password_field_tag :password,value = nil, :placeholder => "Contraseña",:class=> "input-xlarge" %>  
 			  </div>
 
-			  <div class="small-3 small-offset-0 columns field"> 
-			  	
-			  </div>
-			  <div class="small-9 columns">
-			  	<%= check_box_tag :remember_me,1,params[:remenber_me], :class => "alinearbotones " %>  
-			  	<%= label_tag :recuerdame ,nil, :class => ""  %>
-			  </div>
-			  
 		  </div>
 	   </div>
       <div class="alert-panel-action">

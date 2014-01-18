@@ -34,14 +34,14 @@
               <%= label_tag "confirmar password" ,nil, :class => "tituloCampo error "  %>
             </div>
             <div class="small-10 columns field">
-                 <%= f.text_field :password_confirmation,:placeholder => "Confirmar password",:class=> "input-xlarge" %>
+                 <%= f.text_field :password_confirmation,:placeholder => "Confirmar",:class=> "input-xlarge" %>
             </div>
 
 
         </div>
     </div>
       <div class="alert-panel-action">
-             <a href="#" class="textolinks" onclick="$('#modalLogin').foundation ('reveal', 'close')">Cerrar</a>
+             <a href="terminosYcondiciones" class="textolinks" >Terminos y condiciones</a>
               <%= f.submit :'Crear Cuenta' , :class => "button  radius" %></div>
       </div>
       <% end %>

@@ -69,6 +69,9 @@ AspenVersion3::Application.routes.draw do
   match 'compartirProcesos' => 'control_accesos#index', as: :compartirProcesos
   match 'funcionalidades' => 'usuarios#funcionalidades', as: :funcionalidades
   match 'precios' => 'usuarios#planprecios', as: :precios
+  match 'terminosYcondiciones' => 'usuarios#terminosYcondiciones', as: :terminosYcondiciones
+  match 'politicasdeprivacidad' => 'usuarios#politicasdeprivacidad', as: :politicasdeprivacidad
+  
   match 'ingresoCuenta' => 'usuarios#login', as: :ingresoCuenta
   match 'recuperarContrasena' => 'usuarios#recuperarContresena', as: :recuperarContresena
 

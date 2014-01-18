@@ -1097,6 +1097,19 @@ z-index: 1;
   margin-top: 70px !important;
 }
 
+.logosHome2{
+  font-size: 80px !important;
+  text-align: center !important;
+  margin-left: 98px;
+  margin-top: 70px !important;
+}
+
+.tituloHome2{
+  text-align:center;
+  color: #2284a1;
+  font-size:20px
+}
+
 .tituloProceso{
   font-size: 12px !important;
   font-weight: bold !important;

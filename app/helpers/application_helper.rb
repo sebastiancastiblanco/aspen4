@@ -16,11 +16,11 @@ module ApplicationHelper
   end
 
   def fechalog(date)
-    date.strftime("%d %b %Y")
+    date.strftime("%d %B %Y")
   end
 
     def campoFecha(date)
-    date.strftime("%d %b %Y")
+    date.strftime("%d %B %Y")
   end
 
   def horalog(date)

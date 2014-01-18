@@ -47,7 +47,7 @@ class SoftwareAbogadosController < ApplicationController
         #Enviar correo con mensaje de agradecimiento
         UsuarioMails.registroNoticias(@software_abogado.correo).deliver
 
-        format.html { redirect_to :home}
+        format.html { redirect_to :home, notice: 'Gracias por el registro' }
         format.json { render json: @software_abogado, status: :created, location: @software_abogado }
       else
         format.html { render action: "new" }
