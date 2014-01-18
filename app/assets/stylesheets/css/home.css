@@ -1257,7 +1257,7 @@ position: absolute;
 left: 600px;
 bottom: 46px;
 width: 34%;
-background: rgba(255,255,255,-0.15);
+background: rgba(255,255,255,0.15);
 padding: 20px;
 }
 
