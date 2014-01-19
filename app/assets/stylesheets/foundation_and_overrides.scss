@@ -1,5 +1,5 @@
 // Required global settings and mixins for Foundation
-
+@import "foundation/foundation-global";
 
 // Settings file to override Foundation variables
 
@@ -42,6 +42,26 @@
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
 
+
+// We use this to control whether or not CSS classes come through in the gem files.
+$include-html-classes: true;
+$include-print-styles: true;
+
+
+// Modular html classes
+// $include-html-grid-classes: $include-html-classes;
+// $include-html-visibility-classes: $include-html-classes;
+// $include-html-button-classes: $include-html-classes;
+// $include-html-form-classes: $include-html-classes;
+// $include-html-media-classes: $include-html-classes;
+// $include-html-section-classes: $include-html-classes;
+// $include-html-reveal-classes: $include-html-classes;
+// $include-html-alert-classes: $include-html-classes;
+// $include-html-nav-classes: $include-html-classes;
+// $include-html-label-classes: $include-html-classes;
+// $include-html-panel-classes: $include-html-classes;
+// $include-html-pricing-classes: $include-html-classes;
+// $include-html-progress-classes: $include-html-classes;
 
 //
 // Grid Variables
