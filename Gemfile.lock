@@ -175,4 +175,4 @@ DEPENDENCIES
   sorcery
   uglifier (>= 1.0.3)
   whenever
-  zurb-foundation
+  zurb-foundation (~> 4.0.4)
