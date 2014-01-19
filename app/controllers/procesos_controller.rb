@@ -162,10 +162,16 @@ class ProcesosController < ApplicationController
 
   #Metodo para convertir el proceso en No favorito
   def nofavorito
-    @procesofavorito =  Proceso.find( params[:procesoid])
-    @procesofavorito.favorito = false
-    @procesofavorito.save
-    render :json => @procesofavorito
+    if params[:procesoid] != "undefined"
+        @procesofavorito =  Proceso.find(params[:procesoid])
+        @procesofavorito.favorito = false
+        @procesofavorito.save
+      render :json => @procesofavorito
+    end
+    #redirecionamiento a la pagina de  procesos
+    respond_to do |format|
+     format.html { redirect_to procesos_path}
+     end
   end
 
   #Cantidad de usuarios

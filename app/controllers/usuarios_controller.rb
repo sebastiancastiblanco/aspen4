@@ -54,7 +54,6 @@ class UsuariosController < ApplicationController
           end
           threads.each(&:join)
           
-          
           #redirecionamiento a la pagina de  procesos
           render :js => "window.location = 'procesos'"
         else

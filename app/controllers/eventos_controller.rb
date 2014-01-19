@@ -26,8 +26,13 @@ class EventosController < ApplicationController
   def create
       @event = Evento.new(params[:evento])
      zone = ActiveSupport::TimeZone.new("America/Bogota")
-      @event.start.in_time_zone(zone)
-      @event.end.in_time_zone(zone)
+      if !@event.start.nil?
+        @event.start.in_time_zone(zone)
+      end
+      if !@event.end.nil?
+        @event.end.in_time_zone(zone)  
+      end
+      
       
 
       respond_to do |format|

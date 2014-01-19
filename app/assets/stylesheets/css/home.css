@@ -1475,3 +1475,7 @@ div.global_links a:hover {
 .botoncalendario{
   margin-top: 14px  !important;
 }
+
+.joyride-close-tip:hover, .joyride-close-tip:focus{
+  color: rgb(148, 148, 148) !important;
+}

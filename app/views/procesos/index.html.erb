@@ -124,12 +124,12 @@
 <!-- Mostrar este mensaje si la lista de participantes esta vacia -->
 <% if @procesos.size == 0 %>
 <ol id="joyrideProceso" class="joyride-list" data-options="nextButton : true,tipAnimation :    'fade',tipAnimationFadeSpeed: 300" data-joyride>
-  <li data-id="new_participante_link" data-text="Salir">
-    <p>Inicia Creando un neuvo Proceso</p>
+  <li data-id="nuevoProcesoBoton" data-text="Salir">
+    <p>Inicia Creando un nuevo Proceso</p>
   </li>
 </ol>
 
 <script>
-   $(document).foundation('nuevoProcesoBoton', 'start');
+   $(document).foundation('joyrideProceso', 'start');
 </script>
 <% end %>

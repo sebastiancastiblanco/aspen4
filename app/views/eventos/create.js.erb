@@ -5,8 +5,8 @@
   $("#myModalNuevoEvento").foundation ("reveal", "close");
 
 <% else %>
-  $('#formActividad').remove();
-  $('#formularioActividades').after('<%= j render("form") %>');
-  $('#formActividad').toggle( "fade" );
+  $('#formCrearNuevoEvento').remove();
+  $('#formularioEvento').after('<%= j render("form") %>');
+  $('#formularioEvento').toggle( "fade" );
   $("#myModalNuevoEvento").foundation ("reveal", "open");
 <% end %>

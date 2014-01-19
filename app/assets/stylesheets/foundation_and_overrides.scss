@@ -548,15 +548,16 @@ $joyride-tip-bg: rgba(255, 251, 207, 0.96);
 // $joyride-tip-padding: emCalc(18px) emCalc(20px) emCalc(24px);
 $joyride-tip-border: solid 1px #555;
 // $joyride-tip-radius: 4px;
-// $joyride-tip-position-offset: 22px;
+$joyride-tip-position-offset: 40px;
 
 // Here, we're setting the tip dont styles
- $joyride-tip-font-color: black;
+ $joyride-tip-font-color: rgb(148, 148, 148);
 // $joyride-tip-font-size: emCalc(14px);
 // $joyride-tip-header-weight: bold;
 
 // This changes the nub size
  //$joyride-tip-nub-size: 10px;
+ $joyride-tip-nub-left: 0px;
 
 // This adjusts the styles for the timer when its enabled
 // $joyride-tip-timer-width: 50px;
@@ -564,7 +565,7 @@ $joyride-tip-border: solid 1px #555;
 // $joyride-tip-timer-color: #666;
 
 // This changes up the styles for the close button
- $joyride-tip-close-color: black;
+ $joyride-tip-close-color: rgb(148, 148, 148);
 // $joyride-tip-close-size: 30px;
 // $joyride-tip-close-weight: normal;
 

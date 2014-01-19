@@ -80,7 +80,7 @@
                 <div id="divformProcesoEstado" class="small-2 large-3  small-offset-10  large-offset-9  columns left" >
                   <span  data-tooltip class="tip-top" title="Estado Actual del proceso." />
                        <%= form_for @proceso,  :html => { :class => "custom",:id => "formProcesoEstado"}  do |f| %>
-                        <%= f.select :estado_proceso_id, [["Estado Actual del Proceso", 0]] + @estadosProcesos.map {|r| [r.estado,r.id]}, { :disabled => ["Estado Actual", 0] } , :id => "listaEstadoProceso", :onchange => "cambioEstadoProceso("+@proceso.id.to_s+")"  %>
+                        <%= f.select :estado_proceso_id, [["Estado Actual del Proceso", 0]] + @estadosProcesos.map {|r| [r.estado,r.id]}, { :disabled => ["Estado Actual", 0] } , :id => "listaEstadoProceso", :onfocus =>"$(document).foundation('joyrideProceso', 'close');" ,:onchange => "cambioEstadoProceso("+@proceso.id.to_s+")"  %>
                         <% end %>  
                 </div>
           </div>
@@ -462,7 +462,7 @@
 
 <!-- Mostrar ayuda para cuando inica el proceso por primera vez -->
 
-<ol id="joyrideProceso" class="joyride-list" data-options="nextButton : true,tipAnimation :    'fade',tipAnimationFadeSpeed: 300" data-joyride>
+<ol id="joyrideProceso" class="joyride-list" data-options="nextButton : false, tipAnimation :    'fade',tipAnimationFadeSpeed: 300" data-joyride>
   <li data-id="divformProcesoEstado" data-text="Salir">
     <p>Actualiza el estado de tu proceso.</p>
   </li>
