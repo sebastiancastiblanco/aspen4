@@ -167,11 +167,13 @@ class ProcesosController < ApplicationController
         @procesofavorito.favorito = false
         @procesofavorito.save
       render :json => @procesofavorito
+    else
+      #redirecionamiento a la pagina de  procesos
+      respond_to do |format|
+       format.html { redirect_to procesos_path}
+       end  
     end
-    #redirecionamiento a la pagina de  procesos
-    respond_to do |format|
-     format.html { redirect_to procesos_path}
-     end
+    
   end
 
   #Cantidad de usuarios

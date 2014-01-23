@@ -22,7 +22,7 @@ end
 end
 
 #Tablas parametricas - Rol Participante
-["Ingeniero Sistemas"].each do |rol|
+["Cliente","Abogado","Demandado","Demandante"].each do |rol|
   RolParticipante.create(:rol => rol)
 end
 
