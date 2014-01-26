@@ -97,6 +97,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
+    pg (0.17.1)
+    pg (0.17.1-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -172,6 +174,7 @@ DEPENDENCIES
   jquery-rails (~> 2.3.0)
   jquery-timepicker-rails
   paperclip
+  pg
   rails (= 3.2.13)
   rails3-jquery-autocomplete (~> 1.0.11)
   roadie
