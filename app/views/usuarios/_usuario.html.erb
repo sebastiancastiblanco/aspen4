@@ -2,17 +2,13 @@
 <tr id="usuario_<%= usuario.id %>" class="topic message_10997527 fondoGris" >
 <td class="who">
   
-	<%= link_to edit_usuario_path(usuario), :remote => true do  %>
-        <strong>
-		  	<%= usuario.username %> - <%= usuario.email %>
-		</strong>
-	<% end %>
+	<%= usuario.username %>
 
-   <%= button_to 'Ver', edit_usuario_path(usuario), :remote => true, :id => "new_usuario_link",:class => "tiny button  radius " %>
+  
       
    <%= link_to "Eliminar", usuario, :class => "textRojolinks inlineBlock",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este usuario?' } , :remote => true %>
 
 <td class="when">
-   <%= fechaFormato1 usuario.created_at %>
+   
 </td>
 </tr>

@@ -52,7 +52,8 @@ gem 'jquery-timepicker-rails'
 #Gema para tareas programadas
 gem 'whenever', :require => false
 
-
+#delayed para enviar correos asincronamente
+gem 'delayed_job_active_record'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

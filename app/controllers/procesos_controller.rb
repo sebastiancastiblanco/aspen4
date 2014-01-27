@@ -1,6 +1,6 @@
 class ProcesosController < ApplicationController
   autocomplete :proceso, :titulo => 'name', :full => true
-  before_filter :require_login
+  #before_filter :require_login
 
   # GET /procesos
   # GET /procesos.json

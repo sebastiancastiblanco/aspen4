@@ -124,6 +124,9 @@ AspenVersion3::Application.routes.draw do
   match '/proceso/:proceso_id/conclusiones/new' => 'estados#new', as: :nuevoEstado, :via => :post
   match '/proceso/:proceso_id/conclusiones/:estado_id/edit' => 'estados#edit', as: :editarEstado
 
+  match '/procesos' => 'procesos#show', as: :procesos
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

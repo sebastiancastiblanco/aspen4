@@ -5,13 +5,8 @@ class UsuarioSessionsController < ApplicationController
 	def create
 		
 		if @usuario = login(params[:username],params[:password])
-			if params[:remenber_me]
-				cookies.permanent[:authToken] = @usuario.authToken
-			else
-				cookies[:authToken] = @usuario.authToken
-			end
-
-			redirect_back_or_to(:procesos ,notice: "login exitoso")
+			
+			redirect_to(:procesos, message: "finaliza sesion")
 		else
 			redirect_to(:home, notice: "El usuario y contrasena son invalidos")
     	end

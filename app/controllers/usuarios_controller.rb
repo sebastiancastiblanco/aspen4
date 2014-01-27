@@ -43,21 +43,20 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.new(params[:usuario])
     @cantidadUsuario = Usuario.where(username: @usuario.username).count
     if @cantidadUsuario == 0
-        if @usuario.save
+      if @usuario.save
           #Realizar auto login y redireccionar a la pagina de procesos
           auto_login(@usuario)
-          
-          #enviar mail de bienvenida
-          threads = []
-          threads << Thread.new do
-               UsuarioMails.bienvenida(@usuario).deliver
-          end
-          threads.each(&:join)
-          
           #redirecionamiento a la pagina de  procesos
+          #render :js => "window.location = 'procesos'"
           render :js => "window.location = 'procesos'"
+          #redirect_to procesos_path, :notice => "You are registered now!"
+
+          #enviar mail de bienvenida
+          UsuarioMails.bienvenida(@usuario).deliver
+        
+
         else
-          respond_to do |format|
+           respond_to do |format|
             format.html { render action: "create" }
             format.js
           end

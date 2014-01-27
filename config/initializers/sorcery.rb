@@ -5,6 +5,18 @@
 Rails.application.config.sorcery.submodules = [:session_timeout]
 
 
+module Sorcery
+  module Model
+    module InstanceMethods
+      def generic_send_email(method, mailer)
+        config = sorcery_config
+        mail = config.send(mailer).delay.send(config.send(method), self)
+      end
+    end
+  end
+end
+
+
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
   
