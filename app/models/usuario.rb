@@ -1,7 +1,7 @@
 class Usuario < ActiveRecord::Base
   
   authenticates_with_sorcery!
-  before_create {generate_token(:authToken)}
+  #before_create {generate_token(:authToken)}
 
   #Atributos accesibles por la vista
   attr_accessible :username,:nombre, :email, :password, :password_confirmation, :despacho_id, :empresa , :created_at, :updated_at, :updated_at, :password_reset_token, :password_reset_sent_at
