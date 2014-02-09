@@ -5,7 +5,6 @@ class AddColumnAbogadosToTables < ActiveRecord::Migration
     add_column :control_accesos, :abogado_id, :integer
     add_column :documents, :abogado_id, :integer
     add_column :logs, :abogado_id, :integer
-    add_column :logs, :abogado_id, :integer
     
   end
 end
