@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131201172409) do
+ActiveRecord::Schema.define(:version => 20140209212721) do
+
+  create_table "abogados", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "abogados", ["email"], :name => "index_abogados_on_email", :unique => true
+  add_index "abogados", ["reset_password_token"], :name => "index_abogados_on_reset_password_token", :unique => true
 
   create_table "actividad_eventos", :force => true do |t|
     t.integer  "usuario_id"
@@ -22,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20131201172409) do
     t.string   "medidaTiempo"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "abogado_id"
   end
 
   create_table "actividads", :force => true do |t|
@@ -59,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20131201172409) do
     t.boolean  "activo"
     t.datetime "horainicio"
     t.boolean  "notificarMail"
+    t.integer  "abogado_id"
   end
 
   create_table "brands", :force => true do |t|
@@ -66,6 +86,24 @@ ActiveRecord::Schema.define(:version => 20131201172409) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "clientes", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "clientes", ["email"], :name => "index_clientes_on_email", :unique => true
+  add_index "clientes", ["reset_password_token"], :name => "index_clientes_on_reset_password_token", :unique => true
 
   create_table "contratos", :force => true do |t|
     t.string   "tipoContrato"
@@ -91,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20131201172409) do
     t.integer  "proceso_id"
     t.integer  "usuario_id"
     t.integer  "privilegio_id"
+    t.integer  "abogado_id"
   end
 
   create_table "documents", :force => true do |t|
@@ -104,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20131201172409) do
     t.integer  "proceso_id"
     t.integer  "usuario_id"
     t.boolean  "activo"
+    t.integer  "abogado_id"
   end
 
   create_table "estado_actividads", :force => true do |t|
@@ -183,6 +223,7 @@ ActiveRecord::Schema.define(:version => 20131201172409) do
     t.integer  "mensaje_id"
     t.string   "usuario"
     t.string   "proceso"
+    t.integer  "abogado_id"
   end
 
   create_table "participantes", :force => true do |t|
@@ -232,6 +273,7 @@ ActiveRecord::Schema.define(:version => 20131201172409) do
     t.integer  "tipo_proceso_id"
     t.integer  "estado_proceso_id"
     t.boolean  "activo"
+    t.integer  "abogado_id"
   end
 
   add_index "procesos", ["usuario_id"], :name => "index_procesos_on_usuario_id"
@@ -263,6 +305,24 @@ ActiveRecord::Schema.define(:version => 20131201172409) do
     t.integer  "usuario_id"
   end
 
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
   create_table "usuario_eventos", :force => true do |t|
     t.integer  "usuario_id"
     t.integer  "event_id"
@@ -273,18 +333,30 @@ ActiveRecord::Schema.define(:version => 20131201172409) do
   end
 
   create_table "usuarios", :force => true do |t|
-    t.string   "username",               :null => false
+    t.string   "username"
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "despacho_id"
     t.string   "empresa"
     t.string   "nombre"
     t.string   "authToken"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "usuarios", ["email"], :name => "index_usuarios_on_email", :unique => true
+  add_index "usuarios", ["reset_password_token"], :name => "index_usuarios_on_reset_password_token", :unique => true
 
 end

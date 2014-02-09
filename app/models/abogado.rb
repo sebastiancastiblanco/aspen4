@@ -1,4 +1,4 @@
-class Usuario < ActiveRecord::Base
+class Abogado < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,20 +6,9 @@ class Usuario < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  
-  authenticates_with_sorcery!
-  #before_create {generate_token(:authToken)}
+  # attr_accessible :title, :body
 
-  #Atributos accesibles por la vista
-  attr_accessible :username,:nombre, :email, :password, :password_confirmation, :despacho_id, :empresa , :created_at, :updated_at, :updated_at, :password_reset_token, :password_reset_sent_at
-  
-  #Validaciones
-  validates :password,:password_confirmation, :presence => { :message => "Campo obligatorio"}
-
-  #Validacion de password 
-  validates_confirmation_of :password, message: "Ambos campos deben coincidir"
-
-  #Un Usuario (Abogado) tiene varios procesos
+   #Un Usuario (Abogado) tiene varios procesos
   has_many :control_accesos
   has_many :procesos, through: :control_accesos
 
@@ -59,26 +48,15 @@ class Usuario < ActiveRecord::Base
     end while Usuario.exists?(column => self[column])
   end  
 
-  def send_reset_pass
-    generate_token(:password_reset_token)
-    self.password_confirmation = "a"
-    self.password = "a"
-    self.password_reset_sent_at = Time.zone.now
-    save!
-    UsuarioMails.recuperarContrasena(self).deliver
-  end
-
   #Scope para la tabla
   scope :activos, where(:activo => true)
   
   #ultimo proceso creado
   def self.ultimoProcesoCreado
-    
       where("procesos.activo = ? LIMIT 1", true)
   end
 
   def enviarContacto
     
   end
-
 end

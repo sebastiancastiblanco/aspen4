@@ -7,7 +7,7 @@ class ParticipantesController < ApplicationController
 
     @participantesRender = (params[:nuevoItem])
     
-    @logParticipantes = Log.where(usuario_id: current_user.id, proceso_id: @proceso.id, mensaje_id: 2 ).order('created_at DESC')
+    @logParticipantes = Log.where(usuario_id: current_abogado.id, proceso_id: @proceso.id, mensaje_id: 2 ).order('created_at DESC')
 
     if params[:participante_id]
        @participante = Participante.find(params[:participante_id])
@@ -75,7 +75,7 @@ class ParticipantesController < ApplicationController
     respond_to do |format|
       if @participante.save
           #Traza de log
-          Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.username.to_s+', Creo el participante: '+@participante.nombre+' '+@participante.apellido)
+          Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:abogado_id => current_abogado.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_abogado.email.to_s+', Creo el participante: '+@participante.nombre+' '+@participante.apellido)
           
           format.html { redirect_to @participante, notice: 'El participante fue creado correctamente.'}
           format.json { render json: @participante, status: :created, location: @participante }
@@ -100,7 +100,7 @@ class ParticipantesController < ApplicationController
     respond_to do |format|
       if @participante.update_attributes(params[:participante])
         #Traza de log
-        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.nombre.to_s+', Modifico el participante: '+@participante.nombre+' '+@participante.apellido)
+        Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:abogado_id => current_abogado.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_abogado.email.to_s+', Modifico el participante: '+@participante.nombre+' '+@participante.apellido)
 
         format.html { redirect_to @participante, notice: 'Participante was successfully updated.' }
         format.json { head :no_content }
@@ -119,7 +119,7 @@ class ParticipantesController < ApplicationController
     @participante = Participante.find(params[:id])
     @proceso = @participante.proceso
 
-    Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_user.nombre.to_s+', Elimino el participante: '+@participante.nombre+' '+@participante.apellido)
+    Log.create(:usuario => current_abogado.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :participante_id => @participante.id, :mensaje_id => 2 ,:mensaje=> current_abogado.nombre.to_s+', Elimino el participante: '+@participante.nombre+' '+@participante.apellido)
     
     #No se elimina por completo el participante, se deshabilita unicamente
     #En caso que se desee restablecer el participante

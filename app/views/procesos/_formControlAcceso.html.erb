@@ -7,13 +7,13 @@
 	         <h6>Puedes enviar un mensajes a los colaboradores via correo electronico</h6>
 	              <hr/>
 	              <div id="listaUsuarios">
-	                <% @proceso.usuarios.each do |usuario| %>
+	                <% @proceso.abogados.each do |usuario| %>
 		                <div class="colaborador">
 		                	<div class="imagencolaborador">
 						    <img class="avatar alinearbotones" src="/img/user.png"> 
 								<div class="datoscolaborador">
-				                    <strong><span class="posicionNombreUsuario "><%= usuario.nombre %></span></strong>
-				                    <span class="posicionNombreUsuario ">(<%= usuario.username %>)</span>
+				                    <strong><span class="posicionNombreUsuario "><%= usuario.email %></span></strong>
+				                    <span class="posicionNombreUsuario ">(<%= usuario.email %>)</span>
 				                   <a id="contactar_<%= usuario.id %>" class="textolinks pointer right" onclick="mostarcontacto(<%= usuario.id %>)" >Contactar
 				                    	</a>
 			                       <a id="contactarCancelar_<%= usuario.id %>" class="textolinks pointer ocultar right" onclick="ocultarcontacto(<%= usuario.id %>)" >Cancelar

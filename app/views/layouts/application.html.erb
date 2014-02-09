@@ -32,7 +32,7 @@
 </head>
 <body>
 
-<% if current_user %>
+<% if abogado_signed_in? %>
 	<%= render "layouts/header" %>
 <% else %>
 	<%= render "layouts/headerLogin" %>
@@ -42,7 +42,7 @@
 
 </body>
 
-<% if current_user %>
+<% if abogado_signed_in? %>
 	<%= render "layouts/footer" %>
 <% else %>
 	<%= render "layouts/footerLogin" %>

@@ -37,9 +37,9 @@
             </p>
 
             <div class="panelAvatarUsuario">
-                <% proceso.usuarios.each do |usuarioConAcceso| %>
+                <% proceso.abogados.each do |usuarioConAcceso| %>
                     <div class="people">
-                         <img src="/img/user.png" title="<%= usuarioConAcceso.username %>">
+                         <img src="/img/user.png" title="<%= usuarioConAcceso.email %>">
                     </div>
                  <% end %>
             </div>

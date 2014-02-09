@@ -1,5 +1,12 @@
 AspenVersion3::Application.routes.draw do
   
+  devise_for :usuarios
+
+  devise_for :users
+
+  devise_for :abogados
+
+
   get "buscar_procesos/buscarProceso"
   get "buscar_procesos/busquedaInicial"
 
@@ -176,7 +183,7 @@ AspenVersion3::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'usuarios#new'
+   root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

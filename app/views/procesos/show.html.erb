@@ -20,7 +20,7 @@
             <a href="#" data-reveal-id="myModalCompartirProceso">
               <span class="link">Colaboradores</span><br>
               <span class="detail">
-                <span id="cantidadUsuarios"><%= @proceso.usuarios.size %></span> abogado en este proceso
+                <span id="cantidadUsuarios"><%= @proceso.abogados.size %></span> abogado en este proceso
               </span>
             </a>
 
@@ -31,11 +31,7 @@
               <span class="link">Editar</span>
              <% end %>
 
-              <% if  !ControlAcceso.buscarProcesoAcceso(@proceso.id,current_user.id).last.privilegio_id == 1 %> 
-               <%= link_to @proceso, method: :delete, data: { confirm: 'Estas Seguro de eliminar este proceso?' } , :remote => true  do %>
-                <span class="link">Eliminar</span>
-               <% end %>
-              <% end %>
+             
 
           </div>
           <div data-behavior="edit_project_header expandable">

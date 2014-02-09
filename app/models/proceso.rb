@@ -1,12 +1,12 @@
 class Proceso < ActiveRecord::Base
-  attr_accessible :ciudad, :favorito, :objetivo, :procesoHomologado, :referencia, :resumen, :titulo,:updated_at,:tipo_proceso_id,:estado_proceso_id
+  attr_accessible :ciudad, :abogado_id, :favorito, :objetivo, :procesoHomologado, :referencia, :resumen, :titulo,:updated_at,:tipo_proceso_id,:estado_proceso_id
 
   #Validaciones de título
   validates :titulo, :objetivo, :ciudad, :presence => { :message => "Campo obligatorio"}
 
   #Procesos a los cuales se tiene acceso
   has_many :control_accesos
-  has_many :usuarios, through: :control_accesos
+  has_many :abogados, through: :control_accesos
 
   #participantes del proceso
   has_many :participantes
