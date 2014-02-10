@@ -4,7 +4,7 @@ class Evento < ActiveRecord::Base
   validates :start, :title,:end, :presence => { :message => "Campo obligatorio"}
 
    has_many :usuario_eventos
-   has_many :usuarios, through: :usuario_eventos
+   has_many :abogados, through: :usuario_eventos
 
    has_one :alerta
     

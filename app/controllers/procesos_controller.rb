@@ -16,7 +16,7 @@ class ProcesosController < ApplicationController
 
     #Alertas pendietse del usuario
     @NumeroAlertasPendientes = current_abogado.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC").count;
-    @NumeroActividadesPendientes = current_abogado.actividads.activos.where("fechaSeguimiento < ?", Time.now).order("updated_at DESC").count;
+    @NumeroActividadesPendientes = current_abogado.actividads.activos.order("updated_at DESC").count;
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @procesos }
@@ -146,7 +146,7 @@ class ProcesosController < ApplicationController
     @proceso.update_attribute(:activo, false)
     #Traza de log
 
-    Log.create(:usuario => current_abogado.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :proceso_id => @proceso.id, :mensaje_id => 8 ,:mensaje=> current_abogado.nombre.to_s+', Elimino el proceso: '+@proceso.referencia+', '+@proceso.titulo)
+    Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :proceso_id => @proceso.id, :mensaje_id => 8 ,:mensaje=> current_abogado.email.to_s+', Elimino el proceso: '+@proceso.referencia+', '+@proceso.titulo)
     #redirecionamiento a la pagina de  procesos
     respond_to do |format|
      format.html { redirect_to procesos_path, notice: 'El proceso fue actualizado.' }

@@ -76,7 +76,7 @@ class ActividadsController < ApplicationController
     respond_to do |format|
       if @actividad.save
         #Traza de log
-        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Creo la actividad: '+@actividad.nombre)
+        Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:abogado_id => current_abogado.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_abogado.email.to_s+', Creo la actividad: '+@actividad.nombre)
        # @actividad.actividad_eventos.save
          format.js
       else
@@ -97,7 +97,7 @@ class ActividadsController < ApplicationController
     respond_to do |format|
       if @actividad.update_attributes(params[:actividad])
         #Traza de log
-        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Modifico la actividad: '+@actividad.nombre)
+        Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:abogado_id => current_abogado.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_abogado.email.to_s+', Modifico la actividad: '+@actividad.nombre)
         #@actividad.actividad_eventos.save
         
         format.html { redirect_to @proceso, notice: 'Actividad fue modificada correctamente.' }
@@ -121,7 +121,7 @@ class ActividadsController < ApplicationController
     
     respond_to do |format|
       #Traza de log
-      Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_user.nombre.to_s+', Elimino la actividad: '+@actividad.nombre)
+      Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :actividad_id => @actividad.id, :mensaje_id => 4 ,:mensaje=> current_abogado.email.to_s+', Elimino la actividad: '+@actividad.nombre)
 
       format.html { redirect_to actividads_url }
       format.json { head :no_content }
