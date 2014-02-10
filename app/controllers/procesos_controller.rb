@@ -16,7 +16,7 @@ class ProcesosController < ApplicationController
 
     #Alertas pendietse del usuario
     @NumeroAlertasPendientes = current_abogado.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC").count;
-    @NumeroActividadesPendientes = current_abogado.actividads.activos.order("updated_at DESC").count;
+    @NumeroActividadesPendientes = current_abogado.actividads.activos.where("fechaSeguimiento < ?", Time.now).order("updated_at DESC").count;
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @procesos }
@@ -40,7 +40,7 @@ class ProcesosController < ApplicationController
     #recuperar las 3 ultimas actividades modificadas
     @actividads = @proceso.actividads.where(activo: true).order("updated_at DESC").first(3)
     #Recuperar los 3 ultimos movimientos hechos en el proceso
-    @logs = Log.where( current_abogado.id, proceso_id: @proceso.id ).order('created_at DESC').limit(3)
+    @logs = Log.where(abogado_id: current_abogado.id, proceso_id: @proceso.id ).order('created_at DESC').limit(3)
     #estados de los procesos
     @estadosProcesos = EstadoProceso.all
     #Alertas del proceso
