@@ -4,8 +4,8 @@
     </header>
     <article class="calendar_event">
         <header>
-                <span class="day_of_week"><%= fechaDiaSemana actividad.fechaSeguimiento %></span>
-                <span class="month"><%= fechaMes actividad.fechaSeguimiento %></span>
+                
+                <span class="month"><%= fechaFormato1 actividad.fechaSeguimiento %></span>
                 <% if actividad.estado_actividad.estado =="Abierta" %>
                            <span class="day" style="background-color: #457a1a !important"><%= fechaDia actividad.fechaSeguimiento %></span>
                 <% end %>

@@ -7,7 +7,6 @@ class ControlAcceso < ActiveRecord::Base
   #buscar control de aceso por proceso y usuario
   def self.buscarProcesoAcceso(procesoid, usuarioid)
     where(
-        'proceso_id = :procesoid and usuario_id = :usuarioid',
         :proceso_id => procesoid,:abogado_id => usuarioid
     )
    end

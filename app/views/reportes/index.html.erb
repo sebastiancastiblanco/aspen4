@@ -69,23 +69,23 @@
 				  <tbody>
 				  	<tr>
 				      <td>Sin iniciar</td>
-				      <td class="centrado"><%= Proceso.sinIniciar(current_user.id).size  %></td>
+				      <td class="centrado"><%= Proceso.sinIniciar(current_abogado.id).size  %></td>
 				    </tr>
 				    <tr>
 				      <td>Abiertos</td>
-				      <td class="centrado"><%= Proceso.abiertos(current_user.id).size %></td>
+				      <td class="centrado"><%= Proceso.abiertos(current_abogado.id).size %></td>
 				    </tr>
 				      <tr>
 				      <td>Cerrados</td>
-				      <td class="centrado"><%= Proceso.cerrados(current_user.id).size %></td>
+				      <td class="centrado"><%= Proceso.cerrados(current_abogado.id).size %></td>
 				    </tr>
 				    <tr>
 				      <td>Aplazados</td>
-				      <td class="centrado"><%= Proceso.aplazados(current_user.id).size %></td>
+				      <td class="centrado"><%= Proceso.aplazados(current_abogado.id).size %></td>
 				    </tr>
 				    <tr>
 				      <td>Venc. Terminos</td>
-				      <td class="centrado"><%= Proceso.vencienron(current_user.id).size %></td>
+				      <td class="centrado"><%= Proceso.vencienron(current_abogado.id).size %></td>
 				    </tr>
 				    
 				  </tbody>

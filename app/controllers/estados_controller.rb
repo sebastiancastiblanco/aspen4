@@ -54,7 +54,7 @@ class EstadosController < ApplicationController
     respond_to do |format|
       if @estado.save
         #Traza de log
-        Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :estado_id => @estado.id, :mensaje_id => 7 ,:mensaje=> current_user.nombre.to_s+', Creo la conclusion: '+@estado.conclusion)
+        Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :estado_id => @estado.id, :mensaje_id => 7 ,:mensaje=> current_abogado.email.to_s+', Creo la conclusion: '+@estado.conclusion)
 
         format.html { redirect_to action: "index",  proceso_id: params[:proceso_id], notice: 'Se creo la conclusion correctamente.' }
         format.json { render json: @estado, status: :created, location: @estado }
@@ -76,7 +76,7 @@ class EstadosController < ApplicationController
     respond_to do |format|
       if @estado.update_attributes(params[:estado])
          #Traza de log
-         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :estado_id => @estado.id, :mensaje_id => 7 ,:mensaje=> current_user.nombre.to_s+', Modifico la conclusion: '+@estado.conclusion)
+         Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :estado_id => @estado.id, :mensaje_id => 7 ,:mensaje=> current_abogado.email.to_s+', Modifico la conclusion: '+@estado.conclusion)
 
         format.html { redirect_to action: "index",  proceso_id: params[:proceso_id] }
         format.html { redirect_to @estado, notice: 'Estado was successfully updated.' }
@@ -95,7 +95,7 @@ class EstadosController < ApplicationController
     @proceso = Proceso.find(params[:proceso_id])
     
      #Traza de log
-     Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :estado_id => @estado.id, :mensaje_id => 7 ,:mensaje=> current_user.nombre.to_s+', Elimino la conclusion: '+@estado.conclusion)
+     Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :estado_id => @estado.id, :mensaje_id => 7 ,:mensaje=> current_abogado.email.to_s+', Elimino la conclusion: '+@estado.conclusion)
 
     @estado.update_attribute(:activo, false)
 

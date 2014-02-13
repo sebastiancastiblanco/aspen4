@@ -99,7 +99,7 @@
 				  <thead>
 				    <tr>
 				      <th width="250" class="centrado">Alerta</th>
-				      <th width="150" class="centrado">Fecha</th>
+				      <th width="190" class="centrado">Fecha</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -107,7 +107,7 @@
 				  	<% @alertasPendientes.each do |alertaPendiente| %>
                         <tr>
 				      		<td><%= alertaPendiente.titulo %></td>
-				      		<td class="centrado"><%= fechalog alertaPendiente.termina %></td>
+				      		<td class="centrado"><%= fechaFormatoActualizado alertaPendiente.termina %></td>
 				       	</tr>
 					<% end %>
 <% end %>
@@ -224,10 +224,10 @@
 					  </thead>
 					  <tbody>
 <% if (!@proceso.nil?)%>
-           		  	<% @proceso.usuarios.order('created_at DESC').each do |usuario| %>
+           		  	<% @proceso.abogados.order('created_at DESC').each do |usuario| %>
                          <tr>
-					      <td> <%= usuario.nombre %></td>
-					      <td class="centrado"> <%= usuario.username %></td>
+					      <td> <%= usuario.email %></td>
+					      <td class="centrado"> <%= usuario.email %></td>
 					      <td class="centrado"> <%= fechalog usuario.created_at %></td>
 					    </tr>
                     <% end %>

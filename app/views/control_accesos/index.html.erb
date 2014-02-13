@@ -44,7 +44,7 @@
           <br />
                 
                 <div class="large-8 small-offset-2 large-offset-2 columns">
-                  <%= f.select :usuario_id, @usuarios.map {|r| [r.username,r.id] }, :prompt => "- Selecciona un Usuario -" %>  
+                  <%= f.select :abogado_id, @usuarios.map {|r| [r.email,r.id] }, :prompt => "- Selecciona un Usuario -" %>  
                 </div>
 
         </div>
@@ -75,19 +75,19 @@
                   <%= f.label "Proceso 2:", :class => "tituloCampo error alinearDerecha" %>
                 </div>  
                 <div class="large-6  columns">
-                  <%= f.select :usuario_id, [["Proceso 2", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, {  } %>  
+                  <%= f.select :abogado_id, [["Proceso 2", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, {  } %>  
                 </div>
                 <div class="large-3  columns">
-                  <%= f.select :usuario_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, { } %>  
+                  <%= f.select :abogado_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, { } %>  
                 </div>
                  <div class="large-2  columns">
                   <%= f.label "Proceso 3:", :class => "tituloCampo error alinearDerecha" %>
                 </div>  
                 <div class="large-6  columns">
-                  <%= f.select :usuario_id, [["Proceso 3", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, {  } %>  
+                  <%= f.select :abogado_id, [["Proceso 3", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, {  } %>  
                 </div>
                 <div class="large-3  columns">
-                  <%= f.select :usuario_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, { } %>  
+                  <%= f.select :abogado_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, { } %>  
                 </div>
                 -->
             </div>

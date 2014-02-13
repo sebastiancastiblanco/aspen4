@@ -48,13 +48,13 @@ class DocumentsController < ApplicationController
     @document = Document.new(params[:document])
     @proceso = Proceso.find(params[:proceso_id])
     @document.proceso_id = params[:proceso_id]
-    @document.usuario_id = current_user.id
+    @document.usuario_id = current_abogado.id
     @document.activo = true
 
     respond_to do |format|
       if @document.save
          #Traza de log
-         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_user.nombre.to_s+', adjunto un nuevo documento: '+@document.name)
+         Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_abogado.email.to_s+', adjunto un nuevo documento: '+@document.name)
 
         format.html { redirect_to action: "index",proceso_id: params[:proceso_id], notice: 'Se adjunto un nuevo documento.'}
         format.json { render json: @document, status: :created, location: @document }
@@ -76,7 +76,7 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       if @document.update_attributes(params[:document])
          #Traza de log
-         Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_user.nombre.to_s+', modifico el documento adjunto : '+@document.name)
+         Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_abogado.email.to_s+', modifico el documento adjunto : '+@document.name)
 
         format.html { redirect_to action: "index",  proceso_id: params[:proceso_id], notice: 'Se modifco el documento correctamente.' }
         format.json { head :no_content }
@@ -94,7 +94,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     @proceso = Proceso.find(params[:proceso_id])
     #Traza de log
-    Log.create(:usuario => current_user.nombre,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_user.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_user.nombre.to_s+', modifico el documento adjunto : '+@document.name)
+    Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_abogado.email.to_s+', modifico el documento adjunto : '+@document.name)
     @document.update_attribute(:activo, false)
 
     respond_to do |format|

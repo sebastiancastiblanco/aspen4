@@ -3,8 +3,8 @@ class EventosController < ApplicationController
   def index
     @event = Evento.new
     #Recuperar los eventos del usuario logeado
-    #@eventos = current_user.eventos
-    @eventos = current_user.eventos
+    #@eventos = current_abogado.eventos
+    @eventos = current_abogado.eventos
     #respond de la funcion
     respond_to do |format| 
       format.html # index.html.erb 
@@ -38,7 +38,7 @@ class EventosController < ApplicationController
       respond_to do |format|
         if @event.save
           #Salvar relacion entre el evento y el usuario que lo creo
-          @event.usuario_eventos.create(:usuario_id => current_user.id,:propietario_id => current_user.id,:evento_id => @event.id)
+          @event.usuario_eventos.create(:abogado_id => current_abogado.id,:propietario_id => current_abogado.id,:evento_id => @event.id)
         
             format.json { render json: @event, status: :created, location: @event }
             format.js

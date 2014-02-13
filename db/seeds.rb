@@ -8,12 +8,12 @@ require 'open-uri'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #Tablas parametricas - Estado Actividad
-["sinIniciar", "abiertos", "cerrados", "aplazados", "vencieron Terminos"].each do |estado|
+["sinIniciar", "Abierta", "Cerrada", "Aplazada", "Vencieron Terminos"].each do |estado|
   EstadoProceso.create(:estado => estado)
 end
 
 #Tablas parametricas - Estado proceso
-["Programadas", "Abiertas", "Atrasadas", "Terminadas"].each do |estado|
+["Programada", "Abierta", "Atrasada", "Terminada"].each do |estado|
   EstadoActividad.create(:estado => estado)
 end
 #Tablas parametricas - privilegio

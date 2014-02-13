@@ -2,9 +2,9 @@ class ReportesController < ApplicationController
   def index
   	#Recuperar el ultimo proceso modificado del usuario y mostrar el reporte
   	#recuperar todos los procesos del usaurio para listarlos en un combo box.
-  	@proceso = current_user.procesos.order('created_at DESC').last
-    @logs = Log.where(usuario_id: current_user.id).order('created_at DESC').limit(4)
-    @procesos = current_user.procesos
+  	@proceso = current_abogado.procesos.order('created_at DESC').last
+    @logs = Log.where(usuario_id: current_abogado.id).order('created_at DESC').limit(4)
+    @procesos = current_abogado.procesos
 
     #ultimos movimientos de un proceso en especifico
     if (!@proceso.nil?)

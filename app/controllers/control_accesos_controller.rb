@@ -4,9 +4,10 @@ class ControlAccesosController < ApplicationController
   def index
     @control_accesos = ControlAcceso.all
     @control_acceso = ControlAcceso.new
-    @usuarios =  Usuario.all
+    @usuarios =  Abogado.all
+    
 
-    @procesos = current_user.procesos
+    @procesos = current_abogado.procesos
     @privilegios = Privilegio.all
 
     respond_to do |format|
@@ -48,22 +49,22 @@ class ControlAccesosController < ApplicationController
     @control_acceso = ControlAcceso.new(params[:control_acceso])
     
     if !@control_acceso.proceso_id.nil?
-     if !@control_acceso.usuario_id.nil?
+     if !@control_acceso.abogado_id.nil?
       if !@control_acceso.privilegio_id.nil? 
 
           #buscar el proceso y usuario, si ya existe solo se actualiza el atributo de privilegio
-          @accesoCreado = ControlAcceso.buscarProcesoAcceso(@control_acceso.proceso_id, @control_acceso.usuario_id);
+          @accesoCreado = ControlAcceso.buscarProcesoAcceso(@control_acceso.proceso_id, @control_acceso.abogado_id);
           #Enviar Correo el cual notifica que se comparte el proceso
           threads = []
             threads << Thread.new do
-                 ContactoMailer.compartirProcesoUsuario(current_user,@control_acceso.proceso,@control_acceso.usuario.username).deliver
+                 ContactoMailer.compartirProcesoUsuario(current_abogado,@control_acceso.proceso,@control_acceso.abogado.email).deliver
             end
           threads.each(&:join)
 
           if !@accesoCreado.any?
             respond_to do |format|
             if @control_acceso.save
-              format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.usuario.username and return}
+              format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.abogado.email and return}
               format.json { render json: @control_acceso, status: :created, location: @control_acceso }
             else
               format.html { render action: "new" }
@@ -73,7 +74,7 @@ class ControlAccesosController < ApplicationController
           else
             respond_to do |format|
               if  @accesoCreado.last.update_attribute(:privilegio_id, @control_acceso.privilegio_id)
-                format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.usuario.username and return }
+                format.html { redirect_to procesos_path , notice: 'Se ha compartido el proceso '+@control_acceso.proceso.referencia+' a '+ @control_acceso.abogado.email and return }
                 format.json { render json: @control_acceso, status: :created, location: @control_acceso }
               else
                 format.html { render action: "new" }

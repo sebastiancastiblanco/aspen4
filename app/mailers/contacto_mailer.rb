@@ -5,13 +5,13 @@ class ContactoMailer < ActionMailer::Base
     @usuario = usuario
     @mensaje  = mensaje
     @proceso = proceso 
-	mail to: correo, subject: "[Aspen] Mensaje de "+usuario.nombre+" ("+usuario.username+")"
+	mail to: correo, subject: "[Aspen] Mensaje de "+usuario.email
   end
 
    def compartirProcesoUsuario (usuario,proceso,correo)
     @usuario = usuario
     @proceso = proceso 
-	mail to: correo, subject: "[Aspen] "+usuario.nombre+" ("+usuario.username+") a compartido un nuevo proceso"
+	mail to: correo, subject: "[Aspen] "+usuario.email+" a compartido un nuevo proceso"
   end
 
 end

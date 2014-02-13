@@ -2,8 +2,6 @@ AspenVersion3::Application.routes.draw do
   
   devise_for :abogados
 
-  devise_for :abogados
-
   get "buscar_procesos/buscarProceso"
   get "buscar_procesos/busquedaInicial"
 
