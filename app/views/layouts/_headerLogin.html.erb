@@ -11,8 +11,8 @@
     </div>
     <div| class="large-7 columns">
       <ul class="inline-list right menubotonesHome">
-        <li><a href="funcionalidades" class="letraTitulosMenu" >Aspen -Funcionalidades</a></li>
-        <li><a href="precios" class="letraTitulosMenu" >Precios</a></li>
+        <li><%= link_to 'funcionalidades', :funcionalidades %></li>
+        <li><%= link_to 'precios', :precios %></li>
         <li><%= link_to 'Registrarse', new_abogado_registration_path , :class => 'tiny button success radius'%></li>
         <li><%= link_to 'Iniciar Sesion', new_abogado_session_path , :class => 'tiny button radius'%></li>
       </ul>

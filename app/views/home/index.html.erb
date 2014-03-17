@@ -1,1 +1,126 @@
-<h1>Nuevo home aspen</h1>
+<body>
+
+  <!-- First Band (Image) -->
+
+     
+
+  <div class="row">
+    <div class="large-12 columns ">
+
+       <% if notice  %>
+        <div id="noticeMsgEliminar" data-alert class="alert-box radius" style="text"><%= notice%></div> 
+      <% end %>
+
+      <img src="/img/fondos/homeizq.jpg" class="bannerHome">
+      <div class="content">
+            <h3 style="color: #2284a1;"><i class="general foundicon-checkmark" style="font-size:20px"></i>Procesos judicales</h3>
+            <h5> Controla todos tus procesos judiciales en la nube.</h5>
+            
+            <%= link_to 'Demo Gratuito por 30 dias', new_abogado_registration_path , :class => 'medium radius right button'%>
+          </div>
+      <hr>
+
+    </div>
+  </div>
+ 
+<div class="row" style="margin-top: 35px;">
+    <div class="large-12 columns">
+      <div class="row">
+
+    <!-- Thumbnails -->
+        <div class="large-4 small-4 columns">
+          <i class="general foundicon-cloud logosHome2"></i>
+          <h5 class="tituloHome2">Procesos en la nube</h5>
+          <h6 class="panel ">Su despacho en la nube con acceso desde cualquier dispositivo movil</h6>
+        </div>
+
+        <div class="large-4 small-4 columns">
+          <i class="general foundicon-calendar logosHome2"></i>
+          <h5 class="tituloHome2">Programa alertas</h5>
+           <h6 class="panel">Organiza tu Agenda y las tareas de los procesos en un mismo calendario</h6>
+        </div>
+
+        <div class="large-4 small-4 columns">
+          <i class="general foundicon-globe logosHome2"></i>
+          <h5 class="tituloHome2">Comparte los procesos</h5>
+          <h6 class="panel">Comparte procesos con otros colegas y obten un máximo de colaboración</h6>
+        </div>
+
+        
+
+    <!-- End Thumbnails -->
+
+      </div>
+    <hr>
+    </div>
+
+  </div>
+
+
+
+  <div class="row" style="margin-top: 35px;">
+    <div class="large-12 columns">
+      <div class="row">
+
+    <!-- Thumbnails -->
+        <div class="large-3 small-6 columns">
+          <i class="general foundicon-lock logosHome"></i>
+          <h5 class="tituloHome2">Control de acceso</h5>
+          <h6 class="panel ">Controla el nivel de acceso a los procesos por niveles de colaborador o administrador.</h6>
+        </div>
+
+        <div class="large-3 small-6 columns">
+          <i class="general foundicon-add-doc logosHome"></i>
+          <h5 class="tituloHome2">Documentos</h5>
+          <h6 class="panel">Adjunta y soporta tus procesos con todos los documentos digitales necesarios</h6>
+        </div>
+
+        <div class="large-3 small-6 columns">
+          <i class="general foundicon-paper-clip logosHome"></i>
+          <h5 class="tituloHome2">Clasificación</h5>
+          <h6 class="panel">Clasifica y organiza tus procesos judiciales por referencias, tipos de procesos y favoritos</h6>
+        </div>
+
+        <div class="large-3 small-6 columns">
+          <i class="general foundicon-graph logosHome"></i>
+          <h5 class="tituloHome2">Reportes</h5>
+          <h6 class="panel">Obten reportes de seguimiento de las actividades de cada uno de los procesos.</h6>
+        </div>
+        
+
+    <!-- End Thumbnails -->
+
+      </div>
+    </div>
+  </div>
+
+   
+
+<!-- Call to Action Panel -->
+  <div class="row">
+    <div class="large-12 columns">
+    
+      <div class="panel">
+        <h4>Cuenta gratuita por 30 dias!</h4>
+            
+        <div class="row">
+          <div class="large-9 columns">
+            <p>Obten un demo gratuito por un periodo de 30 dias, con acceso a todas las funcionalidades.</p>
+          </div>
+          <div class="large-3 columns">
+            <%= link_to 'Demo Gratuito', new_abogado_registration_path , :class => 'medium radius right button'%>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<hr>
+<div class="footer-azul">
+   <%= render 'formSoftwareAbogados' %>
+</div>
+
+</body>
+
+

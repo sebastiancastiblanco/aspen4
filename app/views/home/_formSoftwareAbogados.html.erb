@@ -1,0 +1,19 @@
+<%= form_for(@software_abogado) do |f| %>
+   <div class="row collapse">
+    <div class="small-5 large-6 columns paddginCero">
+      <span class="prefix">
+        <label>Registra tu correo electronico y recibe notificaciones - <a href="politicasdeprivacidad"  >Politicas de Privacidad</a></label>
+        
+       
+     </span>
+    </div>
+    <div class="small-5 large-4 columns paddginCero">
+      <%= f.text_field :correo, :placeholder => "correo@gmail.com"  %>
+    </div>
+    <div class="small-2 columns paddginCero">
+       <%= f.submit :'Registrarme', :class => "button prefix buttonprefix" %>
+    </div>
+  </div>
+<% end %>
+
+

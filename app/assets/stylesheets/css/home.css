@@ -1403,6 +1403,16 @@ a.linksTitulos:hover{
   margin-right: 100px;
 }
 
+.botonGrande{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.panelLogin{
+  margin-bottom: 5% !important;
+  margin-top: 5% !important; 
+}
+
 .tituloitem{
   color: #BB2E2E  !important;
 }
@@ -1478,4 +1488,21 @@ div.global_links a:hover {
 
 .joyride-close-tip:hover, .joyride-close-tip:focus{
   color: rgb(148, 148, 148) !important;
+}
+
+.cajaMargen{
+  margin-top: -20px !important;
+}
+
+.cajaMargenDerecha{
+  margin-right: 15px !important;
+}
+
+.textoLink{
+ color: #2795b6 !important;
+ font-size: 15px !important;
+}
+
+a:hover, a:focus{
+
 }

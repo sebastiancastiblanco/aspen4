@@ -6,6 +6,7 @@ AspenVersion3::Application.routes.draw do
   get "buscar_procesos/busquedaInicial"
 
   resources :actividad_eventos
+  resources :abogados
 
 
   resources :reportes
@@ -80,9 +81,9 @@ AspenVersion3::Application.routes.draw do
   match 'alertasPendientes' => 'alertas#alertasPendientes', as: :alertasPendientes
   match 'actividadesPendientes' => 'actividads#actividadesPendientes', as: :actividadesPendientes
 
-  match 'home' => 'usuarios#new', as: :home
-  match 'login'  => 'usuarios#new', as: :login
-  match 'logout' => 'usuario_sessions#destroy', as: :logout
+  match 'home' => 'home#index', as: :home
+  match 'login'  => 'home#index', as: :login
+  match 'logout' => 'home#index', as: :logout
 
   match '/usuarios/new' => 'usuarios#new', as: :nuevoUsuario
   match '/usuarios/:id' => 'usuarios#index', as: :listaUsuarios
