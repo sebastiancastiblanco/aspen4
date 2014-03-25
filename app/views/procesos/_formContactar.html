@@ -4,7 +4,7 @@
 	<div class="small-9 large-9 columns field">
 	    <span data-tooltip class="tip-top" title="Mensaje para el colaborador">
 	    <%= text_field_tag 'mensaje'+usuario.id.to_s, nil, placeholder: 'Máximo 250 caracteres', maxlength: 250 %>
-	    <%= hidden_field_tag :usuario_id, usuario.id %>
+	    <%= hidden_field_tag :abogado_id, usuario.id %>
 	    <%= hidden_field_tag :proceso_id, @proceso.id %>
 	    
 	  </div>
