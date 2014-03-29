@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140210020237) do
+ActiveRecord::Schema.define(:version => 20140329163050) do
 
   create_table "abogados", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20140210020237) do
     t.string   "nombre"
     t.string   "descripcion"
     t.string   "observacion"
-    t.date     "fechaSeguimiento"
+    t.datetime "fechaSeguimiento"
     t.integer  "tiempoEjecucion"
     t.string   "medidaTiempo"
     t.datetime "created_at",          :null => false
