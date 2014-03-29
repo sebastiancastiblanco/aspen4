@@ -1,5 +1,5 @@
 class Actividad < ActiveRecord::Base
-  attr_accessible :activo, :descripcion, :fechaSeguimiento, :medidaTiempo, :nombre, :observacion, :tiempoEjecucion, :created_at, :estado_actividad_id, :updated_at, :participante_id,:actividad_eventos
+  attr_accessible :activo, :descripcion, :fechaSeguimiento,:fechaseguir, :medidaTiempo, :nombre, :observacion, :tiempoEjecucion, :created_at, :estado_actividad_id, :updated_at, :participante_id,:actividad_eventos
   #Validaciones
   validates :nombre, :participante_id, :fechaSeguimiento,:estado_actividad_id, :tiempoEjecucion,:medidaTiempo, :presence => { :message => "Campo obligatorio"}
   

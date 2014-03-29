@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140329163050) do
+ActiveRecord::Schema.define(:version => 20140329165136) do
 
   create_table "abogados", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20140329163050) do
     t.integer  "participante_id"
     t.boolean  "activo"
     t.boolean  "notificarMail"
+    t.datetime "fechaseguir"
   end
 
   create_table "agendas", :force => true do |t|
