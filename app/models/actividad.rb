@@ -1,7 +1,7 @@
 class Actividad < ActiveRecord::Base
   attr_accessible :activo, :descripcion, :fechaSeguimiento,:fechaseguir, :medidaTiempo, :nombre, :observacion, :tiempoEjecucion, :created_at, :estado_actividad_id, :updated_at, :participante_id,:actividad_eventos
   #Validaciones
-  validates :nombre, :participante_id, :fechaSeguimiento,:estado_actividad_id, :tiempoEjecucion,:medidaTiempo, :presence => { :message => "Campo obligatorio"}
+  validates :nombre, :participante_id, :fechaSeguimiento,:fechaseguir,:estado_actividad_id, :tiempoEjecucion,:medidaTiempo, :presence => { :message => "Campo obligatorio"}
   
   #Validaciones de longitud
   validates :nombre, length: { minimum: 3,  :message => "Longitud minima de 3 caracteres"  }
@@ -25,6 +25,6 @@ class Actividad < ActiveRecord::Base
   #Scope para la tabla
   scope :activos, where(:activo => true)
   #Scope para la tabla
-  scope :ascendentes, order(:fechaSeguimiento)
+  scope :ascendentes, order(:fechaseguir)
 
 end

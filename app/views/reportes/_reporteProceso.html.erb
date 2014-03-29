@@ -150,7 +150,7 @@
                         
 				       	<tr>
 					      <td><%= link_to actividad.nombre, {:controller => "actividads", :action => "index", :proceso_id => @proceso.id,:actividad_id => actividad.id, :nuevoItem => true} %></td>
-					      <td><%= fechalog actividad.fechaSeguimiento %></td>
+					      <td><%= fechalog actividad.fechaseguir %></td>
 					       <td><%= fechalog actividad.updated_at %></td>
 					      <td><% if !actividad.tiempoEjecucion.nil? %>  <%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo %>
 					      		<% else %> - 

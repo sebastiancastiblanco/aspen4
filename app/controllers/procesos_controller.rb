@@ -16,7 +16,7 @@ class ProcesosController < ApplicationController
 
     #Alertas pendietse del usuario
     @NumeroAlertasPendientes = current_abogado.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC").count;
-    @NumeroActividadesPendientes = current_abogado.actividads.activos.where("fechaseguir < ?", Time.now).order("updated_at DESC").count;
+    @NumeroActividadesPendientes = current_abogado.actividads.activos.where("fechaseguir   < ?", Time.now).order("updated_at DESC").count;
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @procesos }

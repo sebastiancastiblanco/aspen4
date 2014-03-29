@@ -5,18 +5,18 @@
     <article class="calendar_event">
         <header>
                 
-                <span class="month"><%= fechaFormato1 actividad.fechaSeguimiento %></span>
+                <span class="month"><%= fechaFormato1 actividad.fechaseguir %></span>
                 <% if actividad.estado_actividad.estado =="Abierta" %>
-                           <span class="day" style="background-color: #457a1a !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                           <span class="day" style="background-color: #457a1a !important"><%= fechaDia actividad.fechaseguir %></span>
                 <% end %>
                 <% if actividad.estado_actividad.estado =="Atrasada" %>
-                            <span class="day" style="background-color: #970b0e  !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                            <span class="day" style="background-color: #970b0e  !important"><%= fechaDia actividad.fechaseguir %></span>
                 <% end %>
                 <% if actividad.estado_actividad.estado =="Terminada" %>
-                            <span class="day" style="background-color: #000 !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                            <span class="day" style="background-color: #000 !important"><%= fechaDia actividad.fechaseguir %></span>
                 <% end %>
                  <% if actividad.estado_actividad.estado =="Programada" %>
-                            <span class="day" style="background-color: rgb(16, 16, 156) !important"><%= fechaDia actividad.fechaSeguimiento %></span>
+                            <span class="day" style="background-color: rgb(16, 16, 156) !important"><%= fechaDia actividad.fechaseguir %></span>
                 <% end %>
         </header>
 
