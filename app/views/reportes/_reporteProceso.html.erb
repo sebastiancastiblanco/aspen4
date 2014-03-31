@@ -228,7 +228,9 @@
                          <tr>
 					      <td> <%= usuario.email %></td>
 					      <td class="centrado"> <%= usuario.email %></td>
+					      <% if (!usuario.created_at.nil?)%>
 					      <td class="centrado"> <%= fechalog usuario.created_at %></td>
+					      <% end %>
 					    </tr>
                     <% end %>
                     <% end %>

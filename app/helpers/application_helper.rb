@@ -16,7 +16,9 @@ module ApplicationHelper
   end
 
   def fechalog(date)
-    date.strftime("%d %B %Y")
+    if (!date.nil?)
+      date.strftime("%d %B %Y")
+    end
   end
 
     def campoFecha(date)
