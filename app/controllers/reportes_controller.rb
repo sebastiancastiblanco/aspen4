@@ -3,7 +3,7 @@ class ReportesController < ApplicationController
   	#Recuperar el ultimo proceso modificado del usuario y mostrar el reporte
   	#recuperar todos los procesos del usaurio para listarlos en un combo box.
   	@proceso = current_abogado.procesos.order('created_at DESC').last
-    @logs = Log.where(abogado_id: current_abogado.id).order('id').order('created_at DESC').limit(4)
+    @logs = Log.where(abogado_id: current_abogado.id).order('created_at DESC').group("id").limit(4)
     @procesos = current_abogado.procesos
 
     #ultimos movimientos de un proceso en especifico
