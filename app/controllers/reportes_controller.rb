@@ -8,10 +8,10 @@ class ReportesController < ApplicationController
 
     #ultimos movimientos de un proceso en especifico
     if (!@proceso.nil?)
-       @procesoLog = Log.where(proceso_id: @proceso.id ).order('updated_at DESC,proceso_id').group(@proceso.id).limit(3)
-      @alertasPendientes = @proceso.alertas.where("termina < ?", Time.now).order("updated_at DESC,proceso_id").limit(3);
-      @actividades = @proceso.actividads.activos.order('updated_at DESC,proceso_id').limit(3)
-      @documentos = @proceso.documents.activos.order('updated_at DESC,proceso_id').limit(3)
+       @procesoLog = Log.where(proceso_id: @proceso.id ).order('procesos.id, updated_at DESC').limit(5)
+      @alertasPendientes = @proceso.alertas.where("termina < ?", Time.now).order("procesos.id,updated_at DESC").limit(4);
+      @actividades = @proceso.actividads.activos.order('procesos.id,updated_at DESC').limit(2)
+      @documentos = @proceso.documents.activos.order('procesos.id,updated_at DESC').limit(1)
    
     end
    
