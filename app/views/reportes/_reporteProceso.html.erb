@@ -224,12 +224,12 @@
 					  </thead>
 					  <tbody>
 <% if (!@proceso.nil?)%>
-           		  	<% @proceso.abogados.order('created_at DESC').each do |usuario| %>
+           		  	<% @proceso.abogados.order('last_sign_in_at DESC').each do |usuario| %>
                          <tr>
 					      <td> <%= usuario.email %></td>
 					      <td class="centrado"> <%= usuario.email %></td>
-					      <% if (!usuario.created_at.nil?)%>
-					      <td class="centrado"> <%= fechalog usuario.created_at %></td>
+					      <% if (!usuario.last_sign_in_at.nil?)%>
+					      <td class="centrado"> <%= fechalog usuario.last_sign_in_at %></td>
 					      <% end %>
 					    </tr>
                     <% end %>
