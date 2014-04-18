@@ -19,6 +19,9 @@ AspenVersion3::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Expands the lines which load the assets
+  config.assets.debug = true
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
@@ -64,5 +67,5 @@ AspenVersion3::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  #config.assets.precompile += [ '*.css', '*.js' ]
+  config.assets.precompile += [ '*.css', '*.js' ]
 end
