@@ -1503,6 +1503,10 @@ div.global_links a:hover {
  font-size: 15px !important;
 }
 
+.eliminarlink{
+  margin-top: 17px;
+}
+
 a:hover, a:focus{
 
 }

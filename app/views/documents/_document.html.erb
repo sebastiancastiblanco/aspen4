@@ -32,7 +32,7 @@
                               <a data-stacker="false" href="<%= document.attachment.url %>">Descargar</a>,
                               <%= link_to 'Editar', edit_document_path(document, :proceso_id => @proceso.id,:documento_id => document.id) %>
                               <span>o</span>
-                              <%= link_to 'Eliminar', document_path(document, :proceso_id => @proceso.id), method: :delete, data: { confirm: 'Estas seguro de eliminar este documento?' }, :class => "textRojolinks inlineBlock" %>
+                              <%= link_to 'Eliminar', document_path(document, :proceso_id => @proceso.id), method: :delete, data: { confirm: 'Estas seguro de eliminar este documento?' }, :class => "textRojolinks inlineBlock eliminarlink" %>
                             </p>
                           </div>
                         </td>

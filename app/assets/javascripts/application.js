@@ -114,6 +114,7 @@ function listarActividades(){
   $('#formActividad').remove();
   $('#actividades').toggle( "fade" );
   $("#noticeMsgEliminar").hide();
+  $('#new_actividad_link').removeClass('ocultar');
   $('#new_actividad_link').show();
   $('#listar_actividades_link').hide();
   $('#listaFiltros').show();

@@ -19,7 +19,7 @@
 
                 <%= button_to 'Ver', edit_alerta_path(alerta, :proceso_id => @proceso.id), :id => "new_alert_link",:class => "tiny button radius alinearbotones botoncalendario" %>
 
-                  <%= link_to "Eliminar", alerta_path(alerta, :proceso_id => @proceso.id), :class => "textRojolinks inlineBlock",  :method => :delete, :confirm => "Estas Seguro de eliminar esta alerta?"   %>
+                  <%= link_to "Eliminar", alerta_path(alerta, :proceso_id => @proceso.id), :class => "textRojolinks inlineBlock eliminarlink",  :method => :delete, :confirm => "Estas Seguro de eliminar esta alerta?"   %>
 
             </li>
         </ul>

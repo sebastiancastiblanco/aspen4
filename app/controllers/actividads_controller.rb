@@ -66,6 +66,7 @@ class ActividadsController < ApplicationController
   # POST /actividads.json
   def create
     @actividad = Actividad.new(params[:actividad])
+    @actividad.fechaSeguimiento = @actividad.fechaseguir
     @proceso = Proceso.find(params[:proceso_id])
     #Relacionar el proceso con las actividades
     @actividad.proceso_id = @proceso.id

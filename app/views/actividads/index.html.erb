@@ -33,7 +33,7 @@
                         
                        <% if  @actividadesRender == "true" %>
                         <div id="new_actividad_link" class="ocultar">
-                         <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius ocultar", :id => "new_actividad_link" %>
+                         <%= button_to 'Nueva Actividad', {:controller => "actividads", :action => "new", :id => @proceso.id},  :remote => true, :class => "button radius", :id => "new_actividad_link" %>
                         </div>
                         <%= button_to 'Listar Actividades',"javascript:listarActividades()" , :class => "button radius ", :id => "listar_actividades_link" %>
 
