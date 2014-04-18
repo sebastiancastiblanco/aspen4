@@ -2,9 +2,9 @@ class LogsController < ApplicationController
 
  def index
      # @dias = (5.day.ago.to_date..Date.today).map{ |date| date.strftime("%b %d") }.reverse
-     @dias = Log.where(abogado_id: current_abogado.id ).limit(3).order('created_at DESC').group("date(created_at)")
+     @dias = Log.where(abogado_id: current_abogado.id ).limit(3).order('id,created_at DESC').group("date(created_at)")
      #procesos current_user.id
-     @logs = Log.where(abogado_id: current_abogado.id ).order("proceso_id").order('created_at DESC')
+     @logs = Log.where(abogado_id: current_abogado.id ).order("id,proceso_id,created_at DESC")
  end
 
  def iractividad
