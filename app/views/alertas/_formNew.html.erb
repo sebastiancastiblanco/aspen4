@@ -1,4 +1,4 @@
-<%= form_for @alerta, url: alertas_path,  :html => { :class => "custom"} do |f| %>
+<%= form_for @alerta, url: alertas_path,  :html => { :class => ""} do |f| %>
 
 
 <div class="row">
@@ -32,9 +32,9 @@
     <div class="small-2 small-offset-0 columns ">
       <%= f.label :comienza_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-4 columns left">
-      <%= f.text_field :termina, :placeholder => "Fecha inicio",:class => "date start"   %>
-    </div>
+    <div class="small-6 columns left">
+     <%= f.date_field :termina , { class: "fechasline" } %>
+     </div>
 
    
    

@@ -18,6 +18,9 @@ end
 
 gem 'paperclip'
 gem 'devise'
+gem "date-input-rails"
+
+
 
 # Gems used only for assets and not required
 # in production environments by default.
