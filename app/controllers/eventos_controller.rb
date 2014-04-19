@@ -33,8 +33,6 @@ class EventosController < ApplicationController
         @event.end.in_time_zone(zone)  
       end
       
-      
-
       respond_to do |format|
         if @event.save
           #Salvar relacion entre el evento y el usuario que lo creo

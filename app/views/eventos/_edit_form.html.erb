@@ -17,13 +17,13 @@
                   <%= f.label "Inicia el", :class => "tituloCampo error alinearDerecha" %>
                 </div>
                 <div class="small-10 columns field">
-                  <%= f.text_field :start, :placeholder => "Fecha de Inicio" %>
+                   <%= f.datetime_select :start  , {:ampm => true, :minute_step => 15,start_year: 2014,order: [:day, :month, :year]}, { class: "date start fechasline" } %>
                 </div>
                  <div class="small-2 small-offset-0 columns ">
                   <%= f.label "Finaliza el", :class => "tituloCampo error alinearDerecha" %>
                 </div>
                 <div class="small-10 columns field">
-                  <%= f.text_field :end, :placeholder => "Fecha de Finalizacion" %>
+                  <%= f.datetime_select :end  , {:ampm => true, :minute_step => 15,start_year: 2014,order: [:day, :month, :year]}, { class: "date start fechasline" } %>
                 </div>
                   <div class="small-2 small-offset-0 columns ">
                   <%= f.label "Todo el dia", :class => "tituloCampo error alinearDerecha" %>
