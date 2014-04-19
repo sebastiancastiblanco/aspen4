@@ -1508,10 +1508,18 @@ div.global_links a:hover {
 }
 
 .fechasline{
-  float: left;
-  width: 60px;
+  width: 64px !important;
 }
 
+.fechasline2{
+  width: 73px !important;
+float: left;
+margin-left: 7px;
+}
+
+.modaleventos{
+  width: 43% !important;
+}
 
 a:hover, a:focus{
 

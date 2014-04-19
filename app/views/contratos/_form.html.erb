@@ -90,7 +90,7 @@
           </div>
           <div class="small-4 columns field">
             <span data-tooltip class="tip-top" title="Fecha acordada para inicar el proceso">
-            <%= f.text_field :fechaInicio , :placeholder => "Fecha de Inicio del contrato" %>
+            <%= f.date_select :fechaInicio  , {:ampm => true, :minute_step => 15,start_year: 2014,order: [:day, :month, :year]}, { class: "date start fechasline2" } %>
           </div>
           
             <div class="small-2 small-offset-0 columns">
@@ -98,7 +98,7 @@
           </div>
           <div class="small-4 columns field ">
              <span data-tooltip class="tip-top" title="Fecha para la culminación esperada del proceso">
-             <%= f.text_field :fechaFin , :placeholder => "Fecha fin del contrato" %>
+             <%= f.date_select :fechaFin  , {:ampm => true, :minute_step => 15,start_year: 2014,order: [:day, :month, :year]}, { class: "date start fechasline2" } %>
           </div>
       </section>
    

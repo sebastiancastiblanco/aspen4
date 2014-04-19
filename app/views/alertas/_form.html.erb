@@ -33,7 +33,7 @@
       <%= f.label :comienza_, :class => "tituloCampo error alinearDerecha" %>
     </div>
     <div class="small-4 columns left">
-      <%= f.datetime_select :termina , {}, { class: "date start fechasline" } %>
+      <%= f.datetime_select :termina  , {:ampm => true, :minute_step => 15,start_year: 2014,order: [:day, :month, :year]}, { class: "date start fechasline" } %>
     </div>
 
     

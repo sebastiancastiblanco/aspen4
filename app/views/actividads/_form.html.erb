@@ -30,7 +30,7 @@
     </div>
     <div class="small-4 columns field">
           <span data-tooltip class="tip-top" title="Fecha de inicio de la actividad?">
-          <%= actividad.text_field :fechaseguir , :placeholder => "Fecha Seguimiento" %>
+          <%= actividad.date_select :fechaseguir  , {:ampm => true, :minute_step => 15,start_year: 2014,order: [:day, :month, :year]}, { class: "date start fechasline2" } %>
     </div>
 </div>
 
