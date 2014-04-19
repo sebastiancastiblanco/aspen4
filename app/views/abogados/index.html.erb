@@ -1,0 +1,88 @@
+<body>
+
+    <div id="workspace" class="workspace">
+    <div class="container stack_container"  style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris">
+        
+        <div class="sheet_body">
+            
+            
+   <div class="panellog">
+		      <div class="row">
+
+        <div> <img src="/img/user64.png" class="alinearbotones" style="margin-bottom: 34px;"> </div>
+   		  <div style="margin-left: 95px;"> 
+   		  		<h1 id="nombreUsuario" style="margin-bottom: 0px;"><%= @abogado.email %></h1> 
+    			<div id="correoUsuario" class="links"><%= @abogado.email %></div>
+              	<span class="detalle">creado el <%= fechalog @abogado.created_at %></span>
+   		  </div>
+          
+   		  <hr class="lineaHorizontalAzul">
+         <br />
+
+          <h4>Edita tu informacion</h4>
+
+
+        
+              <div class="large-12 small-12 columns">
+                <div class="panel" style="background:white;">
+   	               
+   	               <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+
+        					<div id="formularioUsuarios"></div>
+           	               
+        					<%= render 'formeditarabogado' %>
+               
+                 </div>
+	
+              </div>
+              
+              <div class="large-12 small-12 columns">
+               <div class="row">
+					
+					  <div class="small-12  columns" > 
+					  	<h3>Ultimos movimientos</h3>
+					  	<hr class="lineaHorizontalAzul">
+					  	 <% @logs.limit(5).each do |log| %>
+		                    <div class="action">
+		                      <span class="in_project tituloCampo">
+		                        <%= log.mensaje %>, <%= fechalog log.created_at %>
+		                      </span>
+		                    </div>
+		            <% end %>
+                <%= link_to 'Ver Progreso', :progreso, :class=>"textolinks alinearDerecha" %>
+
+		          <br />
+					  	<h3>Ultimos procesos creados</h3>
+					  	<hr  class="lineaHorizontalAzul"> 
+					  	 <% @procesos.limit(5).each do |proceso| %>
+		    
+		                    <div class="action">
+		                      <span class="in_project tituloCampo">
+		                        <%= proceso.titulo %>, <%= fechalog proceso.created_at %>
+		                      </span>
+		                    </div>
+		                  <% end %>
+                 <%= link_to 'Procesos', :procesos, :class=>"textolinks alinearDerecha" %>
+					  </div>
+				 
+              </div>
+         </div>
+
+
+   </div>       
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</body>
+
+
+
+
+
+
+
+

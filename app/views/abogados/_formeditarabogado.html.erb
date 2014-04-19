@@ -1,0 +1,37 @@
+<%= form_for @abogado, :remote => true, :html => { :class => "custom",:id => "formUsuario"} do |f| %>
+      
+     
+
+      <div class="row">
+            
+            <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag "Correo" ,nil, :class => "tituloCampo"  %>
+            </div>
+            <div class="small-10  columns field">
+                 <%= f.text_field :email,:placeholder => "Correo electronico" %>
+            </div>
+
+             <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag "Nombre" ,nil, :class => "tituloCampo error "  %>
+            </div>
+            <div class="small-10 columns field">
+                 <%= f.text_field :nombre,:placeholder => "Nombre completo" %>
+            </div>
+
+            <div class="small-2 small-offset-0 columns field"> 
+              <%= label_tag :empresa ,nil, :class => "tituloCampo"  %>
+            </div>
+            <div class="small-10  columns field">
+               <%= f.text_field :empresa ,:placeholder => "Empresa" %>
+            </div>
+            
+      </div>
+         
+
+        <div class="row">
+            <div class="small-10 small-offset-2 columns field">
+                 <%= f.submit :'salvar cambios' , :class => "button  radius" %></div>
+            
+         </div>
+
+      <% end %>

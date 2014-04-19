@@ -1,0 +1,16 @@
+<% if @abogado.errors.count == 0 %>
+    document.getElementById("noticeMsg").innerHTML = "Se guardaron los cambios";
+    document.getElementById("nombreUsuario").innerHTML = "<%= @abogado.nombre %>";
+    document.getElementById("correoUsuario").innerHTML = "<%= @abogado.email %>";
+    $("#noticeMsg").show();
+	$('#formUsuario').remove();
+    $('#formularioUsuarios').after('<%= j render("formeditarabogado") %>');
+
+<% else %>
+	document.getElementById("noticeMsg").innerHTML = "No se pueden guardar los cambios";
+	$('#formUsuario').remove();
+	$("#noticeMsg").hide();
+    $('#formularioUsuarios').after('<%= j render("formeditarabogado") %>');
+
+<% end %>
+

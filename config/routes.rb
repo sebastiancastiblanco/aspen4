@@ -1,6 +1,16 @@
 AspenVersion3::Application.routes.draw do
   
-  devise_for :abogados
+  get "abogados/index"
+
+  get "abogados/create"
+
+  get "abogados/update"
+
+  get "abogados/edit"
+
+  get "abogados/destroy"
+
+  get "abogados/show"
 
   devise_for :abogados
 
