@@ -39,11 +39,11 @@ class Proceso < ActiveRecord::Base
     where("abogado_id = ? AND estado_proceso_id = ?", usuarioid,estado_proceso_id)
   end
   
-  scope :sinIniciar, ->(usuarioid) {self.procesoEstado(usuarioid,6)}
-  scope :abiertos, ->(usuarioid) {self.procesoEstado(usuarioid,7)}
-  scope :cerrados, ->(usuarioid) {self.procesoEstado(usuarioid,8)}
-  scope :aplazados, ->(usuarioid) {self.procesoEstado(usuarioid,9)}
-  scope :vencienron, ->(usuarioid) {self.procesoEstado(usuarioid,10)}
+  scope :sinIniciar, ->(usuarioid) {self.procesoEstado(usuarioid,1)}
+  scope :abiertos, ->(usuarioid) {self.procesoEstado(usuarioid,2)}
+  scope :cerrados, ->(usuarioid) {self.procesoEstado(usuarioid,3)}
+  scope :aplazados, ->(usuarioid) {self.procesoEstado(usuarioid,4)}
+  scope :vencienron, ->(usuarioid) {self.procesoEstado(usuarioid,5)}
   
   def self.buscar(buscar)
     if buscar
