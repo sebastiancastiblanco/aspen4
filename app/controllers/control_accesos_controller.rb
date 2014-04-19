@@ -57,7 +57,7 @@ class ControlAccesosController < ApplicationController
           #Enviar Correo el cual notifica que se comparte el proceso
           threads = []
             threads << Thread.new do
-                 ContactoMailer.compartirProcesoUsuario(current_abogado,@control_acceso.proceso,@control_acceso.abogado.email).deliver
+                 #ContactoMailer.compartirProcesoUsuario(current_abogado,@control_acceso.proceso,@control_acceso.abogado.email).deliver
             end
           threads.each(&:join)
 
