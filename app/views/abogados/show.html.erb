@@ -14,7 +14,7 @@
    		  <div style="margin-left: 95px;"> 
    		  		<h1 id="nombreUsuario" style="margin-bottom: 0px;"><%= @abogado.email %></h1> 
     			<div id="correoUsuario" class="links"><%= @abogado.email %></div>
-              	<span class="detalle">creado el <%= fechalog @abogado.created_at %></span>
+              	<span class="detalle">ultimo ingreso, <%= fechalog @abogado.current_sign_in_at %></span>
    		  </div>
           
    		  <hr class="lineaHorizontalAzul">
