@@ -1507,6 +1507,12 @@ div.global_links a:hover {
   margin-top: 17px;
 }
 
+.fechasline{
+  float: left;
+  width: 100px;
+}
+
+
 a:hover, a:focus{
 
 }
