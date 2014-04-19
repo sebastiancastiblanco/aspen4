@@ -19,13 +19,13 @@
                   <%= f.label "Inicia el", :class => "tituloCampo error alinearDerecha" %>
                 </div>
                 <div class="small-10 columns field">
-                  <%= f.datetime_select :start, :placeholder => "Fecha de Inicio", :html=>{:class =>"fechasline"},:class=>"fechasline" %>
+                  <%= f.datetime_select :start , {prompt: true}, { class: "fechasline" } %>
                 </div>
                  <div class="small-2 small-offset-0 columns ">
                   <%= f.label "Finaliza el", :class => "tituloCampo error alinearDerecha" %>
                 </div>
                 <div class="small-10 columns field">
-                  <%= f.datetime_select :end, :placeholder => "Fecha de Finalizacion" %>
+                  <%= f.datetime_select :end, {}, { class: "fechasline" }  %>
                 </div>
                   <div class="small-2 small-offset-0 columns ">
                   <%= f.label "Todo el dia", :class => "tituloCampo error alinearDerecha" %>
