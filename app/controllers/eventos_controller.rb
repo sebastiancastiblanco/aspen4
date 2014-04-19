@@ -26,18 +26,16 @@ class EventosController < ApplicationController
   def create
       @event = Evento.new(params[:evento])
      zone = ActiveSupport::TimeZone.new("America/Bogota")
-      if !@event.start.nil?
-        @event.start.in_time_zone(zone)
-      end
-      #if !@event.end.nil?
-       # @event.end.in_time_zone(zone)  
-      #end
       
       respond_to do |format|
         if @event.save
           #Salvar relacion entre el evento y el usuario que lo creo
           @event.usuario_eventos.create(:abogado_id => current_abogado.id,:propietario_id => current_abogado.id,:evento_id => @event.id)
-        
+          
+          @event.start.in_time_zone(zone)
+          @event.end.in_time_zone(zone)
+          @event.save
+
             format.json { render json: @event, status: :created, location: @event }
             format.js
         else
