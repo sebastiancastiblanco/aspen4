@@ -38,6 +38,8 @@ AspenVersion3::Application.configure do
 
   config.action_mailer.default_url_options = { :host =>"aspen-abogados-online.herokuapp.com"}
 
+
+
   #Mailer to GMAIL
  config.action_mailer.delivery_method = :smtp
  config.action_mailer.smtp_settings = {

@@ -67,4 +67,19 @@ AspenVersion3::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   #config.assets.precompile += [ '*.css', '*.js' ]
+
+
+  #Mailer to GMAIL
+config.action_mailer.delivery_method = :smtp
+ config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'easltda.org',
+  user_name:            'sebastiancasti@gmail.com',
+  password:             'placebosebastian',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
+
+  
+  config.time_zone = 'UTC' 
 end
