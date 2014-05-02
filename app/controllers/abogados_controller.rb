@@ -29,7 +29,7 @@ class AbogadosController < ApplicationController
 
     respond_to do |format|
       if @abogado.update_attributes(params[:abogado])
-        format.html { redirect_to @abogado, notice: 'El Usuario fue modificado correctamente.' }
+        format.html { redirect_to @abogado, notice: 'Actualizacion terminada.' }
         format.json { head :no_content }
         format.js
       else
@@ -44,5 +44,10 @@ class AbogadosController < ApplicationController
   end
 
   def destroy
+    @abogado = current_abogado
+    @abogado.update_attribute(:activo, false)
   end
+
+  
+
 end

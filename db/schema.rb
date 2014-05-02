@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140419232702) do
+ActiveRecord::Schema.define(:version => 20140501231902) do
 
   create_table "abogados", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(:version => 20140419232702) do
     t.datetime "updated_at",                             :null => false
     t.string   "nombre"
     t.string   "empresa"
+    t.boolean  "activo"
+    t.integer  "failed_attemps",         :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.integer  "failed_attempts",        :default => 0
   end
 
   add_index "abogados", ["email"], :name => "index_abogados_on_email", :unique => true

@@ -8,6 +8,8 @@ class Abogado < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :created_at,:updated_at,:last_sign_in_at, :nombre, :empresa
   # attr_accessible :title, :body
 
+  after_create :welcome_message
+
    #Un Usuario (Abogado) tiene varios procesos
   has_many :control_accesos
   has_many :procesos, through: :control_accesos
@@ -58,5 +60,17 @@ class Abogado < ActiveRecord::Base
 
   def enviarContacto
     
+  end
+
+    # devise confirm! method overriden
+  def confirm!
+    welcome_message
+    super
+  end
+
+private
+
+  def welcome_message
+    UsuarioMails.bienvenida(self).deliver
   end
 end

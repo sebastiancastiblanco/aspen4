@@ -8,7 +8,7 @@
               <%= label_tag "Correo" ,nil, :class => "tituloCampo"  %>
             </div>
             <div class="small-10  columns field">
-                 <%= f.text_field :email,:placeholder => "Correo electronico" %>
+                 <%= f.text_field :email,:placeholder => "Correo electronico", :disabled => true %>
             </div>
 
              <div class="small-2 small-offset-0 columns field"> 
@@ -29,9 +29,11 @@
          
 
         <div class="row">
-            <div class="small-10 small-offset-2 columns field">
-                 <%= f.submit :'salvar cambios' , :class => "button  radius" %></div>
-            
+            <div class="small-8 large-8  large-centered small-centered columns field">
+                 <%= f.submit :'Actualizar datos' , :class => "button  radius" %>
+                  <%= link_to "Eliminar cuenta", abogado_registration_path, :class => "textRojolinks inlineBlock eliminarlink",  method: :delete, data: { confirm: 'Estas Seguro de eliminar tu cuenta?' } ,  :method => :delete %>
          </div>
 
+
+</div>
       <% end %>

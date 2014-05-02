@@ -17,13 +17,13 @@ class Proceso < ActiveRecord::Base
   has_many :actividads
 
  #tiene varias alertas
-  has_many :alertas
+ has_many :alertas
 
    #tiene varios documentos
-  has_many :documents
+   has_many :documents
 
    #tiene varios estados
-  has_many :estados
+   has_many :estados
 
   #tiene un tipo de proceso
   belongs_to :tipo_proceso
@@ -53,6 +53,14 @@ class Proceso < ActiveRecord::Base
     end
   end
 
+  def self.to_csv (options={})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |proceso|
+        csv << proceso.attributes.values_at(*column_names)
+      end 
+    end
+  end
 
 
 end

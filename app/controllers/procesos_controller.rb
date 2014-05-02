@@ -20,6 +20,8 @@ class ProcesosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @procesos }
+      format.csv { send_data @procesos.to_csv }
+      format.xls #{ send_data @procesos.to_csv(col_sep: "\t") }
     end
   end
 
@@ -270,5 +272,13 @@ class ProcesosController < ApplicationController
       format.js
     end
   end
+
+  def exportarProcesos
+     @procesos = current_abogado.procesos
+     respond_to do |format|
+      format.csv {render text: @procesos.to_csv }
+   end
+  end
+
 
 end

@@ -16,11 +16,11 @@ class UsuarioMails < ActionMailer::Base
   #
   #   en.usuario_mails.bienvenida.subject
   #
-  def bienvenida (usuario)
-     @usuario = usuario
-     @url  = 'http://localhost:3000/ingresoCuenta '
+  def bienvenida (abogado)
+     @usuario = abogado
+     @url  = 'http://aspen-abogados-online.herokuapp.com/abogados/sign_in '
 
-    mail to: usuario.username, subject: "[Aspen] Bienvenido a Aspen"
+    mail to: abogado.email, subject: "[Aspen] Bienvenido a Aspen"
   end
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

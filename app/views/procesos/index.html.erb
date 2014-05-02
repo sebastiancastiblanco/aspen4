@@ -32,19 +32,20 @@
 
             <div class="project_templates">
                 <hr>
-                
+                 <% if !@NumeroAlertasPendientes.nil? %>
                 <% if (@NumeroAlertasPendientes > 0) %>
                 <strong><%= link_to "Alertas Pendientes ("+@NumeroAlertasPendientes.to_s+")", :alertasPendientes %></strong>
                 <% elsif %>
                 <%= link_to "Alertas Pendientes ("+@NumeroAlertasPendientes.to_s+")", :alertasPendientes %>
                 <% end %>
-
+                <% end %>
+<% if !@NumeroActividadesPendientes.nil? %>
                  <% if (@NumeroActividadesPendientes > 0) %>
                 <strong><%= link_to "Actividad Pendientes ("+@NumeroActividadesPendientes.to_s+")", :actividadesPendientes %></strong>
                 <% elsif %>
                 <%= link_to "Actividad Pendientes ("+@NumeroActividadesPendientes.to_s+")", :actividadesPendientes %>
                 <% end %>
-                
+                <% end %>
                 
             </div>
 
@@ -119,6 +120,13 @@
         </div>
     </div>
     </div>
+
+    <p>
+      Download:
+      <%= link_to "CSV", procesos_path(format: "csv") %> |
+      <%= link_to "Excel", procesos_path(format: "xls") %>
+    </p>
+
 </body>
 
 <!-- Mostrar este mensaje si la lista de participantes esta vacia -->

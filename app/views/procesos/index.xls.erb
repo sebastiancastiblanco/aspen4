@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <% @procesos.each do |proceso| %>
+    <Worksheet ss:Name="<%= proceso.id %> - <%= proceso.titulo %>">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Id Proceso</Data></Cell>
+        <Cell><Data ss:Type="String">Referencia</Data></Cell>
+        <Cell><Data ss:Type="String">Nombre proceso</Data></Cell>
+        <Cell><Data ss:Type="String">Objetivo</Data></Cell>
+        <Cell><Data ss:Type="String">Ciudad</Data></Cell>
+        <Cell><Data ss:Type="String">Favorito</Data></Cell>
+        <Cell><Data ss:Type="String">Tipo de Proceso</Data></Cell>
+        <Cell><Data ss:Type="String">Estado del Proceso</Data></Cell>
+        <Cell><Data ss:Type="String">fecha de inicio</Data></Cell>
+         
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= proceso.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= proceso.referencia %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= proceso.titulo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= proceso.objetivo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= proceso.ciudad %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= proceso.favorito %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= proceso.tipo_proceso.tipo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= proceso.estado_proceso.estado %></Data></Cell>
+        <Cell><Data ss:Type="DateTime"><%= proceso.created_at %></Data></Cell>
+       </Row>
+
+      <Row>
+        <Cell><Data ss:Type="String">Participantes</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">Nombre</Data></Cell>
+        <Cell><Data ss:Type="String">Apellido</Data></Cell>
+        <Cell><Data ss:Type="String">Correo</Data></Cell>
+        <Cell><Data ss:Type="String">rolPrincipal</Data></Cell>
+        <Cell><Data ss:Type="String">telefono</Data></Cell>
+        <Cell><Data ss:Type="String">tipoDocumento</Data></Cell>
+        <Cell><Data ss:Type="String">documento</Data></Cell>
+        <Cell><Data ss:Type="String">estadoCivil</Data></Cell>
+        <Cell><Data ss:Type="String">direccion</Data></Cell>
+        <Cell><Data ss:Type="String">fechaNacimiento</Data></Cell>
+        <Cell><Data ss:Type="String">genero</Data></Cell>
+      </Row>
+       <% proceso.participantes.each do |participante| %>
+        <Row>
+        <Cell><Data ss:Type="Number"><%= participante.nombre%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.apellido %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.correo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.rolPrincipal %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.telefono %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.tipoDocumento %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.documento %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.estadoCivil %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.direccion %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.genero %></Data></Cell>
+        <Cell><Data ss:Type="DateTime"><%= participante.fechaNacimiento %></Data></Cell>
+       </Row>
+       <% end %>
+   
+    </Table>
+  </Worksheet>
+  <% end %>
+</Workbook>
