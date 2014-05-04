@@ -19,7 +19,7 @@
         <Cell><Data ss:Type="String">fecha de inicio</Data></Cell>
       </Row>
       <Row>
-        <Cell><Data ss:Type="Number"><%= proceso.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= proceso.id %></Data></Cell>
         <Cell><Data ss:Type="String"><%= proceso.referencia %></Data></Cell>
         <Cell><Data ss:Type="String"><%= proceso.titulo %></Data></Cell>
         <Cell><Data ss:Type="String"><%= proceso.objetivo %></Data></Cell>
@@ -49,7 +49,7 @@
       </Row>
        <% proceso.participantes.where(activo: true).each do |participante| %>
         <Row>
-        <Cell><Data ss:Type="Number"><%= participante.nombre%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participante.nombre%></Data></Cell>
         <Cell><Data ss:Type="String"><%= participante.apellido %></Data></Cell>
         <Cell><Data ss:Type="String"><%= participante.correo %></Data></Cell>
         <Cell><Data ss:Type="String"><%= participante.rolPrincipal %></Data></Cell>
@@ -84,7 +84,7 @@
       </Row>
        <% proceso.contratos.where(activo: true).each do |contrato| %>
         <Row>
-        <Cell><Data ss:Type="Number"><%= contrato.tipoContrato %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.tipoContrato %></Data></Cell>
         <Cell><Data ss:Type="String"><%= contrato.objeto %></Data></Cell>
         <Cell><Data ss:Type="String"><%= contrato.particpante1 %> </Data></Cell>
         <Cell><Data ss:Type="String"><%= contrato.particpante1 %> </Data></Cell>
@@ -117,7 +117,7 @@
 
       <% proceso.actividads.where(activo: true).each do |activiadad| %>
         <Row>
-        <Cell><Data ss:Type="Number"><%= activiadad.nombre %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= activiadad.nombre %></Data></Cell>
         <Cell><Data ss:Type="String"><%= activiadad.participante.nombre %></Data></Cell>
         <Cell><Data ss:Type="String"><%= activiadad.participante.apellido %></Data></Cell>
         <Cell><Data ss:Type="String"><%= activiadad.estado_actividad.estado %> </Data></Cell>
@@ -141,7 +141,7 @@
 
      <% proceso.alertas.where(activo: true).each do |alerta| %>
         <Row>
-        <Cell><Data ss:Type="Number"><%= alerta.titulo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= alerta.titulo %></Data></Cell>
         <Cell><Data ss:Type="String"><%= alerta.nota %></Data></Cell>
         <Cell><Data ss:Type="String"><%= alerta.termina %></Data></Cell>
         </Row>
@@ -159,7 +159,7 @@
 
      <% proceso.estados.where(activo: true).each do |estado| %>
         <Row>
-        <Cell><Data ss:Type="Number"><%= estado.tipo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= estado.tipo %></Data></Cell>
         <Cell><Data ss:Type="String"><%= estado.conclusion %></Data></Cell>
         <Cell><Data ss:Type="String"><%= estado.resumen %></Data></Cell>
         </Row>
