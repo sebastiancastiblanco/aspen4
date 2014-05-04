@@ -70,7 +70,6 @@ AspenVersion3::Application.configure do
 
 
   #Mailer to GMAIL
-  #Mailer to GMAIL
  config.action_mailer.delivery_method = :smtp
  config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
