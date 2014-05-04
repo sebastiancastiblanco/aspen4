@@ -13,7 +13,6 @@ class Contrato < ActiveRecord::Base
   validates :obligaciones, length: { maximum: 250,  :message => "Longitud maxima de 250 digitos"  }, :unless => "obligaciones.nil?" 
   validates :deberes, length: { maximum: 250,  :message => "Longitud maxima de 250 digitos"  }, :unless => "deberes.nil?" 
   
-  
   #Pertenece a un proceso
   belongs_to :proceso
 end

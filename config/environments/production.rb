@@ -70,13 +70,14 @@ AspenVersion3::Application.configure do
 
 
   #Mailer to GMAIL
-config.action_mailer.delivery_method = :smtp
+  #Mailer to GMAIL
+ config.action_mailer.delivery_method = :smtp
  config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
-  domain:               'easltda.org',
-  user_name:            'sebastiancasti@gmail.com',
-  password:             'placebosebastian',
+  domain:               'aspenforlawyer.com',
+  user_name:            'aspen.abogados@gmail.com',
+  password:             'sebcastiblanco',
   authentication:       'plain',
   enable_starttls_auto: true  }
 

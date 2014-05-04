@@ -19,8 +19,10 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Instrucciones de activacion"
+        from: info@aspenforlawyer.com
       reset_password_instructions:
         subject: "Restablecer contraseña"
+        from: aspen.abogados@gmail.com
       unlock_instructions:
         subject: "Instrucciones para desbloqueo de cuenta"
     omniauth_callbacks:

@@ -17,6 +17,9 @@
   <%= f.password_field :password_confirmation , :class=>"cajaMargen" %></div>
 
   <div><%= f.submit "Crear Cuenta" , :class=>"button botonGrande" %></div>
+  <div style="text-align:center">
+  		<%= link_to "realizando click, esta aceptando los terminos y condiciones.", :terminosYcondiciones , :class=>"cajaMargenDerecha" ,:target => "_blank"  %></div>
+  		<hr>
 <% end %>
 
 <%= render "devise/shared/links" %>

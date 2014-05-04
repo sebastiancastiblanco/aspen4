@@ -1,5 +1,5 @@
 class UsuarioMails < ActionMailer::Base
-  default from: "Aspen@aspen.com"
+  default from: "aspen.abogados@gmail.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,7 +8,7 @@ class UsuarioMails < ActionMailer::Base
   #
   def recuperarContrasena (user)
      @usuario = user
-     mail to: user.username, subject: "[Aspen] Recuperar contrasena"
+     mail to: user.username, subject: "[Aspen] Recuperar contrasena",from: "aspen.abogados@gmail.com"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -20,7 +20,7 @@ class UsuarioMails < ActionMailer::Base
      @usuario = abogado
      @url  = 'http://aspen-abogados-online.herokuapp.com/abogados/sign_in '
 
-    mail to: abogado.email, subject: "[Aspen] Bienvenido a Aspen"
+    mail to: abogado.email, subject: "[Aspen] Bienvenido a Aspen",from: "aspen.abogados@gmail.com"
   end
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -29,6 +29,6 @@ class UsuarioMails < ActionMailer::Base
   #
   def registroNoticias (correo)
      @correo = correo
-     mail to: correo, subject: "[Aspen] Gracias por tu registro"
+     mail to: correo, subject: "[Aspen] Gracias por tu registro",from: "aspen.abogados@gmail.com"
   end
 end

@@ -17,7 +17,6 @@
         <Cell><Data ss:Type="String">Tipo de Proceso</Data></Cell>
         <Cell><Data ss:Type="String">Estado del Proceso</Data></Cell>
         <Cell><Data ss:Type="String">fecha de inicio</Data></Cell>
-         
       </Row>
       <Row>
         <Cell><Data ss:Type="Number"><%= proceso.id %></Data></Cell>
@@ -30,10 +29,11 @@
         <Cell><Data ss:Type="String"><%= proceso.estado_proceso.estado %></Data></Cell>
         <Cell><Data ss:Type="DateTime"><%= proceso.created_at %></Data></Cell>
        </Row>
-
-      <Row>
-        <Cell><Data ss:Type="String">Participantes</Data></Cell>
-      </Row>
+       
+       <Row>
+        <Cell><Data ss:Type="String">-----------Participantes------------</Data></Cell>
+       </Row>
+      
       <Row>
         <Cell><Data ss:Type="String">Nombre</Data></Cell>
         <Cell><Data ss:Type="String">Apellido</Data></Cell>
@@ -47,7 +47,7 @@
         <Cell><Data ss:Type="String">fechaNacimiento</Data></Cell>
         <Cell><Data ss:Type="String">genero</Data></Cell>
       </Row>
-       <% proceso.participantes.each do |participante| %>
+       <% proceso.participantes.where(activo: true).each do |participante| %>
         <Row>
         <Cell><Data ss:Type="Number"><%= participante.nombre%></Data></Cell>
         <Cell><Data ss:Type="String"><%= participante.apellido %></Data></Cell>
@@ -63,6 +63,108 @@
        </Row>
        <% end %>
    
+       <Row>
+        <Cell><Data ss:Type="String">-----------Contratos------------</Data></Cell>
+       </Row>
+      
+      <Row>
+        <Cell><Data ss:Type="String">Tipo contrato</Data></Cell>
+        <Cell><Data ss:Type="String">Objeto</Data></Cell>
+        <Cell><Data ss:Type="String">Contratante Nombre</Data></Cell>
+        <Cell><Data ss:Type="String">Contratante Apellido</Data></Cell>
+        <Cell><Data ss:Type="String">Contratista Nombre</Data></Cell>
+        <Cell><Data ss:Type="String">Contratista Apellido</Data></Cell>
+        <Cell><Data ss:Type="String">Valor</Data></Cell>
+        <Cell><Data ss:Type="String">Forma de pago</Data></Cell>
+        <Cell><Data ss:Type="String">Obligaciones</Data></Cell>
+        <Cell><Data ss:Type="String">Deberes</Data></Cell>
+        <Cell><Data ss:Type="String">Fecha de inicio</Data></Cell>
+        <Cell><Data ss:Type="String">fecha fin</Data></Cell>
+    
+      </Row>
+       <% proceso.contratos.where(activo: true).each do |contrato| %>
+        <Row>
+        <Cell><Data ss:Type="Number"><%= contrato.tipoContrato %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.objeto %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.particpante1 %> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.particpante1 %> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.participante2 %> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.participante2 %> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.valor %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.formaPago %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.obligaciones %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.deberes %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.fechaInicio %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= contrato.fechaFin %></Data></Cell>
+       </Row>
+       <% end %>
+
+      <Row>
+        <Cell><Data ss:Type="String">-----------Actividades------------</Data></Cell>
+      </Row>
+      
+      <Row>
+        <Cell><Data ss:Type="String">Nombre actividad</Data></Cell>
+        <Cell><Data ss:Type="String">Encargado nombre</Data></Cell>
+        <Cell><Data ss:Type="String">Encargado apellido</Data></Cell>
+        <Cell><Data ss:Type="String">Estado Actividad</Data></Cell>
+        <Cell><Data ss:Type="String">Fecha Seguimiento</Data></Cell>
+        <Cell><Data ss:Type="String">Tiempo ejecucion</Data></Cell>
+        <Cell><Data ss:Type="String">Medida de Tiempo</Data></Cell>
+        <Cell><Data ss:Type="String">Descripcion</Data></Cell>
+        <Cell><Data ss:Type="String">Observaciones</Data></Cell>
+     </Row>
+
+      <% proceso.actividads.where(activo: true).each do |activiadad| %>
+        <Row>
+        <Cell><Data ss:Type="Number"><%= activiadad.nombre %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= activiadad.participante.nombre %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= activiadad.participante.apellido %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= activiadad.estado_actividad.estado %> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= activiadad.fechaseguir %> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= activiadad.tiempoEjecucion %> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= activiadad.medidaTiempo %> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= activiadad.descripcion %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= activiadad.observacion %></Data></Cell>
+        </Row>
+       <% end %>
+
+      <Row>
+        <Cell><Data ss:Type="String">-----------Alertas------------</Data></Cell>
+      </Row>
+      
+      <Row>
+        <Cell><Data ss:Type="String">titulo</Data></Cell>
+        <Cell><Data ss:Type="String">nota</Data></Cell>
+        <Cell><Data ss:Type="String">fecha</Data></Cell>
+     </Row>
+
+     <% proceso.alertas.where(activo: true).each do |alerta| %>
+        <Row>
+        <Cell><Data ss:Type="Number"><%= alerta.titulo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= alerta.nota %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= alerta.termina %></Data></Cell>
+        </Row>
+       <% end %>
+
+        <Row>
+        <Cell><Data ss:Type="String">-----------Conclusiones------------</Data></Cell>
+      </Row>
+      
+      <Row>
+        <Cell><Data ss:Type="String">tipo</Data></Cell>
+        <Cell><Data ss:Type="String">conclusion</Data></Cell>
+        <Cell><Data ss:Type="String">observaciones</Data></Cell>
+     </Row>
+
+     <% proceso.estados.where(activo: true).each do |estado| %>
+        <Row>
+        <Cell><Data ss:Type="Number"><%= estado.tipo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= estado.conclusion %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= estado.resumen %></Data></Cell>
+        </Row>
+       <% end %>
+
     </Table>
   </Worksheet>
   <% end %>
