@@ -36,7 +36,7 @@ AspenVersion3::Application.configure do
   config.assets.debug = true
 
 
-  config.action_mailer.default_url_options = { :host =>"aspen-abogados-online.herokuapp.com"}
+  config.action_mailer.default_url_options = { :host =>"aspen.herokuapp.com"}
 
 
 

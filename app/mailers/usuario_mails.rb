@@ -18,7 +18,7 @@ class UsuarioMails < ActionMailer::Base
   #
   def bienvenida (abogado)
      @usuario = abogado
-     @url  = 'http://aspen-abogados-online.herokuapp.com/abogados/sign_in '
+     @url  = 'http://aspen.herokuapp.com/'
 
     mail to: abogado.email, subject: "[Aspen] Bienvenido a Aspen",from: "aspen.abogados@gmail.com"
   end
