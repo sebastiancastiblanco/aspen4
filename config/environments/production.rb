@@ -68,6 +68,8 @@ AspenVersion3::Application.configure do
 
   #config.assets.precompile += [ '*.css', '*.js' ]
 
+  config.action_mailer.default_url_options = { :host =>"aspen.herokuapp.com"}
+
 
   #Mailer to GMAIL
  config.action_mailer.delivery_method = :smtp

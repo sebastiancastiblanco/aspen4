@@ -19,7 +19,7 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Instrucciones de activacion"
-        from: info@aspenforlawyer.com
+        from: asepn.abogados@gmail.com
       reset_password_instructions:
         subject: "Restablecer contraseña"
         from: aspen.abogados@gmail.com
