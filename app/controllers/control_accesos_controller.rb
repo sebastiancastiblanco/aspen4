@@ -12,7 +12,7 @@ class ControlAccesosController < ApplicationController
         @abogados_hash << { 
             :title => b["email"], 
             :label => [b["email"], b["email"]].join(" "), 
-            :value => b["id"], 
+            :value => b["email"], 
         }
     end
     render :json => @abogados_hash
