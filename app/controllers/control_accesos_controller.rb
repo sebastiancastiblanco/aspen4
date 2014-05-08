@@ -1,11 +1,31 @@
 class ControlAccesosController < ApplicationController
   # GET /control_accesos
   # GET /control_accesos.json
+
+  autocomplete :abogado, :email, full: true 
+
+  def abogadoAutocomplete
+     @abogados = Abogado.find(:all, :conditions => ['email LIKE ?', "%#{params[:term]}%"])
+
+    @abogados_hash = []
+    @abogados.each do |b|
+        @abogados_hash << { 
+            :title => b["email"], 
+            :label => [b["email"], b["email"]].join(" "), 
+            :value => b["id"], 
+        }
+    end
+    render :json => @abogados_hash
+
+  end
+
+
   def index
     @control_accesos = ControlAcceso.all
     @control_acceso = ControlAcceso.new
     @usuarios =  Abogado.all
     
+    @abogado = Abogado.new
 
     @procesos = current_abogado.procesos
     @privilegios = Privilegio.all

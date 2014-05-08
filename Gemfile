@@ -61,6 +61,9 @@ gem 'whenever', :require => false
 #delayed para enviar correos asincronamente
 gem 'delayed_job_active_record'
 
+#Autocompletar los campos
+gem 'rails4-autocomplete', '~> 1.0.7'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,6 +1,7 @@
 class Proceso < ActiveRecord::Base
   attr_accessible :ciudad, :abogado_id, :favorito, :objetivo, :procesoHomologado, :referencia, :resumen, :titulo,:updated_at,:tipo_proceso_id,:estado_proceso_id
 
+   
   #Validaciones de título
   validates :titulo, :objetivo, :ciudad, :presence => { :message => "Campo obligatorio"}
 

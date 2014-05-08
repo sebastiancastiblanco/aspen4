@@ -35,6 +35,10 @@
                 <div data-alert class="alert-box alert radius" style="text-shadow: initial;"><%= notice %></div>
             <% end %>
 
+          <%=   form_for @abogado do |f| %>
+                <%= f.text_field :email %>
+          <% end %>
+
       <%= form_for @control_acceso, :url => { :action => "create" }, :html => { :class => "custom",:id => "formCompartirProceso"}  do |f| %>
           <!-- USUARIOS-->
       <div class="row">
@@ -45,6 +49,7 @@
                 
                 <div class="large-8 small-offset-2 large-offset-2 columns">
                   <%= f.select :abogado_id, @usuarios.map {|r| [r.email,r.id] }, :prompt => "- Selecciona un Usuario -" %>  
+                  <%= f.text_field :abogado_id %>
                 </div>
 
         </div>
@@ -114,3 +119,14 @@
     </div>
   </div>
 </body>
+
+
+<script type="text/javascript">
+$(function() {
+ $( "#abogado_id" ).autocomplete({
+    source: "/compartirProcesos/buscarabogados",
+    minLength: 2,
+
+ });
+});
+</script>

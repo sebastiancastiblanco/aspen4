@@ -1,12 +1,17 @@
 class AbogadosController < ApplicationController
+
+  #autocomplete
+  autocomplete :abogado, :email, full: true
+
   def index
     @abogado = current_abogado
     @logs = Log.where(abogado_id: current_abogado.id).order('id,created_at DESC').limit(4)
     @procesos = current_abogado.procesos
+
+    @abogados = Abogado.find(:all, :conditions => ['email LIKE ?', "%#{params[:search]}%"])
     
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @abogado }
+      format.js
     end
   end
 
