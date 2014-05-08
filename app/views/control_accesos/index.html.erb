@@ -35,9 +35,6 @@
                 <div data-alert class="alert-box alert radius" style="text-shadow: initial;"><%= notice %></div>
             <% end %>
 
-          <%=   form_for @abogado do |f| %>
-                <%= f.text_field :email %>
-          <% end %>
 
       <%= form_for @control_acceso, :url => { :action => "create" }, :html => { :class => "custom",:id => "formCompartirProceso"}  do |f| %>
           <!-- USUARIOS-->
@@ -48,8 +45,8 @@
           <br />
                 
                 <div class="large-8 small-offset-2 large-offset-2 columns">
-                  <%= f.select :abogado_id, @usuarios.map {|r| [r.email,r.id] }, :prompt => "- Selecciona un Usuario -" %>  
-                  <%= f.text_field :abogado_id %>
+                  <%= f.text_field :usuario_id , :id => "email"%>
+                   <%= f.text_field :abogado_id , :id => "abogado_id" , type: "hidden" %>
                 </div>
 
         </div>
@@ -123,9 +120,13 @@
 
 <script type="text/javascript">
 $(function() {
- $( "#abogado_email" ).autocomplete({
+ $( "#email" ).autocomplete({
     source: "/compartirProcesos/buscarabogados",
     minLength: 2,
+    select: function (event, ui) {
+        $("#email").val(ui.item.label); // display the selected text
+        $("#abogado_id").val(ui.item.value); // save selected id to hidden input
+    },
 
  });
 });

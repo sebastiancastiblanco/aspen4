@@ -10,9 +10,8 @@ class ControlAccesosController < ApplicationController
     @abogados_hash = []
     @abogados.each do |b|
         @abogados_hash << { 
-            :title => b["email"], 
-            :label => [b["email"], b["email"]].join(" "), 
-            :value => b["email"], 
+            :label => b["email"], 
+            :value => b["id"], 
         }
     end
     render :json => @abogados_hash
@@ -72,12 +71,15 @@ class ControlAccesosController < ApplicationController
      if !@control_acceso.abogado_id.nil?
       if !@control_acceso.privilegio_id.nil? 
 
+          @abogado = Abogado.find(@control_acceso.abogado_id)
+
           #buscar el proceso y usuario, si ya existe solo se actualiza el atributo de privilegio
           @accesoCreado = ControlAcceso.buscarProcesoAcceso(@control_acceso.proceso_id, @control_acceso.abogado_id);
+          
           #Enviar Correo el cual notifica que se comparte el proceso
           threads = []
             threads << Thread.new do
-                 ContactoMailer.compartirProcesoUsuario(current_abogado,@control_acceso.proceso,@control_acceso.abogado.email).deliver
+                 ContactoMailer.compartirProcesoUsuario(current_abogado,@control_acceso.proceso,@abogado.email).deliver
             end
           threads.each(&:join)
 
