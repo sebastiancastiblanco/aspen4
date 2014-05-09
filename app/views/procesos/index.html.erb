@@ -39,7 +39,7 @@
                 <%= link_to "Alertas Pendientes ("+@NumeroAlertasPendientes.to_s+")", :alertasPendientes %>
                 <% end %>
                 <% end %>
-<% if !@NumeroActividadesPendientes.nil? %>
+                <% if !@NumeroActividadesPendientes.nil? %>
                  <% if (@NumeroActividadesPendientes > 0) %>
                 <strong><%= link_to "Actividad Pendientes ("+@NumeroActividadesPendientes.to_s+")", :actividadesPendientes %></strong>
                 <% elsif %>

@@ -53,7 +53,6 @@ AspenVersion3::Application.routes.draw do
   
   resources :control_accesos do
     get "procesos/createTipoProceso"
-    get :autocomplete_abogado_email, on: :collection
   end
  
   match '/compartirProcesos/buscarabogados' => 'control_accesos#abogadoAutocomplete' , as: :buscarabogados

@@ -82,21 +82,21 @@ body>header:after {
   visibility: hidden  !important;
 }
 body>header>nav {
-  zoom: 1  !important;
+  /*zoom: 1  !important;
   clear: both  !important;
   position: relative  !important;
   padding: 29px 0 25px 0  !important;
   margin: 0 auto  !important;
   max-width: 1040px  !important;
-  min-width: 985px  !important;
+  min-width: 985px  !important; */
 }
 
 body>header>nav:after {
-  content: "."  !important;
+ /* content: "."  !important;
   display: block  !important;
   height: 0  !important;
   clear: both  !important;
-  visibility: hidden  !important;
+  visibility: hidden  !important; */
 }
 
 body>header div.logo {
@@ -1564,3 +1564,7 @@ margin-right: 8px;
   font-size: 12px !important; 
   color: #929292;
  }
+
+.top-bar-section li a:not(.button):hover{
+  background: #1f7a94 !important;
+}

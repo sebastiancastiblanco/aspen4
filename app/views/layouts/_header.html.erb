@@ -1,40 +1,79 @@
 <header >
-<nav class="">
-    
 
-    <div id="panelLogo" class="logo">
-        <%= link_to 'Procesos', procesos_path  %>
-    </div>
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name" style="background:rgb(214, 230, 240) !important">
+      <h1 class="logo"> 
+        <%= link_to  procesos_path  do %>
+          <img src="/img/aspen_logo_small.png" style="width: 64px;"/>
+        <% end %>
+      </h1>
+      
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
 
-    
-    <div class="global_links">
-        <%= link_to 'Procesos', procesos_path , :class => "topnav_root" %>
-        <%= link_to 'Agenda', eventos_path , :class => "topnav_calendar" %>
-        <%= link_to 'Reportes', reportes_path , :class => "topnav_calendar" %>
-        
-        <%=  link_to "Progreso", :progreso ,:class => "topnav_everyone"   %>
-        <%=  link_to "Compartir", :compartirProcesos ,:class => "topnav_everyone"   %>
-        
-    </div>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
 
-    <div class="jumpto" >
-        
-             <a href="#" class="button meddium secondary" data-dropdown="drop1" style=" min-width: 180px; font-size: 11px !important; letter-spacing: 0.4px;font-family: 'ProximaNova','Helvetica Neue',helvetica,arial,sans-serif !important;"><%= current_abogado.email %> &raquo;</a>
-              <ul id="drop1" class="f-dropdown" data-dropdown-content >
-                <li><%= link_to "Mi Perfil",current_abogado ,:class => "Me"   %></li>
-                <li><%=  link_to "Planes y precios", :precios %></li>
-                <li> <%= link_to 'Salir', destroy_abogado_session_path, :method => :delete %></li>
-              </ul>
+      <li class="has-dropdown"><a href="#" ><%= current_abogado.email %></a>
+        <ul class="dropdown"><li class="title back js-generated">
+          <h5><a href="javascript:void(0)">Regresar</a></h5></li>
+          <li><label>CUENTA</label></li>
+          <li><%= link_to "Mi Perfil",current_abogado ,:class => "Me"   %></li>
+          <li><%=  link_to "Actualizar cuenta", :precios %></li>
+          <li class="divider"></li>
+          <li><label>SOPORTE</label></li>
+          <li><a href="#">Enviar ticket</a></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Cerrar Sesión →', destroy_abogado_session_path, :method => :delete %></li>
 
-              
-             
-    </div>
+        </ul>
+      </li>
+    </ul>
 
-    <div class="ajax-progress">
-      <img src="/img/ajax-loader.gif">
-    </div>
+    <!-- Left Nav Section -->
+    <ul class="left">
 
-  
+      <li class="has-dropdown"><%= link_to 'Procesos', procesos_path  %>
+        <ul class="dropdown"><li class="title back js-generated">
+          <h5><a href="javascript:void(0)">Regresar</a></h5></li>
+          <li><label>Procesos</label></li>
+          <li><%= link_to 'Todos los procesos', procesos_path  %></li>
+          <li><%= link_to 'Nuevo Proceso', new_proceso_path%></li>
+          <li class="divider"></li>
+          <li><label>PENDIENTES</label></li>
+          <li><%= link_to "Actividad Pendientes", :actividadesPendientes %></li>
+          <li><%= link_to "Alertas Pendientes", :alertasPendientes %></li>
+         
+        </ul>
+      </li>
+
+      <li>  <%= link_to 'Agenda', eventos_path , :class => "topnav_calendar" %></li>
+      <li>  <%= link_to 'Reportes', reportes_path , :class => "topnav_calendar" %></li>
+      <li>  <%=  link_to "Progreso", :progreso ,:class => "topnav_everyone"   %></li>
+      
+      
+        <li class="has-dropdown"><%=  link_to "Compartir", :compartirProcesos   %>
+        <ul class="dropdown"><li class="title back js-generated">
+          <h5><a href="javascript:void(0)">Regresar</a></h5></li>
+          <li><label>COMPARTIR</label></li>
+          <li><%=  link_to "Invitar a un amigo", :compartirProcesos   %></li>
+          <li><%=  link_to "Compartir Procesos", :compartirProcesos   %></li>
+          </ul>
+      </li>
+
+      
+    </ul>
+  </section>
 </nav>
+
+
+
 </header>
+
+
+
 
