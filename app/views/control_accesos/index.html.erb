@@ -123,10 +123,15 @@ $(function() {
  $( "#email" ).autocomplete({
     source: "/compartirProcesos/buscarabogados",
     minLength: 2,
-    select: function (event, ui) {
-        $("#email").val(ui.item.label); // display the selected text
-        $("#abogado_id").val(ui.item.value); // save selected id to hidden input
-    },
+    select: function(event, ui)
+        {
+           $("#email").val(ui.item.label); // display the selected text
+          $("#abogado_id").val(ui.item.value); // save selected id to hidden input
+           return false;
+        },
+        focus: function(event, ui){
+          return false;
+        }
 
  });
 });

@@ -34,49 +34,6 @@
       <img src="/img/ajax-loader.gif">
     </div>
 
-
- <script>
-  $(function() {
-        $( "#tags" ).autocomplete({
-          source: function( request, response ) {
-            $.ajax({
-              url: "procesos.json",
-              dataType: "json",
-              data: {
-                featureClass: "P",
-                style: "full",
-                maxRows: 4,
-                iniciaCon: request.term
-              },
-              select: function (event, ui) {
-                  
-              },
-              success: function( data ) {
-                response( $.map( data, function( item ) {
-                  return {
-                    label: item.titulo,
-                    value: item.id
-                  }
-                }));
-              }
-            });
-          }
-        });
-      
-   
-    
-  });
-
-
-  $( "#tags" )
-    .on( "autocompleteselect", 
-      function( event, ui ) { 
-        window.location.href="/procesos/"+ui.item.value;
-      } 
-    );
-
-
-  </script>
   
 </nav>
 </header>

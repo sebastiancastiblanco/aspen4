@@ -1413,6 +1413,15 @@ a.linksTitulos:hover{
   margin-top: 5% !important; 
 }
 
+.panelsetuptop{
+  margin-top: 8% !important; 
+}
+
+
+.panelsetupbuttom{
+ margin-bottom: 10% !important;
+}
+ 
 .tituloitem{
   color: #BB2E2E  !important;
 }
@@ -1545,3 +1554,13 @@ float: left;
 margin-top: 4px;
 margin-right: 8px;
  } 
+
+ .letra12px{
+  font-size: 12px !important; 
+  color: #929292;
+ }
+
+ .letra14px{
+  font-size: 12px !important; 
+  color: #929292;
+ }
