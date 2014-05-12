@@ -8,12 +8,14 @@
       
         <header>
               <ul class="breadcrumbs">
-                <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+                <li><%= link_to @proceso, :class => "tituloProceso label round" do  %> 
                       <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                     <% end %>
                 </li>
                  <li> <%= link_to   "Conclusiones", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get %></li>
-            
+                  <a href="#" data-reveal-id="myModalCompartirProceso" class="label secondary round" style="float:right;padding: 5px">
+                 <i class="foundicon-mail compartirActiviaddIcono" ></i> Compartir avances
+              </a>
               </ul>
             </header>
 
@@ -25,13 +27,13 @@
               <div class="row">
                 <div class="small-12 columns">
 
-                    <div class="small-6 small-9 columns left">
+                    <div class="small-6 large-9 columns left">
                       <h1 id="tituloContrato">
                         Conclusiones
                       </h1>
                     </div>
 
-                    <div class="small-3 small-3 columns left">
+                    <div class="small-4 large-3 columns left">
                          <%= button_to "Nueva Conclusion", {:controller => "estados", :action => "new", :proceso_id => @proceso.id},:class => " button radius ",:id => "new_estado_link"  %>
                     </div>
 
@@ -97,6 +99,10 @@
      $(document).foundation('joyrideEstados', 'start');
   </script>
 <% end %>
+
+ <div id="myModalCompartirProceso" class="reveal-modal medium modalAspen">
+    <%= render 'procesos/formControlAcceso' %>
+  </div>
 
 </body>
 

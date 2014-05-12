@@ -4,18 +4,18 @@
   <div class="row">
        <%= hidden_field_tag :proceso_id, params[:proceso_id] %>
 
-    <div class="small-2 columns ">
+    <div class="small-2 large-2 columns ">
       <%= f.label :Nombre_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-10 columns columns end">
+    <div class="small-12 large-10 columns columns end">
       <%= f.text_field :name, :placeholder => "Nombre del documento" %>
     </div>
 
-    <div class="small-2 columns ">
+    <div class="small-2 large-2 columns ">
       <%= f.label :Archivo, :class => "tituloCampo error alinearDerecha" %>
     </div>
    
-     <div class="small-4 columns columns end">
+     <div class="small-12 large-4 columns columns end">
       <%= f.file_field :attachment, :placeholder => "Seleccionar un archivo" %>
     </div>
 
@@ -23,8 +23,10 @@
 
  <div class="row">
 
-     <div class="small-1 small-offset-12 columns "></div>
-      <div class="small-3 columns">
+     <div class="small-3 large-offset-8 large-1 columns field">
+      <%= link_to   "Cancelar", {:controller => "documents", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks textRojolinks",:method=>:get %>
+     </div>
+      <div class="small-6 large-3 columns">
       <%= f.submit :'Guardar Documento' , :class => " button success radius" %></div>
      </div>
 

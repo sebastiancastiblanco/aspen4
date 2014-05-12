@@ -6,7 +6,7 @@
 
        <header>
               <ul class="breadcrumbs">
-                <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+                <li><%= link_to @proceso, :class => "tituloProceso label round" do  %> 
                       <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                     <% end %>
                 </li>
@@ -24,13 +24,13 @@
               <div class="collapsed_content ">
                 <div class="row">
                   <div class="small-12 columns">
-                    <div class="small-6 small-9 columns left">
+                    <div class="small-5 large-9 columns left">
                                   <h1 id="tituloContrato">
                                    Editar Alerta
                                    </h1>
                               </div>
                     
-                            <div class="small-3 small-3 columns left">
+                            <div class="small-5 large-3 columns left">
                                 <%= link_to   "Listar Alertas", {:controller => "alertas", :action => "index", :proceso_id => params[:proceso_id]}, :method=>:get, :class => "button radius " %>
                   </div>
                   </div>

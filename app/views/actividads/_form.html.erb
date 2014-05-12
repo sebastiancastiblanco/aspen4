@@ -2,51 +2,51 @@
 
 <div class="row">
 
-    <div class="small-2 small-offset-0 columns ">
+    <div class="small-4 large-2 small-offset-0 columns ">
       <%= actividad.label "Nombre Actividad", :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-4 columns field">
+    <div class="small-12 large-4 columns field">
       <%= actividad.text_field :nombre, :placeholder => "Nombre de la actividad" %>
     </div>
     
-    <div class="small-2 small-offset-0 columns ">
+    <div class="small-3 large-2 small-offset-0 columns ">
       <%= actividad.label "Encargado", :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-4 columns field">
-       <span data-tooltip class="tip-top" title="Participante principal y encargado de la actividad">
+    <div class="small-12 large-4 columns field">
+       <span data-tooltip class="tip-top hide-for-touch" title="Participante principal y encargado de la actividad">
       <%= actividad.select :participante_id, ["- Encargado -"]+@proceso.participantes.map {|r| [r.rol_participante.rol+' - '+r.nombre+' '+r.apellido,r.id]}, :disabled => "- Encargado -" %>
     </div>
 </div>
   
 <div class="row">  
-    <div class="small-2 small-offset-0 columns ">
+    <div class="small-5 large-2 small-offset-0 columns ">
       <%= actividad.label "Estado de la Actividad", :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-4 columns field">
+    <div class="small-12 large-4 columns field">
            <%= actividad.select :estado_actividad_id, ["- Estado de la Actividad -"]+@estadoActividads.map {|r| [r.estado,r.id]}, :disabled => "- Estado de la Actividad -" %>
     </div>
-    <div class="small-2 small-offset-0 columns ">
+    <div class="small-4 large-2 small-offset-0 columns ">
       <%= actividad.label "Fecha Seguimiento", :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-4 columns field">
-          <span data-tooltip class="tip-top" title="Fecha de inicio de la actividad?">
+    <div class="small-12 large-4 columns field">
+          <span data-tooltip class="tip-top hide-for-touch" title="Fecha de inicio de la actividad?">
           <%= actividad.date_select :fechaseguir  , {:ampm => true, :minute_step => 15,start_year: 2014,order: [:day, :month, :year]}, { class: "date start fechasline2" } %>
     </div>
 </div>
 
 <div class="row">  
-      <div class="small-2 small-offset-0 columns ">
+      <div class="small-4 large-2 small-offset-0 columns ">
           <%= actividad.label "Tiempo ejecucion", :class => "tituloCampo error alinearDerecha" %>
         </div>
-        <div class="small-4 columns field">
-              <span data-tooltip class="tip-top" title="Cúanto tiempo dura la actividad?">
+        <div class="small-12 large-4 columns field">
+              <span data-tooltip class="tip-top hide-for-touch" title="Cúanto tiempo dura la actividad?">
               <%= actividad.number_field :tiempoEjecucion, :placeholder => "Tiempo de ejecución" %>
         </div>
 
-        <div class="small-2 small-offset-0 columns ">
+        <div class="small-4 large-2 small-offset-0 columns ">
           <%= actividad.label "Medida de Tiempo", :class => "tituloCampo error alinearDerecha" %>
         </div>
-        <div class="small-4 columns field">
+        <div class="small-12 large-4 columns field">
                <%= actividad.select :medidaTiempo, ["- Medida de Tiempo -"]+[["Horas", "Horas"]]+ [["Dias", "Dias"]]+ [["Semanas", "Semanas"]], :disabled => "- Medida de Tiempo -" %>
         </div>
 </div>
@@ -59,18 +59,18 @@
 <div id="camposOpcionalesActividad"  class="row ocultar">
    
       <section>
-        <div class="small-2 small-offset-0 columns ">
+        <div class="small-3 large-2 small-offset-0 columns ">
           <%= actividad.label "descripción", :class => "tituloCampo error alinearDerecha" %>
         </div>
-        <div class="small-10 columns field">
+        <div class="small-12 large-10 columns field">
           <span data-tooltip class="tip-top" title="descripción principal de la actividad y objetivo final de la misma">
           <%= actividad.text_area :descripcion, :placeholder => "Descripcion de la actividad, máximo 250 caracteres",:size => "30x50" %>
         </div>
 
-        <div class="small-2 small-offset-0 columns ">
+        <div class="small-4 large-2 small-offset-0 columns ">
           <%= actividad.label "Observaciones", :class => "tituloCampo error alinearDerecha" %>
         </div>
-        <div class="small-10 columns field">
+        <div class="small-12 large-10 columns field">
           <span data-tooltip class="tip-top" title="Observaciones importantes que se deben tener en cuenta para realizár en la actividad">
           <%= actividad.text_area :observacion, :placeholder => "Observaciones, máximo 250 caracteres" %>
         </div>
@@ -83,11 +83,11 @@
 
 
 <div class="row"> 
-    <div class="small-1 small-offset-6 columns field"></div>
+    <div class="small-12 large-1 small-offset-6 columns field"></div>
      <div class="small-1 columns field">
       <%= link_to 'Cancelar', "javascript:listarActividades()", :class=>"textoGrislinks" %>
      </div>
-     <div class="small-3 columns field">
+     <div class="small-6 large-3 columns field">
       <%= actividad.submit :'Guardar Actividad' , :class => " button success radius" %></div>
      </div>
      <%= hidden_field_tag :proceso_id, @proceso.id %>

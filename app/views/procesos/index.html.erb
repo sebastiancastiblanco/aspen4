@@ -54,10 +54,8 @@
             <% end%>
           
 
-            <div id="all_projects">
-                <section id="sectionProcesos" class="projects cards">
-                   
-                    <div id="panelBuscarProceso" class="row panel panelBusqueda ocultar " style="height: 83px !important;">
+
+            <div id="panelBuscarProceso" class="row panel panelBusqueda ocultar " style="height: 83px !important; float: none;margin-left: 165px !important;">
                         
                         <%= form_for @proceso, :remote => true , :url => url_for(:controller => 'procesos', :action => 'buscarProceso'),  :html => { :class => "custom", :id => "formBuscarProceso"}  do |f| %>
                             
@@ -84,34 +82,11 @@
                                 <img src="/img/xmen.png" title="cerrar">
                           <% end %> 
                         
-                    </div>
+            </div>
 
-                     <div id="panelBuscarCliente" class="row panel panelBusqueda ocultar" style="height: 83px !important;">
-                       
-                        <%= form_for @participante, :remote => true , :url => url_for(:controller => 'procesos', :action => 'buscarCliente'),  :html => { :class => "custom", :id => "formBuscarCliente"}  do |f| %>
-                            
-                            <div class="small-5 large-5 columns " style="margin-top: 8px;">
-                                <span data-tooltip class="tip-top" title="Buscar procesos por el correo del cliente">
-                                <%= f.text_field :correo , :placeholder => "Correo electronico" %>
-                            </div> 
-                          
-                            <div class="small-5 large-5 columns " style="margin-top: 8px;">
-                                <span data-tooltip class="tip-top" title="Buscar procesos por el número de documento ">
-                                <%= f.text_field :documento , :placeholder => "No Documento" %>
-                            </div>
-                            
-                                                      
-                            <div class="small-2 large-2 columns ">
-                              <%= f.submit :'Buscar' , :class => " button success radius " %>
-                            </div>
-                        <% end %> 
-                         <%= link_to  "javascript:cerrarPanelBuscarCliente()", :class => "ubicacionCerrarPanel2" do%>
-                                <img src="/img/xmen.png" title="cerrar">
-                          <% end %> 
-                        
-                    </div>
-
-                    <div id="listaProcesos" class="row">
+            <div id="all_projects">
+                <section id="sectionProcesos" class="projects cards">
+                   <div id="listaProcesos" class="row">
                         <%= render @procesos %> 
                         <article class="card blank " data-behavior="bounce_nav">&nbsp;</article>
                     </div>
@@ -136,4 +111,8 @@
 <script>
    $(document).foundation('joyrideProceso', 'start');
 </script>
+<script type="text/javascript">
+    $('#procesostopbar').addClass("active");
+  </script>
+
 <% end %>

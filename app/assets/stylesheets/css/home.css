@@ -202,7 +202,7 @@ div.workspace {
 }
 div.workspace>div.container {
   margin: 0 auto  !important;
-  width: 960px  !important;
+ /* width: 960px  !important;*/
 }
 
 div.workspace>div.container2 {
@@ -226,6 +226,7 @@ div.panel.home_tab {
   padding-top: 20px  !important;
   min-height: 0  !important;
   text-shadow: 0 1px #fff  !important;
+  margin-left: 10% !important  ;
 }
 div.panel.home_tab>nav {
   width: 150px  !important;
@@ -441,7 +442,8 @@ div.sheet.project>header div.description {
   line-height: 18px  !important;
   margin-bottom: 5px  !important;
   min-height: 19px  !important;
-  color: #aa9c84  !important;
+  /*color: #aa9c84  !important;*/
+color: black  !important;
   text-rendering: auto  !important;
   word-wrap: break-word  !important;
 }
@@ -479,10 +481,17 @@ div.sheet.project>header div.tools div.group span.label {
 }
 div.sheet.project>header div.tools a {
   color: #1c5c76  !important;
-  text-decoration: underline  !important;
   float: left  !important;
   margin-right: 15px  !important;
   padding: 0  !important;
+}
+
+div.sheet.project>header div.tools a:hover{
+  color: #1c5c76  !important;
+  float: left  !important;
+  margin-right: 15px  !important;
+  padding: 0  !important;
+  text-decoration: underline !important;
 }
 
 
@@ -525,6 +534,11 @@ section.events section.project_events div.action {
   line-height: 17px  !important;
 }
 a.decorated {
+  color: #1c5c76  !important;
+  margin-left: 10px  !important;
+}
+
+a.decorated:hover {
   color: #1c5c76  !important;
   text-decoration: underline  !important;
   margin-left: 10px  !important;
@@ -977,6 +991,19 @@ color: #444;
   margin-top: 15px  !important;
 }
 
+.textGrislinks{
+  color: #7d7a75  !important;
+  font-family: HelveticaRegular, arial  !important;
+  font-style: italic  !important;
+  font-size: 12px  !important;
+}
+
+
+.textGrislinks:hover, .textGrislinks:focus{
+  color: #2ba6cb  !important;
+  text-decoration: underline  !important;  
+}
+
 .textRojolinks{
   color: #7d7a75  !important;
   font-family: HelveticaRegular, arial  !important;
@@ -1090,19 +1117,19 @@ z-index: 1;
 .logosHome{
   font-size: 80px  !important;
   text-align: center  !important;
-  margin-left: 55px;
+  /*margin-left: 55px;*/
   margin-top: 70px  !important;
 }
 
 .logosHome2{
   font-size: 80px  !important;
   text-align: center  !important;
-  margin-left: 98px;
+  /*margin-left: 98px;*/  
   margin-top: 70px  !important;
 }
 
 .tituloHome2{
-  text-align:center;
+  /*text-align:center;*/  
   color: #2284a1;
   font-size:20px
 }
@@ -1110,6 +1137,8 @@ z-index: 1;
 .tituloProceso{
   font-size: 12px  !important;
   font-weight: bold  !important;
+  padding: 7px !important;
+  color: white !important;
 }
 
 .title{
@@ -1204,9 +1233,10 @@ background-color: #0192dd  !important;
 
 .detalles{
   font-size: 12px  !important;
-  color: #aa9c84  !important;
+  color: #aa9c84 !important;
   text-decoration: none  !important;
   margin-top: -8px;
+  cursor: default;
 }
 
 .registros{
@@ -1336,7 +1366,7 @@ border: none  !important;
 .ubicacionCerrarPanel{
   position: relative  !important;
   float: right  !important;
-  right: -135px  !important;
+  right: -123px  !important;
   top: -70px;
   width: 17px;
   opacity: 0.6;
@@ -1429,6 +1459,12 @@ a.linksTitulos:hover{
 
 .subtituloitem{
   color: black  !important;
+  font-weight: 500;
+}
+
+.subtituloitem:hover{
+  color: black  !important;
+  text-decoration: underline;
 }
 
 .fc-header{
@@ -1567,4 +1603,38 @@ margin-right: 8px;
 
 .top-bar-section li a:not(.button):hover{
   background: #1f7a94 !important;
+}
+
+
+@media only screen and (max-width:551px){
+  body{min-width:500px !important} 
+  .container{min-width:500px !important} 
+  div.workspace>div.flat_container div.sheet, div.workspace>div.stack_container div.sheet {
+    width:500px !important
+  }
+  div.workspace>div.flat_container div.sheet, div.workspace>div.stack_container div.sheet{
+     width:500px !important
+  }
+} 
+
+.secondary:hover{
+  background: #2284a1;
+  color: white;
+}
+
+.compartirActiviaddIcono{
+  margin: 1px 0 0 9px;
+  float: right;
+}
+
+.margeneliminar{
+  margin-top: 16px;
+}
+
+.paddinglabel{
+  padding: 5px;
+}
+
+.nombreclienteprincipal{
+  color:  #1c5c76;
 }

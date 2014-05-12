@@ -7,7 +7,8 @@
 	         <h6>Puedes enviar un mensajes a los colaboradores via correo electronico</h6>
 	              <hr/>
 	              <div id="listaUsuarios">
-	                <% @proceso.abogados.each do |usuario| %>
+	                <% if !@proceso.nil? %>
+	                	<% @proceso.abogados.each do |usuario| %>
 		                <div class="colaborador">
 		                	<div class="imagencolaborador">
 						    <img class="avatar alinearbotones" src="/img/user.png"> 
@@ -22,10 +23,12 @@
 				                </div>
 							</div>
 						    <div id="panelcontacto_<%= usuario.id %>" class="contactoColaborador ocultar">
-						    	 <%= render 'formContactar', :usuario => usuario %>
+						    	 <%= render 'procesos/formContactar', :usuario => usuario %>
 						    </div>
 						</div>
+	                	<% end %>
 	                <% end %>
+	               
 	              </div>
 	  	   </div>
       

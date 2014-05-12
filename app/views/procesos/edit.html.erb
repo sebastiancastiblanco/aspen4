@@ -6,11 +6,11 @@
 
 				<header>
 				<ul class="breadcrumbs">
-					<li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+					<li><%= link_to @proceso, :class => "tituloProceso label round" do  %> 
                   		<%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
 		                <% end %>
 		            </li>
-		            <li class="">Editar Proceso</li>
+		            <li><a href="#">Editar Proceso</a></li>
 				</ul>
 				</header>
 

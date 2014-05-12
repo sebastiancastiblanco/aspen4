@@ -192,7 +192,7 @@ $include-print-styles: true;
 // We use these to style the labels in different ways
 // $label-pointer: pointer;
 // $label-font-size: emCalc(14px);
-// $label-font-weight: 500;
+ $label-font-weight: 200px;
 // $label-font-color: lighten(#000, 30%);
 // $label-bottom-margin: emCalc(3px);
 // $input-font-family: inherit;
@@ -254,7 +254,7 @@ $include-print-styles: true;
 // $button-font-tny: emCalc(11px);
 // $button-font-sml: emCalc(13px);
 // $button-font-lrg: emCalc(20px);
-// $button-font-weight: bold;
+ $button-font-weight: normal;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
@@ -352,7 +352,7 @@ $alert-padding-left: $alert-padding-top;
 // $alert-padding-bottom: $alert-padding-top + emCalc(0px);
 
 // We use these to control text style.
-// $alert-font-weight: bold;
+ $alert-font-weight: normal;
 // $alert-font-size: emCalc(14px);
 // $alert-font-color: #fff;
 // $alert-font-color-alt: darken($secondary-color, 60%);
@@ -603,7 +603,7 @@ $joyride-tip-position-offset: 40px;
 
 // We use these to style the label text
 // $label-font-sizing: emCalc(14px);
-// $label-font-weight: bold;
+ $label-font-weight: normal;
 
 //
 // Orbit Settings
@@ -831,7 +831,7 @@ $reveal-close-top: emCalc(6px);
 // $side-nav-link-color: $primary-color;
 // $side-nav-link-color-active: lighten(#000, 30%);
 // $side-nav-font-size: emCalc(14px);
-// $side-nav-font-weight: bold;
+ $side-nav-font-weight: normal;
 
 // We use these to control border styles
 // $side-nav-divider-size: 1px;
@@ -956,11 +956,11 @@ $reveal-close-top: emCalc(6px);
 // $tooltip-padding: emCalc(8px);
 // $tooltip-bg: #000;
  $tooltip-font-size: emCalc(12px);
-// $tooltip-font-weight: bold;
+ $tooltip-font-weight: normal;
 // $tooltip-font-color: #fff;
 // $tooltip-line-height: 1.3;
 // $tooltip-close-font-size: emCalc(10px);
-// $tooltip-close-font-weight: normal;
+ $tooltip-close-font-weight: normal;
 // $tooltip-close-font-color: #888;
 // $tooltip-font-size-sml: emCalc(14px);
 // $tooltip-radius: $global-radius;
@@ -981,16 +981,17 @@ $reveal-close-top: emCalc(6px);
 // $topbar-input-height: 2.45em;
 
 // Controlling the styles for the title in the top bar
-// $topbar-title-weight: bold;
+ $topbar-title-weight: normal;
 // $topbar-title-font-size: emCalc(17px);
 
 // Set the link colors and styles for top-level nav
  $topbar-link-color: #fff;
-// $topbar-link-weight: bold;
-// $topbar-link-font-size: emCalc(13px);
+ $topbar-link-weight: normal;
+ $topbar-link-font-size: emCalc(14px);
 
 // Style the top bar dropdown elements
  $topbar-dropdown-bg: #2284a1;
+ $topbar-dropdown-weight: normal;
 // $topbar-dropdown-link-color: #fff;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: #fff;
@@ -1000,7 +1001,7 @@ $reveal-close-top: emCalc(6px);
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: emCalc(13px);
-// $topbar-menu-link-weight: bold;
+ $topbar-menu-link-weight: normal;
 // $topbar-menu-link-color: #fff;
 // $topbar-menu-icon-color: #fff;
 // $topbar-menu-link-color-toggled: #888;

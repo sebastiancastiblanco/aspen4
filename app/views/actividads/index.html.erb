@@ -5,12 +5,20 @@
 
        <header>
           <ul class="breadcrumbs">
-            <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+            <li><%= link_to @proceso, :class => "tituloProceso label round" do  %> 
                   <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
             <li> <a href="#"> Actividades</a></li>
+            <a href="#" data-reveal-id="myModalCompartirProceso" class="label secondary round" style="float:right;padding: 5px">
+                 <i class="foundicon-mail compartirActiviaddIcono" ></i> Compartir avances
+              </a>
           </ul>
+
+         
+                
+     
+
         </header>
         <div id="date"></div>
         <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
@@ -19,7 +27,7 @@
             <div class="collapsed_content">
               <div class="row">
                 <div class="small-12 columns">
-                    <div id="paneltituloActividad" class="small-5 columns left">
+                    <div id="paneltituloActividad" class="small-5 large-5 columns left">
                       <h1 id="tituloActividad">
                          <% if  @actividadesRender == "true" %>
                           Actividad
@@ -29,7 +37,7 @@
                       </h1>
                     </div>
                    
-                    <div id="botonesActividades" class="small-2 small-offset-4 columns left">
+                    <div id="botonesActividades" class="small-4 large-2 large-offset-4 columns left">
                         
                        <% if  @actividadesRender == "true" %>
                         <div id="new_actividad_link" class="ocultar">
@@ -59,7 +67,7 @@
           </header>
 
           <div class="row">
-             <div class="small-5 small-offset-7 columns left">
+             <div class="small-12 large-5 large-offset-7 columns left">
               <dl id="listaFiltros" class="sub-nav">
                   <dd id="filtroTodos" class="active">
                       <%= link_to 'Todas', :controller => :actividads, :action => :filtrado , :proceso_id  => @proceso.id , :estado_id => 0 , :remote => true %>
@@ -78,6 +86,7 @@
                   </dd>
               </dl>
             </div>
+           
           </div>
 
           <div class="sheet_body fondoGris">
@@ -139,5 +148,8 @@
   </script>
 <% end %>
 
+ <div id="myModalCompartirProceso" class="reveal-modal medium modalAspen">
+    <%= render 'procesos/formControlAcceso' %>
+  </div>
 
 </body>

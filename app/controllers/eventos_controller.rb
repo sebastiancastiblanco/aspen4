@@ -5,6 +5,8 @@ class EventosController < ApplicationController
     #Recuperar los eventos del usuario logeado
     #@eventos = current_abogado.eventos
     @eventos = current_abogado.eventos
+
+   
     #respond de la funcion
     respond_to do |format| 
       format.html # index.html.erb 

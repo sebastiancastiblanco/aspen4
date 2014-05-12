@@ -5,10 +5,10 @@
     
     <%= hidden_field_tag :proceso_id, params[:proceso_id] %>
 
-    <div class="small-2 small-offset-0 columns ">
+    <div class="small-2 large-2 small-offset-0 columns ">
       <%= f.label :titulo_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-10 columns field">
+    <div class="small-12 large-10 columns field">
       <%= f.text_field :titulo, :placeholder => "Titulo de la alerta" %>
     </div>
 
@@ -16,10 +16,10 @@
 
 <div class="row">
   
- <div class="small-2 small-offset-0 columns ">
+ <div class="small-2 large -small-offset-0 columns ">
       <%= f.label :nota_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-10 columns field">
+    <div class="small-12 large-10 columns field">
       <%= f.text_field :nota, :placeholder => "Adiciona una nota" %>
     </div>
     
@@ -29,10 +29,10 @@
 <div class="row datepair" data-language="javascript">
 
    
-    <div class="small-2 small-offset-0 columns ">
+    <div class="small-3 large-2 small-offset-0 columns ">
       <%= f.label :comienza_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-7 columns left">
+    <div class="small-8 large-7 columns left">
      <%= f.datetime_select :termina  , {:ampm => true, :minute_step => 15,start_year: 2014,order: [:day, :month, :year]}, { class: "date start fechasline2" } %>
      </div>
 
@@ -42,11 +42,10 @@
 
 <div class="row">
 
-     <div class="small-1 small-offset-7 columns field"></div>
-     <div class="small-1 columns field">
-      <%= link_to   "Cancelar", {:controller => "alertas", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks",:method=>:get %>
+    <div class="small-3 large-offset-8 large-1  columns field">
+      <%= link_to   "Cancelar", {:controller => "alertas", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks textRojolinks",:method=>:get %>
      </div>
-     <div class="small-3 columns field">
+     <div class="small-6 large-3 columns field">
       <%= f.submit :'Guardar Alerta' , :class => " button success radius" %>
       <%= hidden_field_tag :proceso_id, @proceso.id %>
       </div>

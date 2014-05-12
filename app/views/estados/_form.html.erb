@@ -4,27 +4,27 @@
   <div class="row">
        <%= hidden_field_tag :proceso_id, params[:proceso_id] %>
 
-     <div class="small-2 small-offset-0 columns ">
+     <div class="small-2 large-2 small-offset-0 columns ">
       <%= f.label :tipo_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-     <div class="small-4 columns field left">
+     <div class="small-12 large-4 columns field left">
       <%= f.select :tipo,  options_for_select( [ ['Abierto', 'abierto'], ['Cerrado', 'cerrado'] ] ) %>
     </div>
 </div>
 
 <div class="row">
 
-    <div class="small-2 small-offset-0 columns ">
+    <div class="small-3 large-2 small-offset-0 columns ">
       <%= f.label :conclusion_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-10 columns field">
+    <div class="small-12 large-10 columns field">
       <%= f.text_field :conclusion, :placeholder => "Conclusion" %>
     </div>
 
-     <div class="small-2 small-offset-0 columns ">
+     <div class="small-4 large-2 small-offset-0 columns ">
       <%= f.label :Observaciones_, :class => "tituloCampo error alinearDerecha" %>
     </div>
-    <div class="small-10 columns field">
+    <div class="small-12 large-10 columns field">
       <%= f.text_field :resumen, :placeholder => "Observaciones y anotaciones adicionales" %>
     </div>
 
@@ -34,11 +34,10 @@
 
 <div class="row">
 
-     <div class="small-1 small-offset-7 columns field"></div>
-     <div class="small-1 columns field">
-      <%= link_to   "Cancelar", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks",:method=>:get %>
+     <div class="small-3 large-offset-8 large-1 columns field">
+      <%= link_to   "Cancelar", {:controller => "estados", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks textRojolinks",:method=>:get %>
      </div>
-     <div class="small-3 columns field">
+     <div class="small-6 large-3 columns field">
       <%= f.submit :'Guardar Conclusion' , :class => " button success radius" %></div>
      </div>
 

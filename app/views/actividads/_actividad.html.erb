@@ -44,7 +44,7 @@
 
                 <%= button_to 'Ver', edit_actividad_path(actividad, :proceso_id => @proceso.id), :remote => true, :id => "new_actividad_link",:class => "tiny button radius alinearbotones botoncalendario" %>
               
-                <%= link_to "Eliminar", actividad, :class => "textRojolinks inlineBlock eliminarlink",  method: :delete, data: { confirm: 'Estas Seguro de eliminar esta actividad?' } , :remote => true %>
+                <%= link_to "Eliminar", actividad, :class => "textRojolinks inlineBlock eliminarlink margeneliminar",  method: :delete, data: { confirm: 'Estas Seguro de eliminar esta actividad?' } , :remote => true %>
 
             </li>
         </ul>

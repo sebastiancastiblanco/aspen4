@@ -1,4 +1,4 @@
-<div id="topbar">
+<div id="topbar" class="hide-for-small hide-for-medium">
   <header >
     <nav class="">
 
@@ -24,3 +24,37 @@
 </header>
 </div>
 
+<div id="topbar2" class=" hide-for-large medium-6">
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name" >
+      <h1 class="logo" > 
+        <%= link_to :root  do %>
+          <img src="/img/aspen_logo_small.png" style="width: 70px; background:rgb(214, 230, 240) !important;margin-left: -17px;"/>
+        <% end %>
+      </h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section medium-6">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li> <%= link_to 'Funcionalidades', :funcionalidades %></li>
+      <li> <%= link_to 'Planes', :precios %></li>
+      <li> <%= link_to 'Registrate', new_abogado_registration_path , :class => 'button success radius'%></li>
+      <li> <%= link_to 'Iniciar Sesion', new_abogado_session_path , :class => 'button radius'%></li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+
+      <li style="font-size:25px">  <%= link_to 'Gestión de Procesos judiciales', :root %></li>
+      
+    </ul>
+  </section>
+</nav>
+
+  
+</div>

@@ -17,19 +17,27 @@
                 <% end %>
             </a>
 
-            <a href="#" data-reveal-id="myModalCompartirProceso">
-              <span class="link">Colaboradores</span><br>
+            <%= link_to edit_proceso_path(@proceso) do %>
+              <span class="label secondary round paddinglabel">
+                  <i class="foundicon-edit compartirActiviaddIcono" ></i>
+                Editar</span>
+             <% end %>
+           
+
+            <%= link_to "Últimos movimientos",{:controller => "procesos", :action => "eventos", :proceso_id => @proceso.id}, :class => "label secondary round paddinglabel"  do%>
+                <span class="label secondary round paddinglabel">
+                  <i class="foundicon-clock compartirActiviaddIcono" ></i>
+                 Últimos movimientos</span>
+             <% end %>
+            
+              <a href="#" data-reveal-id="myModalCompartirProceso" >
+              <span class="label secondary round paddinglabel">
+                 <i class="foundicon-smiley compartirActiviaddIcono" ></i>
+                  Colaboradores</span><br>
               <span class="detail">
                 <span id="cantidadUsuarios"><%= @proceso.abogados.size %></span> abogado en este proceso
               </span>
             </a>
-
-            
-              <%= link_to "Últimos movimientos",{:controller => "procesos", :action => "eventos", :proceso_id => @proceso.id}, :class => "linksTitulos"  %>
-            
-             <%= link_to edit_proceso_path(@proceso) do %>
-              <span class="link">Editar</span>
-             <% end %>
 
              
 
@@ -54,7 +62,7 @@
                        
                         <% if !@participantePrincipal.empty? %> 
                           <% @participantePrincipal.each do |participanteP| %>
-                           <%=  link_to participanteP.nombre+" "+participanteP.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:participante_id => participanteP.id, :nuevoItem => true}, :class => ""   %>,
+                           <%=  link_to participanteP.nombre+" "+participanteP.apellido, {:controller => "participantes", :action => "index", :proceso_id => @proceso.id,:participante_id => participanteP.id, :nuevoItem => true}, :class => "nombreclienteprincipal"   %>,
 
                         <% end %>
 

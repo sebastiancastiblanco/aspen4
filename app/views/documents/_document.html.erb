@@ -30,10 +30,10 @@
                               <% end %>
                             </p>
 
-                            <p class="actions">
-                              <a data-stacker="false" href="<%= document.attachment.url %>">Descargar</a>,
-                              <%= link_to 'Editar', edit_document_path(document, :proceso_id => @proceso.id,:documento_id => document.id) %>
-                              <span>o</span>
+                            <p class="">
+                              <a data-stacker="false" href="<%= document.attachment.url %>" class="textGrislinks">Descargar /</a>
+                              <%= link_to 'Editar /', edit_document_path(document, :proceso_id => @proceso.id,:documento_id => document.id) ,:class =>"textGrislinks" %>
+                              <span></span>
                               <%= link_to 'Eliminar', document_path(document, :proceso_id => @proceso.id), method: :delete, data: { confirm: 'Estas seguro de eliminar este documento?' }, :class => "textRojolinks inlineBlock eliminarlink" %>
                             </p>
                           </div>
