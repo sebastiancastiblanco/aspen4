@@ -89,9 +89,30 @@
                    <div id="listaProcesos" class="row">
                         <%= render @procesos %> 
                         <article class="card blank " data-behavior="bounce_nav">&nbsp;</article>
+
                     </div>
+                    <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th width="200">Proceso</th>
+                  <th>Referencia</th>
+                  <th width="150">Estado</th>
+                  <th width="150">fecha mod.</th>
+                   <th width="150">Cliente</th>
+                    <th width="150">Usuarios</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= render partial: "procesos2", collection: @procesos , :as => :proceso %>
+                
+              </tbody>
+            </table>
                 </section>
             </div>
+
+
+
         </div>
     </div>
     </div>

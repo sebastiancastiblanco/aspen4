@@ -1,0 +1,45 @@
+<tr>
+  <td>
+  	<a id="favoritoHome" class="" onClick="cambioEstadoFavoritoHome2(<%= proceso.id %>)">
+            <% if (proceso.favorito) %>
+              <div id="Proceso2NoFavorito<%= proceso.id %>" class="foundicon-star" style="display:none"></div>
+              <div id="Proceso2Favorito<%= proceso.id %>" class="favoritoSeleccionado" style="display:block"></div>
+            <% else %>
+              <div id="Proceso2NoFavorito<%= proceso.id %>" class="foundicon-star" style="display:block"></div>
+              <div id="Proceso2Favorito<%= proceso.id %>" class="favoritoSeleccionado" style="display:none"></div>
+            <% end %>
+        </a>
+   </td>
+  <td>
+  	<%= link_to(proceso) do  %>
+  		<%= proceso.titulo %> 
+  	<% end %>
+  </td>
+  <td>
+  		Ref <%= proceso.id %>  <% if !proceso.referencia.nil? %>/ <%= proceso.referencia %> <%end%> 
+  </td>
+  <td>
+  		<% if !proceso.estado_proceso.nil? %> <%= proceso.estado_proceso.estado %><%end%>
+  </td>
+  <td>
+  		<%= fechaFormato1 proceso.updated_at %>
+  </td>
+  <td>
+  		 <% @listaparticipantes = Participante.participante_principal(proceso.id) %>   
+                <% if !@listaparticipantes.nil? && !@listaparticipantes.empty? %> 
+                    <% @listaparticipantes.each do |participantePrincipal| %>
+                       <%=  link_to participantePrincipal.nombre+" "+participantePrincipal.apellido, {:controller => "participantes", :action => "index", :proceso_id => proceso.id,:participante_id => participantePrincipal.id, :nuevoItem => true}, :class => ""   %>,
+                <% end %>
+
+                <% else %>
+                     <%= link_to "Crear Participante / Cliente", {:controller => "participantes", :action => "index", :proceso_id => proceso.id, :nuevoItem => true},:class => "letraAzul"  %>
+                <% end %>
+
+  </td>
+  <td>
+  		<% proceso.abogados.each do |usuarioConAcceso| %>
+                    	<i class="foundicon-people" title="<%= usuarioConAcceso.email %>"></i>
+                    
+          <% end %>
+  </td>
+</tr>

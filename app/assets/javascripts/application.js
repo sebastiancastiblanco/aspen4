@@ -89,7 +89,38 @@ function cambioEstadoFavoritoHome(procesoid){
             }
          })
      }
+     cambioEstadoFavoritoHome2(procesoid);
+};
 
+function cambioEstadoFavoritoHome2(procesoid){
+
+    var divProcesoNoFavorito = "#Proceso2NoFavorito"+procesoid;
+    var divProcesoFavorito = "#Proceso2Favorito"+procesoid;
+
+    var favoritoProceso =  $(divProcesoNoFavorito).css('display');
+      if(favoritoProceso == "inline" || favoritoProceso == "block" ){
+      $.ajax({
+            url: "/procesos/favorito/" + procesoid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res){
+                $(divProcesoNoFavorito).css('display', 'none');
+                $(divProcesoFavorito).css('display', 'block');
+            }
+         })
+     }
+    else{
+      $.ajax({
+            url: "/procesos/nofavorito/" + procesoid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res){
+               $(divProcesoNoFavorito).css('display', 'block');
+                $(divProcesoFavorito).css('display', 'none');
+            }
+         })
+     }
+    cambioEstadoFavoritoHome(procesoid);
 };
 
 function listarParticipantes(){
