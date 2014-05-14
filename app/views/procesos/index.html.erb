@@ -1,9 +1,25 @@
 <body>
+
+  <div class="row">
+    <div class="vistaProcesos large-1 large-offset-11 small-1 right">
+              <%= link_to  "javascript:modopanel()", :id => "modopanel" do %>
+                     <img id="modopanel1" src="/img/iconos/grid20.png" title="panel">
+                <% end %> 
+
+                <%= link_to  "javascript:mododatagrid()", :id => "mododatagrid" do %>
+                     <img  id="mododatagrid1" src="/img/iconos/lista.png" title="lista" style="padding: 2px;">
+                <% end %> 
+    </div> 
+  </div>
+    
+
     <div id="workspace" class="workspace">
         <div class="container flat_container"  style="opacity: 1;">
         <div class="panel panelTransparente home_tab project_index  " >
 
             <title>Procesos</title>
+
+            
 
             <nav class="projects_nav ">
                 <%= link_to '', new_proceso_path %>
@@ -27,6 +43,8 @@
                 <%= link_to  "javascript:mostrarPanelBuscarCliente()", :id => "mostrarCamposOpcionalesClientes", :class =>"ocultar" do %>
                      <div class="foundicon-search"></div> Buscar Cliente
                 <% end %> 
+                
+               
                 
             </div>
 
@@ -91,23 +109,23 @@
                         <article class="card blank " data-behavior="bounce_nav">&nbsp;</article>
 
                     </div>
-                    <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th width="200">Proceso</th>
-                  <th>Referencia</th>
-                  <th width="150">Estado</th>
-                  <th width="150">fecha mod.</th>
-                   <th width="150">Cliente</th>
-                    <th width="150">Usuarios</th>
-                </tr>
-              </thead>
-              <tbody>
-                <%= render partial: "procesos2", collection: @procesos , :as => :proceso %>
-                
-              </tbody>
-            </table>
+                    <table id="datagridprocesos" >
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th width="150">Proceso</th>
+                          <th>Referencia</th>
+                          <th width="100">Estado</th>
+                          <th width="150">Ultima mod.</th>
+                           <th width="150">Cliente</th>
+                            <th width="150">Usuarios</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <%= render partial: "procesos2", collection: @procesos , :as => :proceso %>
+                        
+                      </tbody>
+                    </table>
                 </section>
             </div>
 
@@ -135,5 +153,35 @@
 <script type="text/javascript">
     $('#procesostopbar').addClass("active");
   </script>
-
 <% end %>
+
+<script type="text/javascript">
+  $('#datagridprocesos').dataTable({
+        "oLanguage":{
+                  "sProcessing":     "Procesando...",
+                  "sLengthMenu":     "Mostrar _MENU_ procesos",
+                  "sZeroRecords":    "No se encontraron resultados",
+                  "sEmptyTable":     "Ningún proceso disponible",
+                  "sInfo":           "Mostrando procesos del _START_ al _END_ de un total de _TOTAL_ procesos",
+                  "sInfoEmpty":      "Mostrando procesos del 0 al 0 de un total de 0 procesos",
+                  "sInfoFiltered":   "(filtrado de un total de _MAX_ procesos)",
+                  "sInfoPostFix":    "",
+                  "sSearch":         "Buscar:",
+                  "sUrl":            "",
+                  "sInfoThousands":  ",",
+                  "sLoadingRecords": "Cargando...",
+                  "oPaginate": {
+                      "sFirst":    "Primero",
+                      "sLast":     "Último",
+                      "sNext":     "Siguiente",
+                      "sPrevious": "Anterior"
+                  },
+                  "oAria": {
+                      "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                  }
+          }
+    }
+    );
+  modopanel();
+</script>

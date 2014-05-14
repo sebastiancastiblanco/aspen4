@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui 
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require foundation
 //= require autocomplete-rails
 //= require_tree .
@@ -89,7 +90,6 @@ function cambioEstadoFavoritoHome(procesoid){
             }
          })
      }
-     cambioEstadoFavoritoHome2(procesoid);
 };
 
 function cambioEstadoFavoritoHome2(procesoid){
@@ -120,7 +120,6 @@ function cambioEstadoFavoritoHome2(procesoid){
             }
          })
      }
-    cambioEstadoFavoritoHome(procesoid);
 };
 
 function listarParticipantes(){
@@ -437,6 +436,33 @@ $(document).foundation();
 
 
 
+function modopanel(){
+    var link1 = "#listaProcesos";
+    var link2 = "#datagridprocesos_wrapper";
+    var link11 = "#modopanel1";
+    var link12 = "#mododatagrid1";
+
+    $(link1).show();
+    $(link2).hide();
+    $(link12).removeClass("fondoBlanco");
+    $(link11).addClass("fondoBlanco");
+
+};
+
+
+function mododatagrid(){
+   var link1 = "#listaProcesos";
+   var link2 = "#datagridprocesos_wrapper";
+   var link11 = "#modopanel1";
+    var link12 = "#mododatagrid1";
+
+    $(link2).show();
+    $(link1).hide();
+    $(link11).removeClass("fondoBlanco");
+    $(link12).addClass("fondoBlanco");
+};
+
+
 $(function() {
   $('#loading')
     .hide()  // hide it initially.
@@ -447,3 +473,6 @@ $(function() {
       $(this).hide(); // hide it when it is done.
   });
 });
+
+
+

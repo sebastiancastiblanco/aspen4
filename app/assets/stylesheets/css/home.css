@@ -235,7 +235,7 @@ div.panel.home_tab>nav {
 div.panel.home_tab nav.projects_nav a {
   width: 80px  !important;
 height: 54px  !important;
-margin-top: 51px  !important;
+margin-top: 10  px  !important;
 margin-left: 29px  !important;
  /*background: url(https://d3dma7a8zw52bz.cloudfront.net/assets/icons/new_project-5788db55f69415598bb407c0b1f187db.png) no-repeat  !important;*/
   background: url(/img/addgreen.png) no-repeat  !important;
@@ -289,7 +289,7 @@ div.panel.home_tab div.project_templates {
   text-align: center  !important;
   width: 170px  !important;
   left: -16px  !important;
-  top: 284px  !important;
+  top: 219px  !important;
   font-size: 14px  !important;
 }
 div.panel.home_tab div.project_templates a {
@@ -326,7 +326,8 @@ div.panel.home_tab section.projects.cards article.card.blank {
   box-shadow: 0 0 6px rgba(0,0,0,0.1)  !important;
 }
 div.panel.home_tab>div#all_projects section, div.panel.home_tab>section {
-  margin-left: 150px  !important;
+  margin-left: 170px  !important;
+  max-width: 790px !important;
 }
 div.panel.home_tab section.projects.cards {
   text-shadow: none  !important;
@@ -869,7 +870,7 @@ background: transparent  !important;
 }
 
 div.panel.home_tab div.project_templates.nuevoProceso{
-  top: 136px  !important;
+  top: 100px  !important;
 }
 
 .margenTop25{
@@ -1638,3 +1639,8 @@ margin-right: 8px;
 .nombreclienteprincipal{
   color:  #1c5c76;
 }
+
+.cursormano{
+  cursor: pointer;
+}
+/* datatable tiene su propio archivo */

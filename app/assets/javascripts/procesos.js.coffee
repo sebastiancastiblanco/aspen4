@@ -4,3 +4,6 @@
 
 $(document).ready ->
   cambioEstadoFavoritoHome()
+
+JQuery ->
+	$('#datagridprocesos').dataTable()

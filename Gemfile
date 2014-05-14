@@ -34,6 +34,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails'
   gem 'zurb-foundation', '~> 4.0.4'
+
+  #Datatable Jquery
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
 end
 
 gem 'jquery-rails', '~> 2.3.0'

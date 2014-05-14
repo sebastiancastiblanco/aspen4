@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 477e49a649c8d862988298bc96a93e030d023e0e
+  specs:
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -214,6 +222,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   gon (~> 4.1.1)
+  jquery-datatables-rails!
   jquery-rails (~> 2.3.0)
   jquery-timepicker-rails
   meta_request
