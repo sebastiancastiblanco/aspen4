@@ -113,7 +113,9 @@ class ProcesosController < ApplicationController
       if @proceso.save
         #Salvar relacion entre el proecso y el usuario que lo creo
         @proceso.control_accesos.create(:abogado_id => current_abogado.id,:proceso_id => @proceso.id,:privilegio_id => 1)
-
+        #Crear documentos default para el proceso
+        @proceso.documents.create(:name => "Cedula del cliente",:activo => false,:attachment => nil)
+        @proceso.documents.create(:name => "Contrato firmado",:activo => false,:attachment => nil, :usuario_id => current_abogado.id, :proceso_id =>@proceso.id)
         
        format.html { redirect_to @proceso, notice: 'El proceso fue creado correctamente.'  }
 

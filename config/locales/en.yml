@@ -20,4 +20,11 @@ en:
               blank: "Digite un nombre"
             last_name:
               blank: "Digite un apellido"
-       
+        document:
+          attributes:
+            attachment:
+              blank: "Seleccione un documento"
+              invalid: "Invalido "
+              invalid_attachment_size: "El tamaño del archivo de estar entre %{min} y %{max}"
+            attachment_content_type:
+              invalid_attachment_content: "Tiene una extensión que no coincide con su contenido"

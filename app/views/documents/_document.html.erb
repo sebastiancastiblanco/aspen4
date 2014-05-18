@@ -9,11 +9,11 @@
                           <figure class="full_width">
                             <a data-stacker="false" href="#">
                               <% if document.activo %>
-                              <img id="img1doc<%= document.id %>" class="thumbnail" src="/img/iconos/docOk.png" data-scaled="true" style="width: 66px; height: 66px;margin: 0 25px 10px 30px;"/>
-                              <img id="img2doc<%= document.id %>" class="thumbnail ocultar" src="/img/addArchivo.png" data-scaled="true" style="width: 62px; height: 66px;margin: 0 25px 10px 37px; opacity: 0.4;" /> 
+                              <img id="img1doc<%= document.id %>" class="thumbnail" src="/img/iconos/docOk.png" data-scaled="true" style="width: 38px; margin: 0 14px 10px 67px;"/>
+                              <img id="img2doc<%= document.id %>" class="thumbnail ocultar" src="/img/addArchivo.png" data-scaled="true" style="width: 38px; margin: 0 14px 10px 67px; opacity: 0.4;" /> 
                               <% else %>
-                              <img id="img2doc<%= document.id %>" class="thumbnail" src="/img/addArchivo.png" data-scaled="true" style="width: 62px; height: 66px;margin: 0 25px 10px 37px; opacity: 0.4;" />
-                              <img id="img1doc<%= document.id %>" class="thumbnail ocultar" src="/img/iconos/docOk.png" data-scaled="true" style="width: 66px; height: 66px;margin: 0 25px 10px 30px;" />
+                              <img id="img2doc<%= document.id %>" class="thumbnail" src="/img/addArchivo.png" data-scaled="true" style="width: 38px;margin: 0 14px 10px 67px; opacity: 0.4;" />
+                              <img id="img1doc<%= document.id %>" class="thumbnail ocultar" src="/img/iconos/docOk.png" data-scaled="true" style="width: 38px; margin: 0 14px 10px 67px;" />
                               <% end %>
                             </a>
                           </figure>
@@ -29,12 +29,14 @@
 
                           <% end %>
 
-                            
-
-                          <h3 class="filename" style="width: 300px !important;">
-                            <span style="margin-top: 5px;"><%= document.name %></span> 
+                          <h3 class="filename" style="width: 400px !important;margin-bottom: 7px;">
+                            <span style="margin-top: 0px; "><%= document.name %></span>
                           </h3>
 
+                          <p class="detalles" style="margin: -4px 9px;" >
+                                Actualizado <span class="time"><%= fechaFormatoActualizado document.updated_at %></span>
+                          </p>
+                         
                           <div class="authorship">
                             
                             <p class="meta">
@@ -46,8 +48,9 @@
                             </p>
 
                             <p>
-                               <% if !document.attachment.nil? %>
-                                  <a data-stacker="false" href="<%= document.attachment.url %>" class="textGrislinks">Descargar / </a>
+                               <% if !document.attachment.url.include? "missing.png" %>
+                                  <a data-stacker="false" href="<%= document.attachment.url %>" class="textGrislinks" target="_blank">Descargar / 
+                                  </a>
                                   <%= link_to 'Editar /', edit_document_path(document, :proceso_id => @proceso.id,:documento_id => document.id) ,:class =>"textGrislinks" %>
                               <% else %>
                                   <%= link_to 'Adjuntar documento /', edit_document_path(document, :proceso_id => @proceso.id,:documento_id => document.id) ,:class =>"textGrislinks" %>
