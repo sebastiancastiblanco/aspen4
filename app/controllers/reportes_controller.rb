@@ -1,4 +1,8 @@
 class ReportesController < ApplicationController
+
+  # debe esta logeado para iniciar a las paginas
+  before_filter :authenticate_abogado!
+  
   def index
   	#Recuperar el ultimo proceso modificado del usuario y mostrar el reporte
   	#recuperar todos los procesos del usaurio para listarlos en un combo box.

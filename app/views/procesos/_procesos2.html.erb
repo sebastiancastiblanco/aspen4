@@ -11,12 +11,12 @@
         </a>
    </td>
   <td>
-  	<%= link_to(proceso) do  %>
+  	<%= link_to(proceso,:class => "titulocontendiotablaPrincipal") do  %>
   		<%= proceso.titulo %> 
   	<% end %>
   </td>
   <td>
-  		Ref <%= proceso.id %>  <% if !proceso.referencia.nil? %>/ <%= proceso.referencia %> <%end%> 
+  		<% if !proceso.referencia.nil? %> <%= proceso.referencia %> <%end%> 
   </td>
   <td>
   		<% if !proceso.estado_proceso.nil? %> <%= proceso.estado_proceso.estado %><%end%>
@@ -38,8 +38,10 @@
   </td>
   <td>
   		<% proceso.abogados.each do |usuarioConAcceso| %>
-                    	<i class="foundicon-people" title="<%= usuarioConAcceso.email %>"></i>
-                    
+                <a href="#" data-reveal-id="#">
+                                    	<img src="/img/user.png" title="<%= usuarioConAcceso.email %>" style="width: 19px;margin-left: 2px;">
+                </a>
+
           <% end %>
   </td>
 </tr>

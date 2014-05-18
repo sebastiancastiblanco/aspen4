@@ -475,4 +475,33 @@ $(function() {
 });
 
 
+function cambioEstadoDocumento(documentoid){
 
+    var documentocheck = "#documentocheck"+documentoid;
+    var img1doc = "#img1doc"+documentoid;
+    var img2doc = "#img2doc"+documentoid;
+
+    var valdocumentocheck =  $(documentocheck).val();
+      if($(documentocheck).is(":checked") ){
+      $.ajax({
+            url: "/documents/registrar/" + documentoid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res){
+                $(img2doc).addClass('ocultar');
+                $(img1doc).removeClass('ocultar');
+            }
+         })
+     }
+    else{
+      $.ajax({
+             url: "/documents/noregistrar/" + documentoid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res){
+              $(img1doc).addClass('ocultar');
+                $(img2doc).removeClass('ocultar');
+            }
+         })
+     }
+};

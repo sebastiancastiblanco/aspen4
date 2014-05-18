@@ -10,35 +10,57 @@
             <div data-behavior="edit_project_header expandable">
             <div class="collapsed_content">
               <div class="row">
-                <div class="small-12 columns">
-
-                    <div class="small-12columns left">
-                      <h4 id="tituloContrato"  style="margin-top: 25px;">
-                        Alertas Pendientes
-                      </h4>
+                <div class="small-12 large-12 columns">
+                    <div class="small-12 large-1 columns left" style="margin-top: 20px;">
+                     
+                        <img src="/img/reloj.png" width="45px" style="opacity: 0.4;">
                       
                     </div>
-                     <hr  class="lineaHorizontalAzul"> 
-                    <div class="small-3 small-3 columns left">
-
+                    
+                    <div class="small-12 large-11 columns left">
+                      <h4 id="tituloContrato"  style="margin-top: 32px;">
+                        Alertas Pendientes
+                      </h4>
                     </div>
 
-                </div>
+                     <div class="small-12 large-11 large-offset-1 columns left">
+                     <span class="subtitulogris"> Alertas no atendidas a la fecha actual.
+                      </span>
+                      </div>
+
+  
+                 </div>
               </div>
             </div>
           </div><div class="blank_slate_arrow"></div>
           </header>
 
+        <hr  class="lineaHorizontalAzul" style="margin-top: 13px;"> 
 
-          <div class="sheet_body fondoGris">
+
+          <div class="sheet_body fondoGris" style="margin-top: 40px;">
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
-            <section class="calendar_events">
-
-                        <% @alertasPendientes.each do |alerta| %>
+                <section class="calendar_events ocultar">
+                     <% @alertasPendientes.each do |alerta| %>
                               <%= render 'alertaPendiente', :alerta => alerta %>
                         <% end %>
-                  
-               </section>
+                </section>
+            
+            <% if !@alertasPendientes.empty? %>
+                 <table id="datagridalertas" >
+                      <thead>
+                        <tr>
+                          <th width="150">Alerta</th>
+                          <th width="150">Fecha programada</th>
+                          <th width="200">Nota</th>
+                          <th width="150">Proceso</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <%= render partial: "alertaPendiente2", collection: @alertasPendientes , :as => :alerta %>
+                      </tbody>
+                    </table>
+               <% end %>
             </div>
           </div>
 
@@ -61,30 +83,54 @@
                       <div data-behavior="edit_project_header expandable">
                       <div class="collapsed_content">
                         <div class="row">
-                          <div class="small-12 columns">
-
-                              <div class="small-12 columns left">
-                                <h4 id="tituloContrato" >
-                                  Proximas Alertas
-                                </h4>
+                            <div class="small-12 large-12 columns">
+                                <div class="small-12 large-1 columns left" style="margin-top: 20px;">
+                                  <img src="/img/reloj.png" width="45px" style="opacity: 0.4;">
+                                 </div>
                                 
-                              </div>
+                                <div class="small-12 large-11 columns left">
+                                  <h4 id="tituloContrato"  style="margin-top: 32px;">
+                                    Siguientes Alertas
+                                  </h4>
+                                </div>
 
+                                 <div class="small-12 large-11 large-offset-1 columns left">
+                                 <span class="subtitulogris"> 
+                                  </span>
+                                  </div>
+
+              
+                             </div>
                           </div>
-                        </div>
                       </div>
                     </div><div class="blank_slate_arrow"></div>
                     </header>
 
-                    <div class="sheet_body fondoGris">
-                      <div id="date_display_Project:2733915" class="date_display" data-autoview="">
-                      <section class="calendar_events">
 
+        <hr  class="lineaHorizontalAzul" style="margin-top: 13px;"> 
+
+                    <div class="sheet_body fondoGris" style="margin-top: 40px;">
+                      <div id="date_display_Project:2733915" class="date_display" data-autoview="">
+                          <section class="calendar_events">
                                   <% @alertasProximas.each do |alerta| %>
                                         <%= render 'alertaProxima', :alerta => alerta %>
                                   <% end %>
+                          </section>
 
-                         </section>
+                           <table id="datagridalertasproximas" >
+                            <thead>
+                              <tr>
+                                <th width="150">Alerta</th>
+                                <th width="150">Fecha programada</th>
+                                <th width="200">Nota</th>
+                                <th width="150">Proceso</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <%= render partial: "alertaPendiente2", collection: @alertasProximas , :as => :alerta %>
+                            </tbody>
+                          </table>
+
                       </div>
                     </div>
 
@@ -95,3 +141,62 @@
     </div>
   </div>
 </body>
+
+<script type="text/javascript">
+  $('#datagridalertas').dataTable({
+        "oLanguage":{
+                  "sProcessing":     "Procesando...",
+                  "sLengthMenu":     "Mostrar _MENU_ alertas",
+                  "sZeroRecords":    "No se encontraron resultados",
+                  "sEmptyTable":     "Ninguna alerta listada",
+                  "sInfo":           "Mostrando alertas del _START_ al _END_ de un total de _TOTAL_ alertas",
+                  "sInfoEmpty":      "Mostrando alertas del 0 al 0 de un total de 0 alertas",
+                  "sInfoFiltered":   "(filtrado de un total de _MAX_ alertas)",
+                  "sInfoPostFix":    "",
+                  "sSearch":         "Buscar:",
+                  "sUrl":            "",
+                  "sInfoThousands":  ",",
+                  "sLoadingRecords": "Cargando...",
+                  "oPaginate": {
+                      "sFirst":    "Primero",
+                      "sLast":     "Último",
+                      "sNext":     "Siguiente",
+                      "sPrevious": "Anterior"
+                  },
+                  "oAria": {
+                      "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                  }
+          }
+    }
+    );
+
+$('#datagridalertasproximas').dataTable({
+        "oLanguage":{
+                  "sProcessing":     "Procesando...",
+                  "sLengthMenu":     "Mostrar _MENU_ alertas",
+                  "sZeroRecords":    "No se encontraron resultados",
+                  "sEmptyTable":     "Ninguna alerta listada",
+                  "sInfo":           "Mostrando alertas del _START_ al _END_ de un total de _TOTAL_ alertas",
+                  "sInfoEmpty":      "Mostrando alertas del 0 al 0 de un total de 0 alertas",
+                  "sInfoFiltered":   "(filtrado de un total de _MAX_ alertas)",
+                  "sInfoPostFix":    "",
+                  "sSearch":         "Buscar:",
+                  "sUrl":            "",
+                  "sInfoThousands":  ",",
+                  "sLoadingRecords": "Cargando...",
+                  "oPaginate": {
+                      "sFirst":    "Primero",
+                      "sLast":     "Último",
+                      "sNext":     "Siguiente",
+                      "sPrevious": "Anterior"
+                  },
+                  "oAria": {
+                      "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                  }
+          }
+    }
+    );
+</script>
+

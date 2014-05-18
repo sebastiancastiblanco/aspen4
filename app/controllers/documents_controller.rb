@@ -1,9 +1,13 @@
 class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
+
+  # debe esta logeado para iniciar a las paginas
+  before_filter :authenticate_abogado!
+  
   def index
     @proceso = Proceso.find(params[:proceso_id])
-    @documents = @proceso.documents.where(activo: true)
+    @documents = @proceso.documents
     
 
     respond_to do |format|
@@ -95,11 +99,25 @@ class DocumentsController < ApplicationController
     @proceso = Proceso.find(params[:proceso_id])
     #Traza de log
     Log.create(:usuario => current_abogado.email,:proceso => @proceso.tipo_proceso.tipo+' - '+@proceso.titulo ,:usuario_id => current_abogado.id ,:proceso => @proceso, :documento_id => @document.id, :mensaje_id => 6 ,:mensaje=> current_abogado.email.to_s+', modifico el documento adjunto : '+@document.name)
-    @document.update_attribute(:activo, false)
+    @document.destroy
 
     respond_to do |format|
       format.html {  redirect_to action: "index",  proceso_id: @proceso, notice: 'Se elimino el documento correctamente.'}
       format.json { head :no_content }
     end
+  end
+
+  def registrar
+    @documentoregistro =  Document.find(params[:documentoid])
+    @documentoregistro.activo = true
+    @documentoregistro.save
+    render :json => @documentoregistro
+  end
+
+   def noregistrar
+    @documentoregistro =  Document.find(params[:documentoid])
+    @documentoregistro.activo = false
+    @documentoregistro.save
+    render :json => @documentoregistro
   end
 end

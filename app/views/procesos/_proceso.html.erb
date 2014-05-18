@@ -11,8 +11,8 @@
     <%= link_to(proceso) do  %>
       
         <h5><%= proceso.titulo %> </h5>
-            <p style="margin-bottom: 5px;">
-              Ref <%= proceso.id %>  <% if !proceso.referencia.nil? %>/ <%= proceso.referencia %> <%end%> </p>
+            <p style="margin-bottom: 5px;font-size: 12px !important;">
+              <% if !proceso.referencia.nil? %> Referencia: <%= proceso.referencia %> <%end%> </p>
             <p style="font-size: 12px !important;margin-bottom: 5px;">
                 Modificado <%= fechaFormato1 proceso.updated_at %>
             </p>
@@ -40,7 +40,7 @@
             <div class="panelAvatarUsuario">
                 <% proceso.abogados.each do |usuarioConAcceso| %>
                     <div class="people">
-                         <img src="/img/user.png" title="<%= usuarioConAcceso.email %>">
+                         <img src="/img/user.png" title="<%= usuarioConAcceso.email %>" style="width: 32px;margin-left: 3px;">
                     </div>
                  <% end %>
             </div>

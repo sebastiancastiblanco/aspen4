@@ -1,5 +1,7 @@
 class LogsController < ApplicationController
-
+# debe esta logeado para iniciar a las paginas
+  before_filter :authenticate_abogado!
+  
  def index
      # @dias = (5.day.ago.to_date..Date.today).map{ |date| date.strftime("%b %d") }.reverse
      @dias = Log.where(abogado_id: current_abogado.id ).order('id,created_at DESC').group("id,created_at").limit(3)

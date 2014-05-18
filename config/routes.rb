@@ -240,4 +240,8 @@ AspenVersion3::Application.routes.draw do
 
   match 'actividads/nuevoregistro/:actividad_id' => 'actividads#nuevoRegistro'
 
+  #Filtrado para documentos existentes o no
+   match 'documents/registrar/:documentoid' => 'documents#registrar'
+   match 'documents/noregistrar/:documentoid' => 'documents#noregistrar'
+   
 end

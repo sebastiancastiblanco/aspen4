@@ -1,6 +1,10 @@
 class EstadosController < ApplicationController
   # GET /estados
   # GET /estados.json
+
+  # debe esta logeado para iniciar a las paginas
+  before_filter :authenticate_abogado!
+  
   def index
     @proceso = Proceso.find(params[:proceso_id])
     @estados = @proceso.estados.where(activo: true)

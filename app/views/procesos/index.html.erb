@@ -1,6 +1,11 @@
 <body>
 
   <div class="row">
+    
+    <% if (notice) %>
+                <div data-alert class="alert-box success radius" style="text-shadow: initial;"><%= notice %></div>
+    <% end%>
+          
     <div class="vistaProcesos large-1 large-offset-11 small-1 right">
               <%= link_to  "javascript:modopanel()", :id => "modopanel" do %>
                      <img id="modopanel1" src="/img/iconos/grid20.png" title="panel">
@@ -28,15 +33,14 @@
                 <%= link_to 'Nuevo Proceso', new_proceso_path, :id => "nuevoProcesoBoton"%>
                 <hr>
                
-                <%= link_to  "javascript:mostrarPanelBuscarProceso()", :id => "mostrarCamposOpcionales" do %>
-                     <div class="foundicon-search"></div> Buscar Proceso
-                <% end %>
                 <br /> 
-                <%= link_to  :controller => :procesos, :action => :favoritos , :estado  => 1, :remote => true do%>
-                 <div class="foundicon-star alinearbotones" style="display:block; margin-right: -11px !important;"></div> Procesos Favoritos
+                <%= link_to  :controller => :procesos, :action => :favoritos , :estado  => 1, :remote => true  do%>
+                 <div class="foundicon-star alinearbotones" style="display:block; margin-right: -11px !important;"
+                      ></div> Procesos Favoritos
                 <% end %> 
                 <br /> 
-                <%= link_to 'Todos los Procesos', :controller => :procesos, :action => :favoritos , :estado  => 0 , :remote => true %>
+                <%= link_to 'Todos los Procesos', :controller => :procesos, :action => :favoritos , :estado  => 0 , :remote => true,
+        :onclick => 'mododatagrid();' %>
                
                <hr>
                
@@ -67,10 +71,7 @@
                 
             </div>
 
-                <% if (notice) %>
-                <div data-alert class="alert-box success radius" style="text-shadow: initial;"><%= notice %></div>
-            <% end%>
-          
+            
 
 
             <div id="panelBuscarProceso" class="row panel panelBusqueda ocultar " style="height: 83px !important; float: none;margin-left: 165px !important;">
@@ -104,26 +105,25 @@
 
             <div id="all_projects">
                 <section id="sectionProcesos" class="projects cards">
-                   <div id="listaProcesos" class="row">
+                    <div id="listaProcesos" class="row">
                         <%= render @procesos %> 
                         <article class="card blank " data-behavior="bounce_nav">&nbsp;</article>
-
                     </div>
+
                     <table id="datagridprocesos" >
                       <thead>
                         <tr>
                           <th></th>
-                          <th width="150">Proceso</th>
+                          <th width="200">Proceso</th>
                           <th>Referencia</th>
                           <th width="100">Estado</th>
                           <th width="150">Ultima mod.</th>
                            <th width="150">Cliente</th>
-                            <th width="150">Usuarios</th>
+                            <th width="150">Colaboradores</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="bodytableprocesos">
                         <%= render partial: "procesos2", collection: @procesos , :as => :proceso %>
-                        
                       </tbody>
                     </table>
                 </section>
@@ -183,5 +183,5 @@
           }
     }
     );
-  modopanel();
+  mododatagrid();
 </script>

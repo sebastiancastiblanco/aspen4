@@ -1,1 +1,2 @@
 $('#listaProcesos').html(" <%= j render( @procesos) %> <article class='card blank' data-behavior='bounce_nav'>&nbsp;</article>");
+$('#bodytableprocesos').html(" <%= j render partial: 'procesos2', collection: @procesos , :as => :proceso %>");

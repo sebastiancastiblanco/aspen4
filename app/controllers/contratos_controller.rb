@@ -1,6 +1,10 @@
 class ContratosController < ApplicationController
   # GET /contratos
   # GET /contratos.json
+
+  # debe esta logeado para iniciar a las paginas
+  before_filter :authenticate_abogado!
+  
   def index
     
     @proceso = Proceso.find(params[:proceso_id])

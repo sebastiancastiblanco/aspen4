@@ -1,6 +1,10 @@
 class ActividadsController < ApplicationController
   # GET /actividads
   # GET /actividads.json
+
+  # debe esta logeado para iniciar a las paginas
+  before_filter :authenticate_abogado!
+  
   def index
     @proceso = Proceso.find(params[:proceso_id])
     @actividads = @proceso.actividads.activos.ascendentes
@@ -148,9 +152,9 @@ class ActividadsController < ApplicationController
 
  #Recuperar las activiaddes pendites del usuario, en todos los procesos
   def actividadesPendientes
-     @actividadesPendientes = current_abogado.actividads.activos.where("fechaseguir < ?", Time.now).order("updated_at DESC");
-     @actividadesProximas = current_abogado.actividads.activos.where("fechaseguir >= ?", Time.now ).order("updated_at DESC").limit(3);
-
+     @actividadesPendientes = current_abogado.actividads.activos.where("fechaseguir < ? AND estado_actividad_id != ?", Time.now,8).order("updated_at DESC");
+     #@actividadesPendientes = current_abogado.actividads.activos.where("fechaseguir < ?", Time.now).order("updated_at DESC");
+     @actividadesProximas = current_abogado.actividads.activos.where("fechaseguir >= ?", Time.now ).order("updated_at DESC");
   end
 
   def nuevoRegistro

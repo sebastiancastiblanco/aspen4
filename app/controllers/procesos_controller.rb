@@ -1,6 +1,7 @@
 class ProcesosController < ApplicationController
   autocomplete :proceso, :titulo => 'name', :full => true
   #before_filter :require_login
+  # debe esta logeado para iniciar a las paginas
   before_filter :authenticate_abogado!
 
   # GET /procesos
@@ -15,8 +16,9 @@ class ProcesosController < ApplicationController
     @participante = Participante.new
 
     #Alertas pendietse del usuario
+     
     @NumeroAlertasPendientes = current_abogado.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC").count;
-    @NumeroActividadesPendientes = current_abogado.actividads.activos.where("fechaseguir   < ?", Time.now).order("updated_at DESC").count;
+    @NumeroActividadesPendientes = current_abogado.actividads.activos.where("fechaseguir < ? AND estado_actividad_id != ?", Time.now,8).order("updated_at DESC").count;
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @procesos }
@@ -50,7 +52,7 @@ class ProcesosController < ApplicationController
     #estados de los procesos
     @estados = @proceso.estados.where(activo: true).order("updated_at DESC").first(3)
     #Documentos del proceso
-    @documentos = @proceso.documents.where(activo: true).order("updated_at DESC").first(3)
+    @documentos = @proceso.documents.order("updated_at DESC").first(3)
     #participante principal del proceso
     @participantePrincipal = Participante.participante_principal(@proceso.id)
 

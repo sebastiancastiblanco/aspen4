@@ -8,16 +8,31 @@
                         <td class="icon">
                           <figure class="full_width">
                             <a data-stacker="false" href="#">
-
-                              <img alt="" class="thumbnail" src="/img/doc.png" data-scaled="true" style="width: 84px; height: 92px;margin: 0 25px 10px 30px;">
+                              <% if document.activo %>
+                              <img id="img1doc<%= document.id %>" class="thumbnail" src="/img/iconos/docOk.png" data-scaled="true" style="width: 66px; height: 66px;margin: 0 25px 10px 30px;"/>
+                              <img id="img2doc<%= document.id %>" class="thumbnail ocultar" src="/img/addArchivo.png" data-scaled="true" style="width: 62px; height: 66px;margin: 0 25px 10px 37px; opacity: 0.4;" /> 
+                              <% else %>
+                              <img id="img2doc<%= document.id %>" class="thumbnail" src="/img/addArchivo.png" data-scaled="true" style="width: 62px; height: 66px;margin: 0 25px 10px 37px; opacity: 0.4;" />
+                              <img id="img1doc<%= document.id %>" class="thumbnail ocultar" src="/img/iconos/docOk.png" data-scaled="true" style="width: 66px; height: 66px;margin: 0 25px 10px 30px;" />
+                              <% end %>
                             </a>
                           </figure>
                         </td>
 
                         <td class="textFiles">
-                          <h3 class="filename">
-                           <%= document.name %>
+                          
+
+                          <% if document.activo %>
+                           <input id="documentocheck<%= document.id %>" checked type="checkbox" name="documentocheck<%= document.id %>" value="<%= document.activo %>"  style="float: left;margin: 6px 9px;" onClick="cambioEstadoDocumento(<%= document.id %>)"/>
+                            <% else %>
+                           <input id="documentocheck<%= document.id %>"  type="checkbox" name="documentocheck<%= document.id %>" value="<%= document.activo %>"  style="float: left;margin: 6px 9px;" onClick="cambioEstadoDocumento(<%= document.id %>)"/>
+
+                          <% end %>
+
                             
+
+                          <h3 class="filename" style="width: 300px !important;">
+                            <span style="margin-top: 5px;"><%= document.name %></span> 
                           </h3>
 
                           <div class="authorship">
@@ -30,10 +45,17 @@
                               <% end %>
                             </p>
 
-                            <p class="">
-                              <a data-stacker="false" href="<%= document.attachment.url %>" class="textGrislinks">Descargar /</a>
-                              <%= link_to 'Editar /', edit_document_path(document, :proceso_id => @proceso.id,:documento_id => document.id) ,:class =>"textGrislinks" %>
-                              <span></span>
+                            <p>
+                               <% if !document.attachment.nil? %>
+                                  <a data-stacker="false" href="<%= document.attachment.url %>" class="textGrislinks">Descargar / </a>
+                                  <%= link_to 'Editar /', edit_document_path(document, :proceso_id => @proceso.id,:documento_id => document.id) ,:class =>"textGrislinks" %>
+                              <% else %>
+                                  <%= link_to 'Adjuntar documento /', edit_document_path(document, :proceso_id => @proceso.id,:documento_id => document.id) ,:class =>"textGrislinks" %>
+                            <% end %>
+
+                             
+                             
+                             
                               <%= link_to 'Eliminar', document_path(document, :proceso_id => @proceso.id), method: :delete, data: { confirm: 'Estas seguro de eliminar este documento?' }, :class => "textRojolinks inlineBlock eliminarlink" %>
                             </p>
                           </div>

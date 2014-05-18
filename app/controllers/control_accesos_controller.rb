@@ -2,6 +2,9 @@ class ControlAccesosController < ApplicationController
   # GET /control_accesos
   # GET /control_accesos.json
 
+  # debe esta logeado para iniciar a las paginas
+  before_filter :authenticate_abogado!
+  # autocomplete para el abogado y seleccion de usuario
   autocomplete :abogado, :email, full: true 
 
   def abogadoAutocomplete

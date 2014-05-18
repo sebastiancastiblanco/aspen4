@@ -1,0 +1,40 @@
+<tr>
+  <td >
+     <%= link_to  actividad.nombre , {:controller => "actividads", :action => "index", :proceso_id => actividad.proceso.id, :actividad_id => actividad.id, :nuevoItem => true},:class => "titulocontendiotabla" %>
+    
+  </td>
+  <td>
+      
+       <% if actividad.estado_actividad.estado =="Abierta" %>
+       <div class="circulorojo" style="background: #457a1a !important"></div>
+      <% end %>
+      <% if actividad.estado_actividad.estado =="Atrasada" %>
+       <div class="circulorojo" style="background: #970b0e !important"></div>
+      <% end %>
+      <% if actividad.estado_actividad.estado =="Terminada" %>
+      <div class="circulorojo" style="background: #000 !important"></div>
+      <% end %> 
+      <% if actividad.estado_actividad.estado =="Programada" %>
+      <div class="circulorojo" style="background: rgb(16, 16, 156) !important"></div>
+      <% end %> 
+
+  		<%= actividad.estado_actividad.estado %>
+  </td>
+  <td>
+      <%= fechaFormato1 actividad.fechaseguir %>
+  </td>
+  <td>
+  		 <%= actividad.descripcion %>  
+  </td>
+  <td>
+  		 <% if actividad.tiempoEjecucion %>
+          <%= actividad.tiempoEjecucion %> <%= actividad.medidaTiempo%>
+      <% end %> 
+  </td>
+  <td>
+    <%= link_to(actividad.proceso, :class=>"titulocontendiotabla") do  %>
+      <%= actividad.proceso.titulo %> 
+    <% end %>
+
+  </td>
+</tr>

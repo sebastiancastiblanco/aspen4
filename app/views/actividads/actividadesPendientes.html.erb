@@ -12,18 +12,25 @@
             <div data-behavior="edit_project_header expandable">
             <div class="collapsed_content">
               <div class="row">
-                <div class="small-12 columns">
-
-                    <div class="small-12 columns left">
-                      <h4 id="tituloContrato"  style="margin-top: 25px;">
+                <div class="small-12 large-12 columns">
+                    <div class="small-12 large-1 columns left" style="margin-top: 20px;">
+                     
+                        <img src="/img/calendario.png" width="45px" style="opacity: 0.4;">
+                      
+                    </div>
+                    
+                    <div class="small-12 large-11 columns left">
+                      <h4 id="tituloContrato"  style="margin-top: 32px;">
                         Actividades Pendientes
                       </h4>
-                     
                     </div>
-                    <hr  class="lineaHorizontalAzul"> 
-                    <div class="small-3 small-3 columns left">
 
-                    </div>
+                     <div class="small-12 large-11 large-offset-1 columns left">
+                     <span class="subtitulogris"> Actividades no terminadas a la fecha actual.
+                      </span>
+                      </div>
+
+  
                  </div>
               </div>
             </div>
@@ -31,16 +38,34 @@
           </header>
 
 
+            <hr  class="lineaHorizontalAzul" style="margin-top: 13px;"> 
 
-          <div class="sheet_body fondoGris">
+          <div class="sheet_body fondoGris" style="margin-top: 40px;">
             <div id="date_display_Project:2733915" class="date_display" data-autoview="">
-            <section class="calendar_events">
-
-                        <% @actividadesPendientes.each do |actividad| %>
+              
+              <section class="calendar_events ocultar">
+                    <% @actividadesPendientes.each do |actividad| %>
                               <%= render 'actividadPendiente', :actividad => actividad %>
                         <% end %>
-
-               </section>
+              </section>
+              <% if  !@actividadesPendientes.empty? %>
+                <table id="datagridactividades" >
+                      <thead>
+                        <tr>
+                          <th width="150">Actividad</th>
+                          <th>Estado</th>
+                          <th>Fecha Seguimiento</th>
+                          <th width="150">Descripcion</th>
+                          <th>Tiempo estimado</th>
+                          <th>Proceso</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <%= render partial: "actividadPendiente2", collection: @actividadesPendientes , :as => :actividad %>
+                        
+                      </tbody>
+                    </table>
+             <% end %>
             </div>
           </div>
        
@@ -56,39 +81,69 @@
               <% end %>
 
 <hr>
- <%= link_to 'Proximas Actividades', "javascript:eventoCamposOpcionalesActividadProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %>
+ <%= link_to 'Proximas 10 Actividades', "javascript:eventoCamposOpcionalesActividadProximos()", :class=>"textolinks alinearDerecha", :id => "mostrarCamposOpcionales" %>
 
           <div id="camposOpcionalesActividadProximos"  class="row ocultar">
             <header class="has_buttons">
                       <div data-behavior="edit_project_header expandable">
                       <div class="collapsed_content">
-                        <div class="row">
-                          <div class="small-12 columns">
-
-                              <div class="small-12 columns left">
-                                <h4 id="tituloContrato" >
-                                  Proximas Actividades
-                                </h4>
+                         <div class="row">
+                            <div class="small-12 large-12 columns">
+                                <div class="small-12 large-1 columns left" style="margin-top: 20px;">
+                                 
+                                    <img src="/img/calendario.png" width="45px" style="opacity: 0.4;">
+                                  
+                                </div>
                                 
-                              </div>
+                                <div class="small-12 large-11 columns left">
+                                  <h4 id="tituloContrato"  style="margin-top: 32px;">
+                                    Actividades Siguientes
+                                  </h4>
+                                </div>
 
+                                 <div class="small-12 large-11 large-offset-1 columns left">
+                                 <span class="subtitulogris"> Actividades no terminadas a la fecha actual.
+                                  </span>
+                                  </div>
+
+              
+                             </div>
                           </div>
-                        </div>
                       </div>
                     </div><div class="blank_slate_arrow"></div>
                     </header>
 
-
+  <hr  class="lineaHorizontalAzul" style="margin-top: 13px;"> 
 
                     <div class="sheet_body fondoGris">
                       <div id="date_display_Project:2733915" class="date_display" data-autoview="">
-                      <section class="calendar_events">
+                      <section class="calendar_events ocultar">
 
                                   <% @actividadesProximas.each do |actividad| %>
                                         <%= render 'actividadProxima', :actividad => actividad %>
                                   <% end %>
 
                          </section>
+
+                           <table id="datagridactividadesProximas" >
+                                  <thead>
+                                    <tr>
+                                      <th width="150">Actividad</th>
+                                      <th>Estado</th>
+                                      <th>Fecha Seguimiento</th>
+                                      <th width="150">Descripcion</th>
+                                      <th>Tiempo estimado</th>
+                                      <th>Proceso</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <%= render partial: "actividadPendiente2", collection: @actividadesProximas , :as => :actividad %>
+                                    
+                                  </tbody>
+                                </table>
+                        
+
+
                       </div>
                     </div>
 
@@ -100,3 +155,65 @@
     </div>
   </div>
 </body>
+
+<script type="text/javascript">
+  $('#datagridactividades').dataTable({
+        "oLanguage":{
+                  "sProcessing":     "Procesando...",
+                  "sLengthMenu":     "Mostrar _MENU_ actividades",
+                  "sZeroRecords":    "No se encontraron resultados",
+                  "sEmptyTable":     "Ninguna actividad progrmada",
+                  "sInfo":           "Mostrando actividades del _START_ al _END_ de un total de _TOTAL_ actividades",
+                  "sInfoEmpty":      "Mostrando actividades del 0 al 0 de un total de 0 actividades",
+                  "sInfoFiltered":   "(filtrado de un total de _MAX_ actividades)",
+                  "sInfoPostFix":    "",
+                  "sSearch":         "Buscar:",
+                  "sUrl":            "",
+                  "sInfoThousands":  ",",
+                  "sLoadingRecords": "Cargando...",
+                  "oPaginate": {
+                      "sFirst":    "Primero",
+                      "sLast":     "Último",
+                      "sNext":     "Siguiente",
+                      "sPrevious": "Anterior"
+                  },
+                  "oAria": {
+                      "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                  }
+          }
+    }
+    );
+  
+  $('#datagridactividadesProximas').dataTable({
+        "oLanguage":{
+                  "sProcessing":     "Procesando...",
+                  "sLengthMenu":     "Mostrar _MENU_ actividades",
+                  "sZeroRecords":    "No se encontraron resultados",
+                  "sEmptyTable":     "Ninguna actividad programada",
+                  "sInfo":           "Mostrando actividades del _START_ al _END_ de un total de _TOTAL_ actividades",
+                  "sInfoEmpty":      "Mostrando actividades del 0 al 0 de un total de 0 actividades",
+                  "sInfoFiltered":   "(filtrado de un total de _MAX_ actividades)",
+                  "sInfoPostFix":    "",
+                  "sSearch":         "Buscar:",
+                  "sUrl":            "",
+                  "sInfoThousands":  ",",
+                  "sLoadingRecords": "Cargando...",
+                  "oPaginate": {
+                      "sFirst":    "Primero",
+                      "sLast":     "Último",
+                      "sNext":     "Siguiente",
+                      "sPrevious": "Anterior"
+                  },
+                  "oAria": {
+                      "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                  }
+          }
+    }
+    );
+
+
+
+
+</script>

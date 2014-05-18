@@ -627,6 +627,7 @@ table.inbox td.avatar {
 /*Files*/
 .textFiles{
   vertical-align: middle !important;
+  width: auto !important;
 }
 section.attachments.grouped_by_date article.attachment>table>tbody>tr>td.textFiles div.authorship {
   clear: left !important;
@@ -634,6 +635,7 @@ section.attachments.grouped_by_date article.attachment>table>tbody>tr>td.textFil
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
+  margin-left: 10px;
 }
 section.attachments.grouped_by_date article.attachment>table>tbody>tr>td.textFiles div.authorship p.meta {
   max-width: 480px !important;
@@ -1592,6 +1594,23 @@ margin-top: 4px;
 margin-right: 8px;
  } 
 
+ .circulorojo{
+  width: 10px;
+height: 10px;
+background-color: #970b0e !important;
+float: left;
+margin-top: 1px;
+margin-right: 8px;
+border-radius: 15px;
+ }
+
+.subtitulogris{
+color: #999;
+font-weight: normal;
+padding-top: 2px;
+font-size: 0.975em;
+}
+
  .letra12px{
   font-size: 12px !important; 
   color: #929292;
@@ -1643,4 +1662,14 @@ margin-right: 8px;
 .cursormano{
   cursor: pointer;
 }
+
+.titulocontendiotabla{
+  color: #2795b6;
+}
+
+.titulocontendiotablaPrincipal{
+ color: #2795b6;
+ font-size: 17px !important; 
+}
+
 /* datatable tiene su propio archivo */

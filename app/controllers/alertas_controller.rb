@@ -1,6 +1,10 @@
 class AlertasController < ApplicationController
   # GET /alerta
   # GET /alerta.json
+
+  # debe esta logeado para iniciar a las paginas
+  before_filter :authenticate_abogado!
+  
   def index
     @proceso = Proceso.find(params[:proceso_id])
     @alerta = @proceso.alertas.where(activo: true)
@@ -127,7 +131,7 @@ class AlertasController < ApplicationController
   #Recuperar las alertas pendites del usuario, en todo los procesos
   def alertasPendientes
     @alertasPendientes = current_abogado.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC");
-    @alertasProximas = current_abogado.alertas.activos.where("termina >= ?", Time.now).order("updated_at DESC").limit(3);
+    @alertasProximas = current_abogado.alertas.activos.where("termina >= ?", Time.now).order("updated_at DESC");
   end
 
 end

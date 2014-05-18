@@ -1,6 +1,10 @@
 class ParticipantesController < ApplicationController
   # GET /participantes
   # GET /participantes.json
+
+  # debe esta logeado para iniciar a las paginas
+  before_filter :authenticate_abogado!
+
   def index
     @proceso = Proceso.find(params[:proceso_id])
     @participantes = @proceso.participantes.activos  #scope recuperar participantes activos
