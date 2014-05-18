@@ -1,13 +1,10 @@
-
 <body>
-
   <div id="workspace" class="workspace">
     <div class="container stack_container" style="width: 960px;">
       <div class="panel sheet project active blank_slate fondoGris" >
-
        <header>
           <ul class="breadcrumbs">
-            <li><%= link_to @proceso, :class => "tituloProceso" do  %> 
+            <li><%= link_to @proceso, :class => "tituloProceso label round" do  %> 
                   <%= @proceso.tipo_proceso.tipo %> : <%= @proceso.titulo %>
                 <% end %>
             </li>
@@ -23,7 +20,7 @@
                
                <h1 class="tituloLog" >Ultimas actualizaciones del proceso</h1>
 
-                <hr>
+                <hr  class="lineaHorizontalAzul" style="margin-top: 13px;">
 
                   <% @logs.each do |log| %>
                     <div class="row registros">
@@ -40,16 +37,12 @@
                       </div>
                     </div>
                   <% end %>      
-                  
             </section>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-
 </body>
 
 

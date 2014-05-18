@@ -19,7 +19,27 @@
   		<% if !proceso.referencia.nil? %> <%= proceso.referencia %> <%end%> 
   </td>
   <td>
-  		<% if !proceso.estado_proceso.nil? %> <%= proceso.estado_proceso.estado %><%end%>
+  		<% if !proceso.estado_proceso.nil? %> 
+
+       <% if proceso.estado_proceso.estado =="sinIniciar" %>
+       <div class="circulorojo" style="background: White !important"></div>
+      <% end %>
+      <% if proceso.estado_proceso.estado =="Abierta" %>
+       <div class="circulorojo" style="background: Green !important"></div>
+      <% end %>
+      <% if proceso.estado_proceso.estado =="Cerrada" %>
+      <div class="circulorojo" style="background: Purple !important"></div>
+      <% end %> 
+      <% if proceso.estado_proceso.estado =="Aplazada" %>
+      <div class="circulorojo" style="background: Orange !important"></div>
+      <% end %> 
+      <% if proceso.estado_proceso.estado =="Vencieron Terminos" %>
+      <div class="circulorojo" style="background: red !important"></div>
+      <% end %> 
+
+      <%= proceso.estado_proceso.estado %>
+
+      <%end%>
   </td>
   <td>
   		<%= fechaFormato1 proceso.updated_at %>
@@ -39,7 +59,13 @@
   <td>
   		<% proceso.abogados.each do |usuarioConAcceso| %>
                 <a href="#" data-reveal-id="#">
-                                    	<img src="/img/user.png" title="<%= usuarioConAcceso.email %>" style="width: 19px;margin-left: 2px;">
+                                    	
+                     <% if !usuarioConAcceso.foto.url.include? "missing.png" %>
+                           <img src="<%= usuarioConAcceso.foto.url %>" class="alinearbotones effect-circle-19 " style="margin-bottom: 34px;"> 
+                      <% else %>
+                        <img src="/img/user.png" title="<%= usuarioConAcceso.email %>" class="effect-circle-19" style="   margin-left: 3px;">
+                      <% end%> 
+
                 </a>
 
           <% end %>

@@ -40,7 +40,13 @@
             <div class="panelAvatarUsuario">
                 <% proceso.abogados.each do |usuarioConAcceso| %>
                     <div class="people">
-                         <img src="/img/user.png" title="<%= usuarioConAcceso.email %>" style="width: 32px;margin-left: 3px;">
+                      <% if !usuarioConAcceso.foto.url.include? "missing.png" %>
+                           <img src="<%= usuarioConAcceso.foto.url %>" class="alinearbotones effect-circle-32 " style="margin-bottom: 34px;"> 
+                      <% else %>
+                        <img src="/img/user.png" title="<%= usuarioConAcceso.email %>" class="effect-circle-32" style="   margin-left: 3px;">
+                      <% end%> 
+
+                         
                     </div>
                  <% end %>
             </div>

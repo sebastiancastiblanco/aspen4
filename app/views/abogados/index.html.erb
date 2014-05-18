@@ -10,12 +10,19 @@
          <div class="panellog">
           <div class="row">
 
-            <div> <img src="/img/user64.png" class="alinearbotones" style="margin-bottom: 34px;"> </div>
+            <div class="circular"> 
+              <% if !@abogado.foto.url.include? "missing.png" %>
+                   <img src="<%= @abogado.foto.url %>" class="alinearbotones" style="margin-bottom: 34px; width: 64px;"> 
+              <% else %>
+                <img src="/img/user64.png" class="alinearbotones" style="margin-bottom: 34px;"> 
+              <% end%>                                         
+             <%= @abogado.foto.url %> 
+            </div>
             <div style="margin-left: 95px;"> 
              <h1 id="nombreUsuario" style="margin-bottom: 0px;"><%= @abogado.email %></h1> 
              <div id="correoUsuario" class="links"><%= @abogado.email %></div>
              <span class="detalle">creado el <%= fechalog @abogado.created_at %></span>
-           </div>
+</div>
 
            <hr class="lineaHorizontalAzul">
            <br />

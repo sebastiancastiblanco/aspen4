@@ -18,7 +18,12 @@
     <!-- Right Nav Section -->
     <ul class="right">
 
-      <li class="has-dropdown"><a href="#" ><%= current_abogado.email %></a>
+      <li class="has-dropdown"><a href="#" >
+        <% if !current_abogado.foto.url.include? "missing.png" %>
+                               <img src="<%= current_abogado.foto.url %>" class="alinearbotones effect-circle-32" style="margin: 11px !important;"> 
+        <% end%> 
+        <%= current_abogado.email %>
+      </a>
         <ul class="dropdown"><li class="title back js-generated">
           <h5><a href="javascript:void(0)">Regresar</a></h5></li>
           <li><label>CUENTA</label></li>

@@ -23,14 +23,9 @@
                 Editar</span>
              <% end %>
            
+             <%= link_to "Últimos movimientos",{:controller => "procesos", :action => "eventos", :proceso_id => @proceso.id}, :class => "label secondary round paddinglabel" %>
 
-            <%= link_to "Últimos movimientos",{:controller => "procesos", :action => "eventos", :proceso_id => @proceso.id}, :class => "label secondary round paddinglabel"  do%>
-                <span class="label secondary round paddinglabel">
-                  <i class="foundicon-clock compartirActiviaddIcono" ></i>
-                 Últimos movimientos</span>
-             <% end %>
-            
-              <a href="#" data-reveal-id="myModalCompartirProceso" >
+           <a href="#" data-reveal-id="myModalCompartirProceso" >
               <span class="label secondary round paddinglabel">
                  <i class="foundicon-smiley compartirActiviaddIcono" ></i>
                   Colaboradores</span><br>
@@ -73,7 +68,7 @@
                 <br />
                  <span class="bold"> Ciudad: </span><%= @proceso.ciudad %>
                 <br />
-                  <span class="bold"></span>REF-<%= @proceso.id %> <% if ! @proceso.referencia.nil? %>/ <%=  @proceso.referencia %><%end%>
+                  <span class="bold">Referencia: </span><% if ! @proceso.referencia.nil? %>/ <%=  @proceso.referencia %><%end%>
               </div>
 
 

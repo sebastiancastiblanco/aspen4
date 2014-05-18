@@ -4,10 +4,15 @@ class Abogado < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
- 
+  #atributo para la foto del perfil
+  has_attached_file :foto
+  validates_attachment_size :foto, :less_than => 5.megabytes
+  validates_attachment_content_type :foto, :content_type => ['image/jpeg', 'image/png']
+  #has_attached_file :foto, :styles => { :medium => "64x64>", :tiny => "32x32>" }
+  has_attached_file :foto
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :created_at,:updated_at,:last_sign_in_at, :nombre, :empresa
+  attr_accessible :foto, :email, :password, :password_confirmation, :remember_me, :created_at,:updated_at,:last_sign_in_at, :nombre, :empresa
   # attr_accessible :title, :body
 
   after_create :welcome_message

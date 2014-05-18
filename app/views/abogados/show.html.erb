@@ -10,7 +10,16 @@
          <div class="panellog">
           <div class="row">
 
-            <div> <img src="/img/user64.png" class="alinearbotones" style="margin-bottom: 34px;"> </div>
+            
+            <div class=""> 
+              <% if !@abogado.foto.url.include? "missing.png" %>
+                   <img src="<%= @abogado.foto.url %>" class="alinearbotones effect-circle-1 " style="margin-bottom: 34px;"> 
+              <% else %>
+                <img src="/img/user64.png" class="alinearbotones" style="margin-bottom: 34px;"> 
+              <% end%>                                         
+            
+            </div>
+            
             <div style="margin-left: 95px;"> 
              <h1 id="nombreUsuario" style="margin-bottom: 0px;"><%= @abogado.email %></h1> 
              <div id="correoUsuario" class="links"><%= @abogado.email %></div>
@@ -27,7 +36,7 @@
 
              <div id="formularioUsuarios"></div>
 
-             <%= render 'formeditarabogado' %>
+             <%= render 'formNoEditarAbogado' %>
 
             </div>
           </div>

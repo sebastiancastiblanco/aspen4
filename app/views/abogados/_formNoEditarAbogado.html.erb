@@ -15,32 +15,28 @@
               <%= label_tag "Nombre" ,nil, :class => "tituloCampo error "  %>
             </div>
             <div class="small-10 columns field">
-                 <%= f.text_field :nombre,:placeholder => "Nombre completo" %>
+                 <%= f.text_field :nombre,:placeholder => "Nombre completo" , :disabled => true%>
             </div>
 
             <div class="small-2 small-offset-0 columns field"> 
               <%= label_tag :empresa ,nil, :class => "tituloCampo"  %>
             </div>
             <div class="small-10  columns field">
-               <%= f.text_field :empresa ,:placeholder => "Empresa" %>
+               <%= f.text_field :empresa ,:placeholder => "Empresa" , :disabled => true %>
             </div>
 
-            <div class="small-2 small-offset-0 columns field"> 
-              <%= label_tag 'Imagen' ,nil, :class => "tituloCampo"  %>
-            </div>
-            <div class="small-10  columns field">
-               <%= f.file_field :foto %>
-            </div>
+            
             
       </div>
          
 
         <div class="row">
             <div class="small-8 large-8  large-centered small-centered columns field">
-                 <%= f.submit :'Actualizar datos' , :class => "button  radius" %>
+                 <%= link_to :'Actualizar datos' , edit_abogado_path(@abogado) , :class => "button radius" %>
                   <%= link_to "Eliminar cuenta", abogado_registration_path, :class => "textRojolinks inlineBlock eliminarlink",  method: :delete, data: { confirm: 'Estas Seguro de eliminar tu cuenta?' } ,  :method => :delete %>
          </div>
 
 
 </div>
       <% end %>
+

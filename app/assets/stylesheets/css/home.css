@@ -1405,7 +1405,7 @@ float: left;
   margin: 0 10px ;
 }
 .colaborador{
-  margin: 10px 0 10px 20px;
+  margin: 10px 0 10px 2px;
 }
 
 .contactoColaborador{
@@ -1670,6 +1670,49 @@ font-size: 0.975em;
 .titulocontendiotablaPrincipal{
  color: #2795b6;
  font-size: 17px !important; 
+}
+
+
+
+.effect-circle-1 {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin: 0 3px !important;
+ -webkit-border-radius: 50%;
+ -moz-border-radius: 50%;
+ border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+  filter: alpha(opacity=0);
+}
+
+.effect-circle-32 {
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin: 0 3px!important;
+ -webkit-border-radius: 50%;
+ -moz-border-radius: 50%;
+ border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+  filter: alpha(opacity=0);
+}
+.effect-circle-19 {
+  float: left;
+  width: 19px;
+  height: 19px;
+  margin: 0 3px!important;
+ -webkit-border-radius: 50%;
+ -moz-border-radius: 50%;
+ border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+  filter: alpha(opacity=0);
 }
 
 /* datatable tiene su propio archivo */

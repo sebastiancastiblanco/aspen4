@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140501231902) do
+ActiveRecord::Schema.define(:version => 20140518174738) do
 
   create_table "abogados", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(:version => 20140501231902) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.integer  "failed_attempts",        :default => 0
+    t.string   "foto_file_name"
+    t.string   "foto_content_type"
+    t.integer  "foto_file_size"
+    t.datetime "foto_updated_at"
   end
 
   add_index "abogados", ["email"], :name => "index_abogados_on_email", :unique => true

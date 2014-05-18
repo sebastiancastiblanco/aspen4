@@ -1,2 +1,60 @@
-<h1>Abogados#edit</h1>
-<p>Find me in app/views/abogados/edit.html.erb</p>
+<body>
+
+  <div id="workspace" class="workspace">
+    <div class="container stack_container"  style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris">
+
+        <div class="sheet_body">
+
+
+         <div class="panellog">
+          <div class="row">
+
+            
+            <div> 
+              <% if !@abogado.foto.url.include? "missing.png" %>
+                   <img src="<%= @abogado.foto.url %>" class="alinearbotones effect-circle-1 " style="margin-bottom: 34px;"> 
+              <% else %>
+                <img src="/img/user64.png" class="alinearbotones effect-circle-1 " style="margin-bottom: 34px;"> 
+              <% end%>                   
+            </div>
+            
+            <div style="margin-left: 95px;"> 
+             <h1 id="nombreUsuario" style="margin-bottom: 0px;"><%= @abogado.email %></h1> 
+             <div id="correoUsuario" class="links"><%= @abogado.email %></div>
+             <span class="detalle">ultimo ingreso, <%= fechalog @abogado.current_sign_in_at %></span>
+           </div>
+
+           <hr class="lineaHorizontalAzul">
+           <br />
+        
+         <div class="row">
+            
+            <div class="large-6 small-6 large-centered small-centered columns end">
+               <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+
+             <div id="formularioUsuarios"></div>
+
+             <%= render 'formeditarabogado' %>
+
+            </div>
+          </div>
+
+         
+
+      </div>       
+
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+
+
+
+
+
+
+
+
