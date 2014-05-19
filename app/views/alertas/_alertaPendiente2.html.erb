@@ -1,7 +1,7 @@
 <tr>
   <td >
       <%= link_to alerta.titulo , edit_alerta_path(alerta, :proceso_id => alerta.proceso.id, :alerta_id => alerta.id), :id => "new_alert_link",:class => "titulocontendiotabla" %>
-      <%= button_to 'Ver', edit_alerta_path(alerta, :proceso_id => alerta.proceso.id), :id => "new_alert_link",:class => "tiny button radius alinearbotones" %>
+      
    </td>
    <td>
        <%= fechaFormatoActualizado alerta.termina %>  
