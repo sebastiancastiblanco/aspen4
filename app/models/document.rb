@@ -15,7 +15,8 @@ class Document < ActiveRecord::Base
 
   validates_attachment_size :attachment, :less_than => 10.megabytes, :message => :invalid_attachment_size
   #validates_attachment_content_type :attachment , :content_type => "image/png" ,:message => :invalid_attachment_content
-  
+  validates_attachment_content_type :attachment, :content_type => %w(image/jpeg image/jpg image/png )
+
   #Pertenece a un proceso
   belongs_to :proceso
   belongs_to :usuario

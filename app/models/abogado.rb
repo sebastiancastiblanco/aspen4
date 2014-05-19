@@ -7,7 +7,7 @@ class Abogado < ActiveRecord::Base
   #atributo para la foto del perfil
   has_attached_file :foto
   validates_attachment_size :foto, :less_than => 5.megabytes
-  validates_attachment_content_type :foto, :content_type => ['image/jpeg', 'image/png']
+  validates_attachment_content_type :foto, :content_type => %w(image/jpeg image/jpg image/png )
   #has_attached_file :foto, :styles => { :medium => "64x64>", :tiny => "32x32>" }
   has_attached_file :foto
 
