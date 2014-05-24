@@ -143,6 +143,7 @@ AspenVersion3::Application.routes.draw do
 
   match '/procesos' => 'procesos#show', as: :procesos
 
+  match '/home2' => 'home#home2', as: :home2
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -194,6 +195,7 @@ AspenVersion3::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
    root :to => 'home#index'
+
 
   # See how all your routes lay out with "rake routes"
 

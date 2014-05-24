@@ -5,4 +5,8 @@ class HomeController < ApplicationController
 			redirect_to :controller=>'procesos' ,:action =>'index'
 		end
 	end
+	def home2
+		@software_abogado = SoftwareAbogado.new
+		
+	end
 end
