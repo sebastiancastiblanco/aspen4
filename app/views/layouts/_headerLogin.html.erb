@@ -1,25 +1,28 @@
-<div id="topbar" class="hide-for-small hide-for-medium">
+<div id="topbar" class="hide-for-small hide-for-medium" style="max-width:none !important;">
   <header >
-    <nav class="">
+ 
 
      <!-- Header and Nav -->
-     <div class="row">
+     <div class="row" style="margin-top: 10px;margin-bottom: opx;" >
       <div class="large-5 columns">
         <h5> <%= link_to :login do %> <img src="/img/aspen_logo_small.png"><%end%> 
           <!-- Formulario para nuevo registro -->
-          <span class="tituloHome"> Gestión de procesos judiciales</span>
+          
+          <div style="color: #2284a1;">
+              Tu despacho en la nube</div>
+
         </h5>
       </div>
       <div| class="large-7 columns">
       <ul class="inline-list right menubotonesHome">
-        <li><%= link_to 'funcionalidades', :funcionalidades %></li>
-        <li><%= link_to 'precios', :precios %></li>
-        <li><%= link_to 'Registrarse', new_abogado_registration_path , :class => 'tiny button success radius'%></li>
-        <li><%= link_to 'Iniciar Sesion', new_abogado_session_path , :class => 'tiny button radius'%></li>
+        <li><%= link_to 'Funcionalidades', :funcionalidades %></li>
+        <li><%= link_to 'Planes', :precios %></li>
+        <li><%= link_to 'Registrate', new_abogado_registration_path , :class => 'tiny  success radius letra14'%></li>
+        <li><%= link_to 'Iniciar Sesion', new_abogado_session_path , :class => 'tiny button radius letra14'%></li>
       </ul>
     </div>
   </div>
-</nav>
+
 <!-- Header and Nav -->
 </header>
 </div>

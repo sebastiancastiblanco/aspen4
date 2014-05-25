@@ -67,7 +67,7 @@ $include-print-styles: true;
 // Grid Variables
 //
 
-// $row-width: 62.5em;
+ $row-width: 73.5em;
 // $column-gutter: 1.875em;
 // $total-columns: 12;
 
@@ -697,21 +697,21 @@ $joyride-tip-position-offset: 40px;
 // $price-table-border: solid 1px #ddd;
 
 // We use this to control the bottom margin of the pricing table
-// $price-table-margin-bottom: emCalc(20px);
+ $price-table-margin-bottom: emCalc(30px);
 
 // We use these to control the title styles
-// $price-title-bg: #ddd;
-// $price-title-padding: emCalc(15px) emCalc(20px);
+ $price-title-bg: #f87c45;
+ $price-title-padding: emCalc(10px) emCalc(5px);
 // $price-title-align: center;
-// $price-title-color: #333;
+ $price-title-color: White;
 // $price-title-weight: bold;
-// $price-title-size: emCalc(16px);
+ $price-title-size: emCalc(40px);
 
 // We use these to control the price styles
 // $price-money-bg: #eee;
 // $price-money-padding: emCalc(15px) emCalc(20px);
 // $price-money-align: center;
-// $price-money-color: #333;
+ $price-money-color: white;
 // $price-money-weight: normal;
 // $price-money-size: emCalc(20px);
 

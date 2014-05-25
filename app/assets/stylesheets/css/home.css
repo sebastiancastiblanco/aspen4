@@ -1098,7 +1098,23 @@ z-index: 1;
 .footer-azul{
   background: #2284a1;
   padding: 24px 0 10px  !important;
+  margin: -4px;
 }
+
+.footer-azulClaro{
+  background: #2284a1;
+  height: 90px;
+  padding: 24px 0 10px  !important;
+  margin: -5px;
+  color: white !important;
+}
+
+.footer-azulClaro h1{
+  color: White !important;
+  margin: 0px !important;
+}
+
+
 
 
 .letraTitulosMenuFooter {
@@ -1164,11 +1180,34 @@ z-index: 1;
 
 /*HOME PANEL*/
 .content { position: absolute;
-left: 523px;
-bottom: 159px;
-width: 42%;
-background: rgba(255,255,255,0.9);
-padding: 20px; }
+position: absolute;
+right: 134px;
+top: 24px;
+width: 47%;
+background: rgba(255,255,255,0.7);
+padding: 20px;
+}
+
+.content2 { 
+  position: absolute;
+right: 76px;
+top: 81px;
+width: 47%;
+background: rgba(255,255,255,0.8);
+padding: 20px;
+}
+
+.contentLawyer{
+position: absolute;
+left: 134px;
+top: 8px;
+/* width: 47%; */
+padding: 20px;
+z-index: 1;
+margin-bottom: -154px;
+clip: rect(19px 294px 312px 17px);
+}
+
 
 .content h1 {
   position: relative;
@@ -1225,6 +1264,7 @@ background-color: #0192dd  !important;
 
 .tituloPagina{
   margin-bottom: 20px  !important;
+  margin-top: 20px !important;
   text-align: center  !important;
   color: #2284a1  !important;
 }
@@ -1718,4 +1758,36 @@ font-size: 0.975em;
 .letra20{
   font-size: 20px !important;
 }
-/* datatable tiene su propio archivo */
+.letra14{
+  font-size: 14px !important;
+}
+.letra18{
+  font-size: 18px !important;
+}
+
+.subtitulohome{
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: #9C9B9B;
+  font-weight: normal;
+  text-align: center;
+}
+
+.fondoGris{
+  background-color: #424a56 !important;
+}
+.fondoNaranja{
+  background-color: #f87c45 !important;
+}
+.fondoAzul{
+  background-color: #6abbd9 !important;
+}
+
+.testimonial-bg {
+background-image: url(/img/testimonial-bg.jpg) !important;
+background-attachment: fixed;
+margin-top: 40px;
+padding: 20px 0;
+margin-bottom: 40px;
+height: 190px;
+}
