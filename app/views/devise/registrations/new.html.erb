@@ -248,4 +248,13 @@
 
 <script type="text/javascript">
   $( "#topbar2" ).remove();
+
+  function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+  }
+  myvar = getURLParameter('email');
+
+  $( "#abogado_email" ).val(myvar);
+
+
 </script>
