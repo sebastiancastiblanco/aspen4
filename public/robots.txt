@@ -2,4 +2,8 @@
 #
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-Agent: *
-# Disallow: /
+#Disallow: /seguros/
+Allow: /home/index.html.erb
+Allow: /usuarios/funcionalidades.html.erb
+Allow: /usuarios/planprecios.html.erb
+Sitemap: http://www.aspen-abogados.com/sitemap.xml
