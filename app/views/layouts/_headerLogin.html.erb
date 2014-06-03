@@ -1,4 +1,4 @@
-<div id="topbar" class="hide-for-small hide-for-medium" style="max-width:none !important;">
+<div id="topbar" class="" style="max-width:none !important;">
   <header >
  
 
@@ -9,12 +9,16 @@
           <!-- Formulario para nuevo registro -->
           
           <div style="color: #2284a1;">
-              Tu despacho en la nube</div>
+              Tu despacho en la nube
+          </div>
+          
 
         </h5>
       </div>
       <div| class="large-7 columns">
       <ul class="inline-list right menubotonesHome">
+
+
         <li><%= link_to 'Funcionalidades', :funcionalidades %></li>
         <li><%= link_to 'Planes', :precios %></li>
         <li><%= link_to 'Registrate', new_abogado_registration_path , :class => 'tiny  success radius letra14'%></li>
@@ -27,7 +31,7 @@
 </header>
 </div>
 
-<div id="topbar2" class=" hide-for-large medium-6">
+<div id="topbar2" class=" hide-for-large medium-6" style="display:none !important;">
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name" >
