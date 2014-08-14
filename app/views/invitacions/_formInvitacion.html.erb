@@ -1,0 +1,43 @@
+<div class="alert-panel medium" data-alert>
+      <div class="alert-panel-title">
+        Enviar Invitación
+        <a href="#" class="alert-panel close-reveal-modal" onclick="$('#myModalInvitacion').foundation ('reveal', 'close')">&times;</a>
+      </div>
+		 <div class="alert-panel-message" >
+	         <h6>Invita a un amigo a unirse a Aspen ingresando el correo electronico.</h6>
+	              <hr/>
+	              <div id="listaUsuarios">
+	                	
+		                <div class="colaborador">
+		                	<div id="panelcontacto" class="contactoColaborador">
+						    	 <div class="row">
+								<%= form_tag url_for(:controller => 'invitacions', :action => 'create'), :method => 'create', :remote => true, :html => { :class => "custom",:id => "formInvitacion"}  do  %>
+								  
+									<div class="small-9 large-9 columns field">
+									    
+									    <%= text_field_tag :tomail, nil, placeholder: 'Correo Electronico', maxlength: 250 %>
+									    <%= hidden_field_tag :abogado_id, current_abogado.id %>
+									    
+									  </div>
+									 
+									 <div class="small-3 large-3 columns field">
+									  	<%= submit_tag :'Invitar' , :class => " button success radius" %>
+									 </div>
+								 
+								<% end %>
+								</div>
+						    </div>
+						</div>
+	                
+	               
+	              </div>
+	  	   </div>
+      
+</div>
+
+<script type="text/javascript">
+	$('#tomail').focus();
+</script>
+
+
+  

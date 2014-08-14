@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Abogado1:</b>
+  <%= @colega.abogado1 %>
+</p>
+
+<p>
+  <b>Abogado2:</b>
+  <%= @colega.abogado2 %>
+</p>
+
+<p>
+  <b>Activo:</b>
+  <%= @colega.activo %>
+</p>
+
+
+<%= link_to 'Edit', edit_colega_path(@colega) %> |
+<%= link_to 'Back', colegas_path %>

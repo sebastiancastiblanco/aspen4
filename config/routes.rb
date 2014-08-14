@@ -1,5 +1,17 @@
 AspenVersion3::Application.routes.draw do
   
+  get "invitacions/new"
+
+  get "invitacions/create"
+
+  get "invitacions/edit"
+
+  get "invitacions/update"
+
+  get "invitacions/destroy"
+
+  get "invitacions/show"
+
   get "abogados/index"
 
   get "abogados/create"
@@ -20,6 +32,7 @@ AspenVersion3::Application.routes.draw do
   resources :actividad_eventos
   resources :abogados
 
+  resources :invitacions
 
   resources :reportes
   get "reportes/index"
@@ -59,6 +72,8 @@ AspenVersion3::Application.routes.draw do
   
 
   
+  resources :invitacions
+  resources :colegas
 
   resources :procesos
   get "procesos/favorito"
@@ -145,6 +160,14 @@ AspenVersion3::Application.routes.draw do
 
   match '/home2' => 'home#home2', as: :home2
 
+  #Invitaciones
+  match '/invitacions/create' => 'invitacions#create'
+  match '/invitacions' => 'invitacions#index' , as: :invitaciones
+  match '/invitacions/confirmarInvitacion' => 'invitacions#confirmarInvitacion'
+  match '/invitacions/declinarInvitacion' => 'invitacions#declinarInvitacion'
+  
+   match '/invitacions/confirmarInvitacion/:invitacion_id' => 'invitacions#confirmarInvitacion', as: :confirmarInvitacion
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -207,6 +230,7 @@ AspenVersion3::Application.routes.draw do
   match 'procesos/createTipoProceso' => 'tipo_procesos#createTipoProceso'
   match 'procesos/enviarContacto' => 'procesos#enviarContacto'
 
+  match 'invitacions/confirmarInvitacion/:invitacion_id' => 'invitacions#confirmarInvitacion'
   #match 'procesos/compartirProceso' => 'control_accesos#compartirProceso'
   match 'procesos/favorito/:procesoid' => 'procesos#favorito'
   match 'procesos/cantidadUsuarios/:procesoid' => 'procesos#cantidadUsuarios'

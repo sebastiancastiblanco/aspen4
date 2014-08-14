@@ -50,6 +50,9 @@ class Abogado < ActiveRecord::Base
   has_many :participantes
   has_many :participantes, through: :control_accesos, through: :procesos
 
+  #invitaciones que hace el usuario (abogado)
+  has_many :invitacions
+
   #generacion de token para funcion remember me
   def generate_token(column)
     begin
@@ -64,6 +67,11 @@ class Abogado < ActiveRecord::Base
   def self.ultimoProcesoCreado
       where("procesos.activo = ? LIMIT 1", true)
   end
+
+  def self.buscarAbogado (id)
+        where("id = ? ", id)
+  end
+
 
   def enviarContacto
     

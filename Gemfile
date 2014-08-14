@@ -14,6 +14,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'railroady' , '~> 1.1.1'# para la generacion de diagramas
 end
 
 gem 'paperclip'

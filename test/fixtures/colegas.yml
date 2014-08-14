@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  abogado1: 1
+  abogado2: 1
+  activo: false
+
+two:
+  abogado1: 1
+  abogado2: 1
+  activo: false

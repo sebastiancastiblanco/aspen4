@@ -1,0 +1,43 @@
+<body>
+  <div id="workspace" class="workspace">
+    <div class="container stack_container" style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris" >
+       <header>
+          <ul class="breadcrumbs">
+            <li>
+              <%= link_to current_abogado, :class => "tituloProceso label round" do  %> 
+                  <%= current_abogado.email %>
+                <% end %>
+            </li>
+            <li><a href="#">Invitaciones pendientes</a></li>
+          </ul>
+        </header>
+        
+        <div class="panel sheet topics fondoGris" style="margin-left: 20px; margin-bottom: -20px;" data-behavior=" prevent_reload_when_stacked">
+
+          <div  class="sheet_body fondoGris" style="margin-top: 20px;">
+
+            <section class="topics" data-collection-name="topics">
+               
+               <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+
+               <h1 class="tituloinvitacion" >Invitaciones Pendientes</h1>
+
+                <hr  class="lineaHorizontalAzul" style="margin-top: 13px;">
+                  <div id ="panelinvitaciones">
+                    <%= render @invitacions %>
+                  </div>
+                <br>
+                
+             
+            
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+

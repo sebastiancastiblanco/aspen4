@@ -29,6 +29,8 @@
           <li><label>CUENTA</label></li>
           <li><%= link_to "Mi Perfil",current_abogado ,:class => "Me"   %></li>
           <li><%=  link_to "Actualizar cuenta", :precios %></li>
+          <li><%= link_to "Invitaciones Pendientes",:invitaciones ,:class => "Me"   %></li>
+          <li><%= link_to  "Grupo de Colegas",colegas_path ,:class => "Me"   %></li>
           <li class="divider"></li>
           <li><label>SOPORTE</label></li>
           <li><a href="#">Enviar ticket</a></li>
@@ -65,7 +67,9 @@
         <ul class="dropdown"><li class="title back js-generated">
           <h5><a href="javascript:void(0)">Regresar</a></h5></li>
           <li><label>PROCESOS</label></li>
-          <li><%=  link_to "Invitar a un amigo", :compartirProcesos   %></li>
+          <li>
+           <a href="#" data-reveal-id="myModalInvitacion" >Invitar a un amigo</a>
+          </li>
           <li><%=  link_to "Compartir Procesos", :compartirProcesos   %></li>
           <% if !@proceso.nil? %>
             <li><label>AVANCES</label></li>
@@ -84,6 +88,10 @@
     <%= render 'procesos/formControlAcceso' %>
   </div> 
 <% end %>
+
+ <div id="myModalInvitacion" class="reveal-modal medium modalAspen">
+    <%= render 'invitacions/formInvitacion' %>
+  </div> 
 
 </header>
 

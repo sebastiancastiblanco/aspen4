@@ -1,0 +1,25 @@
+
+
+
+<div id="colega_<%= colega.id %>"  class="row registros">
+ 
+   <div class="alinearbotones"><img src="/img/user.png" title=""></div>
+                       <div class="hora ">
+                        <%= fechalog colega.updated_at %>
+                      </div>
+
+                      <div class="alinearbotones">
+                            
+                        <span class="">
+                           <%= Abogado.buscarAbogado(colega.abogado1).last.email  %>
+                        </span>
+                        </div>
+                      
+                      <div class="hora alinearDerecha">
+                    
+                      <%= link_to "Eliminar", colega, :class => "textRojolinks inlineBlock alinearbotones alinearDerecha eliminarlink",  method: :delete, data: { confirm: 'Estas Seguro de eliminar este colega?' } , :remote => true %>
+                        
+                
+
+                      </div>
+</div>

@@ -886,6 +886,11 @@ div.panel.home_tab div.project_templates.nuevoProceso{
   margin:5px 5px 0 10px;
 }
 
+.tituloinvitacion{
+  margin: 5px !important;
+  text-align: left !important;
+}
+
 
 div#other_products {
   position: absolute;
@@ -1283,7 +1288,8 @@ background-color: #0192dd  !important;
 }
 
 .registros{
-  margin-bottom: 30px  !important;
+  margin-bottom: 1px  !important;
+  margin-top: 18px !important;
 }
 
 .alinearDerecha{
@@ -1790,4 +1796,8 @@ margin-top: 40px;
 padding: 20px 0;
 margin-bottom: 40px;
 height: 190px;
+}
+
+.titulomail{
+  color: #2ba6cb;
 }

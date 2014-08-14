@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140518174738) do
+ActiveRecord::Schema.define(:version => 20140813024124) do
 
   create_table "abogados", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -117,6 +117,14 @@ ActiveRecord::Schema.define(:version => 20140518174738) do
   add_index "clientes", ["email"], :name => "index_clientes_on_email", :unique => true
   add_index "clientes", ["reset_password_token"], :name => "index_clientes_on_reset_password_token", :unique => true
 
+  create_table "colegas", :force => true do |t|
+    t.integer  "abogado1"
+    t.integer  "abogado2"
+    t.boolean  "activo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "contratos", :force => true do |t|
     t.string   "tipoContrato"
     t.string   "objeto"
@@ -219,6 +227,15 @@ ActiveRecord::Schema.define(:version => 20140518174738) do
   end
 
   add_index "events", ["event_series_id"], :name => "index_events_on_event_series_id"
+
+  create_table "invitacions", :force => true do |t|
+    t.integer  "abogado1"
+    t.string   "tomail"
+    t.boolean  "aceptado"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "abogado_id"
+  end
 
   create_table "logs", :force => true do |t|
     t.integer  "usuario_id"

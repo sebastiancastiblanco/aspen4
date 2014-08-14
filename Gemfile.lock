@@ -147,6 +147,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    railroady (1.1.1)
     rails (3.2.13)
       actionmailer (= 3.2.13)
       actionpack (= 3.2.13)
@@ -228,6 +229,7 @@ DEPENDENCIES
   meta_request
   paperclip
   pg
+  railroady (~> 1.1.1)
   rails (= 3.2.13)
   rails3-jquery-autocomplete (~> 1.0.11)
   rails4-autocomplete (~> 1.0.7)

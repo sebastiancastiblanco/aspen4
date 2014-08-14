@@ -1,0 +1,29 @@
+<%= form_for(@colega) do |f| %>
+  <% if @colega.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@colega.errors.count, "error") %> prohibited this colega from being saved:</h2>
+
+      <ul>
+      <% @colega.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :abogado1 %><br />
+    <%= f.number_field :abogado1 %>
+  </div>
+  <div class="field">
+    <%= f.label :abogado2 %><br />
+    <%= f.number_field :abogado2 %>
+  </div>
+  <div class="field">
+    <%= f.label :activo %><br />
+    <%= f.check_box :activo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

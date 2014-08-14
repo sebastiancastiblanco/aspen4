@@ -61,6 +61,18 @@ function reporteProceso (procesoid){
     
 };
 
+function aceptarInvitado(invitacionid){
+  $.ajax({
+            url: "/invitacions/confirmarInvitacion/" + invitacionid,
+            dataType: "JSON",
+            timeout: 10000,
+            success: function(res){
+                alert("Tienes un nuevo mienbro en tu grupo de colegas." + res);
+                
+                $('#comments ul.comments').html("<%= escape_javascript render(@invitacions");
+            }
+         })
+}
 
 function cambioEstadoFavoritoHome(procesoid){
 

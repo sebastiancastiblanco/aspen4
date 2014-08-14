@@ -1,0 +1,24 @@
+
+<div id="invitacion_<%= invitacion.id %>" class="row registros">
+ 
+  <div class="alinearbotones"><img src="/img/user.png" title=""></div>
+   <div class="hora ">
+    <%= fechaFormatoActualizado invitacion.created_at %>
+  </div>
+
+  <div class="alinearbotones">
+      Tiene una invitación pendiente por aceptar de 
+    <span class="titulomail">
+       <%= Abogado.buscarAbogado(invitacion.abogado.id).last.email %>
+    </span>
+    </div>
+  
+  <div class="hora alinearDerecha">
+
+      <%= link_to 'Aceptar', {:controller => "invitacions", :action => "confirmarInvitacion", :invitacion_id => invitacion.id}, :remote => true,:class => "alinearbotones tituloProceso label round"  %>
+
+     <%= link_to "Eliminar", invitacion, :class => "textRojolinks  eliminarlink alinearbotones",  method: :delete, data: { confirm: 'Esta Seguro de eliminar la invitacion?' } , :remote => true %>
+
+
+  </div>
+</div>
