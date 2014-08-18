@@ -1828,3 +1828,18 @@ height: 225px;
 
 background: #2795b6 !important;
 } 
+
+input[type="search"]{
+  height: auto !important;
+}
+
+.paginate_button:hover{
+border: none !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover
+{
+  background: transparent !important;
+  border: none !important;
+  color: #2795b6 !important;
+}
