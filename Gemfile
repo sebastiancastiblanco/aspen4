@@ -15,6 +15,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'railroady' , '~> 1.1.1'# para la generacion de diagramas
+  #Gema para adicionar CSS sinamivamente al HTML que se envia en los emails.
+  gem 'roadie'
 end
 
 gem 'paperclip'
@@ -52,8 +54,7 @@ gem "gon", "~> 4.1.1"
 #GEmma para el calendario
 #gem 'fullcalendar-rails'
 
-#Gema para adicionar CSS sinamivamente al HTML que se envia en los emails.
-gem 'roadie'
+
 
 #Gemma de autocompletado
 gem "rails3-jquery-autocomplete", "~> 1.0.11"
