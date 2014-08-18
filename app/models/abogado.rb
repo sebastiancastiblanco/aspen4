@@ -52,6 +52,8 @@ class Abogado < ActiveRecord::Base
 
   #invitaciones que hace el usuario (abogado)
   has_many :invitacions
+  #grupo de colegas
+  has_many :colegas
 
   #generacion de token para funcion remember me
   def generate_token(column)
@@ -70,6 +72,10 @@ class Abogado < ActiveRecord::Base
 
   def self.buscarAbogado (id)
         where("id = ? ", id)
+  end
+
+  def self.buscarAbogadoMail (mail)
+        where("email LIKE ? LIMIT 1", mail)
   end
 
 

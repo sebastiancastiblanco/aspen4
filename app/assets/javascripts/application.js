@@ -517,3 +517,23 @@ function cambioEstadoDocumento(documentoid){
          })
      }
 };
+
+/*
+* función para el javascript
+*/
+ function openLoading(){
+  $(document).ajaxStart(function(){
+      $('#myModalLoading').foundation ('reveal', 'open');
+    });
+ };
+
+ function closeLoading(){
+    $(document).ajaxStop(function(){
+      $('#myModalLoading').foundation ('reveal', 'close');
+    });
+ };
+
+    function ocultarboton(){
+      $('#commitCompartir').val("Enviando...");
+      $('#commitDocumento').val("Cargando...");
+    };

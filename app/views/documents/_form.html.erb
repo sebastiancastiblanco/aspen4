@@ -27,7 +27,7 @@
       <%= link_to   "Cancelar", {:controller => "documents", :action => "index", :proceso_id => params[:proceso_id]}, :class=>"textoGrislinks textRojolinks",:method=>:get %>
      </div>
       <div class="small-6 large-3 columns">
-      <%= f.submit :'Guardar Documento' , :class => " button success radius" %></div>
+      <%= f.submit :'Guardar Documento' , :class => " button success radius", :id=>"commitDocumento", :onclick=>"ocultarboton()" %></div>
      </div>
 
 </div>

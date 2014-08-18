@@ -63,13 +63,12 @@
       <li id="progresotopbar">  <%=  link_to "Progreso", :progreso ,:class => "topnav_everyone"   %></li>
       
       
-        <li id="compartirtopbar" class="has-dropdown"><%=  link_to "Compartir", :compartirProcesos   %>
+      <li id="compartirtopbar" class="has-dropdown">
+          <%=  link_to "Compartir", :compartirProcesos   %>
         <ul class="dropdown"><li class="title back js-generated">
           <h5><a href="javascript:void(0)">Regresar</a></h5></li>
           <li><label>PROCESOS</label></li>
-          <li>
-           <a href="#" data-reveal-id="myModalInvitacion" >Invitar a un amigo</a>
-          </li>
+          
           <li><%=  link_to "Compartir Procesos", :compartirProcesos   %></li>
           <% if !@proceso.nil? %>
             <li><label>AVANCES</label></li>
@@ -77,11 +76,24 @@
           <% end %>
           </ul>
       </li>
-
+      <li>
+           <a href="#" data-reveal-id="myModalInvitacion" >Invitar a un amigo</a>
+      </li>
+      <li id="panelcargando"  >
+          <a href="#" class="loadingcss">
+              <img src="/img/ajax-loader (1).gif"> Cargando...
+          </a>
+      </li>
+     
       
     </ul>
   </section>
 </nav>
+
+<div class="alert-panel small ocultar">
+      
+</div>
+
 
 <% if !@proceso.nil? %>
  <div id="myModalCompartirProceso" class="reveal-modal medium modalAspen">
@@ -92,6 +104,37 @@
  <div id="myModalInvitacion" class="reveal-modal medium modalAspen">
     <%= render 'invitacions/formInvitacion' %>
   </div> 
+
+  <div id="myModalLoading" class="reveal-modal small modalAspen">
+    <%= render 'procesos/loading' %>
+  </div> 
+
+   <script type="text/javascript">
+   
+   $(document).ajaxStart(function(){
+      $('#panelcargando').removeClass("ocultar");
+      $('#panelcargando1').removeClass("ocultar");
+      $('#closeX').addClass("ocultar");
+      $('#botonInvitacion').val("...");
+      $('#botonInvitacion').val("...");
+      
+    });
+
+    $(document).ajaxStop(function(){
+     $('#panelcargando').addClass("ocultar");
+     $('#panelcargando1').addClass("ocultar");
+     $('#closeX').removeClass("ocultar");
+       $('#botonInvitacion').val("Enviar");
+    });
+    $(document).ajaxComplete(function(){
+     $('#panelcargando').addClass("ocultar");
+     $('#panelcargando1').addClass("ocultar");
+     $('#closeX').removeClass("ocultar");
+     $('#botonInvitacion').val("Enviar");
+    });
+
+   
+   </script>
 
 </header>
 

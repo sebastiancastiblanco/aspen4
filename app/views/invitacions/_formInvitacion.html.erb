@@ -1,7 +1,11 @@
 <div class="alert-panel medium" data-alert>
       <div class="alert-panel-title">
         Enviar Invitación
-        <a href="#" class="alert-panel close-reveal-modal" onclick="$('#myModalInvitacion').foundation ('reveal', 'close')">&times;</a>
+      
+        <a id="panelcargando1" class="alert-panel close-reveal-modal"  href=""><img src="img/ajax-loader (1).gif"></a>
+      
+        <a  id="closeX" href="#" class="alert-panel close-reveal-modal" onclick="$('#myModalInvitacion').foundation ('reveal', 'close')">&times;</a>
+
       </div>
 		 <div class="alert-panel-message" >
 	         <h6>Invita a un amigo a unirse a Aspen ingresando el correo electronico.</h6>
@@ -21,7 +25,7 @@
 									  </div>
 									 
 									 <div class="small-3 large-3 columns field">
-									  	<%= submit_tag :'Invitar' , :class => " button success radius" %>
+									  	<%= submit_tag :'Invitar' , :class => " button success radius", :id =>"botonInvitacion" %>
 									 </div>
 								 
 								<% end %>

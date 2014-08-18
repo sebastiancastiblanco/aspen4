@@ -6,9 +6,7 @@
 
   <div class="row" style="max-width:none !important;">
     <div class="large-12 small-12  ">
-       <% if notice  %>
-        <div id="noticeMsgEliminar" data-alert class="alert-box radius" style="text"><%= notice%></div> 
-      <% end %>
+       
 
       <img src="/img/slide-bg2 copia.gif" class="bannerHome"/>
 
@@ -133,6 +131,7 @@
     <div class="large-10 large-offset-1  small-12 columns">
       <h3 style="font-size: 41px;text-align: center;font-weight: 300;margin-top: 46px;">
               Descrubre la nueva forma de organizar tu oficina</h3>
+       <%= link_to 'Inicia Ahora', new_abogado_registration_path , :class => 'medium large-4 large-offset-4 radius success button letra18'%>       
     </div>
    
   </div>
@@ -194,23 +193,6 @@
   </div>
 
 
-<!-- Call to Action Panel -->
-  <div class="row">
-    <div class="large-12 small-12 columns">
-    
-      <div class="panel">
-        <h4>Contactanos!</h4>
-            
-        <div class="row">
-          <div class="large-9 columns">
-            <p>Si desea tener más informacián del servicio de Aspen, puede contactarse al correo aspen.abogados@gmail.com y preguntar por todo lo necesario para iniciar una cuenta paga en nuestro sitio.</p>
-          </div>
-          
-        </div>
-      </div>
-      
-    </div>
-  </div>
 
 
 <hr>

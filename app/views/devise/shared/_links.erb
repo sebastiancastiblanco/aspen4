@@ -1,10 +1,10 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Iniciar sesion", new_session_path(resource_name) , :class=>"cajaMargenDerecha button tiny " %>
+  <%= link_to "Iniciar sesion", new_session_path(resource_name) , :class=>"cajaMargenDerecha button tiny buttonlogin" %>
   
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Crear cuenta", new_registration_path(resource_name) , :class=>"cajaMargenDerecha button tiny " %>
+  <%= link_to "Crear cuenta", new_registration_path(resource_name) , :class=>"cajaMargenDerecha button tiny buttonlogin" %>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>

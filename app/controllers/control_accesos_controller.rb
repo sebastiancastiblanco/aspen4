@@ -8,17 +8,26 @@ class ControlAccesosController < ApplicationController
   autocomplete :abogado, :email, full: true 
 
   def abogadoAutocomplete
-     @abogados = Abogado.find(:all, :conditions => ['email LIKE ?', "%#{params[:term]}%"])
+    
+    #@abogados = Abogado.find(:all, :conditions => ['email LIKE ?', "%#{params[:term]}%"])
+    #@abogados = Colega.find(:all, :conditions => ['abogado_id = ? AND email LIKE ?',current_abogado.id, "%#{params[:term]}%"])
+    @abogados = current_abogado.colegas.where("email LIKE ? ", "%#{params[:term]}%")
+
+#    @colegas.each do |colega|
+ #     @abogados << Abogado.buscarAbogado(colega.abogado2);
+  #  end
 
     @abogados_hash = []
     @abogados.each do |b|
+       #@abogado = b.abogado;
         @abogados_hash << { 
             :label => b["email"], 
-            :value => b["id"], 
+            :value => b["abogado2"], 
+            #:label => @abogado.email,
+            #:value => @abogado.id,
         }
     end
     render :json => @abogados_hash
-
   end
 
 
@@ -69,7 +78,7 @@ class ControlAccesosController < ApplicationController
   # POST /control_accesos.json
   def create
     @control_acceso = ControlAcceso.new(params[:control_acceso])
-    
+
     if !@control_acceso.proceso_id.nil?
      if !@control_acceso.abogado_id.nil?
       if !@control_acceso.privilegio_id.nil? 

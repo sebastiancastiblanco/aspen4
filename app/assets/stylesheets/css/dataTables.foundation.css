@@ -84,10 +84,10 @@ table.dataTable thead .sorting_asc_disabled,
 table.dataTable thead .sorting_desc_disabled {
 	cursor: pointer;
 	*cursor: hand;
-	background: #2795b6 !important;
-	color: white;
+	/*background: #2795b6 !important;*/
+	color: rgba(0, 0, 0, 0.64);
 	padding: 18px 10px !important; 
-	font-weight: normal !important;
+	font-weight: bold !important;
 	text-align: center;
 	border-right-color:#ffffff 
 }

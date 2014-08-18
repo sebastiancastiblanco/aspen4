@@ -73,7 +73,13 @@ class InvitacionsController < ApplicationController
     @invitacion.update_attribute(:aceptado, true)
     @invitacions = Invitacion.solicitud(current_abogado.email)
     
-    Colega.create(:abogado1 => @invitacion.abogado.id,:abogado2 => current_abogado.id, :activo => true)
+    #hay que evitar repeticion de colegas
+    @cantidad = Colega.where(abogado_id: @invitacion.abogado.id).count
+    #if @cantidad == 0
+        Colega.create(:abogado_id => @invitacion.abogado.id,:abogado2 => current_abogado.id, :activo => true, :email => current_abogado.email)
+        Colega.create(:abogado_id => current_abogado.id,:abogado2 => @invitacion.abogado.id, :activo => true, :email => @invitacion.abogado.email)
+    #end
+   
     
     #relacionar en la tabla de colegas
    respond_to do |format|

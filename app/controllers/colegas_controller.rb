@@ -2,7 +2,7 @@ class ColegasController < ApplicationController
   # GET /colegas
   # GET /colegas.json
   def index
-    @colegas = Colega.all
+    @colegas = current_abogado.colegas
 
     respond_to do |format|
       format.html # index.html.erb

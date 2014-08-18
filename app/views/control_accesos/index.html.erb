@@ -36,7 +36,8 @@
             <% end %>
 
 
-      <%= form_for @control_acceso, :url => { :action => "create" }, :html => { :class => "custom",:id => "formCompartirProceso"}  do |f| %>
+      <%= form_for @control_acceso, :url => { :action => "create" }, :html => { :class => "custom",
+        :id => "formCompartirProceso"}  do |f| %>
           <!-- USUARIOS-->
       <div class="row">
         <div class="large-2 columns small-3"><img src="/img/participantes.png" class="imagencompartir" /></div>
@@ -44,9 +45,11 @@
           <p><strong>Seleccionar el usuario:</strong> busca el usuario con el cual deseas trabajar cooperativamente en uno o varios procesos.</p>
           <br />
                 
-                <div class="large-8 small-offset-2 large-offset-2 columns">
-                  <%= f.text_field :usuario_id , :id => "email"%>
-                   <%= f.text_field :abogado_id , :id => "abogado_id" , type: "hidden" %>
+                <div class="large-6 small-offset-2 large-offset-2 columns">
+                  <span data-tooltip class="tip-top hide-for-touch" title="Digite y seleccione el mail de su colega.">
+                  <%= f.text_field :usuario_id , :id => "email" , :placeholder => "Correo electronico" %>
+                  <%= f.text_field :abogado_id , :id => "abogadoid", :type => "hidden" %>
+
                 </div>
 
         </div>
@@ -72,27 +75,7 @@
                 <div class="large-3  columns">
                   <%= f.select :privilegio_id, @privilegios.map {|r| [r.descripcion,r.id] }, :prompt => "- Nivel de Acceso -" %>  
                 </div>
-                <!--
-                <div class="large-2  columns">
-                  <%= f.label "Proceso 2:", :class => "tituloCampo error alinearDerecha" %>
-                </div>  
-                <div class="large-6  columns">
-                  <%= f.select :abogado_id, [["Proceso 2", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, {  } %>  
-                </div>
-                <div class="large-3  columns">
-                  <%= f.select :abogado_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, { } %>  
-                </div>
-                 <div class="large-2  columns">
-                  <%= f.label "Proceso 3:", :class => "tituloCampo error alinearDerecha" %>
-                </div>  
-                <div class="large-6  columns">
-                  <%= f.select :abogado_id, [["Proceso 3", 0]] + @procesos.map {|r| [r.referencia+" - "+r.titulo,r.id] }, {  } %>  
-                </div>
-                <div class="large-3  columns">
-                  <%= f.select :abogado_id, [["Nivel de Acceso", 0]] + @privilegios.map {|r| [r.descripcion,r.id] }, { } %>  
-                </div>
-                -->
-            </div>
+           </div>
           </div>
           <!-- End PROCESOS -->
 
@@ -105,7 +88,7 @@
               <p><strong>Notificar:</strong> Envia un correo al colaborador con el acceso a los procesos compartidos.</p>
               <br />
                 <div class="large-8 small-offset-3 large-offset-3 columns">
-                  <%= f.submit :'Compartir y enviar notificación' , :class => " button radius success" %>
+                  <%= f.submit :'Compartir y enviar notificación' , :class => " button radius success", :id=>"commitCompartir", :onclick => "ocultarboton()" %>
                 </div>
             </div>
           </div>
@@ -117,10 +100,6 @@
   </div>
 </body>
 
-<script type="text/javascript">
-    $('#compartirtopbar').addClass("active");
-  </script>
-
 
 <script type="text/javascript">
 $(function() {
@@ -129,8 +108,8 @@ $(function() {
     minLength: 2,
     select: function(event, ui)
         {
-           $("#email").val(ui.item.label); // display the selected text
-          $("#abogado_id").val(ui.item.value); // save selected id to hidden input
+          $("#email").val(ui.item.label); // display the selected text
+          $("#abogadoid").val(ui.item.value); // save selected id to hidden input
            return false;
         },
         focus: function(event, ui){

@@ -22,7 +22,7 @@
   		<% if !proceso.estado_proceso.nil? %> 
 
        <% if proceso.estado_proceso.estado =="sinIniciar" %>
-       <div class="circulorojo" style="background: White !important"></div>
+       <div class="circulorojo" style="background: rgb(122, 114, 114) !important"></div>
       <% end %>
       <% if proceso.estado_proceso.estado =="Abierta" %>
        <div class="circulorojo" style="background: Green !important"></div>
@@ -52,7 +52,7 @@
                 <% end %>
 
                 <% else %>
-                     <%= link_to "Crear Participante / Cliente", {:controller => "participantes", :action => "index", :proceso_id => proceso.id, :nuevoItem => true},:class => "letraAzul"  %>
+                     <%= link_to "Crear", {:controller => "participantes", :action => "index", :proceso_id => proceso.id, :nuevoItem => true},:class => "letraAzul"  %>
                 <% end %>
 
   </td>

@@ -3,10 +3,9 @@ class LogsController < ApplicationController
   before_filter :authenticate_abogado!
   
  def index
-     # @dias = (5.day.ago.to_date..Date.today).map{ |date| date.strftime("%b %d") }.reverse
-     @dias = Log.where(abogado_id: current_abogado.id ).order('id,created_at DESC').group("id,created_at").limit(3)
-     #procesos current_user.id
-     @logs = Log.where(abogado_id: current_abogado.id ).order("id,proceso_id,created_at DESC")
+     @logs = Log.where(abogado_id: current_abogado.id ).order("proceso_id DESC")
+     @dias = 1.day.ago.to_date..Date.today
+     @dias = @dias
  end
 
  def iractividad

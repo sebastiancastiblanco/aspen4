@@ -1191,6 +1191,7 @@ top: 24px;
 width: 47%;
 background: rgba(255,255,255,0.7);
 padding: 20px;
+height: 295px;
 }
 
 .content2 { 
@@ -1264,7 +1265,7 @@ background-color: #0192dd  !important;
 }
 
 .margenesLinea{
-  margin: 50px 0 50px;
+  margin: 16px 0 35px;
 }
 
 .tituloPagina{
@@ -1714,10 +1715,13 @@ font-size: 0.975em;
 }
 
 .titulocontendiotablaPrincipal{
- color: #2795b6;
- font-size: 17px !important; 
+ 
+ font-size: 15px !important; 
 }
 
+.titulocontendiotablaPrincipal:hover{
+   color: #2795b6;
+}
 
 
 .effect-circle-1 {
@@ -1783,7 +1787,7 @@ font-size: 0.975em;
   background-color: #f3f3f3 !important;
 }
 .fondoNaranja{
-  background-color: #f87c45 !important;
+  background-color: rgba(255, 125, 68, 0.92) !important;
 }
 .fondoAzul{
   background-color: #6abbd9 !important;
@@ -1792,12 +1796,35 @@ font-size: 0.975em;
 .testimonial-bg {
 background-image: url(/img/testimonial-bg.jpg) !important;
 background-attachment: fixed;
-margin-top: 40px;
+margin-top: 75px;
 padding: 20px 0;
-margin-bottom: 40px;
-height: 190px;
+margin-bottom: 90px;
+height: 225px;
 }
 
 .titulomail{
   color: #2ba6cb;
 }
+
+.buttonlogin{
+  background-color: transparent ;
+  border-color: #2ba6cb !important;
+  color: #2ba6cb !important;
+  font-weight: bold;
+  font-size: 13px !important;
+}
+
+.buttonlogin:hover, .buttonlogin:focus{
+  color: white !important;
+}
+
+.sorting , .sorting_asc, .sorting_desc{
+  border-color: #2795b6 !important;
+  border-width: 5px !important;
+
+}
+
+.loadingcss{
+
+background: #2795b6 !important;
+} 

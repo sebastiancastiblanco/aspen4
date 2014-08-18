@@ -15,17 +15,19 @@
                  
 
                  <% @dias.each do |dia| %>
-                    <% diavar = dia.created_at %>
+                   
+                    <% diavar = dia %>
 
                     
-                    <li class="year"><%= fechalog dia.created_at %></li>
+                    <li class="year"><%= fechalog dia %></li>
                     
-                    <% nuevoproceso = true %>
+                     <% nuevoproceso = true %>
                      <% gprocesoid = -1 %>
-
                       <% @logs.each do |log| %>
                         
                          <% if (gprocesoid == -1) %>
+                         <% if (diavar.to_date ===  log.created_at.to_date) %>
+                          
                             <li class='event ' href="#">
                               <%= link_to(log.proceso) do  %>
                                       <h2 class="tituloProyecto">
@@ -36,6 +38,7 @@
                             <% gprocesoid = log.proceso_id %> 
                              <% nuevoproceso = false %>
                          <% end %>
+                          <% end %>
 
                         
                         <% if (diavar.to_date ===  log.created_at.to_date) %>
@@ -74,11 +77,14 @@
                                     </li> 
 
                                     <li class='event '>
+                                    <% if (!nuevoproceso) %>
+                          
                                     <%= link_to(log.proceso) do  %>
                                            <h2 class="tituloProyecto">
                                              <%= log.proceso.titulo %> - (<%= log.proceso.referencia %>)
                                           </h2>
                                     <% end %>
+                                     <% end %>
                               
 
 
