@@ -537,3 +537,17 @@ function cambioEstadoDocumento(documentoid){
       $('#commitCompartir').val("Enviando...");
       $('#commitDocumento').val("Cargando...");
     };
+
+function activarreporteproceso(){
+  $("#reporteGeneral").removeClass("ocultar");
+  $("#panelReporteProceso").addClass("ocultar");
+    $("#botonproceso").removeClass("desactivado");
+  $("#botongeneral").addClass("desactivado");
+};
+function activarreportegeneral(){
+ $("#panelReporteProceso").removeClass("ocultar");
+  $("#reporteGeneral").addClass("ocultar");
+
+   $("#botongeneral").removeClass("desactivado");
+  $("#botonproceso").addClass("desactivado");
+};

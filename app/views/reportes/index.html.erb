@@ -1,30 +1,42 @@
-
 <body>
 
-  <div id="workspace" class="workspace">
-    <div class="container stack_container" style="width: 960px;">
-      <div class="panel sheet project active blank_slate fondoGris" >
-         <div class="sheet_body">
-       	
+    <div id="workspace" class="workspace">
+    <div class="container stack_container"  style="width: 960px;">
+      <div class="panel sheet project active blank_slate fondoGris">
 
-       	<div class="row">
-    <div class="large-12 columns">
- 
-      <!-- End Navigation -->
- 	
-<div class="section-container auto panelReportes" data-section>
-  
-  <section class="active">
-    <p class="title" data-section-title><a href="#panel1">Mis Procesos</a></p>
-    <div class="content tabs" data-section-content>
-    
-    <div id="panelReporteProceso"  >
+       
+          <header style="margin-bottom: 25px !important;">
+            <div data-behavior="edit_project_header expandable">
+            <div class="collapsed_content">
+              <div class="row">
+                <div class="small-12 columns">
+                  
+                    <div class="small-3   columns left">
+                        <h1>Reportes</h1>
+                    </div>
+                    <div class="small-3 small-offset-6  columns left">
+                        <a id="botongeneral" class="alinearbotones tituloProceso label round" onclick="activarreportegeneral();">General</a>
+                        <a id="botonproceso" class=" alinearbotones tituloProceso label round desactivado" onclick="activarreporteproceso();">Por Proceso</a>
+                    </div>
+                    <br /><br />
+                    <hr  class="lineaHorizontalAzul"> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        
+        <div class="sheet_body">
+            <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
+            
+          <div id="panelReporteProceso">
 
-        <div class="row">
+           <!-- Primera parte del reporte -->
+           <div class="row">
  
           <div class="large-7 columns">
  			
- 			 <div class="panel sinBorde">
+ 			<div class=" sinBorde">
            
           	<h4 class="hide-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h4>
 	            
@@ -48,7 +60,7 @@
             	<%= link_to 'Mi progreso', "/progreso", :class=>"textolinks alinearDerecha ", :id => "mostrarCamposOpcionales" %> <br />
 
           </div>
-          </div>
+         </div>
  
  
           <div class="large-5 columns">
@@ -100,13 +112,8 @@
           </div>
  
         </div>
- 
-      <!-- End Header Content -->
- 	
 
- 	<hr>
- 
-      <!-- Search Bar -->
+     <!-- segunda parte del reporte -->
  
         <div class="row">
 
@@ -162,16 +169,13 @@
 	          	</div>
           	</div>
  		</div>
-	<!-- End Search Bar -->
- 
-      </div>
-    </div>
-  
-  </section>
+	<!-- Segunda parte del reporte -->
 
-  <section>
-    <p class="title" data-section-title><a href="#panel2">Reporte General</a></p>
-    <div class="content tabs" data-section-content>
+
+    </div>	
+
+
+    <div id="reporteGeneral">
       
     	<!-- Navigation -->
       <div class="row collapse">
@@ -181,7 +185,8 @@
 	     <div class="small-8 columns paddginCero">
 	    
 	            <%= form_tag('/reportes', class: "custom") do -%>
-					<%= select_tag "procesosSelect", options_from_collection_for_select(@procesos, "id", "titulo"), class: 'custom', onchange: "reporteProceso()", include_blank: true %>
+					
+					<%= select_tag "procesosSelect", options_for_select([["Procesos" , "0" ]] )+options_from_collection_for_select(@procesos, "id", "titulo"), class: 'custom', onchange: "reporteProceso()" %>
 				<% end %>
 
 	      </div>
@@ -193,7 +198,7 @@
 	      	<img src="/img/Analytics.png" width="250px" style="opacity: 0.4;">
 	    </div>
 	    <div class="large-8 small-offset-4 large-offset-4 columns">
-	      <h3 class="textoGris">Reportes Generales</h3>
+	      <h3 class="textoGris">Reporte por proceso</h3>
 	    </div>
     </div>
  	 
@@ -207,26 +212,12 @@
       
 
 </div>
- 	
-
-    </div>
-  </section>
-</div>
-
- 	
-
-
-    </div>
-  </div>
-          
 
         </div>
       </div>
     </div>
   </div>
+   <script type="text/javascript">
+	 activarreportegeneral();
+   </script>
 </body>
-
-<script type="text/javascript">
-    $('#reportestopbar').addClass("active");
-  </script>
-

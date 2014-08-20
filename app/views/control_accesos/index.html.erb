@@ -31,8 +31,8 @@
           </header>
 
 
-           <% if (notice) %>
-                <div data-alert class="alert-box alert radius" style="text-shadow: initial;"><%= notice %></div>
+           <% if (alert) %>
+                <div data-alert class="alert-box alert radius" style="text-shadow: initial;"><%= alert %></div>
             <% end %>
 
 
@@ -119,3 +119,7 @@ $(function() {
  });
 });
 </script>
+
+<script type="text/javascript">
+    $('#compartirtopbar').addClass("active");
+  </script>

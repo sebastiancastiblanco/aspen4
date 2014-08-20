@@ -327,7 +327,8 @@ div.panel.home_tab section.projects.cards article.card.blank {
 }
 div.panel.home_tab>div#all_projects section, div.panel.home_tab>section {
   margin-left: 170px  !important;
-  max-width: 790px !important;
+  /*max-width: 790px !important;*/
+  margin-right: 44px !important;
 }
 div.panel.home_tab section.projects.cards {
   text-shadow: none  !important;
@@ -1165,6 +1166,11 @@ z-index: 1;
   color: white !important;
 }
 
+.tituloProceso:hover{
+  background:#2795b6 !important;
+  cursor: pointer; 
+}
+
 .title{
   margin: 0px  !important;
 }
@@ -1461,6 +1467,15 @@ float: left;
 
 .letraAzul{
   color: #2795b6  !important
+}
+
+.letraBlanca{
+  color: White  !important;
+  text-decoration: underline;
+}
+
+.letraBlanca:hover{
+  color: #CBDEE4 !important
 }
 
 a.linksTitulos{
@@ -1842,4 +1857,16 @@ border: none !important;
   background: transparent !important;
   border: none !important;
   color: #2795b6 !important;
+}
+
+.section-container.auto section.active .content, .section-container.auto .section.active .content{
+  position: inherit !important;
+}
+
+.desactivado{
+  background: rgba(86, 92, 121, 0.17) !important;
+  color: black !important;
+}
+.desactivado:hover{
+  color: white !important;
 }

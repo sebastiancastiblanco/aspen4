@@ -14,13 +14,21 @@ class ProcesosController < ApplicationController
     @tipos_procesos = TipoProceso.all
     @proceso = Proceso.new 
     @participante = Participante.new
+    
+    #buscar si tiene invitaciones pendientes
+    @numInvitacions = Invitacion.solicitud(current_abogado.email).count
 
     #Alertas pendietse del usuario
      
     @NumeroAlertasPendientes = current_abogado.alertas.activos.where("termina < ?", Time.now).order("updated_at DESC").count;
     @NumeroActividadesPendientes = current_abogado.actividads.activos.where("fechaseguir < ? AND estado_actividad_id != ?", Time.now,8).order("updated_at DESC").count;
     respond_to do |format|
+      if @numInvitacions != 0
+      flash[:notice] = "Tiene (#{@numInvitacions}) invitaciones pendientes. #{ view_context.link_to('Mostrar', invitacions_path, :class => 'letraBlanca')}".html_safe
+      end
       format.html # index.html.erb
+      
+
       format.json { render json: @procesos }
       format.csv { send_data @procesos.to_csv }
       format.xls #{ send_data @procesos.to_csv(col_sep: "\t") }

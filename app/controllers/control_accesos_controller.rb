@@ -120,19 +120,19 @@ class ControlAccesosController < ApplicationController
       end
       
       respond_to do |format|
-        format.html { redirect_to :compartirProcesos , notice:'Seleccione un privilegio para el proceso' and return}
+        format.html { redirect_to :compartirProcesos , alert:'Seleccione un privilegio para el proceso' and return}
         format.js
       end
      end
      
       respond_to do |format|
-        format.html { redirect_to :compartirProcesos , notice:'Seleccione un usuario para el proceso' and return }
+        format.html { redirect_to :compartirProcesos , alert:'Seleccione un usuario para el proceso' and return }
         format.js
       end
     end
     
     respond_to do |format|
-      format.html { redirect_to :compartirProcesos , notice:'Seleccione un proceso para compartir' and return }
+      format.html { redirect_to :compartirProcesos , alert:'Seleccione un proceso para compartir' and return }
       format.js
     end
 
