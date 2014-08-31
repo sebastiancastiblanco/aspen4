@@ -8,7 +8,7 @@ class AlertasController < ApplicationController
   def index
     @proceso = Proceso.find(params[:proceso_id])
     @alerta = @proceso.alertas.where(activo: true)
-    
+    flash[:notice] = nil;
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @alerta }

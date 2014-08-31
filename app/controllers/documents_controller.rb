@@ -8,7 +8,7 @@ class DocumentsController < ApplicationController
   def index
     @proceso = Proceso.find(params[:proceso_id])
     @documents = @proceso.documents
-    
+    flash[:notice] = nil;
 
     respond_to do |format|
       format.html # index.html.erb

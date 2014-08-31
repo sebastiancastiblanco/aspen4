@@ -19,7 +19,7 @@
 								  
 									<div class="small-9 large-9 columns field">
 									    
-									    <%= text_field_tag :tomail, nil, placeholder: 'Correo Electronico', maxlength: 250 %>
+									    <%= text_field_tag :tomail, nil, :autofocus=>true, placeholder: 'Correo Electronico', maxlength: 250 %>
 									    <%= hidden_field_tag :abogado_id, current_abogado.id %>
 									    
 									  </div>

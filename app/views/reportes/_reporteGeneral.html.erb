@@ -1,0 +1,143 @@
+<div id="reporteGeneral">
+
+           <!-- Primera parte del reporte -->
+           <div class="row">
+ 
+          <div class="large-7 columns">
+ 			
+ 			<div class=" sinBorde">
+           
+          	<h4 class="hide-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h4>
+	            
+				<table class="tablaReportes">
+				  <thead>
+				    <tr>
+				      <th width="300">Movimiento</th>
+				      <th width="150" class="centrado">Fecha</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  <% @logs.each do |log| %>
+                	  <tr>
+					      <td><%= log.mensaje %> </td>
+					      <td class="centrado"><%= fechalog log.created_at %></td>
+				      </tr>
+				  <% end %>
+              	</tbody>
+				</table>
+
+            	<%= link_to 'Mi progreso', "/progreso", :class=>"textolinks alinearDerecha ", :id => "mostrarCamposOpcionales" %> <br />
+
+          </div>
+         </div>
+ 
+ 
+          <div class="large-5 columns">
+ 
+            <div class="panel sinBorde">
+              	
+              <h3 class="show-for-small">Mis Procesos<hr class="lineaHorizontalAzul"/></h3>
+ 
+              <h4 class="hide-for-small">Mis Procesos<hr class="lineaHorizontalAzul"/></h4>
+
+              <table class="tablaReportes">
+				  <thead>
+				    <tr>
+				      <th width="200">Estado del proceso</th>
+				      <th class="centrado">No de procesos</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<tr>
+				      <td>Sin iniciar</td>
+				      <td class="centrado"><%= Proceso.sinIniciar(current_abogado.id).size  %></td>
+				    </tr>
+				    <tr>
+				      <td>Abiertos</td>
+				      <td class="centrado"><%= Proceso.abiertos(current_abogado.id).size %></td>
+				    </tr>
+				      <tr>
+				      <td>Cerrados</td>
+				      <td class="centrado"><%= Proceso.cerrados(current_abogado.id).size %></td>
+				    </tr>
+				    <tr>
+				      <td>Aplazados</td>
+				      <td class="centrado"><%= Proceso.aplazados(current_abogado.id).size %></td>
+				    </tr>
+				    <tr>
+				      <td>Venc. Terminos</td>
+				      <td class="centrado"><%= Proceso.vencienron(current_abogado.id).size %></td>
+				    </tr>
+				    
+				  </tbody>
+				</table>
+                
+
+            	
+            </div>
+
+            
+         
+          </div>
+ 
+        </div>
+
+     <!-- segunda parte del reporte -->
+ 
+        <div class="row">
+
+<div class="large-12 columns">
+	            <div class="radius panel sinBorde">
+        	<h3 class="show-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h3>
+ 				<h4 class="hide-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h4>
+
+              	<table class="tablaReportes">
+				  <thead>
+				    <tr>
+				      <th width="250"></th>
+				      <th width="100" class="centrado">Estado actual</th>
+				      <th width="200" class="centrado">Fecha de Inicio</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<% if (!@proceso.nil?)%>
+				    <tr>
+				      <td><%= link_to(@proceso) do  %> <%= @proceso.titulo %> <% end %></td>
+				      <td class="centrado"> <%= @proceso.estado_proceso.estado %></td> 
+				      <td class="centrado"><%= fechalog @proceso.created_at %></td>
+				    </tr>
+				     <% end %>
+				   </tbody>
+				</table>
+
+				<%= link_to(@proceso) do %>  <span class="textolinks alinearDerecha">Ir al proceso</span>   <% end %>
+</div>
+          	</div>
+
+ 			<div class="large-12 columns">
+	            <div class="radius panel sinBorde">
+	 				<h4>Lista de Procesos<hr class="lineaHorizontalAzul"/></h4>
+
+	 				<table class="tablaReportes">
+					  <thead>
+					    <tr>
+					      <th width="200">Titulo</th>
+					      <th width="150" class="centrado">Tipo</th>
+					      <th width="150" class="centrado">Estado</th>
+					      <th width="150" class="centrado">Creado el</th>
+					      <th width="150" class="centrado">Ultima Modificacion</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	 <% @procesos.each do |proceso| %>
+                              <%= render 'proceso', :proceso => proceso %>
+                        <% end %>
+					  	
+                	   </tbody>
+					</table>
+	          	</div>
+          	</div>
+ 		</div>
+
+
+    </div>	

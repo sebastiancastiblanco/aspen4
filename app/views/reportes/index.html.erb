@@ -14,8 +14,9 @@
                     <div class="small-3   columns left">
                         <h1>Reportes</h1>
                     </div>
-                    <div class="small-3 small-offset-6  columns left">
+                    <div class="small-4 small-offset-5  columns left">
                         <a id="botongeneral" class="alinearbotones tituloProceso label round" onclick="activarreportegeneral();">General</a>
+                        <a id="botongrafico" class=" alinearbotones tituloProceso label round desactivado" onclick="activarreportegraficos();">Gráficos</a>
                         <a id="botonproceso" class=" alinearbotones tituloProceso label round desactivado" onclick="activarreporteproceso();">Por Proceso</a>
                     </div>
                     <br /><br />
@@ -29,189 +30,14 @@
         <div class="sheet_body">
             <div id="noticeMsg" data-alert class="alert-box success radius ocultar"></div>
             
-          <div id="panelReporteProceso">
+     <!-- Primera parte del reporte -->
+     <%= render 'reportes/reporteGeneral' %>
 
-           <!-- Primera parte del reporte -->
-           <div class="row">
- 
-          <div class="large-7 columns">
- 			
- 			<div class=" sinBorde">
-           
-          	<h4 class="hide-for-small">Ultimos movimientos<hr class="lineaHorizontalAzul"/></h4>
-	            
-				<table class="tablaReportes">
-				  <thead>
-				    <tr>
-				      <th width="300">Movimiento</th>
-				      <th width="150" class="centrado">Fecha</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				  <% @logs.each do |log| %>
-                	  <tr>
-					      <td><%= log.mensaje %> </td>
-					      <td class="centrado"><%= fechalog log.created_at %></td>
-				      </tr>
-				  <% end %>
-              	</tbody>
-				</table>
+	 <!-- Segunda parte del reporte -->
+     <%= render 'reportes/reporteGrafico' %>
 
-            	<%= link_to 'Mi progreso', "/progreso", :class=>"textolinks alinearDerecha ", :id => "mostrarCamposOpcionales" %> <br />
-
-          </div>
-         </div>
- 
- 
-          <div class="large-5 columns">
- 
-            <div class="panel sinBorde">
-              	
-              <h3 class="show-for-small">Mis Procesos<hr class="lineaHorizontalAzul"/></h3>
- 
-              <h4 class="hide-for-small">Mis Procesos<hr class="lineaHorizontalAzul"/></h4>
-
-              <table class="tablaReportes">
-				  <thead>
-				    <tr>
-				      <th width="200">Estado del proceso</th>
-				      <th class="centrado">No de procesos</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				  	<tr>
-				      <td>Sin iniciar</td>
-				      <td class="centrado"><%= Proceso.sinIniciar(current_abogado.id).size  %></td>
-				    </tr>
-				    <tr>
-				      <td>Abiertos</td>
-				      <td class="centrado"><%= Proceso.abiertos(current_abogado.id).size %></td>
-				    </tr>
-				      <tr>
-				      <td>Cerrados</td>
-				      <td class="centrado"><%= Proceso.cerrados(current_abogado.id).size %></td>
-				    </tr>
-				    <tr>
-				      <td>Aplazados</td>
-				      <td class="centrado"><%= Proceso.aplazados(current_abogado.id).size %></td>
-				    </tr>
-				    <tr>
-				      <td>Venc. Terminos</td>
-				      <td class="centrado"><%= Proceso.vencienron(current_abogado.id).size %></td>
-				    </tr>
-				    
-				  </tbody>
-				</table>
-                
-
-            	
-            </div>
-
-            
-         
-          </div>
- 
-        </div>
-
-     <!-- segunda parte del reporte -->
- 
-        <div class="row">
-
-<div class="large-12 columns">
-	            <div class="radius panel sinBorde">
-        	<h3 class="show-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h3>
- 				<h4 class="hide-for-small">Ultimo Proceso Creado<hr class="lineaHorizontalAzul"/></h4>
-
-              	<table class="tablaReportes">
-				  <thead>
-				    <tr>
-				      <th width="250"></th>
-				      <th width="100" class="centrado">Estado actual</th>
-				      <th width="200" class="centrado">Fecha de Inicio</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				  	<% if (!@proceso.nil?)%>
-				    <tr>
-				      <td><%= link_to(@proceso) do  %> <%= @proceso.titulo %> <% end %></td>
-				      <td class="centrado"> <%= @proceso.estado_proceso.estado %></td> 
-				      <td class="centrado"><%= fechalog @proceso.created_at %></td>
-				    </tr>
-				     <% end %>
-				   </tbody>
-				</table>
-
-				<%= link_to(@proceso) do %>  <span class="textolinks alinearDerecha">Ir al proceso</span>   <% end %>
-</div>
-          	</div>
-
- 			<div class="large-12 columns">
-	            <div class="radius panel sinBorde">
-	 				<h4>Lista de Procesos<hr class="lineaHorizontalAzul"/></h4>
-
-	 				<table class="tablaReportes">
-					  <thead>
-					    <tr>
-					      <th width="200">Titulo</th>
-					      <th width="150" class="centrado">Tipo</th>
-					      <th width="150" class="centrado">Estado</th>
-					      <th width="150" class="centrado">Creado el</th>
-					      <th width="150" class="centrado">Ultima Modificacion</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					  	 <% @procesos.each do |proceso| %>
-                              <%= render 'proceso', :proceso => proceso %>
-                        <% end %>
-					  	
-                	   </tbody>
-					</table>
-	          	</div>
-          	</div>
- 		</div>
-	<!-- Segunda parte del reporte -->
-
-
-    </div>	
-
-
-    <div id="reporteGeneral">
-      
-    	<!-- Navigation -->
-      <div class="row collapse">
-      	<div class="small-4 columns paddginCero" >
-	      <span class="prefix">Selecciona un Proceso</span>
-	    </div>
-	     <div class="small-8 columns paddginCero">
-	    
-	            <%= form_tag('/reportes', class: "custom") do -%>
-					
-					<%= select_tag "procesosSelect", options_for_select([["Procesos" , "0" ]] )+options_from_collection_for_select(@procesos, "id", "titulo"), class: 'custom', onchange: "reporteProceso()" %>
-				<% end %>
-
-	      </div>
-
-	  </div>
-
-	 <div id="panelReporteProcesoImagen"  class="row" style="margin-top:60px">
- 		<div class="large-8 small-offset-4 large-offset-4 columns">
-	      	<img src="/img/Analytics.png" width="250px" style="opacity: 0.4;">
-	    </div>
-	    <div class="large-8 small-offset-4 large-offset-4 columns">
-	      <h3 class="textoGris">Reporte por proceso</h3>
-	    </div>
-    </div>
- 	 
- 	
- 	<div id="panelreport" >
-    </div>
- 	
- 	 <!-- Reporte proceso -->
-    <%= render("reporteProceso", :proceso => @proceso) %>
-    
-      
-
-</div>
+	 <!-- Tercera parte del reporte -->
+     <%= render 'reportes/reportePorProceso' %>
 
         </div>
       </div>

@@ -539,15 +539,33 @@ function cambioEstadoDocumento(documentoid){
     };
 
 function activarreporteproceso(){
-  $("#reporteGeneral").removeClass("ocultar");
-  $("#panelReporteProceso").addClass("ocultar");
-    $("#botonproceso").removeClass("desactivado");
+
+  $("#reporteGeneral").addClass("ocultar");
+ $("#panelReporteProceso").removeClass("ocultar");
+ $("#panelReporteGrafico").addClass("ocultar");
+
   $("#botongeneral").addClass("desactivado");
+  $("#botonproceso").removeClass("desactivado");
+  $("#botongrafico").addClass("desactivado");
+
 };
 function activarreportegeneral(){
- $("#panelReporteProceso").removeClass("ocultar");
-  $("#reporteGeneral").addClass("ocultar");
+ $("#reporteGeneral").removeClass("ocultar");
+ $("#panelReporteProceso").addClass("ocultar");
+ $("#panelReporteGrafico").addClass("ocultar");
 
-   $("#botongeneral").removeClass("desactivado");
+  $("#botongeneral").removeClass("desactivado");
+  $("#botongeneral").removeClass("desactivado");
   $("#botonproceso").addClass("desactivado");
+  $("#botongrafico").addClass("desactivado");
+};
+function activarreportegraficos(){
+ $("#reporteGeneral").addClass("ocultar");
+ $("#panelReporteProceso").addClass("ocultar");
+ $("#panelReporteGrafico").removeClass("ocultar");
+
+  $("#botongeneral").addClass("desactivado");
+  $("#botonproceso").addClass("desactivado");
+  $("#botongrafico").removeClass("desactivado");
+
 };

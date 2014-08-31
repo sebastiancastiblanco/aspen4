@@ -1,0 +1,34 @@
+<div id="panelReporteProceso">
+      
+    	<!-- Navigation -->
+      <div class="row collapse">
+      	<div class="small-4 columns paddginCero" >
+	      <span class="prefix">Selecciona un Proceso</span>
+	    </div>
+	     <div class="small-8 columns paddginCero">
+	    
+	            <%= form_tag('/reportes', class: "custom") do -%>
+					
+					<%= select_tag "procesosSelect", options_for_select([["Procesos" , "0" ]] )+options_from_collection_for_select(@procesos, "id", "titulo"), class: 'custom', onchange: "reporteProceso()" %>
+				<% end %>
+
+	      </div>
+
+	  </div>
+
+	 <div id="panelReporteProcesoImagen"  class="row" style="margin-top:60px">
+ 		<div class="large-8 small-offset-4 large-offset-4 columns">
+	      	<img src="/img/Analytics.png" width="250px" style="opacity: 0.4;">
+	    </div>
+	    <div class="large-8 small-offset-4 large-offset-4 columns">
+	      <h3 class="textoGris">Reporte por proceso</h3>
+	    </div>
+    </div>
+ 	 
+ 	
+ 	<div id="panelreport" >
+    </div>
+ 	
+ 	 	<!-- Reporte proceso -->
+    	<%= render("reporteProceso", :proceso => @proceso) %>
+	</div>

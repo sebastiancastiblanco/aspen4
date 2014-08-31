@@ -47,7 +47,7 @@
     </div>
     <div class="small-12 large-4 columns field">
       <span data-tooltip class="tip-top hide-for-touch" title="Indica el valor total del contrato">
-      <%= f.text_field :valor, :placeholder => "Valor del Contrato", :value => number_with_precision(@contrato.valor, :precision => 0, :delimiter => '.')  %>
+      <%= f.number_field :valor, :placeholder => "Valor del Contrato", :value => number_with_precision(@contrato.valor, :precision => 0, :delimiter => '.')  %>
     </div>
      <div class="small-3 large-2 small-offset-0 columns ">
        
@@ -99,6 +99,8 @@
           <div class="small-12 large-4 columns field ">
              <span data-tooltip class="tip-top hide-for-touch" title="Fecha para la culminación esperada del proceso">
              <%= f.date_select :fechaFin  , {:ampm => true, :minute_step => 15,start_year: 2014,order: [:day, :month, :year]}, { class: "date start fechasline2" } %>
+
+      
           </div>
       </section>
    
