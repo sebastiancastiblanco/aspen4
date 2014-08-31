@@ -1,3 +1,8 @@
 <div id="panelReporteGrafico">
-	Reporte Gráfico.
+	<h4 class="hide-for-small">Reportes Gráficos<hr class="lineaHorizontalAzul"/></h4>
+
+	<%= line_chart Proceso.group_by_day(:created_at).count %>
+	
+
+
 </div>

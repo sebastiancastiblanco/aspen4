@@ -22,6 +22,8 @@ end
 gem 'paperclip'
 gem 'devise'
 gem "date-input-rails"
+gem "chartkick" #Gema para los reportes graficos
+gem 'groupdate' # Para agrupacion de fechs por dia,semana, horas
 
 
 
